@@ -1,0 +1,100 @@
+\documentclass[a4paper,11pt]{article}
+
+% projectious.work brand system — LaTeX template
+% Requires XeLaTeX or LuaLaTeX for custom fonts
+
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{parskip}
+
+% ── Brand colors ──
+\definecolor{midnight}{HTML}{1D3352}
+\definecolor{midnightlight}{HTML}{2B4D78}
+\definecolor{midnightdark}{HTML}{132440}
+\definecolor{accent}{HTML}{E05232}
+\definecolor{accentlight}{HTML}{EA7558}
+\definecolor{secondary}{HTML}{546A82}
+\definecolor{slate3}{HTML}{E6E8EB}
+
+% ── Brand fonts ──
+\setmainfont{Source Sans 3}[
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+  ItalicFont = *-Italic,
+]
+\setsansfont{Plus Jakarta Sans}[
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+]
+\setmonofont{IBM Plex Mono}[
+  UprightFont = *-Regular,
+  BoldFont = *-Bold,
+]
+
+% ── Page geometry (DIN A4) ──
+\geometry{
+  a4paper,
+  left=25mm, right=25mm,
+  top=30mm, bottom=30mm,
+  headheight=14pt,
+}
+
+% ── Header / footer ──
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily\color{secondary}projectious.work}
+\fancyhead[R]{\small\sffamily\color{secondary}\thepage}
+\fancyfoot[C]{\footnotesize\color{secondary}Cloud · Agile · Agentic AI}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ── Section formatting ──
+\titleformat{\section}{\sffamily\Large\bfseries\color{midnight}}{}{0em}{}
+\titleformat{\subsection}{\sffamily\large\bfseries\color{midnightlight}}{}{0em}{}
+\titleformat{\subsubsection}{\sffamily\normalsize\bfseries\color{secondary}}{}{0em}{}
+
+% ── Hyperlinks ──
+\hypersetup{
+  colorlinks=true,
+  linkcolor=midnight,
+  urlcolor=accent,
+  citecolor=secondary,
+}
+
+\begin{document}
+
+\begin{titlepage}
+\vspace*{4cm}
+{\sffamily\Huge\bfseries\color{midnight} Document Title\par}
+\vspace{0.5cm}
+{\sffamily\large\color{secondary} Subtitle goes here\par}
+\vspace{2cm}
+{\normalsize\color{secondary}
+projectious.work\\
+Cloud · Agile · Agentic AI\\
+\today
+}
+\end{titlepage}
+
+\section{Introduction}
+This is a template document using the projectious.work brand system.
+
+\subsection{Purpose}
+Body text uses Source Sans 3 at 11pt. Headings use Plus Jakarta Sans in midnight color. Code uses \texttt{IBM Plex Mono}.
+
+\subsubsection{Technical note}
+The accent color \textcolor{accent}{(\#E05232)} is used sparingly for emphasis and calls to action.
+
+\begin{verbatim}
+// Code blocks use IBM Plex Mono
+const pipeline = createPipeline({
+  name: "validate-deploy",
+  policy: "strict"
+});
+\end{verbatim}
+
+\end{document}
