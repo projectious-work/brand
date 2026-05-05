@@ -1,0 +1,14 @@
+<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
+<style>
+  .lab { font-family:var(--font-heading); font-size:10px; font-weight:600; color:#546a82; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; display:block }
+  .inp { font-family:var(--font-body); font-size:13px; padding:8px 12px; border:1.5px solid #cdd0d5; border-radius:6px; background:#fff; width:100%; color:#1a1a1a; outline:none }
+</style>
+<div class="row" style="gap:12px">
+  <div style="flex:1"><span class="lab">Default</span><input class="inp" placeholder="Pipeline name"></div>
+  <div style="flex:1"><span class="lab">Focus</span><input class="inp" value="validate-deploy" style="border-color:#1d3352;box-shadow:0 0 0 2px rgba(29,51,82,0.15)"></div>
+</div>
+<div class="row" style="gap:12px;margin-top:8px">
+  <div style="flex:1"><span class="lab">Error</span><input class="inp" value="Invalid config" style="border-color:#E05232;background:#fef9f7;color:#b84228"></div>
+  <div style="flex:1"><span class="lab">Disabled</span><input class="inp" value="Locked" disabled style="background:#f1f2f4;color:#9299a4;border-color:#dadce0"></div>
+</div>
+</body></html>
