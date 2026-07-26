@@ -1,0 +1,18 @@
+---
+title: Portfolio presentation
+linkTitle: Portfolio
+weight: 35
+description: Truthful status, social-preview, diagram, and demo patterns.
+---
+
+Portfolio presentation must make maturity and limitations easier to see, not
+make prototypes appear more complete than they are.
+
+- [Status treatments](status/) define the approved maturity vocabulary.
+- [Social previews](social-previews/) define reusable repository artwork.
+- [Diagrams and demos](diagrams/) define evidence and source requirements.
+
+These patterns are Projectious organization assets. Bernhard Gerlach's
+personal LinkedIn profile is a separate identity: use his name, portrait, and
+first-person voice only with his approval. Do not turn a personal profile into
+an organization-brand channel or imply personal endorsement.
