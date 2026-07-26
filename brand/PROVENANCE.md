@@ -36,3 +36,10 @@ All logo files (`brand/logo/**`), design tokens (`brand/tokens/**`), document te
 ## Review status
 
 Last reviewed 2026-07-26: no unlicensed, sensitive, or third-party binary assets found committed to this repository. All physically present files (SVG, PNG, HTML, tokens, templates) are original. If you add a physically bundled third-party asset (a font file, an icon SVG, an image), add a row above and record its individual license and attribution requirement — do not rely on the summary tables alone.
+# Portfolio presentation templates
+
+The SVG sources under `brand/portfolio/` were authored for this repository.
+They use system fonts and geometric shapes only, with no third-party logos,
+screenshots, photography, or icon assets. They follow the repository split
+license and trademark rules. Project-specific derivatives must document any
+added third-party material here before publication.

@@ -1,0 +1,11 @@
+[sensitive_data.email_allowlist]
+# Public organization contact plus synthetic template/example addresses.
+addresses = [
+  "info@projectious.work",
+  "jane@projectious.work",
+  "name@projectious.work",
+  "hello@projectious.work",
+  "eng@projectious.work",
+  "deploy@example.local",
+  "hello@example.com",
+]

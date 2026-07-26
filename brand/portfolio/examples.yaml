@@ -1,0 +1,18 @@
+# Presentation examples only. Verify status with each owning repository.
+examples:
+  - project: aibox
+    category: CLI
+    status: Usable project
+    limitation: Supported hosts and providers must be stated.
+  - project: processkit
+    category: Process layer
+    status: Working prototype
+    limitation: Current API and version constraints must be stated.
+  - project: ai-market-research
+    category: Applied research
+    status: Applied research
+    limitation: Dataset date and methodology limits must be stated.
+  - project: KubeClaw
+    category: Prototype
+    status: Idea / implementation starting
+    limitation: Implemented flows must be stated.
