@@ -1,6 +1,10 @@
 # projectious.work — Brand & Design System
 
+**Status:** Active — maintained
+
 Complete brand package including all design system documentation, logo assets, design tokens, and document templates.
+
+See [`PROVENANCE.md`](./PROVENANCE.md) for the per-asset source/license/attribution inventory, and the repo root [`README.md`](../README.md), [`CONTRIBUTING.md`](../CONTRIBUTING.md), and [`SECURITY.md`](../SECURITY.md) for project-level guidance.
 
 ## Structure
 
