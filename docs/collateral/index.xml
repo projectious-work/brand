@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Collateral on projectious.work Brand</title><link>https://projectious-work.github.io/brand/docs/collateral/</link><description>Recent content in Collateral on projectious.work Brand</description><generator>Hugo</generator><language>en</language><atom:link href="https://projectious-work.github.io/brand/docs/collateral/index.xml" rel="self" type="application/rss+xml"/><item><title>Business card</title><link>https://projectious-work.github.io/brand/docs/collateral/business-card/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/business-card/</guid><description>&lt;p&gt;The primary format is &lt;strong&gt;digital&lt;/strong&gt; — a vCard shared via QR code or direct link,
+not a printed card.&lt;/p&gt;
+&lt;h2 id="layout"&gt;Layout&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Midnight surface, mark top-left, name in Plus Jakarta Sans 700.&lt;/li&gt;
+&lt;li&gt;Role in Source Sans 3 400, in &lt;code&gt;slate-dark-11&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Contact rows in IBM Plex Mono at 11px — addresses and handles are data, and
+monospace makes them scannable and unambiguous.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;projectious.work&lt;/code&gt; always present.&lt;/li&gt;
+&lt;li&gt;Accent used once, on the QR frame or the primary contact method.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="print-fallback"&gt;Print fallback&lt;/h2&gt;
+&lt;p&gt;If a printed card is required:&lt;/p&gt;</description></item><item><title>Email signature</title><link>https://projectious-work.github.io/brand/docs/collateral/email-signature/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/email-signature/</guid><description>&lt;p&gt;The signature is built to work in clients with hostile CSS support — Outlook
+included. The source is
+&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature.html"&gt;&lt;code&gt;brand/email/signature.html&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="construction-rules"&gt;Construction rules&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Table-based layout.&lt;/strong&gt; Flexbox and grid do not survive Outlook.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Inline styles only.&lt;/strong&gt; Most clients strip &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; blocks.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Web-safe font fallbacks.&lt;/strong&gt; Brand fonts will not load in most clients — the
+stack must degrade to a system sans without breaking the layout.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;The mark is a hosted PNG&lt;/strong&gt;, not an SVG and not a data URI. Include &lt;code&gt;alt&lt;/code&gt;
+text; many clients block images by default.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No background images.&lt;/strong&gt; Use a solid &lt;code&gt;bgcolor&lt;/code&gt; attribute.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="content"&gt;Content&lt;/h2&gt;
+&lt;p&gt;One line each: name, role, &lt;code&gt;projectious.work&lt;/code&gt;, and a single contact method.
+The one-line lockup is used here — the signature is a horizontal context.&lt;/p&gt;</description></item><item><title>Social and OG images</title><link>https://projectious-work.github.io/brand/docs/collateral/social/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/social/</guid><description>&lt;h2 id="priority"&gt;Priority&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;LinkedIn and GitHub first&lt;/strong&gt;, blog second, Twitter/X as backup. The templates
+are sized for those surfaces in that order.&lt;/p&gt;
+&lt;h2 id="template-rules"&gt;Template rules&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Backgrounds are &lt;strong&gt;midnight or midnight-dark&lt;/strong&gt;, or white with an accent top
+bar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;&lt;code&gt;projectious.work&lt;/code&gt; is always visible.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Never place text over a busy background.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;An accent glow circle at subtle opacity provides visual interest without
+competing with the text.&lt;/li&gt;
+&lt;li&gt;Typography hierarchy is unchanged: Plus Jakarta Sans for headlines, Source
+Sans 3 for body.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="open-graph"&gt;Open Graph&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;1200×630px.&lt;/li&gt;
+&lt;li&gt;Headline at Display weight, capped at roughly 60 characters — longer headlines
+are truncated by most platforms anyway.&lt;/li&gt;
+&lt;li&gt;The mark sits bottom-left or top-left, never centred.&lt;/li&gt;
+&lt;li&gt;Test the rendering at 320px wide: most impressions are in a mobile timeline.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="pj-rules"&gt;&lt;div class="pj-rule pj-rule--do"&gt;
+ &lt;div class="pj-rule__label"&gt;Do&lt;/div&gt;
+ &lt;p&gt;Keep one message per card. Check contrast against the actual background, not the
+design canvas.&lt;/p&gt;</description></item></channel></rss>

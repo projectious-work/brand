@@ -1,0 +1,20 @@
+# Media
+
+> Motion, audio, video, photography, and presentation guidance.
+
+---
+
+LLMS index: [llms.txt](/brand/llms.txt)
+
+---
+
+Media guidance covers everything with a time dimension or a photographic
+surface — the places where the system meets material it does not fully control.
+
+---
+
+Section pages:
+
+- [Audio and video](/brand/docs/media/audio-video/): Sonic identity and video production rules.
+- [Photography and illustration](/brand/docs/media/photography/): Sourcing rules, treatment, and the abstract illustration style.
+- [Presentations](/brand/docs/media/presentations/): Slide templates, animation, and the core deck structure.
