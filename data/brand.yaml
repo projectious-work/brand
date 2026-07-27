@@ -1,0 +1,240 @@
+# Canonical brand values, mirrored from brand/tokens/* and
+# brand/html/projectious-brand-system-final.html.
+#
+# The docs render from this file, so a page can never drift from the value it
+# documents. When a token changes, change it here and in assets/scss (the SCSS
+# is what actually styles the site) — the two are checked against each other by
+# scripts/check-tokens.sh.
+
+# Radix-convention step roles. Only 11 and 12 are text roles.
+stepRoles:
+  - App bg
+  - Subtle bg
+  - Elem bg
+  - Hover bg
+  - Active bg
+  - Subtle brd
+  - Border
+  - Strong brd
+  - Solid bg
+  - Solid hvr
+  - Lo text
+  - Hi text
+
+scales:
+  midnight:
+    name: Midnight
+    note: Primary. Structure, text, and the calm end of the system.
+    light:
+      ["#f8f9fb","#f0f3f8","#e2e9f2","#d3deec","#c3d1e3","#b0c1d6",
+       "#96abc6","#7490b2","#1d3352","#162944","#3a5a82","#142438"]
+    dark:
+      ["#0e1720","#131e2b","#1a2b3e","#20354d","#263f5a","#2e4b68",
+       "#3a5c7e","#4d7098","#1d3352","#2b4d78","#8aacc8","#c5daf0"]
+  orange:
+    name: Orange
+    note: Accent. Calls to action, active states, and emphasis. Used sparingly.
+    light:
+      ["#fef9f7","#fef0ea","#fde0d5","#fccebd","#f8baa5","#f0a48c",
+       "#e58a6e","#d86e4e","#E05232","#cc4528","#c04424","#6e2714"]
+    dark:
+      ["#1c110d","#271610","#3d1e13","#522616","#643019","#7a3c20",
+       "#974b28","#b85c32","#E05232","#ea7558","#f09878","#fcddd2"]
+  slate:
+    name: Slate
+    note: Secondary. Supporting text, borders, and neutral surfaces.
+    light:
+      ["#f9f9fa","#f1f2f4","#e6e8eb","#dadce0","#cdd0d5","#bec2c8",
+       "#adb2ba","#9299a4","#546a82","#4a5e74","#5c6f82","#1e2b38"]
+    dark:
+      ["#111416","#171b1f","#20262c","#283038","#303a43","#3a454f",
+       "#47545f","#5a6a78","#546a82","#627a92","#97a8b8","#d5dee8"]
+
+core:
+  - name: Primary
+    token: --color-primary
+    hex: "#1d3352"
+    use: Text, headings, primary surfaces
+  - name: Primary Light
+    token: --color-primary-light
+    hex: "#2b4d78"
+    use: Hover states, dark-mode primary
+  - name: Primary Dark
+    token: --color-primary-dark
+    hex: "#132440"
+    use: Dark backgrounds, navbar, code blocks
+  - name: Accent
+    token: --color-accent
+    hex: "#E05232"
+    use: CTAs, highlights, active states
+  - name: Accent Light
+    token: --color-accent-light
+    hex: "#ea7558"
+    use: Accent hover on dark, syntax strings
+  - name: Accent Dark
+    token: --color-accent-dark
+    hex: "#b84228"
+    use: Accent pressed state
+  - name: Secondary
+    token: --color-secondary
+    hex: "#546a82"
+    use: Supporting text, borders
+
+type:
+  - style: Display
+    size: 48
+    weight: 800
+    lh: "1.1"
+    family: Plus Jakarta Sans
+    sample: Redesigning work
+  - style: H1
+    size: 36
+    weight: 700
+    lh: "1.15"
+    family: Plus Jakarta Sans
+    sample: Agent-first consulting
+  - style: H2
+    size: 28
+    weight: 700
+    lh: "1.2"
+    family: Plus Jakarta Sans
+    sample: Composable infrastructure
+  - style: H3
+    size: 22
+    weight: 600
+    lh: "1.25"
+    family: Plus Jakarta Sans
+    sample: How the system fits together
+  - style: H4
+    size: 18
+    weight: 600
+    lh: "1.3"
+    family: Plus Jakarta Sans
+    sample: Working in the open
+  - style: H5
+    size: 15
+    weight: 600
+    lh: "1.35"
+    family: Plus Jakarta Sans
+    sample: Supporting detail
+  - style: Body L
+    size: 16
+    weight: 400
+    lh: "1.65"
+    family: Source Sans 3
+    sample: Augmenting people's strengths through composable Cloud, Agile, and Agentic AI infrastructure.
+  - style: Caption
+    size: 12
+    weight: 400
+    lh: "1.5"
+    family: Source Sans 3
+    sample: Figure 1 — pipeline stages and their policy gates.
+  - style: Overline
+    size: 11
+    weight: 600
+    lh: "1.3"
+    family: Source Sans 3
+    sample: SECTION LABEL
+  - style: Code
+    size: 13
+    weight: 400
+    lh: "1.6"
+    family: IBM Plex Mono
+    sample: 'createPipeline({ policy: "strict" })'
+
+spacing:
+  base: 4
+  steps: [4, 8, 12, 16, 24, 32, 48, 64, 96]
+
+radius:
+  - name: sm
+    value: 3px
+    use: Tags, chips, small indicators
+  - name: md
+    value: 6px
+    use: Buttons, inputs, code blocks
+  - name: lg
+    value: 9px
+    use: Cards, panels
+  - name: xl
+    value: 13px
+    use: Large panels, modals
+  - name: full
+    value: 9999px
+    use: Pills, avatars
+
+elevation:
+  - name: shadow-0
+    value: none
+    use: Flat surfaces, default
+  - name: shadow-1
+    value: 0 1px 3px rgba(0,0,0,0.06)
+    use: Subtle lift — cards at rest
+  - name: shadow-2
+    value: 0 4px 12px rgba(0,0,0,0.08)
+    use: Raised — hover, dropdowns
+  - name: shadow-3
+    value: 0 8px 24px rgba(0,0,0,0.12)
+    use: Overlay — modals, popovers
+
+motion:
+  durations:
+    - name: micro
+      value: 100ms
+      use: Colour and opacity changes
+    - name: standard
+      value: 200ms
+      use: Most transitions — hover, focus, small moves
+    - name: expand
+      value: 300ms
+      use: Height and width changes, accordions
+    - name: page
+      value: 400ms
+      use: Route and view transitions
+  easing:
+    - name: ease-out
+      value: cubic-bezier(0.33, 1, 0.68, 1)
+      use: Entering — elements arriving on screen
+    - name: ease-in
+      value: cubic-bezier(0.32, 0, 0.67, 0)
+      use: Exiting — elements leaving screen
+
+fonts:
+  - family: Plus Jakarta Sans
+    weights: 400 · 500 · 600 · 700 · 800
+    role: Headings, display, buttons, navigation, wordmark
+    license: SIL OFL 1.1
+  - family: Source Sans 3
+    weights: 400 · 500 · 600
+    role: Body copy, UI labels, captions
+    license: SIL OFL 1.1
+  - family: IBM Plex Mono
+    weights: 400 · 500
+    role: Code, terminal output, data
+    license: SIL OFL 1.1
+
+syntax:
+  - token: Identifiers
+    step: midnight-12
+    hex: "#c5daf0"
+    contrast: "11.74:1"
+  - token: Numbers
+    step: orange-11
+    hex: "#f09878"
+    contrast: "7.58:1"
+  - token: Keywords
+    step: midnight-11
+    hex: "#8aacc8"
+    contrast: "7.06:1"
+  - token: Operators
+    step: slate-11
+    hex: "#97a8b8"
+    contrast: "6.90:1"
+  - token: Strings
+    step: orange-light
+    hex: "#ea7558"
+    contrast: "5.76:1"
+  - token: Comments
+    step: code-comment
+    hex: "#72889d"
+    contrast: "4.59:1"

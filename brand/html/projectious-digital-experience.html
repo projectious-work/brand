@@ -41,10 +41,16 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
       <div style="font-size:10px;color:#6b7b8b;margin-top:6px;display:grid;grid-template-columns:auto auto auto;gap:8px;font-family:var(--mf)">
         <span><span style="color:#8aacc8">■</span> Keywords (midnight-11)</span>
         <span><span style="color:#ea7558">■</span> Strings (orange-light)</span>
-        <span><span style="color:#72889d">■</span> Comments (slate-8, 4.59:1 AA)</span>
+        <span><span style="color:#72889d">■</span> Comments (code-comment)</span>
         <span><span style="color:#c5daf0">■</span> Identifiers (midnight-12)</span>
         <span><span style="color:#97a8b8">■</span> Operators (slate-11)</span>
         <span>Background: midnight-2</span>
+      </div>
+      <div style="font-size:9px;color:#6b7b8b;margin-top:8px;line-height:1.6">
+        <strong>code-comment</strong> = <span style="font-family:var(--mf)">#72889d</span> — a dedicated syntax token, not a scale step.
+        Steps 8–10 are border and solid-background roles (<em>strong brd</em>, <em>solid bg</em>, <em>solid hvr</em>); only steps 11–12 are text.
+        Comments are 13px text, so they need 4.5:1: slate-8 gives 3.02:1 on midnight-2, and slate-11 is already taken by operators.
+        This token measures 4.59:1 while staying dimmer than operators.
       </div>
     </div>
     <div style="flex:1">

@@ -1,0 +1,31 @@
+{{- /*
+  Renders one 12-step brand scale from data/brand.yaml.
+
+    {{< scale name="midnight" mode="light" >}}
+
+  Step numbers and role labels come from the data file, so a page can never
+  drift from the scale it documents.
+*/ -}}
+{{- $name := .Get "name" -}}
+{{- $mode := default "light" (.Get "mode") -}}
+{{- $scale := index hugo.Data.brand.scales $name -}}
+{{- with $scale -}}
+{{- $steps := index . $mode -}}
+<div class="pj-scale">
+  <div class="pj-scale__head">
+    <span class="pj-scale__name">{{ .name }}</span>
+    <span class="pj-scale__meta">{{ $mode }} · step 9 {{ index $steps 8 }}</span>
+  </div>
+  <div class="pj-scale__steps">
+    {{- range $i, $hex := $steps }}
+    <div class="pj-scale__step">
+      <div class="pj-scale__chip" style="background:{{ $hex }}{{ if lt $i 2 }};border:1px solid var(--pj-border){{ end }}" title="{{ add $i 1 }} · {{ $hex }}"></div>
+      <span class="pj-scale__num">{{ add $i 1 }}</span>
+      <span class="pj-scale__role">{{ index hugo.Data.brand.stepRoles $i }}</span>
+    </div>
+    {{- end }}
+  </div>
+</div>
+{{- else -}}
+{{- errorf "scale shortcode: no scale named %q in data/brand.yaml (%s)" $name .Position -}}
+{{- end -}}

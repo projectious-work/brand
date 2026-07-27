@@ -1,0 +1,17 @@
+{{- /*
+  Renders the named core brand colours from data/brand.yaml.
+
+    {{< swatches >}}
+*/ -}}
+<ul class="pj-swatches">
+  {{- range hugo.Data.brand.core }}
+  <li class="pj-swatch">
+    <div class="pj-swatch__chip" style="background:{{ .hex }}"></div>
+    <div class="pj-swatch__body">
+      <div class="pj-swatch__name">{{ .name }}</div>
+      <div class="pj-swatch__hex">{{ .hex }}</div>
+      <div class="pj-swatch__use">{{ .use }}</div>
+    </div>
+  </li>
+  {{- end }}
+</ul>
