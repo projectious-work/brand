@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+SRC_DIR="${ROOT_DIR}/src"
 DOCS_BASE_URL="${DOCS_BASE_URL:-http://localhost:1313/}"
 
 command -v hugo >/dev/null 2>&1 || {
@@ -13,12 +14,12 @@ command -v npm >/dev/null 2>&1 || {
   exit 1
 }
 
-if [[ ! -f "${ROOT_DIR}/themes/docsy/theme.toml" ]]; then
-  git -C "${ROOT_DIR}" submodule update --init --recursive themes/docsy
+if [[ ! -f "${SRC_DIR}/themes/docsy/theme.toml" ]]; then
+  git -C "${ROOT_DIR}" submodule update --init --recursive src/themes/docsy
 fi
-if [[ ! -d "${ROOT_DIR}/node_modules" ]]; then
-  npm --prefix "${ROOT_DIR}" install --no-package-lock
+if [[ ! -d "${SRC_DIR}/node_modules" ]]; then
+  npm --prefix "${SRC_DIR}" install --no-package-lock
 fi
 
-cd "${ROOT_DIR}"
+cd "${SRC_DIR}"
 hugo server --buildDrafts --disableFastRender --baseURL "${DOCS_BASE_URL}" "$@"

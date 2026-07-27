@@ -78,22 +78,30 @@ Where a component appears in the docs, its numbers are binding — a 40px input 
 ## Repository layout
 
 ```
-brand/            Canonical source — design documents, logo, tokens, templates
-├── html/         The design-system documents (open in a browser)
-├── logo/         SVG, PNG @1x/@2x/@3x, favicons
-├── tokens/       variables.css · tokens.json · tailwind.config.js
-├── templates/    LaTeX and Typst document templates
-└── email/        Email signature
+brand/              Canonical source — the authority for every value
+├── html/           The design-system documents (open in a browser)
+├── logo/           SVG, PNG @1x/@2x/@3x, favicons
+├── tokens/         variables.css · tokens.json · tailwind.config.js
+├── templates/      LaTeX and Typst document templates
+├── portfolio/      Portfolio presentation assets
+├── research/       Source research behind the system
+└── email/          Email signature
 
-content/          Documentation site content (Hugo)
-assets/scss/      Brand tokens mapped onto Bootstrap/Docsy — the dogfooding seam
-layouts/          Site layouts and the specimen shortcodes
-data/brand.yaml   Machine-readable brand values the docs render from
-scripts/          Local build, serve, deploy, and screenshot scripts
+src/                Hugo site source
+├── hugo.yaml       Site config; mounts ../brand/tokens and ../brand/logo
+├── content/        Documentation content
+├── assets/scss/    Brand tokens → Bootstrap/Docsy — the dogfooding seam
+├── layouts/        Layouts and the specimen shortcodes
+├── data/brand.yaml Machine-readable values the docs render from
+└── themes/docsy    Docsy, pinned as a submodule
+
+scripts/            Local build, serve, deploy, and screenshot scripts
 ```
 
-`brand/` is the source of truth. The site is its readable presentation, not a
-replacement — see [`brand/README.md`](brand/README.md).
+`brand/` is the source of truth; `src/` renders it. The site is a readable
+presentation, not a replacement — see [`brand/README.md`](brand/README.md).
+
+Build output goes to `public/` at the repository root, not inside `src/`.
 
 ## Building the site locally
 
