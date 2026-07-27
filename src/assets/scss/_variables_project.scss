@@ -118,6 +118,10 @@ $brand-primary-dark: #132440;
 $brand-accent: $orange-9; // #E05232
 $brand-accent-light: #ea7558;
 $brand-accent-dark: #b84228;
+// Accent fill for solid controls carrying white text. Step 9 is the identity
+// colour, but white on it is 3.87:1 — under the 4.5:1 AA floor for normal
+// text. This measures 4.72:1. Source: brand/tokens/variables.css.
+$brand-accent-solid: #cc4528;
 $brand-secondary: $slate-9; // #546a82
 
 // -----------------------------------------------------------------------------
@@ -133,6 +137,15 @@ $info: $midnight-11;
 $success: #2f7d65;
 $warning: $orange-9;
 $danger: #a8261c;
+
+// Dark-mode semantic foregrounds. The light values above are tuned for dark
+// text on tinted light backgrounds; used as foregrounds on the dark app
+// surface (#0e1720) they measure 3.65:1, 3.41:1 and 2.55:1 and fail AA. These
+// are the same hues lifted to clear 4.5:1 with margin, and kept clear of the
+// accent so "danger" never reads as "accent".
+$success-dark: #6cc090; // 8.24:1
+$warning-dark: #e0a92a; // 8.50:1
+$danger-dark: #f08b80; // 7.49:1
 $light: $midnight-1;
 $dark: $brand-primary-dark;
 

@@ -49,6 +49,12 @@
   --pj-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
   --pj-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
 
+  // Semantic colours, light mode.
+  --pj-success: #{$success};
+  --pj-warning: #{$warning};
+  --pj-danger: #{$danger};
+  --pj-info: #{$info};
+
   // The mark renders on light surfaces here.
   --pj-mark-shell: #{$midnight-9};
   --pj-mark-cut: #ffffff;
@@ -88,6 +94,14 @@
   --pj-mark-shell: #6b8db2;
   --pj-mark-cut: #{$brand-primary-dark};
   --pj-mark-bud: #{$orange-9};
+
+  // Semantic colours, dark mode. The light-mode values are tuned for dark text
+  // on tinted light backgrounds and fall to 2.6-3.7:1 as foregrounds on the
+  // dark app surface. See brand/html/projectious-digital-experience.html.
+  --pj-success: #{$success-dark};
+  --pj-warning: #{$warning-dark};
+  --pj-danger: #{$danger-dark};
+  --pj-info: #{$midnight-dark-11};
 }
 
 // -----------------------------------------------------------------------------
@@ -266,11 +280,13 @@ $pj-code-operator: $slate-dark-11; // #97a8b8 -- 6.90:1
 // staying visibly dimmer than operators.
 $pj-code-comment: #72889d;
 
-:root,
-[data-bs-theme="light"],
-[data-bs-theme="dark"] {
-  --td-pre-bg: #{$pj-code-bg};
-}
+// NOTE: do not repoint `--td-pre-bg` at the dark code surface. Docsy uses that
+// same variable for INLINE code —
+//   .td-content p code, .td-content li > code, .td-content table code
+//   { color: inherit; background-color: var(--td-pre-bg); }
+// — so forcing it dark puts inherited body text on a dark chip: unreadable in
+// light mode, and the reason inline code rendered dark-on-dark. The block
+// surface is set directly on `pre` below instead.
 
 .td-content,
 .td-content .highlight,
@@ -347,14 +363,57 @@ body {
   .hl { background-color: rgba(138, 172, 200, 0.12); }
 }
 
+// Code *inside* a pre sits on the always-dark surface, so it must take the
+// surface's own foreground. Bootstrap sets `code { color: var(--bs-code-color) }`
+// and Docsy colours links, both of which otherwise win over inheritance from
+// `pre` and paint near-black text on the dark block — unreadable in BOTH colour
+// modes, since the code surface never lightens.
+pre code,
+pre code *,
+pre .highlight code,
+.highlight pre code {
+  background-color: transparent;
+  color: inherit;
+}
+
+// Links inside a code block keep the surface foreground, underlined so they are
+// still identifiable as links.
+pre code a,
+pre a code {
+  color: $pj-code-identifier;
+  text-decoration: underline;
+}
+
 // Inline code follows the surrounding surface, not the dark block treatment.
-:not(pre) > code {
+// Docsy styles inline code at (0,1,2) via `.td-content p code` and friends, so
+// a bare `:not(pre) > code` at (0,0,2) loses. These selectors match Docsy's own
+// so the brand colours actually win.
+:not(pre) > code,
+.td-content p code,
+.td-content li > code,
+.td-content dd code,
+.td-content table code,
+.td-content td code,
+.td-content th code {
   font-family: $font-family-monospace;
   font-size: 0.8125rem;
   padding: 0.125rem 0.375rem;
   border-radius: $border-radius-sm;
   background-color: var(--pj-midnight-2);
   color: var(--pj-orange-11);
+}
+
+// Inline code on a dark surface (covers, dark boxes, footer) must not keep the
+// light-surface treatment — restate both halves of the pair.
+.td-cover-block,
+.td-overlay--dark,
+.td-box--dark,
+.td-box--primary,
+.td-footer {
+  :not(pre) > code {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: $orange-dark-11;
+  }
 }
 
 kbd {
@@ -428,8 +487,9 @@ kbd {
 
 .td-cta-buttons .btn-primary,
 .btn-accent {
-  background-color: $orange-9;
-  border-color: $orange-9;
+  // Not step 9: white on the identity accent is 3.87:1. See $brand-accent-solid.
+  background-color: $brand-accent-solid;
+  border-color: $brand-accent-solid;
   color: #ffffff;
 
   &:hover,
@@ -506,6 +566,55 @@ kbd {
 }
 
 // -----------------------------------------------------------------------------
+// Text on permanently-light surfaces
+// -----------------------------------------------------------------------------
+// The mirror of the dark-surface rule above. `.td-box--light` and
+// `.td-box--white` keep a light background in BOTH colour modes, so in dark
+// mode the inherited dark-mode text colours land light-on-light — midnight-12
+// dark (#c5daf0) on #f8f9fb is 1.36:1. These blocks must restate the
+// light-mode text colours regardless of theme.
+.td-box--light {
+  --bs-body-color: #{$midnight-12};
+  --bs-heading-color: #{$brand-primary};
+  --bs-emphasis-color: #{$midnight-12};
+  --bs-secondary-color: #{$slate-11};
+  --bs-link-color: #{$midnight-11};
+  --bs-link-hover-color: #{$orange-10};
+  color: $midnight-12;
+
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  .display-1, .display-2, .display-3,
+  .display-4, .display-5, .display-6 {
+    color: $brand-primary;
+  }
+
+  p, li, dt, dd {
+    color: $midnight-12;
+  }
+
+  .lead {
+    color: $slate-11;
+  }
+
+  // Docsy's feature blocks fall back to the Bootstrap default link blue here
+  // (#0d6efd, 4.41:1 on this surface); use the brand link colour instead.
+  a:not(.btn) {
+    color: $midnight-11;
+
+    &:hover,
+    &:focus {
+      color: $orange-10;
+    }
+  }
+
+  :not(pre) > code {
+    background-color: $midnight-2;
+    color: $orange-11;
+  }
+}
+
+// -----------------------------------------------------------------------------
 // Landing page blocks
 // -----------------------------------------------------------------------------
 .td-cover-block {
@@ -575,6 +684,15 @@ kbd {
     &:hover {
       color: var(--pj-orange-10);
     }
+
+  }
+
+  // Docsy dims the active entry to --bs-primary-text-emphasis (3.83:1 on the
+  // dark surface). The active item is the one that most needs to be readable.
+  // Docsy's selector is (0,3,1), so match it rather than use `.td-toc a.active`.
+  #TableOfContents a.active {
+    color: var(--pj-midnight-11);
+    font-weight: 600;
   }
 
   #TableOfContents > ul > li > a,
@@ -798,18 +916,18 @@ kbd {
   }
 
   &--do {
-    border-left-color: $success;
+    border-left-color: var(--pj-success);
 
     .pj-rule__label {
-      color: $success;
+      color: var(--pj-success);
     }
   }
 
   &--dont {
-    border-left-color: $danger;
+    border-left-color: var(--pj-danger);
 
     .pj-rule__label {
-      color: $danger;
+      color: var(--pj-danger);
     }
   }
 

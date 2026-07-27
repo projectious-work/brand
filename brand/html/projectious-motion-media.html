@@ -9,12 +9,12 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-webkit-font-smoothing:antialiased}
 .w{max-width:1100px;margin:0 auto;padding:40px 24px 80px}
-:root{--p:#1d3352;--pd:#132440;--a:#E05232;--al:#ea7558;--s:#546a82;--hf:'Plus Jakarta Sans',sans-serif;--bf:'Source Sans 3',sans-serif;--mf:'IBM Plex Mono',monospace}
+:root{--p:#1d3352;--pd:#132440;--a:#E05232;--at:#c04424;--al:#ea7558;--s:#546a82;--hf:'Plus Jakarta Sans',sans-serif;--bf:'Source Sans 3',sans-serif;--mf:'IBM Plex Mono',monospace}
 .sec{margin-top:40px}.sec-t{font-family:var(--hf);font-size:16px;font-weight:700;color:var(--p);margin-bottom:4px}.sec-s{font-size:11px;color:var(--s);margin-bottom:14px}
 .box{background:#fff;border-radius:13px;border:1px solid #e5e3de;padding:22px}
 .rule{padding:10px 14px;background:#f8f9fb;border-radius:6px;margin-top:12px}
 .rule-t{font-family:var(--hf);font-size:12px;font-weight:600;color:var(--p);margin-bottom:4px}
-.rule-b{font-size:11px;color:#6b7b8b;line-height:1.6}
+.rule-b{font-size:11px;color:#5c6b7a;line-height:1.6}
 </style>
 </head>
 <body>
@@ -31,17 +31,17 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
     <div style="padding:14px;background:#f8f9fb;border-radius:6px">
       <div style="font-family:var(--hf);font-size:13px;font-weight:600;color:var(--p);margin-bottom:4px">Enter</div>
       <div style="font-size:11px;color:#5c6f82;line-height:1.5;margin-bottom:6px">Elements slide up 8–12px with fade. Ease-out curve. Stagger siblings by 50ms.</div>
-      <div style="font-family:var(--mf);font-size:10px;color:var(--a)">200–300ms · ease-out</div>
+      <div style="font-family:var(--mf);font-size:10px;color:var(--at)">200–300ms · ease-out</div>
     </div>
     <div style="padding:14px;background:#f8f9fb;border-radius:6px">
       <div style="font-family:var(--hf);font-size:13px;font-weight:600;color:var(--p);margin-bottom:4px">Exit</div>
       <div style="font-size:11px;color:#5c6f82;line-height:1.5;margin-bottom:6px">Fade out in place. No directional movement on exit — elements simply dissolve.</div>
-      <div style="font-family:var(--mf);font-size:10px;color:var(--a)">150–200ms · ease-in</div>
+      <div style="font-family:var(--mf);font-size:10px;color:var(--at)">150–200ms · ease-in</div>
     </div>
     <div style="padding:14px;background:#f8f9fb;border-radius:6px">
       <div style="font-family:var(--hf);font-size:13px;font-weight:600;color:var(--p);margin-bottom:4px">Feedback</div>
       <div style="font-size:11px;color:#5c6f82;line-height:1.5;margin-bottom:6px">Button press: scale(0.98). Toggle: 100ms transition. Loading: pulse opacity 0.4→1.0.</div>
-      <div style="font-family:var(--mf);font-size:10px;color:var(--a)">100ms · ease-out</div>
+      <div style="font-family:var(--mf);font-size:10px;color:var(--at)">100ms · ease-out</div>
     </div>
   </div>
   <div class="rule"><div class="rule-t">Motion rules</div><div class="rule-b">Things slide into place, they don't bounce. All animation wraps in <span style="font-family:var(--mf)">@media (prefers-reduced-motion: no-preference)</span>. CSS-only for HTML. For React, use Framer Motion with the same timing values. Never animate text character-by-character. Page transitions: 400ms max.</div></div>
@@ -89,7 +89,7 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
         </div>
       </div>
       <div style="font-family:var(--hf);font-size:10px;font-weight:600;color:var(--s);margin-top:4px">Lower third</div>
-      <div style="font-size:10px;color:#6b7b8b">Midnight bar, white text, accent underline (2px). Fade in 200ms, hold 5s.</div>
+      <div style="font-size:10px;color:#5c6b7a">Midnight bar, white text, accent underline (2px). Fade in 200ms, hold 5s.</div>
     </div>
     <!-- Intro mockup -->
     <div>
@@ -97,7 +97,7 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
         <div style="text-align:center"><div style="font-family:var(--hf);font-size:14px;font-weight:700;color:#fff;margin-bottom:2px">projectious.work</div><div style="font-family:var(--bf);font-size:7px;color:#9aaab8">Cloud · Agile · Agentic AI</div></div>
       </div>
       <div style="font-family:var(--hf);font-size:10px;font-weight:600;color:var(--s);margin-top:4px">Intro / outro</div>
-      <div style="font-size:10px;color:#6b7b8b">3s logo reveal: icon scales up, wordmark fades in. Midnight background. Fade to/from midnight.</div>
+      <div style="font-size:10px;color:#5c6b7a">3s logo reveal: icon scales up, wordmark fades in. Midnight background. Fade to/from midnight.</div>
     </div>
     <!-- Screen recording -->
     <div>
@@ -106,7 +106,7 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
         <div style="position:absolute;top:20px;left:30px;width:20px;height:20px;border-radius:50%;border:2px solid var(--a);opacity:0.3"></div>
       </div>
       <div style="font-family:var(--hf);font-size:10px;font-weight:600;color:var(--s);margin-top:4px">Screen recording</div>
-      <div style="font-size:10px;color:#6b7b8b">2px midnight border overlay. Cursor: accent circle at 30% opacity, 32px Ø. No zoom unless showing specific detail.</div>
+      <div style="font-size:10px;color:#5c6b7a">2px midnight border overlay. Cursor: accent circle at 30% opacity, 32px Ø. No zoom unless showing specific detail.</div>
     </div>
     <!-- Captions -->
     <div>
@@ -114,7 +114,7 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
         <div style="background:rgba(0,0,0,0.6);padding:3px 10px;border-radius:3px;font-family:var(--bf);font-size:9px;color:#fff">Agents monitor and improve continuously</div>
       </div>
       <div style="font-family:var(--hf);font-size:10px;font-weight:600;color:var(--s);margin-top:4px">Captions</div>
-      <div style="font-size:10px;color:#6b7b8b">Source Sans 3, 16px, white. Semi-transparent midnight backing. Bottom-center.</div>
+      <div style="font-size:10px;color:#5c6b7a">Source Sans 3, 16px, white. Semi-transparent midnight backing. Bottom-center.</div>
     </div>
   </div>
   <div class="rule"><div class="rule-t">Video rules</div><div class="rule-b">Demos at real-time speed, no fast-forward. Transitions: cut or 200ms fade — no swoops. All video uses midnight surfaces. Subtitles always available. Export at 1080p minimum, 4K when possible.</div></div>
@@ -131,7 +131,7 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
       </div>
     </div>
     <div style="background:#f8f9fb;border-radius:6px;padding:14px">
-      <div style="font-family:var(--hf);font-size:12px;font-weight:600;color:var(--a);margin-bottom:4px">Don't</div>
+      <div style="font-family:var(--hf);font-size:12px;font-weight:600;color:var(--at);margin-bottom:4px">Don't</div>
       <div style="font-size:11px;color:#5c6f82;line-height:1.6">
         Staged environments. Posed-looking-at-camera corporate headshots. Stock photo people pointing at whiteboards. Neon-lit "hacker" aesthetics. Overly saturated colors. Generic open-plan office shots. AI-generated faces.
       </div>
@@ -144,7 +144,7 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
     </div>
   </div>
   <div style="font-family:var(--hf);font-size:12px;font-weight:600;color:var(--p);margin-bottom:8px">Reference examples</div>
-  <div style="font-size:11px;color:#6b7b8b;line-height:1.6;margin-bottom:10px">The images below illustrate the photographic direction: natural light, real workspaces, detail shots of screens and hands, minimal staging. Apply the desaturation and warm grading treatment to match the brand palette.</div>
+  <div style="font-size:11px;color:#5c6b7a;line-height:1.6;margin-bottom:10px">The images below illustrate the photographic direction: natural light, real workspaces, detail shots of screens and hands, minimal staging. Apply the desaturation and warm grading treatment to match the brand palette.</div>
   <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px">
     <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#e2e9f2 0%,#d3deec 100%);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--s);text-align:center;padding:8px">Candid workspace<br>natural light</div>
     <div style="aspect-ratio:4/3;background:linear-gradient(135deg,#d3deec 0%,#c3d1e3 100%);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--s);text-align:center;padding:8px">Detail: hands<br>on keyboard</div>
@@ -169,7 +169,7 @@ body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#1a1a1a;-we
   </div>
 </div>
 
-<div style="margin-top:56px;text-align:center;font-size:11px;color:#9a9a9a">
+<div style="margin-top:56px;text-align:center;font-size:11px;color:#6b6b6b">
   projectious.work motion & multimedia · <script>document.write(new Date().toLocaleDateString('en-GB',{day:'numeric',month:'long',year:'numeric'}))</script>
 </div>
 </div>
