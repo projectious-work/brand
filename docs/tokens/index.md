@@ -52,7 +52,7 @@ Source: [`brand/tokens/`](https://github.com/projectious-work/brand/tree/main/br
 ## Consuming them in SCSS
 
 This site maps the tokens onto Bootstrap and Docsy variables in
-[`assets/scss/_variables_project.scss`](https://github.com/projectious-work/brand/blob/main/assets/scss/_variables_project.scss).
+[`src/assets/scss/_variables_project.scss`](https://github.com/projectious-work/brand/blob/main/src/assets/scss/_variables_project.scss).
 That file is a worked example of wiring the brand into an existing component
 framework — including the full 12-step scales in both modes, which the CSS
 export does not carry.
