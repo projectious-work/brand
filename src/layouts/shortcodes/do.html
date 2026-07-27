@@ -1,0 +1,5 @@
+{{- /* {{% do %}}markdown{{% /do %}} */ -}}
+<div class="pj-rule pj-rule--do">
+  <div class="pj-rule__label">Do</div>
+  {{ .Inner | .Page.RenderString (dict "display" "block") }}
+</div>

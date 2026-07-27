@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Resolve the repository root so this script works from any working
+# directory (the Hugo project lives in src/, so cwd is not always root).
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
 template="brand/portfolio/social-preview-template.svg"
 examples="brand/portfolio/examples.yaml"
 
@@ -19,12 +23,12 @@ for label in \
   "Idea / implementation starting" \
   "Archived"
 do
-  grep -q "$label" content/docs/portfolio/status.md
+  grep -q "$label" src/content/docs/portfolio/status.md
 done
 
-grep -q "TRADEMARK.md" content/docs/portfolio/social-previews.md
-grep -q "brand/PROVENANCE.md" content/docs/portfolio/social-previews.md
-grep -q "Do not fabricate" content/docs/portfolio/diagrams.md
+grep -q "TRADEMARK.md" src/content/docs/portfolio/social-previews.md
+grep -q "brand/PROVENANCE.md" src/content/docs/portfolio/social-previews.md
+grep -q "Do not fabricate" src/content/docs/portfolio/diagrams.md
 
 for project in aibox processkit ai-market-research KubeClaw
 do

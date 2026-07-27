@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# Resolve the repository root so this script works from any working
+# directory (the Hugo project lives in src/, so cwd is not always root).
+cd "$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+
 source_dir="brand/portfolio"
 output_dir="brand/portfolio/exports"
 

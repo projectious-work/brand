@@ -31,3 +31,27 @@ ehthumbs.db
 
 
 # aibox generated
+
+.agents/skills/
+.aibox-local.toml
+.aibox-local.env
+context/.cache/
+context/.state/
+context/private/
+context/**/private/
+.mcp.json
+.cursor/mcp.json
+.gemini/settings.json
+.codex/config.toml
+.codex/hooks.json
+.continue/mcpServers/
+
+.latex-cache/
+
+# =============================================================================
+# Hugo / Docsy
+# =============================================================================
+public/
+resources/_gen/
+.hugo_build.lock
+node_modules/

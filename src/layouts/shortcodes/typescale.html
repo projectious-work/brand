@@ -1,0 +1,19 @@
+{{- /*
+  Renders the brand type ramp from data/brand.yaml, each row set in the font,
+  size, weight, and line-height it documents.
+
+    {{< typescale >}}
+*/ -}}
+{{- $families := dict
+  "Plus Jakarta Sans" "'Plus Jakarta Sans', sans-serif"
+  "Source Sans 3" "'Source Sans 3', sans-serif"
+  "IBM Plex Mono" "'IBM Plex Mono', monospace" -}}
+<div class="pj-type">
+  {{- range hugo.Data.brand.type }}
+  {{- $stack := index $families .family -}}
+  <div class="pj-type__row">
+    <div class="pj-type__spec">{{ .style }} · {{ .size }}/{{ .weight }}/{{ .lh }}</div>
+    <div class="pj-type__sample" style="font-family:{{ $stack | safeCSS }};font-size:{{ .size }}px;font-weight:{{ .weight }};line-height:{{ .lh }}{{ if eq .style "Overline" }};text-transform:uppercase;letter-spacing:0.08em{{ end }}{{ if ge .size 20 }};letter-spacing:-0.3px{{ end }}">{{ .sample }}</div>
+  </div>
+  {{- end }}
+</div>
