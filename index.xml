@@ -28,6 +28,7 @@ are normative; anything not listed inherits from the
 					&lt;th&gt;Fill&lt;/th&gt;
 					&lt;th&gt;Border&lt;/th&gt;
 					&lt;th&gt;Text&lt;/th&gt;
+					&lt;th&gt;Contrast&lt;/th&gt;
 					&lt;th&gt;Use&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
@@ -37,13 +38,15 @@ are normative; anything not listed inherits from the
 					&lt;td&gt;&lt;code&gt;midnight-9&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;none&lt;/td&gt;
 					&lt;td&gt;white&lt;/td&gt;
+					&lt;td&gt;12.75:1&lt;/td&gt;
 					&lt;td&gt;Default action&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;strong&gt;Accent&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;code&gt;orange-9&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;accent-solid&lt;/code&gt; &lt;code&gt;#cc4528&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;none&lt;/td&gt;
 					&lt;td&gt;white&lt;/td&gt;
+					&lt;td&gt;4.72:1&lt;/td&gt;
 					&lt;td&gt;The single most important action&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
@@ -51,6 +54,7 @@ are normative; anything not listed inherits from the
 					&lt;td&gt;transparent&lt;/td&gt;
 					&lt;td&gt;1.5px &lt;code&gt;orange-9&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;orange-9&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Secondary action&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
@@ -58,6 +62,7 @@ are normative; anything not listed inherits from the
 					&lt;td&gt;transparent&lt;/td&gt;
 					&lt;td&gt;none&lt;/td&gt;
 					&lt;td&gt;&lt;code&gt;midnight-9&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Tertiary, toolbars&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
@@ -65,38 +70,16 @@ are normative; anything not listed inherits from the
 					&lt;td&gt;&lt;code&gt;#a8261c&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;none&lt;/td&gt;
 					&lt;td&gt;white&lt;/td&gt;
+					&lt;td&gt;7.10:1&lt;/td&gt;
 					&lt;td&gt;Destructive action&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;Size&lt;/th&gt;
-					&lt;th&gt;Height&lt;/th&gt;
-					&lt;th&gt;Padding&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;sm&lt;/td&gt;
-					&lt;td&gt;32px&lt;/td&gt;
-					&lt;td&gt;0 12px&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;md&lt;/td&gt;
-					&lt;td&gt;40px&lt;/td&gt;
-					&lt;td&gt;0 14px&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;lg&lt;/td&gt;
-					&lt;td&gt;48px&lt;/td&gt;
-					&lt;td&gt;0 20px&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Buttons are set in &lt;strong&gt;Plus Jakarta Sans 600&lt;/strong&gt; with a 6px radius. Hover moves to
-the &lt;code&gt;-dark&lt;/code&gt; alias of the fill; transitions run at &lt;code&gt;--duration-standard&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Licensing</title><link>https://projectious-work.github.io/brand/docs/governance/licensing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/licensing/</guid><description>&lt;p&gt;The repository carries &lt;strong&gt;two categories of intellectual property&lt;/strong&gt; under
+&lt;div class="alert alert-warning" role="alert"&gt;&lt;div class="h4 alert-heading" role="heading"&gt;Accent buttons fill with accent-solid, not step 9&lt;/div&gt;
+&lt;p&gt;&lt;code&gt;orange-9&lt;/code&gt; (&lt;code&gt;#E05232&lt;/code&gt;) is the brand&amp;rsquo;s identity accent and is unchanged
+everywhere it appears as a mark, border, active state, or syntax colour. But
+white text on it measures &lt;strong&gt;3.87:1&lt;/strong&gt; — below the 4.5:1 AA floor for
+normal-size text, and button labels are 13–14px.&lt;/p&gt;</description></item><item><title>Licensing</title><link>https://projectious-work.github.io/brand/docs/governance/licensing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/licensing/</guid><description>&lt;p&gt;The repository carries &lt;strong&gt;two categories of intellectual property&lt;/strong&gt; under
 different terms. The full text is in
 &lt;a href="https://github.com/projectious-work/brand/blob/main/LICENSE.md"&gt;&lt;code&gt;LICENSE.md&lt;/code&gt;&lt;/a&gt;;
 this page summarises it.&lt;/p&gt;

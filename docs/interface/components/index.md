@@ -16,13 +16,27 @@ are normative; anything not listed inherits from the
 
 Five variants, three sizes.
 
-| Variant | Fill | Border | Text | Use |
-|---|---|---|---|---|
-| **Primary** | `midnight-9` | none | white | Default action |
-| **Accent** | `orange-9` | none | white | The single most important action |
-| **Outline** | transparent | 1.5px `orange-9` | `orange-9` | Secondary action |
-| **Ghost** | transparent | none | `midnight-9` | Tertiary, toolbars |
-| **Danger** | `#a8261c` | none | white | Destructive action |
+| Variant | Fill | Border | Text | Contrast | Use |
+|---|---|---|---|---|---|
+| **Primary** | `midnight-9` | none | white | 12.75:1 | Default action |
+| **Accent** | `accent-solid` `#cc4528` | none | white | 4.72:1 | The single most important action |
+| **Outline** | transparent | 1.5px `orange-9` | `orange-9` | — | Secondary action |
+| **Ghost** | transparent | none | `midnight-9` | — | Tertiary, toolbars |
+| **Danger** | `#a8261c` | none | white | 7.10:1 | Destructive action |
+
+<div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Accent buttons fill with accent-solid, not step 9</div>
+
+
+`orange-9` (`#E05232`) is the brand's identity accent and is unchanged
+everywhere it appears as a mark, border, active state, or syntax colour. But
+white text on it measures **3.87:1** — below the 4.5:1 AA floor for
+normal-size text, and button labels are 13–14px.
+
+Solid accent controls therefore fill with **`--color-accent-solid`
+(`#cc4528`)**, which carries white text at **4.72:1**. Hover continues to
+`accent-dark` (`#b84228`, 5.46:1).
+</div>
+
 
 | Size | Height | Padding |
 |---|---|---|

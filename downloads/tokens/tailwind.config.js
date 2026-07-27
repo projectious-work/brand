@@ -15,6 +15,9 @@ module.exports = {
           DEFAULT: '#E05232',
           light: '#ea7558',
           dark: '#b84228',
+          // Fill for solid controls carrying white text: white on the DEFAULT
+          // accent is 3.87:1, below the 4.5:1 AA floor for normal text. 4.72:1.
+          solid: '#cc4528',
           1: '#fef9f7', 2: '#fef0ea', 3: '#fde0d5', 4: '#fccebd',
           5: '#f8baa5', 6: '#f0a48c', 7: '#e58a6e', 8: '#d86e4e',
           9: '#E05232', 10: '#cc4528', 11: '#c04424', 12: '#6e2714',

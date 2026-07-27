@@ -68,6 +68,14 @@ into the scales, not a separate palette.
     </div>
   </li>
   <li class="pj-swatch">
+    <div class="pj-swatch__chip" style="background:#cc4528"></div>
+    <div class="pj-swatch__body">
+      <div class="pj-swatch__name">Accent Solid</div>
+      <div class="pj-swatch__hex">#cc4528</div>
+      <div class="pj-swatch__use">Fill for solid controls with white text (4.72:1)</div>
+    </div>
+  </li>
+  <li class="pj-swatch">
     <div class="pj-swatch__chip" style="background:#546a82"></div>
     <div class="pj-swatch__body">
       <div class="pj-swatch__name">Secondary</div>
@@ -546,9 +554,39 @@ Slate is the secondary — supporting text, borders, and neutral surfaces. Step 
   scale: `#142438` on light, `#c5daf0` on dark.
 - **Step 9 is constant across modes.** The solid accent does not shift when the
   theme changes.
-- **Body text targets 4.5:1**, large text (≥24px, or ≥19px bold) targets 3:1.
+- **Body text targets 4.5:1**, large text (≥24px, or ≥18.66px bold) targets 3:1.
 - **Verify against the actual surface.** A step that passes on the app
   background may fail on an elevated panel.
+
+### Where an identity colour cannot carry text
+
+Being the brand colour does not make a value a legible background. White on
+`orange-9` (`#E05232`) measures **3.87:1** — fine as a mark or a border, but
+below the floor for button labels. Rather than dilute the accent, the system
+adds a separate fill for that job:
+
+| Token | Hex | With white text |
+|---|---|---|
+| `--color-accent` | `#E05232` | 3.87:1 — identity only, not for text |
+| `--color-accent-solid` | `#cc4528` | 4.72:1 — solid controls |
+| `--color-accent-dark` | `#b84228` | 5.46:1 — hover and pressed |
+
+The same principle produced the
+[`code-comment` token](/brand/docs/interface/code/): when no existing
+step can do the job accessibly, name a new one rather than misuse a step.
+
+### Semantic colours are mode-specific
+
+The callout hues are tuned for **dark text on tinted light backgrounds**. Used
+as foregrounds on the dark app surface they fall below AA, so dark mode has its
+own set:
+
+| Role | Light | Dark | On `#0e1720` |
+|---|---|---|---|
+| Success | `#2f7d65` | `#6cc090` | 3.65:1 → 8.24:1 |
+| Warning | `#8b6508` | `#e0a92a` | 3.41:1 → 8.50:1 |
+| Danger | `#a8261c` | `#f08b80` | 2.55:1 → 7.49:1 |
+| Info | `#3a5a82` | `#8aacc8` | 2.55:1 → 7.59:1 |
 
 ## Dark mode
 
