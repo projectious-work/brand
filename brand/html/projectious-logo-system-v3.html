@@ -49,7 +49,7 @@
 </div>
 
 <script>
-const P="#1d3352",PL="#2b4d78",PD="#132440",A="#E05232",AL="#ea7558",S="#546a82";
+const P="#1d3352",PL="#2b4d78",PD="#132440",A="#E05232",AT="#c04424",AL="#ea7558",S="#546a82";
 const HF="'Plus Jakarta Sans',sans-serif",BF="'Source Sans 3',sans-serif",MF="'IBM Plex Mono',monospace";
 
 function iconSvg(size,dk){
@@ -87,7 +87,7 @@ function mkTwoLine(dk){
       <div class="lockup-2line-top" style="font-size:21px;color:${tc}">projectious</div>
       <div class="lockup-2line-bot">
         ${dot(7,dc)}
-        <span class="lockup-ext" style="font-size:12.5px;color:${A}">work</span>
+        <span class="lockup-ext" style="font-size:12.5px;color:${AT}">work</span>
       </div>
     </div>
   </div>`;
@@ -99,7 +99,7 @@ function mkOneLine(dk){
     <div class="lockup-icon">${iconSvg(26,dk)}</div>
     <span class="lockup-text" style="font-size:17px;color:${tc}">projectious</span>
     ${dot(7,dc)}
-    <span class="lockup-text" style="font-size:17px;color:${A}">work</span>
+    <span class="lockup-text" style="font-size:17px;color:${AT}">work</span>
   </div>`;
 }
 
@@ -108,7 +108,7 @@ function mkDotReplace(dk){
   return `<div class="lockup" style="gap:0">
     <span class="lockup-text" style="font-size:18px;color:${tc}">projectious</span>
     <div class="lockup-icon" style="margin:0 1px">${iconSvg(16,dk)}</div>
-    <span class="lockup-text" style="font-size:18px;color:${A}">work</span>
+    <span class="lockup-text" style="font-size:18px;color:${AT}">work</span>
   </div>`;
 }
 
@@ -120,7 +120,7 @@ function mkStacked(dk){
       <span class="lockup-text" style="font-size:14px;color:${tc}">projectious</span>
       <div class="lockup-stacked-dotline">
         ${dot(6,dc)}
-        <span class="lockup-ext" style="font-size:10px;color:${A}">work</span>
+        <span class="lockup-ext" style="font-size:10px;color:${AT}">work</span>
       </div>
     </div>
   </div>`;
@@ -134,7 +134,7 @@ function mkProdLine(ext,dk){
       <div class="lockup-2line-top" style="font-size:18px;color:${tc}">projectious</div>
       <div class="lockup-2line-bot" style="gap:2px">
         ${dot(6,dc)}
-        <span class="lockup-ext" style="font-size:11px;color:${A}">${ext}</span>
+        <span class="lockup-ext" style="font-size:11px;color:${AT}">${ext}</span>
       </div>
     </div>
   </div>`;
@@ -259,13 +259,13 @@ addSec("9. Watermark","8–15% opacity for backgrounds",`
 addSec("10. File delivery","SVG, PNG @1x 2x 3x, ICO, PDF",`
   <div class="rule" style="margin:0"><div class="rule-t">Formats</div><div class="rule-b">
   <div style="display:grid;grid-template-columns:auto 1fr;gap:3px 16px;font-family:${MF};font-size:11px;line-height:1.8">
-    <span style="color:${A}">SVG</span><span>Vector source. Primary for web + print.</span>
-    <span style="color:${A}">PNG @1x</span><span>Native (16/32/48/64/128/256/512).</span>
-    <span style="color:${A}">PNG @2x</span><span>Retina. Required for web.</span>
-    <span style="color:${A}">PNG @3x</span><span>Super-retina. Mobile.</span>
-    <span style="color:${A}">ICO</span><span>Multi-res favicon (16+32+48).</span>
-    <span style="color:${A}">PDF</span><span>Vector for print.</span>
-    <span style="color:${A}">apple-touch</span><span>180×180 PNG.</span>
+    <span style="color:${AT}">SVG</span><span>Vector source. Primary for web + print.</span>
+    <span style="color:${AT}">PNG @1x</span><span>Native (16/32/48/64/128/256/512).</span>
+    <span style="color:${AT}">PNG @2x</span><span>Retina. Required for web.</span>
+    <span style="color:${AT}">PNG @3x</span><span>Super-retina. Mobile.</span>
+    <span style="color:${AT}">ICO</span><span>Multi-res favicon (16+32+48).</span>
+    <span style="color:${AT}">PDF</span><span>Vector for print.</span>
+    <span style="color:${AT}">apple-touch</span><span>180×180 PNG.</span>
   </div>
   <div style="margin-top:8px;font-size:11px;color:#5c6b7a">~80 files: <span style="font-family:${MF};font-size:10px">/logo/{variant}/{mode}/{format}/</span></div>
   </div></div>`);
