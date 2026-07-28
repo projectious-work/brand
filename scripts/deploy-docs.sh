@@ -45,7 +45,14 @@ else
 fi
 
 if [[ "${DOCS_VERSION}" == "main" ]]; then
-  find "${WORKTREE_DIR}" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+  # Clear the root, but KEEP the archived version directories. They are separate
+  # published sites living alongside the latest build; a blanket wipe here would
+  # delete every previous release's documentation — including the snapshot this
+  # same release just published, since the archive is deployed first.
+  find "${WORKTREE_DIR}" -mindepth 1 -maxdepth 1 \
+    ! -name .git \
+    ! -regex '.*/v[0-9]+\.[0-9]+\.[0-9]+\(-[0-9A-Za-z.-]+\)?$' \
+    -exec rm -rf {} +
   cp -R "${BUILD_DIR}/." "${WORKTREE_DIR}/"
 else
   VERSION_DIR="${WORKTREE_DIR}/${DOCS_VERSION}"
