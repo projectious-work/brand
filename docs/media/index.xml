@@ -135,23 +135,6 @@ pipelines drawn in the brand palette.&lt;/p&gt;</description></item><item><title
  &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h2 id="rules"&gt;Rules&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;16:10 aspect ratio.&lt;/li&gt;
-&lt;li&gt;Title slides and section statements use midnight surfaces; content slides use
-white or &lt;code&gt;midnight-1&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;projectious.work&lt;/code&gt; is visible on the title and closing slides.&lt;/li&gt;
-&lt;li&gt;One idea per slide. If a slide needs a paragraph, it needs to be two slides.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="animation"&gt;Animation&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Slide transitions: cut or 200ms fade.&lt;/li&gt;
-&lt;li&gt;Build animations use &lt;code&gt;--ease-out&lt;/code&gt; at &lt;code&gt;--duration-standard&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Never animate text character-by-character.&lt;/strong&gt;&lt;/li&gt;
-&lt;li&gt;Motion is for revealing structure, not for holding attention.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="templates"&gt;Templates&lt;/h2&gt;
-&lt;p&gt;Document templates for LaTeX and Typst are in
-&lt;a href="https://github.com/projectious-work/brand/tree/main/brand/templates"&gt;&lt;code&gt;brand/templates/&lt;/code&gt;&lt;/a&gt;.
-Both embed brand identity and fall under the brand-asset licence terms — see
-&lt;a href="https://projectious-work.github.io/brand/docs/governance/licensing/"&gt;Licensing&lt;/a&gt;.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id="the-full-deck"&gt;The full deck&lt;/h2&gt;
+&lt;p&gt;Twelve slide types cover a complete talk. Each is 16:10 and uses the same
+tokens as the product surfaces — no separate &amp;ldquo;presentation theme&amp;rdquo;.&lt;/p&gt;</description></item></channel></rss>
