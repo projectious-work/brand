@@ -45,8 +45,6 @@ params:
     - version: "v1.0.0"
       kind: latest
       url: "https://projectious-work.github.io/brand/"
-    - version: "v1.0.0 (archived)"
-      url: "https://projectious-work.github.io/brand/v1.0.0/"
   ui:
     navbar_logo: true
     navbar_theme: dark
