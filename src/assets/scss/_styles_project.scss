@@ -50,8 +50,8 @@
   --pj-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
 
   // Semantic colours, light mode.
-  --pj-success: #{$success};
-  --pj-warning: #{$warning};
+  --pj-success: #{$success-fg};
+  --pj-warning: #{$warning-fg};
   --pj-danger: #{$danger};
   --pj-info: #{$info};
 
@@ -999,3 +999,6 @@ kbd {
     transition-duration: 0.01ms !important;
   }
 }
+
+// Live component specimens ported from the brand documents.
+@import "demo";

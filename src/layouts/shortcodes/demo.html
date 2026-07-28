@@ -1,0 +1,14 @@
+{{- /*
+  Live component specimen frame.
+
+    {{< demo label="Variants" >}}<button class="pj-btn …">…</button>{{< /demo >}}
+
+  Variants: stack (block flow), grid (auto-fit columns), dark (midnight surface).
+  Inner is raw HTML — use the {{< >}} form, not {{% %}}.
+*/ -}}
+<div class="pj-demo">
+  {{- with .Get "label" }}<div class="pj-demo__label">{{ . }}</div>{{ end }}
+  <div class="pj-demo__body{{ with .Get "variant" }} pj-demo__body--{{ . }}{{ end }}">
+    {{ .Inner | safeHTML }}
+  </div>
+</div>

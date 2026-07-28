@@ -1,0 +1,960 @@
+// =============================================================================
+// Live component specimens
+// =============================================================================
+// Ports the component set from brand/html/projectious-kitchen-sink.html (and
+// the form/callout patterns from projectious-digital-experience.html) into the
+// documentation as working examples.
+//
+// Two deliberate differences from the source documents:
+//   1. Everything reads --pj-* custom properties, so specimens track the
+//      reader's colour mode instead of being light-only.
+//   2. Colours that failed AA in the source are corrected here and upstream —
+//      accent as text is orange-11, chips on the tinted accent use #a8391c.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Specimen frame
+// -----------------------------------------------------------------------------
+.pj-demo {
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  margin-block: 1.25rem 1.75rem;
+  overflow: hidden;
+
+  &__label {
+    font-family: $font-family-sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--pj-text-muted);
+    padding: 0.5rem 0.875rem;
+    border-bottom: 1px solid var(--pj-border);
+    background: var(--pj-surface-subtle);
+  }
+
+  &__body {
+    padding: 1.25rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  &__body--stack {
+    display: block;
+  }
+
+  &__body--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    align-items: start;
+  }
+
+  // A specimen that must be shown on the brand's midnight surface.
+  &__body--dark {
+    background: $brand-primary-dark;
+    color: $midnight-dark-12;
+
+    .pj-cap { color: $slate-dark-11; }
+  }
+}
+
+// Caption under an individual specimen.
+.pj-cap {
+  font-family: $font-family-monospace;
+  font-size: 0.6875rem;
+  color: var(--pj-text-muted);
+  margin-top: 0.375rem;
+  display: block;
+}
+
+.pj-demo-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+// -----------------------------------------------------------------------------
+// Buttons
+// -----------------------------------------------------------------------------
+.pj-btn {
+  font-family: $headings-font-family;
+  font-weight: 600;
+  border-radius: $border-radius;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  line-height: 1;
+  transition: background-color var(--pj-duration-standard) var(--pj-ease-out),
+    border-color var(--pj-duration-standard) var(--pj-ease-out),
+    color var(--pj-duration-standard) var(--pj-ease-out);
+
+  // Sizes — 32 / 40 / 48px
+  &--sm { padding: 0.3125rem 0.75rem; font-size: 0.75rem; height: 32px; }
+  &--md { padding: 0.5rem 1.125rem; font-size: 0.8125rem; height: 40px; }
+  &--lg { padding: 0.6875rem 1.5rem; font-size: 0.875rem; height: 48px; }
+
+  &--primary {
+    background: var(--pj-midnight-9);
+    color: #fff;
+    &:hover { background: #{$midnight-10}; }
+  }
+
+  // Accent fills with accent-solid, never step 9: white on #E05232 is 3.87:1.
+  &--accent {
+    background: $brand-accent-solid;
+    color: #fff;
+    &:hover { background: $brand-accent-dark; }
+  }
+
+  &--outline {
+    background: transparent;
+    color: var(--pj-orange-11);
+    border-color: var(--pj-orange-9);
+    &:hover { background: var(--pj-orange-1); }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: var(--pj-text-muted);
+    border-color: var(--pj-border);
+    &:hover { color: var(--pj-midnight-11); }
+  }
+
+  &--danger {
+    background: $danger;
+    color: #fff;
+    &:hover { background: #8d1f16; }
+  }
+
+  &:disabled,
+  &[aria-disabled="true"] {
+    background: var(--pj-slate-4);
+    color: var(--pj-slate-8);
+    border-color: transparent;
+    cursor: not-allowed;
+  }
+}
+
+// On the midnight specimen surface, outline/ghost take dark-surface steps.
+.pj-demo__body--dark {
+  .pj-btn--outline { color: $brand-accent-light; border-color: $brand-accent-light; }
+  .pj-btn--ghost { color: $slate-dark-11; border-color: rgba(255, 255, 255, 0.18); }
+}
+
+// -----------------------------------------------------------------------------
+// Form controls — 40px default, slate-7 border, midnight focus ring
+// -----------------------------------------------------------------------------
+.pj-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 180px;
+  flex: 1 1 180px;
+
+  &__label {
+    font-family: $font-family-sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--pj-text-muted);
+  }
+
+  &__hint {
+    font-size: 0.75rem;
+    color: var(--pj-text-muted);
+  }
+
+  &__error {
+    font-size: 0.75rem;
+    color: var(--pj-danger);
+  }
+}
+
+.pj-input {
+  height: 40px;
+  border-radius: $border-radius;
+  border: 1.5px solid var(--pj-slate-7);
+  background: var(--pj-surface);
+  color: var(--bs-body-color);
+  padding: 0 0.75rem;
+  font-family: $font-family-sans-serif;
+  font-size: 0.8125rem;
+  width: 100%;
+
+  &::placeholder { color: var(--pj-text-muted); }
+
+  &:focus {
+    outline: none;
+    border-color: var(--pj-midnight-9);
+    box-shadow: 0 0 0 2px rgba($midnight-9, 0.15);
+  }
+
+  &--sm { height: 32px; font-size: 0.75rem; }
+  &--lg { height: 48px; font-size: 0.875rem; }
+
+  &--error {
+    border-color: var(--pj-orange-9);
+    background: var(--pj-orange-1);
+  }
+
+  &:disabled {
+    background: var(--pj-slate-4);
+    color: var(--pj-slate-8);
+    cursor: not-allowed;
+  }
+}
+
+textarea.pj-input { height: auto; min-height: 76px; padding: 0.5rem 0.75rem; resize: vertical; }
+select.pj-input { cursor: pointer; }
+
+.pj-check {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  font-size: 0.8125rem;
+  cursor: pointer;
+
+  input { accent-color: $brand-accent-solid; width: 16px; height: 16px; cursor: pointer; }
+}
+
+// Toggle
+.pj-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+
+  &__track {
+    width: 36px;
+    height: 20px;
+    border-radius: 9999px;
+    background: var(--pj-slate-7);
+    position: relative;
+    transition: background var(--pj-duration-standard) var(--pj-ease-out);
+  }
+
+  &__thumb {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff;
+    transition: transform var(--pj-duration-standard) var(--pj-ease-out);
+  }
+
+  &--on .pj-toggle__track { background: $brand-accent-solid; }
+  &--on .pj-toggle__thumb { transform: translateX(16px); }
+}
+
+.pj-range {
+  width: 100%;
+  accent-color: $brand-accent-solid;
+}
+
+// -----------------------------------------------------------------------------
+// Cards
+// -----------------------------------------------------------------------------
+.pj-card {
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  background: var(--pj-surface);
+  overflow: hidden;
+  box-shadow: $box-shadow-sm;
+  max-width: 280px;
+
+  &__img {
+    height: 96px;
+    background: var(--pj-midnight-3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.625rem;
+    color: var(--pj-text-muted);
+  }
+
+  &__body { padding: 1rem; }
+
+  &__title {
+    font-family: $headings-font-family;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--bs-heading-color);
+    margin-bottom: 0.25rem;
+  }
+
+  &__text {
+    font-size: 0.8125rem;
+    color: var(--pj-text-muted);
+    line-height: 1.55;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Tables
+// -----------------------------------------------------------------------------
+.pj-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.8125rem;
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius;
+  overflow: hidden;
+
+  th {
+    font-family: $font-family-sans-serif;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--pj-text-muted);
+    background: var(--pj-surface-subtle);
+    text-align: left;
+    padding: 0.5rem 0.75rem;
+    border-bottom: 1px solid var(--pj-border);
+    white-space: nowrap;
+  }
+
+  td { padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--pj-border); }
+  tr:last-child td { border-bottom: 0; }
+  tbody tr:nth-child(even) { background: var(--pj-surface-subtle); }
+
+  &__sort::after {
+    content: " ↑";
+    color: var(--pj-orange-11);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Navigation
+// -----------------------------------------------------------------------------
+.pj-navbar {
+  background: $brand-primary-dark;
+  border-bottom: 3px solid $brand-accent;
+  padding: 0.625rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  border-radius: $border-radius 	$border-radius 0 0;
+
+  &__brand {
+    font-family: $headings-font-family;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: $midnight-dark-12;
+  }
+
+  &__link {
+    font-family: $headings-font-family;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: $slate-dark-11;
+    text-decoration: none;
+
+    &--active {
+      color: $midnight-dark-12;
+      box-shadow: inset 0 -2px 0 $brand-accent;
+      padding-bottom: 2px;
+    }
+  }
+}
+
+.pj-breadcrumb {
+  font-size: 0.8125rem;
+  color: var(--pj-text-muted);
+
+  a { color: var(--pj-midnight-11); text-decoration: none; }
+  span + span::before { content: " / "; opacity: 0.6; }
+}
+
+.pj-tabs {
+  display: flex;
+  gap: 1.25rem;
+  border-bottom: 1px solid var(--pj-border);
+
+  &__tab {
+    font-family: $headings-font-family;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--pj-text-muted);
+    padding-bottom: 0.5rem;
+    cursor: pointer;
+
+    &--active {
+      color: var(--pj-midnight-11);
+      box-shadow: inset 0 -2px 0 var(--pj-orange-9);
+    }
+  }
+}
+
+.pj-pagination {
+  display: flex;
+  gap: 0.25rem;
+
+  &__page {
+    min-width: 32px;
+    height: 32px;
+    border-radius: $border-radius;
+    border: 1px solid var(--pj-border);
+    background: transparent;
+    color: var(--pj-text-muted);
+    font-family: $headings-font-family;
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &--current {
+      background: var(--pj-midnight-9);
+      border-color: var(--pj-midnight-9);
+      color: #fff;
+    }
+  }
+}
+
+.pj-sidebar {
+  font-size: 0.8125rem;
+  min-width: 160px;
+
+  &__item {
+    padding: 0.25rem 0.5rem;
+    border-radius: $border-radius-sm;
+    color: var(--pj-slate-11);
+
+    &--active {
+      font-weight: 600;
+      color: var(--pj-midnight-11);
+      background: var(--pj-midnight-2);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Feedback — alerts, badges, progress, spinner
+// -----------------------------------------------------------------------------
+.pj-alert {
+  border-radius: $border-radius;
+  border-left: 4px solid;
+  padding: 0.625rem 0.875rem;
+  width: 100%;
+
+  &__title {
+    font-family: $headings-font-family;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    margin-bottom: 0.125rem;
+  }
+
+  &__text { font-size: 0.8125rem; }
+
+  &--info    { border-color: var(--pj-info);    background: var(--pj-alert-info-bg); }
+  &--success { border-color: var(--pj-success); background: var(--pj-alert-success-bg); }
+  &--warning { border-color: var(--pj-warning); background: var(--pj-alert-warning-bg); }
+  &--danger  { border-color: var(--pj-danger);  background: var(--pj-alert-danger-bg); }
+
+  &--info .pj-alert__title    { color: var(--pj-info); }
+  &--success .pj-alert__title { color: var(--pj-success); }
+  &--warning .pj-alert__title { color: var(--pj-warning); }
+  &--danger .pj-alert__title  { color: var(--pj-danger); }
+}
+
+.pj-badge {
+  display: inline-flex;
+  align-items: center;
+  font-family: $font-family-sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.125rem 0.5rem;
+  border-radius: $border-radius-sm;
+  background: var(--pj-midnight-3);
+  color: var(--pj-midnight-11);
+
+  &--accent { background: var(--pj-orange-3); color: var(--pj-chip-accent-fg); }
+  &--pill { border-radius: 9999px; padding: 0.125rem 0.625rem; }
+}
+
+.pj-progress {
+  width: 100%;
+  max-width: 220px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--pj-slate-4);
+  overflow: hidden;
+
+  &__bar {
+    height: 100%;
+    background: $brand-accent-solid;
+    border-radius: 9999px;
+  }
+}
+
+.pj-spinner {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 2px solid var(--pj-slate-4);
+  border-top-color: var(--pj-orange-9);
+  animation: pj-spin 700ms linear infinite;
+}
+
+@keyframes pj-spin { to { transform: rotate(360deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .pj-spinner { animation-duration: 3s; }
+}
+
+// -----------------------------------------------------------------------------
+// Overlays
+// -----------------------------------------------------------------------------
+.pj-modal {
+  border-radius: $border-radius-xl;
+  background: var(--pj-surface);
+  border: 1px solid var(--pj-border);
+  box-shadow: $box-shadow-lg;
+  max-width: 320px;
+  overflow: hidden;
+
+  &__head {
+    padding: 0.875rem 1rem;
+    font-family: $headings-font-family;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    border-bottom: 1px solid var(--pj-border);
+  }
+
+  &__body { padding: 1rem; font-size: 0.8125rem; color: var(--pj-text-muted); }
+
+  &__foot {
+    padding: 0 1rem 1rem;
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+}
+
+.pj-dropdown {
+  border-radius: $border-radius-lg;
+  border: 1px solid var(--pj-border);
+  background: var(--pj-surface);
+  box-shadow: $box-shadow;
+  min-width: 160px;
+  padding: 0.25rem;
+
+  &__item {
+    padding: 0.375rem 0.625rem;
+    border-radius: $border-radius-sm;
+    font-size: 0.8125rem;
+
+    &--active { background: var(--pj-midnight-2); color: var(--pj-midnight-11); }
+  }
+}
+
+.pj-tooltip {
+  display: inline-block;
+  background: var(--pj-slate-12);
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.5rem;
+  border-radius: $border-radius-sm;
+}
+
+[data-bs-theme="dark"] .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
+
+// -----------------------------------------------------------------------------
+// Data display
+// -----------------------------------------------------------------------------
+.pj-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--pj-midnight-3);
+  color: var(--pj-midnight-11);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $headings-font-family;
+  font-size: 0.75rem;
+  font-weight: 600;
+
+  &--accent { background: var(--pj-orange-3); color: var(--pj-chip-accent-fg); }
+}
+
+.pj-stat {
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  padding: 0.875rem 1rem;
+  min-width: 130px;
+
+  &__value {
+    font-family: $headings-font-family;
+    font-size: 1.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--bs-heading-color);
+  }
+
+  &__label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--pj-text-muted);
+    margin-top: 0.25rem;
+  }
+
+  &__delta { font-size: 0.75rem; color: var(--pj-success); }
+}
+
+.pj-list {
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  min-width: 220px;
+
+  &__row {
+    padding: 0.625rem 0.875rem;
+    font-size: 0.8125rem;
+    border-bottom: 1px solid var(--pj-border);
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+
+    &:last-child { border-bottom: 0; }
+  }
+}
+
+.pj-timeline {
+  border-left: 2px solid var(--pj-slate-4);
+  padding-left: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  &__item { position: relative; font-size: 0.8125rem; }
+
+  &__item::before {
+    content: "";
+    position: absolute;
+    left: -1.1875rem;
+    top: 0.3125rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--pj-slate-7);
+  }
+
+  &__item--current::before { background: var(--pj-orange-9); }
+
+  &__time {
+    font-family: $font-family-monospace;
+    font-size: 0.6875rem;
+    color: var(--pj-text-muted);
+  }
+}
+
+// Status indicators — dot plus label, never the dot alone.
+.pj-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+
+  &__dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  &--ok .pj-status__dot { background: var(--pj-success); }
+  &--warn .pj-status__dot { background: var(--pj-warning); }
+  &--err .pj-status__dot { background: var(--pj-danger); }
+  &--idle .pj-status__dot { background: var(--pj-slate-7); }
+}
+
+// -----------------------------------------------------------------------------
+// Terminal — the always-dark surface, same as code blocks
+// -----------------------------------------------------------------------------
+.pj-terminal {
+  background: $midnight-dark-2;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: $border-radius;
+  padding: 0.875rem 1rem;
+  font-family: $font-family-monospace;
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: $midnight-dark-12;
+  width: 100%;
+
+  &__prompt { color: #72889d; }   // code-comment token
+  &__out { color: $slate-dark-11; }
+  &__ok { color: #7fc0aa; }
+  &__accent { color: $brand-accent-light; }
+}
+
+// -----------------------------------------------------------------------------
+// Logo specimens
+// -----------------------------------------------------------------------------
+.pj-lockup-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+}
+
+.pj-mark {
+  display: block;
+
+  &--16 { width: 16px; height: 16px; }
+  &--24 { width: 24px; height: 24px; }
+  &--32 { width: 32px; height: 32px; }
+  &--48 { width: 48px; height: 48px; }
+  &--64 { width: 64px; height: 64px; }
+  &--96 { width: 96px; height: 96px; }
+}
+
+// Wordmark. "work" is set in the brand accent by design; WCAG 1.4.3 exempts
+// logotypes from contrast requirements, so this is not stepped down.
+.pj-wm {
+  font-family: $headings-font-family;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  // Step 9 is constant across modes, so it cannot serve as the wordmark colour
+  // on a dark page (1.42:1). Use the mode's high-emphasis text step.
+  color: var(--bs-body-color);
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.125rem;
+
+  &__ext { color: $brand-accent; }
+  &--on-dark { color: $midnight-dark-12; }
+}
+
+.pj-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  &--stacked { flex-direction: column; gap: 0.375rem; }
+  &--two-line { align-items: center; }
+
+  &__lines { display: flex; flex-direction: column; line-height: 1.05; }
+}
+
+.pj-surface--light,
+.pj-surface--white,
+.pj-surface--slate {
+  --pj-text-muted: #{$slate-9};
+  color: $midnight-12;
+
+  .pj-cap { color: $slate-9; }
+  .pj-wm { color: $midnight-9; }
+}
+
+.pj-surface--accent {
+  // White on the identity accent is 3.87:1 and orange-12 is 2.76:1 — the fill
+  // sits in the middle of the range, so text on it must go very dark.
+  // orange-dark-1 measures 4.78:1.
+  .pj-cap { color: #{$orange-dark-1}; }
+}
+
+.pj-surface--midnight,
+.pj-surface--midnight-dark {
+  .pj-cap { color: $slate-dark-11; }
+  .pj-wm { color: $midnight-dark-12; }
+}
+
+.pj-surface {
+  border-radius: $border-radius-lg;
+  padding: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--pj-border);
+
+  &--light { background: #f8f9fb; }
+  &--white { background: #ffffff; }
+  &--midnight { background: $brand-primary; border-color: transparent; }
+  &--midnight-dark { background: $brand-primary-dark; border-color: transparent; }
+  &--accent { background: $brand-accent; border-color: transparent; }
+  &--slate { background: $slate-3; }
+}
+
+// Clear-space diagram
+.pj-clearspace {
+  position: relative;
+  display: inline-block;
+  padding: 48px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px dashed var(--pj-midnight-6);
+    border-radius: $border-radius-lg;
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Collateral specimens
+// -----------------------------------------------------------------------------
+.pj-vcard {
+  width: 300px;
+  border-radius: $border-radius-lg;
+  background: $brand-primary-dark;
+  color: $midnight-dark-12;
+  padding: 1.125rem;
+  position: relative;
+  overflow: hidden;
+
+  &__name { font-family: $headings-font-family; font-weight: 700; font-size: 1rem; }
+  &__role { font-size: 0.8125rem; color: $slate-dark-11; }
+
+  &__row {
+    font-family: $font-family-monospace;
+    font-size: 0.6875rem;
+    color: $slate-dark-11;
+    margin-top: 0.125rem;
+  }
+
+  &__glow {
+    position: absolute;
+    top: -30px;
+    right: -30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: $brand-accent;
+    opacity: 0.12;
+  }
+}
+
+.pj-og {
+  width: 100%;
+  max-width: 420px;
+  aspect-ratio: 1200 / 630;
+  border-radius: $border-radius;
+  background: $brand-primary-dark;
+  color: $midnight-dark-12;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  position: relative;
+  overflow: hidden;
+
+  &__title {
+    font-family: $headings-font-family;
+    font-weight: 800;
+    font-size: 1.25rem;
+    line-height: 1.1;
+    letter-spacing: -0.3px;
+  }
+
+  &__meta { font-size: 0.75rem; color: $slate-dark-11; margin-top: 0.25rem; }
+}
+
+.pj-slide {
+  aspect-ratio: 16 / 10;
+  border-radius: $border-radius;
+  border: 1px solid var(--pj-border);
+  overflow: hidden;
+  padding: 0.875rem;
+  display: flex;
+  flex-direction: column;
+  font-size: 0.6875rem;
+
+  &--title {
+    background: $brand-primary-dark;
+    color: $midnight-dark-12;
+    justify-content: flex-end;
+    border-color: transparent;
+  }
+
+  &--statement {
+    background: $brand-primary;
+    color: $midnight-dark-12;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-color: transparent;
+  }
+
+  &--content {
+    background: var(--pj-surface);
+    color: var(--bs-body-color);
+
+    .pj-slide__h { color: var(--bs-heading-color); }
+  }
+
+  &__h {
+    font-family: $headings-font-family;
+    font-weight: 700;
+    font-size: 0.875rem;
+    line-height: 1.15;
+  }
+
+  &__sub { color: $slate-dark-11; margin-top: 0.125rem; }
+}
+
+.pj-slides-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+
+// -----------------------------------------------------------------------------
+// Motion specimens
+// -----------------------------------------------------------------------------
+.pj-motion {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+
+  &__box {
+    width: 40px;
+    height: 40px;
+    border-radius: $border-radius;
+    background: $brand-accent-solid;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .pj-motion__box--slide { animation: pj-slide 2.4s var(--pj-ease-out) infinite; }
+  .pj-motion__box--fade { animation: pj-fade 2.4s var(--pj-ease-out) infinite; }
+}
+
+@keyframes pj-slide { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(48px); } }
+@keyframes pj-fade { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+// Alert tints, mode-aware.
+:root,
+[data-bs-theme="light"] {
+  // Text on the tinted accent chip: the tint inverts between modes, so the
+  // foreground must too (#a8391c is 5.15:1 on the light tint; orange-11 from
+  // the dark scale is 7.6:1 on the dark tint).
+  --pj-chip-accent-fg: #a8391c;
+  --pj-alert-info-bg: #dae2ec;
+  --pj-alert-success-bg: #d1ebe0;
+  --pj-alert-warning-bg: #f5ecd0;
+  --pj-alert-danger-bg: #fce8e8;
+}
+
+[data-bs-theme="dark"] {
+  --pj-chip-accent-fg: #{$orange-dark-11};
+  --pj-alert-info-bg: #{$midnight-dark-3};
+  --pj-alert-success-bg: #16302a;
+  --pj-alert-warning-bg: #33280d;
+  --pj-alert-danger-bg: #3a1c19;
+}

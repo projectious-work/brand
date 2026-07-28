@@ -98,10 +98,23 @@ const AUDIT = () => {
     return `${el.tagName.toLowerCase()}${id}${cls}`;
   };
 
+  // WCAG 2.1 SC 1.4.3 exemptions, applied deliberately rather than by tuning
+  // the design around them:
+  //   - Logotypes: "text that is part of a logo or brand name" has no contrast
+  //     requirement. The wordmark sets "work" in the identity accent.
+  //   - Incidental: inactive (disabled) user-interface components.
+  const exempt = (el) => {
+    if (el.closest(".pj-wm, .navbar-brand, .lockup")) return true;
+    if (el.matches(":disabled, [aria-disabled='true']")) return true;
+    if (el.closest(":disabled, [aria-disabled='true']")) return true;
+    return false;
+  };
+
   const out = [];
   for (const el of document.querySelectorAll("body *")) {
     const st = getComputedStyle(el);
     if (st.display === "none" || st.visibility === "hidden" || +st.opacity === 0) continue;
+    if (exempt(el)) continue;
     // Only elements rendering their own directly-owned, non-empty text.
     const own = Array.from(el.childNodes)
       .filter((n) => n.nodeType === 3 && n.textContent.trim()).map((n) => n.textContent.trim()).join(" ");

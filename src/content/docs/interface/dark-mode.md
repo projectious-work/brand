@@ -23,6 +23,19 @@ designed, tested, and shipped together.
 - **Code blocks are always dark**, regardless of mode. See
   [Code]({{< relref "/docs/interface/code" >}}).
 
+{{< demo label="The same card in both modes" variant="grid" >}}
+<div style="background:#ffffff;border:1px solid #dadce0;border-radius:9px;padding:1rem">
+  <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9375rem;color:#1d3352">Light mode</div>
+  <div style="font-size:.8125rem;color:#5c6f82;margin-top:.25rem">Body text is midnight-12; supporting copy is slate-11.</div>
+  <div style="margin-top:.625rem"><span style="background:#cc4528;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;padding:.3125rem .75rem;border-radius:6px">Deploy</span></div>
+</div>
+<div style="background:#131e2b;border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:1rem">
+  <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9375rem;color:#c5daf0">Dark mode</div>
+  <div style="font-size:.8125rem;color:#97a8b8;margin-top:.25rem">Never pure white — midnight-12 from the dark scale.</div>
+  <div style="margin-top:.625rem"><span style="background:#cc4528;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;padding:.3125rem .75rem;border-radius:6px">Deploy</span></div>
+</div>
+{{< /demo >}}
+
 ## Surfaces
 
 Elevation in dark mode is expressed by **lightening the surface**, not by
