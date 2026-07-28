@@ -1,0 +1,134 @@
+{{/*
+  Full-page search.
+
+  Docsy ships an offline-search popover bound to the `change` event, so it only
+  fires on Enter or blur and shows a floating panel. This page is the full-page
+  counterpart: it reads the same lunr index, filters as you type, deep-links via
+  ?q=, and renders results in the page body where they can be read and scrolled.
+
+  Self-contained — lunr is vendored (see _partials/head.html), so no external
+  service is contacted.
+*/}}
+{{ define "main" }}
+<div class="td-content">
+  <h1>{{ .Title }}</h1>
+  <p class="lead">{{ .Params.description }}</p>
+
+  {{/* Build the index through the same pipeline Docsy uses for its popover, so
+       both read one artefact. In production it is md5-fingerprinted, hence
+       resolving the link here rather than hardcoding a path. */}}
+  {{ $idx := resources.Get "json/offline-search-index.json" | resources.ExecuteAsTemplate "offline-search-index.json" . -}}
+  {{ if hugo.IsProduction }}{{ $idx = $idx | fingerprint "md5" }}{{ end -}}
+
+  <form class="pj-search" role="search" onsubmit="return false">
+    <label class="pj-field__label" for="pj-search-input">Search the documentation</label>
+    <input id="pj-search-input" class="pj-input pj-search__input" type="search"
+           placeholder="colour scales, lockup, dark mode, licence…"
+           autocomplete="off" autofocus
+           data-index-src="{{ $idx.RelPermalink }}">
+    <div class="pj-search__meta" id="pj-search-meta" role="status" aria-live="polite"></div>
+  </form>
+
+  <div id="pj-search-results" class="pj-search__results"></div>
+
+  <noscript>
+    <p>Search needs JavaScript. Browse the
+      <a href="{{ "docs/" | relURL }}">documentation index</a> instead.</p>
+  </noscript>
+</div>
+
+<script>
+(function () {
+  var input = document.getElementById('pj-search-input');
+  var out = document.getElementById('pj-search-results');
+  var meta = document.getElementById('pj-search-meta');
+  var idx = null, docs = new Map(), ready = false;
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  // Highlight query terms in the excerpt without allowing markup through.
+  function mark(text, terms) {
+    var safe = esc(text);
+    terms.filter(Boolean).forEach(function (t) {
+      var re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      safe = safe.replace(re, '<mark>$1</mark>');
+    });
+    return safe;
+  }
+
+  function run(q) {
+    if (!ready) return;
+    q = (q || '').trim();
+    out.innerHTML = '';
+    if (!q) { meta.textContent = ''; return; }
+
+    var hits = [];
+    try {
+      // Prefix-match each term so partial words find results while typing.
+      hits = idx.query(function (qy) {
+        q.split(/\s+/).forEach(function (term) {
+          qy.term(term, { boost: 10 });
+          qy.term(term, { boost: 3, wildcard: lunr.Query.wildcard.TRAILING });
+        });
+      });
+    } catch (e) { hits = []; }
+
+    meta.textContent = hits.length
+      ? hits.length + ' result' + (hits.length === 1 ? '' : 's') + ' for “' + q + '”'
+      : 'No results for “' + q + '”';
+
+    var terms = q.split(/\s+/);
+    hits.slice(0, 50).forEach(function (h) {
+      var d = docs.get(h.ref);
+      if (!d) return;
+      var el = document.createElement('article');
+      el.className = 'pj-search__hit';
+      el.innerHTML =
+        '<a class="pj-search__title" href="' + esc(h.ref) + '">' + esc(d.title) + '</a>' +
+        '<div class="pj-search__url">' + esc(h.ref) + '</div>' +
+        '<p class="pj-search__excerpt">' + mark(d.excerpt || '', terms) + '</p>';
+      out.appendChild(el);
+    });
+  }
+
+  function debounce(fn, ms) {
+    var t; return function () { clearTimeout(t); var a = arguments; t = setTimeout(function () { fn.apply(null, a); }, ms); };
+  }
+
+  meta.textContent = 'Loading search index…';
+  fetch(input.dataset.indexSrc)
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      idx = lunr(function () {
+        this.ref('ref');
+        this.field('title', { boost: 5 });
+        this.field('body');
+        var self = this;
+        data.forEach(function (doc) {
+          docs.set(doc.ref, doc);
+          self.add(doc);
+        });
+      });
+      ready = true;
+      meta.textContent = '';
+      var params = new URLSearchParams(location.search);
+      var q = params.get('q');
+      if (q) { input.value = q; run(q); }
+    })
+    .catch(function () { meta.textContent = 'Search index could not be loaded.'; });
+
+  input.addEventListener('input', debounce(function (e) {
+    var q = e.target.value;
+    run(q);
+    // Keep the URL shareable without adding a history entry per keystroke.
+    var url = new URL(location);
+    if (q) { url.searchParams.set('q', q); } else { url.searchParams.delete('q'); }
+    history.replaceState(null, '', url);
+  }, 150));
+})();
+</script>
+{{ end }}

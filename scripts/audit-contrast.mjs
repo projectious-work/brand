@@ -192,11 +192,14 @@ await browser.close();
 server.close();
 
 const all = [...findings.values()].sort((a, b) => a.ratio - b.ratio);
+const quiet = process.argv.includes("--quiet");
 console.log(`\nAudited ${pages.length} pages x 2 themes = ${checked} renders`);
 console.log(`Distinct failing text/background pairs: ${all.length}\n`);
-for (const f of all) {
+for (const f of quiet ? [] : all) {
   console.log(`[${f.theme}] ${f.ratio}:1 (needs ${f.need}) ${f.px}px  ${f.sel}`);
   console.log(`    fg ${f.color}  on  bg ${f.bg}`);
   console.log(`    "${f.text}"  — ${f.count} occurrence(s), e.g. ${f.pages[0]}`);
 }
 if (!all.length) console.log("No contrast failures found.");
+// Non-zero exit so scripts/verify.sh and the release gate can rely on it.
+process.exit(all.length ? 1 : 0);

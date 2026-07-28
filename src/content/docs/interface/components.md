@@ -167,6 +167,117 @@ never a border-only rule. **Wide tables scroll inside their own container.**
 </table>
 {{< /demo >}}
 
+
+### Table with search and filters
+
+A toolbar above the table carries the search field and filter chips. Active
+filters are shown as removable chips so the current view is always legible —
+never leave a filter applied with no visible indication.
+
+{{< demo label="Search, filter chips, pagination footer" variant="stack" >}}
+<div class="pj-table-shell">
+  <div class="pj-table-shell__toolbar">
+    <input class="pj-table-shell__search" type="search" placeholder="Search pipelines…" aria-label="Search pipelines">
+    <button class="pj-chip pj-chip--on">Policy: strict<span class="pj-chip__x">×</span></button>
+    <button class="pj-chip pj-chip--on">Status: failing<span class="pj-chip__x">×</span></button>
+    <button class="pj-chip">+ Add filter</button>
+  </div>
+  <table class="pj-table">
+    <thead><tr><th class="pj-table__sort">Pipeline</th><th>Policy</th><th>Owner</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>release-train</td><td>strict</td><td>platform</td><td><span class="pj-status pj-status--err"><span class="pj-status__dot"></span>Blocked</span></td></tr>
+      <tr><td>nightly-audit</td><td>strict</td><td>security</td><td><span class="pj-status pj-status--err"><span class="pj-status__dot"></span>Failed</span></td></tr>
+    </tbody>
+  </table>
+  <div class="pj-table-shell__footer">
+    <span>2 of 48 pipelines · 2 filters applied</span>
+    <span class="pj-pagination">
+      <button class="pj-pagination__page">‹</button>
+      <button class="pj-pagination__page pj-pagination__page--current">1</button>
+      <button class="pj-pagination__page">2</button>
+      <button class="pj-pagination__page">›</button>
+    </span>
+  </div>
+</div>
+{{< /demo >}}
+
+### Multi-level headers
+
+Grouped columns use a two-row header. The group row is centred over its span and
+separated by a vertical rule — the only place the system uses one.
+
+{{< demo label="Two-row header with column groups" variant="stack" >}}
+<div class="pj-scroll-x">
+<table class="pj-table">
+  <thead>
+    <tr class="pj-table__group-head">
+      <th rowspan="2">Pipeline</th>
+      <th colspan="3">This week</th>
+      <th colspan="3">Last week</th>
+    </tr>
+    <tr>
+      <th class="pj-table__num">Runs</th><th class="pj-table__num">Pass</th><th class="pj-table__num">p95</th>
+      <th class="pj-table__num">Runs</th><th class="pj-table__num">Pass</th><th class="pj-table__num">p95</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>validate-deploy</td><td class="pj-table__num">412</td><td class="pj-table__num">98.1%</td><td class="pj-table__num">4m12s</td><td class="pj-table__num">388</td><td class="pj-table__num">97.4%</td><td class="pj-table__num">4m40s</td></tr>
+    <tr><td>nightly-audit</td><td class="pj-table__num">7</td><td class="pj-table__num">71.4%</td><td class="pj-table__num">18m03s</td><td class="pj-table__num">7</td><td class="pj-table__num">85.7%</td><td class="pj-table__num">17m22s</td></tr>
+    <tr><td>release-train</td><td class="pj-table__num">14</td><td class="pj-table__num">92.9%</td><td class="pj-table__num">9m51s</td><td class="pj-table__num">12</td><td class="pj-table__num">91.7%</td><td class="pj-table__num">10m08s</td></tr>
+  </tbody>
+</table>
+</div>
+{{< /demo >}}
+
+### Grouped rows and totals
+
+Row groups act as sub-headings inside the table. A totals row is separated by a
+2px rule — heavier than the body rules, so it reads as a summary rather than
+another record.
+
+{{< demo label="Row groups, indented children, totals" variant="stack" >}}
+<table class="pj-table">
+  <thead><tr><th>Workload</th><th class="pj-table__num">Runs</th><th class="pj-table__num">Cost</th></tr></thead>
+  <tbody>
+    <tr class="pj-table__rowgroup"><td colspan="3">Platform</td></tr>
+    <tr><td class="pj-table__indent">validate-deploy</td><td class="pj-table__num">412</td><td class="pj-table__num">€48.10</td></tr>
+    <tr><td class="pj-table__indent">release-train</td><td class="pj-table__num">14</td><td class="pj-table__num">€12.60</td></tr>
+    <tr class="pj-table__rowgroup"><td colspan="3">Security</td></tr>
+    <tr><td class="pj-table__indent">nightly-audit</td><td class="pj-table__num">7</td><td class="pj-table__num">€21.40</td></tr>
+    <tr><td class="pj-table__indent">secret-scan</td><td class="pj-table__num">96</td><td class="pj-table__num">€9.05</td></tr>
+    <tr class="pj-table__total"><td>Total</td><td class="pj-table__num">529</td><td class="pj-table__num">€91.15</td></tr>
+  </tbody>
+</table>
+{{< /demo >}}
+
+### Wide tables
+
+A wide table scrolls **inside its own container**, never the page, and pins its
+first column so the row identity stays visible while scrolling.
+
+{{< demo label="Horizontal scroll with a sticky first column" variant="stack" >}}
+<div class="pj-scroll-x">
+<table class="pj-table pj-table--sticky" style="min-width:720px">
+  <thead><tr><th>Pipeline</th><th>Policy</th><th>Owner</th><th class="pj-table__num">Runs</th><th class="pj-table__num">Pass</th><th class="pj-table__num">p50</th><th class="pj-table__num">p95</th><th>Region</th><th>Status</th></tr></thead>
+  <tbody>
+    <tr><td>validate-deploy</td><td>strict</td><td>platform</td><td class="pj-table__num">412</td><td class="pj-table__num">98.1%</td><td class="pj-table__num">2m01s</td><td class="pj-table__num">4m12s</td><td>eu-central</td><td><span class="pj-status pj-status--ok"><span class="pj-status__dot"></span>Healthy</span></td></tr>
+    <tr><td>nightly-audit</td><td>strict</td><td>security</td><td class="pj-table__num">7</td><td class="pj-table__num">71.4%</td><td class="pj-table__num">11m40s</td><td class="pj-table__num">18m03s</td><td>eu-west</td><td><span class="pj-status pj-status--warn"><span class="pj-status__dot"></span>Degraded</span></td></tr>
+  </tbody>
+</table>
+</div>
+{{< /demo >}}
+
+{{< rules >}}
+{{% do %}}
+Right-align numeric columns and set them in IBM Plex Mono so digits line up.
+Show the active filter state and the result count together.
+{{% /do %}}
+{{% dont %}}
+Add vertical rules between ordinary columns, let a wide table scroll the whole
+page, or apply a filter without a visible chip saying so.
+{{% /dont %}}
+{{< /rules >}}
+
 ## Navigation
 
 {{< demo label="Navbar — midnight in both modes, 3px accent rule" variant="stack" >}}

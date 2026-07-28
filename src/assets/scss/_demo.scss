@@ -958,3 +958,250 @@ select.pj-input { cursor: pointer; }
   --pj-alert-warning-bg: #33280d;
   --pj-alert-danger-bg: #3a1c19;
 }
+
+
+// -----------------------------------------------------------------------------
+// Full-page search
+// -----------------------------------------------------------------------------
+.pj-search {
+  margin-block: 1.5rem;
+  max-width: 640px;
+
+  &__input { font-size: 1rem; height: 48px; }
+
+  &__meta {
+    font-size: 0.8125rem;
+    color: var(--pj-text-muted);
+    margin-top: 0.5rem;
+    min-height: 1.25rem;
+  }
+
+  &__results { margin-top: 1rem; }
+
+  &__hit {
+    padding: 0.875rem 0;
+    border-top: 1px solid var(--pj-border);
+
+    &:last-child { border-bottom: 1px solid var(--pj-border); }
+  }
+
+  &__title {
+    font-family: $headings-font-family;
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--pj-midnight-11);
+    text-decoration: none;
+
+    &:hover { color: var(--pj-orange-10); }
+  }
+
+  &__url {
+    font-family: $font-family-monospace;
+    font-size: 0.6875rem;
+    color: var(--pj-text-muted);
+    margin-top: 0.125rem;
+  }
+
+  &__excerpt {
+    font-size: 0.875rem;
+    line-height: 1.6;
+    margin: 0.375rem 0 0;
+    color: var(--bs-body-color);
+
+    mark {
+      background: var(--pj-orange-3);
+      color: var(--pj-chip-accent-fg);
+      padding: 0 0.125rem;
+      border-radius: 2px;
+    }
+  }
+}
+
+
+// -----------------------------------------------------------------------------
+// Extended slide specimens
+// -----------------------------------------------------------------------------
+.pj-slide {
+  &--split { flex-direction: row; gap: 0.625rem; padding: 0; overflow: hidden; }
+
+  &__half {
+    flex: 1;
+    padding: 0.875rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__half--dark { background: $brand-primary-dark; color: $midnight-dark-12; }
+
+  &--metric {
+    background: var(--pj-surface);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__metric {
+    font-family: $headings-font-family;
+    font-weight: 800;
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--pj-midnight-11);
+  }
+
+  &--agenda { background: var(--pj-surface); }
+
+  &__agenda-item {
+    display: flex;
+    gap: 0.375rem;
+    align-items: baseline;
+    padding: 0.125rem 0;
+    border-bottom: 1px solid var(--pj-border);
+
+    &:last-child { border-bottom: 0; }
+    &--current { color: var(--pj-midnight-11); font-weight: 600; }
+  }
+
+  &__num {
+    font-family: $font-family-monospace;
+    font-size: 0.5625rem;
+    color: var(--pj-text-muted);
+    min-width: 1.1em;
+  }
+
+  &--quote {
+    background: var(--pj-midnight-2);
+    justify-content: center;
+  }
+
+  &__rule { width: 28px; height: 3px; background: $brand-accent; margin-bottom: 0.5rem; }
+
+  &__footer {
+    margin-top: auto;
+    font-size: 0.5625rem;
+    color: var(--pj-text-muted);
+  }
+}
+
+// -----------------------------------------------------------------------------
+// Advanced table specimens
+// -----------------------------------------------------------------------------
+.pj-table-shell {
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  overflow: hidden;
+  width: 100%;
+
+  &__toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+    padding: 0.625rem 0.75rem;
+    background: var(--pj-surface-subtle);
+    border-bottom: 1px solid var(--pj-border);
+  }
+
+  &__search {
+    height: 32px;
+    flex: 1 1 180px;
+    min-width: 140px;
+    border-radius: $border-radius;
+    border: 1.5px solid var(--pj-slate-7);
+    background: var(--pj-surface);
+    color: var(--bs-body-color);
+    padding: 0 0.625rem;
+    font-size: 0.75rem;
+    font-family: $font-family-sans-serif;
+  }
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--pj-border);
+    font-size: 0.75rem;
+    color: var(--pj-text-muted);
+  }
+
+  // The table itself already has a border; inside the shell it must not double.
+  .pj-table { border: 0; border-radius: 0; }
+}
+
+// Filter chips
+.pj-chip {
+  font-family: $font-family-sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  padding: 0.1875rem 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid var(--pj-border);
+  background: transparent;
+  color: var(--pj-text-muted);
+  cursor: pointer;
+  white-space: nowrap;
+
+  &--on {
+    background: var(--pj-midnight-9);
+    border-color: var(--pj-midnight-9);
+    color: #fff;
+  }
+
+  &__x { opacity: 0.75; margin-left: 0.25rem; }
+}
+
+// Multi-level headers and grouped rows
+.pj-table {
+  &__group-head th {
+    text-align: center;
+    border-bottom: 1px solid var(--pj-border);
+    border-left: 1px solid var(--pj-border);
+
+    &:first-child { border-left: 0; }
+  }
+
+  &__rowgroup td {
+    background: var(--pj-surface-subtle);
+    font-family: $headings-font-family;
+    font-weight: 600;
+    font-size: 0.75rem;
+    color: var(--pj-midnight-11);
+  }
+
+  &__indent { padding-left: 1.75rem !important; }
+
+  &__num {
+    text-align: right;
+    font-family: $font-family-monospace;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  &__total td {
+    border-top: 2px solid var(--pj-border);
+    font-weight: 700;
+    background: var(--pj-surface-subtle);
+  }
+
+  // A sticky first column for wide tables that scroll horizontally.
+  &--sticky {
+    th:first-child, td:first-child {
+      position: sticky;
+      left: 0;
+      background: var(--pj-surface);
+      z-index: 1;
+    }
+
+    thead th:first-child { background: var(--pj-surface-subtle); }
+    tbody tr:nth-child(even) td:first-child { background: var(--pj-surface-subtle); }
+  }
+}
+
+// Wide tables scroll inside their own container, never the page.
+.pj-scroll-x {
+  overflow-x: auto;
+  width: 100%;
+}

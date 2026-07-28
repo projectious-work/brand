@@ -1,7 +1,20 @@
-\documentclass[a4paper,11pt]{article}
-
+% =============================================================================
 % projectious.work brand system — LaTeX template
-% Requires XeLaTeX or LuaLaTeX for custom fonts
+% =============================================================================
+% Requires XeLaTeX or LuaLaTeX (the brand fonts are loaded via fontspec).
+%
+%   xelatex projectious-template.tex
+%
+% Fonts: Plus Jakarta Sans, Source Sans 3, IBM Plex Mono — all SIL OFL 1.1.
+% Install them system-wide, or drop the OTF/TTF files in ./fonts/ and add
+% Path=./fonts/ to each \setmainfont / \setsansfont / \setmonofont call.
+%
+% Colour usage follows the brand's step roles: step 9 is an identity/solid
+% colour, step 11 is the text step. The accent is therefore never used as body
+% text or link text — see \accenttext below.
+% =============================================================================
+
+\documentclass[a4paper,11pt]{article}
 
 \usepackage{fontspec}
 \usepackage{geometry}
@@ -10,32 +23,53 @@
 \usepackage{fancyhdr}
 \usepackage{titlesec}
 \usepackage{parskip}
+\usepackage{booktabs}
+\usepackage[most]{tcolorbox}
+\usepackage{enumitem}
 
-% ── Brand colors ──
-\definecolor{midnight}{HTML}{1D3352}
+% ── Brand colours ────────────────────────────────────────────────────────────
+% Identity / solid
+\definecolor{midnight}{HTML}{1D3352}       % primary, step 9
 \definecolor{midnightlight}{HTML}{2B4D78}
 \definecolor{midnightdark}{HTML}{132440}
-\definecolor{accent}{HTML}{E05232}
-\definecolor{accentlight}{HTML}{EA7558}
+\definecolor{accent}{HTML}{E05232}         % identity accent, step 9 — FILLS ONLY
+\definecolor{accentsolid}{HTML}{CC4528}    % solid fill carrying white text, 4.72:1
+\definecolor{accentdark}{HTML}{B84228}
+\definecolor{accentlight}{HTML}{EA7558}    % accent as text on dark surfaces
+% Text
+\definecolor{accenttext}{HTML}{C04424}     % accent as text on light, 5.13:1
+\definecolor{ink}{HTML}{142438}            % midnight-12 — body text, never #000
 \definecolor{secondary}{HTML}{546A82}
+\definecolor{muted}{HTML}{5C6F82}
+% Surfaces
+\definecolor{slate2}{HTML}{F1F2F4}
 \definecolor{slate3}{HTML}{E6E8EB}
+\definecolor{slate4}{HTML}{DADCE0}
+\definecolor{midnight1}{HTML}{F8F9FB}
+% Semantic — print-safe foregrounds
+\definecolor{ok}{HTML}{276754}
+\definecolor{warn}{HTML}{6F5106}
+\definecolor{danger}{HTML}{A8261C}
 
-% ── Brand fonts ──
+% ── Brand fonts ──────────────────────────────────────────────────────────────
 \setmainfont{Source Sans 3}[
   UprightFont = *-Regular,
-  BoldFont = *-Bold,
-  ItalicFont = *-Italic,
+  BoldFont    = *-SemiBold,
+  ItalicFont  = *-Italic,
 ]
 \setsansfont{Plus Jakarta Sans}[
   UprightFont = *-Regular,
-  BoldFont = *-Bold,
+  BoldFont    = *-Bold,
 ]
 \setmonofont{IBM Plex Mono}[
   UprightFont = *-Regular,
-  BoldFont = *-Bold,
+  BoldFont    = *-Medium,
+  Scale       = 0.92,
 ]
 
-% ── Page geometry (DIN A4) ──
+\color{ink}
+
+% ── Page geometry (DIN A4) ───────────────────────────────────────────────────
 \geometry{
   a4paper,
   left=25mm, right=25mm,
@@ -43,37 +77,66 @@
   headheight=14pt,
 }
 
-% ── Header / footer ──
+% ── Running head and foot ────────────────────────────────────────────────────
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\sffamily\color{secondary}projectious.work}
-\fancyhead[R]{\small\sffamily\color{secondary}\thepage}
-\fancyfoot[C]{\footnotesize\color{secondary}Cloud · Agile · Agentic AI}
+\fancyhead[L]{\small\sffamily\color{muted}projectious.work}
+\fancyhead[R]{\small\sffamily\color{muted}\thepage}
+\fancyfoot[C]{\footnotesize\color{muted}Cloud · Agile · Agentic AI}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\footrulewidth}{0pt}
 
-% ── Section formatting ──
+% ── Type scale ───────────────────────────────────────────────────────────────
 \titleformat{\section}{\sffamily\Large\bfseries\color{midnight}}{}{0em}{}
 \titleformat{\subsection}{\sffamily\large\bfseries\color{midnightlight}}{}{0em}{}
 \titleformat{\subsubsection}{\sffamily\normalsize\bfseries\color{secondary}}{}{0em}{}
+\titlespacing*{\section}{0pt}{18pt}{6pt}
+\titlespacing*{\subsection}{0pt}{14pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{12pt}{3pt}
 
-% ── Hyperlinks ──
+% ── Hyperlinks ───────────────────────────────────────────────────────────────
+% urlcolor is accenttext (orange-11), not accent: #E05232 on white measures
+% 3.87:1, below the 4.5:1 floor for body-size text.
 \hypersetup{
   colorlinks=true,
-  linkcolor=midnight,
-  urlcolor=accent,
+  linkcolor=midnightlight,
+  urlcolor=accenttext,
   citecolor=secondary,
+  pdftitle={Document Title},
+  pdfauthor={projectious.work},
 }
+
+% ── Callout boxes ────────────────────────────────────────────────────────────
+\newtcolorbox{brandnote}[1][Info]{
+  colback=midnight1, colframe=midnight, boxrule=0pt, leftrule=3pt,
+  arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\sffamily\bfseries\small, title={#1}, coltitle=midnight,
+}
+\newtcolorbox{brandwarn}[1][Warning]{
+  colback=slate2, colframe=warn, boxrule=0pt, leftrule=3pt,
+  arc=2pt, left=8pt, right=8pt, top=6pt, bottom=6pt,
+  fonttitle=\sffamily\bfseries\small, title={#1}, coltitle=warn,
+}
+
+% Inline code — a light chip in print. The brand's always-dark code rule is a
+% screen rule; a full-bleed dark block wastes ink and reads poorly on paper.
+\newcommand{\code}[1]{{\ttfamily\colorbox{slate2}{\strut #1}}}
+
+% Accent emphasis that is safe at body size.
+\newcommand{\accentemph}[1]{\textcolor{accenttext}{\textbf{#1}}}
 
 \begin{document}
 
+% ── Title page ───────────────────────────────────────────────────────────────
 \begin{titlepage}
 \vspace*{4cm}
 {\sffamily\Huge\bfseries\color{midnight} Document Title\par}
-\vspace{0.5cm}
+\vspace{0.4cm}
+{\color{accent}\rule{48pt}{3pt}\par}
+\vspace{0.6cm}
 {\sffamily\large\color{secondary} Subtitle goes here\par}
 \vspace{2cm}
-{\normalsize\color{secondary}
+{\normalsize\color{muted}
 projectious.work\\
 Cloud · Agile · Agentic AI\\
 \today
@@ -81,20 +144,68 @@ Cloud · Agile · Agentic AI\\
 \end{titlepage}
 
 \section{Introduction}
-This is a template document using the projectious.work brand system.
+
+This template uses the projectious.work brand system. Body text is Source Sans 3
+at 11pt; headings are Plus Jakarta Sans; code is IBM Plex Mono.
 
 \subsection{Purpose}
-Body text uses Source Sans 3 at 11pt. Headings use Plus Jakarta Sans in midnight color. Code uses \texttt{IBM Plex Mono}.
+
+Body copy sits in \code{ink} (\#142438, midnight-12) rather than pure black —
+the brand does not use \#000 or \#fff as text. Supporting copy uses
+\code{muted}. Emphasis can use \accentemph{the accent as text}, which resolves
+to orange-11 so it stays legible at body size.
 
 \subsubsection{Technical note}
-The accent color \textcolor{accent}{(\#E05232)} is used sparingly for emphasis and calls to action.
+
+The identity accent \#E05232 is reserved for fills, rules, and marks. Where the
+accent must carry white text — a solid button or a filled bar — use
+\code{accentsolid} (\#CC4528), which measures 4.72:1 against white.
+
+\begin{brandnote}[Info]
+Callouts use a 3pt left rule in the semantic colour on a subtle tinted
+background, matching the on-screen pattern.
+\end{brandnote}
+
+\begin{brandwarn}[Warning]
+Semantic colours carry meaning. Do not use them for visual variety.
+\end{brandwarn}
+
+\section{Tables}
+
+Tables use \texttt{booktabs} rules — no vertical lines, no full grid. Header
+cells take the overline style: small, semibold, letterspaced, in muted.
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+{\sffamily\bfseries\footnotesize\color{muted} PARAMETER} &
+{\sffamily\bfseries\footnotesize\color{muted} TYPE} &
+{\sffamily\bfseries\footnotesize\color{muted} DESCRIPTION} \\
+\midrule
+\code{name}   & string   & Pipeline identifier \\
+\code{policy} & string   & Validation strictness \\
+\code{agents} & string[] & List of agent identifiers \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\section{Code}
 
 \begin{verbatim}
-// Code blocks use IBM Plex Mono
+// Agent pipeline definition
 const pipeline = createPipeline({
   name: "validate-deploy",
-  policy: "strict"
+  policy: "strict",
+  agents: ["auditor", "deployer"],
 });
 \end{verbatim}
+
+\section{Lists}
+
+\begin{itemize}[leftmargin=1.2em, itemsep=2pt]
+  \item Spacing follows the 4px base scale: 4, 8, 12, 16, 24, 32, 48, 64, 96.
+  \item Radii: 3, 6, 9, 13pt.
+  \item Motion tokens do not apply in print.
+\end{itemize}
 
 \end{document}

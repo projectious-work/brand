@@ -32,9 +32,21 @@ params:
   offlineSearch: true
   offlineSearchSummaryLength: 200
   offlineSearchMaxResults: 25
-  version: "v0.1.0"
+  # Versioning. The latest release is served from the site root; every release
+  # is also archived under /vX.Y.Z/ so links into a specific version keep
+  # working after the next release ships. scripts/release.sh maintains this
+  # list — add new releases at the top.
+  version: "v1.0.0"
   version_menu: "Releases"
   version_menu_pagelinks: false
+  archived_version: false
+  url_latest_version: "https://projectious-work.github.io/brand/"
+  versions:
+    - version: "v1.0.0"
+      kind: latest
+      url: "https://projectious-work.github.io/brand/"
+    - version: "v1.0.0 (archived)"
+      url: "https://projectious-work.github.io/brand/v1.0.0/"
   ui:
     navbar_logo: true
     navbar_theme: dark
@@ -88,6 +100,13 @@ module:
       target: static/downloads/logo
     - source: node_modules/bootstrap
       target: assets/vendor/bootstrap
+    # jQuery and lunr are vendored rather than pulled from code.jquery.com and
+    # unpkg.com, which Docsy hardcodes. Builds and deploys are local, so the
+    # site must not depend on third-party CDNs being reachable at page load.
+    - source: node_modules/jquery/dist/jquery.min.js
+      target: assets/vendor/jquery/jquery.min.js
+    - source: node_modules/lunr/lunr.min.js
+      target: assets/vendor/lunr/lunr.min.js
     - source: node_modules/@fortawesome/fontawesome-free
       target: assets/vendor/Font-Awesome
     - source: node_modules/@fortawesome/fontawesome-free/webfonts

@@ -18,7 +18,7 @@ tokens, and document templates. The published site at
 is generated from this repository and is **built with the system it documents** —
 the colour scales rendering those pages are the scales the pages describe.
 
-**Status:** Active — maintained · **Release:** v0.1.0
+**Status:** Active — maintained · **Release:** v1.0.0
 
 ## What's inside
 
@@ -64,6 +64,11 @@ Where a component appears in the docs, its numbers are binding — a 40px input 
 ![Button variants table listing fill, border, text colour and use for each](.github/images/components.png)
 
 ## Documentation
+
+Full-text search is at
+**[/search/](https://projectious-work.github.io/brand/search/)** — live
+filtering, term highlighting, shareable `?q=` links, and no external search
+service. The release dropdown in the top bar switches between versions.
 
 | Section | Covers |
 |---|---|
@@ -113,11 +118,36 @@ cd brand
 
 ./scripts/serve-docs.sh     # live preview at http://localhost:1313/
 ./scripts/build-docs.sh     # production build into public/
+./scripts/verify.sh         # the full check suite
 ./scripts/deploy-docs.sh    # build and push to the gh-pages branch
 ```
 
-There is no CI workflow. Builds and deployments are run locally and pushed to
-the `gh-pages` branch, which GitHub Pages serves from its root.
+**There is no CI.** No GitHub Actions, no workflows. Builds, checks, and
+deployments all run locally and are pushed to the `gh-pages` branch, which
+GitHub Pages serves from its root. `scripts/verify.sh` is what "the checks
+passed" means here:
+
+| Check | What it covers |
+|---|---|
+| `build-docs.sh` | Hugo build, including `relref` resolution |
+| `audit-contrast.mjs` | Every page in **both** colour modes against WCAG AA |
+| `audit-contrast-brand.mjs` | The authoritative documents in `brand/html/` |
+| `validate-portfolio-assets.sh` | Portfolio template and status vocabulary |
+| `check-links.mjs` | Every internal link and asset resolves |
+| `check-templates.sh` | LaTeX and Typst templates compile |
+
+### Releasing
+
+```bash
+./scripts/release.sh v1.2.0 --dry-run   # show what would happen
+./scripts/release.sh v1.2.0             # verify, stamp, tag, push, publish
+```
+
+`release.sh` refuses to run on a dirty tree or a non-default branch, runs the
+full suite, stamps the version into `src/hugo.yaml` and the release dropdown,
+moves the CHANGELOG's *Unreleased* section into a dated release, tags, and
+publishes twice — the archived snapshot at `/vX.Y.Z/` and the site root as
+latest. See [`CHANGELOG.md`](CHANGELOG.md).
 
 To regenerate the screenshots in this README:
 
@@ -143,7 +173,9 @@ Third-party asset provenance is inventoried in
 
 ## Contributing
 
-See [`CONTRIBUTING.md`](CONTRIBUTING.md). Security or unlicensed-material reports
+See [`CONTRIBUTING.md`](CONTRIBUTING.md) and
+[`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md). Run `./scripts/verify.sh` before
+opening a pull request. Security or unlicensed-material reports
 go to **info@projectious.work** — see [`SECURITY.md`](SECURITY.md), not a public
 issue.
 
