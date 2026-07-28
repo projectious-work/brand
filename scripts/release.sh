@@ -79,24 +79,36 @@ s = p.read_text()
 
 s = re.sub(r'^(  version: ).*$', rf'\1"{version}"', s, count=1, flags=re.M)
 
-# Demote the previous latest to an archived entry and put this release on top.
 block = re.search(r'(  versions:\n)((?:    - .*\n|      .*\n)*)', s)
 if not block:
     raise SystemExit("could not find params.versions in src/hugo.yaml")
-existing = block.group(2)
-existing = existing.replace("      kind: latest\n", "")
-existing = re.sub(rf'^    - version: "{re.escape(version)}"\n(?:      .*\n)*', '', existing, flags=re.M)
 
-new_entries = (
-    f'    - version: "{version}"\n'
-    f'      kind: latest\n'
-    f'      url: "{base}"\n'
-    f'    - version: "{version} (archived)"\n'
-    f'      url: "{base}{version}/"\n'
-)
-s = s[:block.start(2)] + new_entries + existing + s[block.end(2):]
+# Parse the list into (version, url) pairs so the rewrite is structural rather
+# than textual.
+entries = []
+for name, body in re.findall(r'    - version: "([^"]+)"\n((?:      .*\n)*)', block.group(2)):
+    url = re.search(r'      url: "([^"]*)"', body)
+    entries.append((name, url.group(1) if url else ""))
+
+# One entry per release. The previous latest is demoted, which means its URL has
+# to move off the site root — the root now serves THIS release — and onto its
+# own archived path. Re-running the same release is idempotent.
+kept = []
+for name, _ in entries:
+    base_name = name.replace(" (archived)", "")
+    if base_name == version:
+        continue
+    if any(k[0] == base_name for k in kept):
+        continue
+    kept.append((base_name, f"{base}{base_name}/"))
+
+new_list = f'    - version: "{version}"\n      kind: latest\n      url: "{base}"\n'
+for name, url in kept:
+    new_list += f'    - version: "{name}"\n      url: "{url}"\n'
+
+s = s[:block.start(2)] + new_list + s[block.end(2):]
 p.write_text(s)
-print(f"   params.version = {version}; version menu updated")
+print(f"   params.version = {version}; {len(kept) + 1} release(s) in the menu")
 PY
 fi
 
