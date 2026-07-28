@@ -24,6 +24,19 @@ are sized for those surfaces in that order.
 - Typography hierarchy is unchanged: Plus Jakarta Sans for headlines, Source
   Sans 3 for body.
 
+<div class="pj-demo"><div class="pj-demo__label">Open Graph card — 1200x630</div>
+  <div class="pj-demo__body pj-demo__body--stack">
+    
+<div class="pj-og">
+  <span class="pj-vcard__glow"></span>
+  <div class="pj-og__title">Bad software is a decision,<br>not a constraint.</div>
+  <div class="pj-og__meta">projectious.work · Cloud · Agile · Agentic AI</div>
+</div>
+
+  </div>
+</div>
+
+
 ## Open Graph
 
 - 1200×630px.

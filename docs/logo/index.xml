@@ -1,5 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Logo on projectious.work Brand</title><link>https://projectious-work.github.io/brand/docs/logo/</link><description>Recent content in Logo on projectious.work Brand</description><generator>Hugo</generator><language>en</language><atom:link href="https://projectious-work.github.io/brand/docs/logo/index.xml" rel="self" type="application/rss+xml"/><item><title>Lockups</title><link>https://projectious-work.github.io/brand/docs/logo/lockups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/logo/lockups/</guid><description>&lt;p&gt;Four lockups are approved. Each has a defined context; using one outside its
 context is what makes a layout feel off-brand even when the colours are right.&lt;/p&gt;
+&lt;p&gt;All four are built with HTML and CSS rather than flattened artwork, so spacing
+comes from natural text flow and never needs re-kerning.&lt;/p&gt;
+&lt;h2 id="the-four-lockups"&gt;The four lockups&lt;/h2&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Two-line (default) and one-line&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--grid"&gt;
+ 
+&lt;div class="pj-demo-item"&gt;
+ &lt;span class="pj-lockup pj-lockup--two-line"&gt;
+ &lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:42px;height:42px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;
+ &lt;span class="pj-lockup__lines"&gt;
+ &lt;span class="pj-wm" style="font-size:20px"&gt;projectious&lt;/span&gt;
+ &lt;span class="pj-wm" style="font-size:13px"&gt;&lt;span class="pj-wm__ext"&gt;· work&lt;/span&gt;&lt;/span&gt;
+ &lt;/span&gt;
+ &lt;/span&gt;
+ &lt;span class="pj-cap"&gt;Two-line · headers, slides, cards · min 120px&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="pj-demo-item"&gt;
+ &lt;span class="pj-lockup"&gt;
+ &lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:26px;height:26px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;
+ &lt;span class="pj-wm" style="font-size:17px"&gt;projectious&lt;span class="pj-wm__ext"&gt; · work&lt;/span&gt;&lt;/span&gt;
+ &lt;/span&gt;
+ &lt;span class="pj-cap"&gt;One-line · navbars, footers, signatures · min 140px&lt;/span&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Dot-replace and stacked&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--grid"&gt;
+ 
+&lt;div class="pj-demo-item"&gt;
+ &lt;span class="pj-lockup" style="gap:.1875rem"&gt;
+ &lt;span class="pj-wm" style="font-size:18px"&gt;projectious&lt;/span&gt;
+ &lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:16px;height:16px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;
+ &lt;span class="pj-wm" style="font-size:18px"&gt;&lt;span class="pj-wm__ext"&gt;work&lt;/span&gt;&lt;/span&gt;
+ &lt;/span&gt;
+ &lt;span class="pj-cap"&gt;Dot-replace · compact horizontal · min 160px&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="pj-demo-item"&gt;
+ &lt;span class="pj-lockup pj-lockup--stacked"&gt;
+ &lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:44px;height:44px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;
+ &lt;span class="pj-wm" style="font-size:12.5px"&gt;projectious&lt;span class="pj-wm__ext"&gt; · work&lt;/span&gt;&lt;/span&gt;
+ &lt;/span&gt;
+ &lt;span class="pj-cap"&gt;Stacked · app icons, avatars, slide corners · min 60px&lt;/span&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
@@ -36,47 +85,20 @@ context is what makes a layout feel off-brand even when the colours are right.&l
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id="the-mark-alone"&gt;The mark alone&lt;/h2&gt;
-&lt;p&gt;The mark may stand alone &lt;strong&gt;only where the wordmark is already established
-nearby&lt;/strong&gt; — an app icon on a page that names the product, an avatar in a
-signed-in context, a favicon.&lt;/p&gt;</description></item><item><title>Usage</title><link>https://projectious-work.github.io/brand/docs/logo/usage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/logo/usage/</guid><description>&lt;h2 id="clear-space"&gt;Clear space&lt;/h2&gt;
+&lt;h2 id="on-light-and-dark"&gt;On light and dark&lt;/h2&gt;
+&lt;p&gt;Every lockup has a light-surface and a dark-surface rendering. The mark&amp;rsquo;s inner
+cuts pick up the surface colour, so it never needs a plate or a knockout box.&lt;/p&gt;</description></item><item><title>Usage</title><link>https://projectious-work.github.io/brand/docs/logo/usage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/logo/usage/</guid><description>&lt;h2 id="clear-space"&gt;Clear space&lt;/h2&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Exclusion zone — 1x the icon height on every side&lt;/div&gt;
+ &lt;div class="pj-demo__body"&gt;
+ 
+&lt;span class="pj-clearspace"&gt;&lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:48px;height:48px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+&lt;span class="pj-cap"&gt;Nothing enters the dashed zone&lt;/span&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;p&gt;&lt;strong&gt;Minimum clear space is 1× the icon height on all sides.&lt;/strong&gt; Nothing — text,
-rules, image edges, other logos — enters that exclusion zone.&lt;/p&gt;
-&lt;p&gt;At a 40px mark, that is 40px of clear space in every direction. The zone scales
-with the mark, so it never needs recalculating per context.&lt;/p&gt;
-&lt;h2 id="minimum-sizes"&gt;Minimum sizes&lt;/h2&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;Variant&lt;/th&gt;
-					&lt;th&gt;Minimum&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Icon (standalone)&lt;/td&gt;
-					&lt;td&gt;24px — 16px for favicons only&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Stacked lockup&lt;/td&gt;
-					&lt;td&gt;60px&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Two-line lockup&lt;/td&gt;
-					&lt;td&gt;120px&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;One-line lockup&lt;/td&gt;
-					&lt;td&gt;140px&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Dot-replace lockup&lt;/td&gt;
-					&lt;td&gt;160px&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Below these sizes the petal cuts collapse into a smudge. If the space is smaller
-than the minimum, use a smaller variant rather than scaling one down.&lt;/p&gt;</description></item><item><title>Files</title><link>https://projectious-work.github.io/brand/docs/logo/files/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/logo/files/</guid><description>&lt;h2 id="formats"&gt;Formats&lt;/h2&gt;
+rules, image edges, other logos — enters that exclusion zone.&lt;/p&gt;</description></item><item><title>Files</title><link>https://projectious-work.github.io/brand/docs/logo/files/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/logo/files/</guid><description>&lt;h2 id="formats"&gt;Formats&lt;/h2&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;

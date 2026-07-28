@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>projectious.work Brand</title><link>https://projectious-work.github.io/brand/</link><description>Recent content on projectious.work Brand</description><generator>Hugo</generator><language>en</language><atom:link href="https://projectious-work.github.io/brand/index.xml" rel="self" type="application/rss+xml"/><item><title>Business card</title><link>https://projectious-work.github.io/brand/docs/collateral/business-card/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/business-card/</guid><description>&lt;p&gt;The primary format is &lt;strong&gt;digital&lt;/strong&gt; — a vCard shared via QR code or direct link,
 not a printed card.&lt;/p&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Digital vCard&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
+ 
+&lt;div class="pj-vcard"&gt;
+ &lt;span class="pj-vcard__glow"&gt;&lt;/span&gt;
+ &lt;span class="pj-lockup" style="margin-bottom:.75rem"&gt;&lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:28px;height:28px;--pj-mark-shell:#6b8db2;--pj-mark-cut:#132440;--pj-mark-bud:#E05232"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;&lt;span class="pj-wm pj-wm--on-dark" style="font-size:13px"&gt;projectious&lt;span class="pj-wm__ext"&gt; · work&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+ &lt;div class="pj-vcard__name"&gt;Bernhard Gerlach&lt;/div&gt;
+ &lt;div class="pj-vcard__role"&gt;Cloud · Agile · Agentic AI&lt;/div&gt;
+ &lt;div class="pj-vcard__row" style="margin-top:.625rem"&gt;info@projectious.work&lt;/div&gt;
+ &lt;div class="pj-vcard__row"&gt;projectious.work&lt;/div&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;h2 id="layout"&gt;Layout&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Midnight surface, mark top-left, name in Plus Jakarta Sans 700.&lt;/li&gt;
@@ -16,11 +31,45 @@ follows the Radix convention, which assigns every step a &lt;em&gt;role&lt;/em&g
 outside its role is the single most common way to break the system.&lt;/p&gt;
 &lt;h2 id="core-colours"&gt;Core colours&lt;/h2&gt;
 &lt;p&gt;These are the named aliases most projects reach for first. They are shortcuts
-into the scales, not a separate palette.&lt;/p&gt;</description></item><item><title>Components</title><link>https://projectious-work.github.io/brand/docs/interface/components/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/components/</guid><description>&lt;p&gt;The component set is deliberately small. Each entry lists the measurements that
-are normative; anything not listed inherits from the
-&lt;a href="https://projectious-work.github.io/brand/docs/foundations/"&gt;foundations&lt;/a&gt;.&lt;/p&gt;
+into the scales, not a separate palette.&lt;/p&gt;</description></item><item><title>Components</title><link>https://projectious-work.github.io/brand/docs/interface/components/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/components/</guid><description>&lt;p&gt;Every specimen on this page is live markup styled by the brand tokens, ported
+from &lt;code&gt;brand/html/projectious-kitchen-sink.html&lt;/code&gt;. They follow your colour mode —
+switch the theme and they change with the documentation.&lt;/p&gt;
+&lt;p&gt;Measurements listed here are normative: a 40px input is 40px.&lt;/p&gt;
 &lt;h2 id="buttons"&gt;Buttons&lt;/h2&gt;
-&lt;p&gt;Five variants, three sizes.&lt;/p&gt;
+&lt;p&gt;Five variants, three sizes. Plus Jakarta Sans 600, 6px radius, 200ms transitions.&lt;/p&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Variants — medium (40px)&lt;/div&gt;
+ &lt;div class="pj-demo__body"&gt;
+ 
+&lt;button class="pj-btn pj-btn--primary pj-btn--md"&gt;Get started&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--accent pj-btn--md"&gt;Deploy&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--outline pj-btn--md"&gt;Learn more&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--ghost pj-btn--md"&gt;Cancel&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--danger pj-btn--md"&gt;Delete&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--primary pj-btn--md" disabled&gt;Disabled&lt;/button&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Sizes — sm 32px · md 40px · lg 48px&lt;/div&gt;
+ &lt;div class="pj-demo__body"&gt;
+ 
+&lt;button class="pj-btn pj-btn--accent pj-btn--sm"&gt;Small&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--accent pj-btn--md"&gt;Medium&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--accent pj-btn--lg"&gt;Large&lt;/button&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;On a midnight surface&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--dark"&gt;
+ 
+&lt;button class="pj-btn pj-btn--accent pj-btn--md"&gt;Deploy&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--outline pj-btn--md"&gt;View logs&lt;/button&gt;
+&lt;button class="pj-btn pj-btn--ghost pj-btn--md"&gt;Dismiss&lt;/button&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
@@ -53,15 +102,15 @@ are normative; anything not listed inherits from the
 					&lt;td&gt;&lt;strong&gt;Outline&lt;/strong&gt;&lt;/td&gt;
 					&lt;td&gt;transparent&lt;/td&gt;
 					&lt;td&gt;1.5px &lt;code&gt;orange-9&lt;/code&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;code&gt;orange-9&lt;/code&gt;&lt;/td&gt;
-					&lt;td&gt;—&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;orange-11&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;5.13:1&lt;/td&gt;
 					&lt;td&gt;Secondary action&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;strong&gt;Ghost&lt;/strong&gt;&lt;/td&gt;
 					&lt;td&gt;transparent&lt;/td&gt;
-					&lt;td&gt;none&lt;/td&gt;
-					&lt;td&gt;&lt;code&gt;midnight-9&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;1px border&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;slate-9&lt;/code&gt;&lt;/td&gt;
 					&lt;td&gt;—&lt;/td&gt;
 					&lt;td&gt;Tertiary, toolbars&lt;/td&gt;
 			&lt;/tr&gt;
@@ -76,10 +125,11 @@ are normative; anything not listed inherits from the
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;div class="alert alert-warning" role="alert"&gt;&lt;div class="h4 alert-heading" role="heading"&gt;Accent buttons fill with accent-solid, not step 9&lt;/div&gt;
-&lt;p&gt;&lt;code&gt;orange-9&lt;/code&gt; (&lt;code&gt;#E05232&lt;/code&gt;) is the brand&amp;rsquo;s identity accent and is unchanged
-everywhere it appears as a mark, border, active state, or syntax colour. But
-white text on it measures &lt;strong&gt;3.87:1&lt;/strong&gt; — below the 4.5:1 AA floor for
-normal-size text, and button labels are 13–14px.&lt;/p&gt;</description></item><item><title>Licensing</title><link>https://projectious-work.github.io/brand/docs/governance/licensing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/licensing/</guid><description>&lt;p&gt;The repository carries &lt;strong&gt;two categories of intellectual property&lt;/strong&gt; under
+&lt;p&gt;&lt;code&gt;orange-9&lt;/code&gt; (&lt;code&gt;#E05232&lt;/code&gt;) is the identity accent and is unchanged as a mark,
+border, active state, or syntax colour. But white on it measures &lt;strong&gt;3.87:1&lt;/strong&gt; —
+below the 4.5:1 floor for 13–14px labels. Solid accent controls therefore fill
+with &lt;strong&gt;&lt;code&gt;--color-accent-solid&lt;/code&gt; (&lt;code&gt;#cc4528&lt;/code&gt;)&lt;/strong&gt;, white at &lt;strong&gt;4.72:1&lt;/strong&gt;; hover
+continues to &lt;code&gt;accent-dark&lt;/code&gt; (&lt;code&gt;#b84228&lt;/code&gt;, 5.46:1).&lt;/p&gt;</description></item><item><title>Licensing</title><link>https://projectious-work.github.io/brand/docs/governance/licensing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/licensing/</guid><description>&lt;p&gt;The repository carries &lt;strong&gt;two categories of intellectual property&lt;/strong&gt; under
 different terms. The full text is in
 &lt;a href="https://github.com/projectious-work/brand/blob/main/LICENSE.md"&gt;&lt;code&gt;LICENSE.md&lt;/code&gt;&lt;/a&gt;;
 this page summarises it.&lt;/p&gt;
@@ -113,6 +163,55 @@ embed brand identity (colours, fonts, tagline). You may use them as structural
 reference for your own templates, but not redistribute them with projectious.work
 branding intact.&lt;/p&gt;</description></item><item><title>Lockups</title><link>https://projectious-work.github.io/brand/docs/logo/lockups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/logo/lockups/</guid><description>&lt;p&gt;Four lockups are approved. Each has a defined context; using one outside its
 context is what makes a layout feel off-brand even when the colours are right.&lt;/p&gt;
+&lt;p&gt;All four are built with HTML and CSS rather than flattened artwork, so spacing
+comes from natural text flow and never needs re-kerning.&lt;/p&gt;
+&lt;h2 id="the-four-lockups"&gt;The four lockups&lt;/h2&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Two-line (default) and one-line&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--grid"&gt;
+ 
+&lt;div class="pj-demo-item"&gt;
+ &lt;span class="pj-lockup pj-lockup--two-line"&gt;
+ &lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:42px;height:42px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;
+ &lt;span class="pj-lockup__lines"&gt;
+ &lt;span class="pj-wm" style="font-size:20px"&gt;projectious&lt;/span&gt;
+ &lt;span class="pj-wm" style="font-size:13px"&gt;&lt;span class="pj-wm__ext"&gt;· work&lt;/span&gt;&lt;/span&gt;
+ &lt;/span&gt;
+ &lt;/span&gt;
+ &lt;span class="pj-cap"&gt;Two-line · headers, slides, cards · min 120px&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="pj-demo-item"&gt;
+ &lt;span class="pj-lockup"&gt;
+ &lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:26px;height:26px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;
+ &lt;span class="pj-wm" style="font-size:17px"&gt;projectious&lt;span class="pj-wm__ext"&gt; · work&lt;/span&gt;&lt;/span&gt;
+ &lt;/span&gt;
+ &lt;span class="pj-cap"&gt;One-line · navbars, footers, signatures · min 140px&lt;/span&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Dot-replace and stacked&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--grid"&gt;
+ 
+&lt;div class="pj-demo-item"&gt;
+ &lt;span class="pj-lockup" style="gap:.1875rem"&gt;
+ &lt;span class="pj-wm" style="font-size:18px"&gt;projectious&lt;/span&gt;
+ &lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:16px;height:16px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;
+ &lt;span class="pj-wm" style="font-size:18px"&gt;&lt;span class="pj-wm__ext"&gt;work&lt;/span&gt;&lt;/span&gt;
+ &lt;/span&gt;
+ &lt;span class="pj-cap"&gt;Dot-replace · compact horizontal · min 160px&lt;/span&gt;
+&lt;/div&gt;
+&lt;div class="pj-demo-item"&gt;
+ &lt;span class="pj-lockup pj-lockup--stacked"&gt;
+ &lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:44px;height:44px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;
+ &lt;span class="pj-wm" style="font-size:12.5px"&gt;projectious&lt;span class="pj-wm__ext"&gt; · work&lt;/span&gt;&lt;/span&gt;
+ &lt;/span&gt;
+ &lt;span class="pj-cap"&gt;Stacked · app icons, avatars, slide corners · min 60px&lt;/span&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
@@ -149,10 +248,9 @@ context is what makes a layout feel off-brand even when the colours are right.&l
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;h2 id="the-mark-alone"&gt;The mark alone&lt;/h2&gt;
-&lt;p&gt;The mark may stand alone &lt;strong&gt;only where the wordmark is already established
-nearby&lt;/strong&gt; — an app icon on a page that names the product, an avatar in a
-signed-in context, a favicon.&lt;/p&gt;</description></item><item><title>Status treatments</title><link>https://projectious-work.github.io/brand/docs/portfolio/status/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/status/</guid><description>&lt;h2 id="required-pattern"&gt;Required pattern&lt;/h2&gt;
+&lt;h2 id="on-light-and-dark"&gt;On light and dark&lt;/h2&gt;
+&lt;p&gt;Every lockup has a light-surface and a dark-surface rendering. The mark&amp;rsquo;s inner
+cuts pick up the surface colour, so it never needs a plate or a knockout box.&lt;/p&gt;</description></item><item><title>Status treatments</title><link>https://projectious-work.github.io/brand/docs/portfolio/status/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/status/</guid><description>&lt;h2 id="required-pattern"&gt;Required pattern&lt;/h2&gt;
 &lt;p&gt;Every project presentation must show a status as text. Color, icons, position,
 and motion may reinforce the label but must never replace it.&lt;/p&gt;
 &lt;table&gt;
@@ -263,11 +361,43 @@ photograph does not punch a hole in a dark page.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Code blocks are always dark&lt;/strong&gt;, regardless of mode. See
 &lt;a href="https://projectious-work.github.io/brand/docs/interface/code/"&gt;Code&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;The same card in both modes&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--grid"&gt;
+ 
+&lt;div style="background:#ffffff;border:1px solid #dadce0;border-radius:9px;padding:1rem"&gt;
+ &lt;div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9375rem;color:#1d3352"&gt;Light mode&lt;/div&gt;
+ &lt;div style="font-size:.8125rem;color:#5c6f82;margin-top:.25rem"&gt;Body text is midnight-12; supporting copy is slate-11.&lt;/div&gt;
+ &lt;div style="margin-top:.625rem"&gt;&lt;span style="background:#cc4528;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;padding:.3125rem .75rem;border-radius:6px"&gt;Deploy&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style="background:#131e2b;border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:1rem"&gt;
+ &lt;div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9375rem;color:#c5daf0"&gt;Dark mode&lt;/div&gt;
+ &lt;div style="font-size:.8125rem;color:#97a8b8;margin-top:.25rem"&gt;Never pure white — midnight-12 from the dark scale.&lt;/div&gt;
+ &lt;div style="margin-top:.625rem"&gt;&lt;span style="background:#cc4528;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;padding:.3125rem .75rem;border-radius:6px"&gt;Deploy&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;h2 id="surfaces"&gt;Surfaces&lt;/h2&gt;
 &lt;p&gt;Elevation in dark mode is expressed by &lt;strong&gt;lightening the surface&lt;/strong&gt;, not by
 deepening the shadow — a shadow against a near-black background is invisible.&lt;/p&gt;</description></item><item><title>Email signature</title><link>https://projectious-work.github.io/brand/docs/collateral/email-signature/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/email-signature/</guid><description>&lt;p&gt;The signature is built to work in clients with hostile CSS support — Outlook
 included. The source is
 &lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature.html"&gt;&lt;code&gt;brand/email/signature.html&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Signature — one-line lockup, four lines maximum&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
+ 
+&lt;table style="border-collapse:collapse;font-family:'Source Sans 3',sans-serif"&gt;
+ &lt;tr&gt;&lt;td style="padding:0 0 6px 0"&gt;
+ &lt;span class="pj-lockup"&gt;&lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:24px;height:24px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;&lt;span class="pj-wm" style="font-size:14px"&gt;projectious&lt;span class="pj-wm__ext"&gt; · work&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+ &lt;/td&gt;&lt;/tr&gt;
+ &lt;tr&gt;&lt;td style="font-size:13px;font-weight:600;padding:0"&gt;Bernhard Gerlach&lt;/td&gt;&lt;/tr&gt;
+ &lt;tr&gt;&lt;td style="font-size:12px;color:var(--pj-text-muted);padding:0"&gt;Cloud · Agile · Agentic AI&lt;/td&gt;&lt;/tr&gt;
+ &lt;tr&gt;&lt;td style="font-size:12px;padding:2px 0 0 0"&gt;&lt;a href="#" style="color:var(--pj-midnight-11)"&gt;projectious.work&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;h2 id="construction-rules"&gt;Construction rules&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Table-based layout.&lt;/strong&gt; Flexbox and grid do not survive Outlook.&lt;/li&gt;
@@ -346,43 +476,17 @@ bundled font binaries to license or redistribute.&lt;/p&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Loading them:&lt;/p&gt;</description></item><item><title>Usage</title><link>https://projectious-work.github.io/brand/docs/logo/usage/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/logo/usage/</guid><description>&lt;h2 id="clear-space"&gt;Clear space&lt;/h2&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Exclusion zone — 1x the icon height on every side&lt;/div&gt;
+ &lt;div class="pj-demo__body"&gt;
+ 
+&lt;span class="pj-clearspace"&gt;&lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:48px;height:48px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;&lt;/span&gt;
+&lt;span class="pj-cap"&gt;Nothing enters the dashed zone&lt;/span&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;p&gt;&lt;strong&gt;Minimum clear space is 1× the icon height on all sides.&lt;/strong&gt; Nothing — text,
-rules, image edges, other logos — enters that exclusion zone.&lt;/p&gt;
-&lt;p&gt;At a 40px mark, that is 40px of clear space in every direction. The zone scales
-with the mark, so it never needs recalculating per context.&lt;/p&gt;
-&lt;h2 id="minimum-sizes"&gt;Minimum sizes&lt;/h2&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;Variant&lt;/th&gt;
-					&lt;th&gt;Minimum&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Icon (standalone)&lt;/td&gt;
-					&lt;td&gt;24px — 16px for favicons only&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Stacked lockup&lt;/td&gt;
-					&lt;td&gt;60px&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Two-line lockup&lt;/td&gt;
-					&lt;td&gt;120px&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;One-line lockup&lt;/td&gt;
-					&lt;td&gt;140px&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Dot-replace lockup&lt;/td&gt;
-					&lt;td&gt;160px&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Below these sizes the petal cuts collapse into a smudge. If the space is smaller
-than the minimum, use a smaller variant rather than scaling one down.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-always-dark"&gt;Code blocks are always dark&lt;/h2&gt;
+rules, image edges, other logos — enters that exclusion zone.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-always-dark"&gt;Code blocks are always dark&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Code blocks stay dark regardless of colour mode.&lt;/strong&gt; A code surface that flips
 with the theme forces the syntax palette to be designed twice and makes
 screenshots inconsistent between users. The surface is &lt;code&gt;midnight-2&lt;/code&gt; from the
@@ -539,6 +643,18 @@ competing with the text.&lt;/li&gt;
 &lt;li&gt;Typography hierarchy is unchanged: Plus Jakarta Sans for headlines, Source
 Sans 3 for body.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Open Graph card — 1200x630&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
+ 
+&lt;div class="pj-og"&gt;
+ &lt;span class="pj-vcard__glow"&gt;&lt;/span&gt;
+ &lt;div class="pj-og__title"&gt;Bad software is a decision,&lt;br&gt;not a constraint.&lt;/div&gt;
+ &lt;div class="pj-og__meta"&gt;projectious.work · Cloud · Agile · Agentic AI&lt;/div&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;h2 id="open-graph"&gt;Open Graph&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;1200×630px.&lt;/li&gt;
@@ -678,6 +794,41 @@ clearance detail.&lt;/p&gt;</description></item><item><title>Presentations</titl
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 16:10&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
+ 
+&lt;div class="pj-slides-grid"&gt;
+ &lt;div class="pj-slide pj-slide--title"&gt;
+ &lt;div class="pj-slide__h"&gt;Redesigning work&lt;/div&gt;
+ &lt;div class="pj-slide__sub"&gt;Cloud · Agile · Agentic AI&lt;/div&gt;
+ &lt;div class="pj-slide__sub" style="margin-top:.25rem"&gt;projectious.work&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--statement"&gt;&lt;div class="pj-slide__h"&gt;Bad software is a decision, not a constraint.&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content"&gt;
+ &lt;div class="pj-slide__h"&gt;The agent-first approach&lt;/div&gt;
+ &lt;div style="display:flex;gap:4px;margin-top:6px"&gt;
+ &lt;span class="pj-badge" style="flex:1;justify-content:center"&gt;Define&lt;/span&gt;
+ &lt;span class="pj-badge pj-badge--accent" style="flex:1;justify-content:center"&gt;Build&lt;/span&gt;
+ &lt;span class="pj-badge" style="flex:1;justify-content:center"&gt;Deploy&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content" style="justify-content:center"&gt;
+ &lt;div style="font-size:.8125rem;font-style:italic;color:var(--pj-text-muted)"&gt;"We run what we recommend."&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content" style="padding:0;overflow:hidden"&gt;
+ &lt;div class="pj-terminal" style="border:0;border-radius:0;height:100%;font-size:.5625rem;line-height:1.6"&gt;
+ &lt;span class="pj-terminal__prompt"&gt;// pipeline&lt;/span&gt;&lt;br&gt;createPipeline({&lt;br&gt;&amp;nbsp;&amp;nbsp;policy: &lt;span class="pj-terminal__accent"&gt;"strict"&lt;/span&gt;&lt;br&gt;});
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--title" style="justify-content:center;align-items:center;text-align:center"&gt;
+ &lt;div class="pj-slide__h"&gt;Let's talk&lt;/div&gt;
+ &lt;div class="pj-slide__sub"&gt;projectious.work&lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;h2 id="rules"&gt;Rules&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;16:10 aspect ratio.&lt;/li&gt;
@@ -757,6 +908,16 @@ in the repository. Check it before adding an asset or shipping collateral.&lt;/p
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;All inputs are set in &lt;strong&gt;Source Sans 3 at 13px&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Sizes — sm 32 · md 40 · lg 48&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--grid"&gt;
+ 
+&lt;div class="pj-field"&gt;&lt;span class="pj-field__label"&gt;Small&lt;/span&gt;&lt;input class="pj-input pj-input--sm" value="32px" readonly&gt;&lt;/div&gt;
+&lt;div class="pj-field"&gt;&lt;span class="pj-field__label"&gt;Medium&lt;/span&gt;&lt;input class="pj-input" value="40px — default" readonly&gt;&lt;/div&gt;
+&lt;div class="pj-field"&gt;&lt;span class="pj-field__label"&gt;Large&lt;/span&gt;&lt;input class="pj-input pj-input--lg" value="48px" readonly&gt;&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;h2 id="states"&gt;States&lt;/h2&gt;
 &lt;table&gt;
 	&lt;thead&gt;
@@ -784,6 +945,17 @@ in the repository. Check it before adding an asset or shipping collateral.&lt;/p
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Every state&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--grid"&gt;
+ 
+&lt;div class="pj-field"&gt;&lt;span class="pj-field__label"&gt;Default&lt;/span&gt;&lt;input class="pj-input" placeholder="slate-7 border"&gt;&lt;/div&gt;
+&lt;div class="pj-field"&gt;&lt;span class="pj-field__label"&gt;Focus&lt;/span&gt;&lt;input class="pj-input" value="midnight ring" readonly style="border-color:#1d3352;box-shadow:0 0 0 2px rgba(29,51,82,.15)"&gt;&lt;/div&gt;
+&lt;div class="pj-field"&gt;&lt;span class="pj-field__label"&gt;Error&lt;/span&gt;&lt;input class="pj-input pj-input--error" value="invalid" readonly&gt;&lt;span class="pj-field__error"&gt;Describe the problem in words.&lt;/span&gt;&lt;/div&gt;
+&lt;div class="pj-field"&gt;&lt;span class="pj-field__label"&gt;Disabled&lt;/span&gt;&lt;input class="pj-input" value="locked" disabled&gt;&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;h2 id="labels"&gt;Labels&lt;/h2&gt;
 &lt;p&gt;Labels use the &lt;strong&gt;overline style&lt;/strong&gt; and sit &lt;strong&gt;above&lt;/strong&gt; the field. Floating labels
 are not used anywhere in the system — they hide the label at exactly the moment

@@ -25,6 +25,30 @@ it was chosen over icon sets with attribution or share-alike terms. See the
 [legal assessment](/brand/docs/governance/legal-assessment/) for the
 clearance detail.
 
+<div class="pj-demo"><div class="pj-demo__label">Sizes on the 4px grid — 16 / 20 / 24 / 32px</div>
+  <div class="pj-demo__body">
+    
+<div class="pj-demo-item" style="color:var(--pj-text-muted)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg><span class="pj-cap">16</span></div>
+<div class="pj-demo-item" style="color:var(--pj-text-muted)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg><span class="pj-cap">20 — default</span></div>
+<div class="pj-demo-item" style="color:var(--pj-text-muted)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg><span class="pj-cap">24</span></div>
+<div class="pj-demo-item" style="color:var(--pj-text-muted)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg><span class="pj-cap">32</span></div>
+<div class="pj-demo-item" style="color:var(--pj-orange-11)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg><span class="pj-cap">accent — primary action</span></div>
+
+  </div>
+</div>
+
+
+<div class="pj-demo"><div class="pj-demo__label">Icon with a label, and an icon button</div>
+  <div class="pj-demo__body">
+    
+<button class="pj-btn pj-btn--accent pj-btn--md"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg> Deploy</button>
+<button class="pj-btn pj-btn--ghost pj-btn--md" aria-label="Security settings"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 6v6c0 5 3.4 8.6 8 10 4.6-1.4 8-5 8-10V6z"/></svg></button>
+<span class="pj-status pj-status--ok"><span class="pj-status__dot"></span>Policy enforced</span>
+
+  </div>
+</div>
+
+
 ## Usage
 
 - **Stroke width 2**, matching Lucide's default. Do not thin or thicken strokes

@@ -100,6 +100,41 @@ pipelines drawn in the brand palette.&lt;/p&gt;</description></item><item><title
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 16:10&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
+ 
+&lt;div class="pj-slides-grid"&gt;
+ &lt;div class="pj-slide pj-slide--title"&gt;
+ &lt;div class="pj-slide__h"&gt;Redesigning work&lt;/div&gt;
+ &lt;div class="pj-slide__sub"&gt;Cloud · Agile · Agentic AI&lt;/div&gt;
+ &lt;div class="pj-slide__sub" style="margin-top:.25rem"&gt;projectious.work&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--statement"&gt;&lt;div class="pj-slide__h"&gt;Bad software is a decision, not a constraint.&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content"&gt;
+ &lt;div class="pj-slide__h"&gt;The agent-first approach&lt;/div&gt;
+ &lt;div style="display:flex;gap:4px;margin-top:6px"&gt;
+ &lt;span class="pj-badge" style="flex:1;justify-content:center"&gt;Define&lt;/span&gt;
+ &lt;span class="pj-badge pj-badge--accent" style="flex:1;justify-content:center"&gt;Build&lt;/span&gt;
+ &lt;span class="pj-badge" style="flex:1;justify-content:center"&gt;Deploy&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content" style="justify-content:center"&gt;
+ &lt;div style="font-size:.8125rem;font-style:italic;color:var(--pj-text-muted)"&gt;"We run what we recommend."&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content" style="padding:0;overflow:hidden"&gt;
+ &lt;div class="pj-terminal" style="border:0;border-radius:0;height:100%;font-size:.5625rem;line-height:1.6"&gt;
+ &lt;span class="pj-terminal__prompt"&gt;// pipeline&lt;/span&gt;&lt;br&gt;createPipeline({&lt;br&gt;&amp;nbsp;&amp;nbsp;policy: &lt;span class="pj-terminal__accent"&gt;"strict"&lt;/span&gt;&lt;br&gt;});
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--title" style="justify-content:center;align-items:center;text-align:center"&gt;
+ &lt;div class="pj-slide__h"&gt;Let's talk&lt;/div&gt;
+ &lt;div class="pj-slide__sub"&gt;projectious.work&lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
 &lt;h2 id="rules"&gt;Rules&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;16:10 aspect ratio.&lt;/li&gt;

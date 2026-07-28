@@ -16,7 +16,7 @@ normative — a 40px input is 40px, not "about 40px".
 
 Section pages:
 
-- [Components](/brand/docs/interface/components/): Buttons, inputs, cards, tables, navigation, feedback, overlays, and data display.
+- [Components](/brand/docs/interface/components/): The component set as live specimens — buttons, inputs, cards, tables, navigation, feedback, overlays, and data display.
 - [Dark mode](/brand/docs/interface/dark-mode/): Both modes are equally supported. The implementation rules that keep them in step.
 - [Code](/brand/docs/interface/code/): The always-dark code surface and the syntax theme, with measured contrast for every token.
 - [Icons](/brand/docs/interface/icons/): Lucide as the icon library, and how icons are sized and coloured.

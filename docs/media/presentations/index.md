@@ -21,6 +21,42 @@ Six slide types cover most decks:
 | Code showcase | Code on the always-dark surface |
 | CTA closer | The one thing you want the audience to do |
 
+<div class="pj-demo"><div class="pj-demo__label">Core slide types — 16:10</div>
+  <div class="pj-demo__body pj-demo__body--stack">
+    
+<div class="pj-slides-grid">
+  <div class="pj-slide pj-slide--title">
+    <div class="pj-slide__h">Redesigning work</div>
+    <div class="pj-slide__sub">Cloud · Agile · Agentic AI</div>
+    <div class="pj-slide__sub" style="margin-top:.25rem">projectious.work</div>
+  </div>
+  <div class="pj-slide pj-slide--statement"><div class="pj-slide__h">Bad software is a decision, not a constraint.</div></div>
+  <div class="pj-slide pj-slide--content">
+    <div class="pj-slide__h">The agent-first approach</div>
+    <div style="display:flex;gap:4px;margin-top:6px">
+      <span class="pj-badge" style="flex:1;justify-content:center">Define</span>
+      <span class="pj-badge pj-badge--accent" style="flex:1;justify-content:center">Build</span>
+      <span class="pj-badge" style="flex:1;justify-content:center">Deploy</span>
+    </div>
+  </div>
+  <div class="pj-slide pj-slide--content" style="justify-content:center">
+    <div style="font-size:.8125rem;font-style:italic;color:var(--pj-text-muted)">"We run what we recommend."</div>
+  </div>
+  <div class="pj-slide pj-slide--content" style="padding:0;overflow:hidden">
+    <div class="pj-terminal" style="border:0;border-radius:0;height:100%;font-size:.5625rem;line-height:1.6">
+      <span class="pj-terminal__prompt">// pipeline</span><br>createPipeline({<br>&nbsp;&nbsp;policy: <span class="pj-terminal__accent">"strict"</span><br>});
+    </div>
+  </div>
+  <div class="pj-slide pj-slide--title" style="justify-content:center;align-items:center;text-align:center">
+    <div class="pj-slide__h">Let's talk</div>
+    <div class="pj-slide__sub">projectious.work</div>
+  </div>
+</div>
+
+  </div>
+</div>
+
+
 ## Rules
 
 - 16:10 aspect ratio.
