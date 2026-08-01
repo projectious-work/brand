@@ -59,6 +59,7 @@ Section pages:
 - [Foundations](/brand/docs/foundations/): The primitives — colour, typography, spacing, shape, and motion. Everything else composes from these.
 - [Logo](/brand/docs/logo/): The mark, the four lockups, and the rules that keep them legible.
 - [Interface](/brand/docs/interface/): The foundations applied to screens — components, code surfaces, dark mode, icons, and forms.
+- [Themes](/brand/docs/themes/): Configuration of theme framworks for usage with the projectious.work brand system
 - [Portfolio presentation](/brand/docs/portfolio/): Truthful status, social-preview, diagram, and demo patterns.
 - [Media](/brand/docs/media/): Motion, audio, video, photography, and presentation guidance.
 - [Collateral](/brand/docs/collateral/): Artefacts that leave the product — cards, signatures, and social imagery.
