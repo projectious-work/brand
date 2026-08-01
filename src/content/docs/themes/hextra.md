@@ -12,6 +12,11 @@ point. Use its quiet, task-focused reading model—similar in spirit to
 [Porter](https://porter.sh/)—while retaining projectious.work typography,
 colour, assets, and interaction rules.
 
+Start with the shared [implementation contract]({{< relref
+"implementation-contract" >}}), then use the
+[Hextra specimen]({{< relref "hextra-specimen" >}}) as the comparable visual
+fixture when reviewing the implemented Hextra site.
+
 ## What conformant looks like
 
 The reading column should stay calm: clear heading hierarchy, an unobtrusive

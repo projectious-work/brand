@@ -20,6 +20,11 @@ Choose the page for the theme actually used by the site:
 - [Hugo/Hextra]({{< relref "hextra" >}}) — a Hugo theme with a compact,
   content-led shell and a custom-CSS extension point.
 
+Read the [implementation contract]({{< relref "implementation-contract" >}})
+before either theme guide. It identifies the canonical brand inputs, the
+allowed customization boundary, and the evidence required before a branded
+theme can be approved.
+
 ## Non-negotiable rules
 
 1. Treat `brand/tokens/` as the source of values. Map semantic roles to a
@@ -57,3 +62,14 @@ confidence, and card-led discovery of [Kubeflow](https://www.kubeflow.org/).
 The Hextra guidance takes inspiration from the restrained documentation shell
 and task-focused reading experience of [Porter](https://porter.sh/). These are
 layout references only: use projectious.work assets, copy, and tokens.
+
+## Rendered specimens
+
+The following pages are review fixtures, not generic mood boards. They show
+the content hierarchy, action treatment, cards, callouts, code, and status
+states a theme must render correctly:
+
+- [Docsy specimen]({{< relref "docsy-specimen" >}}) — a confident,
+  card-led technical page in the current Docsy site.
+- [Hextra specimen]({{< relref "hextra-specimen" >}}) — the equivalent
+  compact, content-led page to implement in a Hextra site.

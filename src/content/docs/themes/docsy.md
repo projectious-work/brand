@@ -10,6 +10,11 @@ description: A complete, upgrade-safe recipe for rendering Docsy with the
 theme. Its documented project SCSS files are the supported customization seam;
 this is where the brand belongs. Do not edit `themes/docsy/`.
 
+Start with the shared [implementation contract]({{< relref
+"implementation-contract" >}}), then use the rendered
+[Docsy specimen]({{< relref "docsy-specimen" >}}) as the visual and
+accessibility review fixture for this configuration.
+
 ## What conformant looks like
 
 Use a confident technical shell: a compact dark navbar, a clear page title,
