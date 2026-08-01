@@ -122,6 +122,10 @@ cd brand
 ./scripts/deploy-docs.sh    # build and push to the gh-pages branch
 ```
 
+When working in the development container, start the watcher with
+`./scripts/serve-docs.sh --bind 0.0.0.0`. The Compose override publishes its
+port only at `http://localhost:1313/` on the host.
+
 **There is no CI.** No GitHub Actions, no workflows. Builds, checks, and
 deployments all run locally and are pushed to the `gh-pages` branch, which
 GitHub Pages serves from its root. `scripts/verify.sh` is what "the checks
