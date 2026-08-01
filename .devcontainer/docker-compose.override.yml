@@ -15,7 +15,12 @@
 #       ports:
 #         - "5432:5432"
 #
-services: {}
+
+services:
+  brand:
+    ports:
+      - "127.0.0.1:1313:1313"
+
 #
 # Example — add depends_on to the main service:
 #
