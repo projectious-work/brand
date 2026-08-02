@@ -1,0 +1,322 @@
+/* =============================================================================
+   projectious.work brand — Hextra adapter
+   =============================================================================
+   The Hextra half of the adapter documented in
+   src/content/docs/themes/hugo.md. The token block below is byte-for-byte the
+   one in examples/hugo-docsy/assets/scss/_styles_project.scss; only the
+   selectors differ. Targets Hextra v0.10.0.
+
+   Canonical values: brand/tokens/tokens.json.
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap");
+
+/* midnight-9 #1d3352 expressed as HSL, so Hextra's derived --color-primary-*
+   ramp stays in the brand's hue rather than its default azure. */
+:root {
+  --primary-hue: 214deg;
+  --primary-saturation: 47%;
+  --primary-lightness: 22%;
+  --hextra-max-page-width: 90rem;
+  --hextra-max-navbar-width: 90rem;
+  --hextra-max-footer-width: 90rem;
+}
+
+/* Required: Hextra re-declares all three under .dark. Without this block, dark
+   mode reverts to stock Hextra blue on the active sidebar item. */
+html.dark {
+  --primary-hue: 214deg;
+  --primary-saturation: 47%;
+  --primary-lightness: 62%;
+}
+
+@layer theme {
+  :root {
+    --hx-default-font-family: "Source Sans 3", system-ui, sans-serif;
+    --hx-default-mono-font-family: "IBM Plex Mono", ui-monospace, monospace;
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   The shared semantic layer
+   -------------------------------------------------------------------------- */
+:root {
+  --pj-canvas: #f8f9fb;
+  --pj-surface: #ffffff;
+  --pj-surface-hover: #e2e9f2;
+  --pj-text: #142438;
+  --pj-text-secondary: #5c6f82;
+  --pj-heading: #1d3352;
+  --pj-link: #3a5a82;
+  --pj-link-hover: #c04424;
+  --pj-nav-active-bg: #d3deec;
+  --pj-nav-active-text: #1d3352;
+  --pj-border: #cdd0d5;
+  --pj-border-strong: #546a82;
+  --pj-focus: #cc4528;
+  --pj-info-bg: #e2e9f2;      --pj-info-border: #7490b2;
+  --pj-success-bg: #d1ebe0;   --pj-success-border: #2f7d65;
+  --pj-warning-bg: #f5ecd0;   --pj-warning-border: #8b6508;
+  --pj-danger-bg: #f9e3e1;    --pj-danger-border: #a8261c;
+  --pj-navbar: rgba(248, 249, 251, 0.85);
+  --pj-footer: #f0f3f8;
+
+  /* Mode-independent. */
+  --pj-action: #cc4528;
+  --pj-action-hover: #b84228;
+  --pj-action-label: #ffffff;
+  --pj-code: #0e1720;
+  --pj-code-text: #c5daf0;
+  --pj-code-chrome: #131e2b;
+}
+
+html.dark {
+  --pj-canvas: #0e1720;
+  --pj-surface: #131e2b;
+  --pj-surface-hover: #1a2b3e;
+  --pj-text: #c5daf0;
+  --pj-text-secondary: #97a8b8;
+  --pj-heading: #c5daf0;
+  --pj-link: #8aacc8;
+  --pj-link-hover: #ea7558;
+  --pj-nav-active-bg: #20354d;
+  --pj-nav-active-text: #c5daf0;
+  --pj-border: #263f5a;
+  --pj-border-strong: #4d7098;
+  --pj-focus: #f09878;
+  --pj-info-bg: #1a2b3e;      --pj-info-border: #4d7098;
+  --pj-success-bg: #18382d;   --pj-success-border: #6cc090;
+  --pj-warning-bg: #3d1e13;   --pj-warning-border: #e0a92a;
+  --pj-danger-bg: #3a1d20;    --pj-danger-border: #f08b80;
+  --pj-navbar: rgba(14, 23, 32, 0.85);
+  --pj-footer: #131e2b;
+}
+
+/* -----------------------------------------------------------------------------
+   Shell — navbar, sidebar and TOC all sit on the canvas; a hairline and
+   whitespace do the separating.
+   -------------------------------------------------------------------------- */
+body {
+  background: var(--pj-canvas);
+  color: var(--pj-text);
+}
+
+.hextra-nav-container {
+  background: var(--pj-navbar);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--pj-border);
+}
+
+.hextra-sidebar-container,
+.hextra-toc {
+  background: var(--pj-canvas);
+}
+
+.hextra-footer {
+  background: var(--pj-footer);
+  color: #c5daf0;
+}
+.hextra-footer a { color: #8aacc8; }
+
+.content h1,
+.content h2,
+.content h3,
+.content h4 {
+  color: var(--pj-heading);
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  letter-spacing: -0.3px;
+}
+
+.content,
+.content p,
+.content li { color: var(--pj-text); }
+
+.content a { color: var(--pj-link); }
+.content a:hover,
+.content a:focus-visible { color: var(--pj-link-hover); }
+
+/* -----------------------------------------------------------------------------
+   Navigation — quiet at rest, tinted pill when current, plus a left marker so
+   the current item is not signalled by colour alone.
+   -------------------------------------------------------------------------- */
+.hextra-sidebar-container a,
+.hextra-toc a { color: var(--pj-text-secondary); }
+
+.hextra-sidebar-container a:hover,
+.hextra-toc a:hover {
+  background: var(--pj-surface-hover);
+  color: var(--pj-heading);
+}
+
+/* Hextra marks these with utility classes in its markup, which always outrank a
+   stylesheet selector — hence !important on these three groups only. */
+/* The marker is drawn inside the link's own left padding, so the padding goes
+   on every sidebar link rather than only the active one — pad just the active
+   item and the label shifts sideways as you navigate. */
+.hextra-sidebar-container a {
+  padding-left: 0.625rem;
+  padding-right: 0.5rem;
+  border-radius: 6px;
+}
+
+.hextra-sidebar-active-item {
+  background: var(--pj-nav-active-bg) !important;
+  color: var(--pj-nav-active-text) !important;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: inset 2px 0 0 var(--pj-action);
+}
+
+/* The table of contents uses a left border rather than an inset shadow. A
+   border is laid out, so the 16px left padding is measured from it and the
+   accent can never end up against the first glyph — an inset shadow paints over
+   the padding box and needs that clearance arranged by hand. */
+.hextra-toc a.hextra-toc-active {
+  background: var(--pj-surface-hover) !important;
+  color: var(--pj-nav-active-text) !important;
+  font-weight: 600;
+  border-left: 2px solid var(--pj-action);
+  padding-left: 1rem;
+  border-radius: 0 6px 6px 0;
+}
+
+/* -----------------------------------------------------------------------------
+   Section rule
+   -------------------------------------------------------------------------- */
+/* The one structural job the accent is given. The divider stays quiet; a short
+   accent lead-in marks where each section starts. See the shared layer. */
+.content h2 {
+  border-bottom: 1px solid var(--pj-border);
+  padding-bottom: 0.375rem;
+  position: relative;
+}
+
+.content h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--pj-action);
+}
+
+/* -----------------------------------------------------------------------------
+   Components
+   -------------------------------------------------------------------------- */
+.hextra-card,
+.hextra-feature-card {
+  background: var(--pj-surface);
+  border-color: var(--pj-border);
+  border-radius: 9px;
+}
+.hextra-card:hover { background: var(--pj-surface-hover); }
+
+input,
+textarea,
+select,
+.search-input {
+  background: var(--pj-surface);
+  border-color: var(--pj-border-strong);
+  color: var(--pj-text);
+}
+
+.pj-primary-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 40px;
+  padding: 0 16px;
+  border-radius: 6px;
+  background: var(--pj-action);
+  border: 1px solid var(--pj-action);
+  color: var(--pj-action-label);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 600;
+  text-decoration: none;
+}
+.pj-primary-action:hover,
+.pj-primary-action:focus-visible {
+  background: var(--pj-action-hover);
+  border-color: var(--pj-action-hover);
+  color: var(--pj-action-label);
+}
+
+:focus-visible {
+  outline: 2px solid var(--pj-focus);
+  outline-offset: 2px;
+}
+
+/* Code stays dark in both modes. Target the `pre`, not the wrapper: Hextra
+   tints the inner element and the wrapper's background never shows. */
+.hextra-code-block pre,
+.content pre {
+  background: var(--pj-code) !important;
+  color: var(--pj-code-text);
+  border-radius: 9px;
+}
+
+.hextra-code-block .hextra-code-filename {
+  background: var(--pj-code-chrome) !important;
+  color: #97a8b8 !important;
+}
+
+/* Hextra's built-in callout styles itself with Tailwind utilities and exposes
+   no stable class hook, so its tints cannot be rebound from here. The brand
+   callout is the `pj-callout` shortcode in layouts/_shortcodes/. */
+.pj-callout {
+  margin: 24px 0;
+  padding: 12px 16px;
+  border-left: 3px solid;
+  border-radius: 0 6px 6px 0;
+  color: var(--pj-text);
+}
+.pj-callout-title {
+  margin: 0 0 4px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
+.pj-callout-body > :first-child { margin-top: 0; }
+.pj-callout-body > :last-child { margin-bottom: 0; }
+
+.pj-callout-info    { background: var(--pj-info-bg);    border-color: var(--pj-info-border); }
+.pj-callout-success { background: var(--pj-success-bg); border-color: var(--pj-success-border); }
+.pj-callout-warning { background: var(--pj-warning-bg); border-color: var(--pj-warning-border); }
+.pj-callout-danger  { background: var(--pj-danger-bg);  border-color: var(--pj-danger-border); }
+
+/* -----------------------------------------------------------------------------
+   Brand components inside Hextra's prose container
+   -------------------------------------------------------------------------- */
+/* Hextra colours every link inside `.content`, and `.content a` (0,2,0) outranks
+   a single component class (0,1,0). Components that carry their own link colour
+   have to restate it here, or the theme repaints their labels — a blue label on
+   the accent fill, and blue links on the midnight navbar specimen. */
+.content a.pj-primary-action,
+.content a.pj-primary-action:hover,
+.content a.pj-primary-action:focus-visible {
+  color: var(--pj-action-label);
+}
+
+.content .pj-navbar a.pj-navbar__link { color: #97a8b8; }
+.content .pj-navbar a.pj-navbar__link--active { color: #c5daf0; }
+
+/* The specimens set their own type scale and spacing; Hextra's prose rules would
+   otherwise add margins inside the specimen frames. */
+.content .pj-demo :where(p, ul, ol) { margin: 0; }
+
+/* -----------------------------------------------------------------------------
+   Anchor landing position
+   -------------------------------------------------------------------------- */
+/* Hextra's navbar is sticky and 4rem tall, and its headings carry no
+   scroll-margin, so following a table-of-contents link lands the heading at
+   viewport top — underneath the navbar.
+   
+   That also breaks the scroll-spy: its IntersectionObserver watches a band that
+   starts 20px down the viewport (rootMargin "-20px 0px -80% 0px"), so a heading
+   parked at 0 never enters it and the active marker stays where it was. Landing
+   the heading below the navbar puts it inside the band, which fixes the marker
+   and the obscured heading with one rule. */
+.content :is(h1, h2, h3, h4, h5, h6),
+.content [id] {
+  scroll-margin-top: 5rem;
+}

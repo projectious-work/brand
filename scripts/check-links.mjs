@@ -61,9 +61,17 @@ const ATTR = /(?:href|src)=(?:"([^"]*)"|'([^']*)'|([^\s>]+))/gi;
 for (const file of files) {
   // Script and style bodies are not markup; inline JS that builds URLs by
   // concatenation would otherwise be misread as an href.
+  //
+  // Code blocks are not markup either. A documentation page that shows an HTML
+  // example renders it as escaped, syntax-highlighted text, and the highlighter
+  // wraps each token in its own <span> — so `href="#deploy"` inside a sample
+  // becomes `href="&#34;<span class=ni>#deploy</span>` to a regex. Those are
+  // printed examples, not links, and must not be resolved against public/.
   const html = readFileSync(file, "utf8")
     .replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi, "")
-    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "");
+    .replace(/<style\b[^>]*>[\s\S]*?<\/style>/gi, "")
+    .replace(/<pre\b[^>]*>[\s\S]*?<\/pre>/gi, "")
+    .replace(/<code\b[^>]*>[\s\S]*?<\/code>/gi, "");
   for (const m of html.matchAll(ATTR)) {
     const url = (m[1] ?? m[2] ?? m[3] ?? "").trim();
     if (!url) continue;

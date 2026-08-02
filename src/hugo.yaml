@@ -1,5 +1,5 @@
 baseURL: "https://projectious-work.github.io/brand/"
-title: projectious.work Brand
+title: projectious.work brand
 description: The brand and design system for projectious.work — colour, type, logo, components, and usage terms.
 theme: [docsy]
 enableRobotsTXT: true
@@ -47,7 +47,7 @@ params:
       url: "https://projectious-work.github.io/brand/"
   ui:
     navbar_logo: true
-    navbar_theme: dark
+    navbar_theme: light
     showLightDarkModeMenu: true
     sidebar_menu_compact: true
     sidebar_menu_foldable: true
@@ -64,15 +64,6 @@ params:
     authors: "Projectious"
     from_year: 2026
 
-menu:
-  main:
-    - name: Documentation
-      weight: 10
-      url: "/docs/"
-    - name: GitHub
-      weight: 20
-      url: "https://github.com/projectious-work/brand"
-      pre: "<i class='fa-brands fa-github' aria-hidden='true'></i>"
 
 module:
   replacements:

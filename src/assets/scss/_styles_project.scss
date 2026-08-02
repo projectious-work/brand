@@ -9,100 +9,9 @@
 // -----------------------------------------------------------------------------
 // Palette as custom properties
 // -----------------------------------------------------------------------------
-// Exposed so shortcodes, layouts, and one-off page styles can reach brand steps
-// without importing SCSS. The swatch shortcodes on the colour page read these.
-:root,
-[data-bs-theme="light"] {
-  --pj-midnight-1: #{$midnight-1};
-  --pj-midnight-2: #{$midnight-2};
-  --pj-midnight-3: #{$midnight-3};
-  --pj-midnight-6: #{$midnight-6};
-  --pj-midnight-7: #{$midnight-7};
-  --pj-midnight-9: #{$midnight-9};
-  --pj-midnight-11: #{$midnight-11};
-  --pj-midnight-12: #{$midnight-12};
-
-  --pj-orange-1: #{$orange-1};
-  --pj-orange-2: #{$orange-2};
-  --pj-orange-3: #{$orange-3};
-  --pj-orange-9: #{$orange-9};
-  --pj-orange-10: #{$orange-10};
-  --pj-orange-11: #{$orange-11};
-
-  --pj-slate-2: #{$slate-2};
-  --pj-slate-4: #{$slate-4};
-  --pj-slate-7: #{$slate-7};
-  --pj-slate-8: #{$slate-8};
-  --pj-slate-9: #{$slate-9};
-  --pj-slate-11: #{$slate-11};
-  --pj-slate-12: #{$slate-12};
-
-  --pj-surface: #ffffff;
-  --pj-surface-subtle: #{$midnight-1};
-  --pj-border: #{$slate-4};
-  --pj-text-muted: #{$slate-9};
-
-  // Motion (brand/tokens/variables.css)
-  --pj-duration-micro: 100ms;
-  --pj-duration-standard: 200ms;
-  --pj-duration-expand: 300ms;
-  --pj-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
-  --pj-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
-
-  // Semantic colours, light mode.
-  --pj-success: #{$success-fg};
-  --pj-warning: #{$warning-fg};
-  --pj-danger: #{$danger};
-  --pj-info: #{$info};
-
-  // The mark renders on light surfaces here.
-  --pj-mark-shell: #{$midnight-9};
-  --pj-mark-cut: #ffffff;
-  --pj-mark-bud: #{$orange-9};
-}
-
-[data-bs-theme="dark"] {
-  --pj-midnight-1: #{$midnight-dark-1};
-  --pj-midnight-2: #{$midnight-dark-2};
-  --pj-midnight-3: #{$midnight-dark-3};
-  --pj-midnight-6: #{$midnight-dark-6};
-  --pj-midnight-7: #{$midnight-dark-7};
-  --pj-midnight-9: #{$midnight-dark-9};
-  --pj-midnight-11: #{$midnight-dark-11};
-  --pj-midnight-12: #{$midnight-dark-12};
-
-  --pj-orange-1: #{$orange-dark-1};
-  --pj-orange-2: #{$orange-dark-2};
-  --pj-orange-3: #{$orange-dark-3};
-  --pj-orange-9: #{$orange-dark-9};
-  --pj-orange-10: #{$orange-dark-10};
-  --pj-orange-11: #{$orange-dark-11};
-
-  --pj-slate-2: #{$slate-dark-2};
-  --pj-slate-4: #{$slate-dark-4};
-  --pj-slate-7: #{$slate-dark-7};
-  --pj-slate-8: #{$slate-dark-8};
-  --pj-slate-9: #{$slate-dark-9};
-  --pj-slate-11: #{$slate-dark-11};
-  --pj-slate-12: #{$slate-dark-12};
-
-  --pj-surface: #{$midnight-dark-2};
-  --pj-surface-subtle: #{$midnight-dark-3};
-  --pj-border: rgba(255, 255, 255, 0.08);
-  --pj-text-muted: #{$slate-dark-11};
-
-  --pj-mark-shell: #6b8db2;
-  --pj-mark-cut: #{$brand-primary-dark};
-  --pj-mark-bud: #{$orange-9};
-
-  // Semantic colours, dark mode. The light-mode values are tuned for dark text
-  // on tinted light backgrounds and fall to 2.6-3.7:1 as foregrounds on the
-  // dark app surface. See brand/html/projectious-digital-experience.html.
-  --pj-success: #{$success-dark};
-  --pj-warning: #{$warning-dark};
-  --pj-danger: #{$danger-dark};
-  --pj-info: #{$midnight-dark-11};
-}
+// Shared with examples/hugo-docsy and examples/hugo-hextra so all three sites
+// resolve the same token names to the same values. See _tokens.scss.
+@import "tokens";
 
 // -----------------------------------------------------------------------------
 // Typography scale
@@ -193,6 +102,38 @@ small, .small, figcaption, .td-page-meta {
   color: var(--pj-text-muted);
 }
 
+// -----------------------------------------------------------------------------
+// Section rule
+// -----------------------------------------------------------------------------
+// The one structural job the accent is given.
+//
+// A brand-coloured *hairline* was considered and rejected: the accent is the
+// emphasis colour, and a page whose every divider is orange has no emphasis
+// left for the single primary action it is supposed to mark. Orange also goes
+// muddy at hairline weight against both grounds — 3.87:1 on white, 4.67:1 on
+// midnight, which is loud as text and dirty as a 1px line.
+//
+// Instead the divider stays a quiet full-width rule and the accent appears as a
+// short lead-in segment at the start of it. On a long reference page that is a
+// genuine scanning aid: the eye catches the accent marks and reads them as the
+// section starts. It costs the accent nothing, because a rule is not an action.
+.td-content > h2 {
+  border-bottom: 1px solid var(--pj-border);
+  padding-bottom: 0.375rem;
+  margin-top: 2.5rem;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 2.5rem;
+    height: 2px;
+    background: var(--pj-orange-9);
+  }
+}
+
 // Documentation prose stays inside the brand's 1100px measure. The surrounding
 // Docsy chrome (sidebar + TOC) keeps the full viewport.
 .td-content {
@@ -205,26 +146,26 @@ small, .small, figcaption, .td-page-meta {
 }
 
 // -----------------------------------------------------------------------------
-// Navbar — midnight surface in both modes, accent rule beneath
+// Navbar — a light, quiet shell in light mode; dark mode remains dark.
 // -----------------------------------------------------------------------------
 .td-navbar {
-  background-color: $brand-primary-dark !important;
-  border-bottom: 3px solid $brand-accent;
-  box-shadow: none;
+  background-color: rgba($midnight-1, 0.88) !important;
+  border-bottom: 1px solid $slate-3;
+  box-shadow: 0 1px 0 rgba($midnight-9, 0.04);
+  backdrop-filter: blur(12px);
 
-  // Brand rule: no pure #fff as text -- midnight-12 from the dark scale.
   .nav-link,
   .navbar-brand,
   .navbar-brand__name {
     font-family: $headings-font-family;
     font-weight: 600;
-    color: $slate-dark-11; // 6.36:1 on the midnight navbar
+    color: $slate-11;
   }
 
   .navbar-brand__name {
     font-weight: 700;
     letter-spacing: -0.3px;
-    color: $midnight-dark-12;
+    color: $brand-primary;
   }
 
   .nav-link {
@@ -232,12 +173,12 @@ small, .small, figcaption, .td-page-meta {
 
     &:hover,
     &:focus {
-      color: $midnight-dark-12;
+      color: $midnight-12;
     }
 
     &.active {
-      color: $midnight-dark-12;
-      box-shadow: inset 0 -2px 0 $brand-accent;
+      color: $brand-primary;
+      box-shadow: inset 0 -2px 0 $brand-accent-solid;
     }
   }
 
@@ -247,11 +188,33 @@ small, .small, figcaption, .td-page-meta {
     width: 2.25rem;
   }
 
-  // On the midnight navbar the mark always uses its dark-surface variant.
+  .projectious-mark {
+    --pj-mark-shell: #{$midnight-9};
+    --pj-mark-cut: #ffffff;
+    --pj-mark-bud: #{$orange-9};
+  }
+}
+
+[data-bs-theme="dark"] .td-navbar {
+  background-color: rgba(14, 23, 32, 0.88) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+
+  .nav-link,
+  .navbar-brand,
+  .navbar-brand__name {
+    color: $slate-dark-11;
+  }
+
+  .navbar-brand__name,
+  .nav-link:hover,
+  .nav-link:focus,
+  .nav-link.active {
+    color: $midnight-dark-12;
+  }
+
   .projectious-mark {
     --pj-mark-shell: #6b8db2;
     --pj-mark-cut: #{$brand-primary-dark};
-    --pj-mark-bud: #{$orange-9};
   }
 }
 
@@ -261,24 +224,75 @@ small, .small, figcaption, .td-page-meta {
   &__bud { fill: var(--pj-mark-bud); }
 }
 
+// Keep the Documentation and Releases links right-aligned before the search.
+.td-navbar__main {
+  margin-left: auto;
+}
+
+.td-navbar__search {
+  margin-left: 0.75rem;
+}
+
+.td-navbar__utility {
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.25rem;
+  margin-left: 0.5rem;
+
+  .nav-item {
+    padding-inline-end: 0;
+  }
+
+  .td-navbar__light-dark-menu,
+  .td-navbar__github-menu {
+    min-width: 2.5rem;
+  }
+
+  .td-navbar__icon-link {
+    align-items: center;
+    display: inline-flex;
+    justify-content: center;
+    min-height: 2.5rem;
+    min-width: 2.5rem;
+    padding-inline: 0.5rem;
+  }
+}
+
+.pj-color-chip {
+  background: var(--pj-chip);
+  border: 1px solid rgba(20, 36, 56, 0.22);
+  border-radius: 2px;
+  display: inline-block;
+  height: 0.85em;
+  margin-inline-end: 0.25rem;
+  vertical-align: -0.08em;
+  width: 0.85em;
+}
+
+.pj-color-chip--border {
+  background: transparent;
+  border-color: var(--pj-chip);
+}
+
+.pj-inline-color {
+  white-space: nowrap;
+}
+
+// The theme matrixes already contain explicit paired swatches. Hide only the
+// automatic chip in those cells so the global inline-code hook never doubles
+// their visual examples.
+td .pj-color-chip ~ .pj-inline-color .pj-color-chip {
+  display: none;
+}
+
 // -----------------------------------------------------------------------------
 // Code — always dark, in both colour modes
 // -----------------------------------------------------------------------------
 // Brand rule: "Code blocks are always dark regardless of mode."
 // Surface is midnight-2 from the dark scale; syntax colours come from the
 // digital-experience syntax theme.
-$pj-code-bg: $midnight-dark-2;
-$pj-code-keyword: $midnight-dark-11; // #8aacc8 -- 7.06:1
-$pj-code-string: $brand-accent-light; // #ea7558 -- 5.76:1
-$pj-code-identifier: $midnight-dark-12; // #c5daf0 -- 11.74:1
-$pj-code-operator: $slate-dark-11; // #97a8b8 -- 6.90:1
-
-// `code-comment` is a dedicated syntax token, not a scale step. Steps 8-10 are
-// border and solid-surface roles; only 11-12 are text. Comments are 13px text
-// and need 4.5:1, but slate-8 gives 3.02:1 on this surface and slate-11 is
-// already spoken for by operators. This value clears AA at 4.59:1 while
-// staying visibly dimmer than operators.
-$pj-code-comment: #72889d;
+// Syntax theme for the dark code surface, shared with the Hextra example.
+@import "syntax";
 
 // NOTE: do not repoint `--td-pre-bg` at the dark code surface. Docsy uses that
 // same variable for INLINE code —
@@ -305,63 +319,6 @@ body {
   }
 }
 
-.highlight,
-.chroma {
-  background-color: $pj-code-bg;
-  border-radius: $border-radius;
-  color: $pj-code-identifier;
-
-  code {
-    background-color: transparent;
-    color: inherit;
-  }
-
-  // Comments
-  .c, .ch, .cm, .cp, .cpf, .c1, .cs {
-    color: $pj-code-comment;
-    font-style: italic;
-  }
-
-  // Keywords
-  .k, .kc, .kd, .kn, .kp, .kr, .kt, .nt, .na {
-    color: $pj-code-keyword;
-    font-weight: 500;
-  }
-
-  // Identifiers
-  .n, .nb, .nc, .nd, .ni, .ne, .nf, .nl, .nn, .nx,
-  .py, .nv, .no, .bp, .vc, .vg, .vi {
-    color: $pj-code-identifier;
-  }
-
-  // Strings
-  .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
-    color: $pj-code-string;
-  }
-
-  // Numbers
-  .m, .mb, .mf, .mh, .mi, .il, .mo {
-    color: $orange-dark-11;
-  }
-
-  // Operators and punctuation
-  .o, .ow, .p {
-    color: $pj-code-operator;
-  }
-
-  // Generic / diff / shell-session tokens
-  .gp { color: $pj-code-comment; }
-  .go { color: $pj-code-operator; }
-  .gd { color: $orange-dark-11; }
-  .gi { color: #7fc0aa; }
-  .ge { font-style: italic; }
-  .gs { font-weight: 600; }
-  .err { color: $orange-dark-10; }
-
-  // Line numbers
-  .ln, .lnt { color: $pj-code-comment; }
-  .hl { background-color: rgba(138, 172, 200, 0.12); }
-}
 
 // Code *inside* a pre sits on the always-dark surface, so it must take the
 // surface's own foreground. Bootstrap sets `code { color: var(--bs-code-color) }`
@@ -405,11 +362,9 @@ pre a code {
 
 // Inline code on a dark surface (covers, dark boxes, footer) must not keep the
 // light-surface treatment — restate both halves of the pair.
-.td-cover-block,
 .td-overlay--dark,
 .td-box--dark,
-.td-box--primary,
-.td-footer {
+.td-box--primary {
   :not(pre) > code {
     background-color: rgba(255, 255, 255, 0.1);
     color: $orange-dark-11;
@@ -503,24 +458,23 @@ kbd {
 
 .td-cta-buttons .btn-secondary {
   background-color: transparent;
-  border-color: rgba(255, 255, 255, 0.55);
-  color: #ffffff;
+  border-color: rgba($midnight-9, 0.45);
+  color: $midnight-11;
 
   &:hover,
   &:focus {
-    background-color: rgba(255, 255, 255, 0.12);
-    border-color: #ffffff;
+    background-color: $midnight-1;
+    border-color: $midnight-9;
+    color: $midnight-12;
   }
 }
 
 // Focus ring — 2px, midnight at 15% alpha (brand form rule).
+// The ring sits outside the control, so it never lands on the accent fill of a
+// primary action. Values come from --pj-focus in the shared semantic layer.
 :focus-visible {
-  outline: 2px solid rgba($midnight-9, 0.6);
+  outline: 2px solid var(--pj-focus);
   outline-offset: 2px;
-}
-
-[data-bs-theme="dark"] :focus-visible {
-  outline-color: rgba($midnight-dark-11, 0.8);
 }
 
 // -----------------------------------------------------------------------------
@@ -534,8 +488,7 @@ kbd {
 .td-cover-block,
 .td-overlay--dark,
 .td-box--dark,
-.td-box--primary,
-.td-footer {
+.td-box--primary {
   --bs-body-color: #{$midnight-dark-12};
   --bs-heading-color: #{$midnight-dark-12};
   --bs-emphasis-color: #{$midnight-dark-12};
@@ -568,12 +521,15 @@ kbd {
 // -----------------------------------------------------------------------------
 // Text on permanently-light surfaces
 // -----------------------------------------------------------------------------
-// The mirror of the dark-surface rule above. `.td-box--light` and
-// `.td-box--white` keep a light background in BOTH colour modes, so in dark
-// mode the inherited dark-mode text colours land light-on-light — midnight-12
-// dark (#c5daf0) on #f8f9fb is 1.36:1. These blocks must restate the
-// light-mode text colours regardless of theme.
-.td-box--light {
+// The mirror of the dark-surface rule above. `.td-box--light` keeps a light
+// background in light mode, so it must restate the light-mode text colours —
+// otherwise the section inherits whatever the page is using. Its dark-mode
+// counterpart is defined further down.
+//
+// `.td-box--primary` is deliberately NOT in this list: it is the navy band, and
+// it takes the dark-surface text colours in both modes.
+[data-bs-theme="light"] .td-box--light,
+:root:not([data-bs-theme="dark"]) .td-box--light {
   --bs-body-color: #{$midnight-12};
   --bs-heading-color: #{$brand-primary};
   --bs-emphasis-color: #{$midnight-12};
@@ -618,9 +574,76 @@ kbd {
 // Landing page blocks
 // -----------------------------------------------------------------------------
 .td-cover-block {
+  background-color: $midnight-1; // the app background, per step 1
+  border-bottom: 1px solid $slate-3;
+
+  // Docsy's `td-overlay--dark` scrim exists to darken a background photograph
+  // so white cover text stays readable on it. This cover carries no image, so
+  // the scrim only washes the surface grey — rgba(19,36,64,.3) over white.
+  // Both modes paint their own cover background below; neither wants a scrim.
+  &.td-overlay::after {
+    background-color: transparent;
+  }
+
+  --bs-body-color: #{$midnight-12};
+  --bs-heading-color: #{$brand-primary};
+  --bs-emphasis-color: #{$midnight-12};
+  --bs-secondary-color: #{$slate-11};
+  --bs-link-color: #{$midnight-11};
+  --bs-link-hover-color: #{$orange-10};
+  color: $midnight-12;
+
+  h1, h2, h3, h4, h5, h6,
+  .td-cover__title,
+  .display-1, .display-2, .display-3,
+  .display-4, .display-5, .display-6 {
+    color: $brand-primary;
+  }
+
+  .lead {
+    color: $slate-11;
+  }
+}
+
+// The landing page deliberately changes surface by colour mode: a calm white
+// canvas in light mode, and the established midnight-blue foundation in dark
+// mode. Keep the complete text and CTA treatment together so later light-mode
+// declarations cannot leak into the dark hero.
+[data-bs-theme="dark"] .td-cover-block {
   background:
-    linear-gradient(135deg, rgba(19, 36, 64, 0.97), rgba(29, 51, 82, 0.92)),
-    radial-gradient(circle at 88% 18%, rgba(224, 82, 50, 0.26), transparent 36%);
+    radial-gradient(circle at 88% 18%, rgba($orange-dark-9, 0.18), transparent 34%),
+    linear-gradient(135deg, $brand-primary-dark, $midnight-dark-2);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+  --bs-body-color: #{$midnight-dark-12};
+  --bs-heading-color: #{$midnight-dark-12};
+  --bs-emphasis-color: #{$midnight-dark-12};
+  --bs-secondary-color: #{$slate-dark-11};
+  --bs-link-color: #{$midnight-dark-11};
+  --bs-link-hover-color: #{$orange-dark-10};
+  color: $midnight-dark-12;
+
+  h1, h2, h3, h4, h5, h6,
+  .td-cover__title,
+  .display-1, .display-2, .display-3,
+  .display-4, .display-5, .display-6 {
+    color: $midnight-dark-12;
+  }
+
+  .lead {
+    color: $slate-dark-11;
+  }
+
+  .td-cta-buttons .btn-secondary {
+    border-color: rgba(255, 255, 255, 0.55);
+    color: #ffffff;
+
+    &:hover,
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.12);
+      border-color: #ffffff;
+      color: #ffffff;
+    }
+  }
 }
 
 .td-cover__title,
@@ -629,8 +652,13 @@ kbd {
   margin-inline: auto;
 }
 
+// The primary band is the one place the landing page states the brand colour at
+// full strength, so it carries midnight-9 in BOTH modes. Against white it is a
+// 12.75:1 block; against the dark canvas it still separates at 1.42:1, which is
+// what stops dark mode reading as one flat field.
 .td-box--primary {
   background-color: $brand-primary;
+  border: none;
 }
 
 // Light surface -- inherits the page's normal text colours.
@@ -645,6 +673,42 @@ kbd {
   box-shadow: $box-shadow;
 }
 
+// -----------------------------------------------------------------------------
+// Dark-mode section bands
+// -----------------------------------------------------------------------------
+// Dark mode is navy-led: midnight-dark-1 is the canvas and the primary band
+// states midnight-9 at full strength. The supporting bands take the *slate*
+// ramp rather than another midnight step, because midnight-dark-1/2/3 sit
+// within a few percent lightness of each other — three navies that close read
+// as one flat field, which is what made the page feel colourless rather than
+// navy. A neutral slate band separates from navy by material, not by lightness
+// alone, and leaves the navy as the only saturated surface on the page.
+[data-bs-theme="dark"] {
+  .td-box--light {
+    background-color: $midnight-dark-2; // subtle bg — the ramp's own step 2
+    color: $midnight-dark-12;
+
+    h1, h2, h3, h4, h5, h6,
+    .h1, .h2, .h3, .h4, .h5, .h6 { color: $midnight-dark-12; }
+
+    p, li, dt, dd { color: $midnight-dark-12; } // 10.66:1
+    .lead { color: $slate-dark-11; } // 6.26:1
+
+    a:not(.btn) {
+      color: $midnight-dark-11; // 6.41:1
+
+      &:hover,
+      &:focus { color: $orange-dark-10; }
+    }
+
+    :not(pre) > code {
+      background-color: rgba(255, 255, 255, 0.06);
+      color: $orange-dark-11;
+    }
+  }
+
+}
+
 // Feature icons pick up the accent.
 .td-box .h4 > i,
 .td-box .feature-icon {
@@ -657,20 +721,44 @@ kbd {
 .td-sidebar-nav {
   font-size: 0.9375rem;
 
+  // Docsy ships these links as `padding: 0 0 6px` with Bootstrap's `.ps-0`, so
+  // there is no left padding for the current-item marker to sit in and no top
+  // padding to balance the 6px below. A tinted pill drawn over that hugs the
+  // cap-height at the top and the marker lands flush against the first glyph.
+  //
+  // The padding goes on EVERY link, not just the active one: pad only the
+  // active item and the label shifts sideways as you navigate. The 3px/3px
+  // vertical pair reproduces the row height Docsy already had (0 + 24.75 + 6),
+  // so the sidebar rhythm is unchanged — the text is simply centred in it now.
+  //
+  // No negative margin: each `li` reserves a 22.5px left gutter that the fold
+  // arrow is drawn into (`label::before`, absolutely positioned). Pulling the
+  // pill back into that gutter puts the accent marker straight through the
+  // arrow on every section that has children. The pill therefore starts at the
+  // list item's content edge, which leaves the fold control outside it — where
+  // a control that is not part of the link belongs.
   a {
     color: var(--pj-slate-11);
-    border-radius: $border-radius-sm;
-    transition: color var(--pj-duration-micro) var(--pj-ease-out);
+    display: block;
+    padding: 3px 0.5rem !important; // !important beats Bootstrap's `.ps-0`
+    border-radius: $border-radius;
+    transition: color var(--pj-duration-micro) var(--pj-ease-out),
+      background-color var(--pj-duration-micro) var(--pj-ease-out);
 
     &:hover {
       color: var(--pj-orange-10);
     }
   }
 
+  // The current page needs a cue that survives greyscale, so it takes the tinted
+  // pill and an inset accent marker rather than a colour change alone. The
+  // marker is drawn inside the 10px left padding, clear of the label.
   .td-sidebar-link.active,
   a.active {
     font-weight: 600;
-    color: var(--pj-midnight-11);
+    color: var(--pj-nav-active-text);
+    background: var(--pj-nav-active-bg);
+    box-shadow: inset 2px 0 0 var(--pj-orange-9);
   }
 }
 
@@ -690,9 +778,18 @@ kbd {
   // Docsy dims the active entry to --bs-primary-text-emphasis (3.83:1 on the
   // dark surface). The active item is the one that most needs to be readable.
   // Docsy's selector is (0,3,1), so match it rather than use `.td-toc a.active`.
+  //
+  // The marker is a left border rather than an inset shadow, because a border
+  // is laid out: the 16px left padding is measured from it, so the accent can
+  // never end up against the first glyph. An inset shadow is painted over the
+  // padding box and needs that clearance arranged by hand.
   #TableOfContents a.active {
-    color: var(--pj-midnight-11);
+    color: var(--pj-nav-active-text);
     font-weight: 600;
+    background: var(--pj-surface-subtle);
+    border-left: 2px solid var(--pj-orange-9);
+    padding-left: 1rem;
+    border-radius: 0 $border-radius $border-radius 0;
   }
 
   #TableOfContents > ul > li > a,
@@ -711,16 +808,37 @@ kbd {
   }
 }
 
+// The footer is the page's quiet close, not a statement. It was a saturated
+// navy slab — a fourth blue on a page that already had three — which made the
+// heaviest block on the page the one carrying the least information. It now
+// takes the same subtle band as any other supporting section, separated by a
+// divider rather than by weight.
 .td-footer {
-  background-color: $brand-primary-dark;
+  background-color: var(--pj-band);
+  border-top: 1px solid var(--pj-border);
+  color: var(--pj-body-fg);
 
-  // Text colours come from the dark-surface rule above.
-  a {
-    color: $midnight-dark-12;
+  --bs-body-color: var(--pj-body-fg);
+  --bs-heading-color: var(--pj-heading-fg);
+  --bs-emphasis-color: var(--pj-body-fg);
+  --bs-secondary-color: var(--pj-muted-fg);
 
-    &:hover {
-      color: $orange-dark-10;
-    }
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6,
+  p, li, dt, dd { color: var(--pj-body-fg); }
+
+  .lead { color: var(--pj-muted-fg); }
+
+  a:not(.btn) {
+    color: var(--pj-link-fg);
+
+    &:hover,
+    &:focus { color: var(--pj-orange-10); }
+  }
+
+  :not(pre) > code {
+    background-color: var(--pj-midnight-2);
+    color: var(--pj-orange-11);
   }
 }
 

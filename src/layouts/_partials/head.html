@@ -81,6 +81,9 @@
 
 {{ template "algolia/head" . -}}
 
+{{ $colorSwatches := resources.Get "js/color-swatches.js" -}}
+<script defer src="{{ $colorSwatches.RelPermalink }}"></script>
+
 {{ partial "hooks/head-end.html" . -}}
 
 {{/* To comply with GDPR, cookie consent scripts places in head-end must execute before Google Analytics is enabled */ -}}

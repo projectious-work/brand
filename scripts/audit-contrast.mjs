@@ -157,20 +157,32 @@ let checked = 0;
 // inline script, and dark-mode.js re-applies it after load. Setting the
 // attribute from the test therefore races the theme's own JS and yields
 // non-deterministic results. Instead seed localStorage before any page script
-// runs and let Docsy apply the theme itself, matching what a real user gets.
+// runs and let the theme apply it itself, matching what a real user gets.
+//
+// public/ also contains the two theme examples, which are separate Hugo sites.
+// Hextra stores its mode under `color-theme` and expresses it as a class on
+// <html> rather than a `data-bs-theme` attribute, so both keys are seeded and
+// either signal is accepted as proof the mode took effect.
 for (const theme of ["light", "dark"]) {
   const ctx = await browser.newContext({
     viewport: { width: 1280, height: 1000 },
     colorScheme: theme,
   });
   await ctx.addInitScript((t) => {
-    try { localStorage.setItem("td-color-theme", t); } catch {}
+    try {
+      localStorage.setItem("td-color-theme", t); // Docsy
+      localStorage.setItem("color-theme", t); // Hextra
+    } catch {}
   }, theme);
   const page = await ctx.newPage();
 
   for (const rel of pages) {
     await page.goto(`http://127.0.0.1:${PORT}${PREFIX}${rel}`, { waitUntil: "load" });
-    const applied = await page.getAttribute("html", "data-bs-theme");
+    const applied = await page.evaluate(() => {
+      const html = document.documentElement;
+      return html.getAttribute("data-bs-theme")
+        ?? (html.classList.contains("dark") ? "dark" : "light");
+    });
     if (applied !== theme) throw new Error(`theme not applied on ${rel}: wanted ${theme}, got ${applied}`);
     await page.evaluate(() => document.fonts.ready);
     const res = await page.evaluate(AUDIT);

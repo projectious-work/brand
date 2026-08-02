@@ -573,7 +573,8 @@ select.pj-input { cursor: pointer; }
   border-radius: $border-radius-sm;
 }
 
-[data-bs-theme="dark"] .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
+[data-bs-theme="dark"] .pj-tooltip,
+html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
 
 // -----------------------------------------------------------------------------
 // Data display
@@ -940,7 +941,9 @@ select.pj-input { cursor: pointer; }
 
 // Alert tints, mode-aware.
 :root,
-[data-bs-theme="light"] {
+:root,
+[data-bs-theme="light"],
+html.light {
   // Text on the tinted accent chip: the tint inverts between modes, so the
   // foreground must too (#a8391c is 5.15:1 on the light tint; orange-11 from
   // the dark scale is 7.6:1 on the dark tint).
@@ -951,7 +954,8 @@ select.pj-input { cursor: pointer; }
   --pj-alert-danger-bg: #fce8e8;
 }
 
-[data-bs-theme="dark"] {
+[data-bs-theme="dark"],
+html.dark {
   --pj-chip-accent-fg: #{$orange-dark-11};
   --pj-alert-info-bg: #{$midnight-dark-3};
   --pj-alert-success-bg: #16302a;

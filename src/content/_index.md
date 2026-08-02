@@ -1,20 +1,19 @@
 ---
-title: projectious.work Brand
+title: projectious.work brand
 description: The brand and design system for projectious.work — colour, type, logo, components, and usage terms.
 params:
   body_class: td-navbar-links-all-active
   ui:
-    navbar_theme: dark
+    navbar_theme: light
 ---
 
 {{% blocks/cover
-  title="A brand that documents itself."
+  title="projectious.work<br>brand documentation"
   image_anchor="top"
   height="full td-below-navbar"
 %}}
 
-Colour, typography, logo, and interface patterns for projectious.work — with the
-usage terms that go with them.
+Colour, typography, logo, and interface patterns for projectious.work.
 {.lead .display-6}
 
 <div class="td-cta-buttons my-5">
@@ -71,7 +70,7 @@ so you know what you may reuse before you reuse it.
 {{% blocks/section color="primary" type="row" %}}
 
 <div class="col-lg-8">
-<h2>Built to be borrowed from carefully</h2>
+<h2>Built to be used with care</h2>
 <p class="lead">The code and tokens are MIT. The brand marks are not. The documentation tells you which is which on every page, and the provenance inventory records the licence of every third-party dependency.</p>
 </div>
 <div class="col-lg-4 d-flex align-items-center justify-content-lg-end">
