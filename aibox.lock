@@ -1,13 +1,13 @@
 [aibox]
 cli_version = "0.28.19"
-synced_at = "2026-08-01T15:54:48.650127+00:00"
+synced_at = "2026-08-01T09:45:07.501963+00:00"
 
 [processkit]
 source = "https://github.com/projectious-work/processkit.git"
 version = "v0.28.5"
 src_path = "src"
 release_asset_sha256 = "18520c69c1e72587b59e135844527c6f6dcc440aecaf0fc2d74e9b8e776dca8c"
-installed_at = "2026-08-01T15:54:48.650127+00:00"
+installed_at = "2026-08-01T09:45:07.501963+00:00"
 processkit_install_hash = "v2:09508358a5e55519d51fb59a035135944902672af6fa2839142ea8ec848be036"
 
 [addons]
@@ -41,7 +41,7 @@ preview-archive = [
 preview-enhanced = ["rich"]
 
 [runtime_home]
-generated_at = "2026-08-01T15:58:59.334626+00:00"
+generated_at = "2026-08-01T09:45:07.634349+00:00"
 
 [runtime_home.files]
 ".asoundrc" = "f34609b11d315cd613cb5333b561032baec860faf4a7eccb28b5567ae72019af"
@@ -56,10 +56,10 @@ generated_at = "2026-08-01T15:58:59.334626+00:00"
 ".config/tmux/aibox-powerkit-overrides.tmux" = "040229b61c5b09cad7ff75563503c3c979f4a7f15cc1710f86220279ac903757"
 ".config/tmux/aibox-powerkit-theme.sh" = "1e9962667330caa979e56d55f75daa3cbfd234643fb77952cc65943a9fac5ec0"
 ".config/tmux/aibox-session.sh" = "69f8f54a25f1581d79439431591c97746e50407a958bb0655094980d1f188b47"
-".config/tmux/layouts/ai.sh" = "c63004aa2eb684b4e0c6c2ff0f7fb78cb0916d7eefe1c4e9a16ba46451f6e857"
-".config/tmux/layouts/cowork.sh" = "3331e48a806132cbf5ffb659d1558066d4a59a19273a284a7ae518a344abdd9e"
-".config/tmux/layouts/dev.sh" = "2c54e926e1a4fe7a1a58e93fa39fc801f0b7a456e24bd99ba3c85730e4320f81"
-".config/tmux/layouts/focus.sh" = "ea6d55354b055efbf76d2ec6b76f0411a50883fef7f39112fda903b3468ce4a4"
+".config/tmux/layouts/ai.sh" = "5e802b489fe74107a983d7c2f99930e3634548be8eaecb4eb16a8a6a0385a232"
+".config/tmux/layouts/cowork.sh" = "4910b53c72ce0fb74293e37683b48ae002b768b9f0d155edb100941ce8ea8cac"
+".config/tmux/layouts/dev.sh" = "93916f1ea97abc9a7d679e2fc1d3b798248b0dc4517e50ef70e270458a23e6ea"
+".config/tmux/layouts/focus.sh" = "3c6fd1c840ab90e0a34686928658faa8eb7e2e945066bf878d8418542628e169"
 ".config/tmux/tmux.conf" = "60e2d725b2b2f5df0e38b5c5b1566276a0c4a551586800627bbe045c243063bf"
 ".config/yazi/init.lua" = "eae04462c0b3bcbb486ee59aa9c2c9e9595680a0626997c942e5abb2ae5a48d7"
 ".config/yazi/keymap.toml" = "0b20be4e5f58d0af2ba72b8621e288ef2d6a7665a8a73c5fca5a172f83c6ebdd"

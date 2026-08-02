@@ -52,8 +52,8 @@ fi
 if [[ "${AIBOX_LAYOUT_MODE:-}" == "rebuild" ]]; then
   _create_first_window "files" "$(tool_or_shell yazi)"
 files_pane="$(tmux -S "$socket" display-message -p -t "$session:files" '#{pane_id}')"
-tmux -S "$socket" new-window -t "$session:" -n "codex" -c "$workspace" "$(tool_or_shell codex)"
 tmux -S "$socket" new-window -t "$session:" -n "claude" -c "$workspace" "$(tool_or_shell claude)"
+tmux -S "$socket" new-window -t "$session:" -n "codex" -c "$workspace" "$(tool_or_shell codex)"
 tmux -S "$socket" new-window -t "$session:" -n "shell" -c "$workspace" "bash"
 tmux -S "$socket" select-window -t "$session:files"
 
@@ -68,8 +68,8 @@ fi
 
 _create_first_window "files" "$(tool_or_shell yazi)"
 files_pane="$(tmux -S "$socket" display-message -p -t "$session:files" '#{pane_id}')"
-tmux -S "$socket" new-window -t "$session:" -n "codex" -c "$workspace" "$(tool_or_shell codex)"
 tmux -S "$socket" new-window -t "$session:" -n "claude" -c "$workspace" "$(tool_or_shell claude)"
+tmux -S "$socket" new-window -t "$session:" -n "codex" -c "$workspace" "$(tool_or_shell codex)"
 tmux -S "$socket" new-window -t "$session:" -n "shell" -c "$workspace" "bash"
 tmux -S "$socket" select-window -t "$session:files"
 exec tmux -S "$socket" -f "$config" attach-session -t "$session"

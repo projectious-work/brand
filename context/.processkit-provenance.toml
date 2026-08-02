@@ -5,7 +5,7 @@ schema_version = 1
 [install]
 processkit_version = "v0.28.5"
 processkit_source = "https://github.com/projectious-work/processkit.git"
-installed_at = "2026-08-01T15:54:48.650127+00:00"
+installed_at = "2026-08-01T09:45:07.501963+00:00"
 cli_version = "0.28.19"
 
 [manifest]

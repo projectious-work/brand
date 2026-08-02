@@ -15,13 +15,12 @@
 #       ports:
 #         - "5432:5432"
 #
+
 services:
   brand:
-    # `./scripts/serve-docs.sh --bind 0.0.0.0` listens in the workspace
-    # container. Keep the host publication loopback-only: the preview is for
-    # the developer on this host, not the local network.
     ports:
       - "127.0.0.1:1313:1313"
+
 #
 # Example — add depends_on to the main service:
 #
