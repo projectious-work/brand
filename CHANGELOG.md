@@ -16,6 +16,10 @@ documentation are not.
 
 Nothing yet.
 
+## [v2.0.2] — 2026-08-02
+
+Nothing yet.
+
 ## [Unreleased]
 
 ### Added
