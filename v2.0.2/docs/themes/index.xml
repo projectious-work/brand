@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Themes on projectious.work brand</title><link>https://projectious-work.github.io/brand/v2.0.2/docs/themes/</link><description>Recent content in Themes on projectious.work brand</description><generator>Hugo</generator><language>en</language><atom:link href="https://projectious-work.github.io/brand/v2.0.2/docs/themes/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo</title><link>https://projectious-work.github.io/brand/v2.0.2/docs/themes/hugo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/v2.0.2/docs/themes/hugo/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand with
+Hugo. It answers which files supply the brand, where a theme may be changed,
+and how to prove the result is conformant.&lt;/p&gt;
+&lt;p&gt;Choose the &lt;code&gt;Docsy&lt;/code&gt; or &lt;code&gt;Hextra&lt;/code&gt; subsection after reading the shared contract.
+The examples use named values such as &lt;code&gt;midnight-9&lt;/code&gt; and &lt;code&gt;accent-solid&lt;/code&gt;; resolve
+those names from the canonical token source when building a production theme.&lt;/p&gt;
+&lt;h2 id="implementation-contract"&gt;Implementation Contract&lt;/h2&gt;
+&lt;p&gt;This contract applies before choosing Docsy or Hextra. It gives a human
+implementer and an AI agent one unambiguous answer to the theme&amp;rsquo;s source of
+truth, customization boundary, and release evidence.&lt;/p&gt;</description></item><item><title>Terminal</title><link>https://projectious-work.github.io/brand/v2.0.2/docs/themes/terminal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/v2.0.2/docs/themes/terminal/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand in a
+terminal. It answers which sixteen colours the brand uses, which program owns
+each part of the result, and how to prove a configuration is conformant.&lt;/p&gt;
+&lt;p&gt;The terminal is where the brand&amp;rsquo;s rule that &lt;em&gt;code surfaces stay dark in both
+modes&lt;/em&gt; stops being a stylistic choice and becomes the only option: a terminal
+has one surface, it is dark, and everything is measured against it.&lt;/p&gt;</description></item></channel></rss>

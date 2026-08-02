@@ -1,0 +1,91 @@
+:root {
+  /* Colors — Primary */
+  --color-primary: #1d3352;
+  --color-primary-light: #2b4d78;
+  --color-primary-dark: #132440;
+  --color-accent: #E05232;
+  --color-accent-light: #ea7558;
+  --color-accent-dark: #b84228;
+  /* Accent fill for solid controls carrying white text. Step 9 (#E05232) is
+     the identity colour, but white on it is 3.87:1 — below the 4.5:1 AA floor
+     for normal-size text. This value measures 4.72:1. */
+  --color-accent-solid: #cc4528;
+  --color-secondary: #546a82;
+
+  /* Typography */
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Source Sans 3', sans-serif;
+  --font-code: 'IBM Plex Mono', monospace;
+
+  /* Spacing (4px base) */
+  --space-1: 4px;  --space-2: 8px;  --space-3: 12px;
+  --space-4: 16px; --space-5: 24px; --space-6: 32px;
+  --space-7: 48px; --space-8: 64px; --space-9: 96px;
+
+  /* Border radius */
+  --radius-sm: 3px;  --radius-md: 6px;  --radius-lg: 9px;
+  --radius-xl: 13px; --radius-full: 9999px;
+
+  /* Elevation */
+  --shadow-0: none;
+  --shadow-1: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-2: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-3: 0 8px 24px rgba(0,0,0,0.12);
+
+  /* Motion */
+  --duration-micro: 100ms;
+  --duration-standard: 200ms;
+  --duration-expand: 300ms;
+  --duration-page: 400ms;
+  --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+
+  /* Terminal — one dark surface, sixteen ANSI slots plus chrome.
+     Measured against --terminal-surface; floor 4.95:1. See
+     docs/foundations/color for provenance. */
+  --terminal-surface: #0e1720;
+  --terminal-ansi-0: #0e1720;   /* black */
+  --terminal-ansi-1: #e55b5b;   /* red */
+  --terminal-ansi-2: #3f9d74;   /* green */
+  --terminal-ansi-3: #c08a1e;   /* yellow */
+  --terminal-ansi-4: #6289b3;   /* blue */
+  --terminal-ansi-5: #bd6d96;   /* magenta */
+  --terminal-ansi-6: #3f97a3;   /* cyan */
+  --terminal-ansi-7: #97a8b8;   /* white */
+  --terminal-ansi-8: #2e4b68;   /* bright black */
+  --terminal-ansi-9: #f08b80;   /* bright red */
+  --terminal-ansi-10: #6cc090;   /* bright green */
+  --terminal-ansi-11: #e0a92a;   /* bright yellow */
+  --terminal-ansi-12: #8aacc8;   /* bright blue */
+  --terminal-ansi-13: #d491b4;   /* bright magenta */
+  --terminal-ansi-14: #74c0c9;   /* bright cyan */
+  --terminal-ansi-15: #c5daf0;   /* bright white */
+  --terminal-background: #0e1720;
+  --terminal-foreground: #c5daf0;
+  --terminal-cursor: #e05232;
+  --terminal-cursor-text: #0e1720;
+  --terminal-selection-background: #20354d;
+  --terminal-selection-text: #c5daf0;
+  --terminal-dim-comment: #72889d;
+  --terminal-status-bar-surface: #131e2b;
+  --terminal-status-bar-text: #c5daf0;
+  --terminal-inactive-tab-and-pane-label: #7b8da3;
+  --terminal-active-tab-fill: #e05232;
+  --terminal-active-pane-border: #e05232;
+  --terminal-inactive-pane-border: #7b8da3;
+
+  /* Breakpoints (for reference) */
+  /* sm: 640px, md: 768px, lg: 1024px, xl: 1280px */
+}
+
+/* Dark mode overrides */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0e1720;
+    --color-surface: #131e2b;
+    --color-text-primary: #c5daf0;
+    --color-text-secondary: #97a8b8;
+    --color-text-muted: #6b7a88;
+    --color-border: rgba(255,255,255,0.08);
+  }
+}
