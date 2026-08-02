@@ -432,7 +432,12 @@ The one-line lockup is used here — the signature is a horizontal context.&lt;/
 &lt;code&gt;brand/portfolio/social-preview-template.svg&lt;/code&gt;. Replace bracketed text, keep
 the status label intact, and save a project-specific SVG beside the template.
 Examples for aibox, processkit, ai-market-research, and KubeClaw demonstrate
-the content structure; they are not evidence of current maturity.&lt;/p&gt;</description></item><item><title>Trademark</title><link>https://projectious-work.github.io/brand/docs/governance/trademark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/trademark/</guid><description>&lt;p&gt;The names, logos, and icons associated with &lt;strong&gt;projectious.work&lt;/strong&gt; are its
+the content structure; they are not evidence of current maturity.&lt;/p&gt;</description></item><item><title>Terminal</title><link>https://projectious-work.github.io/brand/docs/themes/terminal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/themes/terminal/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand in a
+terminal. It answers which sixteen colours the brand uses, which program owns
+each part of the result, and how to prove a configuration is conformant.&lt;/p&gt;
+&lt;p&gt;The terminal is where the brand&amp;rsquo;s rule that &lt;em&gt;code surfaces stay dark in both
+modes&lt;/em&gt; stops being a stylistic choice and becomes the only option: a terminal
+has one surface, it is dark, and everything is measured against it.&lt;/p&gt;</description></item><item><title>Trademark</title><link>https://projectious-work.github.io/brand/docs/governance/trademark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/trademark/</guid><description>&lt;p&gt;The names, logos, and icons associated with &lt;strong&gt;projectious.work&lt;/strong&gt; are its
 trademarks. Full text:
 &lt;a href="https://github.com/projectious-work/brand/blob/main/TRADEMARK.md"&gt;&lt;code&gt;TRADEMARK.md&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="not-permitted"&gt;Not permitted&lt;/h2&gt;

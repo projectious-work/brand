@@ -15,8 +15,13 @@ The [Hugo guide](/brand/docs/themes/hugo/) combines the implementation contract,
 theme-specific guidance, and review fixtures in one page. It currently contains configurations
 for [Docsy](https://www.docsy.dev/) and [Hextra](https://imfing.github.io/hextra/).
 
+The [Terminal guide](/brand/docs/themes/terminal/) covers the sixteen-colour ANSI
+palette and the configuration that applies it to tmux, WezTerm, Kitty, iTerm2,
+and Zellij.
+
 ---
 
 Section pages:
 
 - [Hugo](/brand/docs/themes/hugo/): The projectious.work implementation contract and theme guidance for selected Hugo theme frameworks: [Docsy](https://www.docsy.dev/) and [Hextra](https://imfing.github.io/hextra/).
+- [Terminal](/brand/docs/themes/terminal/): The projectious.work terminal palette and the configuration that applies it to tmux, WezTerm, Kitty, iTerm2, and Zellij.

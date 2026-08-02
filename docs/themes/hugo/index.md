@@ -50,6 +50,7 @@ site/
 │       ├── _variables_project.scss       # Docsy Bootstrap variables
 │       ├── _variables_project_after_bs.scss
 │       └── _styles_project.scss          # Docsy component overrides
+├── layouts/_shortcodes/                  # Hextra: pj-callout only
 ├── static/
 │   ├── images/                           # supplied logo variants only
 │   └── favicons/                         # supplied favicon variants only
@@ -79,6 +80,102 @@ theme's upgrade notes.
    light screenshot.
 7. Make focus visible without depending on colour alone. The current-page
    marker, active navigation item, and alerts need a non-colour cue too.
+
+### The shared semantic layer
+
+Both themes bind to one token set. A theme adapter may only *map* these names
+onto its own selectors; it may not redefine what a name means, and it may not
+introduce a colour that is not in this table. This is what makes a Docsy site
+and a Hextra site recognisably the same product, and it is the only reason the
+two dark modes can be reviewed against each other.
+
+Every value below is a step from the canonical scales in
+`brand/tokens/tokens.json`. The ratio column is the measured contrast against
+the surface that role actually sits on.
+
+| Token | Role | Light | Dark | Contrast (light / dark) |
+|---|---|---|---|---|
+| `--pj-canvas` | App background — page, navbar, sidebar, TOC | `#f8f9fb` | `#0e1720` | step 1 |
+| `--pj-surface` | Cards, panels, inputs — elevated above the canvas | `#ffffff` | `#131e2b` | step 2 dark |
+| `--pj-surface-hover` | Hovered rows and menus | `#e2e9f2` | `#1a2b3e` | step 3 |
+| `--pj-text` | Reading copy | `#142438` | `#c5daf0` | 15.68 / 12.62 |
+| `--pj-text-secondary` | Navigation rest state, TOC, captions, metadata | `#5c6f82` | `#97a8b8` | 5.18 / 7.41 |
+| `--pj-heading` | H1–H6 | `#1d3352` | `#c5daf0` | 12.75 / 12.62 |
+| `--pj-link` | Inline and navigation links | `#3a5a82` | `#8aacc8` | 7.08 / 7.59 |
+| `--pj-link-hover` | Link emphasis only — accent as *text*, step 11 | `#c04424` | `#ea7558` | 4.87 / 6.18 |
+| `--pj-nav-active-bg` | Current-page tint | `#d3deec` | `#20354d` | step 4 |
+| `--pj-nav-active-text` | Current-page label | `#1d3352` | `#c5daf0` | 10.42 / 8.74 |
+| `--pj-border` | Divider: cards, tables, navbar, section rules | `#cdd0d5` | `#263f5a` | 1.55 / 1.67 |
+| `--pj-border-strong` | Inputs and controls whose edge *is* the affordance | `#546a82` | `#4d7098` | 5.58 / 3.52 |
+| `--pj-action` | Primary action fill | `#cc4528` | `#cc4528` | 4.72 with white |
+| `--pj-action-hover` | Primary action hover fill | `#b84228` | `#b84228` | 5.46 with white |
+| `--pj-action-label` | Primary action label | `#ffffff` | `#ffffff` | — |
+| `--pj-focus` | Keyboard focus ring | `#cc4528` | `#f09878` | 4.72 / 8.15 |
+| `--pj-code` | Always-dark code surface | `#0e1720` | `#0e1720` | — |
+| `--pj-code-text` | Code foreground | `#c5daf0` | `#c5daf0` | 12.62 |
+| `--pj-code-chrome` | Filename bar and copy control on the code block | `#131e2b` | `#131e2b` | — |
+| `--pj-info-bg` / `--pj-info-border` | Informational | `#e2e9f2` / `#7490b2` | `#1a2b3e` / `#4d7098` | 3.29 / 3.52 border |
+| `--pj-success-bg` / `--pj-success-border` | Completed | `#d1ebe0` / `#2f7d65` | `#18382d` / `#6cc090` | 4.95 / 8.24 border |
+| `--pj-warning-bg` / `--pj-warning-border` | Needs attention | `#f5ecd0` / `#8b6508` | `#3d1e13` / `#e0a92a` | 5.30 / 8.50 border |
+| `--pj-danger-bg` / `--pj-danger-border` | Blocked | `#f9e3e1` / `#a8261c` | `#3a1d20` / `#f08b80` | 7.10 / 7.49 border |
+
+Four rules follow from the table and are not negotiable per theme:
+
+**Surfaces come off the ramp in step order, in both modes.** The step roles are
+not decorative: step 1 is the app background, step 2 the subtle section band,
+steps 3–5 element fills, hover and active. Light mode used pure white as its
+canvas for a while, which reads fine on its own but leaves a card with nothing
+to lift off — a white panel on a white page separates by border alone, and the
+elevation scale has no room to work. Taking the canvas to step 1 puts white back
+where it is useful, as the raised surface.
+
+**The accent has a text step and a solid step, and they are different.** Step 10
+is "solid hover" — a surface role. Accent used as *text*, which in practice
+means a link hover, takes step 11, the scale's low-emphasis text step. Solid
+accent fills keep step 10 with a white label. Using step 10 as text is the most
+common way this system gets bent: it passes on white at 4.72:1 and then fails
+the moment the surface underneath is anything but pure white.
+
+**There are two text tiers, not three.** `--pj-text` and `--pj-text-secondary`
+are the only text colours. The scales define steps 11 and 12 as the text roles;
+a third "muted" tier has to come from step 9 or below, and no step below 11
+clears 4.5:1 against the dark surfaces. If copy is not important enough for
+`--pj-text-secondary`, it is not important enough to ship.
+
+**The primary action is one colour in every mode and both themes.** Fill
+`--pj-action`, hover `--pj-action-hover`, label always white. It does not
+lighten in dark mode and the label never changes colour, because every
+alternative either drops white below 4.5:1 or forces the label to invert on
+hover. Signal the dark-mode hover with the focus ring and elevation instead.
+
+**The warning border is gold, not the accent.** `#e05232` is the identity
+colour; using it as the warning edge makes every warning read as a brand
+flourish and makes the accent read as an error. Gold `#8b6508` and `#e0a92a`
+carry the warning role in the two modes.
+
+**The header may be the one neutral surface.** The default is a navbar that
+takes the canvas colour, so the reading surface runs unbroken from the top of
+the window. A site whose dark mode needs more separation may instead give the
+header the slate ramp — `#20262c`, 1.18:1 against the navy canvas — which leaves
+navy as the only saturated surface and lets the content read as the page rather
+than as another bar. The documentation site does this. Pick one and apply it in
+both themes; what is not allowed is a header in a *third* colour that is neither
+the canvas nor a documented surface step.
+
+**Dividers are quiet, and they are never the accent.** A brand-coloured divider
+is a recurring request and the answer is no: the accent marks the one action a
+view is asking for, and a page whose every rule is orange has spent it. Orange
+is also poor as a line — 3.87:1 on white and 4.67:1 on midnight, loud enough to
+read as content and muddy at 1px. Where a divider needs more presence, raise its
+*contrast* and leave its weight at 1px; a 1px rule at 1.55:1 reads crisper than
+a 2px rule at 1.2:1 and stays out of the reading path. The accent may take one
+structural job per page — the documentation site uses a 40px accent lead-in on
+the section rule under each H2 — but never the rule itself.
+
+`--pj-border` is a divider that groups content; it sits below 3:1 and that is correct, because the
+content it separates carries its own contrast. `--pj-border-strong` is for an
+input or control whose edge is the only thing announcing that it is
+interactive, and it clears 3:1 in both modes.
 
 ### Required page states
 
@@ -113,6 +210,9 @@ visual regressions during a theme migration are easy to see.
 
 ## Docsy
 
+[Open the Docsy example](/brand/examples/hugo-docsy/)
+to inspect the documented patterns in a working site.
+
 [Docsy](https://www.docsy.dev/) is Hugo's Bootstrap-and-SCSS documentation
 theme. Its documented project SCSS files are the supported customization seam;
 this is where the brand belongs. Do not edit `themes/docsy/`.
@@ -121,9 +221,7 @@ this is where the brand belongs. Do not edit `themes/docsy/`.
 
 Use a confident but quiet technical shell: a light navigation bar, a clear page
 title, white reading surfaces, and cards or callouts only where they help
-scanning. Reserve dark surfaces for code, the footer, and dark mode. This takes
-the calm, light-shell discovery cues from [Porter](https://porter.sh/) without
-copying its assets or styling.
+scanning. Reserve dark surfaces for code, the footer, and dark mode.
 
 #### Heading hierarchy example
 
@@ -133,8 +231,9 @@ table of contents is configured to include headings through H4.
 
 | Element | Required treatment |
 |---|---|
-| Navbar | White / translucent light shell, midnight logo and text, visible focus |
-| Footer | `midnight-dark-1` surface, supplied logo, and readable light text |
+| Navbar | Canvas colour at 85% with blur and a hairline underline — no fill of its own |
+| Sidebar and TOC | Canvas colour, no panel fill; a hairline and whitespace do the separating |
+| Footer | `--pj-footer`, supplied logo, and readable light text |
 | Headings | Plus Jakarta Sans, 700–800; tight tracking above 20px |
 | Body and navigation | Source Sans 3, 16px / 1.65 for long-form content |
 | Code | IBM Plex Mono on an always-dark surface |
@@ -195,7 +294,7 @@ content/docs/
 ```
 
 For a complete local kitchen-sink implementation, see the
-[Docsy example](https://projectious-work.github.io/brand/examples/hugo-docsy/).
+[Docsy example](/brand/examples/hugo-docsy/).
 It is built manually with the
 scripts in `examples/hugo-docsy/` and deployed beneath the GitHub Pages site.
 
@@ -227,6 +326,10 @@ $info: #3a5a82;
 $warning: #8b6508;
 $danger: #a8261c;
 
+// slate-7 is a hairline, not a control edge: it measures 2.13:1 on white and
+// leaves an input with no perceivable boundary. Use the strong border step.
+$input-border-color: #546a82;
+
 $font-family-sans-serif: "Source Sans 3", system-ui, sans-serif;
 $font-family-monospace: "IBM Plex Mono", ui-monospace, monospace;
 $headings-font-family: "Plus Jakarta Sans", system-ui, sans-serif;
@@ -250,176 +353,233 @@ $projectious-colors: (
 $theme-colors: map-merge($theme-colors, $projectious-colors);
 ```
 
-Then put component-level rules in `_styles_project.scss`:
+Then put type and shape rules in `_styles_project.scss`. Keep colour out of
+this part of the file — all of it belongs in the single colour layer below, so
+there is one place to look when a value is wrong.
 
 ```scss
+// assets/scss/_styles_project.scss
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap");
 
-:root {
-  --pj-accent-solid: #cc4528;
-  --pj-accent-hover: #b84228;
-  --pj-border: #dadce0;
-}
-
-body { color: #142438; }
 h1, h2, h3, h4, h5, h6 { letter-spacing: -0.3px; }
-a { color: #3a5a82; }
-a:hover { color: #cc4528; }
-.btn-primary {
-  background: var(--pj-accent-solid);
-  border-color: var(--pj-accent-solid);
+code, pre { font-family: "IBM Plex Mono", monospace; }
+.btn {
   border-radius: 6px;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
 }
-.btn-primary:hover, .btn-primary:focus-visible {
-  background: var(--pj-accent-hover);
-  border-color: var(--pj-accent-hover);
-}
-pre, .highlight { background: #0e1720; border-radius: 9px; }
-code { font-family: "IBM Plex Mono", monospace; }
-[data-bs-theme="dark"] {
-  --bs-body-bg: #0e1720;
-  --bs-body-color: #c5daf0;
-  --bs-heading-color: #c5daf0;
-  --bs-secondary-color: #97a8b8;
-  --pj-border: rgba(255, 255, 255, 0.08);
-}
+pre, .highlight { border-radius: 9px; }
 ```
 
-#### Docsy color matrix
+#### How Docsy binds to the shared layer
 
-Apply the same semantic role in both modes. The light and dark values below
-are the concrete examples used by the projectious.work Docsy adapter; do not
-swap the identity accent (`#e05232`) into a control that carries white text.
+Docsy's colour work happens in two places: Bootstrap's semantic variables,
+which Docsy and Bootstrap components read on their own, and a small custom
+property layer for the surfaces Bootstrap has no variable for. Do not restate
+hex values in component rules — bind to the token and let the mode switch do
+the work.
 
-| Element | Semantic role | Light mode | Dark mode | Example rendering |
-|---|---|---|---|---|
-| Page background | App canvas | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | Reading page on a white / midnight canvas |
-| Content surface | Cards and panels | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span> `#131e2b` | White card separated by a quiet border |
-| Raised surface | Hovered rows and menus | <span class="pj-color-chip" style="--pj-chip: #f8f9fb" aria-hidden="true"></span> `#f8f9fb` | <span class="pj-color-chip" style="--pj-chip: #1a2b3e" aria-hidden="true"></span> `#1a2b3e` | Search result or dropdown on hover |
-| Primary text | Body copy | <span class="pj-color-chip" style="--pj-chip: #142438" aria-hidden="true"></span> `#142438` | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | Paragraphs and table values |
-| Secondary text | Supporting copy | <span class="pj-color-chip" style="--pj-chip: #5c6f82" aria-hidden="true"></span> `#5c6f82` | <span class="pj-color-chip" style="--pj-chip: #97a8b8" aria-hidden="true"></span> `#97a8b8` | Descriptions and metadata |
-| Muted text | Captions and placeholders | <span class="pj-color-chip" style="--pj-chip: #546a82" aria-hidden="true"></span> `#546a82` | <span class="pj-color-chip" style="--pj-chip: #6b7a88" aria-hidden="true"></span> `#6b7a88` | Placeholder or quiet footer note |
-| Headings | H1–H6 | <span class="pj-color-chip" style="--pj-chip: #1d3352" aria-hidden="true"></span> `#1d3352` | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | Page title and section headings |
-| Links | Inline and navigation links | <span class="pj-color-chip" style="--pj-chip: #3a5a82" aria-hidden="true"></span> `#3a5a82` | <span class="pj-color-chip" style="--pj-chip: #8aacc8" aria-hidden="true"></span> `#8aacc8` | Blue link in body copy |
-| Link hover/focus | Interactive emphasis | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span> `#cc4528` | <span class="pj-color-chip" style="--pj-chip: #ea7558" aria-hidden="true"></span> `#ea7558` | Link changes color on hover |
-| Navbar | Light shell | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` / <span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #e6e8eb" aria-hidden="true"></span> `#e6e8eb` | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | Light translucent header; dark counterpart in dark mode |
-| Footer | Deliberate dark close | <span class="pj-color-chip" style="--pj-chip: #132440" aria-hidden="true"></span> `#132440` | <span class="pj-color-chip" style="--pj-chip: #132440" aria-hidden="true"></span> `#132440` | Dark footer with readable light text |
-| Sidebar/TOC | Navigation surface | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span> `#131e2b` | Border-defined left tree and right table of contents |
-| Current navigation item | Active state | <span class="pj-color-chip" style="--pj-chip: #e2e9f2" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #1d3352" aria-hidden="true"></span> `#e2e9f2` + `#1d3352` | <span class="pj-color-chip" style="--pj-chip: #2b4d78" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#2b4d78` + `#c5daf0` | Active item has surface and non-color marker |
-| Border/divider | Quiet separation | <span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #dadce0" aria-hidden="true"></span> `#dadce0` | <span class="pj-color-chip pj-color-chip--border" style="--pj-chip: rgba(255,255,255,.08)" aria-hidden="true"></span> `rgba(255,255,255,.08)` | Card, table, and input edge |
-| Search/input | Field surface | <span class="pj-color-chip" style="--pj-chip: #f8f9fb" aria-hidden="true"></span> `#f8f9fb` | <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span> `#131e2b` | Search field with visible focus ring |
-| Primary action | Accessible solid control | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#cc4528` / `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#cc4528` / `#ffffff` | `Deploy configuration` button |
-| Primary action hover | Action emphasis | <span class="pj-color-chip" style="--pj-chip: #b84228" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#b84228` / `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #ea7558" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #142438" aria-hidden="true"></span> `#ea7558` / `#142438` | Button darkens / lifts in each mode |
-| Code surface | Always-dark working area | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | YAML or SCSS block never becomes light |
-| Code text | Code foreground | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | IBM Plex Mono with readable syntax |
-| Info alert | Informational state | <span class="pj-color-chip" style="--pj-chip: #e2e9f2" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #7490b2" aria-hidden="true"></span> `#e2e9f2` / `#7490b2` | <span class="pj-color-chip" style="--pj-chip: #1a2b3e" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #4d7098" aria-hidden="true"></span> `#1a2b3e` / `#4d7098` | Blue info callout with dark text |
-| Success alert | Completed state | <span class="pj-color-chip" style="--pj-chip: #d1ebe0" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #2f7d65" aria-hidden="true"></span> `#d1ebe0` / `#2f7d65` | <span class="pj-color-chip" style="--pj-chip: #18382d" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #6cc090" aria-hidden="true"></span> `#18382d` / `#6cc090` | Green `Validated` callout |
-| Warning alert | Needs attention | <span class="pj-color-chip" style="--pj-chip: #f5ecd0" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #e05232" aria-hidden="true"></span> `#f5ecd0` / `#e05232` | <span class="pj-color-chip" style="--pj-chip: #3d1e13" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #ea7558" aria-hidden="true"></span> `#3d1e13` / `#ea7558` | Amber warning with explicit action |
-| Danger alert | Blocked/error state | <span class="pj-color-chip" style="--pj-chip: #f9e3e1" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #a8261c" aria-hidden="true"></span> `#f9e3e1` / `#a8261c` | <span class="pj-color-chip" style="--pj-chip: #3a1d20" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #f08b80" aria-hidden="true"></span> `#3a1d20` / `#f08b80` | Red error with a next step |
-| Focus ring | Keyboard-only cue | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span> `#cc4528` | <span class="pj-color-chip" style="--pj-chip: #f09878" aria-hidden="true"></span> `#f09878` | Visible ring around input or button |
+| Shared token | Docsy / Bootstrap binding |
+|---|---|
+| `--pj-canvas` | `--bs-body-bg`; also `.td-navbar`, `.td-sidebar`, `.td-toc` |
+| `--pj-surface` | `--bs-secondary-bg`; `.card`, form controls |
+| `--pj-surface-hover` | `.td-sidebar-link:hover`, `.dropdown-item:hover`, `.table-hover` |
+| `--pj-text` | `--bs-body-color` |
+| `--pj-text-secondary` | `--bs-secondary-color`; sidebar and TOC rest state |
+| `--pj-heading` | `--bs-heading-color` |
+| `--pj-link` / `--pj-link-hover` | `--bs-link-color` / `--bs-link-hover-color` |
+| `--pj-nav-active-bg` / `--pj-nav-active-text` | `.td-sidebar-link.active`, `.td-toc a.active` |
+| `--pj-border` | `--bs-border-color`, `.td-navbar` bottom edge |
+| `--pj-border-strong` | `$input-border-color`, `.form-control` |
+| `--pj-action` / `--pj-action-hover` | `.btn-primary` |
+| `--pj-info-*` … `--pj-danger-*` | `.alert-info` … `.alert-danger` |
 
-In each row, a pair separated by `/` means `background / foreground` or
-`fill / text`. The semantic alert tints are derived from the canonical scales;
-keep them in the adapter rather than inventing per-component colours.
+Bootstrap's `$warning` is the gold from the shared layer, not the accent.
+Docsy's `[data-bs-theme]` attribute is the mode switch; the same token names
+resolve differently under it, so no component rule needs a dark-mode variant.
 
 #### Complete Docsy color layer
 
-Add this color layer to `src/assets/scss/_styles_project.scss` after the
-Bootstrap variables in `src/assets/scss/_variables_project.scss`. It is the
-minimum complete surface map; the existing type, code, and component rules can
-remain alongside it.
+Add this to `assets/scss/_styles_project.scss`, after the Bootstrap variables
+in `assets/scss/_variables_project.scss`. It is the whole surface map: the
+custom properties, the Bootstrap variables they drive, and the component rules
+that Bootstrap does not cover.
 
 ```scss
-// src/assets/scss/_styles_project.scss
+// assets/scss/_styles_project.scss
+
 :root,
 [data-bs-theme="light"] {
-  --pj-bg: #ffffff;
+  --pj-canvas: #f8f9fb;
   --pj-surface: #ffffff;
-  --pj-surface-raised: #f8f9fb;
+  --pj-surface-hover: #e2e9f2;
   --pj-text: #142438;
   --pj-text-secondary: #5c6f82;
-  --pj-text-muted: #546a82;
   --pj-heading: #1d3352;
   --pj-link: #3a5a82;
-  --pj-link-hover: #cc4528;
-  --pj-navbar: rgba(255, 255, 255, 0.88);
-  --pj-border: #e6e8eb;
-  --pj-input: #f8f9fb;
-  --pj-code: #0e1720;
-  --pj-code-text: #c5daf0;
+  --pj-link-hover: #c04424;
+  --pj-nav-active-bg: #d3deec;
+  --pj-nav-active-text: #1d3352;
+  --pj-border: #cdd0d5;
+  --pj-border-strong: #546a82;
   --pj-focus: #cc4528;
-  --pj-info-bg: #e2e9f2;
-  --pj-info-border: #7490b2;
-  --pj-success-bg: #d1ebe0;
-  --pj-success-border: #2f7d65;
-  --pj-warning-bg: #f5ecd0;
-  --pj-warning-border: #e05232;
-  --pj-danger-bg: #f9e3e1;
-  --pj-danger-border: #a8261c;
+  --pj-info-bg: #e2e9f2;      --pj-info-border: #7490b2;
+  --pj-success-bg: #d1ebe0;   --pj-success-border: #2f7d65;
+  --pj-warning-bg: #f5ecd0;   --pj-warning-border: #8b6508;
+  --pj-danger-bg: #f9e3e1;    --pj-danger-border: #a8261c;
+  --pj-navbar: rgba(248, 249, 251, 0.85);
+  --pj-footer: #f0f3f8;
 }
 
 [data-bs-theme="dark"] {
-  --pj-bg: #0e1720;
+  --pj-canvas: #0e1720;
   --pj-surface: #131e2b;
-  --pj-surface-raised: #1a2b3e;
+  --pj-surface-hover: #1a2b3e;
   --pj-text: #c5daf0;
   --pj-text-secondary: #97a8b8;
-  --pj-text-muted: #6b7a88;
   --pj-heading: #c5daf0;
   --pj-link: #8aacc8;
   --pj-link-hover: #ea7558;
-  --pj-navbar: #132440;
-  --pj-border: rgba(255, 255, 255, 0.08);
-  --pj-input: #131e2b;
+  --pj-nav-active-bg: #20354d;
+  --pj-nav-active-text: #c5daf0;
+  --pj-border: #263f5a;
+  --pj-border-strong: #4d7098;
+  --pj-focus: #f09878;
+  --pj-info-bg: #1a2b3e;      --pj-info-border: #4d7098;
+  --pj-success-bg: #18382d;   --pj-success-border: #6cc090;
+  --pj-warning-bg: #3d1e13;   --pj-warning-border: #e0a92a;
+  --pj-danger-bg: #3a1d20;    --pj-danger-border: #f08b80;
+  --pj-navbar: rgba(14, 23, 32, 0.85);
+  --pj-footer: #131e2b;
+}
+
+// Mode-independent. The code surface is dark in both modes by design.
+:root {
+  --pj-action: #cc4528;
+  --pj-action-hover: #b84228;
+  --pj-action-label: #ffffff;
   --pj-code: #0e1720;
   --pj-code-text: #c5daf0;
-  --pj-focus: #f09878;
-  --pj-info-bg: #1a2b3e;
-  --pj-info-border: #4d7098;
-  --pj-success-bg: #18382d;
-  --pj-success-border: #6cc090;
-  --pj-warning-bg: #3d1e13;
-  --pj-warning-border: #ea7558;
-  --pj-danger-bg: #3a1d20;
-  --pj-danger-border: #f08b80;
+  --pj-code-chrome: #131e2b;
 }
 
-body { background: var(--pj-bg); color: var(--pj-text); }
-h1, h2, h3, h4, h5, h6 { color: var(--pj-heading); }
-a { color: var(--pj-link); }
-a:hover, a:focus-visible { color: var(--pj-link-hover); }
-.td-navbar { background: var(--pj-navbar); border-bottom: 1px solid var(--pj-border); }
-.td-footer { background: #132440; }
-.td-sidebar, .td-toc, .card { background: var(--pj-surface); }
-.td-sidebar a, .td-toc a { color: var(--pj-link); }
-.td-sidebar .active, .td-toc a:hover { background: var(--pj-surface-raised); }
-.td-search__input, input, textarea, select {
-  background: var(--pj-input);
-  border-color: var(--pj-border);
+// Hand the tokens to Bootstrap so its own components follow without extra rules.
+:root, [data-bs-theme="light"], [data-bs-theme="dark"] {
+  --bs-body-bg: var(--pj-canvas);
+  --bs-body-color: var(--pj-text);
+  --bs-secondary-color: var(--pj-text-secondary);
+  --bs-secondary-bg: var(--pj-surface);
+  --bs-heading-color: var(--pj-heading);
+  --bs-link-color: var(--pj-link);
+  --bs-link-hover-color: var(--pj-link-hover);
+  --bs-border-color: var(--pj-border);
+  --bs-code-color: var(--pj-link); // Bootstrap's default is a pink outside the brand
+}
+
+// Bootstrap 5.3 composes most colours through `*-rgb` triplets rather than the
+// hex variables — `a { color: rgba(var(--bs-link-color-rgb), var(--bs-link-opacity)) }`.
+// Setting only `--bs-link-color` leaves every link on the theme's default. The
+// triplets cannot reference a var(), so they are restated per mode.
+:root, [data-bs-theme="light"] {
+  --bs-body-color-rgb: 20, 36, 56;
+  --bs-link-color-rgb: 58, 90, 130;
+  --bs-link-hover-color-rgb: 204, 69, 40;
+  --bs-emphasis-color-rgb: 20, 36, 56;
+}
+[data-bs-theme="dark"] {
+  --bs-body-color-rgb: 197, 218, 240;
+  --bs-link-color-rgb: 138, 172, 200;
+  --bs-link-hover-color-rgb: 234, 117, 88;
+  --bs-emphasis-color-rgb: 197, 218, 240;
+}
+
+// Docsy generates a per-block link colour for the landing blocks and applies it
+// at `.td-box--x p > a`, which outranks a plain `.td-box--x a`. It also dims the
+// active table-of-contents entry with a (0,3,1) selector. Match the shape of
+// each rather than writing a weaker selector and reaching for !important.
+.td-box--light p > a, .td-box--light span > a,
+.td-box--white p > a, .td-box--white span > a { color: var(--pj-link); }
+.td-toc #TableOfContents a.active { color: var(--pj-nav-active-text); font-weight: 600; }
+
+// blocks/cover carries Docsy's `td-overlay--dark` scrim, which exists to darken
+// a background photograph. With no cover image it only washes the surface grey.
+.td-cover-block.td-overlay::after { background-color: transparent; }
+
+// Shell. Navbar, sidebar and TOC share the canvas; borders and space separate
+// them. No panel fills — the reading column is the only thing with weight.
+.td-navbar {
+  background: var(--pj-navbar);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--pj-border);
+}
+.td-sidebar,
+.td-toc { background: var(--pj-canvas); border-color: var(--pj-border); }
+.td-footer { background: var(--pj-footer); color: #c5daf0; }
+.td-footer a { color: #8aacc8; }
+
+// Navigation: quiet at rest, tinted pill when current, and a left marker so
+// the current item is not signalled by colour alone.
+.td-sidebar-link,
+.td-toc a { color: var(--pj-text-secondary); }
+.td-sidebar-link:hover,
+.td-toc a:hover { background: var(--pj-surface-hover); color: var(--pj-heading); }
+.td-sidebar-link.active,
+.td-toc a.active {
+  background: var(--pj-nav-active-bg);
+  color: var(--pj-nav-active-text);
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: inset 2px 0 0 var(--pj-action);
+}
+
+.card { background: var(--pj-surface); border-color: var(--pj-border); border-radius: 9px; }
+.table { --bs-table-border-color: var(--pj-border); }
+
+.form-control, .form-select, .td-search__input {
+  background: var(--pj-surface);
+  border-color: var(--pj-border-strong);
   color: var(--pj-text);
 }
+
 .btn-primary {
-  background: #cc4528;
-  border-color: #cc4528;
-  color: #ffffff;
+  background: var(--pj-action);
+  border-color: var(--pj-action);
+  color: var(--pj-action-label);
 }
-.btn-primary:hover, .btn-primary:focus-visible {
-  background: var(--pj-link-hover);
-  border-color: var(--pj-link-hover);
+.btn-primary:hover,
+.btn-primary:focus-visible,
+.btn-primary:active {
+  background: var(--pj-action-hover);
+  border-color: var(--pj-action-hover);
+  color: var(--pj-action-label);
 }
-pre, .highlight { background: var(--pj-code); color: var(--pj-code-text); }
+
+// The ring sits outside the control, so it never lands on the accent fill.
 :focus-visible { outline: 2px solid var(--pj-focus); outline-offset: 2px; }
-.alert-info { background: var(--pj-info-bg); border-color: var(--pj-info-border); }
+
+pre, .highlight, .td-content pre {
+  background: var(--pj-code);
+  color: var(--pj-code-text);
+  border-radius: 9px;
+}
+.highlight .filename,
+.td-click-to-copy { background: var(--pj-code-chrome); color: #97a8b8; }
+
+.alert { border-left-width: 3px; color: var(--pj-text); }
+.alert-info    { background: var(--pj-info-bg);    border-color: var(--pj-info-border); }
 .alert-success { background: var(--pj-success-bg); border-color: var(--pj-success-border); }
 .alert-warning { background: var(--pj-warning-bg); border-color: var(--pj-warning-border); }
-.alert-danger { background: var(--pj-danger-bg); border-color: var(--pj-danger-border); }
+.alert-danger  { background: var(--pj-danger-bg);  border-color: var(--pj-danger-border); }
 ```
 
-Docsy exposes a light/dark menu through
-`params.ui.showLightDarkModeMenu`. Do not disable it for a branded site: add
-the dark semantic values above and test them instead.
+Two details are easy to miss. The alert rule sets `color` explicitly: without
+it, a Bootstrap alert keeps its own tinted foreground and the dark-mode tints
+are unreadable. And the code block's filename bar needs `--pj-code-chrome`,
+because the surface underneath it is dark in light mode too — a theme that
+styles only `pre` leaves dark text on a dark bar.
+
+Docsy exposes a light/dark menu through `params.ui.showLightDarkModeMenu`. Do
+not disable it for a branded site: add the dark values above and test them.
 
 ### Brand every visible theme element
 
@@ -430,7 +590,7 @@ the dark semantic values above and test them instead.
 | Sidebar | content tree, `weight`, compact/foldable params | Stable order, current-page state, keyboard traversal |
 | TOC | heading hierarchy and `tableOfContents` | H2–H4 only; no skipped heading levels |
 | Search | `offlineSearch` and sidebar search params | Search is discoverable and has readable results |
-| Alerts | semantic Bootstrap roles | Never use orange for ordinary warning text without contrast testing |
+| Alerts | semantic Bootstrap roles | Warning is gold, never the identity accent; alert text is `--pj-text`, not a tinted foreground |
 | Tables | project SCSS and Markdown tables | Horizontal overflow stays inside its container |
 | Images | page bundles and Hugo image processing | Alt text, attribution, dark-mode treatment, no baked text |
 | Footer | `params.links`, copyright, project partials | Project links, current year, dark-surface text contrast |
@@ -598,11 +758,13 @@ When updating Docsy, diff the generated output and re-check every override in
 
 ## Hextra
 
+[Open the Hextra example](/brand/examples/hugo-hextra/)
+to inspect the documented patterns in a working site.
+
 [Hextra](https://imfing.github.io/hextra/) is a Hugo documentation theme with
 a compact shell, generated side navigation, and a supported custom-CSS entry
-point. Use its quiet, task-focused reading model—similar in spirit to
-[Porter](https://porter.sh/)—while retaining projectious.work typography,
-colour, assets, and interaction rules.
+point. Use its quiet, task-focused reading model while retaining
+projectious.work typography, colour, assets, and interaction rules.
 
 ### What conformant looks like
 
@@ -616,7 +778,7 @@ or a logo that competes with the page title.
 | Shell | `wide` page frame with a focused reading column; light, translucent navbar in light mode |
 | Typography | Plus Jakarta Sans headings; Source Sans 3 content; IBM Plex Mono code |
 | Accent | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span> `#cc4528` only for the primary action or active emphasis; links remain blue |
-| Surfaces | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> White canvas and cards; <span class="pj-color-chip" style="--pj-chip: #f8f9fb" aria-hidden="true"></span> `#f8f9fb` hover and grouped surface; <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` dark-mode canvas |
+| Surfaces | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> White canvas, cards, sidebar and TOC; <span class="pj-color-chip" style="--pj-chip: #f0f3f8" aria-hidden="true"></span> `#f0f3f8` hover only; <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` dark-mode canvas |
 | Navigation | Content-tree sidebar, current item distinct without colour alone |
 | Dark mode | `system` default and a visible toggle; paired light/dark logo and favicon |
 | Footer and search | Quiet supporting UI, local/project-controlled assets where required |
@@ -704,28 +866,53 @@ content/docs/
 ```
 
 For a complete local kitchen-sink implementation, see the
-[Hextra example](https://projectious-work.github.io/brand/examples/hugo-hextra/).
+[Hextra example](/brand/examples/hugo-hextra/).
 It is built manually with the
 scripts in `examples/hugo-hextra/` and deployed beneath the GitHub Pages site.
 
 ### Load the brand through custom CSS
 
-Hextra automatically loads `assets/css/custom.css`. Use it as the single
-brand adapter. The [Hextra customization guide](https://imfing.github.io/hextra/docs/advanced/customization/)
+Hextra automatically loads `assets/css/custom.css`. Use it as the single brand
+adapter. The [Hextra customization guide](https://imfing.github.io/hextra/docs/advanced/customization/)
 documents its primary HSL variables, layout variables, and public component
-classes.
+classes. The guidance below targets Hextra **v0.10.0**; pin that version, and
+re-check the four class names it depends on after any upgrade.
+
+Hextra derives a ten-step `--color-primary-*` ramp from three HSL variables,
+and uses that ramp for the active sidebar item, the code-block tint, and
+several focus states. Two things about it decide whether a brand adapter works:
+
+**Set the primary variables under `html.dark` as well as `:root`.** Hextra's
+own stylesheet re-declares all three under `.dark`. An adapter that sets them
+only on `:root` gets brand colours in light mode and stock Hextra blue
+(`204deg 100% 50%`) in dark mode — on the current sidebar item, which is the
+most visible navigation state on the page.
+
+**Do not let the derived ramp reach the code block.** Hextra tints code with
+`bg-primary-700/5`, which is a light wash. The brand keeps code dark in both
+modes, so the adapter overrides the `pre` inside `.hextra-code-block` — not the
+wrapper, which sits behind that tint and has no visible effect.
 
 ```css
 /* assets/css/custom.css */
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap");
 
+/* midnight-9 #1d3352 expressed as HSL, so Hextra's derived ramp stays in the
+   brand's hue rather than its default azure. */
 :root {
-  --primary-hue: 214deg;        /* #1d3352, midnight-9 */
+  --primary-hue: 214deg;
   --primary-saturation: 47%;
   --primary-lightness: 22%;
   --hextra-max-page-width: 90rem;
   --hextra-max-navbar-width: 90rem;
   --hextra-max-footer-width: 90rem;
+}
+
+/* Required: Hextra re-declares these under .dark and would otherwise revert. */
+html.dark {
+  --primary-hue: 214deg;
+  --primary-saturation: 47%;
+  --primary-lightness: 62%;
 }
 
 @layer theme {
@@ -734,211 +921,238 @@ classes.
     --hx-default-mono-font-family: "IBM Plex Mono", ui-monospace, monospace;
   }
 }
+```
 
-.content h1, .content h2, .content h3, .hextra-nav-container {
+The dark lightness is raised to 62% because Hextra reads `primary-lightness` as
+the *mid* of the ramp and derives dark-mode text roles above it. At the light
+value of 22% the dark sidebar's active label resolves near-black on a dark
+tint.
+
+#### How Hextra binds to the shared layer
+
+| Shared token | Hextra binding |
+|---|---|
+| `--pj-canvas` | `body`, `.hextra-nav-container`, `.hextra-sidebar-container`, `.hextra-toc` |
+| `--pj-surface` | `.hextra-card`, `.hextra-feature-card`, `.search-input` |
+| `--pj-surface-hover` | sidebar and TOC link hover, `.hextra-card:hover` |
+| `--pj-text` | `body`, `.content` |
+| `--pj-text-secondary` | sidebar and TOC rest state, `.hextra-toc` headings |
+| `--pj-heading` | `.content h1`–`h4` |
+| `--pj-link` / `--pj-link-hover` | `.content a` |
+| `--pj-nav-active-bg` / `--pj-nav-active-text` | `.hextra-sidebar-active-item`, `.hextra-toc-active` |
+| `--pj-border` | `.hextra-nav-container` bottom edge, cards, tables |
+| `--pj-border-strong` | `.search-input`, form controls |
+| `--pj-action` / `--pj-action-hover` | `.pj-primary-action` |
+| `--pj-code` / `--pj-code-chrome` | `.hextra-code-block pre`, `.hextra-code-block .hextra-code-filename` |
+| `--pj-info-*` … `--pj-danger-*` | `.pj-callout-*` (project shortcode — see below) |
+
+Hextra marks the current sidebar entry with the `hextra-sidebar-active-item`
+class and the current TOC entry with `hextra-toc-active`. It does not emit
+`aria-current`, so an adapter written against `a[aria-current="page"]` silently
+styles nothing.
+
+#### Complete Hextra color layer
+
+Append this to the same `assets/css/custom.css`. The token block is byte-for-byte
+the Docsy one; only the selectors below it differ. Keep it that way — if the two
+adapters ever need different values, the shared layer is wrong, not the theme.
+
+```css
+/* assets/css/custom.css — continued */
+
+:root {
+  --pj-canvas: #f8f9fb;
+  --pj-surface: #ffffff;
+  --pj-surface-hover: #e2e9f2;
+  --pj-text: #142438;
+  --pj-text-secondary: #5c6f82;
+  --pj-heading: #1d3352;
+  --pj-link: #3a5a82;
+  --pj-link-hover: #c04424;
+  --pj-nav-active-bg: #d3deec;
+  --pj-nav-active-text: #1d3352;
+  --pj-border: #cdd0d5;
+  --pj-border-strong: #546a82;
+  --pj-focus: #cc4528;
+  --pj-info-bg: #e2e9f2;      --pj-info-border: #7490b2;
+  --pj-success-bg: #d1ebe0;   --pj-success-border: #2f7d65;
+  --pj-warning-bg: #f5ecd0;   --pj-warning-border: #8b6508;
+  --pj-danger-bg: #f9e3e1;    --pj-danger-border: #a8261c;
+  --pj-navbar: rgba(248, 249, 251, 0.85);
+  --pj-footer: #f0f3f8;
+
+  /* Mode-independent. */
+  --pj-action: #cc4528;
+  --pj-action-hover: #b84228;
+  --pj-action-label: #ffffff;
+  --pj-code: #0e1720;
+  --pj-code-text: #c5daf0;
+  --pj-code-chrome: #131e2b;
+}
+
+html.dark {
+  --pj-canvas: #0e1720;
+  --pj-surface: #131e2b;
+  --pj-surface-hover: #1a2b3e;
+  --pj-text: #c5daf0;
+  --pj-text-secondary: #97a8b8;
+  --pj-heading: #c5daf0;
+  --pj-link: #8aacc8;
+  --pj-link-hover: #ea7558;
+  --pj-nav-active-bg: #20354d;
+  --pj-nav-active-text: #c5daf0;
+  --pj-border: #263f5a;
+  --pj-border-strong: #4d7098;
+  --pj-focus: #f09878;
+  --pj-info-bg: #1a2b3e;      --pj-info-border: #4d7098;
+  --pj-success-bg: #18382d;   --pj-success-border: #6cc090;
+  --pj-warning-bg: #3d1e13;   --pj-warning-border: #e0a92a;
+  --pj-danger-bg: #3a1d20;    --pj-danger-border: #f08b80;
+  --pj-navbar: rgba(14, 23, 32, 0.85);
+  --pj-footer: #131e2b;
+}
+
+/* Shell. Navbar, sidebar and TOC all sit on the canvas; a hairline and
+   whitespace do the separating. */
+body { background: var(--pj-canvas); color: var(--pj-text); }
+.hextra-nav-container {
+  background: var(--pj-navbar);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--pj-border);
+}
+.hextra-sidebar-container,
+.hextra-toc { background: var(--pj-canvas); }
+.hextra-footer { background: var(--pj-footer); color: #c5daf0; }
+.hextra-footer a { color: #8aacc8; }
+
+.content h1, .content h2, .content h3, .content h4 {
+  color: var(--pj-heading);
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   letter-spacing: -0.3px;
 }
+.content, .content p, .content li { color: var(--pj-text); }
+.content a { color: var(--pj-link); }
+.content a:hover, .content a:focus-visible { color: var(--pj-link-hover); }
 
-.content a { color: #3a5a82; }
-.content a:hover { color: #cc4528; }
-.nav-container-blur {
-  background: rgba(255, 255, 255, 0.88);
-  border-bottom: 1px solid #e6e8eb;
-  backdrop-filter: blur(12px);
+/* Navigation. Quiet at rest, tinted pill when current, plus a left marker so
+   the current item is not signalled by colour alone. */
+.hextra-sidebar-container a,
+.hextra-toc a { color: var(--pj-text-secondary); }
+.hextra-sidebar-container a:hover,
+.hextra-toc a:hover { background: var(--pj-surface-hover); color: var(--pj-heading); }
+.hextra-sidebar-active-item,
+.hextra-toc a.hextra-toc-active {
+  background: var(--pj-nav-active-bg) !important;
+  color: var(--pj-nav-active-text) !important;
+  font-weight: 600;
+  border-radius: 6px;
+  box-shadow: inset 2px 0 0 var(--pj-action);
 }
-.hextra-feature-card, .hextra-card {
-  background: #ffffff;
+
+.hextra-card, .hextra-feature-card {
+  background: var(--pj-surface);
+  border-color: var(--pj-border);
   border-radius: 9px;
-  border-color: #e6e8eb;
-  box-shadow: 0 1px 2px rgba(20, 36, 56, 0.04);
 }
-.hextra-code-block, .content pre {
-  background: #0e1720;
-  border-radius: 9px;
-}
-html.dark .hextra-card, html.dark .hextra-feature-card {
-  background: #131e2b;
-  border-color: rgba(255, 255, 255, 0.08);
-}
-html.dark .nav-container-blur {
-  background: rgba(14, 23, 32, 0.88);
-  border-bottom-color: rgba(255, 255, 255, 0.1);
-}
-```
+.hextra-card:hover { background: var(--pj-surface-hover); }
 
-Use the HSL primary variables for theme-primary states, not to make every
-surface orange. The `accent-solid` value is an explicit component treatment
-because it is the accessible white-on-accent fill:
+input, textarea, select, .search-input {
+  background: var(--pj-surface);
+  border-color: var(--pj-border-strong);
+  color: var(--pj-text);
+}
 
-```css
 .pj-primary-action {
   display: inline-flex;
   align-items: center;
   min-height: 40px;
   padding: 0 16px;
   border-radius: 6px;
-  background: #cc4528;
-  color: #fff;
+  background: var(--pj-action);
+  border: 1px solid var(--pj-action);
+  color: var(--pj-action-label);
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   text-decoration: none;
 }
-.pj-primary-action:hover, .pj-primary-action:focus-visible {
-  background: #b84228;
-  color: #fff;
-}
-```
-
-#### Hextra color matrix
-
-Hextra uses a class-based dark mode (`html.dark`). Keep the semantic roles
-identical to Docsy, but map them through `assets/css/custom.css` and Hextra's
-public component classes. The table gives concrete light and dark examples for
-the complete shell and its common content elements.
-
-| Element | Semantic role | Light mode | Dark mode | Example rendering |
-|---|---|---|---|---|
-| Page background | App canvas | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | Wide reading frame on a white / midnight canvas |
-| Content surface | Cards and panels | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span> `#131e2b` | White card separated by a quiet border |
-| Raised surface | Hovered rows and menus | <span class="pj-color-chip" style="--pj-chip: #f8f9fb" aria-hidden="true"></span> `#f8f9fb` | <span class="pj-color-chip" style="--pj-chip: #1a2b3e" aria-hidden="true"></span> `#1a2b3e` | Card or menu lifts on hover |
-| Primary text | Body copy | <span class="pj-color-chip" style="--pj-chip: #142438" aria-hidden="true"></span> `#142438` | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | Source Sans 3 paragraph text |
-| Secondary text | Supporting copy | <span class="pj-color-chip" style="--pj-chip: #5c6f82" aria-hidden="true"></span> `#5c6f82` | <span class="pj-color-chip" style="--pj-chip: #97a8b8" aria-hidden="true"></span> `#97a8b8` | Metadata and explanatory labels |
-| Muted text | Captions and placeholders | <span class="pj-color-chip" style="--pj-chip: #546a82" aria-hidden="true"></span> `#546a82` | <span class="pj-color-chip" style="--pj-chip: #6b7a88" aria-hidden="true"></span> `#6b7a88` | Quiet helper text below a field |
-| Headings | H1–H6 | <span class="pj-color-chip" style="--pj-chip: #1d3352" aria-hidden="true"></span> `#1d3352` | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | Plus Jakarta Sans page hierarchy |
-| Links | Inline and navigation links | <span class="pj-color-chip" style="--pj-chip: #3a5a82" aria-hidden="true"></span> `#3a5a82` | <span class="pj-color-chip" style="--pj-chip: #8aacc8" aria-hidden="true"></span> `#8aacc8` | Blue link in an explanatory paragraph |
-| Link hover/focus | Interactive emphasis | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span> `#cc4528` | <span class="pj-color-chip" style="--pj-chip: #ea7558" aria-hidden="true"></span> `#ea7558` | Link changes color without changing layout |
-| Navbar | Light shell | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` / <span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #e6e8eb" aria-hidden="true"></span> `#e6e8eb` | Light translucent header; dark counterpart in dark mode |
-| Footer | Deliberate dark close | <span class="pj-color-chip" style="--pj-chip: #132440" aria-hidden="true"></span> `#132440` | <span class="pj-color-chip" style="--pj-chip: #132440" aria-hidden="true"></span> `#132440` | Dark footer with readable light text |
-| Sidebar | Content-tree navigation | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span> `#131e2b` | Current page remains distinct without color alone |
-| Table of contents | Right-side outline | <span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | On-this-page list beside the reading column |
-| Current navigation item | Active state | <span class="pj-color-chip" style="--pj-chip: #e2e9f2" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #1d3352" aria-hidden="true"></span> `#e2e9f2` + `#1d3352` | <span class="pj-color-chip" style="--pj-chip: #2b4d78" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#2b4d78` + `#c5daf0` | Active item has surface and marker |
-| Border/divider | Quiet separation | <span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #dadce0" aria-hidden="true"></span> `#dadce0` | <span class="pj-color-chip pj-color-chip--border" style="--pj-chip: rgba(255,255,255,.08)" aria-hidden="true"></span> `rgba(255,255,255,.08)` | Card, table, and navigation edge |
-| Search/input | Field surface | <span class="pj-color-chip" style="--pj-chip: #f8f9fb" aria-hidden="true"></span> `#f8f9fb` | <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span> `#131e2b` | Search field with a visible focus ring |
-| Primary action | Accessible solid control | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#cc4528` / `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#cc4528` / `#ffffff` | `Review release check` button |
-| Primary action hover | Action emphasis | <span class="pj-color-chip" style="--pj-chip: #b84228" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #ffffff" aria-hidden="true"></span> `#b84228` / `#ffffff` | <span class="pj-color-chip" style="--pj-chip: #ea7558" aria-hidden="true"></span><span class="pj-color-chip" style="--pj-chip: #142438" aria-hidden="true"></span> `#ea7558` / `#142438` | Button responds in both modes |
-| Cards | Quiet grouped content | <span class="pj-color-chip" style="--pj-chip: #f8f9fb" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #dadce0" aria-hidden="true"></span> `#f8f9fb` / `#dadce0` | <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: rgba(255,255,255,.08)" aria-hidden="true"></span> `#131e2b` / `rgba(255,255,255,.08)` | Three-card decision surface |
-| Code surface | Always-dark working area | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | YAML block remains dark in both modes |
-| Code text | Code foreground | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | IBM Plex Mono syntax on midnight |
-| Info callout | Informational state | <span class="pj-color-chip" style="--pj-chip: #e2e9f2" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #7490b2" aria-hidden="true"></span> `#e2e9f2` / `#7490b2` | <span class="pj-color-chip" style="--pj-chip: #1a2b3e" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #4d7098" aria-hidden="true"></span> `#1a2b3e` / `#4d7098` | Blue callout with readable copy |
-| Success callout | Completed state | <span class="pj-color-chip" style="--pj-chip: #d1ebe0" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #2f7d65" aria-hidden="true"></span> `#d1ebe0` / `#2f7d65` | <span class="pj-color-chip" style="--pj-chip: #18382d" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #6cc090" aria-hidden="true"></span> `#18382d` / `#6cc090` | Green validation result |
-| Warning callout | Needs attention | <span class="pj-color-chip" style="--pj-chip: #f5ecd0" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #e05232" aria-hidden="true"></span> `#f5ecd0` / `#e05232` | <span class="pj-color-chip" style="--pj-chip: #3d1e13" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #ea7558" aria-hidden="true"></span> `#3d1e13` / `#ea7558` | Amber warning with next action |
-| Danger callout | Blocked/error state | <span class="pj-color-chip" style="--pj-chip: #f9e3e1" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #a8261c" aria-hidden="true"></span> `#f9e3e1` / `#a8261c` | <span class="pj-color-chip" style="--pj-chip: #3a1d20" aria-hidden="true"></span><span class="pj-color-chip pj-color-chip--border" style="--pj-chip: #f08b80" aria-hidden="true"></span> `#3a1d20` / `#f08b80` | Red error that does not rely on color alone |
-| Focus ring | Keyboard-only cue | <span class="pj-color-chip" style="--pj-chip: #cc4528" aria-hidden="true"></span> `#cc4528` | <span class="pj-color-chip" style="--pj-chip: #f09878" aria-hidden="true"></span> `#f09878` | Clear ring around cards, links, and controls |
-
-The `/` notation is `background / border` for surfaces and callouts, and
-`fill / text` for actions. Use the same values for the same semantic role in
-both theme implementations; only the adapter selectors differ.
-
-#### Complete Hextra color layer
-
-Hextra's required project adapter is `assets/css/custom.css`; a separate
-Tailwind configuration is not needed when consuming Hextra as a Hugo module.
-If the site compiles additional Tailwind utilities, keep them pointed at these
-variables rather than creating a second palette.
-
-```css
-/* assets/css/custom.css */
-:root {
-  --pj-bg: #ffffff;
-  --pj-surface: #ffffff;
-  --pj-surface-raised: #f8f9fb;
-  --pj-text: #142438;
-  --pj-text-secondary: #5c6f82;
-  --pj-text-muted: #546a82;
-  --pj-heading: #1d3352;
-  --pj-link: #3a5a82;
-  --pj-link-hover: #cc4528;
-  --pj-navbar: rgba(255, 255, 255, 0.88);
-  --pj-border: #e6e8eb;
-  --pj-input: #f8f9fb;
-  --pj-code: #0e1720;
-  --pj-code-text: #c5daf0;
-  --pj-focus: #cc4528;
-  --pj-info-bg: #e2e9f2;
-  --pj-info-border: #7490b2;
-  --pj-success-bg: #d1ebe0;
-  --pj-success-border: #2f7d65;
-  --pj-warning-bg: #f5ecd0;
-  --pj-warning-border: #e05232;
-  --pj-danger-bg: #f9e3e1;
-  --pj-danger-border: #a8261c;
-  --hextra-max-page-width: 90rem;
-  --hextra-max-navbar-width: 90rem;
-  --hextra-max-footer-width: 90rem;
+.pj-primary-action:hover,
+.pj-primary-action:focus-visible {
+  background: var(--pj-action-hover);
+  border-color: var(--pj-action-hover);
+  color: var(--pj-action-label);
 }
 
-html.dark {
-  --pj-bg: #0e1720;
-  --pj-surface: #131e2b;
-  --pj-surface-raised: #1a2b3e;
-  --pj-text: #c5daf0;
-  --pj-text-secondary: #97a8b8;
-  --pj-text-muted: #6b7a88;
-  --pj-heading: #c5daf0;
-  --pj-link: #8aacc8;
-  --pj-link-hover: #ea7558;
-  --pj-navbar: #132440;
-  --pj-border: rgba(255, 255, 255, 0.08);
-  --pj-input: #131e2b;
-  --pj-code: #0e1720;
-  --pj-code-text: #c5daf0;
-  --pj-focus: #f09878;
-  --pj-info-bg: #1a2b3e;
-  --pj-info-border: #4d7098;
-  --pj-success-bg: #18382d;
-  --pj-success-border: #6cc090;
-  --pj-warning-bg: #3d1e13;
-  --pj-warning-border: #ea7558;
-  --pj-danger-bg: #3a1d20;
-  --pj-danger-border: #f08b80;
+:focus-visible { outline: 2px solid var(--pj-focus); outline-offset: 2px; }
+
+/* Code stays dark in both modes. Target the `pre`, not the wrapper: Hextra
+   tints the inner element and the wrapper's background never shows. */
+.hextra-code-block pre,
+.content pre {
+  background: var(--pj-code) !important;
+  color: var(--pj-code-text);
+  border-radius: 9px;
+}
+.hextra-code-block .hextra-code-filename {
+  background: var(--pj-code-chrome) !important;
+  color: #97a8b8 !important;
 }
 
-body { background: var(--pj-bg); color: var(--pj-text); }
-.content h1, .content h2, .content h3, .content h4 {
-  color: var(--pj-heading);
-}
-.content, .content p, .content li { color: var(--pj-text); }
-.content a, .hextra-nav-container a { color: var(--pj-link); }
-.content a:hover, .content a:focus-visible,
-.hextra-nav-container a:hover { color: var(--pj-link-hover); }
-.hextra-nav-container { background: var(--pj-navbar); border-bottom: 1px solid var(--pj-border); }
-.hextra-sidebar { background: var(--pj-surface); }
-.hextra-toc { background: var(--pj-bg); }
-.hextra-sidebar a, .hextra-toc a { color: var(--pj-link); }
-.hextra-sidebar a[aria-current="page"], .hextra-toc a:hover {
-  background: var(--pj-surface-raised);
-  color: var(--pj-heading);
-}
-input, textarea, select, .search-input {
-  background: var(--pj-input);
-  border-color: var(--pj-border);
+/* See the note below: Hextra's own callout cannot be rebound from CSS. */
+.pj-callout {
+  margin: 24px 0;
+  padding: 12px 16px;
+  border-left: 3px solid;
+  border-radius: 0 6px 6px 0;
   color: var(--pj-text);
 }
-.pj-primary-action {
-  background: #cc4528;
-  border: 1px solid #cc4528;
-  color: #ffffff;
+.pj-callout-title {
+  margin: 0 0 4px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-weight: 700;
+  font-size: 0.9375rem;
 }
-.pj-primary-action:hover, .pj-primary-action:focus-visible {
-  background: var(--pj-link-hover);
-  border-color: var(--pj-link-hover);
-  color: #142438;
-}
-.hextra-card, .hextra-feature-card {
-  background: var(--pj-surface);
-  border-color: var(--pj-border);
-}
-.hextra-code-block, .content pre {
-  background: var(--pj-code);
-  color: var(--pj-code-text);
-}
-:focus-visible { outline: 2px solid var(--pj-focus); outline-offset: 2px; }
-.pj-callout-info { background: var(--pj-info-bg); border-color: var(--pj-info-border); }
+.pj-callout-info    { background: var(--pj-info-bg);    border-color: var(--pj-info-border); }
 .pj-callout-success { background: var(--pj-success-bg); border-color: var(--pj-success-border); }
 .pj-callout-warning { background: var(--pj-warning-bg); border-color: var(--pj-warning-border); }
-.pj-callout-danger { background: var(--pj-danger-bg); border-color: var(--pj-danger-border); }
+.pj-callout-danger  { background: var(--pj-danger-bg);  border-color: var(--pj-danger-border); }
 ```
+
+Hextra's built-in `callout` shortcode styles itself entirely with Tailwind
+utility classes and emits no stable class hook, so its semantic tints cannot be
+rebound from `custom.css` — a `.hextra-callout-*` rule matches nothing. The
+brand callout is therefore a small project shortcode in
+`layouts/_shortcodes/pj-callout.html` that emits the class names above; see
+`examples/hugo-hextra/` for the implementation. Give each type a text label as
+well as a colour, so the state never depends on colour alone.
+
+Two further theme behaviours have to be answered, or the result fails contrast
+in light mode specifically:
+
+**Pin the syntax palette to the code surface.** Hextra ships separate light and
+dark Chroma stylesheets and selects between them by mode. The brand keeps code
+dark in *both* modes, so in light mode the theme paints its light palette —
+navy keywords, near-black identifiers — onto a midnight surface at roughly
+1.1:1. The brand syntax theme has to be restated for both modes, and at
+sufficient specificity: Hextra's rules are `.highlight .chroma .xx`, and its
+dark variant `.dark .highlight .chroma .xx`, so a two-class selector loses no
+matter what order the stylesheets load in.
+
+**Restate link colour on components that carry their own.** Hextra colours every
+link inside `.content`, and `.content a` outranks a single component class. A
+primary action and any specimen containing links will otherwise have their
+labels repainted blue — including white-on-accent labels, which drops them to
+1.5:1.
+
+```css
+.content a.pj-primary-action,
+.content a.pj-primary-action:hover { color: var(--pj-action-label); }
+```
+
+The `!important` declarations are deliberate and limited to three places where
+Hextra applies a Tailwind utility directly in its markup — the active
+navigation item, the code surface, and the filename bar. A utility class in the
+template always outranks a stylesheet selector, so this is the documented
+extension point behaving as designed, not an override of theme internals.
 
 ### Brand every visible theme element
 
