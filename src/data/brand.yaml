@@ -242,3 +242,124 @@ syntax:
     step: code-comment
     hex: "#72889d"
     contrast: "4.59:1"
+
+# The terminal palette. A terminal has one surface, it is dark, and everything
+# is measured against it — so unlike the three scales this is not a ramp in two
+# modes but a fixed sixteen-slot palette plus its chrome.
+#
+# The bright ramp is the brand: where a hue already exists in the system, the
+# bright slot takes that step verbatim. The normal ramp has no brand equivalent
+# (the scales define one value per semantic role, not a dim and a bright), so
+# each normal slot is that step darkened until it reads a step back while still
+# clearing 4.5:1. Magenta and cyan exist in neither half of the brand.
+#
+# Ratios are measured against `surface`. Everything except ANSI 0 clears 4.5:1;
+# the measured floor is 4.95:1.
+terminal:
+  surface: "#0e1720"
+  floor: "4.95:1"
+  ansi:
+    - slot: 0
+      name: black
+      normal: "#0e1720"
+      normalContrast: "—"
+      bright: "#2e4b68"
+      brightContrast: "2.00:1"
+      source: midnight-dark-1 / midnight-dark-6
+      note: Box drawing and rules, not text — deliberately below the floor.
+    - slot: 1
+      name: red
+      normal: "#e55b5b"
+      normalContrast: "5.15:1"
+      bright: "#f08b80"
+      brightContrast: "7.49:1"
+      source: bright = danger-dark
+      note: Never the accent — an error and the brand must not look alike.
+    - slot: 2
+      name: green
+      normal: "#3f9d74"
+      normalContrast: "5.41:1"
+      bright: "#6cc090"
+      brightContrast: "8.24:1"
+      source: bright = success-dark
+      note: ""
+    - slot: 3
+      name: yellow
+      normal: "#c08a1e"
+      normalContrast: "5.93:1"
+      bright: "#e0a92a"
+      brightContrast: "8.50:1"
+      source: bright = warning-dark
+      note: Gold, matching the warning role in the interface.
+    - slot: 4
+      name: blue
+      normal: "#6289b3"
+      normalContrast: "4.95:1"
+      bright: "#8aacc8"
+      brightContrast: "7.59:1"
+      source: bright = midnight-dark-11
+      note: ""
+    - slot: 5
+      name: magenta
+      normal: "#bd6d96"
+      normalContrast: "4.98:1"
+      bright: "#d491b4"
+      brightContrast: "7.32:1"
+      source: terminal-only
+      note: The brand defines no magenta; this slot exists only here.
+    - slot: 6
+      name: cyan
+      normal: "#3f97a3"
+      normalContrast: "5.31:1"
+      bright: "#74c0c9"
+      brightContrast: "8.71:1"
+      source: terminal-only
+      note: The brand defines no cyan; this slot exists only here.
+    - slot: 7
+      name: white
+      normal: "#97a8b8"
+      normalContrast: "7.41:1"
+      bright: "#c5daf0"
+      brightContrast: "12.62:1"
+      source: slate-dark-11 / midnight-dark-12
+      note: ""
+  chrome:
+    - role: Background
+      hex: "#0e1720"
+      contrast: the surface
+    - role: Foreground
+      hex: "#c5daf0"
+      contrast: "12.62:1"
+    - role: Cursor
+      hex: "#e05232"
+      contrast: "4.67:1"
+    - role: Cursor text
+      hex: "#0e1720"
+      contrast: "4.67:1 on the cursor"
+    - role: Selection background
+      hex: "#20354d"
+      contrast: "—"
+    - role: Selection text
+      hex: "#c5daf0"
+      contrast: "8.74:1"
+    - role: Dim / comment
+      hex: "#72889d"
+      contrast: "4.93:1"
+    - role: Status bar surface
+      hex: "#131e2b"
+      contrast: "—"
+    - role: Status bar text
+      hex: "#c5daf0"
+      contrast: "11.74:1"
+    - role: Inactive tab and pane label
+      hex: "#7b8da3"
+      contrast: "4.95:1"
+    - role: Active tab fill
+      hex: "#e05232"
+      contrast: "4.67:1 with #0e1720 text"
+    - role: Active pane border
+      hex: "#e05232"
+      contrast: "4.67:1"
+    - role: Inactive pane border
+      hex: "#7b8da3"
+      contrast: "5.32:1"

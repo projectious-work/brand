@@ -20183,6 +20183,28 @@ small, .td-footer__center, .td-cover-block > .byline, .small, figcaption, .td-pa
     min-width: 2.5rem;
     padding-inline: 0.5rem; }
 
+.pageinfo {
+  background-color: var(--pj-midnight-3);
+  border-left: 3px solid var(--pj-midnight-7);
+  border-radius: 0 6px 6px 0;
+  color: var(--pj-body-fg); }
+  .pageinfo a {
+    color: var(--pj-link-fg); }
+
+.dropdown-menu {
+  background: var(--pj-surface);
+  border-color: var(--pj-border); }
+  .dropdown-menu .dropdown-item {
+    color: var(--pj-body-fg); }
+    .dropdown-menu .dropdown-item:hover, .dropdown-menu .dropdown-item:focus {
+      background: var(--pj-surface-subtle);
+      color: var(--pj-heading-fg); }
+    .dropdown-menu .dropdown-item.active, .dropdown-menu .dropdown-item:active {
+      background: var(--pj-nav-active-bg);
+      color: var(--pj-nav-active-text);
+      font-weight: 600;
+      box-shadow: inset 2px 0 0 var(--pj-orange-9); }
+
 .pj-color-chip {
   background: var(--pj-chip);
   border: 1px solid rgba(20, 36, 56, 0.22);

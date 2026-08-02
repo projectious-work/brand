@@ -21,8 +21,14 @@
     {{ with .Site.GetPage "section" "docs" -}}
       <div class="td-navbar__main td-navbar-nav-scroll" id="main_navbar">
         <ul class="navbar-nav">
+          {{- /* The current top-level section is marked with the accent
+                 underline documented on the Components page. `aria-current`
+                 carries the same state for anyone not seeing the underline. */ -}}
+          {{- $inSection := hasPrefix $.RelPermalink .RelPermalink -}}
           <li class="nav-item">
-            <a class="nav-link" href="{{ .RelPermalink }}">Documentation</a>
+            <a class="nav-link{{ if $inSection }} active{{ end }}"
+               href="{{ .RelPermalink }}"
+               {{- if $inSection }} aria-current="page"{{ end }}>Documentation</a>
           </li>
         </ul>
       </div>

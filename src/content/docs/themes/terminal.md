@@ -67,56 +67,29 @@ palette programs receive — that remains the emulator's. Set both.
 
 ### Sixteen colours
 
-Every value is measured against the `#0e1720` surface.
+The palette is defined in the [Colour foundations]({{< relref "/docs/foundations/color" >}})
+and rendered here from the same source, so this page cannot state a value the
+foundations do not.
 
-The **bright** half is the brand: where a hue already exists in the system, the
-bright slot takes that step verbatim. The **normal** half has no brand
-equivalent — the scales define one value per semantic role, not a dim and a
-bright — so each normal slot is that step darkened until it is clearly a step
-back from its bright counterpart while still clearing the 4.5:1 floor. Magenta
-and cyan exist in neither half of the brand and are terminal-only extensions.
+{{< terminal-palette >}}
 
-This is the honest reading of the Source column: it names where the *bright*
-value comes from. Do not substitute a normal value for its brand step elsewhere
-in the system — `#e55b5b` is a terminal red, not `$danger`.
+The **bright** ramp is the brand: where a hue already exists in the system, the
+bright slot takes that step verbatim. The **normal** ramp is derived from it —
+darkened until it reads a step back while still clearing the floor — and magenta
+and cyan exist in neither half of the brand. A normal-ramp value is a terminal
+value only: `#e55b5b` is the terminal's red, not `$danger` (`#a8261c`).
 
-| # | Name | Normal | Ratio | Bright | Ratio | Source |
-|---|---|---|---|---|---|---|
-| 0 | black | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | — | <span class="pj-color-chip" style="--pj-chip: #2e4b68" aria-hidden="true"></span> `#2e4b68` | 2.00:1 | midnight-dark-1 / -6 |
-| 1 | red | <span class="pj-color-chip" style="--pj-chip: #e55b5b" aria-hidden="true"></span> `#e55b5b` | 5.15:1 | <span class="pj-color-chip" style="--pj-chip: #f08b80" aria-hidden="true"></span> `#f08b80` | 7.49:1 | bright = danger-dark |
-| 2 | green | <span class="pj-color-chip" style="--pj-chip: #3f9d74" aria-hidden="true"></span> `#3f9d74` | 5.41:1 | <span class="pj-color-chip" style="--pj-chip: #6cc090" aria-hidden="true"></span> `#6cc090` | 8.24:1 | bright = success-dark |
-| 3 | yellow | <span class="pj-color-chip" style="--pj-chip: #c08a1e" aria-hidden="true"></span> `#c08a1e` | 5.93:1 | <span class="pj-color-chip" style="--pj-chip: #e0a92a" aria-hidden="true"></span> `#e0a92a` | 8.50:1 | bright = warning-dark |
-| 4 | blue | <span class="pj-color-chip" style="--pj-chip: #6289b3" aria-hidden="true"></span> `#6289b3` | 4.95:1 | <span class="pj-color-chip" style="--pj-chip: #8aacc8" aria-hidden="true"></span> `#8aacc8` | 7.59:1 | bright = midnight-dark-11 |
-| 5 | magenta | <span class="pj-color-chip" style="--pj-chip: #bd6d96" aria-hidden="true"></span> `#bd6d96` | 4.98:1 | <span class="pj-color-chip" style="--pj-chip: #d491b4" aria-hidden="true"></span> `#d491b4` | 7.32:1 | terminal-only |
-| 6 | cyan | <span class="pj-color-chip" style="--pj-chip: #3f97a3" aria-hidden="true"></span> `#3f97a3` | 5.31:1 | <span class="pj-color-chip" style="--pj-chip: #74c0c9" aria-hidden="true"></span> `#74c0c9` | 8.71:1 | terminal-only |
-| 7 | white | <span class="pj-color-chip" style="--pj-chip: #97a8b8" aria-hidden="true"></span> `#97a8b8` | 7.41:1 | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | 12.62:1 | slate-dark-11 / midnight-dark-12 |
+Bright black is the one deliberate exception to the 4.5:1 floor: programs use it
+for box drawing and rules, not for text. If a program uses it for prose that is
+the program's bug, and the fix is to configure the program — not to lighten the
+palette until unreadable text becomes readable.
 
-Bright black is the one exception to the 4.5:1 floor, deliberately: programs use
-it for box drawing and rules, not for text. If a program uses bright black for
-prose, that is the program's bug, and the fix is to configure the program — not
-to lighten the palette until unreadable text becomes readable.
-
-The brand accent is not in the sixteen. Terminals give the accent no ANSI slot
-because it is not a semantic colour: it marks *where you are*, which the chrome
-table below covers.
+The brand accent has no ANSI slot, because it is not a semantic colour: it marks
+*where you are*, which the chrome table covers.
 
 ### Chrome
 
-| Role | Value | Measured |
-|---|---|---|
-| Background | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | surface |
-| Foreground | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | 12.62:1 |
-| Cursor | <span class="pj-color-chip" style="--pj-chip: #e05232" aria-hidden="true"></span> `#e05232` | 4.67:1 |
-| Cursor text | <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | 4.67:1 on the cursor |
-| Selection background | <span class="pj-color-chip" style="--pj-chip: #20354d" aria-hidden="true"></span> `#20354d` | — |
-| Selection text | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | 8.74:1 |
-| Dim / comment | <span class="pj-color-chip" style="--pj-chip: #72889d" aria-hidden="true"></span> `#72889d` | 4.93:1 |
-| Status bar surface | <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span> `#131e2b` | — |
-| Status bar text | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | 11.74:1 |
-| Inactive tab / pane label | <span class="pj-color-chip" style="--pj-chip: #7b8da3" aria-hidden="true"></span> `#7b8da3` | 4.95:1 |
-| Active tab fill / text | <span class="pj-color-chip" style="--pj-chip: #e05232" aria-hidden="true"></span> `#e05232` / <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span> `#0e1720` | 4.67:1 |
-| Active pane border | <span class="pj-color-chip" style="--pj-chip: #e05232" aria-hidden="true"></span> `#e05232` | 4.67:1 |
-| Inactive pane border | <span class="pj-color-chip" style="--pj-chip: #7b8da3" aria-hidden="true"></span> `#7b8da3` | 5.32:1 |
+{{< terminal-palette part="chrome" >}}
 
 ## tmux
 

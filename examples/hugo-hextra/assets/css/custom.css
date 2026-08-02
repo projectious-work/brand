@@ -320,3 +320,39 @@ select,
 .content [id] {
   scroll-margin-top: 5rem;
 }
+
+/* -----------------------------------------------------------------------------
+   Navbar current item
+   -------------------------------------------------------------------------- */
+/* The Components page documents an accent underline on the current top-level
+   nav item. Hextra marks that item by dropping the muted text classes and
+   adding `hx:font-medium` — it exposes no dedicated class — so that is the hook.
+   `aria-current` is not emitted by the theme, so the underline plus the weight
+   change are the two cues available here. */
+/* `pj-nav-current` is set by assets/js/navbar-theme.js on the most specific
+   active entry only — Hextra marks the ancestor section too, and two accent
+   underlines is two accents. Without JS the weight change still distinguishes
+   them, so nothing is lost. */
+.hextra-nav-container a.hx\:font-medium { color: var(--pj-heading); }
+.hextra-nav-container a.pj-nav-current {
+  box-shadow: inset 0 -2px 0 var(--pj-action);
+}
+
+/* The theme toggle is moved into the navbar by assets/js/navbar-theme.js. */
+.pj-navbar-theme {
+  display: flex;
+  align-items: center;
+  margin-inline-start: 0.25rem;
+}
+.pj-navbar-theme .hextra-theme-toggle {
+  padding: 0.375rem;
+  border-radius: 6px;
+}
+.pj-navbar-theme .hextra-theme-toggle:hover {
+  background: var(--pj-surface-hover);
+  color: var(--pj-heading);
+}
+/* Until the script has run, keep the sidebar copy from flashing in place. */
+.pj-navbar-theme-ready .hextra-sidebar-container .hextra-theme-toggle {
+  display: none;
+}

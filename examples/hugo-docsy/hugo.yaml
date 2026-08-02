@@ -53,6 +53,7 @@ outputs:
   section: [HTML, RSS]
 
 params:
+  offlineSearch: true
   ui:
     navbar_logo: false
     navbar_theme: light
@@ -69,11 +70,13 @@ params:
 
 menu:
   main:
+    # pageRef, not url: Docsy derives the navbar's current-item state from the
+    # menu entry's page, and a plain url never matches.
     - name: Documentation
-      url: /docs/
+      pageRef: /docs
       weight: 10
     - name: Kitchen sink
-      url: /docs/kitchen-sink/
+      pageRef: /docs/kitchen-sink
       weight: 15
     - name: Project
       url: https://github.com/google/docsy

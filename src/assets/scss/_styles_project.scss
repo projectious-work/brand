@@ -258,6 +258,45 @@ small, .small, figcaption, .td-page-meta {
   }
 }
 
+// Bootstrap fills `.dropdown-item.active` with --bs-primary, which drops a solid
+// navy row into a light menu — the only place in the system where a current item
+// is a solid fill rather than a tint. Match the sidebar and table of contents.
+// Docsy tints `.pageinfo` from Bootstrap's $primary, which lands on a
+// desaturated grey in light mode (#d2d6dc) and near-black in dark (#060a10) —
+// neither is on the scales. A page note is an element background, so it takes
+// step 3 and the same left rule as every other callout in the system.
+.pageinfo {
+  background-color: var(--pj-midnight-3);
+  border-left: 3px solid var(--pj-midnight-7);
+  border-radius: 0 $border-radius $border-radius 0;
+  color: var(--pj-body-fg);
+
+  a { color: var(--pj-link-fg); }
+}
+
+.dropdown-menu {
+  background: var(--pj-surface);
+  border-color: var(--pj-border);
+
+  .dropdown-item {
+    color: var(--pj-body-fg);
+
+    &:hover,
+    &:focus {
+      background: var(--pj-surface-subtle);
+      color: var(--pj-heading-fg);
+    }
+
+    &.active,
+    &:active {
+      background: var(--pj-nav-active-bg);
+      color: var(--pj-nav-active-text);
+      font-weight: 600;
+      box-shadow: inset 2px 0 0 var(--pj-orange-9);
+    }
+  }
+}
+
 .pj-color-chip {
   background: var(--pj-chip);
   border: 1px solid rgba(20, 36, 56, 0.22);
