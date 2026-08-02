@@ -12,15 +12,38 @@ token's value in a way that alters appearance, or withdrawing a component
 pattern are all breaking. Adding a token, adding a component, or correcting
 documentation are not.
 
+<!-- Add new entries under the [Unreleased] heading directly. Do not insert a
+     second [Unreleased] section above a released one: scripts/release.sh
+     promotes the FIRST such heading it finds, so a later one is left orphaned
+     and the release ships empty notes. -->
+
 ## [Unreleased]
 
 Nothing yet.
 
 ## [v2.0.2] — 2026-08-02
 
-Nothing yet.
+### Changed
 
-## [Unreleased]
+- **Syntax hues reassigned by measured perceptual distance.** Keywords and
+  operators sat ΔE2000 **5.2** apart — the same colour, for reading purposes —
+  because both occupied the blue-grey band at the same lightness. Only the three
+  neutrals (plain, operators, comments) live in that band now, separated by
+  lightness; every chromatic role holds its own hue.
+
+  | Role | Was | Now | vs plain text |
+  |---|---|---|---|
+  | Keywords and modifiers | `#8aacc8` blue | `#d491b4` magenta | 12.9 → 29.9 |
+  | Types and classes | `#74c0c9` cyan | `#6cc090` green | 17.3 → 29.9 |
+  | Decorators and macros | `#d491b4` magenta | `#74c0c9` cyan | — |
+  | Invalid and deprecated | `#f08b80` salmon | `#e55b5b` red | — |
+
+  Keywords against operators went from 5.2 to **25.9**. Types hold the
+  best-separated hue because they are referenced on nearly every line of typed
+  code; decorators, which are rare, take the cyan that sits closer to plain.
+  Pairs below the legibility threshold fell from six to three, and each survivor
+  carries a non-colour cue or is semantically adjacent. No new colour was
+  introduced — all four values are terminal-palette steps.
 
 ### Added
 
@@ -45,10 +68,6 @@ Nothing yet.
   modifier table already specified.
 
 ## [v2.0.1] — 2026-08-02
-
-Nothing yet.
-
-## [Unreleased]
 
 ### Added
 

@@ -360,6 +360,39 @@ sum_bytes:
         ret
 ```
 
+### Bash
+
+```bash
+#!/usr/bin/env bash
+# Validate a pipeline definition and promote it when the gates pass.
+set -euo pipefail
+
+readonly MAX_RETRIES=3
+readonly POLICY="${PIPELINE_POLICY:-strict}"
+declare -A GATE_STATUS=()
+
+log() { printf '%s  %s\n' "$(date -u +%FT%TZ)" "$*" >&2; }
+
+validate_stage() {
+    local -r name="$1" retries="${2:-0}"
+    if (( retries > MAX_RETRIES )); then
+        log "ERROR ${name} exceeds ${MAX_RETRIES} retries"
+        return 1
+    fi
+    GATE_STATUS["$name"]="ok"
+}
+
+main() {
+    local -a stages=("validate" "deploy")
+    for stage in "${stages[@]}"; do
+        validate_stage "$stage" 0 || exit 1
+    done
+    log "policy=${POLICY} stages=${#stages[@]}"
+}
+
+main "$@"
+```
+
 ### LaTeX
 
 ```latex
@@ -514,6 +547,7 @@ role appears in that example.
 | **Rust** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
 | **Go** | ● | ● | ● | ● | · | ● | ● | ● | ● | 8/9 |
 | **Java** | ● | ● | ● | ● | ● | ● | · | ● | ● | 8/9 |
+| **Bash** | ● | ● | · | · | ● | ● | ● | ● | ● | 7/9 |
 | **Assembly (NASM)** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
 | **LaTeX** | ● | ● | · | · | · | ● | ● | · | ● | 5/9 |
 | **Markdown** | · | ● | ● | · | · | ● | ● | ● | ● | 6/9 |
@@ -526,6 +560,7 @@ actually fails to parse — a correct example cannot demonstrate it.
 
 Where a language falls short, the reason is the language or the lexer:
 
+- **Bash** — no type system, and Chroma's shell lexer does not mark function definitions.
 - **Go** — Go has no macro or annotation construct; its struct tags are strings.
 - **Java** — Chroma's Java lexer emits a plain name for every numeric literal, so numbers cannot be separated. A lexer limitation, not a palette one.
 - **LaTeX** — No type, callable or operator concept in the grammar — commands are keywords.

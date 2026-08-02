@@ -238,7 +238,11 @@ pre, .highlight { border-radius: 9px; }
 .td-sidebar-nav a {
   display: block;
   padding: 3px 0.5rem !important; // !important beats Bootstrap's `.ps-0`
-  border-radius: 6px;
+
+  // Flat, and the marker is a real border. Docsy puts a border-bottom on the
+  // section-title link, and a border-radius curves that rule's ends into hooks.
+  border-radius: 0;
+  border-left: 2px solid transparent;
 }
 
 .td-sidebar-link:hover,
@@ -247,11 +251,13 @@ pre, .highlight { border-radius: 9px; }
   color: var(--pj-heading);
 }
 
-.td-sidebar-link.active {
+// Scoped under .td-sidebar-nav so it outranks the transparent border set on
+// every link above; equal specificity would leave the marker invisible.
+.td-sidebar-nav .td-sidebar-link.active {
   background: var(--pj-nav-active-bg);
   color: var(--pj-nav-active-text);
-  font-weight: 600;
-  box-shadow: inset 2px 0 0 var(--pj-action);
+  font-weight: 700;
+  border-left-color: var(--pj-action);
 }
 
 // The one structural job the accent is given: a short lead-in on the section
@@ -286,7 +292,6 @@ pre, .highlight { border-radius: 9px; }
   background: var(--pj-surface-hover);
   border-left: 2px solid var(--pj-action);
   padding-left: 1rem;
-  border-radius: 0 6px 6px 0;
 }
 
 // -----------------------------------------------------------------------------
@@ -352,3 +357,24 @@ pre,
 .alert-success { background: var(--pj-success-bg); border-color: var(--pj-success-border); }
 .alert-warning { background: var(--pj-warning-bg); border-color: var(--pj-warning-border); }
 .alert-danger  { background: var(--pj-danger-bg);  border-color: var(--pj-danger-border); }
+
+// -----------------------------------------------------------------------------
+// Reading measure and heading weights
+// -----------------------------------------------------------------------------
+// The documentation site keeps prose inside a 1100px measure and sets the
+// heading weights from the brand ramp; Bootstrap's defaults are wider and
+// lighter. Matching them is what makes the example read as the same product.
+.td-content {
+  max-width: 1100px;
+
+  > p, > ul, > ol, > dl, > blockquote {
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+}
+
+h1, .h1 { font-weight: 700; line-height: 1.15; letter-spacing: -0.3px; }
+h2, .h2 { font-weight: 700; line-height: 1.2; letter-spacing: -0.3px; }
+h3, .h3 { font-weight: 600; line-height: 1.25; letter-spacing: -0.3px; }
+h4, .h4 { font-weight: 600; line-height: 1.3; }
+h5, .h5 { font-weight: 600; line-height: 1.35; }

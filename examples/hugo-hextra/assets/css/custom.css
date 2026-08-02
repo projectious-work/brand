@@ -178,12 +178,14 @@ a.not-prose[class*="rounded-full"]:focus-visible {
   border-radius: 6px;
 }
 
-.hextra-sidebar-active-item {
+.hextra-sidebar-container a { border-radius: 0; border-left: 2px solid transparent; }
+
+.hextra-sidebar-container a.hextra-sidebar-active-item {
   background: var(--pj-nav-active-bg) !important;
   color: var(--pj-nav-active-text) !important;
-  font-weight: 600;
-  border-radius: 6px;
-  box-shadow: inset 2px 0 0 var(--pj-action);
+  font-weight: 700;
+  border-radius: 0 !important;
+  border-left-color: var(--pj-action);
 }
 
 /* The table of contents uses a left border rather than an inset shadow. A
@@ -210,6 +212,7 @@ a.not-prose[class*="rounded-full"]:focus-visible {
   border-radius: 0 6px 6px 0;
   margin-inline: -1rem;
   padding: 4px 1.5rem 4px 1.875rem;
+  border-radius: 0;
   font-size: 0.9375rem;
   font-weight: 600;
   line-height: 1.45;
@@ -242,6 +245,7 @@ a.not-prose[class*="rounded-full"]:focus-visible {
   background: var(--pj-surface-hover) !important;
   color: var(--pj-nav-active-text) !important;
   border-left-color: var(--pj-action);
+  border-radius: 0 !important;
 }
 
 /* -----------------------------------------------------------------------------
@@ -441,4 +445,41 @@ select,
   border-color: var(--pj-action);
   outline: none;
   box-shadow: 0 0 0 2px rgba(224, 82, 50, 0.18);
+}
+
+/* -----------------------------------------------------------------------------
+   Type ramp and reading measure
+   -------------------------------------------------------------------------- */
+/* Hextra sets its own scale and a 1.5 line-height. The documentation site uses
+   the brand ramp at 1.65, inside a 1100px measure — matching it is most of what
+   makes the two read as one product. The colour on h1 needs !important because
+   Hextra paints it with a utility class in the markup. */
+.content {
+  max-width: 1100px;
+  line-height: 1.65;
+}
+
+.content p,
+.content li { line-height: 1.65; }
+
+.content h1 {
+  font-size: 2.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.15;
+  color: var(--pj-heading) !important;
+}
+.content h2 {
+  font-size: 1.75rem !important;
+  font-weight: 700 !important;
+  line-height: 1.2;
+}
+.content h3 {
+  font-size: 1.375rem !important;
+  font-weight: 600 !important;
+  line-height: 1.25;
+}
+.content h4 {
+  font-size: 1.125rem !important;
+  font-weight: 600 !important;
+  line-height: 1.3;
 }

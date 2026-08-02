@@ -3,8 +3,6 @@ title: Reference
 weight: 30
 ---
 
-# Reference
-
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus sed
 erat tempus elementum.
 

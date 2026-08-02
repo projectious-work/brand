@@ -3,8 +3,6 @@ title: Recipes
 weight: 20
 ---
 
-# Recipes
-
 ## Callouts and buttons
 
 {{< callout type="warning" >}}

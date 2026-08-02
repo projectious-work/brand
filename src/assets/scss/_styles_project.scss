@@ -196,6 +196,12 @@ small, .small, figcaption, .td-page-meta {
     font-weight: 700;
     letter-spacing: -0.3px;
     color: $brand-primary;
+
+    // The same optical correction the one-line lockup carries. Centring aligns
+    // the text *box*, and that box includes descender space the wordmark
+    // mostly does not use, so the type reads as sitting low against the mark.
+    // See the lockup rule in _demo.scss — this is the navbar's instance of it.
+    transform: translateY(-0.06em);
   }
 
   .nav-link {
@@ -827,7 +833,17 @@ kbd {
     color: var(--pj-slate-11);
     display: block;
     padding: 3px 0.5rem !important; // !important beats Bootstrap's `.ps-0`
-    border-radius: $border-radius;
+
+    // Flat, not rounded. Docsy puts a border-bottom on the section-title link
+    // to separate it from the tree, and a border-radius curves that rule's ends
+    // into little hooks. The table of contents has no rounding either, and the
+    // two sidebars should not disagree about something this basic.
+    border-radius: 0;
+
+    // The current-page marker is a real border, not an inset shadow: a border
+    // participates in layout, so the label keeps its position whether or not
+    // the item is current, and the marker cannot be rounded by the box.
+    border-left: 2px solid transparent;
     transition: color var(--pj-duration-micro) var(--pj-ease-out),
       background-color var(--pj-duration-micro) var(--pj-ease-out);
 
@@ -844,8 +860,7 @@ kbd {
     font-weight: 700;
     color: var(--pj-nav-active-text);
     background: var(--pj-nav-active-bg);
-    border-radius: $border-radius;
-    box-shadow: inset 2px 0 0 var(--pj-action);
+    border-left-color: var(--pj-action);
   }
 }
 
@@ -876,7 +891,6 @@ kbd {
     background: var(--pj-surface-subtle);
     border-left: 2px solid var(--pj-orange-9);
     padding-left: 1rem;
-    border-radius: 0 $border-radius $border-radius 0;
   }
 
   #TableOfContents > ul > li > a,

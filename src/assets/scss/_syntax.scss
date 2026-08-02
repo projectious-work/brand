@@ -15,7 +15,7 @@
 // =============================================================================
 
 $pj-code-bg: $midnight-dark-2;
-$pj-code-keyword: $midnight-dark-11; // #8aacc8 -- 7.06:1
+$pj-code-keyword: #d491b4; // 6.82:1 — terminal magenta (bright)
 $pj-code-string: $brand-accent-light; // #ea7558 -- 5.76:1
 $pj-code-identifier: $midnight-dark-12; // #c5daf0 -- 11.74:1
 $pj-code-operator: $slate-dark-11; // #97a8b8 -- 6.90:1
@@ -27,14 +27,23 @@ $pj-code-operator: $slate-dark-11; // #97a8b8 -- 6.90:1
 // staying visibly dimmer than operators.
 $pj-code-comment: #72889d;
 
+// Hue assignment is set by perceptual distance weighted by frequency: the role
+// that appears most often gets the best-separated hue. Types are referenced on
+// nearly every line of typed code, so they hold green — ΔE2000 29.9 from plain
+// text — while decorators, which are rare, take the cyan that sits closer to it
+// at 17.3. Keywords and operators previously measured ΔE2000 5.2 apart — the same colour, for
+// reading purposes — because both sat in the blue-grey band at the same
+// lightness. Only the three neutrals (plain, operators, comments) live in that
+// band now, separated by lightness; every chromatic role has its own hue.
+//
 // Roles added when the theme grew from six tokens to the ten the LSP and
 // TextMate scope vocabularies actually need. Both new hues come from the
 // terminal palette, which had already extended the system with the cyan and
 // magenta the three interface scales do not carry. Measured on #131e2b.
-$pj-code-type: #74c0c9; // 8.11:1 — types, classes, interfaces, namespaces
+$pj-code-type: #6cc090; // 7.67:1 — types, classes, interfaces, namespaces
 $pj-code-function: #e0a92a; // 7.91:1 — functions and methods
-$pj-code-decorator: #d491b4; // 6.82:1 — decorators, macros, annotations
-$pj-code-invalid: #f08b80; // 6.98:1 — invalid and deprecated
+$pj-code-decorator: #74c0c9; // 8.11:1 — decorators, macros, annotations
+$pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
 
 
 // The rules are wrapped in a mixin so a consumer can raise their specificity.

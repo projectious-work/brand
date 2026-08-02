@@ -3,8 +3,6 @@ title: Foundations
 weight: 10
 ---
 
-# Foundations
-
 ## Typography
 
 Use headings to establish a clear hierarchy. Paragraphs can contain *emphasis*,

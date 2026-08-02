@@ -371,6 +371,12 @@ terminal:
 # behind VS Code, Sublime and most highlighters — defines 11 root scopes with
 # a deep sub-scope tree beneath each.
 #
+# Hue assignment is set by perceptual distance, not by taste. Keywords and
+# operators once measured ΔE2000 5.2 apart — the same colour for reading
+# purposes — because both sat in the blue-grey band at the same lightness. Only
+# the three neutrals (plain, operators, comments) live in that band now,
+# separated by lightness alone; every chromatic role holds its own hue.
+#
 # A good theme does NOT answer that with 22 colours. It groups scopes into a
 # handful of *roles* and lets weight and slant carry the rest, because colour
 # stops being a signal once there is too much of it. This maps the two scope
@@ -391,22 +397,23 @@ syntaxScopes:
       chroma: .n .nv .nx .py .vc .vg .vi
       note: The default. Anything the reader does not need to pick out.
     - role: Keywords and modifiers
-      hex: "#8aacc8"
-      contrast: "7.06:1"
-      step: midnight-dark-11
+      hex: "#d491b4"
+      contrast: "6.82:1"
+      step: terminal magenta (bright)
       lsp: keyword · modifier
       textmate: keyword.control · storage.modifier · storage.type
       chroma: .k .kc .kd .kn .kp .kr .nt .na
       note: Also structural keys — a YAML key is the keyword of its line.
     - role: Types and classes
-      hex: "#74c0c9"
-      contrast: "8.11:1"
-      step: terminal cyan (bright)
+      hex: "#6cc090"
+      contrast: "7.67:1"
+      step: terminal green (bright)
       lsp: type · class · struct · interface · enum · typeParameter · namespace
       textmate: entity.name.type · entity.name.class · support.class
       chroma: .kt .nc .nn .ne .bp
-      note: The brand has no cyan; the terminal palette does, and this is the
-        second place the system needed one.
+      note: Green, not cyan, because types are referenced on nearly every line
+        of typed code and the most frequent role should hold the best-separated
+        hue — 29.9 ΔE2000 from plain text, against cyan's 17.3.
     - role: Functions and methods
       hex: "#e0a92a"
       contrast: "7.91:1"
@@ -417,13 +424,15 @@ syntaxScopes:
       note: Callables read as callable at a glance — the single most useful
         distinction beyond the original six.
     - role: Decorators and macros
-      hex: "#d491b4"
-      contrast: "6.82:1"
-      step: terminal magenta (bright)
+      hex: "#74c0c9"
+      contrast: "8.11:1"
+      step: terminal cyan (bright)
       lsp: macro · decorator · event
       textmate: entity.name.tag · meta.decorator · support.macro
       chroma: .nd .ni .nl .cp .cpf
-      note: Code that runs at a different time from the code around it —
+      note: Cyan sits closer to plain text than green does, which is affordable
+        here because decorators are rare. Code that runs at a different time
+        from the code around it —
         including C preprocessor directives and Rust attributes, which Chroma
         files under Comment.Preproc but which are macros, not commentary.
     - role: Strings
@@ -462,9 +471,9 @@ syntaxScopes:
         comments belong here even though Chroma files them under String.Doc —
         a docstring is documentation, not data.
     - role: Invalid and deprecated
-      hex: "#f08b80"
-      contrast: "6.98:1"
-      step: danger-dark
+      hex: "#e55b5b"
+      contrast: "4.79:1"
+      step: terminal red (normal)
       lsp: (modifier) deprecated
       textmate: invalid.illegal · invalid.deprecated
       chroma: .err

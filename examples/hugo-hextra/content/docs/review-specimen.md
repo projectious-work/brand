@@ -1,10 +1,8 @@
 ---
-title: Review specimen
+title: Ship a reliable integration
 weight: 4
 description: The theme review fixture from the brand's Hugo guidance, rendered in Hextra.
 ---
-
-# Ship a reliable integration
 
 This is the Hextra review fixture described in the brand's
 [Hugo theme guidance](https://projectious-work.github.io/brand/docs/themes/hugo/).
