@@ -1,0 +1,41 @@
+// =============================================================================
+// projectious.work brand — Bootstrap variables for the Docsy example
+// =============================================================================
+// This file demonstrates the Docsy half of the brand adapter documented in
+// src/content/docs/themes/hugo.md. It is the "Bootstrap semantic roles" step:
+// assign brand values to the roles Bootstrap already has, rather than colouring
+// individual selectors. Surfaces that Bootstrap has no variable for are handled
+// by the colour layer in _styles_project.scss.
+//
+// The scales themselves come from the documentation site, mounted by hugo.yaml,
+// so this example cannot drift from the brand it is demonstrating.
+// =============================================================================
+
+@import "scales";
+
+// $primary … $danger and the brand aliases are defined by _scales.scss above.
+// Only the type, shape, and control variables are specific to this site.
+
+// slate-7 is a hairline, not a control edge: it measures 2.13:1 on white and
+// leaves an input with no perceivable boundary. Use the strong border step.
+$input-border-color: $slate-9;
+
+$font-family-sans-serif: "Source Sans 3", system-ui, -apple-system, sans-serif;
+$font-family-monospace: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+$headings-font-family: "Plus Jakarta Sans", system-ui, -apple-system, sans-serif;
+$headings-font-weight: 700;
+$body-line-height: 1.65;
+
+$border-radius-sm: 3px;
+$border-radius: 6px;
+$border-radius-lg: 9px;
+$border-radius-xl: 13px;
+$enable-gradients: false;
+$enable-shadows: false;
+
+$box-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
+$box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+$box-shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+$td-enable-google-fonts: false;
+$enable-dark-mode: true;

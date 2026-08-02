@@ -1,0 +1,77 @@
+{{- /*
+  Renders the terminal palette from data/brand.yaml.
+
+    {{< terminal-palette >}}          the sixteen ANSI slots
+    {{< terminal-palette part="chrome" >}}   surface, cursor, selection, chrome
+
+  Both the Colour foundations and the Terminal implementation guide render from
+  this one source, so the palette cannot say two different things in two places.
+*/ -}}
+{{- $part := default "ansi" (.Get "part") -}}
+{{- $t := hugo.Data.brand.terminal -}}
+{{- with $t -}}
+
+{{- if eq $part "ansi" -}}
+<div class="pj-scroll-x">
+<table class="pj-table pj-terminal-palette">
+  <thead>
+    <tr>
+      <th class="pj-table__num">#</th>
+      <th>Name</th>
+      <th>Normal</th>
+      <th class="pj-table__num">On surface</th>
+      <th>Bright</th>
+      <th class="pj-table__num">On surface</th>
+      <th>Provenance</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{- range .ansi }}
+    <tr>
+      <td class="pj-table__num">{{ .slot }}</td>
+      <td>{{ .name }}</td>
+      <td class="pj-inline-color">
+        <span class="pj-color-chip" style="--pj-chip: {{ .normal }}" aria-hidden="true"></span>
+        <code>{{ .normal }}</code>
+      </td>
+      <td class="pj-table__num">{{ .normalContrast }}</td>
+      <td class="pj-inline-color">
+        <span class="pj-color-chip" style="--pj-chip: {{ .bright }}" aria-hidden="true"></span>
+        <code>{{ .bright }}</code>
+      </td>
+      <td class="pj-table__num">{{ .brightContrast }}</td>
+      <td>{{ .source }}{{ with .note }} — {{ . }}{{ end }}</td>
+    </tr>
+    {{- end }}
+  </tbody>
+</table>
+</div>
+
+{{- else if eq $part "chrome" -}}
+<div class="pj-scroll-x">
+<table class="pj-table pj-terminal-palette">
+  <thead>
+    <tr><th>Role</th><th>Value</th><th class="pj-table__num">Measured</th></tr>
+  </thead>
+  <tbody>
+    {{- range .chrome }}
+    <tr>
+      <td>{{ .role }}</td>
+      <td class="pj-inline-color">
+        <span class="pj-color-chip" style="--pj-chip: {{ .hex }}" aria-hidden="true"></span>
+        <code>{{ .hex }}</code>
+      </td>
+      <td class="pj-table__num">{{ .contrast }}</td>
+    </tr>
+    {{- end }}
+  </tbody>
+</table>
+</div>
+
+{{- else -}}
+{{- errorf "terminal-palette: unknown part %q — use \"ansi\" or \"chrome\" (%s)" $part .Position -}}
+{{- end -}}
+
+{{- else -}}
+{{- errorf "terminal-palette: no `terminal` block in data/brand.yaml (%s)" .Position -}}
+{{- end -}}

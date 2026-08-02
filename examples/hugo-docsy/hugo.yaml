@@ -1,0 +1,83 @@
+baseURL: http://localhost:1315/
+title: Docsy Kitchen Sink
+languageCode: en-us
+theme:
+  - ../../../src/themes/docsy
+enableRobotsTXT: true
+enableEmoji: true
+
+# The vendored Docsy theme imports Bootstrap and Font Awesome as Hugo modules.
+# Reuse the parent site's installed packages, just as src/hugo.yaml does, so
+# this local example can resolve those imports without network-dependent Hugo
+# module mounts.
+module:
+  replacements:
+    - "github.com/FortAwesome/Font-Awesome -> ../../../src/node_modules/@fortawesome/fontawesome-free"
+    - "github.com/twbs/bootstrap -> ../../../src/node_modules/bootstrap"
+  # Declaring any mount for a component replaces Hugo's default mount for that
+  # component, so the defaults for assets, content, and layouts are restored
+  # explicitly before the shared brand sources are added on top.
+  mounts:
+    - source: assets
+      target: assets
+    - source: content
+      target: content
+    - source: layouts
+      target: layouts
+    # The brand scales, the --pj-* token layer, and the component specimens are
+    # mounted from the documentation site rather than copied. This example is a
+    # demonstration of the brand, so it must not be able to drift from it.
+    - source: ../../src/assets/scss/_scales.scss
+      target: assets/scss/_scales.scss
+    - source: ../../src/assets/scss/_tokens.scss
+      target: assets/scss/_tokens.scss
+    - source: ../../src/assets/scss/_demo.scss
+      target: assets/scss/_demo.scss
+    # The shortcodes the specimen pages are written with.
+    - source: ../../src/layouts/shortcodes
+      target: layouts/shortcodes
+    # One kitchen-sink page, shared with the Hextra example, so the only
+    # difference between the two is the theme rendering it.
+    - source: ../shared/kitchen-sink.md
+      target: content/docs/kitchen-sink.md
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
+
+outputs:
+  home: [HTML, RSS]
+  section: [HTML, RSS]
+
+params:
+  offlineSearch: true
+  ui:
+    navbar_logo: false
+    navbar_theme: light
+    showLightDarkModeMenu: true
+    sidebar_menu_compact: true
+    sidebar_menu_foldable: true
+    breadcrumb_disable: false
+  links:
+    user:
+      - name: Source
+        url: https://github.com/google/docsy
+        icon: fab fa-github
+        desc: Theme source
+
+menu:
+  main:
+    # pageRef, not url: Docsy derives the navbar's current-item state from the
+    # menu entry's page, and a plain url never matches.
+    - name: Documentation
+      pageRef: /docs
+      weight: 10
+    - name: Kitchen sink
+      pageRef: /docs/kitchen-sink
+      weight: 15
+    - name: Project
+      url: https://github.com/google/docsy
+      weight: 20

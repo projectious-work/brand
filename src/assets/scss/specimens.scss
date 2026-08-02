@@ -1,0 +1,45 @@
+// =============================================================================
+// projectious.work brand — standalone component specimens
+// =============================================================================
+// A self-contained stylesheet for sites that do not run Docsy's SCSS pipeline.
+// It compiles the same three sources the documentation site uses, so a specimen
+// rendered here and the same specimen on the documentation site are the same
+// markup styled by the same rules — not a copy that can drift.
+//
+//   _variables_project.scss  the brand scales and shape/type variables
+//   _tokens.scss             those scales exposed as --pj-* custom properties
+//   _syntax.scss             the syntax theme for the always-dark code surface
+//   _demo.scss               the .pj-* component specimens themselves
+//
+// Nothing here depends on Bootstrap. _demo.scss reads only custom properties
+// and plain SCSS variables, which is what lets the same specimen set render
+// under Docsy and under Hextra.
+//
+// Consumed by examples/hugo-hextra via layouts/_partials/custom/head-end.html.
+// The Docsy example imports the same partials through its own project SCSS.
+// =============================================================================
+
+@import "variables_project";
+@import "tokens";
+@import "syntax";
+@import "demo";
+
+// Hextra ships its Chroma palette at `.highlight .chroma .xx`, and its dark
+// variant at `.dark .highlight .chroma .xx`. Re-including the syntax theme
+// inside these scopes clears both, so the brand palette holds on the
+// always-dark code surface in *light* mode too — where the theme would
+// otherwise paint navy keywords on midnight at roughly 1.1:1.
+// Scoping through `.highlight` is deliberate: the mixin emits `.highlight …`
+// and `.chroma …`, so this resolves to `html .highlight .chroma .xx` — four
+// compound parts against the theme's three, and five against its four-part
+// dark variant.
+html .highlight { @include pj-syntax-theme; }
+html.dark .highlight { @include pj-syntax-theme; }
+
+// The documentation site gets these from Bootstrap and Docsy. A standalone
+// consumer needs the reading defaults the specimens are measured against.
+.pj-specimen-scope {
+  font-family: $font-family-sans-serif;
+  font-size: 1rem;
+  line-height: 1.65;
+}

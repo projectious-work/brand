@@ -53,5 +53,12 @@ context/**/private/
 # =============================================================================
 public/
 resources/_gen/
+# A pattern with an internal slash is anchored to this directory, so the line
+# above never matched the theme examples' own build caches.
+examples/*/resources/_gen/
+examples/*/public/
 .hugo_build.lock
 node_modules/
+
+# Theme examples staged for the authoring server by scripts/serve-docs.sh.
+src/static/examples/

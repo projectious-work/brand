@@ -53,6 +53,9 @@ if [[ "${DOCS_VERSION}" == "main" ]]; then
     ! -name .git \
     ! -regex '.*/v[0-9]+\.[0-9]+\.[0-9]+\(-[0-9A-Za-z.-]+\)?$' \
     -exec rm -rf {} +
+  # build-docs.sh already produced examples/<theme>/ inside BUILD_DIR, with each
+  # example's baseURL matching where it lands here. Copying the tree wholesale
+  # keeps the published layout identical to the one built locally.
   cp -R "${BUILD_DIR}/." "${WORKTREE_DIR}/"
 else
   VERSION_DIR="${WORKTREE_DIR}/${DOCS_VERSION}"

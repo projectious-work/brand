@@ -1,0 +1,86 @@
+baseURL: http://localhost:1314/
+languageCode: en-us
+title: Hextra kitchen sink
+module:
+  imports:
+    - path: github.com/imfing/hextra
+  # Declaring any mount for a component replaces Hugo's default mount for that
+  # component, so the defaults for assets, content, and layouts are restored
+  # explicitly before the shared brand sources are added on top.
+  mounts:
+    - source: assets
+      target: assets
+    - source: content
+      target: content
+    - source: layouts
+      target: layouts
+    # The brand scales, the --pj-* token layer, the component specimens, and the
+    # standalone entry point that compiles them. Mounted from the documentation
+    # site rather than copied, so this example cannot drift from the brand.
+    - source: ../../src/assets/scss/_scales.scss
+      target: assets/scss/_scales.scss
+    - source: ../../src/assets/scss/_variables_project.scss
+      target: assets/scss/_variables_project.scss
+    - source: ../../src/assets/scss/_tokens.scss
+      target: assets/scss/_tokens.scss
+    - source: ../../src/assets/scss/_syntax.scss
+      target: assets/scss/_syntax.scss
+    - source: ../../src/assets/scss/_demo.scss
+      target: assets/scss/_demo.scss
+    - source: ../../src/assets/scss/specimens.scss
+      target: assets/scss/specimens.scss
+    # The shortcodes the specimen pages are written with.
+    - source: ../../src/layouts/shortcodes
+      target: layouts/shortcodes
+    # One kitchen-sink page, shared with the Docsy example, so the only
+    # difference between the two is the theme rendering it.
+    - source: ../shared/kitchen-sink.md
+      target: content/docs/kitchen-sink.md
+enableRobotsTXT: false
+outputs:
+  home: [HTML]
+  section: [HTML]
+  taxonomy: [HTML]
+  term: [HTML]
+params:
+  description: A standalone Hextra theme example.
+  navbar:
+    displayTitle: true
+    displayLogo: false
+  theme:
+    default: system
+    # Hextra renders this control in the sidebar. assets/js/navbar-theme.js
+    # moves it into the navbar, beside search — see that file for why.
+    displayToggle: true
+  search:
+    enable: true
+    type: flexsearch
+    flexsearch:
+      index: content
+      tokenize: forward
+  footer:
+    displayCopyright: true
+    displayPoweredBy: false
+menu:
+  main:
+    - name: Guide
+      pageRef: /docs
+      weight: 10
+    - name: Kitchen sink
+      pageRef: /docs/kitchen-sink
+      weight: 20
+    - name: Search
+      weight: 30
+      params:
+        type: search
+    - name: GitHub
+      url: https://github.com/imfing/hextra
+      weight: 50
+      params:
+        icon: github
+markup:
+  highlight:
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true

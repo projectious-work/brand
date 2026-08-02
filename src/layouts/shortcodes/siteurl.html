@@ -1,0 +1,21 @@
+{{- /*
+  Resolve a path against the site's own baseURL.
+
+    [Open the Docsy example]({{< siteurl "examples/hugo-docsy/" >}})
+
+  For targets that are part of the published site but are NOT pages in this
+  Hugo project — the theme examples are separate Hugo builds copied into
+  public/examples/ — `relref` cannot be used, and a hardcoded
+  https://projectious-work.github.io/... link sends a reader previewing
+  locally to the deployed site instead of to their own build.
+
+  `relURL` produces /examples/… when the site is served from a root and
+  /brand/examples/… when it is published under a path, so the same link is
+  correct in a local preview, in a versioned archive, and in production.
+*/ -}}
+{{- $path := .Get 0 -}}
+{{- with $path -}}
+  {{- . | relURL -}}
+{{- else -}}
+  {{- errorf "siteurl: missing path argument in %s" $.Page.Path -}}
+{{- end -}}

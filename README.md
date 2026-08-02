@@ -101,6 +101,9 @@ src/                Hugo site source
 └── themes/docsy    Docsy, pinned as a submodule
 
 scripts/            Local build, serve, deploy, and screenshot scripts
+examples/           Standalone Hugo kitchen-sink implementations
+├── hugo-docsy/     Docsy example with local build and serve scripts
+└── hugo-hextra/    Hextra example with local build and serve scripts
 ```
 
 `brand/` is the source of truth; `src/` renders it. The site is a readable
@@ -122,10 +125,21 @@ cd brand
 ./scripts/deploy-docs.sh    # build and push to the gh-pages branch
 ```
 
+When working in the development container, start the watcher with
+`./scripts/serve-docs.sh --bind 0.0.0.0`. The Compose override publishes its
+port only at `http://localhost:1313/` on the host.
+
 **There is no CI.** No GitHub Actions, no workflows. Builds, checks, and
 deployments all run locally and are pushed to the `gh-pages` branch, which
 GitHub Pages serves from its root. `scripts/verify.sh` is what "the checks
 passed" means here:
+
+`build-docs.sh` also builds the theme examples into the same tree, at
+`/examples/hugo-docsy/` and `/examples/hugo-hextra/`, so a local `public/` is
+exactly what gets published — paths included. `serve-docs.sh` stages them for
+the authoring server too, and `serve-docs.sh --built` serves the whole
+published tree. They have no CI or independent deployment configuration; see
+each example's README for its local build and serve commands.
 
 | Check | What it covers |
 |---|---|

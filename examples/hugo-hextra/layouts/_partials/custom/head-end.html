@@ -1,0 +1,51 @@
+{{- /*
+  projectious.work brand — component specimens for Hextra.
+
+  Hextra loads `assets/css/custom.css` as plain CSS, which is the right entry
+  point for the theme adapter but cannot compile the brand's SCSS sources. The
+  specimen set (`.pj-*`) lives in SCSS because it is generated from the same
+  scale variables the documentation site uses.
+
+  `custom/head-end.html` is Hextra's documented head hook, so compiling the
+  shared stylesheet here keeps the example inside the supported extension
+  points — no theme template is overridden.
+
+  The source is mounted from src/assets/scss by hugo.yaml; see specimens.scss.
+*/ -}}
+{{- with resources.Get "scss/specimens.scss" -}}
+  {{- $css := . | toCSS (dict "targetPath" "css/specimens.css") -}}
+  {{- if hugo.IsProduction -}}
+    {{- $css = $css | minify | fingerprint -}}
+  {{- end -}}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}"
+    {{- with $css.Data.Integrity }} integrity="{{ . }}"{{ end }}>
+{{- else -}}
+  {{- errorf "Brand specimens not found: assets/scss/specimens.scss is not mounted." -}}
+{{- end -}}
+
+{{- /*
+  Table-of-contents active marker. Hextra's own scroll-spy only reacts inside a
+  narrow band near the top of the viewport, which leaves the marker stale after
+  a table-of-contents click and through sections taller than the viewport. See
+  assets/js/toc-active.js.
+*/ -}}
+{{- with resources.Get "js/toc-active.js" -}}
+  {{- $js := . -}}
+  {{- if hugo.IsProduction -}}
+    {{- $js = $js | minify | fingerprint -}}
+  {{- end -}}
+  <script defer src="{{ $js.RelPermalink }}"
+    {{- with $js.Data.Integrity }} integrity="{{ . }}"{{ end }}></script>
+{{- end -}}
+
+{{- /*
+  Colour-mode control in the navbar. Hextra renders it in the sidebar only and
+  its navbar takes no such menu entry; this moves the rendered control rather
+  than overriding the navbar template. See assets/js/navbar-theme.js.
+*/ -}}
+{{- with resources.Get "js/navbar-theme.js" -}}
+  {{- $js := . -}}
+  {{- if hugo.IsProduction }}{{ $js = $js | minify | fingerprint }}{{ end -}}
+  <script defer src="{{ $js.RelPermalink }}"
+    {{- with $js.Data.Integrity }} integrity="{{ . }}"{{ end }}></script>
+{{- end -}}

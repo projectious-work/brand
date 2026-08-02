@@ -1,0 +1,23 @@
+{{- /*
+  projectious.work branded callout.
+
+  Hextra's built-in `callout` shortcode styles itself with Tailwind utility
+  classes and exposes no stable class hook, so its semantic tints cannot be
+  rebound from assets/css/custom.css. This shortcode is the documented
+  alternative: it emits the brand's own class names, which the adapter styles.
+
+  Usage:
+    {{< pj-callout type="info" title="Before you begin" >}}
+    Run the validation command locally before requesting promotion.
+    {{< /pj-callout >}}
+
+  Types: info · success · warning · danger. Each carries a text label as well
+  as a colour, so the state never depends on colour alone.
+*/ -}}
+{{- $type := .Get "type" | default "info" -}}
+{{- $labels := dict "info" "Note" "success" "Validated" "warning" "Needs attention" "danger" "Blocked" -}}
+{{- $title := .Get "title" | default (index $labels $type) -}}
+<div class="pj-callout pj-callout-{{ $type }}" role="note">
+  <p class="pj-callout-title">{{ $title }}</p>
+  <div class="pj-callout-body">{{ .InnerDeindent | markdownify }}</div>
+</div>

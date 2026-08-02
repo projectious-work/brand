@@ -4,7 +4,4 @@ linkTitle: Search
 type: search
 layout: list
 description: Search every page of the projectious.work brand documentation.
-menu:
-  main:
-    weight: 15
 ---

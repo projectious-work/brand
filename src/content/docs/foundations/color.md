@@ -72,6 +72,50 @@ call to action on the same screen.
 Slate is the secondary — supporting text, borders, and neutral surfaces. Step 9
 (`#546a82`) is the brand secondary and is constant across modes.
 
+## Terminal
+
+The three scales cover every surface that has a light mode. A terminal does not:
+it has one surface, it is dark, and every colour in it is measured against that
+one background. It also needs six hues where the interface needs three, because
+programs have been writing to sixteen ANSI slots since long before this system
+existed.
+
+So the terminal palette is a fourth member of the system rather than a fifth
+scale — a fixed sixteen-slot palette plus its chrome, derived from the ramps and
+measured against `midnight-dark-1`.
+
+{{< terminal-palette >}}
+
+Read the provenance column carefully. The **bright** ramp is the brand: where a
+hue already exists in the system, the bright slot takes that step verbatim. The
+**normal** ramp has no brand equivalent — the scales define one value per
+semantic role, not a dim and a bright — so each normal slot is its bright
+counterpart darkened until it reads a step back while still clearing the floor.
+
+Magenta and cyan exist in neither half of the brand. They are here because a
+terminal requires them, and nowhere else.
+
+{{% alert title="A terminal value is not a brand value" color="warning" %}}
+`#e55b5b` is the terminal's red. It is **not** `$danger`, which is `#a8261c`.
+The normal ramp exists to fill ANSI slots and is measured only against the
+terminal surface; using one of its values in the interface puts an unmeasured
+colour on an unrelated background.
+{{% /alert %}}
+
+### Terminal chrome
+
+The accent gets no ANSI slot, because it is not semantic — it marks *where you
+are*. That, and the surfaces around the sixteen, live here.
+
+{{< terminal-palette part="chrome" >}}
+
+Every non-background value clears 4.5:1 against the surface; the measured floor
+is 4.95:1. ANSI 0 bright is the one deliberate exception — programs use it for
+box drawing and rules, not for text.
+
+Configuration for tmux, WezTerm, Kitty, iTerm2, and Zellij is on the
+[Terminal theming page]({{< relref "/docs/themes/terminal" >}}).
+
 ## Contrast rules
 
 - **Never use pure `#000` or `#fff` as text.** Use step 12 of the relevant

@@ -40,6 +40,40 @@
   --ease-out: cubic-bezier(0.33, 1, 0.68, 1);
   --ease-in: cubic-bezier(0.32, 0, 0.67, 0);
 
+  /* Terminal — one dark surface, sixteen ANSI slots plus chrome.
+     Measured against --terminal-surface; floor 4.95:1. See
+     docs/foundations/color for provenance. */
+  --terminal-surface: #0e1720;
+  --terminal-ansi-0: #0e1720;   /* black */
+  --terminal-ansi-1: #e55b5b;   /* red */
+  --terminal-ansi-2: #3f9d74;   /* green */
+  --terminal-ansi-3: #c08a1e;   /* yellow */
+  --terminal-ansi-4: #6289b3;   /* blue */
+  --terminal-ansi-5: #bd6d96;   /* magenta */
+  --terminal-ansi-6: #3f97a3;   /* cyan */
+  --terminal-ansi-7: #97a8b8;   /* white */
+  --terminal-ansi-8: #2e4b68;   /* bright black */
+  --terminal-ansi-9: #f08b80;   /* bright red */
+  --terminal-ansi-10: #6cc090;   /* bright green */
+  --terminal-ansi-11: #e0a92a;   /* bright yellow */
+  --terminal-ansi-12: #8aacc8;   /* bright blue */
+  --terminal-ansi-13: #d491b4;   /* bright magenta */
+  --terminal-ansi-14: #74c0c9;   /* bright cyan */
+  --terminal-ansi-15: #c5daf0;   /* bright white */
+  --terminal-background: #0e1720;
+  --terminal-foreground: #c5daf0;
+  --terminal-cursor: #e05232;
+  --terminal-cursor-text: #0e1720;
+  --terminal-selection-background: #20354d;
+  --terminal-selection-text: #c5daf0;
+  --terminal-dim-comment: #72889d;
+  --terminal-status-bar-surface: #131e2b;
+  --terminal-status-bar-text: #c5daf0;
+  --terminal-inactive-tab-and-pane-label: #7b8da3;
+  --terminal-active-tab-fill: #e05232;
+  --terminal-active-pane-border: #e05232;
+  --terminal-inactive-pane-border: #7b8da3;
+
   /* Breakpoints (for reference) */
   /* sm: 640px, md: 768px, lg: 1024px, xl: 1280px */
 }

@@ -55,11 +55,35 @@ if [[ ! -d "${SRC_DIR}/node_modules" ]]; then
   npm --prefix "${SRC_DIR}" install --no-package-lock
 fi
 
+# serve-docs.sh stages the examples under src/static/examples/ so the authoring
+# server can resolve /examples/<theme>/ links. That copy is built for a
+# localhost baseURL and must never be published; the real ones are built below.
+rm -rf "${SRC_DIR}/static/examples"
+
 cd "${SRC_DIR}"
 # --destination is always passed explicitly so output lands at the repo root
 # rather than src/public, regardless of any caller-supplied arguments.
 hugo --gc --minify --cleanDestinationDir --baseURL "${DOCS_BASE_URL}" \
   ${BUILD_ARGS[@]+"${BUILD_ARGS[@]}"} --destination "${BUILD_DIR}"
+
+# The theme examples are separate Hugo sites, but they are published as part of
+# this one — the Hugo guidance links to them at /examples/<theme>/. Build them
+# into the same tree here rather than at deploy time, so what you preview from
+# public/ locally is exactly what gets published, paths included.
+#
+# Each example is built with its own baseURL. They must match the directory they
+# are nested into, or every stylesheet and script resolves one level too high
+# and the page renders unstyled.
+for example in hugo-docsy hugo-hextra; do
+  example_dir="${ROOT_DIR}/examples/${example}"
+  [[ -x "${example_dir}/scripts/build.sh" ]] || {
+    echo "Missing example build script: ${example_dir}/scripts/build.sh" >&2
+    exit 1
+  }
+  "${example_dir}/scripts/build.sh" \
+    --baseURL "${DOCS_BASE_URL}examples/${example}/" \
+    --destination "${BUILD_DIR}/examples/${example}"
+done
 
 # GitHub Pages must serve Hugo's prebuilt output without Jekyll processing.
 : > "${BUILD_DIR}/.nojekyll"

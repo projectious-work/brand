@@ -1,0 +1,157 @@
+// =============================================================================
+// projectious.work brand — the colour scales as SCSS variables
+// =============================================================================
+// Extracted from _variables_project.scss so that the documentation site, the
+// Docsy example, and the Hextra example all compile the specimens against one
+// definition of the scales. This file is pure variable declarations: it depends
+// on nothing and imports nothing, so any SCSS entry point can pull it in.
+//
+// The brand uses three 12-step Radix-convention scales (midnight, orange,
+// slate) in two modes. Step roles:
+//
+//   1 app bg      2 subtle bg   3 element bg   4 hover bg
+//   5 active bg   6 subtle brd  7 border       8 strong brd
+//   9 solid bg   10 solid hover 11 low text   12 high text
+//
+// Only steps 11 and 12 are text roles. Steps 8-10 are borders and solid
+// surfaces; they are not held to text contrast thresholds.
+// Step 9 (solid) is constant across modes.
+// =============================================================================
+
+// -----------------------------------------------------------------------------
+// Scale: Midnight (light mode)
+// -----------------------------------------------------------------------------
+$midnight-1: #f8f9fb;
+$midnight-2: #f0f3f8;
+$midnight-3: #e2e9f2;
+$midnight-4: #d3deec;
+$midnight-5: #c3d1e3;
+$midnight-6: #b0c1d6;
+$midnight-7: #96abc6;
+$midnight-8: #7490b2;
+$midnight-9: #1d3352;
+$midnight-10: #162944;
+$midnight-11: #3a5a82;
+$midnight-12: #142438;
+
+// Scale: Midnight (dark mode)
+$midnight-dark-1: #0e1720;
+$midnight-dark-2: #131e2b;
+$midnight-dark-3: #1a2b3e;
+$midnight-dark-4: #20354d;
+$midnight-dark-5: #263f5a;
+$midnight-dark-6: #2e4b68;
+$midnight-dark-7: #3a5c7e;
+$midnight-dark-8: #4d7098;
+$midnight-dark-9: #1d3352;
+$midnight-dark-10: #2b4d78;
+$midnight-dark-11: #8aacc8;
+$midnight-dark-12: #c5daf0;
+
+// -----------------------------------------------------------------------------
+// Scale: Orange / accent (light mode)
+// -----------------------------------------------------------------------------
+$orange-1: #fef9f7;
+$orange-2: #fef0ea;
+$orange-3: #fde0d5;
+$orange-4: #fccebd;
+$orange-5: #f8baa5;
+$orange-6: #f0a48c;
+$orange-7: #e58a6e;
+$orange-8: #d86e4e;
+$orange-9: #e05232;
+$orange-10: #cc4528;
+$orange-11: #c04424;
+$orange-12: #6e2714;
+
+// Scale: Orange / accent (dark mode)
+$orange-dark-1: #1c110d;
+$orange-dark-2: #271610;
+$orange-dark-3: #3d1e13;
+$orange-dark-4: #522616;
+$orange-dark-5: #643019;
+$orange-dark-6: #7a3c20;
+$orange-dark-7: #974b28;
+$orange-dark-8: #b85c32;
+$orange-dark-9: #e05232;
+$orange-dark-10: #ea7558;
+$orange-dark-11: #f09878;
+$orange-dark-12: #fcddd2;
+
+// -----------------------------------------------------------------------------
+// Scale: Slate (light mode)
+// -----------------------------------------------------------------------------
+$slate-1: #f9f9fa;
+$slate-2: #f1f2f4;
+$slate-3: #e6e8eb;
+$slate-4: #dadce0;
+$slate-5: #cdd0d5;
+$slate-6: #bec2c8;
+$slate-7: #adb2ba;
+$slate-8: #9299a4;
+$slate-9: #546a82;
+$slate-10: #4a5e74;
+$slate-11: #5c6f82;
+$slate-12: #1e2b38;
+
+// Scale: Slate (dark mode)
+$slate-dark-1: #111416;
+$slate-dark-2: #171b1f;
+$slate-dark-3: #20262c;
+$slate-dark-4: #283038;
+$slate-dark-5: #303a43;
+$slate-dark-6: #3a454f;
+$slate-dark-7: #47545f;
+$slate-dark-8: #5a6a78;
+$slate-dark-9: #546a82;
+$slate-dark-10: #627a92;
+$slate-dark-11: #97a8b8;
+$slate-dark-12: #d5dee8;
+
+// -----------------------------------------------------------------------------
+// Named brand aliases (brand/tokens/variables.css)
+// -----------------------------------------------------------------------------
+$brand-primary: $midnight-9; // #1d3352 Midnight
+$brand-primary-light: #2b4d78;
+$brand-primary-dark: #132440;
+$brand-accent: $orange-9; // #E05232
+$brand-accent-light: #ea7558;
+$brand-accent-dark: #b84228;
+// Accent fill for solid controls carrying white text. Step 9 is the identity
+// colour, but white on it is 3.87:1 — under the 4.5:1 AA floor for normal
+// text. This measures 4.72:1. Source: brand/tokens/variables.css.
+$brand-accent-solid: #cc4528;
+$brand-secondary: $slate-9; // #546a82
+
+// -----------------------------------------------------------------------------
+// Bootstrap theme colors
+// -----------------------------------------------------------------------------
+// Brand assigns no explicit success/danger hues. Warning is a deep gold rather
+// than orange step 9: the accent marks the one action a view is asking for, and
+// an accent-coloured warning makes every caution read as brand emphasis while
+// the accent itself starts reading as an error. See the shared semantic layer
+// in docs/themes/hugo. Success and danger are tuned to sit in the same
+// desaturated, midnight-adjacent register.
+$primary: $brand-primary;
+$secondary: $brand-secondary;
+$info: $midnight-11;
+$success: #2f7d65;
+$warning: #8b6508; // gold — 5.30:1 on white, and never confusable with the accent
+$danger: #a8261c;
+
+// Dark-mode semantic foregrounds. The light values above are tuned for dark
+// text on tinted light backgrounds; used as foregrounds on the dark app
+// surface (#0e1720) they measure 3.65:1, 3.41:1 and 2.55:1 and fail AA. These
+// are the same hues lifted to clear 4.5:1 with margin, and kept clear of the
+// accent so "danger" never reads as "accent".
+// $warning is the accent (orange-9) as a BORDER/fill; as warning TEXT on the
+// light warning tint it is 3.28:1, so the foreground is a deep gold — matching
+// brand/html/projectious-digital-experience.html.
+$warning-fg: #6f5106; // 6.23:1 on #f5ecd0
+$success-fg: #276754; // 5.06:1 on #d1ebe0 — $success is 3.93:1 there
+
+$success-dark: #6cc090; // 8.24:1
+$warning-dark: #e0a92a; // 8.50:1
+$danger-dark: #f08b80; // 7.49:1
+$light: $midnight-1;
+$dark: $brand-primary-dark;

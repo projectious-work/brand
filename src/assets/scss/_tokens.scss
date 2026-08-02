@@ -1,0 +1,129 @@
+// =============================================================================
+// projectious.work brand — palette as custom properties
+// =============================================================================
+// Extracted from _styles_project.scss so that every site in this repository —
+// the documentation, the Docsy example, and the Hextra example — resolves the
+// same token names to the same values. _demo.scss (the component specimens)
+// reads only these custom properties, which is what makes the specimen set
+// portable across two themes that share no CSS framework.
+//
+// Both mode switches are covered: Docsy/Bootstrap sets `data-bs-theme` on the
+// root element, Hextra sets the `dark` class. A site that uses one simply never
+// matches the other selector.
+// =============================================================================
+
+:root,
+[data-bs-theme="light"],
+html.light {
+  --pj-midnight-1: #{$midnight-1};
+  --pj-midnight-2: #{$midnight-2};
+  --pj-midnight-3: #{$midnight-3};
+  --pj-midnight-6: #{$midnight-6};
+  --pj-midnight-7: #{$midnight-7};
+  --pj-midnight-9: #{$midnight-9};
+  --pj-midnight-11: #{$midnight-11};
+  --pj-midnight-12: #{$midnight-12};
+
+  --pj-orange-1: #{$orange-1};
+  --pj-orange-2: #{$orange-2};
+  --pj-orange-3: #{$orange-3};
+  --pj-orange-9: #{$orange-9};
+  --pj-orange-10: #{$orange-10};
+  --pj-orange-11: #{$orange-11};
+
+  --pj-slate-2: #{$slate-2};
+  --pj-slate-4: #{$slate-4};
+  --pj-slate-7: #{$slate-7};
+  --pj-slate-8: #{$slate-8};
+  --pj-slate-9: #{$slate-9};
+  --pj-slate-11: #{$slate-11};
+  --pj-slate-12: #{$slate-12};
+
+  --pj-surface: #ffffff;
+  --pj-surface-subtle: #{$midnight-2};
+  --pj-border: #{$slate-5}; // 1.55:1 — a divider you can see, still not a line you read
+  --pj-text-muted: #{$slate-9};
+  --pj-focus: #{$orange-10};
+
+  // The page's surface ladder, all from the midnight ramp. Section surfaces are
+  // steps 1-2 per the step roles; slate stays where the foundations put it —
+  // supporting text and borders — and never becomes a large fill.
+  --pj-band: #{$midnight-2};        // step 2, subtle bg — the canvas is step 1
+  --pj-body-fg: #{$midnight-12};
+  --pj-heading-fg: #{$brand-primary};
+  --pj-muted-fg: #{$slate-11};
+  --pj-link-fg: #{$midnight-11};
+  --pj-nav-active-bg: #{$midnight-3};
+  --pj-nav-active-text: #{$midnight-9};
+
+  // Motion (brand/tokens/variables.css)
+  --pj-duration-micro: 100ms;
+  --pj-duration-standard: 200ms;
+  --pj-duration-expand: 300ms;
+  --pj-ease-out: cubic-bezier(0.33, 1, 0.68, 1);
+  --pj-ease-in: cubic-bezier(0.32, 0, 0.67, 0);
+
+  // Semantic colours, light mode.
+  --pj-success: #{$success-fg};
+  --pj-warning: #{$warning-fg};
+  --pj-danger: #{$danger};
+  --pj-info: #{$info};
+
+  // The mark renders on light surfaces here.
+  --pj-mark-shell: #{$midnight-9};
+  --pj-mark-cut: #ffffff;
+  --pj-mark-bud: #{$orange-9};
+}
+
+[data-bs-theme="dark"],
+html.dark {
+  --pj-midnight-1: #{$midnight-dark-1};
+  --pj-midnight-2: #{$midnight-dark-2};
+  --pj-midnight-3: #{$midnight-dark-3};
+  --pj-midnight-6: #{$midnight-dark-6};
+  --pj-midnight-7: #{$midnight-dark-7};
+  --pj-midnight-9: #{$midnight-dark-9};
+  --pj-midnight-11: #{$midnight-dark-11};
+  --pj-midnight-12: #{$midnight-dark-12};
+
+  --pj-orange-1: #{$orange-dark-1};
+  --pj-orange-2: #{$orange-dark-2};
+  --pj-orange-3: #{$orange-dark-3};
+  --pj-orange-9: #{$orange-dark-9};
+  --pj-orange-10: #{$orange-dark-10};
+  --pj-orange-11: #{$orange-dark-11};
+
+  --pj-slate-2: #{$slate-dark-2};
+  --pj-slate-4: #{$slate-dark-4};
+  --pj-slate-7: #{$slate-dark-7};
+  --pj-slate-8: #{$slate-dark-8};
+  --pj-slate-9: #{$slate-dark-9};
+  --pj-slate-11: #{$slate-dark-11};
+  --pj-slate-12: #{$slate-dark-12};
+
+  --pj-surface: #{$midnight-dark-2};
+  --pj-surface-subtle: #{$midnight-dark-3};
+  --pj-border: #{$midnight-dark-5}; // 1.67:1, and navy — the divider carries the hue too
+  --pj-text-muted: #{$slate-dark-11};
+  --pj-focus: #{$orange-dark-11};
+
+  --pj-band: #{$midnight-dark-2};
+  --pj-body-fg: #{$midnight-dark-12};
+  --pj-heading-fg: #{$midnight-dark-12};
+  --pj-muted-fg: #{$slate-dark-11};
+  --pj-link-fg: #{$midnight-dark-11};
+  --pj-nav-active-bg: #{$midnight-dark-4};
+  --pj-nav-active-text: #{$midnight-dark-12};
+
+  --pj-mark-shell: #6b8db2;
+  --pj-mark-cut: #{$brand-primary-dark};
+  --pj-mark-bud: #{$orange-9};
+
+  // Semantic colours, dark mode. The light-mode values are tuned for dark text
+  // on tinted light backgrounds and fall to 2.6-3.7:1 as foregrounds on the
+  // dark app surface. See brand/html/projectious-digital-experience.html.
+  --pj-success: #{$success-dark};
+  --pj-warning: #{$warning-dark};
+  --pj-danger: #{$danger-dark};
+  --pj-info: #{$midnight-dark-11};
+}
