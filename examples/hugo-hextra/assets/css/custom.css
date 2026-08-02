@@ -171,13 +171,29 @@ body {
    border is laid out, so the 16px left padding is measured from it and the
    accent can never end up against the first glyph — an inset shadow paints over
    the padding box and needs that clearance arranged by hand. */
+/* Hextra's TOC links are inline-block with no vertical padding, so a tinted
+   current item hugs the text on all four sides. Give every link the box —
+   block, symmetric padding, and a transparent left border — so the active one
+   has room to breathe and the label does not shift when it becomes current. */
+.hextra-toc a {
+  display: block;
+  border-left: 2px solid transparent;
+  border-radius: 0 6px 6px 0;
+  /* The nav carries 16px of side padding, so a tint laid on the link alone is
+     inset from the column. Negative margins pull the box out to the column
+     edges — as Docsy's is — and the padding puts the label back where it was. */
+  /* `hx:w-full` pins the box to 100% of the list, so negative margins would
+     only shift it; `auto` lets it grow into them. */
+  width: auto;
+  margin-inline: -1rem;
+  padding: 4px 1.5rem 4px 1.875rem;
+}
+
 .hextra-toc a.hextra-toc-active {
   background: var(--pj-surface-hover) !important;
   color: var(--pj-nav-active-text) !important;
   font-weight: 600;
-  border-left: 2px solid var(--pj-action);
-  padding-left: 1rem;
-  border-radius: 0 6px 6px 0;
+  border-left-color: var(--pj-action);
 }
 
 /* -----------------------------------------------------------------------------
