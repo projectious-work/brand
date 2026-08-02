@@ -422,15 +422,17 @@ syntaxScopes:
       step: terminal magenta (bright)
       lsp: macro · decorator · event
       textmate: entity.name.tag · meta.decorator · support.macro
-      chroma: .nd .ni .nl
-      note: Code that runs at a different time from the code around it.
+      chroma: .nd .ni .nl .cp .cpf
+      note: Code that runs at a different time from the code around it —
+        including C preprocessor directives and Rust attributes, which Chroma
+        files under Comment.Preproc but which are macros, not commentary.
     - role: Strings
       hex: "#ea7558"
       contrast: "5.76:1"
       step: orange-dark-10
       lsp: string
       textmate: string.quoted · string.interpolated · string.regexp
-      chroma: .s .s1 .s2 .sa .sb .sc .sd .se .sh .si .sr .ss .sx .dl
+      chroma: .s .s1 .s2 .sa .sb .sc .se .sh .si .sr .ss .sx .dl
       note: Interpolation delimiters take the operator colour, so the
         expression inside stays readable as code.
     - role: Numbers and constants
@@ -455,8 +457,10 @@ syntaxScopes:
       step: code-comment
       lsp: comment
       textmate: comment.line · comment.block · comment.block.documentation
-      chroma: .c .ch .cm .cp .c1 .cs
-      note: Italic. The only role with no scale step of its own.
+      chroma: .c .ch .cm .c1 .cs .sd
+      note: Italic. The only role with no scale step of its own. Documentation
+        comments belong here even though Chroma files them under String.Doc —
+        a docstring is documentation, not data.
     - role: Invalid and deprecated
       hex: "#f08b80"
       contrast: "6.98:1"

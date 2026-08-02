@@ -16,6 +16,30 @@ documentation are not.
 
 Nothing yet.
 
+## [Unreleased]
+
+### Added
+
+- **Worked syntax examples** on the Code page — C, C++, Python, Rust, Go, Java,
+  NASM assembly, LaTeX, Markdown, JSON, YAML and TOML — each written to exercise
+  as many of the ten roles as its language reaches.
+- **A measured coverage table.** It is generated from the rendered page rather
+  than asserted: each block is parsed, its emitted token classes are mapped back
+  to roles, and the table records what actually lit up. Seven of the twelve
+  languages reach every applicable role; where one does not, the reason is
+  recorded.
+
+### Fixed
+
+- **C preprocessor directives and Rust attributes were coloured as comments.**
+  Chroma files them under `Comment.Preproc`, so `#define`, `#include` and
+  `#[derive(…)]` rendered as commentary. They are macros — the LSP says so — and
+  now take the macro role.
+- **Documentation comments were coloured as strings.** Chroma files them under
+  `String.Doc`, so a Rust `///` line and a Python docstring rendered as data.
+  Both are documentation and now take the comment role, which is what the
+  modifier table already specified.
+
 ## [v2.0.1] — 2026-08-02
 
 Nothing yet.

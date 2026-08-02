@@ -56,7 +56,7 @@ $pj-code-invalid: #f08b80; // 6.98:1 — invalid and deprecated
     }
 
     // Comments
-    .c, .ch, .cm, .cp, .cpf, .c1, .cs {
+    .c, .ch, .cm, .c1, .cs, .sd {
       color: $pj-code-comment;
       font-style: italic;
     }
@@ -83,7 +83,7 @@ $pj-code-invalid: #f08b80; // 6.98:1 — invalid and deprecated
 
     // Decorators, macros, annotations: code that runs at a different time from
     // the code around it.
-    .nd, .ni, .nl {
+    .nd, .ni, .nl, .cp, .cpf {
       color: $pj-code-decorator;
     }
 
@@ -100,7 +100,7 @@ $pj-code-invalid: #f08b80; // 6.98:1 — invalid and deprecated
     }
 
     // Strings
-    .s, .sa, .sb, .sc, .dl, .sd, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
+    .s, .sa, .sb, .sc, .dl, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
       color: $pj-code-string;
     }
 
