@@ -14,6 +14,10 @@ documentation are not.
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [v2.0.0] — 2026-08-02
+
 ### Changed — breaking
 
 Token values changed in ways that alter appearance. A consumer who copied the
