@@ -72,21 +72,21 @@ magenta, that a syntax theme needs and the three interface scales do not have.
     </tr>
     <tr>
       <td>
-        <span class="pj-color-chip" style="--pj-chip: #8aacc8" aria-hidden="true"></span>
+        <span class="pj-color-chip" style="--pj-chip: #d491b4" aria-hidden="true"></span>
         <strong>Keywords and modifiers</strong><br>
-        <code>#8aacc8</code> <span class="pj-cap" style="display:inline;margin:0">midnight-dark-11</span><br><span class="pj-cap" style="display:inline;margin:0">Also structural keys — a YAML key is the keyword of its line.</span>
+        <code>#d491b4</code> <span class="pj-cap" style="display:inline;margin:0">terminal magenta (bright)</span><br><span class="pj-cap" style="display:inline;margin:0">Also structural keys — a YAML key is the keyword of its line.</span>
       </td>
-      <td class="pj-table__num">7.06:1</td>
+      <td class="pj-table__num">6.82:1</td>
       <td>keyword · modifier</td>
       <td>keyword.control · storage.modifier · storage.type<br><code class="pj-cap">.k .kc .kd .kn .kp .kr .nt .na</code></td>
     </tr>
     <tr>
       <td>
-        <span class="pj-color-chip" style="--pj-chip: #74c0c9" aria-hidden="true"></span>
+        <span class="pj-color-chip" style="--pj-chip: #6cc090" aria-hidden="true"></span>
         <strong>Types and classes</strong><br>
-        <code>#74c0c9</code> <span class="pj-cap" style="display:inline;margin:0">terminal cyan (bright)</span><br><span class="pj-cap" style="display:inline;margin:0">The brand has no cyan; the terminal palette does, and this is the second place the system needed one.</span>
+        <code>#6cc090</code> <span class="pj-cap" style="display:inline;margin:0">terminal green (bright)</span><br><span class="pj-cap" style="display:inline;margin:0">Green, not cyan, because types are referenced on nearly every line of typed code and the most frequent role should hold the best-separated hue — 29.9 ΔE2000 from plain text, against cyan&#39;s 17.3.</span>
       </td>
-      <td class="pj-table__num">8.11:1</td>
+      <td class="pj-table__num">7.67:1</td>
       <td>type · class · struct · interface · enum · typeParameter · namespace</td>
       <td>entity.name.type · entity.name.class · support.class<br><code class="pj-cap">.kt .nc .nn .ne .bp</code></td>
     </tr>
@@ -102,11 +102,11 @@ magenta, that a syntax theme needs and the three interface scales do not have.
     </tr>
     <tr>
       <td>
-        <span class="pj-color-chip" style="--pj-chip: #d491b4" aria-hidden="true"></span>
+        <span class="pj-color-chip" style="--pj-chip: #74c0c9" aria-hidden="true"></span>
         <strong>Decorators and macros</strong><br>
-        <code>#d491b4</code> <span class="pj-cap" style="display:inline;margin:0">terminal magenta (bright)</span><br><span class="pj-cap" style="display:inline;margin:0">Code that runs at a different time from the code around it — including C preprocessor directives and Rust attributes, which Chroma files under Comment.Preproc but which are macros, not commentary.</span>
+        <code>#74c0c9</code> <span class="pj-cap" style="display:inline;margin:0">terminal cyan (bright)</span><br><span class="pj-cap" style="display:inline;margin:0">Cyan sits closer to plain text than green does, which is affordable here because decorators are rare. Code that runs at a different time from the code around it — including C preprocessor directives and Rust attributes, which Chroma files under Comment.Preproc but which are macros, not commentary.</span>
       </td>
-      <td class="pj-table__num">6.82:1</td>
+      <td class="pj-table__num">8.11:1</td>
       <td>macro · decorator · event</td>
       <td>entity.name.tag · meta.decorator · support.macro<br><code class="pj-cap">.nd .ni .nl .cp .cpf</code></td>
     </tr>
@@ -152,11 +152,11 @@ magenta, that a syntax theme needs and the three interface scales do not have.
     </tr>
     <tr>
       <td>
-        <span class="pj-color-chip" style="--pj-chip: #f08b80" aria-hidden="true"></span>
+        <span class="pj-color-chip" style="--pj-chip: #e55b5b" aria-hidden="true"></span>
         <strong>Invalid and deprecated</strong><br>
-        <code>#f08b80</code> <span class="pj-cap" style="display:inline;margin:0">danger-dark</span><br><span class="pj-cap" style="display:inline;margin:0">Deprecated is struck through as well as coloured — the state does not depend on hue.</span>
+        <code>#e55b5b</code> <span class="pj-cap" style="display:inline;margin:0">terminal red (normal)</span><br><span class="pj-cap" style="display:inline;margin:0">Deprecated is struck through as well as coloured — the state does not depend on hue.</span>
       </td>
-      <td class="pj-table__num">6.98:1</td>
+      <td class="pj-table__num">4.79:1</td>
       <td>(modifier) deprecated</td>
       <td>invalid.illegal · invalid.deprecated<br><code class="pj-cap">.err</code></td>
     </tr>
@@ -509,6 +509,39 @@ sum_bytes:
         ret
 ```
 
+### Bash
+
+```bash
+#!/usr/bin/env bash
+# Validate a pipeline definition and promote it when the gates pass.
+set -euo pipefail
+
+readonly MAX_RETRIES=3
+readonly POLICY="${PIPELINE_POLICY:-strict}"
+declare -A GATE_STATUS=()
+
+log() { printf '%s  %s\n' "$(date -u +%FT%TZ)" "$*" >&2; }
+
+validate_stage() {
+    local -r name="$1" retries="${2:-0}"
+    if (( retries > MAX_RETRIES )); then
+        log "ERROR ${name} exceeds ${MAX_RETRIES} retries"
+        return 1
+    fi
+    GATE_STATUS["$name"]="ok"
+}
+
+main() {
+    local -a stages=("validate" "deploy")
+    for stage in "${stages[@]}"; do
+        validate_stage "$stage" 0 || exit 1
+    done
+    log "policy=${POLICY} stages=${#stages[@]}"
+}
+
+main "$@"
+```
+
 ### LaTeX
 
 ```latex
@@ -663,6 +696,7 @@ role appears in that example.
 | **Rust** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
 | **Go** | ● | ● | ● | ● | · | ● | ● | ● | ● | 8/9 |
 | **Java** | ● | ● | ● | ● | ● | ● | · | ● | ● | 8/9 |
+| **Bash** | ● | ● | · | · | ● | ● | ● | ● | ● | 7/9 |
 | **Assembly (NASM)** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
 | **LaTeX** | ● | ● | · | · | · | ● | ● | · | ● | 5/9 |
 | **Markdown** | · | ● | ● | · | · | ● | ● | ● | ● | 6/9 |
@@ -675,6 +709,7 @@ actually fails to parse — a correct example cannot demonstrate it.
 
 Where a language falls short, the reason is the language or the lexer:
 
+- **Bash** — no type system, and Chroma's shell lexer does not mark function definitions.
 - **Go** — Go has no macro or annotation construct; its struct tags are strings.
 - **Java** — Chroma's Java lexer emits a plain name for every numeric literal, so numbers cannot be separated. A lexer limitation, not a palette one.
 - **LaTeX** — No type, callable or operator concept in the grammar — commands are keywords.
