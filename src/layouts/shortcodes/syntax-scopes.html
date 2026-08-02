@@ -1,0 +1,67 @@
+{{- /*
+  Renders the syntax scope map from data/brand.yaml.
+
+    {{< syntax-scopes >}}              the ten colour roles
+    {{< syntax-scopes part="modifiers" >}}   how LSP modifiers are expressed
+
+  Both the role table and the swatch beside each row come from the data file, so
+  the documented colour is always the colour being documented.
+*/ -}}
+{{- $part := default "roles" (.Get "part") -}}
+{{- $s := hugo.Data.brand.syntaxScopes -}}
+{{- with $s -}}
+
+{{- if eq $part "roles" -}}
+<div class="pj-scroll-x">
+<table class="pj-table pj-syntax-scopes">
+  <thead>
+    <tr>
+      <th>Role</th>
+      <th class="pj-table__num">On&nbsp;surface</th>
+      <th>LSP semantic token</th>
+      <th>TextMate scope</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{- range .roles }}
+    <tr>
+      <td>
+        <span class="pj-color-chip" style="--pj-chip: {{ .hex }}" aria-hidden="true"></span>
+        <strong>{{ .role }}</strong><br>
+        <code>{{ .hex }}</code> <span class="pj-cap" style="display:inline;margin:0">{{ .step }}</span>
+        {{- with .note }}<br><span class="pj-cap" style="display:inline;margin:0">{{ . }}</span>{{ end }}
+      </td>
+      <td class="pj-table__num">{{ .contrast }}</td>
+      <td>{{ .lsp }}</td>
+      <td>{{ .textmate }}<br><code class="pj-cap">{{ .chroma }}</code></td>
+    </tr>
+    {{- end }}
+  </tbody>
+</table>
+</div>
+
+{{- else if eq $part "modifiers" -}}
+<div class="pj-scroll-x">
+<table class="pj-table pj-syntax-scopes">
+  <thead>
+    <tr><th>LSP modifier</th><th>Treatment</th><th>Why</th></tr>
+  </thead>
+  <tbody>
+    {{- range .modifiers }}
+    <tr>
+      <td><strong>{{ .modifier }}</strong></td>
+      <td>{{ .treatment }}</td>
+      <td>{{ .why }}</td>
+    </tr>
+    {{- end }}
+  </tbody>
+</table>
+</div>
+
+{{- else -}}
+{{- errorf "syntax-scopes: unknown part %q — use \"roles\" or \"modifiers\" (%s)" $part .Position -}}
+{{- end -}}
+
+{{- else -}}
+{{- errorf "syntax-scopes: no `syntaxScopes` block in data/brand.yaml (%s)" .Position -}}
+{{- end -}}

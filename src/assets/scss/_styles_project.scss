@@ -796,8 +796,16 @@ kbd {
 // -----------------------------------------------------------------------------
 // Sidebar, table of contents, breadcrumbs, footer
 // -----------------------------------------------------------------------------
+// The sidebar and table of contents follow the Docsy example's treatment: an
+// explicit canvas rather than a transparent panel, the divider token rather
+// than a leftover white alpha, and the reading size rather than a step down.
+.td-sidebar {
+  background-color: var(--pj-canvas) !important; // beats $td-sidebar-bg-color
+  border-right: 1px solid var(--pj-border);
+}
+
 .td-sidebar-nav {
-  font-size: 0.9375rem;
+  font-size: 1rem;
 
   // Docsy ships these links as `padding: 0 0 6px` with Bootstrap's `.ps-0`, so
   // there is no left padding for the current-item marker to sit in and no top
@@ -833,16 +841,17 @@ kbd {
   // marker is drawn inside the 10px left padding, clear of the label.
   .td-sidebar-link.active,
   a.active {
-    font-weight: 600;
+    font-weight: 700;
     color: var(--pj-nav-active-text);
     background: var(--pj-nav-active-bg);
-    box-shadow: inset 2px 0 0 var(--pj-orange-9);
+    border-radius: $border-radius;
+    box-shadow: inset 2px 0 0 var(--pj-action);
   }
 }
 
 .td-toc {
-  font-size: 0.875rem;
-  border-left: 1px solid var(--pj-border);
+  font-size: 1rem;
+  background-color: var(--pj-canvas);
 
   a {
     color: var(--pj-text-muted);

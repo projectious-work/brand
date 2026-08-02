@@ -44,6 +44,8 @@ html.light {
   --pj-border: #{$slate-5}; // 1.55:1 — a divider you can see, still not a line you read
   --pj-text-muted: #{$slate-9};
   --pj-focus: #{$orange-10};
+  // Constant in both modes, like the solid action fill it names.
+  --pj-action: #{$orange-10};
 
   // The page's surface ladder, all from the midnight ramp. Section surfaces are
   // steps 1-2 per the step roles; slate stays where the foundations put it —
@@ -106,6 +108,7 @@ html.dark {
   --pj-border: #{$midnight-dark-5}; // 1.67:1, and navy — the divider carries the hue too
   --pj-text-muted: #{$slate-dark-11};
   --pj-focus: #{$orange-dark-11};
+  --pj-action: #{$orange-10};
 
   --pj-band: #{$midnight-dark-2};
   --pj-body-fg: #{$midnight-dark-12};

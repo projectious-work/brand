@@ -27,6 +27,15 @@ $pj-code-operator: $slate-dark-11; // #97a8b8 -- 6.90:1
 // staying visibly dimmer than operators.
 $pj-code-comment: #72889d;
 
+// Roles added when the theme grew from six tokens to the ten the LSP and
+// TextMate scope vocabularies actually need. Both new hues come from the
+// terminal palette, which had already extended the system with the cyan and
+// magenta the three interface scales do not carry. Measured on #131e2b.
+$pj-code-type: #74c0c9; // 8.11:1 — types, classes, interfaces, namespaces
+$pj-code-function: #e0a92a; // 7.91:1 — functions and methods
+$pj-code-decorator: #d491b4; // 6.82:1 — decorators, macros, annotations
+$pj-code-invalid: #f08b80; // 6.98:1 — invalid and deprecated
+
 
 // The rules are wrapped in a mixin so a consumer can raise their specificity.
 // Some themes ship their Chroma palette at `.highlight .chroma .xx` — or, for
@@ -52,16 +61,42 @@ $pj-code-comment: #72889d;
       font-style: italic;
     }
 
-    // Keywords
-    .k, .kc, .kd, .kn, .kp, .kr, .kt, .nt, .na {
+    // Keywords and modifiers. Structural keys belong here too — a YAML key is
+    // the keyword of its line.
+    .k, .kc, .kd, .kn, .kp, .kr, .nt, .na {
       color: $pj-code-keyword;
       font-weight: 500;
     }
 
-    // Identifiers
-    .n, .nb, .nc, .nd, .ni, .ne, .nf, .nl, .nn, .nx,
-    .py, .nv, .no, .bp, .vc, .vg, .vi {
+    // Types, classes, interfaces, namespaces. These previously fell in with
+    // plain identifiers, so a class name and a local variable looked alike.
+    .kt, .nc, .nn, .ne, .bp {
+      color: $pj-code-type;
+    }
+
+    // Functions and methods — the most useful distinction beyond the original
+    // six: a callable reads as callable.
+    .nf, .fm {
+      color: $pj-code-function;
+      font-weight: 500;
+    }
+
+    // Decorators, macros, annotations: code that runs at a different time from
+    // the code around it.
+    .nd, .ni, .nl {
+      color: $pj-code-decorator;
+    }
+
+    // Plain identifiers and variables — the default.
+    .n, .nb, .nx, .py, .nv, .vc, .vg, .vi {
       color: $pj-code-identifier;
+    }
+
+    // Invalid and deprecated: struck through as well as coloured, so the state
+    // does not depend on hue.
+    .err {
+      color: $pj-code-invalid;
+      text-decoration: line-through;
     }
 
     // Strings
@@ -69,8 +104,8 @@ $pj-code-comment: #72889d;
       color: $pj-code-string;
     }
 
-    // Numbers
-    .m, .mb, .mf, .mh, .mi, .il, .mo {
+    // Numbers and constants, including true/false/nil.
+    .m, .mb, .mf, .mh, .mi, .il, .mo, .no {
       color: $orange-dark-11;
     }
 

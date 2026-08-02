@@ -16,6 +16,45 @@ documentation are not.
 
 Nothing yet.
 
+## [Unreleased]
+
+### Added
+
+- **Syntax scopes** in the colour foundations and on the Code page. The theme
+  grew from six tokens to the ten roles the LSP's 22 semantic token types and
+  TextMate's 11 root scopes actually need — classes, functions, decorators and
+  invalid states now read distinctly. No new colour: the two hues a syntax
+  theme needs beyond the interface scales, cyan and magenta, already existed in
+  the terminal palette.
+- **LSP modifiers** are documented as typography rather than hue: ten modifiers
+  against ten roles is a hundred states, which colour cannot carry.
+- **Email signature, rebuilt.** Two forms — full and short — with placeholders
+  for title, phone, postal address and register details, plus the legal
+  requirements by jurisdiction. No horizontal rules: one vertical accent rule
+  carries the brand, and the groups are separated by space.
+
+### Changed
+
+- The main site's sidebar and table of contents adopt the Docsy example's
+  treatment: the reading size, an explicit canvas, the divider token, and a
+  weight-700 current item marked in the fixed action colour.
+- Signature legal and notice text moved from border steps (`#96abc6`,
+  `#7490b2` — 2.2:1 and 3.3:1 as 11px text) to `slate-9`.
+
+### Fixed
+
+- The copy-to-clipboard control rendered as a placeholder box in dark mode and
+  vanished in light: it is a button that *is* the icon, and Bootstrap's `.btn`
+  font-family beat Font Awesome's on source order.
+- The Docsy example never showed a navbar current-item marker; the class was
+  emitted but never styled.
+- One-line logo lockups sat optically low against the mark, and the dot-replace
+  mark sat above the baseline a full stop occupies.
+- Hextra's table of contents had lost its indentation, its search field was
+  nearly invisible at rest, and its current-entry marker sat on the label.
+- The landing cover filled the viewport, pushing the site's own description
+  below the fold.
+
 ## [v2.0.0] — 2026-08-02
 
 ### Changed — breaking

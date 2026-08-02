@@ -147,5 +147,8 @@ $btn-font-weight: 600;
 // -----------------------------------------------------------------------------
 $td-navbar-bg-color: $brand-primary-dark;
 $td-navbar-border-bottom: 3px solid $brand-accent;
-$td-sidebar-bg-color: transparent;
+// The sidebar takes the app background explicitly, as the Docsy example does —
+// a transparent panel inherits whatever is behind it and cannot be reasoned
+// about on its own.
+$td-sidebar-bg-color: $midnight-1;
 $td-sidebar-border-color: $border-color;

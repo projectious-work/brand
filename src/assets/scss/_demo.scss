@@ -1222,3 +1222,34 @@ html.dark {
   overflow-x: auto;
   width: 100%;
 }
+
+// -----------------------------------------------------------------------------
+// Email specimens
+// -----------------------------------------------------------------------------
+// The signature is an email artefact shown inside a documentation page, so the
+// page's own table styling — borders, striping, cell padding — lands on it and
+// makes the specimen look like something the recipient will never see. Inside
+// the white sheet the specimen is mounted on, tables are inert.
+.pj-email-sheet {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: $border-radius;
+
+  table,
+  th {
+    border: 0 !important;
+    background-image: none;
+  }
+
+  // Every edge except the left: that one is the signature's accent rule, set
+  // inline on the cell, and it is the only brand mark the block carries.
+  td {
+    border-top: 0 !important;
+    border-right: 0 !important;
+    border-bottom: 0 !important;
+    background-image: none;
+  }
+
+  table { margin: 0; }
+  td { padding: 2px 0 2px 14px; }
+}

@@ -363,3 +363,120 @@ terminal:
     - role: Inactive pane border
       hex: "#7b8da3"
       contrast: "5.32:1"
+
+# Syntax scopes.
+#
+# IDEs do not define six token types; the Language Server Protocol defines 22
+# semantic token types plus 10 modifiers, and TextMate — the grammar model
+# behind VS Code, Sublime and most highlighters — defines 11 root scopes with
+# a deep sub-scope tree beneath each.
+#
+# A good theme does NOT answer that with 22 colours. It groups scopes into a
+# handful of *roles* and lets weight and slant carry the rest, because colour
+# stops being a signal once there is too much of it. This maps the two scope
+# vocabularies onto ten roles, each an existing brand or terminal value — no
+# new colour is introduced.
+#
+# Ratios are measured against the code surface, midnight-dark-2 (#131e2b).
+syntaxScopes:
+  surface: "#131e2b"
+  floor: "4.59:1"
+  roles:
+    - role: Plain and variables
+      hex: "#c5daf0"
+      contrast: "11.74:1"
+      step: midnight-dark-12
+      lsp: variable · parameter · property · enumMember
+      textmate: variable · variable.parameter · variable.other
+      chroma: .n .nv .nx .py .vc .vg .vi
+      note: The default. Anything the reader does not need to pick out.
+    - role: Keywords and modifiers
+      hex: "#8aacc8"
+      contrast: "7.06:1"
+      step: midnight-dark-11
+      lsp: keyword · modifier
+      textmate: keyword.control · storage.modifier · storage.type
+      chroma: .k .kc .kd .kn .kp .kr .nt .na
+      note: Also structural keys — a YAML key is the keyword of its line.
+    - role: Types and classes
+      hex: "#74c0c9"
+      contrast: "8.11:1"
+      step: terminal cyan (bright)
+      lsp: type · class · struct · interface · enum · typeParameter · namespace
+      textmate: entity.name.type · entity.name.class · support.class
+      chroma: .kt .nc .nn .ne .bp
+      note: The brand has no cyan; the terminal palette does, and this is the
+        second place the system needed one.
+    - role: Functions and methods
+      hex: "#e0a92a"
+      contrast: "7.91:1"
+      step: terminal yellow (bright)
+      lsp: function · method
+      textmate: entity.name.function · support.function
+      chroma: .nf .fm
+      note: Callables read as callable at a glance — the single most useful
+        distinction beyond the original six.
+    - role: Decorators and macros
+      hex: "#d491b4"
+      contrast: "6.82:1"
+      step: terminal magenta (bright)
+      lsp: macro · decorator · event
+      textmate: entity.name.tag · meta.decorator · support.macro
+      chroma: .nd .ni .nl
+      note: Code that runs at a different time from the code around it.
+    - role: Strings
+      hex: "#ea7558"
+      contrast: "5.76:1"
+      step: orange-dark-10
+      lsp: string
+      textmate: string.quoted · string.interpolated · string.regexp
+      chroma: .s .s1 .s2 .sa .sb .sc .sd .se .sh .si .sr .ss .sx .dl
+      note: Interpolation delimiters take the operator colour, so the
+        expression inside stays readable as code.
+    - role: Numbers and constants
+      hex: "#f09878"
+      contrast: "7.58:1"
+      step: orange-dark-11
+      lsp: number · regexp
+      textmate: constant.numeric · constant.language · constant.character
+      chroma: .m .mb .mf .mh .mi .mo .il .no
+      note: Literal values, including true/false/nil.
+    - role: Operators and punctuation
+      hex: "#97a8b8"
+      contrast: "6.90:1"
+      step: slate-dark-11
+      lsp: operator
+      textmate: keyword.operator · punctuation
+      chroma: .o .ow .p
+      note: Present but recessive — structure you read past, not at.
+    - role: Comments
+      hex: "#72889d"
+      contrast: "4.59:1"
+      step: code-comment
+      lsp: comment
+      textmate: comment.line · comment.block · comment.block.documentation
+      chroma: .c .ch .cm .cp .c1 .cs
+      note: Italic. The only role with no scale step of its own.
+    - role: Invalid and deprecated
+      hex: "#f08b80"
+      contrast: "6.98:1"
+      step: danger-dark
+      lsp: (modifier) deprecated
+      textmate: invalid.illegal · invalid.deprecated
+      chroma: .err
+      note: Deprecated is struck through as well as coloured — the state does
+        not depend on hue.
+  modifiers:
+    - modifier: declaration · definition
+      treatment: Weight 500
+      why: Where a name is introduced, distinguished from where it is used.
+    - modifier: deprecated
+      treatment: Line-through
+      why: A state, not a category — it must survive greyscale.
+    - modifier: documentation
+      treatment: Italic, comment colour
+      why: Doc comments are comments; they are not a separate hue.
+    - modifier: readonly · static · abstract · async · defaultLibrary
+      treatment: No distinct colour
+      why: Ten modifiers times ten roles is a hundred combinations. Colour
+        cannot carry that, and a theme that tries becomes unreadable.
