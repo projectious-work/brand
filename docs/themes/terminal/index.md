@@ -342,6 +342,46 @@ The brand accent has no ANSI slot, because it is not a semantic colour: it marks
 </table>
 </div>
 
+## Syntax in the terminal
+
+An editor running inside a terminal paints code from the sixteen ANSI slots, not
+from a stylesheet. Since the [syntax roles](/brand/docs/interface/code/) were
+reassigned by measured perceptual distance, seven of the nine now resolve to an
+ANSI slot exactly — so a file open in Helix, Neovim or Vim under this palette
+looks like the same file on the documentation site.
+
+| Syntax role | Value | ANSI slot |
+|---|---|---|
+| Plain and variables | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | 15 · bright white |
+| Keywords and modifiers | <span class="pj-color-chip" style="--pj-chip: #d491b4" aria-hidden="true"></span> `#d491b4` | 13 · bright magenta |
+| Types and classes | <span class="pj-color-chip" style="--pj-chip: #6cc090" aria-hidden="true"></span> `#6cc090` | 10 · bright green |
+| Functions and methods | <span class="pj-color-chip" style="--pj-chip: #e0a92a" aria-hidden="true"></span> `#e0a92a` | 11 · bright yellow |
+| Decorators and macros | <span class="pj-color-chip" style="--pj-chip: #74c0c9" aria-hidden="true"></span> `#74c0c9` | 14 · bright cyan |
+| Operators and punctuation | <span class="pj-color-chip" style="--pj-chip: #97a8b8" aria-hidden="true"></span> `#97a8b8` | 7 · white |
+| Invalid and deprecated | <span class="pj-color-chip" style="--pj-chip: #e55b5b" aria-hidden="true"></span> `#e55b5b` | 1 · red |
+| Strings | <span class="pj-color-chip" style="--pj-chip: #ea7558" aria-hidden="true"></span> `#ea7558` | — brand `orange-dark-10` |
+| Numbers and constants | <span class="pj-color-chip" style="--pj-chip: #f09878" aria-hidden="true"></span> `#f09878` | — brand `orange-dark-11` |
+| Comments | <span class="pj-color-chip" style="--pj-chip: #72889d" aria-hidden="true"></span> `#72889d` | — dedicated token |
+
+Strings, numbers and comments are the three that do not map. ANSI has no orange
+slot — orange is the brand's accent family — and comments need a value dimmer
+than any slot provides while still clearing 4.5:1. An editor that supports
+truecolour should be given those three literally; one limited to sixteen colours
+should use bright red for strings, red for numbers, and bright black for
+comments, accepting that the last of those falls below the text floor.
+
+<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">This convergence was not designed for; it fell out</div>
+
+
+The syntax roles were reassigned to fix a legibility problem — keywords and
+operators measured ΔE2000 5.2 apart, which is the same colour for reading
+purposes. Because the only hues available were the ones the terminal palette had
+already added to the system, the fix pulled the web theme onto the ANSI slots.
+Worth noticing: a constraint that looked like a limitation produced the
+coherence.
+</div>
+
+
 ## tmux
 
 tmux styles its own chrome only. Everything inside a pane keeps the colours the
@@ -353,7 +393,7 @@ tmux must be told the terminal supports true colour, or every hex value silently
 degrades to the nearest of 256 approximations — which is the usual cause of a
 status bar that is "nearly right".
 
-```tmux
+```bash
 # ~/.tmux.conf
 set -g default-terminal "tmux-256color"
 set -ga terminal-overrides ",*256col*:Tc"
@@ -365,7 +405,7 @@ check for banding.
 
 ### Theme
 
-```tmux
+```bash
 # ~/.tmux.conf — projectious.work
 
 # Status bar
@@ -507,7 +547,7 @@ silently pushes every measured value in them below the floor.
 
 ## Kitty
 
-```conf
+```ini
 # ~/.config/kitty/kitty.conf — projectious.work
 
 font_family      IBM Plex Mono
