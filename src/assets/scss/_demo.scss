@@ -749,6 +749,19 @@ html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
   &--two-line { align-items: center; }
 
   &__lines { display: flex; flex-direction: column; line-height: 1.05; }
+
+  // Optical centring. `align-items: center` centres the wordmark's *box*, and
+  // that box includes descender space the glyphs mostly do not use — so the
+  // type reads as sitting low against the mark. Lift it by roughly a third of
+  // the descender. Structural rather than a modifier class so every one-line
+  // lockup on every page gets it, including the collateral examples.
+  > .pj-wm { transform: translateY(-0.06em); }
+
+  // In the dot-replace lockup the mark stands in for the full stop, and a full
+  // stop sits on the baseline rather than at the centre of the line. A mark
+  // that *follows* a wordmark is playing that role; a leading mark is not, and
+  // is left alone.
+  > .pj-wm + .projectious-mark { transform: translateY(0.09em); }
 }
 
 .pj-surface--light,

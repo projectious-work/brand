@@ -118,13 +118,32 @@ body {
 }
 .hextra-footer a { color: #8aacc8; }
 
-.content h1,
-.content h2,
-.content h3,
-.content h4 {
+/* Not scoped to `.content`: the hextra-home layout renders the hero and the
+   feature grid outside it, and they were falling back to the theme's default
+   sans while the documentation pages used the brand face. */
+body {
+  font-family: "Source Sans 3", system-ui, sans-serif;
+}
+
+h1, h2, h3, h4,
+.hextra-feature-card h3,
+.hx\:text-4xl, .hx\:text-5xl, .hx\:text-6xl {
   color: var(--pj-heading);
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
   letter-spacing: -0.3px;
+}
+
+/* The hero's single call to action is the view's primary action, so it takes
+   the accent fill rather than Hextra's primary-derived blue — which in dark
+   mode put white on #5987c3 at 3.7:1. The shortcode ships only Tailwind
+   utilities, so `a.not-prose` is the hook. */
+a.not-prose[class*="rounded-full"] {
+  background: var(--pj-action) !important;
+  color: var(--pj-action-label) !important;
+}
+a.not-prose[class*="rounded-full"]:hover,
+a.not-prose[class*="rounded-full"]:focus-visible {
+  background: var(--pj-action-hover) !important;
 }
 
 .content,
@@ -175,24 +194,53 @@ body {
    current item hugs the text on all four sides. Give every link the box —
    block, symmetric padding, and a transparent left border — so the active one
    has room to breathe and the label does not shift when it becomes current. */
+/* Hextra's table of contents is a flat list: nesting is expressed by `pl-4`,
+   `pl-8` … utilities on the anchor, and the top level is marked `font-medium`.
+   Overriding padding-left therefore flattens the outline, so each level's
+   indent is restated below on top of this box.
+
+   The box itself: block, symmetric padding, and a transparent left border so
+   the label does not shift when an entry becomes current. `hx:w-full` pins the
+   width to 100% of the list, so negative margins would only shift the box —
+   `auto` lets it grow into them and reach the column edges, as Docsy's does. */
 .hextra-toc a {
   display: block;
+  width: auto;
   border-left: 2px solid transparent;
   border-radius: 0 6px 6px 0;
-  /* The nav carries 16px of side padding, so a tint laid on the link alone is
-     inset from the column. Negative margins pull the box out to the column
-     edges — as Docsy's is — and the padding puts the label back where it was. */
-  /* `hx:w-full` pins the box to 100% of the list, so negative margins would
-     only shift it; `auto` lets it grow into them. */
-  width: auto;
   margin-inline: -1rem;
   padding: 4px 1.5rem 4px 1.875rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1.45;
 }
 
+/* Top-level entries carry the weight, as they do in Docsy — the outline should
+   be readable as a hierarchy before any of it is read as text. */
+.hextra-toc a.hx\:font-medium {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+/* Restore the level indentation the box padding above would otherwise erase. */
+.hextra-toc a[class*="pl-4"] { padding-left: 2.875rem; }
+.hextra-toc a[class*="pl-8"] { padding-left: 3.875rem; }
+.hextra-toc a[class*="pl-12"] { padding-left: 4.875rem; }
+
+/* "On this page" */
+.hextra-toc .hextra-scrollbar > p {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--pj-heading);
+}
+
+/* No font-weight here: the entry keeps whatever weight its level carries, so a
+   current subheading does not end up looking heavier than the section above it
+   — or, worse, a current top-level entry lighter than its siblings. The tint
+   and the accent border are the marker. */
 .hextra-toc a.hextra-toc-active {
   background: var(--pj-surface-hover) !important;
   color: var(--pj-nav-active-text) !important;
-  font-weight: 600;
   border-left-color: var(--pj-action);
 }
 
@@ -349,9 +397,16 @@ select,
    active entry only — Hextra marks the ancestor section too, and two accent
    underlines is two accents. Without JS the weight change still distinguishes
    them, so nothing is lost. */
-.hextra-nav-container a.hx\:font-medium { color: var(--pj-heading); }
-.hextra-nav-container a.pj-nav-current {
+.hextra-nav-container a.hx\:font-medium {
+  color: var(--pj-heading);
   box-shadow: inset 0 -2px 0 var(--pj-action);
+}
+
+/* Hextra marks the current page and its ancestor section, so an entry followed
+   by another active entry gives up the marker — one accent per view, and the
+   more specific match is the useful one. */
+.hextra-nav-container a.hx\:font-medium:has(~ a.hx\:font-medium) {
+  box-shadow: none;
 }
 
 /* The theme toggle is moved into the navbar by assets/js/navbar-theme.js. */
@@ -371,4 +426,19 @@ select,
 /* Until the script has run, keep the sidebar copy from flashing in place. */
 .pj-navbar-theme-ready .hextra-sidebar-container .hextra-theme-toggle {
   display: none;
+}
+
+/* Hextra's search input sits on `black/[.05]`, which on the app background is
+   barely a field at all — it reads as text until you click it. Give it the same
+   surface and control border every other input in the system has. */
+.hextra-search-input {
+  background: var(--pj-surface) !important;
+  border: 1px solid var(--pj-border-strong);
+  color: var(--pj-text);
+}
+.hextra-search-input::placeholder { color: var(--pj-text-secondary); }
+.hextra-search-input:focus {
+  border-color: var(--pj-action);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(224, 82, 50, 0.18);
 }

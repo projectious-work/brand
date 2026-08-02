@@ -49,22 +49,8 @@
       host.setAttribute("hidden", "");
     }
     document.documentElement.classList.add("pj-navbar-theme-ready");
-    markCurrent(nav);
   }
 
-  /**
-   * Hextra marks both the current page and its ancestor section as active, so a
-   * page reached through a section shows two accent underlines — and the system
-   * allows one accent element per view. Keep the marker on the most specific
-   * match, which is the last one in menu order.
-   */
-  function markCurrent(nav) {
-    var active = nav.querySelectorAll("a.hx\\:font-medium");
-    if (!active.length) return;
-    for (var i = 0; i < active.length; i++) {
-      active[i].classList.toggle("pj-nav-current", i === active.length - 1);
-    }
-  }
 
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", move);

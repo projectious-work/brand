@@ -103,6 +103,36 @@ small, .small, figcaption, .td-page-meta {
 }
 
 // -----------------------------------------------------------------------------
+// Icon buttons
+// -----------------------------------------------------------------------------
+// Docsy's copy-to-clipboard control is a button that *is* the icon:
+// `<button class="fas fa-copy btn btn-sm td-click-to-copy">`. Bootstrap's `.btn`
+// sets font-family, `.fas` sets font-family, they have equal specificity, and
+// Bootstrap loads later — so the brand heading face won and the Font Awesome
+// codepoint rendered as tofu: a visible placeholder box on the dark code
+// surface, and nothing at all in light mode.
+//
+// Restate the icon family wherever an element is both a button and an icon.
+.btn.fa,
+.btn.fas,
+.btn.fa-solid {
+  font-family: var(--fa-style-family, "Font Awesome 6 Free");
+  font-weight: 900;
+}
+
+.btn.far,
+.btn.fa-regular {
+  font-family: var(--fa-style-family, "Font Awesome 6 Free");
+  font-weight: 400;
+}
+
+.btn.fab,
+.btn.fa-brands {
+  font-family: var(--fa-style-family-brands, "Font Awesome 6 Brands");
+  font-weight: 400;
+}
+
+// -----------------------------------------------------------------------------
 // Section rule
 // -----------------------------------------------------------------------------
 // The one structural job the accent is given.
@@ -612,6 +642,15 @@ kbd {
 // -----------------------------------------------------------------------------
 // Landing page blocks
 // -----------------------------------------------------------------------------
+// Docsy's `height="full"` cover fills the viewport, which pushed the lead
+// paragraph — the one sentence explaining what this site is — entirely below
+// the fold, with half the first screen empty under the buttons. Three quarters
+// leaves the hero room to breathe and brings the lead into the lower quarter on
+// load, so the page announces itself without a scroll.
+.td-cover-block--height-full {
+  min-height: 75vh;
+}
+
 .td-cover-block {
   background-color: $midnight-1; // the app background, per step 1
   border-bottom: 1px solid $slate-3;

@@ -188,6 +188,21 @@ pre, .highlight { border-radius: 9px; }
   .nav-link:hover { color: var(--pj-link-hover); }
 }
 
+// The navbar current item takes the accent underline the Components page
+// documents. Docsy marks the current page *and* its ancestor section, so an
+// entry that is followed by another active entry gives up the marker — one
+// accent per view, and the more specific match is the useful one.
+.td-navbar {
+  .nav-link.active {
+    color: var(--pj-heading);
+    box-shadow: inset 0 -2px 0 var(--pj-action);
+  }
+
+  .nav-item:has(~ .nav-item .nav-link.active) .nav-link.active {
+    box-shadow: none;
+  }
+}
+
 .td-sidebar,
 .td-toc {
   background: var(--pj-canvas);
