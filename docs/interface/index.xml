@@ -146,7 +146,7 @@ screenshots inconsistent between users. The surface is &lt;code&gt;midnight-2&lt
 &lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;});&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="syntax-theme"&gt;Syntax theme&lt;/h2&gt;
 &lt;p&gt;Because the surface is always dark, every syntax value is read from the &lt;strong&gt;dark&lt;/strong&gt;
-scale. Contrast is measured against &lt;code&gt;#131e2b&lt;/code&gt;:&lt;/p&gt;</description></item><item><title>Icons</title><link>https://projectious-work.github.io/brand/docs/interface/icons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/icons/</guid><description>&lt;h2 id="library"&gt;Library&lt;/h2&gt;
+scale. Contrast is measured against &lt;code&gt;#131e2b&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Icons</title><link>https://projectious-work.github.io/brand/docs/interface/icons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/icons/</guid><description>&lt;h2 id="library"&gt;Library&lt;/h2&gt;
 &lt;p&gt;The system uses &lt;strong&gt;&lt;a href="https://lucide.dev"&gt;Lucide&lt;/a&gt;&lt;/strong&gt; — an actively maintained fork
 of Feather with over 1,400 icons.&lt;/p&gt;
 &lt;table&gt;

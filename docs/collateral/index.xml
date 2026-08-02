@@ -25,37 +25,86 @@ monospace makes them scannable and unambiguous.&lt;/li&gt;
 &lt;li&gt;Accent used once, on the QR frame or the primary contact method.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id="print-fallback"&gt;Print fallback&lt;/h2&gt;
-&lt;p&gt;If a printed card is required:&lt;/p&gt;</description></item><item><title>Email signature</title><link>https://projectious-work.github.io/brand/docs/collateral/email-signature/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/email-signature/</guid><description>&lt;p&gt;The signature is built to work in clients with hostile CSS support — Outlook
-included. The source is
-&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature.html"&gt;&lt;code&gt;brand/email/signature.html&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Signature — one-line lockup, four lines maximum&lt;/div&gt;
+&lt;p&gt;If a printed card is required:&lt;/p&gt;</description></item><item><title>Email signature</title><link>https://projectious-work.github.io/brand/docs/collateral/email-signature/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/email-signature/</guid><description>&lt;p&gt;Email is not the web. Every value below is a literal, every layout is a table,
+and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
+&lt;p&gt;Two forms are supplied:&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Form&lt;/th&gt;
+					&lt;th&gt;Source&lt;/th&gt;
+					&lt;th&gt;Use for&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Full&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature.html"&gt;&lt;code&gt;brand/email/signature.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;First contact, and any message leaving the organisation — it carries the legally required details&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Short&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature-short.html"&gt;&lt;code&gt;brand/email/signature-short.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;Replies and internal mail, where the full block repeated down a thread becomes noise&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="the-signature"&gt;The signature&lt;/h2&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Full form — a white message is the design constraint&lt;/div&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  
-&lt;table style="border-collapse:collapse;font-family:'Source Sans 3',sans-serif"&gt;
- &lt;tr&gt;&lt;td style="padding:0 0 6px 0"&gt;
- &lt;span class="pj-lockup"&gt;&lt;svg viewBox="0 0 40 40" class="projectious-mark" style="width:24px;height:24px"&gt;&lt;path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/&gt;&lt;path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/&gt;&lt;path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/&gt;&lt;path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/&gt;&lt;/svg&gt;&lt;span class="pj-wm" style="font-size:14px"&gt;projectious&lt;span class="pj-wm__ext"&gt; · work&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;div class="pj-email-sheet"&gt;
+&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;max-width:520px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
+ &lt;tr&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
+ &lt;div style="font-size:15px;font-weight:700;color:#1d3352;letter-spacing:-0.2px"&gt;Jane Doe&lt;/div&gt;
+ &lt;div style="font-size:13px;color:#142438;padding-top:1px"&gt;Principal Consultant&lt;/div&gt;
+ &lt;div style="font-size:13px;color:#546a82"&gt;Projectious GmbH&lt;/div&gt;
+ &lt;div style="padding-top:9px"&gt;
+ &lt;span style="font-size:13px;color:#142438"&gt;+49 30 000 000 00&lt;/span&gt;
+ &lt;span style="font-size:13px;color:#546a82"&gt;&amp;nbsp;·&amp;nbsp;&lt;/span&gt;
+ &lt;a href="#" style="font-size:13px;color:#3a5a82;text-decoration:none"&gt;jane@projectious.work&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;div&gt;&lt;a href="#" style="font-size:13px;color:#3a5a82;text-decoration:none"&gt;projectious.work&lt;/a&gt;&lt;/div&gt;
+ &lt;div style="font-size:12px;color:#546a82;padding-top:9px"&gt;Musterstraße 1, 10115 Berlin, Germany&lt;/div&gt;
+ &lt;div style="font-size:11px;line-height:1.45;color:#546a82;padding-top:9px"&gt;
+ Projectious GmbH · Registered seat Berlin&lt;br&gt;
+ Amtsgericht Charlottenburg, HRB 000000 · VAT ID DE000000000&lt;br&gt;
+ Managing director: Jane Doe
+ &lt;/div&gt;
+ &lt;div style="font-size:11px;line-height:1.45;color:#546a82;padding-top:7px"&gt;
+ This message is intended only for the addressee and may contain confidential
+ information. If you received it in error, please tell the sender and delete it.
+ &lt;/div&gt;
  &lt;/td&gt;&lt;/tr&gt;
- &lt;tr&gt;&lt;td style="font-size:13px;font-weight:600;padding:0"&gt;Bernhard Gerlach&lt;/td&gt;&lt;/tr&gt;
- &lt;tr&gt;&lt;td style="font-size:12px;color:var(--pj-text-muted);padding:0"&gt;Cloud · Agile · Agentic AI&lt;/td&gt;&lt;/tr&gt;
- &lt;tr&gt;&lt;td style="font-size:12px;padding:2px 0 0 0"&gt;&lt;a href="#" style="color:var(--pj-midnight-11)"&gt;projectious.work&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
 &lt;/table&gt;
+&lt;/div&gt;
 
  &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h2 id="construction-rules"&gt;Construction rules&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Table-based layout.&lt;/strong&gt; Flexbox and grid do not survive Outlook.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Inline styles only.&lt;/strong&gt; Most clients strip &lt;code&gt;&amp;lt;style&amp;gt;&lt;/code&gt; blocks.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Web-safe font fallbacks.&lt;/strong&gt; Brand fonts will not load in most clients — the
-stack must degrade to a system sans without breaking the layout.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;The mark is a hosted PNG&lt;/strong&gt;, not an SVG and not a data URI. Include &lt;code&gt;alt&lt;/code&gt;
-text; many clients block images by default.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;No background images.&lt;/strong&gt; Use a solid &lt;code&gt;bgcolor&lt;/code&gt; attribute.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="content"&gt;Content&lt;/h2&gt;
-&lt;p&gt;One line each: name, role, &lt;code&gt;projectious.work&lt;/code&gt;, and a single contact method.
-The one-line lockup is used here — the signature is a horizontal context.&lt;/p&gt;</description></item><item><title>Social and OG images</title><link>https://projectious-work.github.io/brand/docs/collateral/social/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/social/</guid><description>&lt;h2 id="priority"&gt;Priority&lt;/h2&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Short form — replies and internal mail&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
+ 
+&lt;div class="pj-email-sheet"&gt;
+&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;max-width:520px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
+ &lt;tr&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
+ &lt;div style="font-size:14px;font-weight:700;color:#1d3352;letter-spacing:-0.2px"&gt;Jane Doe&lt;/div&gt;
+ &lt;div style="font-size:12px;color:#546a82"&gt;Principal Consultant · Projectious GmbH&lt;/div&gt;
+ &lt;div style="padding-top:5px"&gt;
+ &lt;a href="#" style="font-size:12px;color:#3a5a82;text-decoration:none"&gt;jane@projectious.work&lt;/a&gt;
+ &lt;span style="font-size:12px;color:#546a82"&gt;&amp;nbsp;·&amp;nbsp;&lt;/span&gt;
+ &lt;a href="#" style="font-size:12px;color:#3a5a82;text-decoration:none"&gt;projectious.work&lt;/a&gt;
+ &lt;/div&gt;
+ &lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Both specimens are rendered on &lt;strong&gt;white&lt;/strong&gt;, because that is where a signature
+actually lives. The surrounding page has a colour mode; a mail message
+generally does not.&lt;/p&gt;</description></item><item><title>Social and OG images</title><link>https://projectious-work.github.io/brand/docs/collateral/social/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/social/</guid><description>&lt;h2 id="priority"&gt;Priority&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;LinkedIn and GitHub first&lt;/strong&gt;, blog second, Twitter/X as backup. The templates
 are sized for those surfaces in that order.&lt;/p&gt;
 &lt;h2 id="template-rules"&gt;Template rules&lt;/h2&gt;

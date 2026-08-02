@@ -17,5 +17,5 @@ harder on the mark and the wordmark than in-product surfaces do.
 Section pages:
 
 - [Business card](/brand/docs/collateral/business-card/): The digital-first vCard, shared by QR code or link.
-- [Email signature](/brand/docs/collateral/email-signature/): A compact signature that survives every mail client.
+- [Email signature](/brand/docs/collateral/email-signature/): A signature that survives every mail client, carries the details business mail is required to carry, and stays quiet on a white message.
 - [Social and OG images](/brand/docs/collateral/social/): Templates for LinkedIn, GitHub, blog headers, and Open Graph cards.

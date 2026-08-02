@@ -1,6 +1,6 @@
 # Email signature
 
-> A compact signature that survives every mail client.
+> A signature that survives every mail client, carries the details business mail is required to carry, and stays quiet on a white message.
 
 ---
 
@@ -8,49 +8,171 @@ LLMS index: [llms.txt](/brand/llms.txt)
 
 ---
 
-The signature is built to work in clients with hostile CSS support — Outlook
-included. The source is
-[`brand/email/signature.html`](https://github.com/projectious-work/brand/blob/main/brand/email/signature.html).
+Email is not the web. Every value below is a literal, every layout is a table,
+and nothing depends on a stylesheet the client is free to discard.
 
-<div class="pj-demo"><div class="pj-demo__label">Signature — one-line lockup, four lines maximum</div>
+Two forms are supplied:
+
+| Form | Source | Use for |
+|---|---|---|
+| **Full** | [`brand/email/signature.html`](https://github.com/projectious-work/brand/blob/main/brand/email/signature.html) | First contact, and any message leaving the organisation — it carries the legally required details |
+| **Short** | [`brand/email/signature-short.html`](https://github.com/projectious-work/brand/blob/main/brand/email/signature-short.html) | Replies and internal mail, where the full block repeated down a thread becomes noise |
+
+## The signature
+
+<div class="pj-demo"><div class="pj-demo__label">Full form — a white message is the design constraint</div>
   <div class="pj-demo__body pj-demo__body--stack">
     
-<table style="border-collapse:collapse;font-family:'Source Sans 3',sans-serif">
- <tr><td style="padding:0 0 6px 0">
-   <span class="pj-lockup"><svg viewBox="0 0 40 40" class="projectious-mark" style="width:24px;height:24px"><path class="projectious-mark__shell" d="M20 3.2C29.6 3.2 36 12 34.4 22.4C32.8 30.4 25.6 36 18.4 36C11.2 36 4.8 30.4 5.6 20C6.4 10.4 12 3.2 20 3.2Z"/><path class="projectious-mark__cut" opacity=".85" d="M10.4 29.6C9.6 20 13.6 10.4 20.8 8C27.2 6.4 31.2 12 32 19.2L31.2 24.8C27.2 31.2 16.8 32.8 12 30.4Z"/><path class="projectious-mark__shell" opacity=".85" d="M12.8 26.4C12 19.2 16 10.4 21.6 10.4C26.4 11.2 29.6 16 29.6 20.8C28.8 26.4 22.4 29.6 15.2 28.8Z"/><path class="projectious-mark__cut" opacity=".8" d="M14.4 24.8C13.6 18.4 17.6 12 22.4 12.8C25.6 13.6 27.2 17.6 26.4 22.4C25.6 25.6 20 27.2 15.2 25.6Z"/><path class="projectious-mark__bud" d="M16 23.2C16 18.4 18.4 14.4 21.6 15.2C24 16 24.8 19.2 23.2 21.6C21.6 23.2 17.6 24 16 23.2Z"/></svg><span class="pj-wm" style="font-size:14px">projectious<span class="pj-wm__ext"> · work</span></span></span>
+<div class="pj-email-sheet">
+<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;max-width:520px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438">
+ <tr><td bgcolor="#ffffff" style="background:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px">
+   <div style="font-size:15px;font-weight:700;color:#1d3352;letter-spacing:-0.2px">Jane Doe</div>
+   <div style="font-size:13px;color:#142438;padding-top:1px">Principal Consultant</div>
+   <div style="font-size:13px;color:#546a82">Projectious GmbH</div>
+   <div style="padding-top:9px">
+     <span style="font-size:13px;color:#142438">+49 30 000 000 00</span>
+     <span style="font-size:13px;color:#546a82">&nbsp;·&nbsp;</span>
+     <a href="#" style="font-size:13px;color:#3a5a82;text-decoration:none">jane@projectious.work</a>
+   </div>
+   <div><a href="#" style="font-size:13px;color:#3a5a82;text-decoration:none">projectious.work</a></div>
+   <div style="font-size:12px;color:#546a82;padding-top:9px">Musterstraße 1, 10115 Berlin, Germany</div>
+   <div style="font-size:11px;line-height:1.45;color:#546a82;padding-top:9px">
+     Projectious GmbH · Registered seat Berlin<br>
+     Amtsgericht Charlottenburg, HRB 000000 · VAT ID DE000000000<br>
+     Managing director: Jane Doe
+   </div>
+   <div style="font-size:11px;line-height:1.45;color:#546a82;padding-top:7px">
+     This message is intended only for the addressee and may contain confidential
+     information. If you received it in error, please tell the sender and delete it.
+   </div>
  </td></tr>
- <tr><td style="font-size:13px;font-weight:600;padding:0">Bernhard Gerlach</td></tr>
- <tr><td style="font-size:12px;color:var(--pj-text-muted);padding:0">Cloud · Agile · Agentic AI</td></tr>
- <tr><td style="font-size:12px;padding:2px 0 0 0"><a href="#" style="color:var(--pj-midnight-11)">projectious.work</a></td></tr>
 </table>
+</div>
 
   </div>
 </div>
 
 
-## Construction rules
+<div class="pj-demo"><div class="pj-demo__label">Short form — replies and internal mail</div>
+  <div class="pj-demo__body pj-demo__body--stack">
+    
+<div class="pj-email-sheet">
+<table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;max-width:520px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438">
+ <tr><td bgcolor="#ffffff" style="background:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px">
+   <div style="font-size:14px;font-weight:700;color:#1d3352;letter-spacing:-0.2px">Jane Doe</div>
+   <div style="font-size:12px;color:#546a82">Principal Consultant · Projectious GmbH</div>
+   <div style="padding-top:5px">
+     <a href="#" style="font-size:12px;color:#3a5a82;text-decoration:none">jane@projectious.work</a>
+     <span style="font-size:12px;color:#546a82">&nbsp;·&nbsp;</span>
+     <a href="#" style="font-size:12px;color:#3a5a82;text-decoration:none">projectious.work</a>
+   </div>
+ </td></tr>
+</table>
+</div>
 
-- **Table-based layout.** Flexbox and grid do not survive Outlook.
-- **Inline styles only.** Most clients strip `<style>` blocks.
-- **Web-safe font fallbacks.** Brand fonts will not load in most clients — the
-  stack must degrade to a system sans without breaking the layout.
-- **The mark is a hosted PNG**, not an SVG and not a data URI. Include `alt`
-  text; many clients block images by default.
-- **No background images.** Use a solid `bgcolor` attribute.
+  </div>
+</div>
 
-## Content
 
-One line each: name, role, `projectious.work`, and a single contact method.
-The one-line lockup is used here — the signature is a horizontal context.
+Both specimens are rendered on **white**, because that is where a signature
+actually lives. The surrounding page has a colour mode; a mail message
+generally does not.
+
+## One rule, and it is vertical
+
+A signature accumulates dividers as it accumulates fields — one under the name,
+another above the legal block, another before the disclaimer — and each reads as
+a section break in a message that is not sectioned. On a white background the
+result is a small form stapled to the bottom of a letter.
+
+So there are **no horizontal rules at all**. One vertical accent rule runs down
+the left of the whole block: it marks the signature as a unit, ties it to the
+brand, and costs one line instead of four. Everything else is separated by space
+and by type size.
 
 <div class="pj-rules"><div class="pj-rule pj-rule--do">
   <div class="pj-rule__label">Do</div>
-  <p>Test in Outlook, Gmail web, and Apple Mail before shipping a change. Keep the
-signature under four lines.</p>
+  <p>Group the fields — identity, contact, address, legal — and separate the groups
+with about 9px of space. Let the type sizes do the ranking.</p>
 </div>
 <div class="pj-rule pj-rule--dont">
   <div class="pj-rule__label">Don't</div>
-  <p>Add social icon rows, legal disclaimers, quotations, or &ldquo;please consider the
-environment&rdquo; footers.</p>
+  <p>Add a rule between groups, a coloured band behind the name, social icon rows, a
+quotation, or a &ldquo;please consider the environment&rdquo; line.</p>
 </div>
 </div>
+
+
+## Fields
+
+Replace every `[PLACEHOLDER]`. Delete any row that does not apply — the block is
+built so that removing a row leaves no gap behind it.
+
+| Field | Required | Notes |
+|---|---|---|
+| Full name | Always | 15px, 700, `midnight-9` |
+| Job title | Always | Its own line — a title merged into the company line reads as part of the company |
+| Company legal name | Always | The registered name, not the trading shorthand, wherever the legal block appears |
+| Phone | Recommended | With country code; a signature is often read from another country |
+| Email address | Always | Even though it is in the header — messages get forwarded |
+| Website | Always | |
+| Postal address | Regionally required | Street, postcode, city, country |
+| Register details | Regionally required | Legal form, registered seat, register court and number, VAT ID, directors |
+| Confidentiality notice | Optional | Two lines at most; delete it unless your organisation requires it |
+
+### What the law asks for
+
+A starting point, not legal advice — confirm against your own jurisdiction
+before shipping a signature.
+
+| Jurisdiction | Business email must carry |
+|---|---|
+| **Germany** | Legal form, registered seat, register court and number, and every managing director (§ 35a GmbHG, § 37a HGB) |
+| **EU / UK** | Company registration number, registered office address, and VAT number where registered |
+| **United States** | No statutory signature requirement; confidentiality notices are convention rather than law |
+| **Canada** | CASL requires sender identification and a postal address on commercial messages |
+| **Australia** | ACN or ABN on business correspondence |
+
+## Construction
+
+| Rule | Why |
+|---|---|
+| Table layout, `role="presentation"` | Flexbox and grid do not survive Outlook's Word renderer; the role stops screen readers announcing a data table |
+| Inline styles only | Most clients strip `<style>`, and none support custom properties — so no `var(--pj-*)` anywhere |
+| Web-safe font stack | Brand faces will not load in a mail client; the stack degrades to a system sans without changing the layout |
+| Maximum width 520px | Below the 600px that forces horizontal scrolling in narrow reading panes |
+| Literal hex values | The brand steps, written out — see the table below |
+| No images | A hosted logo is blocked by default in many clients and leaves a broken frame. The accent rule carries the brand with nothing to load |
+| No background images | If a fill is ever needed, use the `bgcolor` attribute |
+
+<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Dark mode will recolour this, and that is fine</div>
+
+
+Several clients — Outlook mobile and some webmail among them — invert or shift
+signature colours in dark mode, and none can be reliably prevented from doing
+so. The signature is therefore built to survive recolouring rather than to fight
+it: the hierarchy is carried by *size and weight* as much as by hue, so it still
+reads when the palette is altered.
+</div>
+
+
+### Colours
+
+Three families, which is what a signature should have.
+
+| Role | Value | Use |
+|---|---|---|
+| Heading | <span class="pj-color-chip" style="--pj-chip: #1d3352" aria-hidden="true"></span> `#1d3352` | The name |
+| Primary text | <span class="pj-color-chip" style="--pj-chip: #142438" aria-hidden="true"></span> `#142438` | Title, phone |
+| Secondary | <span class="pj-color-chip" style="--pj-chip: #546a82" aria-hidden="true"></span> `#546a82` | Company, address |
+| Link | <span class="pj-color-chip" style="--pj-chip: #3a5a82" aria-hidden="true"></span> `#3a5a82` | Email, website |
+| Legal and notice | <span class="pj-color-chip" style="--pj-chip: #546a82" aria-hidden="true"></span> `#546a82` | Register details, confidentiality notice |
+| Accent | <span class="pj-color-chip" style="--pj-chip: #E05232" aria-hidden="true"></span> `#E05232` | The vertical rule, and nothing else |
+
+## Before shipping a change
+
+- Send to Outlook (Windows), Gmail web, Apple Mail, and one mobile client.
+- Reply to that message twice and check how the signature looks quoted inside a
+  thread.
+- Turn on the client's dark mode and confirm the hierarchy still reads.
+- Forward it, to confirm nothing depends on the original message's styles.
