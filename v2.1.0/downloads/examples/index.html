@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>projectious.work — Brand Examples</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:#f5f4f2;font-family:'Source Sans 3',sans-serif;color:#142438;-webkit-font-smoothing:antialiased}
+.w{max-width:800px;margin:0 auto;padding:40px 24px 80px}
+:root{--p:#1d3352;--pd:#132440;--a:#E05232;--as:#cc4528;--s:#546a82;--m:#5c6f82;--hf:'Plus Jakarta Sans',sans-serif;--bf:'Source Sans 3',sans-serif;--mf:'IBM Plex Mono',monospace}
+.card{background:#fff;border-radius:13px;border:1px solid #e5e3de;padding:18px 22px;margin-bottom:10px;display:flex;gap:14px;align-items:center;text-decoration:none;color:inherit;transition:border-color 0.15s,box-shadow 0.15s}
+.card:hover{border-color:#96abc6;box-shadow:0 2px 8px rgba(29,51,82,0.06)}
+.card:focus-visible{outline:2px solid var(--as);outline-offset:2px}
+.card-num{width:32px;height:32px;border-radius:6px;background:var(--p);display:flex;align-items:center;justify-content:center;font-family:var(--hf);font-size:13px;font-weight:700;color:#fff;flex-shrink:0}
+/* White on step 9 is 3.87:1; solid controls fill with accent-solid. */
+.card-num.accent{background:var(--as)}
+.card-body{flex:1}
+.card-title{font-family:var(--hf);font-size:14px;font-weight:600;color:var(--p);margin-bottom:1px}
+.card-desc{font-size:12px;color:var(--s);line-height:1.4}
+.card-file{font-family:var(--mf);font-size:10px;color:var(--m)}
+.group-label{font-family:var(--hf);font-size:12px;font-weight:600;color:var(--s);margin:24px 0 8px;text-transform:uppercase;letter-spacing:0.08em}
+.note{background:#fff;border:1px solid #e5e3de;border-left:4px solid var(--as);border-radius:9px;padding:14px 18px;margin-top:28px;font-size:13px;line-height:1.6;color:#142438}
+.note code{font-family:var(--mf);font-size:12px;background:#f8f9fb;padding:1px 5px;border-radius:3px}
+</style>
+</head>
+<body>
+<div class="w">
+
+<div style="text-align:center;margin-bottom:40px">
+  <h1 style="font-family:var(--hf);font-size:32px;font-weight:800;color:var(--p);letter-spacing:-0.5px;margin-bottom:6px">projectious.work</h1>
+  <p style="font-size:16px;color:var(--s);font-weight:500">Worked examples</p>
+  <p style="font-size:12px;color:var(--m);margin-top:4px">The system applied end to end · Serve over HTTP, not <code style="font-family:var(--mf)">file://</code></p>
+</div>
+
+<div class="group-label">Interface</div>
+
+<a class="card" href="dashboard.dc.html">
+  <div class="card-num">1</div>
+  <div class="card-body">
+    <div class="card-title">Dashboard mockup</div>
+    <div class="card-desc">Client engagement dashboard — sidebar nav, KPI row, engagement table, agent-activity feed. The composed pattern, built only from documented components.</div>
+    <div class="card-file">dashboard.dc.html</div>
+  </div>
+</a>
+
+<a class="card" href="mobile-onboarding.dc.html">
+  <div class="card-num">2</div>
+  <div class="card-body">
+    <div class="card-title">Mobile onboarding</div>
+    <div class="card-desc">Three screens in a device frame — onboarding, engagement list, finding review. The responsive end of the same system.</div>
+    <div class="card-file">mobile-onboarding.dc.html</div>
+  </div>
+</a>
+
+<div class="group-label">Documents and collateral</div>
+
+<a class="card" href="slide-deck.dc.html">
+  <div class="card-num accent">3</div>
+  <div class="card-body">
+    <div class="card-title">Slide deck</div>
+    <div class="card-desc">A full client deck at 1920×1080 with speaker notes. Arrow keys navigate; print to PDF to export.</div>
+    <div class="card-file">slide-deck.dc.html</div>
+  </div>
+</a>
+
+<a class="card" href="resume.dc.html">
+  <div class="card-num">4</div>
+  <div class="card-body">
+    <div class="card-title">Resume template</div>
+    <div class="card-desc">One-page CV on the paged-document shell. The pattern for any single-page proposal or memo.</div>
+    <div class="card-file">resume.dc.html</div>
+  </div>
+</a>
+
+<a class="card" href="flier.dc.html">
+  <div class="card-num">5</div>
+  <div class="card-body">
+    <div class="card-title">Service flier</div>
+    <div class="card-desc">Sales one-pager — "Cloud migration accelerator". Midnight band, three benefits, a numbered process, one call to action.</div>
+    <div class="card-file">flier.dc.html</div>
+  </div>
+</a>
+
+<a class="card" href="email-newsletter.html">
+  <div class="card-num">6</div>
+  <div class="card-body">
+    <div class="card-title">Email newsletter</div>
+    <div class="card-desc">Sendable message — table-based, 600px, Outlook-safe bulletproof button, websafe font fallbacks. Opens from the filesystem too.</div>
+    <div class="card-file">email-newsletter.html</div>
+  </div>
+</a>
+
+<div class="group-label">Portfolio</div>
+
+<a class="card" href="diagram-gallery.dc.html">
+  <div class="card-num">7</div>
+  <div class="card-body">
+    <div class="card-title">Diagram gallery</div>
+    <div class="card-desc">Sequence diagram, architecture topology, and org chart — the three diagram types consulting deliverables actually need.</div>
+    <div class="card-file">diagram-gallery.dc.html</div>
+  </div>
+</a>
+
+<div class="note">
+  Every file here except the newsletter loads its imports by <code>fetch</code>,
+  so it needs an HTTP origin. Run <code>./scripts/serve-docs.sh</code> and browse
+  to <code>/brand/downloads/examples/</code>, or serve this directory directly.
+  See <code>README.md</code> for the vendoring rules.
+</div>
+
+</div>
+</body>
+</html>

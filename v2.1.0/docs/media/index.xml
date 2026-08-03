@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Media on projectious.work brand</title><link>https://projectious-work.github.io/brand/v2.1.0/docs/media/</link><description>Recent content in Media on projectious.work brand</description><generator>Hugo</generator><language>en</language><atom:link href="https://projectious-work.github.io/brand/v2.1.0/docs/media/index.xml" rel="self" type="application/rss+xml"/><item><title>Audio and video</title><link>https://projectious-work.github.io/brand/v2.1.0/docs/media/audio-video/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/v2.1.0/docs/media/audio-video/</guid><description>&lt;h2 id="audio-identity"&gt;Audio identity&lt;/h2&gt;
+&lt;p&gt;Four defined cues. All are short, tonal, and mid-register — the audio equivalent
+of &amp;ldquo;slides into place, doesn&amp;rsquo;t bounce&amp;rdquo;.&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Cue&lt;/th&gt;
+					&lt;th&gt;Sound&lt;/th&gt;
+					&lt;th&gt;Length&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Notification&lt;/td&gt;
+					&lt;td&gt;Short tonal chime, mid-register&lt;/td&gt;
+					&lt;td&gt;200ms&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Success&lt;/td&gt;
+					&lt;td&gt;Ascending C→E, warm sine wave&lt;/td&gt;
+					&lt;td&gt;—&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Error&lt;/td&gt;
+					&lt;td&gt;Single low A2&lt;/td&gt;
+					&lt;td&gt;300ms&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;Podcast intro&lt;/td&gt;
+					&lt;td&gt;Ambient pad, tension→warmth resolve&lt;/td&gt;
+					&lt;td&gt;3s&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Error is a single low note, not a buzz or a descending pair — it marks the event
+without scolding.&lt;/p&gt;
+&lt;h2 id="video-rules"&gt;Video rules&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Demos run at real time.&lt;/strong&gt; No fast-forward, no speed ramps. If a step is
+slow, that is information the viewer needs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Transitions are a cut or a 200ms fade.&lt;/strong&gt; No swoops, wipes, or 3D moves.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;All video uses midnight surfaces.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subtitles are always available.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Export at 1080p minimum&lt;/strong&gt;, 4K when possible.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="pj-rules"&gt;&lt;div class="pj-rule pj-rule--do"&gt;
+ &lt;div class="pj-rule__label"&gt;Do&lt;/div&gt;
+ &lt;p&gt;Show the real thing at real speed. Caption everything.&lt;/p&gt;</description></item><item><title>Photography and illustration</title><link>https://projectious-work.github.io/brand/v2.1.0/docs/media/photography/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/v2.1.0/docs/media/photography/</guid><description>&lt;h2 id="sources"&gt;Sources&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt; Unsplash and Pexels — royalty-free, no attribution required for
+commercial use. Commission custom photography where possible, from local
+European photographers.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Never use:&lt;/strong&gt; watermarked Shutterstock or Getty imagery, or AI-generated
+imagery.&lt;/p&gt;
+&lt;p&gt;Every photograph must pass the test: &lt;strong&gt;&amp;ldquo;would a developer trust this?&amp;rdquo;&lt;/strong&gt; Stock
+imagery of handshakes in glass lobbies fails it. A real desk, real hardware, or
+real people working passes it.&lt;/p&gt;
+&lt;h2 id="treatment"&gt;Treatment&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Photographs in dark mode receive a subtle black overlay so they do not punch a
+hole in the page.&lt;/li&gt;
+&lt;li&gt;The logo never sits directly on an unmodified photograph — see
+&lt;a href="https://projectious-work.github.io/brand/v2.1.0/docs/logo/usage/"&gt;Logo usage&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;Never place text over a busy region. Add a scrim or crop to a quiet area.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="illustration"&gt;Illustration&lt;/h2&gt;
+&lt;p&gt;The illustration style is &lt;strong&gt;abstract system diagrams&lt;/strong&gt; — nodes, flows, and
+pipelines drawn in the brand palette.&lt;/p&gt;</description></item><item><title>Presentations</title><link>https://projectious-work.github.io/brand/v2.1.0/docs/media/presentations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/v2.1.0/docs/media/presentations/</guid><description>&lt;h2 id="core-slides"&gt;Core slides&lt;/h2&gt;
+&lt;p&gt;Six of the twelve slide types cover most decks. Build with these first and reach
+for the other six only when the content actually calls for one — the full table
+is &lt;a href="#the-twelve-types"&gt;below&lt;/a&gt;.&lt;/p&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 16:10&lt;/div&gt;
+ &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
+ 
+&lt;div class="pj-slides-grid"&gt;
+ &lt;div class="pj-slide pj-slide--title"&gt;
+ &lt;div class="pj-slide__h"&gt;Redesigning work&lt;/div&gt;
+ &lt;div class="pj-slide__sub"&gt;Cloud · Agile · Agentic AI&lt;/div&gt;
+ &lt;div class="pj-slide__sub" style="margin-top:.25rem"&gt;projectious.work&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--statement"&gt;&lt;div class="pj-slide__h"&gt;Bad software is a decision, not a constraint.&lt;/div&gt;&lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content"&gt;
+ &lt;div class="pj-slide__h"&gt;The agent-first approach&lt;/div&gt;
+ &lt;div style="display:flex;gap:4px;margin-top:6px"&gt;
+ &lt;span class="pj-badge" style="flex:1;justify-content:center"&gt;Define&lt;/span&gt;
+ &lt;span class="pj-badge pj-badge--accent" style="flex:1;justify-content:center"&gt;Build&lt;/span&gt;
+ &lt;span class="pj-badge" style="flex:1;justify-content:center"&gt;Deploy&lt;/span&gt;
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content" style="justify-content:center"&gt;
+ &lt;div style="font-size:.8125rem;font-style:italic;color:var(--pj-text-muted)"&gt;"We run what we recommend."&lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--content" style="padding:0;overflow:hidden"&gt;
+ &lt;div class="pj-terminal" style="border:0;border-radius:0;height:100%;font-size:.5625rem;line-height:1.6"&gt;
+ &lt;span class="pj-terminal__prompt"&gt;// pipeline&lt;/span&gt;&lt;br&gt;createPipeline({&lt;br&gt;&amp;nbsp;&amp;nbsp;policy: &lt;span class="pj-terminal__accent"&gt;"strict"&lt;/span&gt;&lt;br&gt;});
+ &lt;/div&gt;
+ &lt;/div&gt;
+ &lt;div class="pj-slide pj-slide--title" style="justify-content:center;align-items:center;text-align:center"&gt;
+ &lt;div class="pj-slide__h"&gt;Let's talk&lt;/div&gt;
+ &lt;div class="pj-slide__sub"&gt;projectious.work&lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+ &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id="the-full-deck"&gt;The full deck&lt;/h2&gt;
+&lt;p&gt;Twelve slide types cover a complete talk. Each is 16:10 and uses the same
+tokens as the product surfaces — no separate &amp;ldquo;presentation theme&amp;rdquo;.&lt;/p&gt;</description></item></channel></rss>

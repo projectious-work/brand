@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="lib/vendor/react.production.min.js"></script>
+<script src="lib/vendor/react-dom.production.min.js"></script>
+<script src="lib/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="lib/colors_and_type.css">
+</helmet>
+<x-import component-from-global-scope="IOSDevice" from="lib/ios-frame.js" title="Console" hint-size="390,844" style="display:inline-block;margin-right:32px;">
+  <div style="height:100%;display:flex;flex-direction:column;background:var(--color-primary);color:#fff;padding:32px 28px;box-sizing:border-box;font-family:var(--font-body);">
+    <img src="../logo/svg/icon-mono-white.svg" style="width:36px;height:36px;margin-top:24px;">
+    <div style="font-family:var(--font-heading);font-size:28px;font-weight:800;letter-spacing:-0.5px;margin-top:32px;line-height:1.2;">Monitor your agents from anywhere</div>
+    <div style="font-size:15px;color:var(--midnight-6);margin-top:12px;line-height:1.5;">Continuous audit, on your phone. Get notified the moment a finding needs review.</div>
+    <div style="flex:1;"></div>
+    <div style="display:flex;gap:6px;justify-content:center;margin-bottom:20px;">
+      <div style="width:20px;height:6px;border-radius:3px;background:var(--orange-9);"></div>
+      <div style="width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,0.3);"></div>
+      <div style="width:6px;height:6px;border-radius:3px;background:rgba(255,255,255,0.3);"></div>
+    </div>
+    <div style="background:var(--color-accent-solid);color:#fff;text-align:center;padding:15px;border-radius:var(--radius-md);font-family:var(--font-heading);font-weight:600;font-size:15px;">Continue</div>
+  </div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="lib/ios-frame.js" title="Console" hint-size="390,844" style="display:inline-block;margin-right:32px;">
+  <div style="height:100%;display:flex;flex-direction:column;background:var(--bg);padding:20px;box-sizing:border-box;font-family:var(--font-body);">
+    <div style="font-family:var(--font-heading);font-size:22px;font-weight:700;color:var(--color-primary);margin:12px 0 4px;">Engagements</div>
+    <div class="caption" style="color:var(--fg-2);font-size:12px;margin-bottom:16px;">6 active</div>
+    <div style="display:flex;flex-direction:column;gap:10px;">
+      <sc-for list="{{ cards }}" as="c" hint-placeholder-count="4">
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:14px 16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;">
+            <span style="font-family:var(--font-heading);font-weight:600;font-size:14.5px;color:var(--color-primary);">{{ c.name }}</span>
+            <span style="background:{{ c.bg }};color:{{ c.color }};font-size:11px;font-weight:600;padding:3px 8px;border-radius:var(--radius-sm);">{{ c.status }}</span>
+          </div>
+          <div style="font-size:12.5px;color:var(--fg-2);margin-top:4px;">{{ c.practice }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex:1;"></div>
+    <div style="display:flex;justify-content:space-around;padding-top:12px;border-top:1px solid var(--border);">
+      <img src="lucide/layout-dashboard.svg" style="width:24px;height:24px;">
+      <img src="lucide/bot.svg" style="width:24px;height:24px;opacity:0.4;">
+      <img src="lucide/bell.svg" style="width:24px;height:24px;opacity:0.4;">
+      <img src="lucide/user.svg" style="width:24px;height:24px;opacity:0.4;">
+    </div>
+  </div>
+</x-import>
+
+<x-import component-from-global-scope="IOSDevice" from="lib/ios-frame.js" title="Console" hint-size="390,844" style="display:inline-block;">
+  <div style="height:100%;display:flex;flex-direction:column;background:var(--bg);padding:20px;box-sizing:border-box;font-family:var(--font-body);">
+    <div style="font-family:var(--font-heading);font-size:22px;font-weight:700;color:var(--color-primary);margin:12px 0 16px;">Finding review</div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px;">
+      <span style="background:var(--warning-bg);color:var(--warning-fg);font-size:11px;font-weight:600;padding:3px 9px;border-radius:var(--radius-sm);">Needs review</span>
+      <div style="font-family:var(--font-heading);font-weight:600;font-size:15px;color:var(--color-primary);margin-top:12px;">Missing audit trail — cost-rebalance</div>
+      <div style="font-size:13px;color:var(--fg-2);line-height:1.6;margin-top:6px;">Agent flagged a policy drift on the last merge. No documented fallback for the affected workload.</div>
+      <div style="display:flex;gap:8px;margin-top:16px;">
+        <div style="flex:1;text-align:center;padding:12px;background:var(--color-accent-solid);color:#fff;border-radius:var(--radius-md);font-family:var(--font-heading);font-weight:600;font-size:14px;">Approve fix</div>
+        <div style="flex:1;text-align:center;padding:12px;background:var(--surface-2);border:1.5px solid var(--border-strong);color:var(--fg-1);border-radius:var(--radius-md);font-family:var(--font-heading);font-weight:600;font-size:14px;">Dismiss</div>
+      </div>
+    </div>
+  </div>
+</x-import>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      cards: [
+        { name: 'Nordic Freight AG', practice: 'Cloud', status: 'On track', bg: 'var(--success-bg)', color: 'var(--success-fg)' },
+        { name: 'Halvorsen Bank', practice: 'Agentic AI', status: 'At risk', bg: 'var(--warning-bg)', color: 'var(--warning-fg)' },
+        { name: 'Meridian Retail', practice: 'Agile', status: 'On track', bg: 'var(--success-bg)', color: 'var(--success-fg)' },
+        { name: 'Ferra Insurance', practice: 'Agentic AI', status: 'Blocked', bg: 'var(--danger-bg)', color: 'var(--danger-fg)' },
+      ],
+    };
+  }
+}
+</script>
+</body>
+</html>
