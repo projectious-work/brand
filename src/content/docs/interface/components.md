@@ -280,7 +280,17 @@ page, or apply a filter without a visible chip saying so.
 
 ## Navigation
 
-{{< demo label="Navbar — midnight in both modes, 3px accent rule" variant="stack" >}}
+The navbar **follows the colour mode**: `midnight-1` at 88% alpha in light,
+`midnight-dark-1` at 88% in dark, both over a 12px backdrop blur so content
+scrolling underneath stays legible. It is separated by a **1px border**, not a
+fill — the header is chrome, and a solid midnight band at the top of every page
+spends the brand's darkest surface on navigation.
+
+The active link carries a **2px `accent-solid` underline** plus the
+high-emphasis text step. The underline is `accent-solid` rather than `orange-9`
+because it sits directly against 13px text and is read as part of it.
+
+{{< demo label="Navbar — follows the colour mode; 1px border, 2px accent underline on the active link" variant="stack" >}}
 <div class="pj-navbar">
   <span class="pj-navbar__brand">projectious.work</span>
   <a class="pj-navbar__link pj-navbar__link--active" href="#">Documentation</a>
@@ -288,6 +298,9 @@ page, or apply a filter without a visible chip saying so.
   <a class="pj-navbar__link" href="#">Agents</a>
 </div>
 {{< /demo >}}
+
+This specimen mirrors `.td-navbar` — the header at the top of this page. Switch
+the theme and both change together.
 
 {{< demo label="Breadcrumbs, tabs, pagination, sidebar" variant="grid" >}}
 <div>

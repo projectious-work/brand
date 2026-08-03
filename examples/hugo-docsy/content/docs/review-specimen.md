@@ -17,7 +17,7 @@ Validate the configuration locally, then request promotion. The action below is
 the only primary action in this view.
 {{% /alert %}}
 
-<p><a class="btn btn-primary" href="#release-check">Review release check</a></p>
+{{< pj-action href="#release-check" >}}Review release check{{< /pj-action >}}
 
 ## What the reader needs first
 
@@ -34,35 +34,23 @@ container rather than widening the page.
 
 ## A card-led decision surface
 
-<div class="row g-3 mb-4">
-  <div class="col-md-4">
-    <div class="card h-100">
-      <div class="card-body">
-        <h3 class="h5 card-title">Validate</h3>
-        <p class="card-text">Check tokens, configuration, and internal links.</p>
-        <a href="#validate">Read validation notes</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card h-100">
-      <div class="card-body">
-        <h3 class="h5 card-title">Review</h3>
-        <p class="card-text">Confirm accessibility in light and dark modes.</p>
-        <a href="#review">Read review criteria</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="card h-100">
-      <div class="card-body">
-        <h3 class="h5 card-title">Promote</h3>
-        <p class="card-text">Create a release only from verified content.</p>
-        <a href="#release-check">Read release check</a>
-      </div>
-    </div>
-  </div>
-</div>
+{{< cardpane >}}
+{{< card header="Validate" >}}
+Check tokens, configuration, and internal links.
+
+[Read validation notes](#validate)
+{{< /card >}}
+{{< card header="Review" >}}
+Confirm accessibility in light and dark modes.
+
+[Read review criteria](#review)
+{{< /card >}}
+{{< card header="Promote" >}}
+Create a release only from verified content.
+
+[Read release check](#release-check)
+{{< /card >}}
+{{< /cardpane >}}
 
 Cards are scanning aids, not decoration. Their links stay links rather than
 becoming three competing primary actions.
@@ -102,15 +90,7 @@ never depends on colour alone.
 Control borders use the strong border step, so an input has a perceivable edge
 against the canvas.
 
-<form style="display:grid;gap:1rem;max-width:32rem">
-  <label class="form-label">Provider name
-    <input class="form-control" type="text" placeholder="platform-eu-west">
-  </label>
-  <label class="form-label">Environment
-    <select class="form-select"><option>Staging</option><option>Production</option></select>
-  </label>
-  <button class="btn btn-primary" type="button">Deploy configuration</button>
-</form>
+{{< pj-form >}}
 
 ## Release check {#release-check}
 

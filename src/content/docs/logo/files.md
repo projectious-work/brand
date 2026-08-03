@@ -36,11 +36,11 @@ The logo files are served from this site and are also in the repository under
 
 | Asset | Link |
 |---|---|
-| SVG — light | [icon-light.svg](/brand/downloads/logo/svg/icon-light.svg) |
-| SVG — dark | [icon-dark.svg](/brand/downloads/logo/svg/icon-dark.svg) |
-| SVG — mono black | [icon-mono-black.svg](/brand/downloads/logo/svg/icon-mono-black.svg) |
-| SVG — mono white | [icon-mono-white.svg](/brand/downloads/logo/svg/icon-mono-white.svg) |
-| SVG — mono grey | [icon-mono-gray.svg](/brand/downloads/logo/svg/icon-mono-gray.svg) |
+| SVG — light | [icon-light.svg]({{< siteurl "downloads/logo/svg/icon-light.svg" >}}) |
+| SVG — dark | [icon-dark.svg]({{< siteurl "downloads/logo/svg/icon-dark.svg" >}}) |
+| SVG — mono black | [icon-mono-black.svg]({{< siteurl "downloads/logo/svg/icon-mono-black.svg" >}}) |
+| SVG — mono white | [icon-mono-white.svg]({{< siteurl "downloads/logo/svg/icon-mono-white.svg" >}}) |
+| SVG — mono grey | [icon-mono-gray.svg]({{< siteurl "downloads/logo/svg/icon-mono-gray.svg" >}}) |
 
 {{% alert title="Licence" color="warning" %}}
 Logo files are brand assets, not MIT-licensed code. You may reference and

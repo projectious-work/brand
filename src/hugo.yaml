@@ -93,6 +93,11 @@ module:
       target: static/downloads/tokens
     - source: ../brand/logo
       target: static/downloads/logo
+    # The worked examples reference the logo as ../logo/svg/…, which resolves
+    # correctly only because both land under static/downloads/. Keep the two
+    # mounts as siblings.
+    - source: ../brand/examples
+      target: static/downloads/examples
     - source: node_modules/bootstrap
       target: assets/vendor/bootstrap
     # jQuery and lunr are vendored rather than pulled from code.jquery.com and

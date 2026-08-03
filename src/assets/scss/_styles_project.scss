@@ -218,6 +218,17 @@ small, .small, figcaption, .td-page-meta {
     }
   }
 
+  // Docsy marks the current page *and* every ancestor section in the menu, so a
+  // menu containing both a section and a page inside it lights up twice. Two
+  // accent underlines is two accents; the more specific match is the useful
+  // one, and the ancestor keeps its colour so the trail is still readable.
+  //
+  // This site's menu has no such pair, but the Docsy example's does — and both
+  // are styled by this file.
+  .nav-item:has(~ .nav-item .nav-link.active) .nav-link.active {
+    box-shadow: none;
+  }
+
   .navbar-brand__logo svg,
   .navbar-brand svg {
     height: 2.25rem;
@@ -252,12 +263,6 @@ small, .small, figcaption, .td-page-meta {
     --pj-mark-shell: #6b8db2;
     --pj-mark-cut: #{$brand-primary-dark};
   }
-}
-
-.projectious-mark {
-  &__shell { fill: var(--pj-mark-shell); }
-  &__cut { fill: var(--pj-mark-cut); }
-  &__bud { fill: var(--pj-mark-bud); }
 }
 
 // Keep the Documentation and Releases links right-aligned before the search.
@@ -1163,52 +1168,18 @@ kbd {
 }
 
 // Logo specimen ----------------------------------------------------------------
-.pj-lockups {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1rem;
-  margin-block: 1.25rem;
-}
-
-.pj-lockup {
-  border: 1px solid var(--pj-border);
-  border-radius: $border-radius-lg;
-  padding: 1.5rem 1.25rem 1rem;
-  text-align: center;
-
-  &--dark {
-    background-color: $brand-primary-dark;
-    border-color: transparent;
-  }
-
-  &__caption {
-    font-size: 0.6875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--pj-text-muted);
-    margin-top: 1rem;
-  }
-
-  &--dark &__caption {
-    color: $slate-dark-11;
-  }
-}
-
-.pj-wordmark {
-  font-family: $headings-font-family;
-  font-weight: 700;
-  letter-spacing: -0.3px;
-  color: var(--pj-midnight-9);
-
-  &--onDark {
-    color: $midnight-dark-12;
-  }
-
-  &__dot {
-    color: $orange-9;
-  }
-}
+//
+// A `.pj-lockups` grid of bordered `.pj-lockup` specimen cards used to live
+// here, from an earlier iteration of the logo page. That page now composes the
+// lockup primitive (_demo.scss) inside `.pj-demo-item`, so the grid, the
+// caption, and the `.pj-wordmark` helper were unused — but the card rule still
+// matched every `.pj-lockup` on the site, because the two share a class name.
+//
+// The effect was a stray 1px box around every real lockup, and asymmetric
+// padding (24px top, 16px bottom) that pushed the mark 4px below the centre of
+// its own box — most visible on the business card, where the lockup sits alone
+// at the top of the surface. Deleting the block restores optical centring; the
+// only deliberate vertical offsets on a lockup are the two in _demo.scss.
 
 @media (prefers-reduced-motion: reduce) {
   *,

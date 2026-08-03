@@ -1,5 +1,5 @@
 baseURL: http://localhost:1315/
-title: Docsy Kitchen Sink
+title: Docsy example
 languageCode: en-us
 theme:
   - ../../../src/themes/docsy
@@ -27,12 +27,37 @@ module:
     # The brand scales, the --pj-* token layer, and the component specimens are
     # mounted from the documentation site rather than copied. This example is a
     # demonstration of the brand, so it must not be able to drift from it.
+    #
+    # Docsy's two documented extension points are assets/scss/
+    # _variables_project.scss and _styles_project.scss. This example mounts the
+    # documentation site's copies of both rather than keeping its own, so it is
+    # styled by the same files as the site it is demonstrating — there is no
+    # second adapter to keep in step, and "looks like the documentation" is true
+    # by construction rather than by review.
+    #
+    # Everything those two import comes along: the scales, the --pj-* token
+    # layer, the syntax theme, and the component specimens.
+    - source: ../../src/assets/scss/_variables_project.scss
+      target: assets/scss/_variables_project.scss
+    - source: ../../src/assets/scss/_styles_project.scss
+      target: assets/scss/_styles_project.scss
     - source: ../../src/assets/scss/_scales.scss
       target: assets/scss/_scales.scss
     - source: ../../src/assets/scss/_tokens.scss
       target: assets/scss/_tokens.scss
+    - source: ../../src/assets/scss/_syntax.scss
+      target: assets/scss/_syntax.scss
     - source: ../../src/assets/scss/_demo.scss
       target: assets/scss/_demo.scss
+    # The font links, from the same hook the documentation site uses.
+    - source: ../../src/layouts/_partials/hooks/head-end.html
+      target: layouts/_partials/hooks/head-end.html
+    # The mark, as the documentation site's own navbar uses it. Docsy inlines
+    # assets/icons/logo.svg when ui.navbar_logo is on, so the SVG's
+    # .projectious-mark classes are stylable — which is how it follows the
+    # colour mode without a second file.
+    - source: ../../src/assets/icons/logo.svg
+      target: assets/icons/logo.svg
     # The shortcodes the specimen pages are written with.
     - source: ../../src/layouts/shortcodes
       target: layouts/shortcodes
@@ -40,6 +65,10 @@ module:
     # difference between the two is the theme rendering it.
     - source: ../shared/kitchen-sink.md
       target: content/docs/kitchen-sink.md
+    # The dashboard mockup, likewise shared, so the composed pattern is rendered
+    # by both themes from one source.
+    - source: ../shared/dashboard.md
+      target: content/docs/dashboard.md
 
 markup:
   goldmark:
@@ -55,7 +84,7 @@ outputs:
 params:
   offlineSearch: true
   ui:
-    navbar_logo: false
+    navbar_logo: true
     navbar_theme: light
     showLightDarkModeMenu: true
     sidebar_menu_compact: true
@@ -78,6 +107,9 @@ menu:
     - name: Kitchen sink
       pageRef: /docs/kitchen-sink
       weight: 15
+    - name: Dashboard
+      pageRef: /docs/dashboard
+      weight: 18
     - name: Project
       url: https://github.com/google/docsy
       weight: 20

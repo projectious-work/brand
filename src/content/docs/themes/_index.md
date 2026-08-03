@@ -13,5 +13,5 @@ theme-specific guidance, and review fixtures in one page. It currently contains 
 for [Docsy](https://www.docsy.dev/) and [Hextra](https://imfing.github.io/hextra/).
 
 The [Terminal guide]({{< relref "terminal" >}}) covers the sixteen-colour ANSI
-palette and the configuration that applies it to tmux, WezTerm, Kitty, iTerm2,
+palette and the configuration that applies it to tmux, WezTerm, Kitty, Ghostty, iTerm2,
 and Zellij.

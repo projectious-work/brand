@@ -4,7 +4,7 @@ linkTitle: Terminal
 weight: 20
 description: >-
   The projectious.work terminal palette and the configuration that applies it to
-  tmux, WezTerm, Kitty, iTerm2, and Zellij.
+  tmux, WezTerm, Kitty, Ghostty, iTerm2, and Zellij.
 toc: true
 ---
 
@@ -25,7 +25,7 @@ almost every "my theme is wrong" report is a confusion between them.
 
 | Layer | Owns | Examples |
 |---|---|---|
-| **Emulator** | The sixteen ANSI colours, background, foreground, cursor, selection, its own tabs and splits | WezTerm, Kitty, iTerm2, Windows Terminal, GNOME Terminal |
+| **Emulator** | The sixteen ANSI colours, background, foreground, cursor, selection, its own tabs and splits | WezTerm, Kitty, Ghostty, iTerm2, Windows Terminal |
 | **Multiplexer** | Only its own chrome — status bar, pane borders, message line, copy mode, popups | tmux, Zellij, screen |
 
 A multiplexer cannot fix a wrong ANSI palette, and an emulator cannot style a
@@ -94,7 +94,7 @@ The brand accent has no ANSI slot, because it is not a semantic colour: it marks
 ## Syntax in the terminal
 
 An editor running inside a terminal paints code from the sixteen ANSI slots, not
-from a stylesheet. Since the [syntax roles](/brand/docs/interface/code/) were
+from a stylesheet. Since the [syntax roles]({{< relref "/docs/interface/code" >}}) were
 reassigned by measured perceptual distance, seven of the nine now resolve to an
 ANSI slot exactly — so a file open in Helix, Neovim or Vim under this palette
 looks like the same file on the documentation site.
@@ -354,6 +354,107 @@ Kitty applies `background_opacity` before contrast is measured. Any value below
 palette is no longer measurable. Keep it at 1.0 for work that has to meet the
 floor.
 
+## Ghostty
+
+Ghostty reads a plain `key = value` file and supports **named themes**, so the
+palette is a separate file that the config selects. That is the idiomatic split:
+the theme file carries only colour, and the config carries everything else.
+
+```ini
+# ~/.config/ghostty/themes/projectious — colour only, nothing else
+palette = 0=#0e1720
+palette = 1=#e55b5b
+palette = 2=#3f9d74
+palette = 3=#c08a1e
+palette = 4=#6289b3
+palette = 5=#bd6d96
+palette = 6=#3f97a3
+palette = 7=#97a8b8
+palette = 8=#2e4b68
+palette = 9=#f08b80
+palette = 10=#6cc090
+palette = 11=#e0a92a
+palette = 12=#8aacc8
+palette = 13=#d491b4
+palette = 14=#74c0c9
+palette = 15=#c5daf0
+
+background = #0e1720
+foreground = #c5daf0
+
+cursor-color = #e05232
+cursor-text = #0e1720
+
+selection-background = #20354d
+selection-foreground = #c5daf0
+```
+
+```ini
+# ~/.config/ghostty/config — projectious.work
+
+theme = projectious
+
+font-family = IBM Plex Mono
+font-size = 13
+font-feature = -liga
+font-feature = -calt
+
+cursor-style = block
+cursor-opacity = 1
+
+# The accent marks the focused split, and nothing else in the chrome.
+split-divider-color = #7b8da3
+unfocused-split-fill = #0e1720
+
+window-padding-x = 6
+window-padding-y = 6
+window-padding-balance = true
+
+link-url = true
+```
+
+`theme` also takes an absolute path, which is the better form for a config
+checked into a dotfiles repository: `theme = /Users/you/dotfiles/ghostty/projectious`.
+
+Ghostty's `theme` accepts a `light:…,dark:…` pair that follows the system
+appearance. **Do not use it here.** This palette has one surface and every ratio
+on this page is measured against it; a light variant would be a different
+palette, not a mode of this one — see
+[Colour]({{< relref "/docs/foundations/color" >}}).
+
+Four defaults have to be set explicitly, because each one moves rendered colour
+off the measured palette:
+
+| Setting | Required | Why |
+|---|---|---|
+| `minimum-contrast` | `1` | Anything above 1 lets Ghostty rewrite a foreground to reach a ratio it computes itself. The palette already clears 4.95:1; this would replace measured values with generated ones |
+| `background-opacity` | `1` | Below 1 puts whatever is behind the window into every ratio on this page |
+| `background-blur` | `false` | Only applies under transparency, and blurring the desktop behind the text does not make the ratio measurable again |
+| `unfocused-split-opacity` | `1` | Ghostty fades unfocused splits by default. The faded text is still text, and at the default it no longer clears the floor |
+
+```ini
+minimum-contrast = 1
+background-opacity = 1
+background-blur = false
+unfocused-split-opacity = 1
+```
+
+Leaving `unfocused-split-opacity` at its default is the most common way this
+theme fails review: the split you are *not* looking at is the one you are
+reading a stack trace in.
+
+Ghostty has no bold-brightening setting to disable — it renders bold as a bold
+face and leaves the colour alone, which is the behaviour the other emulators on
+this page need to be told to adopt.
+
+Check the parsed result rather than the file, since an unknown key is skipped
+rather than reported:
+
+```sh
+ghostty +show-config | grep -E 'palette|background|foreground|contrast|opacity'
+ghostty +validate-config
+```
+
 ## iTerm2
 
 iTerm2 stores colours as a plist of floating-point components, so hand-editing
@@ -510,6 +611,7 @@ A terminal theme that only renders a prompt is not complete.
 - [tmux manual](https://man7.org/linux/man-pages/man1/tmux.1.html)
 - [WezTerm colour configuration](https://wezterm.org/config/appearance.html)
 - [Kitty configuration](https://sw.kovidgoyal.net/kitty/conf/)
+- [Ghostty configuration reference](https://ghostty.org/docs/config/reference)
 - [iTerm2 documentation](https://iterm2.com/documentation.html)
 - [Zellij theme configuration](https://zellij.dev/documentation/themes)
 

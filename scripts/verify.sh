@@ -26,6 +26,7 @@ check() {
 echo "Verifying ${ROOT_DIR}"
 echo
 
+check "tokens — source and downloads" bash "${ROOT_DIR}/scripts/check-tokens.sh"
 check "site builds"                 "${ROOT_DIR}/scripts/build-docs.sh"
 check "contrast — site (both modes)" node "${ROOT_DIR}/scripts/audit-contrast.mjs" --quiet
 check "contrast — brand documents"   node "${ROOT_DIR}/scripts/audit-contrast-brand.mjs"

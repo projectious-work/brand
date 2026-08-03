@@ -341,35 +341,76 @@ select.pj-input { cursor: pointer; }
 // -----------------------------------------------------------------------------
 // Navigation
 // -----------------------------------------------------------------------------
+// The navbar follows the colour mode — it is not a permanently midnight bar.
+// These values mirror .td-navbar in _styles_project.scss, which is what this
+// site's own header actually uses; a specimen that disagrees with the header
+// directly above it is worse than no specimen.
+// The specimen's colours are published as custom properties rather than kept as
+// SCSS literals. A host theme that outranks a component class — Hextra colours
+// every `.content a`, which is (0,2,0) against this component's (0,1,0) — can
+// then restate the property instead of restating the value, so the reference
+// implementations cannot drift from the brand the way a copied hex does.
 .pj-navbar {
-  background: $brand-primary-dark;
-  border-bottom: 3px solid $brand-accent;
+  --pj-navbar-bg: #{rgba($midnight-1, 0.88)};
+  --pj-navbar-border: #{$slate-3};
+  --pj-navbar-shadow: 0 1px 0 #{rgba($midnight-9, 0.04)};
+  --pj-navbar-brand: #{$brand-primary};
+  --pj-navbar-link: #{$slate-11};
+  --pj-navbar-link-hover: #{$midnight-12};
+  --pj-navbar-link-active: #{$brand-primary};
+
+  background: var(--pj-navbar-bg);
+  border-bottom: 1px solid var(--pj-navbar-border);
+  box-shadow: var(--pj-navbar-shadow);
+  backdrop-filter: blur(12px);
   padding: 0.625rem 1rem;
   display: flex;
   align-items: center;
   gap: 1.25rem;
-  border-radius: $border-radius 	$border-radius 0 0;
+  border-radius: $border-radius $border-radius 0 0;
 
   &__brand {
     font-family: $headings-font-family;
     font-weight: 700;
     font-size: 0.875rem;
-    color: $midnight-dark-12;
+    letter-spacing: -0.3px;
+    color: var(--pj-navbar-brand);
   }
 
   &__link {
     font-family: $headings-font-family;
     font-size: 0.8125rem;
     font-weight: 600;
-    color: $slate-dark-11;
+    color: var(--pj-navbar-link);
     text-decoration: none;
+    transition: color var(--pj-duration-standard) var(--pj-ease-out);
 
+    &:hover,
+    &:focus {
+      color: var(--pj-navbar-link-hover);
+    }
+
+    // accent-solid, not step 9: the underline sits against text at this size
+    // and is read as part of it.
     &--active {
-      color: $midnight-dark-12;
-      box-shadow: inset 0 -2px 0 $brand-accent;
+      color: var(--pj-navbar-link-active);
+      box-shadow: inset 0 -2px 0 $brand-accent-solid;
       padding-bottom: 2px;
     }
   }
+}
+
+// Docsy sets data-bs-theme; Hextra and Tailwind-based themes set a .dark class.
+// Both are matched so the specimen follows whichever host renders it.
+[data-bs-theme="dark"] .pj-navbar,
+.dark .pj-navbar {
+  --pj-navbar-bg: #{rgba($midnight-dark-1, 0.88)};
+  --pj-navbar-border: rgba(255, 255, 255, 0.1);
+  --pj-navbar-shadow: none;
+  --pj-navbar-brand: #{$midnight-dark-12};
+  --pj-navbar-link: #{$slate-dark-11};
+  --pj-navbar-link-hover: #{$midnight-dark-12};
+  --pj-navbar-link-active: #{$midnight-dark-12};
 }
 
 .pj-breadcrumb {
@@ -738,6 +779,9 @@ html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
 
   &__ext { color: $brand-accent; }
   &--on-dark { color: $midnight-dark-12; }
+  // For surfaces that are white in both modes — paper stock, a mail message —
+  // where the mode-aware default would go light-on-white in dark mode.
+  &--on-light { color: $brand-primary; }
 }
 
 .pj-lockup {
@@ -850,6 +894,31 @@ html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
     background: $brand-accent;
     opacity: 0.12;
   }
+
+  // Paper stock. Fixed white in both modes, like the signature specimens: the
+  // point of this card is how it looks printed, and paper has no colour mode.
+  //
+  // The glow does not carry over. A 12% accent wash reads as a soft shadow on
+  // midnight and as a printing fault on white, so the accent moves to a rule
+  // down the leading edge — the same device the signature uses, for the same
+  // reason: one accent element, one line, no horizontal rules.
+  &--paper {
+    background: #ffffff;
+    color: $midnight-12;
+    border: 1px solid $slate-4;
+    border-left: 3px solid $brand-accent;
+    padding-left: calc(1.125rem - 2px);
+
+    .pj-vcard__name { color: $brand-primary; }
+    .pj-vcard__role { color: $slate-9; }   // 5.58:1
+    .pj-vcard__row { color: $slate-11; }   // 5.18:1
+
+    .projectious-mark {
+      --pj-mark-shell: #{$midnight-9};
+      --pj-mark-cut: #ffffff;
+      --pj-mark-bud: #{$orange-9};
+    }
+  }
 }
 
 .pj-og {
@@ -961,19 +1030,19 @@ html.light {
   // foreground must too (#a8391c is 5.15:1 on the light tint; orange-11 from
   // the dark scale is 7.6:1 on the dark tint).
   --pj-chip-accent-fg: #a8391c;
-  --pj-alert-info-bg: #dae2ec;
-  --pj-alert-success-bg: #d1ebe0;
-  --pj-alert-warning-bg: #f5ecd0;
-  --pj-alert-danger-bg: #fce8e8;
+  --pj-alert-info-bg: #{$info-bg};
+  --pj-alert-success-bg: #{$success-bg};
+  --pj-alert-warning-bg: #{$warning-bg};
+  --pj-alert-danger-bg: #{$danger-bg};
 }
 
 [data-bs-theme="dark"],
 html.dark {
   --pj-chip-accent-fg: #{$orange-dark-11};
-  --pj-alert-info-bg: #{$midnight-dark-3};
-  --pj-alert-success-bg: #16302a;
-  --pj-alert-warning-bg: #33280d;
-  --pj-alert-danger-bg: #3a1c19;
+  --pj-alert-info-bg: #{$info-bg-dark};
+  --pj-alert-success-bg: #{$success-bg-dark};
+  --pj-alert-warning-bg: #{$warning-bg-dark};
+  --pj-alert-danger-bg: #{$danger-bg-dark};
 }
 
 
@@ -1252,4 +1321,122 @@ html.dark {
 
   table { margin: 0; }
   td { padding: 2px 0 2px 14px; }
+}
+
+// -----------------------------------------------------------------------------
+// Form specimen — used by the pj-form shortcode in the theme review fixtures.
+// -----------------------------------------------------------------------------
+.pj-form-specimen {
+  display: grid;
+  gap: 1rem;
+  max-width: 32rem;
+  margin-block: 1.25rem;
+}
+
+// -----------------------------------------------------------------------------
+// Dashboard specimen — the composed pattern from docs/interface/patterns, used
+// by the pj-dashboard shortcode.
+//
+// The layout collapses at the documented breakpoints rather than at whatever
+// width the panels happen to stop fitting: the split flattens at md (768px) and
+// the sidebar leaves at lg (1024px), matching docs/foundations/responsive.
+// -----------------------------------------------------------------------------
+.pj-dashboard {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  background: var(--pj-surface-subtle);
+  overflow: hidden;
+  margin-block: 1.25rem 1.75rem;
+
+  &__nav {
+    display: flex;
+    gap: 0.25rem;
+    overflow-x: auto;
+    padding: 0.5rem;
+    border-bottom: 1px solid var(--pj-border);
+    background: var(--pj-surface);
+
+    .pj-sidebar__item { white-space: nowrap; }
+  }
+
+  &__main { min-width: 0; padding: 1rem; display: grid; gap: 1rem; }
+
+  &__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-family: $headings-font-family;
+    font-weight: 700;
+    font-size: 1rem;
+    color: var(--bs-heading-color);
+  }
+
+  // Four KPIs is the documented count, but four across a phone is four
+  // unreadable columns — auto-fit keeps them legible without a second rule.
+  &__kpis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0.75rem;
+  }
+
+  &__split { display: grid; gap: 1rem; align-items: start; }
+
+  @media (min-width: 768px) {
+    &__split { grid-template-columns: 1fr 1fr; }
+  }
+
+  @media (min-width: 1024px) {
+    grid-template-columns: 180px 1fr;
+
+    &__nav {
+      flex-direction: column;
+      overflow-x: visible;
+      border-bottom: 0;
+      border-right: 1px solid var(--pj-border);
+      padding: 0.75rem;
+    }
+
+    &__main { padding: 1.25rem; }
+    &__split { grid-template-columns: 1.5fr 1fr; }
+  }
+
+  .pj-card { max-width: none; }
+  .pj-stat { min-width: 0; }
+}
+
+// A row-identifying cell is a `<th scope="row">` — that is what makes a data
+// table navigable with a screen reader. Both Docsy and Hextra style every `th`
+// as a column header, so the row identity came out uppercase, letter-spaced and
+// muted. Keep the semantics, restore the presentation of a body cell.
+.pj-table tbody th[scope="row"] {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--bs-body-color);
+  text-align: left;
+}
+
+// -----------------------------------------------------------------------------
+// The mark
+// -----------------------------------------------------------------------------
+// Lives here rather than in the documentation site's own stylesheet because the
+// theme examples mount this file and not that one. Without these three rules
+// the inlined logo.svg has no fill and renders as a solid black blob — which is
+// exactly what the Docsy example did once its navbar logo was switched on.
+//
+// The values come from _tokens.scss and follow the colour mode, so one SVG
+// serves both; there is no separate dark-mode asset.
+.projectious-mark {
+  &__shell { fill: var(--pj-mark-shell); }
+  &__cut { fill: var(--pj-mark-cut); }
+  &__bud { fill: var(--pj-mark-bud); }
 }

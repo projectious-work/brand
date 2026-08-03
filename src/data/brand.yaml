@@ -84,6 +84,103 @@ core:
     hex: "#546a82"
     use: Supporting text, borders
 
+# Semantic colours. Mode-specific by necessity: the light values are tuned for
+# dark text on a light tint and measure 2.6-3.7:1 as foregrounds on the dark app
+# surface. `onTint` is the foreground to use on the matching tint, where the
+# solid value does not clear AA. Ratios are measured against `tint`.
+semantic:
+  - role: Success
+    lightSolid: "#2f7d65"
+    lightTint: "#d1ebe0"
+    lightOnTint: "#276754"
+    lightContrast: "5.28:1"
+    darkSolid: "#6cc090"
+    darkTint: "#16302a"
+    darkContrast: "6.43:1"
+    use: A completed, evidenced check
+  - role: Warning
+    lightSolid: "#8b6508"
+    lightTint: "#f5ecd0"
+    lightOnTint: "#6f5106"
+    lightContrast: "6.23:1"
+    darkSolid: "#e0a92a"
+    darkTint: "#33280d"
+    darkContrast: "6.81:1"
+    use: A condition to assess. Gold, never the accent
+  - role: Danger
+    lightSolid: "#a8261c"
+    lightTint: "#fce8e8"
+    lightOnTint: "#a8261c"
+    lightContrast: "6.03:1"
+    darkSolid: "#f08b80"
+    darkTint: "#3a1c19"
+    darkContrast: "6.40:1"
+    use: A failure needing a next action
+  - role: Info
+    lightSolid: "#3a5a82"
+    lightTint: "#dae2ec"
+    lightOnTint: "#3a5a82"
+    lightContrast: "5.42:1"
+    darkSolid: "#8aacc8"
+    darkTint: "#1a2b3e"
+    darkContrast: "6.04:1"
+    use: Neutral context, no judgement
+
+# App surface and text aliases. Every scale step is available on its own; these
+# name the handful a consumer reaches for first. Contrast is against the mode's
+# own `bg`.
+surfaces:
+  - token: --color-bg
+    light: "#f8f9fb"
+    dark: "#0e1720"
+    step: midnight 1
+    use: Page canvas
+  - token: --color-surface
+    light: "#ffffff"
+    dark: "#131e2b"
+    step: white / midnight-dark 2
+    use: Cards, panels, elevated surfaces
+  - token: --color-text-primary
+    light: "#142438"
+    dark: "#c5daf0"
+    step: midnight 12
+    contrast: "14.89:1 / 12.62:1"
+    use: Body and heading text
+  - token: --color-text-secondary
+    light: "#546a82"
+    dark: "#97a8b8"
+    step: slate 9 / slate-dark 11
+    contrast: "5.30:1 / 7.41:1"
+    use: Supporting text
+  - token: --color-text-muted
+    light: "#5c6f82"
+    dark: "#97a8b8"
+    step: slate 11 / slate-dark 11
+    contrast: "4.92:1 / 7.41:1"
+    use: Captions and low-emphasis text
+  - token: --color-border
+    light: "#cdd0d5"
+    dark: "#263f5a"
+    step: slate 5 / midnight-dark 5
+    use: Dividers and component borders
+
+# Breakpoints. Below `sm` is the base, not a breakpoint — see
+# docs/foundations/responsive.
+breakpoints:
+  - name: sm
+    value: 640
+    use: Large phone, landscape phone
+  - name: md
+    value: 768
+    use: Small tablet — the first two-column layout
+  - name: lg
+    value: 1024
+    use: Tablet landscape, small laptop — sidebars appear
+  - name: xl
+    value: 1280
+    use: Desktop — the 1100px measure is fully margined
+
+
 type:
   - style: Display
     size: 48

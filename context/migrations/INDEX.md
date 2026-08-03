@@ -8,7 +8,7 @@ None.
 
 None.
 
-## Applied (4)
+## Applied (5)
 
 | Date       | Migration                                | Notes |
 |------------|------------------------------------------|-------|
@@ -16,6 +16,7 @@ None.
 | 2026-07-26 | MIG-20260726_0846-ContentSync-processkit-content-sync — processkit v0.27.0 → v0.28.4 | 0 changed upstream, 0 conflicts, 15 new, 0 removed, 0 stale-removed (3 groups affected) |
 | 2026-07-26 | MIG-20260726_0846-RuntimeSync-aibox-runtime — aibox-runtime-home 0.27.2 → 0.28.13 | 0 changed upstream, 0 conflicts, 1 new, 0 removed (1 groups affected) |
 | 2026-08-01 | MIG-20260801_0945-ContentSync-processkit-content-sync — processkit v0.28.4 → v0.28.5 | 1 changed upstream, 0 conflicts, 0 new, 0 removed, 0 stale-removed (1 groups affected) |
+| 2026-08-03 | MIG-20260801_1554-ContentSync-processkit-content-sync — processkit v0.28.4 → v0.28.5 | 1 changed upstream, 0 conflicts, 0 new, 0 removed, 0 stale-removed (1 groups affected) |
 
 ## Rejected (1)
 

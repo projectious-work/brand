@@ -19,6 +19,48 @@ not a printed card.
 </div>
 {{< /demo >}}
 
+## Paper stock
+
+The same card on white. This is the form to hand a printer when a physical card
+is required, and the one to reach for when the card will sit on a light surface
+it does not control — a conference badge holder, a scanned page, a slide.
+
+{{< demo label="Paper card — white stock, accent on the leading edge" variant="stack" >}}
+<div class="pj-vcard pj-vcard--paper">
+  <span class="pj-lockup" style="margin-bottom:.75rem">{{< mark size="28" >}}<span class="pj-wm pj-wm--on-light" style="font-size:13px">projectious<span class="pj-wm__ext"> · work</span></span></span>
+  <div class="pj-vcard__name">Bernhard Gerlach</div>
+  <div class="pj-vcard__role">Cloud · Agile · Agentic AI</div>
+  <div class="pj-vcard__row" style="margin-top:.625rem">info@projectious.work</div>
+  <div class="pj-vcard__row">projectious.work</div>
+</div>
+{{< /demo >}}
+
+Three things change, and nothing else does:
+
+| | Digital | Paper |
+|---|---|---|
+| Surface | `midnight-dark-1` | White, in both modes — paper has no colour mode |
+| Accent | A 12% wash bleeding off the corner | A 3px rule down the leading edge |
+| Mark | Light-on-dark colourway | `midnight-9` shell, white cut, `orange-9` bud |
+
+The wash does not survive the change of surface. At 12% on midnight it reads as
+a soft light source; at 12% on white it reads as a printing fault — an uneven
+patch of ink that a press will faithfully reproduce. So the accent moves to a
+rule down the leading edge, which is one line, prints cleanly at any size, and
+is the same device the
+[signature]({{< relref "/docs/collateral/email-signature" >}}) uses.
+
+The name, role, and contact rows keep their type sizes and weights exactly. Only
+their colours change, to the light-mode text steps: `midnight-9` for the name,
+`slate-9` for the role at 5.58:1, and `slate-11` for the mono rows at 5.18:1.
+
+{{% alert title="This specimen is white in both modes, deliberately" color="info" %}}
+Switch the site's theme and the digital card follows it; this one does not. A
+card printed on white stock is white under every lighting condition there is,
+and a specimen that goes dark when the reader's browser does would be showing
+something that cannot be printed.
+{{% /alert %}}
+
 ## Layout
 
 - Midnight surface, mark top-left, name in Plus Jakarta Sans 700.
@@ -37,3 +79,36 @@ If a printed card is required:
 - Use the [monochrome mark]({{< relref "/docs/logo/usage" >}}) — no accent on
   press unless a spot colour is budgeted.
 - Respect the 1× clear-space rule; do not bleed the mark to the trim edge.
+
+### Handing colour to a printer
+
+The brand is defined in sRGB hex. Press is not sRGB, so a printed card needs the
+values converted — and the conversion is the vendor's job, not a lookup table's.
+
+**Give the printer the Lab values.** They are device-independent: they describe
+the colour itself rather than one recipe for making it, so the vendor can hit
+them on whatever stock and profile the job actually runs on.
+
+| Colour | Hex | Lab (D50) | CMYK — unmanaged |
+|---|---|---|---|
+| Midnight | `#1d3352` | L 20.7, a −0.5, b −21.9 | 65 / 38 / 0 / 68 |
+| Orange | `#E05232` | L 54.9, a 55.2, b 48.5 | 0 / 63 / 78 / 12 |
+| Accent solid | `#cc4528` | L 49.3, a 53.3, b 46.8 | 0 / 66 / 80 / 20 |
+| Slate | `#546a82` | L 43.7, a −3.7, b −16.2 | 35 / 18 / 0 / 49 |
+| Midnight dark | `#132440` | L 13.9, a 1.0, b −20.3 | 70 / 44 / 0 / 75 |
+
+{{% alert title="The CMYK column is a starting point, not a specification" color="warning" %}}
+Those numbers are the **naive** device conversion — the arithmetic one, with no
+colour management. They are here so a proof is not blocked on a phone call, and
+they are wrong on any specific press.
+
+Convert through the vendor's own ICC profile before production — FOGRA51 for
+coated stock in Europe, GRACoL 2013 in North America — and sign off on a
+physical proof on the actual stock. Matte and uncoated paper absorb ink and will
+run darker and flatter than the screen, most visibly on Orange.
+{{% /alert %}}
+
+Do not guess a Pantone equivalent. If the job budgets a spot colour, give the
+vendor the Lab value and let them specify the closest ink; a Pantone number
+picked from a screen swatch is a different colour with an authoritative name on
+it.

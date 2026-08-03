@@ -78,6 +78,11 @@ for (const file of files) {
     if (/^(https?:)?\/\//i.test(url)) { external.add(url.split("/").slice(0, 3).join("/")); continue; }
     if (/^(mailto:|tel:|data:|javascript:)/i.test(url)) continue;
     if (url.startsWith("#")) continue;
+    // The worked examples under downloads/examples/ are design-component
+    // documents: their markup is a template, and an attribute like
+    // src="{{ item.icon }}" is a binding the runtime substitutes at load time,
+    // not a path. Resolving it against public/ is meaningless.
+    if (url.includes("{{")) continue;
 
     checked++;
     const res = resolveTarget(url, file);
@@ -87,7 +92,45 @@ for (const file of files) {
   }
 }
 
+// The built pages carry the production baseURL path, so resolveTarget strips it
+// and a hardcoded "/brand/..." href resolves fine here. It does not resolve in a
+// local preview, where the site is served from the root — the link 404s and the
+// checker never sees it, because the checker only ever runs against a
+// production build.
+//
+// So the source is checked separately: content must reach mounted downloads
+// through {{< siteurl >}}, which resolves against whatever baseURL is in use.
+const contentDir = join(ROOT, "src", "content");
+const mdFiles = [];
+(function walkMd(dir) {
+  for (const e of readdirSync(dir, { withFileTypes: true })) {
+    const p = join(dir, e.name);
+    if (e.isDirectory()) walkMd(p);
+    else if (e.name.endsWith(".md")) mdFiles.push(p);
+  }
+})(contentDir);
+
+const hardcoded = [];
+for (const file of mdFiles) {
+  const src = readFileSync(file, "utf8");
+  src.split("\n").forEach((line, i) => {
+    if (line.includes(`(${PREFIX}/`) || line.includes(`"${PREFIX}/`)) {
+      hardcoded.push(`${relative(ROOT, file)}:${i + 1}`);
+    }
+  });
+}
+
+if (hardcoded.length) {
+  console.error(
+    `\n${hardcoded.length} hardcoded "${PREFIX}/" link(s) in content — ` +
+      `use {{< siteurl "…" >}} so the link works in a local preview too:`,
+  );
+  for (const h of hardcoded) console.error(`  ${h}`);
+  process.exit(1);
+}
+
 console.log(`Checked ${checked} internal links across ${files.length} pages.`);
+console.log(`Checked ${mdFiles.length} content files for hardcoded baseURL paths.`);
 
 if (external.size) {
   console.log(`External hosts referenced (not fetched): ${[...external].sort().join(", ")}`);

@@ -1,6 +1,6 @@
 baseURL: http://localhost:1314/
 languageCode: en-us
-title: Hextra kitchen sink
+title: Hextra example
 module:
   imports:
     - path: github.com/imfing/hextra
@@ -29,6 +29,17 @@ module:
       target: assets/scss/_demo.scss
     - source: ../../src/assets/scss/specimens.scss
       target: assets/scss/specimens.scss
+    # The mark. Hextra's own navbar-title partial takes navbar.logo.path and
+    # navbar.logo.dark, so no template override is needed — only the files and
+    # the two settings below.
+    - source: ../../brand/logo/svg/icon-light.svg
+      target: static/images/logo.svg
+    - source: ../../brand/logo/svg/icon-dark.svg
+      target: static/images/logo-dark.svg
+    # The generated token file. custom.css derives its whole semantic layer from
+    # this by reference, so the example holds no brand colour of its own.
+    - source: ../../brand/tokens/variables.css
+      target: assets/css/brand-tokens.css
     # The shortcodes the specimen pages are written with.
     - source: ../../src/layouts/shortcodes
       target: layouts/shortcodes
@@ -36,6 +47,10 @@ module:
     # difference between the two is the theme rendering it.
     - source: ../shared/kitchen-sink.md
       target: content/docs/kitchen-sink.md
+    # The dashboard mockup, likewise shared, so the composed pattern is rendered
+    # by both themes from one source.
+    - source: ../shared/dashboard.md
+      target: content/docs/dashboard.md
 enableRobotsTXT: false
 outputs:
   home: [HTML]
@@ -46,7 +61,12 @@ params:
   description: A standalone Hextra theme example.
   navbar:
     displayTitle: true
-    displayLogo: false
+    displayLogo: true
+    logo:
+      path: images/logo.svg
+      dark: images/logo-dark.svg
+      width: 28
+      height: 28
   theme:
     default: system
     # Hextra renders this control in the sidebar. assets/js/navbar-theme.js
@@ -69,6 +89,9 @@ menu:
     - name: Kitchen sink
       pageRef: /docs/kitchen-sink
       weight: 20
+    - name: Dashboard
+      pageRef: /docs/dashboard
+      weight: 25
     - name: Search
       weight: 30
       params:

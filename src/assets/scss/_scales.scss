@@ -155,3 +155,19 @@ $warning-dark: #e0a92a; // 8.50:1
 $danger-dark: #f08b80; // 7.49:1
 $light: $midnight-1;
 $dark: $brand-primary-dark;
+
+// Semantic tints — the fill behind an alert, a badge, or a status pill. These
+// were literals in three places (the demo stylesheet and both theme adapters),
+// which is how two of the examples ended up with tints the brand does not
+// define. Named here so every consumer of the scales gets the same four.
+// Contrast is stated for the foreground the interface pairs with each: the
+// `-fg` values above on light, the `-dark` values above on dark.
+$info-bg: #dae2ec; // $info 5.42:1
+$success-bg: #d1ebe0; // $success-fg 5.28:1
+$warning-bg: #f5ecd0; // $warning-fg 6.23:1
+$danger-bg: #fce8e8; // $danger 6.03:1
+
+$info-bg-dark: $midnight-dark-3; // $midnight-dark-11 6.04:1
+$success-bg-dark: #16302a; // $success-dark 6.43:1
+$warning-bg-dark: #33280d; // $warning-dark 6.81:1
+$danger-bg-dark: #3a1c19; // $danger-dark 6.40:1

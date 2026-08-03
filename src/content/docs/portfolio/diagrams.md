@@ -19,6 +19,41 @@ Suggested caption:
 > Source: `owner/repository`, `docs/architecture.svg`, release `vX.Y.Z`,
 > captured YYYY-MM-DD. Planned elements are labelled.
 
+## The three diagram types
+
+"Prefer diagrams over photographs" is only useful if the diagrams exist.
+Consulting deliverables need three, and they answer different questions:
+
+| Type | Answers | Shape |
+|---|---|---|
+| **Sequence** | *When* — what happens, in what order, between whom | Actors across the top, lifelines down, labelled messages between them |
+| **Architecture** | *Where* — what runs, and on whose infrastructure | A control plane above, deployment targets below, connected by plain rules |
+| **Org chart** | *Who* — who owns the work, and who they answer to | One root, a rule, direct reports beneath |
+
+[**Diagram gallery**]({{< siteurl "downloads/examples/diagram-gallery.dc.html" >}}) — all
+three, built from the brand tokens.
+
+The drawing rules are the same in all three, and they are deliberately spare:
+
+- **Lines, not arrows, unless direction is the point.** A sequence diagram's
+  messages are directional and get an arrowhead. An architecture diagram's
+  connections usually are not — a 1px `slate-5` rule says "connected" without
+  claiming a flow that may not exist.
+- **One accent per diagram, at most.** The accent marks the focal node — the
+  thing the surrounding paragraph is about. A diagram where three nodes are
+  orange has no focus.
+- **Boxes carry a fill or a border, never both plus a shadow.** Solid
+  `midnight-9` for the emphasised node, `surface-2` with a `slate-5` border for
+  the rest.
+- **Labels are 12–13px and horizontal.** No rotated text. A diagram whose labels
+  need a head-tilt is a diagram that needed a different layout.
+- **Monospace for anything that is an identifier** — a service name, a region, a
+  hostname — and the body face for anything that is prose.
+
+An org chart names **roles**, and names people only with their agreement. The
+[portfolio identity rules]({{< relref "/docs/portfolio/" >}}) apply: a chart is a
+public artefact, and a person's name in one is a disclosure about them.
+
 ## Screenshots and demos
 
 - Show real output from a named build, commit, or release.

@@ -1,0 +1,103 @@
+{{- /*
+  The composed dashboard pattern from /docs/interface/patterns, as one specimen.
+
+    {{< pj-dashboard >}}
+
+  Built only from components documented on /docs/interface/components — sidebar,
+  stat, table shell, card, timeline, status, badge, button. Nothing here is a
+  dashboard-specific component, which is the point the patterns page makes: a
+  screen is an arrangement of the parts, not a new part.
+
+  It lives in the shared shortcode directory because both theme examples mount
+  it, so the same markup renders under Docsy and under Hextra and any difference
+  is the theme's.
+
+  Data is read from the `dashboard` key in the site's data directory when one is
+  present, so a consumer can retitle it without touching markup; the defaults
+  below are the worked example from the patterns page.
+*/ -}}
+{{- $d := site.Data.dashboard -}}
+{{- $nav := or $d.nav (slice "Overview" "Engagements" "Agents" "Reports" "Settings") -}}
+{{- $kpis := or $d.kpis (slice
+      (dict "value" "6"    "label" "Active engagements" "delta" "▲ 1 this month")
+      (dict "value" "412"  "label" "Agent hours"        "delta" "▲ 18% vs last week")
+      (dict "value" "3.2h" "label" "Time to audit"      "delta" "▼ 0.6h faster")
+      (dict "value" "5"    "label" "Open findings"      "delta" "2 need review" "tone" "warning")) -}}
+{{- $rows := or $d.rows (slice
+      (dict "client" "Nordic Freight AG" "practice" "Cloud"      "state" "ok"   "status" "On track" "progress" "68%")
+      (dict "client" "Halvorsen Bank"    "practice" "Agentic AI" "state" "warn" "status" "At risk"  "progress" "41%")
+      (dict "client" "Meridian Retail"   "practice" "Agile"      "state" "ok"   "status" "On track" "progress" "82%")
+      (dict "client" "Ferra Insurance"   "practice" "Agentic AI" "state" "err"  "status" "Blocked"  "progress" "23%")) -}}
+{{- $feed := or $d.feed (slice
+      (dict "text" "Compliance agent flagged a missing audit trail" "time" "4 min ago")
+      (dict "text" "Migration plan v3 approved for Nordic Freight"  "time" "32 min ago" "current" true)
+      (dict "text" "Spec-from-issue agent opened 3 draft PRs"       "time" "1h ago")
+      (dict "text" "Nightly audit completed with no findings"       "time" "5h ago")) -}}
+
+<div class="pj-dashboard">
+  <aside class="pj-dashboard__nav pj-sidebar" aria-label="Dashboard sections">
+    {{- range $i, $item := $nav }}
+    <div class="pj-sidebar__item{{ if eq $i 0 }} pj-sidebar__item--active{{ end }}">{{ $item }}</div>
+    {{- end }}
+  </aside>
+
+  <div class="pj-dashboard__main">
+    <div class="pj-dashboard__head">
+      <div>
+        <div class="pj-dashboard__title">Engagements overview</div>
+        <div class="pj-cap" style="margin-top:0">Cloud · Agile · Agentic AI</div>
+      </div>
+      <button class="pj-btn pj-btn--accent pj-btn--sm" type="button">New engagement</button>
+    </div>
+
+    <div class="pj-dashboard__kpis">
+      {{- range $kpis }}
+      <div class="pj-stat">
+        <div class="pj-stat__value">{{ .value }}</div>
+        <div class="pj-stat__label">{{ .label }}</div>
+        <div class="pj-stat__delta"{{ with .tone }} style="color:var(--pj-{{ . }})"{{ end }}>{{ .delta }}</div>
+      </div>
+      {{- end }}
+    </div>
+
+    <div class="pj-dashboard__split">
+      <div class="pj-table-shell">
+        <div class="pj-table-shell__toolbar">
+          <input class="pj-table-shell__search" type="search" placeholder="Search engagements…" aria-label="Search engagements">
+          <button class="pj-chip pj-chip--on" type="button">Practice: all<span class="pj-chip__x">×</span></button>
+        </div>
+        <div class="pj-scroll-x">
+          <table class="pj-table">
+            <thead>
+              <tr><th scope="col">Client</th><th scope="col">Practice</th><th scope="col">Status</th><th scope="col" class="pj-table__num">Progress</th></tr>
+            </thead>
+            <tbody>
+              {{- range $rows }}
+              <tr>
+                <th scope="row" style="font-weight:500">{{ .client }}</th>
+                <td>{{ .practice }}</td>
+                <td><span class="pj-status pj-status--{{ .state }}"><span class="pj-status__dot"></span>{{ .status }}</span></td>
+                <td class="pj-table__num">{{ .progress }}</td>
+              </tr>
+              {{- end }}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="pj-card">
+        <div class="pj-card__body">
+          <div class="pj-card__title">Agent activity</div>
+          <div class="pj-timeline">
+            {{- range $feed }}
+            <div class="pj-timeline__item{{ if .current }} pj-timeline__item--current{{ end }}">
+              <div>{{ .text }}</div>
+              <span class="pj-timeline__time">{{ .time }}</span>
+            </div>
+            {{- end }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -113,7 +113,7 @@ Every non-background value clears 4.5:1 against the surface; the measured floor
 is 4.95:1. ANSI 0 bright is the one deliberate exception — programs use it for
 box drawing and rules, not for text.
 
-Configuration for tmux, WezTerm, Kitty, iTerm2, and Zellij is on the
+Configuration for tmux, WezTerm, Kitty, Ghostty, iTerm2, and Zellij is on the
 [Terminal theming page]({{< relref "/docs/themes/terminal" >}}).
 
 ## Contrast rules
@@ -155,6 +155,127 @@ own set:
 | Warning | `#8b6508` | `#e0a92a` | 3.41:1 → 8.50:1 |
 | Danger | `#a8261c` | `#f08b80` | 2.55:1 → 7.49:1 |
 | Info | `#3a5a82` | `#8aacc8` | 2.55:1 → 7.59:1 |
+
+## Data visualisation
+
+A chart palette introduces no new colours. It is a set of rules for which
+existing steps may sit beside each other in a plot, and — more usefully — for
+when colour stops being the right tool.
+
+### Categorical: three series
+
+| Series | Token | Hex | On white |
+|---|---|---|---|
+| 1 | `--midnight-9` | `#1d3352` | 12.75:1 |
+| 2 | `--orange-9` | `#E05232` | 3.87:1 |
+| 3 | `--slate-9` | `#546a82` | 5.58:1 |
+
+One step-9 solid per family, in that order. All three clear the **3:1 non-text
+contrast floor** against a white plot area, so a bar or a line is visible
+without a border.
+
+Assign them in order and keep the assignment stable across every chart in a
+deck or a dashboard: if midnight is "cloud" on slide four, it is "cloud" on
+slide nine. A series that changes colour between charts costs the reader more
+than a fourth series would have gained them.
+
+{{< demo label="Three-series grouped bars — the whole categorical palette" variant="stack" >}}
+<div style="display:flex;align-items:flex-end;gap:1.5rem;height:132px;padding:0 .25rem;border-bottom:1px solid var(--pj-slate-4)">
+  <div style="display:flex;align-items:flex-end;gap:3px;height:100%"><span style="width:18px;height:78%;background:var(--pj-midnight-9);display:block"></span><span style="width:18px;height:52%;background:var(--pj-orange-9);display:block"></span><span style="width:18px;height:35%;background:var(--pj-slate-9);display:block"></span></div>
+  <div style="display:flex;align-items:flex-end;gap:3px;height:100%"><span style="width:18px;height:61%;background:var(--pj-midnight-9);display:block"></span><span style="width:18px;height:70%;background:var(--pj-orange-9);display:block"></span><span style="width:18px;height:28%;background:var(--pj-slate-9);display:block"></span></div>
+  <div style="display:flex;align-items:flex-end;gap:3px;height:100%"><span style="width:18px;height:44%;background:var(--pj-midnight-9);display:block"></span><span style="width:18px;height:38%;background:var(--pj-orange-9);display:block"></span><span style="width:18px;height:66%;background:var(--pj-slate-9);display:block"></span></div>
+</div>
+<div style="display:flex;gap:1rem;margin-top:.625rem;font-size:.75rem;color:var(--pj-muted-fg)">
+  <span><span style="display:inline-block;width:9px;height:9px;background:var(--pj-midnight-9);margin-right:.3rem"></span>Cloud</span>
+  <span><span style="display:inline-block;width:9px;height:9px;background:var(--pj-orange-9);margin-right:.3rem"></span>Agentic AI</span>
+  <span><span style="display:inline-block;width:9px;height:9px;background:var(--pj-slate-9);margin-right:.3rem"></span>Agile</span>
+</div>
+{{< /demo >}}
+
+{{% alert title="Orange and slate differ in hue, not in value" color="warning" %}}
+`orange-9` against `slate-9` measures **1.44:1**. On screen they are easy to
+tell apart — orange against blue-grey is also one of the safest pairs for the
+common colour-vision deficiencies. Printed in greyscale, or on a projector with
+the colour turned down, they merge.
+
+So when exactly two series are being compared, use **midnight-9 and orange-9**
+(3.29:1) and leave slate for the third. And direct-label every series — the
+legend is the fallback, not the mechanism.
+{{% /alert %}}
+
+### There is no fourth series
+
+The palette stops at three, and extending it is the wrong fix. The step-6 tier
+is not an option: `midnight-6` and `slate-6` measure **1.03:1 against each
+other** — the same colour, for practical purposes — and all three step-6 values
+sit at 1.8–2.0:1 against white, below the 3:1 floor for a mark you have to see.
+
+When a chart has more than three categories, one of these is the answer:
+
+- **Group the tail.** Rank the categories and collapse everything past the third
+  into "Other". If the fourth is genuinely interesting, it is the subject of its
+  own chart.
+- **Small multiples.** One chart per category, same axes, same scale. Reading
+  eight small charts is faster than decoding an eight-colour legend.
+- **Direct labelling with one highlight.** Draw every series in `slate-7`, draw
+  the one being discussed in `orange-9`, and label it in place. This is the
+  house style for a line chart in a
+  [deck]({{< relref "/docs/media/presentations" >}}) — one idea per slide holds
+  for charts too.
+- **Stop using colour.** A ranked bar chart in a single colour, sorted by value,
+  answers "which is biggest" better than any palette does.
+
+### Sequential and ordinal scales
+
+A magnitude scale uses **one family, steps 3 through 8**:
+
+`--midnight-3` → `--midnight-4` → `--midnight-5` → `--midnight-6` →
+`--midnight-7` → `--midnight-8`
+
+Six levels, stepping evenly in luminance (each 1.06–1.40× its neighbour) — which
+is what makes the ramp readable as an ordered scale rather than as six colours.
+
+**Step 9 is not the top of that ramp.** It is 3.87× darker than step 8, which is
+a jump the eye reads as a category boundary rather than one more level. Use it
+deliberately for exactly that: a four-bucket choropleth of `3 · 5 · 7 · 9`,
+where the top bucket is meant to separate itself. Do not append it to a
+six-level heatmap.
+
+Steps 3–7 are all below 3:1 against a white plot area, so a sequential fill
+needs an edge: give the plot a 1px `slate-4` cell grid, or the reader loses the
+boundary between a light cell and the page.
+
+For a diverging scale — where the middle is neutral and both ends are extreme —
+run `midnight-8 → midnight-3 → orange-3 → orange-8`, with `--midnight-1` at the
+midpoint. Never build a diverging scale from success and danger: those hues
+carry a judgement, and "below average" is not "wrong".
+
+### Chart furniture
+
+| Element | Value |
+|---|---|
+| Axis line, ticks | `--slate-5` |
+| Grid lines | `--slate-3`, horizontal only |
+| Axis labels, legend | `--slate-11`, 12px |
+| Value labels | `--midnight-12`, 12px, IBM Plex Mono |
+| Plot background | none — the page surface |
+| Annotation, callout rule | `--orange-9` |
+
+Numbers are set in IBM Plex Mono, right-aligned, for the same reason
+[table numerics are]({{< relref "/docs/interface/components" >}}): digits have
+to line up to be compared.
+
+{{< rules >}}
+{{% do %}}
+Keep categorical charts to three series and label them directly. Hold a series'
+colour constant across a deck. Use one family's steps 3–8 for magnitude.
+{{% /do %}}
+{{% dont %}}
+Invent a fourth categorical colour from the step-6 tier, rely on a legend as the
+only way to identify a series, append step 9 to a sequential ramp, or build a
+diverging scale from the success and danger hues.
+{{% /dont %}}
+{{< /rules >}}
 
 ## Dark mode
 

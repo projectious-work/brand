@@ -16,7 +16,7 @@ Validate the configuration locally, then request promotion. The action below is
 the only primary action in this view.
 {{< /pj-callout >}}
 
-<a class="pj-primary-action" href="#release-check">Review release check</a>
+{{< pj-action href="#release-check" >}}Review release check{{< /pj-action >}}
 
 ## What the reader needs first
 
