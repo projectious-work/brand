@@ -19,6 +19,10 @@ documentation are not.
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [v2.1.0] — 2026-08-03
+
 ### Highlights
 
 - **Token exports are complete and generated.** `variables.css`, `tokens.json`
