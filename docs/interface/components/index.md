@@ -350,7 +350,17 @@ page, or apply a filter without a visible chip saying so.</p>
 
 ## Navigation
 
-<div class="pj-demo"><div class="pj-demo__label">Navbar — midnight in both modes, 3px accent rule</div>
+The navbar **follows the colour mode**: `midnight-1` at 88% alpha in light,
+`midnight-dark-1` at 88% in dark, both over a 12px backdrop blur so content
+scrolling underneath stays legible. It is separated by a **1px border**, not a
+fill — the header is chrome, and a solid midnight band at the top of every page
+spends the brand's darkest surface on navigation.
+
+The active link carries a **2px `accent-solid` underline** plus the
+high-emphasis text step. The underline is `accent-solid` rather than `orange-9`
+because it sits directly against 13px text and is read as part of it.
+
+<div class="pj-demo"><div class="pj-demo__label">Navbar — follows the colour mode; 1px border, 2px accent underline on the active link</div>
   <div class="pj-demo__body pj-demo__body--stack">
     
 <div class="pj-navbar">
@@ -363,6 +373,9 @@ page, or apply a filter without a visible chip saying so.</p>
   </div>
 </div>
 
+
+This specimen mirrors `.td-navbar` — the header at the top of this page. Switch
+the theme and both change together.
 
 <div class="pj-demo"><div class="pj-demo__label">Breadcrumbs, tabs, pagination, sidebar</div>
   <div class="pj-demo__body pj-demo__body--grid">

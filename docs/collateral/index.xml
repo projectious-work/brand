@@ -15,17 +15,10 @@ not a printed card.&lt;/p&gt;
  &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h2 id="layout"&gt;Layout&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Midnight surface, mark top-left, name in Plus Jakarta Sans 700.&lt;/li&gt;
-&lt;li&gt;Role in Source Sans 3 400, in &lt;code&gt;slate-dark-11&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Contact rows in IBM Plex Mono at 11px — addresses and handles are data, and
-monospace makes them scannable and unambiguous.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;projectious.work&lt;/code&gt; always present.&lt;/li&gt;
-&lt;li&gt;Accent used once, on the QR frame or the primary contact method.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="print-fallback"&gt;Print fallback&lt;/h2&gt;
-&lt;p&gt;If a printed card is required:&lt;/p&gt;</description></item><item><title>Email signature</title><link>https://projectious-work.github.io/brand/docs/collateral/email-signature/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/email-signature/</guid><description>&lt;p&gt;Email is not the web. Every value below is a literal, every layout is a table,
+&lt;h2 id="paper-stock"&gt;Paper stock&lt;/h2&gt;
+&lt;p&gt;The same card on white. This is the form to hand a printer when a physical card
+is required, and the one to reach for when the card will sit on a light surface
+it does not control — a conference badge holder, a scanned page, a slide.&lt;/p&gt;</description></item><item><title>Email signature</title><link>https://projectious-work.github.io/brand/docs/collateral/email-signature/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/email-signature/</guid><description>&lt;p&gt;Email is not the web. Every value below is a literal, every layout is a table,
 and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
 &lt;p&gt;Two forms are supplied:&lt;/p&gt;
 &lt;table&gt;
@@ -54,8 +47,8 @@ and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  
 &lt;div class="pj-email-sheet"&gt;
-&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;max-width:520px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
- &lt;tr&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
+&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#ffffff" style="border-collapse:collapse;max-width:520px;background:#ffffff;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
+ &lt;tr bgcolor="#ffffff" style="background-color:#ffffff"&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;background-color:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
  &lt;div style="font-size:15px;font-weight:700;color:#1d3352;letter-spacing:-0.2px"&gt;Jane Doe&lt;/div&gt;
  &lt;div style="font-size:13px;color:#142438;padding-top:1px"&gt;Principal Consultant&lt;/div&gt;
  &lt;div style="font-size:13px;color:#546a82"&gt;Projectious GmbH&lt;/div&gt;
@@ -86,8 +79,8 @@ and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  
 &lt;div class="pj-email-sheet"&gt;
-&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;max-width:520px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
- &lt;tr&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
+&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#ffffff" style="border-collapse:collapse;max-width:520px;background:#ffffff;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
+ &lt;tr bgcolor="#ffffff" style="background-color:#ffffff"&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;background-color:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
  &lt;div style="font-size:14px;font-weight:700;color:#1d3352;letter-spacing:-0.2px"&gt;Jane Doe&lt;/div&gt;
  &lt;div style="font-size:12px;color:#546a82"&gt;Principal Consultant · Projectious GmbH&lt;/div&gt;
  &lt;div style="padding-top:5px"&gt;
@@ -104,7 +97,29 @@ and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
 
 &lt;p&gt;Both specimens are rendered on &lt;strong&gt;white&lt;/strong&gt;, because that is where a signature
 actually lives. The surrounding page has a colour mode; a mail message
-generally does not.&lt;/p&gt;</description></item><item><title>Social and OG images</title><link>https://projectious-work.github.io/brand/docs/collateral/social/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/social/</guid><description>&lt;h2 id="priority"&gt;Priority&lt;/h2&gt;
+generally does not.&lt;/p&gt;</description></item><item><title>Email</title><link>https://projectious-work.github.io/brand/docs/collateral/email/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/email/</guid><description>&lt;p&gt;The &lt;a href="https://projectious-work.github.io/brand/docs/collateral/email-signature/"&gt;signature&lt;/a&gt; covers the
+block at the bottom of someone else&amp;rsquo;s message. This page covers the message
+itself: a full-width, sendable email with a header, sections, a call to action,
+and a footer.&lt;/p&gt;
+&lt;p&gt;Everything the signature page says about construction — tables, inline styles,
+web-safe stacks, literal hex, &lt;code&gt;role=&amp;quot;presentation&amp;quot;&lt;/code&gt; — applies here unchanged and
+is not repeated. What follows is what a whole message adds.&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;&lt;/th&gt;
+					&lt;th&gt;Source&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Newsletter&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/email-newsletter.html"&gt;&lt;code&gt;brand/examples/email-newsletter.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;It opens straight from the filesystem — no runtime, no build step — so it can be
+pasted into a sending tool and previewed as-is.&lt;/p&gt;</description></item><item><title>Social and OG images</title><link>https://projectious-work.github.io/brand/docs/collateral/social/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/social/</guid><description>&lt;h2 id="priority"&gt;Priority&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;LinkedIn and GitHub first&lt;/strong&gt;, blog second, Twitter/X as backup. The templates
 are sized for those surfaces in that order.&lt;/p&gt;
 &lt;h2 id="template-rules"&gt;Template rules&lt;/h2&gt;
@@ -141,4 +156,25 @@ are truncated by most platforms anyway.&lt;/li&gt;
 &lt;div class="pj-rules"&gt;&lt;div class="pj-rule pj-rule--do"&gt;
  &lt;div class="pj-rule__label"&gt;Do&lt;/div&gt;
  &lt;p&gt;Keep one message per card. Check contrast against the actual background, not the
-design canvas.&lt;/p&gt;</description></item></channel></rss>
+design canvas.&lt;/p&gt;</description></item><item><title>Service one-pager</title><link>https://projectious-work.github.io/brand/docs/collateral/flier/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/flier/</guid><description>&lt;p&gt;The card, the signature, and the social artwork all carry the brand in a few
+square centimetres. The one-pager is the opposite problem: a whole page,
+handed over or attached, that has to explain a single service to someone who has
+not asked yet.&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;&lt;/th&gt;
+					&lt;th&gt;Source&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Service flier&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/flier.dc.html"&gt;&lt;code&gt;brand/examples/flier.dc.html&lt;/code&gt;&lt;/a&gt; — &amp;ldquo;Cloud migration accelerator&amp;rdquo;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="one-service-per-sheet"&gt;One service per sheet&lt;/h2&gt;
+&lt;p&gt;A one-pager describes &lt;strong&gt;one&lt;/strong&gt; offer. A sheet listing four services is a
+capabilities brochure, and it is read by nobody, because a reader who wants one
+of the four has to find it first.&lt;/p&gt;</description></item></channel></rss>

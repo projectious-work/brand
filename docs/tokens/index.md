@@ -23,6 +23,13 @@ the values are free to use, the marks are not. See
 
 Source: [`brand/tokens/`](https://github.com/projectious-work/brand/tree/main/brand/tokens).
 
+All three are **generated** from
+[`src/data/brand.yaml`](https://github.com/projectious-work/brand/blob/main/src/data/brand.yaml)
+by `scripts/build-tokens.mjs` — the same file this documentation renders from,
+so a page and a download cannot disagree about a value. `scripts/check-tokens.sh`
+fails the build if the committed files drift from a fresh generation, or if
+`brand.yaml` drifts from the SCSS that actually styles the site.
+
 ## CSS
 
 ```html
@@ -40,22 +47,48 @@ Source: [`brand/tokens/`](https://github.com/projectious-work/brand/tree/main/br
 
 ## What the tokens cover
 
-- **Colour** — the seven named aliases. The full 12-step scales are documented
-  on the [Colour page](/brand/docs/foundations/color/); the token file
-  exports the named entry points.
-- **Typography** — the three font stacks.
-- **Spacing** — the nine-step 4px scale.
-- **Radius** — five steps.
-- **Elevation** — four shadow levels.
-- **Motion** — four durations, two easing curves.
+Everything the foundations define, in all three files:
+
+| | Covers |
+|---|---|
+| **Colour — named** | The eight aliases: primary, accent (with `accent-solid`), secondary, and their light and dark variants |
+| **Colour — scales** | All three 12-step scales, **in both modes** — 72 values |
+| **Colour — semantic** | Success, warning, danger, info: the solid value, its tint, and the foreground to use *on* that tint, per mode |
+| **Surfaces** | Page canvas, elevated surface, three text levels, border — per mode |
+| **Typography** | Three font stacks, and the eleven-style type scale with size, weight, and line height |
+| **Spacing** | The nine-step 4px scale |
+| **Radius** | Five steps |
+| **Elevation** | Four shadow levels |
+| **Motion** | Four durations, two easing curves |
+| **Breakpoints** | `sm` 640, `md` 768, `lg` 1024, `xl` 1280 |
+| **Terminal** | The sixteen ANSI slots plus thirteen chrome values |
+
+<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Two things the exports cannot do for you</div>
+
+
+**Breakpoints are exported as values, not as queries.** A custom property cannot
+be used in a `@media` condition, so `--breakpoint-md` is available to `calc()`
+and to JavaScript, but the query itself still has to be written out.
+
+**Tailwind has no notion of a colour mode**, so the dark scales are exported as
+their own `midnightDark` / `orangeDark` / `slateDark` keys rather than swapped in
+behind `dark:`. Wire them to whatever dark strategy your project already uses.
+</div>
+
+
+### Modes
+
+`variables.css` declares the dark values twice: once under
+`@media (prefers-color-scheme: dark)`, and once under `[data-theme="dark"]`. A
+theme toggle that only works when the operating system already agrees is not a
+toggle, so both routes are present and the explicit attribute wins.
 
 ## Consuming them in SCSS
 
 This site maps the tokens onto Bootstrap and Docsy variables in
-[`src/assets/scss/_variables_project.scss`](https://github.com/projectious-work/brand/blob/main/src/assets/scss/_variables_project.scss).
-That file is a worked example of wiring the brand into an existing component
-framework — including the full 12-step scales in both modes, which the CSS
-export does not carry.
+[`src/assets/scss/_variables_project.scss`](https://github.com/projectious-work/brand/blob/main/src/assets/scss/_variables_project.scss),
+which is a worked example of wiring the brand into an existing component
+framework.
 
 <div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">The site is the test</div>
 

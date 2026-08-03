@@ -15,17 +15,10 @@ not a printed card.&lt;/p&gt;
  &lt;/div&gt;
 &lt;/div&gt;
 
-&lt;h2 id="layout"&gt;Layout&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Midnight surface, mark top-left, name in Plus Jakarta Sans 700.&lt;/li&gt;
-&lt;li&gt;Role in Source Sans 3 400, in &lt;code&gt;slate-dark-11&lt;/code&gt;.&lt;/li&gt;
-&lt;li&gt;Contact rows in IBM Plex Mono at 11px — addresses and handles are data, and
-monospace makes them scannable and unambiguous.&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;projectious.work&lt;/code&gt; always present.&lt;/li&gt;
-&lt;li&gt;Accent used once, on the QR frame or the primary contact method.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="print-fallback"&gt;Print fallback&lt;/h2&gt;
-&lt;p&gt;If a printed card is required:&lt;/p&gt;</description></item><item><title>Colour</title><link>https://projectious-work.github.io/brand/docs/foundations/color/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/foundations/color/</guid><description>&lt;p&gt;The palette is three scales — &lt;strong&gt;midnight&lt;/strong&gt;, &lt;strong&gt;orange&lt;/strong&gt;, and &lt;strong&gt;slate&lt;/strong&gt; — each
+&lt;h2 id="paper-stock"&gt;Paper stock&lt;/h2&gt;
+&lt;p&gt;The same card on white. This is the form to hand a printer when a physical card
+is required, and the one to reach for when the card will sit on a light surface
+it does not control — a conference badge holder, a scanned page, a slide.&lt;/p&gt;</description></item><item><title>Colour</title><link>https://projectious-work.github.io/brand/docs/foundations/color/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/foundations/color/</guid><description>&lt;p&gt;The palette is three scales — &lt;strong&gt;midnight&lt;/strong&gt;, &lt;strong&gt;orange&lt;/strong&gt;, and &lt;strong&gt;slate&lt;/strong&gt; — each
 expressed as a 12-step ramp in a light and a dark variant. The step numbering
 follows the Radix convention, which assigns every step a &lt;em&gt;role&lt;/em&gt;. Using a step
 outside its role is the single most common way to break the system.&lt;/p&gt;
@@ -306,7 +299,14 @@ and motion may reinforce the label but must never replace it.&lt;/p&gt;
 &lt;p&gt;Do not substitute broad claims such as &amp;ldquo;platform&amp;rdquo;, &amp;ldquo;production-ready&amp;rdquo;, or
 &amp;ldquo;enterprise&amp;rdquo; unless the owning repository publishes evidence for that claim.
 Prefer narrow artifact categories: &lt;strong&gt;CLI&lt;/strong&gt;, &lt;strong&gt;process layer&lt;/strong&gt;,
-&lt;strong&gt;applied research&lt;/strong&gt;, &lt;strong&gt;prototype&lt;/strong&gt;, &lt;strong&gt;library&lt;/strong&gt;, or &lt;strong&gt;supporting asset&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>Audio and video</title><link>https://projectious-work.github.io/brand/docs/media/audio-video/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/media/audio-video/</guid><description>&lt;h2 id="audio-identity"&gt;Audio identity&lt;/h2&gt;
+&lt;strong&gt;applied research&lt;/strong&gt;, &lt;strong&gt;prototype&lt;/strong&gt;, &lt;strong&gt;library&lt;/strong&gt;, or &lt;strong&gt;supporting asset&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>Composed patterns</title><link>https://projectious-work.github.io/brand/docs/interface/patterns/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/patterns/</guid><description>&lt;p&gt;&lt;a href="https://projectious-work.github.io/brand/docs/interface/components/"&gt;Components&lt;/a&gt; answers &amp;ldquo;what does a
+card look like&amp;rdquo;. This page answers the question after it: &lt;strong&gt;what does a whole
+screen look like when it is made only of those parts.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Nothing here is a new component. Every element below already exists on the
+components page; what is normative here is the &lt;em&gt;arrangement&lt;/em&gt; — which regions a
+screen has, in what order, at what widths.&lt;/p&gt;
+&lt;h2 id="the-page-shell"&gt;The page shell&lt;/h2&gt;
+&lt;p&gt;Three regions, always in this order in the DOM:&lt;/p&gt;</description></item><item><title>Audio and video</title><link>https://projectious-work.github.io/brand/docs/media/audio-video/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/media/audio-video/</guid><description>&lt;h2 id="audio-identity"&gt;Audio identity&lt;/h2&gt;
 &lt;p&gt;Four defined cues. All are short, tonal, and mid-register — the audio equivalent
 of &amp;ldquo;slides into place, doesn&amp;rsquo;t bounce&amp;rdquo;.&lt;/p&gt;
 &lt;table&gt;
@@ -418,8 +418,8 @@ and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  
 &lt;div class="pj-email-sheet"&gt;
-&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;max-width:520px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
- &lt;tr&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
+&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#ffffff" style="border-collapse:collapse;max-width:520px;background:#ffffff;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
+ &lt;tr bgcolor="#ffffff" style="background-color:#ffffff"&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;background-color:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
  &lt;div style="font-size:15px;font-weight:700;color:#1d3352;letter-spacing:-0.2px"&gt;Jane Doe&lt;/div&gt;
  &lt;div style="font-size:13px;color:#142438;padding-top:1px"&gt;Principal Consultant&lt;/div&gt;
  &lt;div style="font-size:13px;color:#546a82"&gt;Projectious GmbH&lt;/div&gt;
@@ -450,8 +450,8 @@ and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  
 &lt;div class="pj-email-sheet"&gt;
-&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" style="border-collapse:collapse;max-width:520px;background:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
- &lt;tr&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
+&lt;table cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#ffffff" style="border-collapse:collapse;max-width:520px;background:#ffffff;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438"&gt;
+ &lt;tr bgcolor="#ffffff" style="background-color:#ffffff"&gt;&lt;td bgcolor="#ffffff" style="background:#ffffff;background-color:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px"&gt;
  &lt;div style="font-size:14px;font-weight:700;color:#1d3352;letter-spacing:-0.2px"&gt;Jane Doe&lt;/div&gt;
  &lt;div style="font-size:12px;color:#546a82"&gt;Principal Consultant · Projectious GmbH&lt;/div&gt;
  &lt;div style="padding-top:5px"&gt;
@@ -549,7 +549,29 @@ bundled font binaries to license or redistribute.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;p&gt;&lt;strong&gt;Minimum clear space is 1× the icon height on all sides.&lt;/strong&gt; Nothing — text,
-rules, image edges, other logos — enters that exclusion zone.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-always-dark"&gt;Code blocks are always dark&lt;/h2&gt;
+rules, image edges, other logos — enters that exclusion zone.&lt;/p&gt;</description></item><item><title>Email</title><link>https://projectious-work.github.io/brand/docs/collateral/email/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/email/</guid><description>&lt;p&gt;The &lt;a href="https://projectious-work.github.io/brand/docs/collateral/email-signature/"&gt;signature&lt;/a&gt; covers the
+block at the bottom of someone else&amp;rsquo;s message. This page covers the message
+itself: a full-width, sendable email with a header, sections, a call to action,
+and a footer.&lt;/p&gt;
+&lt;p&gt;Everything the signature page says about construction — tables, inline styles,
+web-safe stacks, literal hex, &lt;code&gt;role=&amp;quot;presentation&amp;quot;&lt;/code&gt; — applies here unchanged and
+is not repeated. What follows is what a whole message adds.&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;&lt;/th&gt;
+					&lt;th&gt;Source&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Newsletter&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/email-newsletter.html"&gt;&lt;code&gt;brand/examples/email-newsletter.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;It opens straight from the filesystem — no runtime, no build step — so it can be
+pasted into a sending tool and previewed as-is.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-always-dark"&gt;Code blocks are always dark&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Code blocks stay dark regardless of colour mode.&lt;/strong&gt; A code surface that flips
 with the theme forces the syntax palette to be designed twice and makes
 screenshots inconsistent between users. The surface is &lt;code&gt;midnight-2&lt;/code&gt; from the
@@ -789,7 +811,49 @@ one of these values.&lt;/p&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Content sits inside a &lt;strong&gt;1100px measure&lt;/strong&gt;. Wider viewports gain margin, not
-line length.&lt;/p&gt;</description></item><item><title>Icons</title><link>https://projectious-work.github.io/brand/docs/interface/icons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/icons/</guid><description>&lt;h2 id="library"&gt;Library&lt;/h2&gt;
+line length.&lt;/p&gt;</description></item><item><title>Service one-pager</title><link>https://projectious-work.github.io/brand/docs/collateral/flier/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/flier/</guid><description>&lt;p&gt;The card, the signature, and the social artwork all carry the brand in a few
+square centimetres. The one-pager is the opposite problem: a whole page,
+handed over or attached, that has to explain a single service to someone who has
+not asked yet.&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;&lt;/th&gt;
+					&lt;th&gt;Source&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Service flier&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/flier.dc.html"&gt;&lt;code&gt;brand/examples/flier.dc.html&lt;/code&gt;&lt;/a&gt; — &amp;ldquo;Cloud migration accelerator&amp;rdquo;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2 id="one-service-per-sheet"&gt;One service per sheet&lt;/h2&gt;
+&lt;p&gt;A one-pager describes &lt;strong&gt;one&lt;/strong&gt; offer. A sheet listing four services is a
+capabilities brochure, and it is read by nobody, because a reader who wants one
+of the four has to find it first.&lt;/p&gt;</description></item><item><title>Documents</title><link>https://projectious-work.github.io/brand/docs/portfolio/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/documents/</guid><description>&lt;p&gt;A document is not a screen that happens to be printed. It has a fixed page box,
+no hover state, no dark mode, and one shot at being legible on a printer nobody
+tested. This page defines the pattern the system uses for short, laid-out
+documents, and links the worked example.&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;&lt;/th&gt;
+					&lt;th&gt;Source&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Resume / CV&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/resume.dc.html"&gt;&lt;code&gt;brand/examples/resume.dc.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Longer, flowing documents — reports and papers — use the LaTeX and Typst
+templates in
+&lt;a href="https://github.com/projectious-work/brand/tree/main/brand/templates"&gt;&lt;code&gt;brand/templates/&lt;/code&gt;&lt;/a&gt;
+instead. The split is about pagination, not length; see below.&lt;/p&gt;</description></item><item><title>Icons</title><link>https://projectious-work.github.io/brand/docs/interface/icons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/icons/</guid><description>&lt;h2 id="library"&gt;Library&lt;/h2&gt;
 &lt;p&gt;The system uses &lt;strong&gt;&lt;a href="https://lucide.dev"&gt;Lucide&lt;/a&gt;&lt;/strong&gt; — an actively maintained fork
 of Feather with over 1,400 icons.&lt;/p&gt;
 &lt;table&gt;
@@ -822,41 +886,9 @@ of Feather with over 1,400 icons.&lt;/p&gt;
 it was chosen over icon sets with attribution or share-alike terms. See the
 &lt;a href="https://projectious-work.github.io/brand/docs/governance/legal-assessment/"&gt;legal assessment&lt;/a&gt; for the
 clearance detail.&lt;/p&gt;</description></item><item><title>Presentations</title><link>https://projectious-work.github.io/brand/docs/media/presentations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/media/presentations/</guid><description>&lt;h2 id="core-slides"&gt;Core slides&lt;/h2&gt;
-&lt;p&gt;Six slide types cover most decks:&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;Slide&lt;/th&gt;
-					&lt;th&gt;Purpose&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Title&lt;/td&gt;
-					&lt;td&gt;Deck opening — display type on midnight&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Section statement&lt;/td&gt;
-					&lt;td&gt;A single sentence marking a new section&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Three-up&lt;/td&gt;
-					&lt;td&gt;Three parallel points&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Quote&lt;/td&gt;
-					&lt;td&gt;A single quotation, attributed&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Code showcase&lt;/td&gt;
-					&lt;td&gt;Code on the always-dark surface&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;CTA closer&lt;/td&gt;
-					&lt;td&gt;The one thing you want the audience to do&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;Six of the twelve slide types cover most decks. Build with these first and reach
+for the other six only when the content actually calls for one — the full table
+is &lt;a href="#the-twelve-types"&gt;below&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 16:10&lt;/div&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  
@@ -930,7 +962,46 @@ in the repository. Check it before adding an asset or shipping collateral.&lt;/p
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id="icons-and-photography"&gt;Icons and photography&lt;/h2&gt;
-&lt;p&gt;Neither is bundled in this repository. Both are cleared for future use:&lt;/p&gt;</description></item><item><title>Forms</title><link>https://projectious-work.github.io/brand/docs/interface/forms/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/forms/</guid><description>&lt;h2 id="sizing"&gt;Sizing&lt;/h2&gt;
+&lt;p&gt;Neither is bundled in this repository. Both are cleared for future use:&lt;/p&gt;</description></item><item><title>Responsive</title><link>https://projectious-work.github.io/brand/docs/foundations/responsive/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/foundations/responsive/</guid><description>&lt;p&gt;The rest of the foundations describe values that do not change with viewport
+width. This page describes the four points at which the layout does.&lt;/p&gt;
+&lt;h2 id="breakpoints"&gt;Breakpoints&lt;/h2&gt;
+&lt;p&gt;Four breakpoints, declared in
+&lt;a href="https://projectious-work.github.io/brand/downloads/tokens/variables.css"&gt;&lt;code&gt;brand/tokens/variables.css&lt;/code&gt;&lt;/a&gt; and
+normative here:&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;Name&lt;/th&gt;
+					&lt;th&gt;Min width&lt;/th&gt;
+					&lt;th&gt;The layout it describes&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;sm&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;640px&lt;/td&gt;
+					&lt;td&gt;Large phone, landscape phone&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;md&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;768px&lt;/td&gt;
+					&lt;td&gt;Small tablet — the first two-column layout&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;lg&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;1024px&lt;/td&gt;
+					&lt;td&gt;Tablet landscape, small laptop — sidebars appear&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;xl&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;1280px&lt;/td&gt;
+					&lt;td&gt;Desktop — the 1100px measure is fully margined&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Below &lt;code&gt;sm&lt;/code&gt; is not a breakpoint; it is the &lt;strong&gt;base&lt;/strong&gt;. Write the narrow layout
+first and add width with &lt;code&gt;min-width&lt;/code&gt; queries, so an unstyled or unsupported
+viewport gets the single-column layout rather than a clipped desktop one.&lt;/p&gt;</description></item><item><title>Forms</title><link>https://projectious-work.github.io/brand/docs/interface/forms/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/forms/</guid><description>&lt;h2 id="sizing"&gt;Sizing&lt;/h2&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
@@ -1005,7 +1076,20 @@ in the repository. Check it before adding an asset or shipping collateral.&lt;/p
 &lt;h2 id="labels"&gt;Labels&lt;/h2&gt;
 &lt;p&gt;Labels use the &lt;strong&gt;overline style&lt;/strong&gt; and sit &lt;strong&gt;above&lt;/strong&gt; the field. Floating labels
 are not used anywhere in the system — they hide the label at exactly the moment
-the user is filling the field, and they break at long label lengths.&lt;/p&gt;</description></item><item><title>Tokens</title><link>https://projectious-work.github.io/brand/docs/tokens/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/tokens/</guid><description>&lt;p&gt;The token files are the machine-readable form of the
+the user is filling the field, and they break at long label lengths.&lt;/p&gt;</description></item><item><title>States</title><link>https://projectious-work.github.io/brand/docs/interface/states/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/states/</guid><description>&lt;p&gt;A component set shows every part working. A product spends a lot of its life in
+the three states where nothing is working yet: &lt;strong&gt;there is no data&lt;/strong&gt;, &lt;strong&gt;the data
+has not arrived&lt;/strong&gt;, and &lt;strong&gt;the data will not arrive&lt;/strong&gt;. Those three screens are
+where a design system is actually tested, so they are specified here rather than
+left to whoever hits them first.&lt;/p&gt;
+&lt;p&gt;Every state on this page follows the same shape:&lt;/p&gt;</description></item><item><title>Accessibility</title><link>https://projectious-work.github.io/brand/docs/interface/accessibility/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/accessibility/</guid><description>&lt;p&gt;Accessibility appears throughout this system as measurements — contrast ratios
+on &lt;a href="https://projectious-work.github.io/brand/docs/foundations/color/"&gt;Colour&lt;/a&gt;, the 44px touch floor on
+&lt;a href="https://projectious-work.github.io/brand/docs/foundations/responsive/"&gt;Responsive&lt;/a&gt;, the focus trap on
+modals. This page covers what those cannot: &lt;strong&gt;order, announcement, and focus&lt;/strong&gt;
+— the properties that only exist once components are composed into a screen.&lt;/p&gt;
+&lt;p&gt;The target is &lt;strong&gt;WCAG 2.2 Level AA&lt;/strong&gt;.&lt;/p&gt;
+&lt;h2 id="reading-and-focus-order"&gt;Reading and focus order&lt;/h2&gt;
+&lt;p&gt;There is one order, and the DOM defines it. Keyboard order, screen-reader order,
+and visual order must agree.&lt;/p&gt;</description></item><item><title>Tokens</title><link>https://projectious-work.github.io/brand/docs/tokens/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/tokens/</guid><description>&lt;p&gt;The token files are the machine-readable form of the
 &lt;a href="https://projectious-work.github.io/brand/docs/foundations/"&gt;foundations&lt;/a&gt;. They are &lt;strong&gt;MIT-licensed&lt;/strong&gt; —
 the values are free to use, the marks are not. See
 &lt;a href="https://projectious-work.github.io/brand/docs/governance/licensing/"&gt;Licensing&lt;/a&gt;.&lt;/p&gt;
@@ -1037,28 +1121,9 @@ the values are free to use, the marks are not. See
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;Source: &lt;a href="https://github.com/projectious-work/brand/tree/main/brand/tokens"&gt;&lt;code&gt;brand/tokens/&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="css"&gt;CSS&lt;/h2&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-html" data-lang="html"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;&amp;lt;&lt;/span&gt;&lt;span class="nt"&gt;link&lt;/span&gt; &lt;span class="na"&gt;rel&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;stylesheet&amp;#34;&lt;/span&gt; &lt;span class="na"&gt;href&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s"&gt;&amp;#34;variables.css&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;&amp;gt;&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-css" data-lang="css"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="nc"&gt;button--primary&lt;/span&gt; &lt;span class="p"&gt;{&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;background&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="kc"&gt;color&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;primary&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;border-radius&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;md&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;padding&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="kc"&gt;space&lt;/span&gt;&lt;span class="mi"&gt;-3&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="kc"&gt;space&lt;/span&gt;&lt;span class="mi"&gt;-4&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="k"&gt;transition&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="k"&gt;background&lt;/span&gt; &lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="n"&gt;duration&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;standard&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nf"&gt;var&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="o"&gt;--&lt;/span&gt;&lt;span class="kc"&gt;ease-out&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;}&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="what-the-tokens-cover"&gt;What the tokens cover&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;strong&gt;Colour&lt;/strong&gt; — the seven named aliases. The full 12-step scales are documented
-on the &lt;a href="https://projectious-work.github.io/brand/docs/foundations/color/"&gt;Colour page&lt;/a&gt;; the token file
-exports the named entry points.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Typography&lt;/strong&gt; — the three font stacks.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Spacing&lt;/strong&gt; — the nine-step 4px scale.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Radius&lt;/strong&gt; — five steps.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Elevation&lt;/strong&gt; — four shadow levels.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Motion&lt;/strong&gt; — four durations, two easing curves.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id="consuming-them-in-scss"&gt;Consuming them in SCSS&lt;/h2&gt;
-&lt;p&gt;This site maps the tokens onto Bootstrap and Docsy variables in
-&lt;a href="https://github.com/projectious-work/brand/blob/main/src/assets/scss/_variables_project.scss"&gt;&lt;code&gt;src/assets/scss/_variables_project.scss&lt;/code&gt;&lt;/a&gt;.
-That file is a worked example of wiring the brand into an existing component
-framework — including the full 12-step scales in both modes, which the CSS
-export does not carry.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;All three are &lt;strong&gt;generated&lt;/strong&gt; from
+&lt;a href="https://github.com/projectious-work/brand/blob/main/src/data/brand.yaml"&gt;&lt;code&gt;src/data/brand.yaml&lt;/code&gt;&lt;/a&gt;
+by &lt;code&gt;scripts/build-tokens.mjs&lt;/code&gt; — the same file this documentation renders from,
+so a page and a download cannot disagree about a value. &lt;code&gt;scripts/check-tokens.sh&lt;/code&gt;
+fails the build if the committed files drift from a fresh generation, or if
+&lt;code&gt;brand.yaml&lt;/code&gt; drifts from the SCSS that actually styles the site.&lt;/p&gt;</description></item></channel></rss>

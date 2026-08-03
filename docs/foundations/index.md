@@ -19,3 +19,4 @@ Section pages:
 - [Colour](/brand/docs/foundations/color/): Three 12-step scales in two modes, their step roles, and the contrast rules that govern them.
 - [Typography](/brand/docs/foundations/typography/): Three typefaces, three jobs, and a fixed type ramp.
 - [Space, shape, and motion](/brand/docs/foundations/space-shape-motion/): The 4px spacing base, the radius and elevation ladders, and the motion tokens.
+- [Responsive](/brand/docs/foundations/responsive/): The four breakpoints, how the 12-column grid collapses, touch-target sizes, and the mobile navigation pattern.

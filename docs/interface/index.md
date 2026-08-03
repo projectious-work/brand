@@ -17,7 +17,10 @@ normative — a 40px input is 40px, not "about 40px".
 Section pages:
 
 - [Components](/brand/docs/interface/components/): The component set as live specimens — buttons, inputs, cards, tables, navigation, feedback, overlays, and data display.
+- [Composed patterns](/brand/docs/interface/patterns/): How the components combine into whole screens — the page shell, the KPI row, and the primary/secondary split.
 - [Dark mode](/brand/docs/interface/dark-mode/): Both modes are equally supported. The implementation rules that keep them in step.
 - [Code](/brand/docs/interface/code/): The always-dark code surface and the syntax theme, with measured contrast for every token.
 - [Icons](/brand/docs/interface/icons/): Lucide as the icon library, and how icons are sized and coloured.
 - [Forms](/brand/docs/interface/forms/): Input sizing, labels, focus, error, and disabled states.
+- [States](/brand/docs/interface/states/): Empty, loading, and error states — the screens a component set never shows you.
+- [Accessibility](/brand/docs/interface/accessibility/): Keyboard order, skip links, focus management across composed layouts, and the ARIA the component set requires.

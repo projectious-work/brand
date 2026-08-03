@@ -71,4 +71,25 @@ date.&lt;/li&gt;
 &lt;p&gt;Suggested caption:&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Source: &lt;code&gt;owner/repository&lt;/code&gt;, &lt;code&gt;docs/architecture.svg&lt;/code&gt;, release &lt;code&gt;vX.Y.Z&lt;/code&gt;,
-captured YYYY-MM-DD. Planned elements are labelled.&lt;/p&gt;</description></item></channel></rss>
+captured YYYY-MM-DD. Planned elements are labelled.&lt;/p&gt;</description></item><item><title>Documents</title><link>https://projectious-work.github.io/brand/docs/portfolio/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/documents/</guid><description>&lt;p&gt;A document is not a screen that happens to be printed. It has a fixed page box,
+no hover state, no dark mode, and one shot at being legible on a printer nobody
+tested. This page defines the pattern the system uses for short, laid-out
+documents, and links the worked example.&lt;/p&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;&lt;/th&gt;
+					&lt;th&gt;Source&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;strong&gt;Resume / CV&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/resume.dc.html"&gt;&lt;code&gt;brand/examples/resume.dc.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Longer, flowing documents — reports and papers — use the LaTeX and Typst
+templates in
+&lt;a href="https://github.com/projectious-work/brand/tree/main/brand/templates"&gt;&lt;code&gt;brand/templates/&lt;/code&gt;&lt;/a&gt;
+instead. The split is about pagination, not length; see below.&lt;/p&gt;</description></item></channel></rss>

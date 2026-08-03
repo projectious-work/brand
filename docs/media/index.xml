@@ -65,41 +65,9 @@ hole in the page.&lt;/li&gt;
 &lt;h2 id="illustration"&gt;Illustration&lt;/h2&gt;
 &lt;p&gt;The illustration style is &lt;strong&gt;abstract system diagrams&lt;/strong&gt; — nodes, flows, and
 pipelines drawn in the brand palette.&lt;/p&gt;</description></item><item><title>Presentations</title><link>https://projectious-work.github.io/brand/docs/media/presentations/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/media/presentations/</guid><description>&lt;h2 id="core-slides"&gt;Core slides&lt;/h2&gt;
-&lt;p&gt;Six slide types cover most decks:&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;Slide&lt;/th&gt;
-					&lt;th&gt;Purpose&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Title&lt;/td&gt;
-					&lt;td&gt;Deck opening — display type on midnight&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Section statement&lt;/td&gt;
-					&lt;td&gt;A single sentence marking a new section&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Three-up&lt;/td&gt;
-					&lt;td&gt;Three parallel points&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Quote&lt;/td&gt;
-					&lt;td&gt;A single quotation, attributed&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;Code showcase&lt;/td&gt;
-					&lt;td&gt;Code on the always-dark surface&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;CTA closer&lt;/td&gt;
-					&lt;td&gt;The one thing you want the audience to do&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;Six of the twelve slide types cover most decks. Build with these first and reach
+for the other six only when the content actually calls for one — the full table
+is &lt;a href="#the-twelve-types"&gt;below&lt;/a&gt;.&lt;/p&gt;
 &lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 16:10&lt;/div&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  

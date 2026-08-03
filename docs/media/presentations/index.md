@@ -10,16 +10,9 @@ LLMS index: [llms.txt](/brand/llms.txt)
 
 ## Core slides
 
-Six slide types cover most decks:
-
-| Slide | Purpose |
-|---|---|
-| Title | Deck opening — display type on midnight |
-| Section statement | A single sentence marking a new section |
-| Three-up | Three parallel points |
-| Quote | A single quotation, attributed |
-| Code showcase | Code on the always-dark surface |
-| CTA closer | The one thing you want the audience to do |
+Six of the twelve slide types cover most decks. Build with these first and reach
+for the other six only when the content actually calls for one — the full table
+is [below](#the-twelve-types).
 
 <div class="pj-demo"><div class="pj-demo__label">Core slide types — 16:10</div>
   <div class="pj-demo__body pj-demo__body--stack">
@@ -179,20 +172,55 @@ tokens as the product surfaces — no separate "presentation theme".
 </div>
 
 
-| Slide | Purpose |
-|---|---|
-| Title | Deck opening — display type on midnight |
-| Agenda | Numbered outline; current item in `midnight-11` |
-| Section statement | A single sentence marking a new section |
-| Three-up | Three parallel points |
-| Split | Before/after or contrast, one half on midnight |
-| Comparison | A small table where numbers are the point |
-| Metric | One number, large; the label in overline style |
-| Quote | A single quotation with the accent rule, attributed |
-| Code showcase | Code on the always-dark surface |
-| Diagram | Line-based system diagram, accent on the focal node |
-| CTA closer | The one thing you want the audience to do |
-| Contact | Thank-you and a single contact route |
+### The twelve types
+
+`Core` marks the six that cover most decks. `Example` marks the types the
+[worked deck](#a-real-deck) below actually demonstrates.
+
+| Slide | Core | Example | Purpose |
+|---|:--:|:--:|---|
+| Title | ● | ● | Deck opening — display type on midnight |
+| Agenda | | ● | Numbered outline; current item in `midnight-11` |
+| Section statement | ● | ● | A single sentence marking a new section |
+| Three-up | ● | ● | Three parallel points |
+| Split | | | Before/after or contrast, one half on midnight |
+| Comparison | | ● | A small table where numbers are the point |
+| Metric | | ● | One number, large; the label in overline style |
+| Quote | ● | ● | A single quotation with the accent rule, attributed |
+| Code showcase | ● | ● | Code on the always-dark surface |
+| Diagram | | | Line-based system diagram, accent on the focal node |
+| CTA closer | ● | ● | The one thing you want the audience to do |
+| Contact | | | Thank-you and a single contact route |
+
+## A real deck
+
+[**Slide deck example**](/brand/downloads/examples/slide-deck.dc.html) — a full
+client deck at 1920×1080, populated with a realistic consulting narrative rather
+than lorem text. Arrow keys, `PgUp`/`PgDn`, and `Space` navigate; each slide
+carries its speaker notes in the source.
+
+The specimens above are scaled-down `div`s that show the *shape* of each type.
+The example is the thing a reader can open, present from, and export.
+
+It runs eleven slides and demonstrates nine of the twelve types, plus two
+**compositions** that are worth naming because they look like new types and are
+not:
+
+- **Roadmap** — a horizontal timeline of the engagement's weeks. It is a
+  Three-up stretched to four steps along a rule: same parallel-points structure,
+  same tokens, one axis added.
+- **Metric row** — four stat cards across the slide. That is the
+  [KPI row](/brand/docs/interface/patterns/) from the interface, used
+  on a slide. The single-number **Metric** type is for the one number a section
+  is about; the row is for the four that summarise an engagement.
+
+Neither is a thirteenth slide type. If a deck needs an arrangement that is not in
+the table, compose it from the parts that are. A composition earns a place in the
+table by turning up in several decks and being written down — not by being used
+once.
+
+Split, Diagram, and Contact are not in the example deck; their specimens are
+above.
 
 ## Rules
 
@@ -209,9 +237,33 @@ tokens as the product surfaces — no separate "presentation theme".
 - **Never animate text character-by-character.**
 - Motion is for revealing structure, not for holding attention.
 
-## Templates
+## Templates and export targets
 
 Document templates for LaTeX and Typst are in
 [`brand/templates/`](https://github.com/projectious-work/brand/tree/main/brand/templates).
 Both embed brand identity and fall under the brand-asset licence terms — see
 [Licensing](/brand/docs/governance/licensing/).
+
+Those two are for documents. A **deck** usually has to arrive somewhere a client
+can open and edit it, so **Google Slides, PowerPoint, and Keynote are
+first-class targets**, not a downgrade from the HTML deck. The system survives
+the trip because it asks very little of the format: three fonts, three colour
+families, 16:10, and no effects. Set up a client-facing deck once and the slide
+types above are all reproducible as masters.
+
+| Route | Use | Notes |
+|---|---|---|
+| HTML deck → present | Talks you give yourself | The [example deck](#a-real-deck). Keyboard navigation and speaker notes included |
+| HTML deck → print to PDF | Sending a deck to be read | Landscape, background graphics on, margins none |
+| Slides / PowerPoint / Keynote | Decks the client will edit | Build the twelve types as masters; do not rebuild them per deck |
+| LaTeX / Typst | Documents, not decks | `brand/templates/` |
+
+Two things to fix in every native deck tool, because none of them default to the
+system: replace the theme fonts with **Plus Jakarta Sans, Source Sans 3, and IBM
+Plex Mono** (embed them, or the deck reflows on the client's machine), and
+replace the default palette with the brand hex values rather than leaving the
+tool's approximations of them in the theme.
+
+Everything else is subtraction: no shadow presets, no gradient fills, no
+transition other than a cut or a 200ms fade, no bulleted list where the type
+table above offers a slide.
