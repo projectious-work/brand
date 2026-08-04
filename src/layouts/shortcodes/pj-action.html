@@ -13,10 +13,23 @@
   btn-primary`, or a Tailwind stack), so the accent-solid fill and the 4.72:1
   contrast rule come from the system rather than from whichever framework is
   underneath.
+
+  Takes either `href` for an external or absolute target, or `page` for an
+  internal one, which resolves through relref so a broken internal target fails
+  the build instead of shipping.
+
+  Markdown's own link syntax cannot do this: attaching a class with
+  `[label](url){.some-class}` needs Goldmark's *inline* attribute support, which
+  Hugo does not enable — the braces render as literal text on the page.
 */ -}}
-{{- $href := .Get "href" | default (.Get 0) -}}
+{{- $href := "" -}}
+{{- with .Get "page" -}}
+  {{- $href = relref $ . -}}
+{{- else -}}
+  {{- $href = $.Get "href" | default ($.Get 0) -}}
+{{- end -}}
 {{- with $href -}}
   <a class="pj-btn pj-btn--accent pj-btn--md" href="{{ . }}">{{ $.Inner | $.Page.RenderString }}</a>
 {{- else -}}
-  {{- errorf "pj-action: missing href in %s" $.Page.Path -}}
+  {{- errorf "pj-action: needs a page or href argument, in %s" $.Page.Path -}}
 {{- end -}}

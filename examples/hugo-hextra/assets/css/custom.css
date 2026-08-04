@@ -502,6 +502,37 @@ select,
   border-color: var(--pj-border) !important;
 }
 
+/* The colour-mode control, moved into the navbar by assets/js/navbar-theme.js
+   so the header matches the documentation site's: search, then theme, then the
+   GitHub link. Icon only — the bar has no room for a word, and every other
+   control in it is an icon or a field. */
+.pj-navbar-theme {
+  display: flex;
+  align-items: center;
+}
+.pj-navbar-theme .hextra-theme-toggle {
+  padding: 0.5rem;
+  border-radius: 6px;
+  color: var(--pj-text-secondary);
+}
+.pj-navbar-theme .hextra-theme-toggle:hover,
+.pj-navbar-theme .hextra-theme-toggle:focus-visible {
+  background: var(--pj-surface-hover);
+  color: var(--pj-heading);
+}
+/* Hextra's sidebar instance renders a "Light"/"Dark" label beside the glyph. */
+.pj-navbar-theme .hextra-theme-toggle span {
+  display: none;
+}
+
+/* The sidebar strip the toggle came out of. Hidden rather than left empty —
+   without this it renders as a bare white bar pinned to the bottom of the
+   sidebar. Keyed off the class the script sets, so if the script never runs the
+   toggle stays where Hextra put it and remains reachable. */
+.pj-navbar-theme-ready .hextra-sidebar-container > [data-toggle-animation] {
+  display: none;
+}
+
 /* Hextra's search input sits on `black/[.05]`, which on the app background is
    barely a field at all — it reads as text until you click it. Give it the same
    surface and control border every other input in the system has. */

@@ -19,7 +19,25 @@ documentation are not.
 
 ## [Unreleased]
 
-Nothing yet.
+### Added
+
+- The Hextra example's colour-mode control sits in the header, between the
+  search field and the GitHub link, matching the documentation site. Icon only.
+
+### Fixed
+
+- **`{.hx-button .hx-button-primary}` and `{.btn .btn-primary}` rendered as
+  literal text** in the Hextra and Docsy examples. Attaching a class to a
+  markdown link needs Goldmark's *inline* attribute support, which Hugo does not
+  enable — only block attributes are on. Both now use the `pj-action`
+  shortcode, which also gains a `page` argument so an internal target still
+  resolves through `relref` and fails the build when it breaks.
+- `scripts/deploy-docs.sh` publishes any number of versions in **one commit and
+  one push**, and `release.sh` uses it that way. Pushing the archived snapshot
+  and the site root seconds apart is a race GitHub Pages does not reliably win:
+  at v2.1.0 it reported both deployments successful, built the first, and served
+  it — the root kept serving the previous release until a build was requested by
+  hand.
 
 ## [v2.1.0] — 2026-08-03
 

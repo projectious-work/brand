@@ -144,11 +144,14 @@ run "git push origin '${MAIN_BRANCH}'"
 run "git push origin '${VERSION}'"
 
 # --- 6. publish ---------------------------------------------------------------
-step "Publishing the archived snapshot at /${VERSION}/"
-run "DOCS_VERSION='${VERSION}' '${ROOT_DIR}/scripts/deploy-docs.sh'"
-
-step "Publishing the site root as latest"
-run "DOCS_VERSION=main '${ROOT_DIR}/scripts/deploy-docs.sh'"
+# One invocation, one commit, one push. Publishing the archive and the root as
+# two pushes eleven seconds apart is a race GitHub Pages does not reliably win:
+# in v2.1.0 it reported both deployments successful, built the first, and served
+# it — the site root kept serving the previous release. Order matters here, and
+# deploy-docs.sh relies on it: "main" clears the root, and its wipe preserves
+# vX.Y.Z directories, so the snapshot has to be staged before it.
+step "Publishing /${VERSION}/ and the site root in a single push"
+run "DOCS_VERSIONS='${VERSION} main' '${ROOT_DIR}/scripts/deploy-docs.sh'"
 
 step "Done"
 echo "   latest:   ${BASE_URL}"

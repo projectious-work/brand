@@ -14,7 +14,7 @@ placerat tincidunt.
 Small, explicit pages are easier to scan, link, and maintain.
 {{< /alert >}}
 
-[Open the kitchen sink]({{< relref "/docs/kitchen-sink" >}}){.btn .btn-primary}
+{{< pj-action page="/docs/kitchen-sink" >}}Open the kitchen sink{{< /pj-action >}}
 
 ## Quote
 

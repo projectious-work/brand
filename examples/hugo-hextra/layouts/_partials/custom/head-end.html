@@ -75,3 +75,16 @@
   <script defer src="{{ $js.RelPermalink }}"
     {{- with $js.Data.Integrity }} integrity="{{ . }}"{{ end }}></script>
 {{- end -}}
+
+{{- /*
+  Colour-mode control in the navbar. Hextra renders it at the foot of the
+  sidebar and its navbar takes no such menu entry; this moves the rendered
+  control rather than overriding the navbar template. See
+  assets/js/navbar-theme.js.
+*/ -}}
+{{- with resources.Get "js/navbar-theme.js" -}}
+  {{- $js := . -}}
+  {{- if hugo.IsProduction }}{{ $js = $js | minify | fingerprint }}{{ end -}}
+  <script defer src="{{ $js.RelPermalink }}"
+    {{- with $js.Data.Integrity }} integrity="{{ . }}"{{ end }}></script>
+{{- end -}}

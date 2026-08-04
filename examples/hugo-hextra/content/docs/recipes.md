@@ -14,7 +14,7 @@ a production project.
 This is an intentionally visible error callout for visual testing.
 {{< /callout >}}
 
-[Primary action](https://example.com/){.hx-button .hx-button-primary}
+{{< pj-action href="https://example.com/" >}}Primary action{{< /pj-action >}}
 
 ## Code
 
