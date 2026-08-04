@@ -19,6 +19,10 @@ documentation are not.
 
 ## [Unreleased]
 
+Nothing yet.
+
+## [v2.1.1] — 2026-08-04
+
 ### Added
 
 - The Hextra example's colour-mode control sits in the header, between the
