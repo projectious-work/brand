@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Documentation on projectious.work brand</title><link>https://projectious-work.github.io/brand/v2.1.1/docs/</link><description>Recent content in Documentation on projectious.work brand</description><generator>Hugo</generator><language>en</language><atom:link href="https://projectious-work.github.io/brand/v2.1.1/docs/index.xml" rel="self" type="application/rss+xml"/><item><title>Tokens</title><link>https://projectious-work.github.io/brand/v2.1.1/docs/tokens/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/v2.1.1/docs/tokens/</guid><description>&lt;p&gt;The token files are the machine-readable form of the
+&lt;a href="https://projectious-work.github.io/brand/v2.1.1/docs/foundations/"&gt;foundations&lt;/a&gt;. They are &lt;strong&gt;MIT-licensed&lt;/strong&gt; —
+the values are free to use, the marks are not. See
+&lt;a href="https://projectious-work.github.io/brand/v2.1.1/docs/governance/licensing/"&gt;Licensing&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id="downloads"&gt;Downloads&lt;/h2&gt;
+&lt;table&gt;
+	&lt;thead&gt;
+			&lt;tr&gt;
+					&lt;th&gt;File&lt;/th&gt;
+					&lt;th&gt;Format&lt;/th&gt;
+					&lt;th&gt;Use&lt;/th&gt;
+			&lt;/tr&gt;
+	&lt;/thead&gt;
+	&lt;tbody&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/v2.1.1/downloads/tokens/variables.css"&gt;&lt;code&gt;variables.css&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;CSS custom properties&lt;/td&gt;
+					&lt;td&gt;Any web project&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/v2.1.1/downloads/tokens/tokens.json"&gt;&lt;code&gt;tokens.json&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;JSON&lt;/td&gt;
+					&lt;td&gt;Build pipelines, Style Dictionary&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/v2.1.1/downloads/tokens/tailwind.config.js"&gt;&lt;code&gt;tailwind.config.js&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
+					&lt;td&gt;JS&lt;/td&gt;
+					&lt;td&gt;Tailwind CSS projects&lt;/td&gt;
+			&lt;/tr&gt;
+	&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Source: &lt;a href="https://github.com/projectious-work/brand/tree/main/brand/tokens"&gt;&lt;code&gt;brand/tokens/&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;All three are &lt;strong&gt;generated&lt;/strong&gt; from
+&lt;a href="https://github.com/projectious-work/brand/blob/main/src/data/brand.yaml"&gt;&lt;code&gt;src/data/brand.yaml&lt;/code&gt;&lt;/a&gt;
+by &lt;code&gt;scripts/build-tokens.mjs&lt;/code&gt; — the same file this documentation renders from,
+so a page and a download cannot disagree about a value. &lt;code&gt;scripts/check-tokens.sh&lt;/code&gt;
+fails the build if the committed files drift from a fresh generation, or if
+&lt;code&gt;brand.yaml&lt;/code&gt; drifts from the SCSS that actually styles the site.&lt;/p&gt;</description></item></channel></rss>
