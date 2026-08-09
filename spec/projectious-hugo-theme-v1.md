@@ -1,7 +1,8 @@
 # Projectious Hugo theme v1 specification
 
-Status: Proposed  
-Target repository: `projectious-work/brand`  
+Status: Proposed
+
+Target repository: `projectious-work/brand`
 Coordinating issues:
 [`internal#6`](https://github.com/projectious-work/internal/issues/6) and
 [`internal#8`](https://github.com/projectious-work/internal/issues/8)
@@ -85,7 +86,7 @@ page primitives.
 The repository becomes a Hugo module with module path:
 
 ```text
-github.com/projectious-work/brand
+github.com/projectious-work/brand/v2
 ```
 
 The module exposes only declared mounts. Theme implementation lives below
