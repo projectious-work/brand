@@ -11,7 +11,7 @@ Six of the twelve slide types cover most decks. Build with these first and reach
 for the other six only when the content actually calls for one — the full table
 is [below](#the-twelve-types).
 
-{{< demo label="Core slide types — 16:10" variant="stack" >}}
+{{< demo label="Core slide types — 1280×720 · 16:9" variant="stack" >}}
 <div class="pj-slides-grid">
   <div class="pj-slide pj-slide--title">
     <div class="pj-slide__h">Redesigning work</div>
@@ -45,7 +45,7 @@ is [below](#the-twelve-types).
 
 ## The full deck
 
-Twelve slide types cover a complete talk. Each is 16:10 and uses the same
+Twelve slide types cover a complete talk. Each is 1280×720 (16:9) and uses the same
 tokens as the product surfaces — no separate "presentation theme".
 
 {{< demo label="Opening — title, agenda, section statement" variant="stack" >}}
@@ -167,7 +167,7 @@ tokens as the product surfaces — no separate "presentation theme".
 ## A real deck
 
 The supplied **slide templates** provide a full
-client deck at 1920×1080, populated with a realistic consulting narrative rather
+client deck at 1280×720, populated with a realistic consulting narrative rather
 than lorem text. Arrow keys, `PgUp`/`PgDn`, and `Space` navigate; each slide
 carries its speaker notes in the source.
 
@@ -196,11 +196,12 @@ above.
 
 ## Rules
 
-- 16:10 aspect ratio.
+- 1280×720, 16:9 aspect ratio.
 - Title slides and section statements use midnight surfaces; content slides use
   white or `midnight-1`.
 - `projectious.work` is visible on the title and closing slides.
 - One idea per slide. If a slide needs a paragraph, it needs to be two slides.
+- Use no more than two type sizes on one slide.
 
 ## Animation
 
@@ -220,7 +221,7 @@ Those two are for documents. A **deck** usually has to arrive somewhere a client
 can open and edit it, so **Google Slides, PowerPoint, and Keynote are
 first-class targets**, not a downgrade from the HTML deck. The system survives
 the trip because it asks very little of the format: three fonts, three colour
-families, 16:10, and no effects. Set up a client-facing deck once and the slide
+families, 16:9, and no effects. Set up a client-facing deck once and the slide
 types above are all reproducible as masters.
 
 | Route | Use | Notes |

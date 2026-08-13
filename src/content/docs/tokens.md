@@ -49,7 +49,8 @@ Everything the foundations define, in all three files:
 | **Elevation** | Four shadow levels |
 | **Motion** | Four durations, two easing curves |
 | **Breakpoints** | `sm` 640, `md` 768, `lg` 1024, `xl` 1280 |
-| **Terminal** | The sixteen ANSI slots plus thirteen chrome values |
+| **Syntax** | Ten dark-panel roles plus ten separately measured optional light-panel roles |
+| **Terminal** | Default dark and optional light 16-slot ANSI palettes with chrome roles |
 
 {{% alert title="Two things the exports cannot do for you" color="info" %}}
 **Breakpoints are exported as values, not as queries.** A custom property cannot

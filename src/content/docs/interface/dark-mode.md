@@ -20,7 +20,9 @@ designed, tested, and shipped together.
   `#142438` on light.
 - **Images get a subtle overlay** (black at low alpha) in dark mode, so a bright
   photograph does not punch a hole in a dark page.
-- **Code blocks are always dark**, regardless of mode. See
+- **Code blocks are dark by default**, regardless of interface mode. An
+  explicitly selected light code panel uses the complete light companion
+  palette; it never switches automatically. See
   [Code]({{< relref "/docs/interface/code" >}}).
 
 {{< demo label="The same card in both modes" variant="grid" >}}

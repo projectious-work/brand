@@ -340,9 +340,27 @@ syntax:
     hex: "#72889d"
     contrast: "4.59:1"
 
-# The terminal palette. A terminal has one surface, it is dark, and everything
-# is measured against it — so unlike the three scales this is not a ramp in two
-# modes but a fixed sixteen-slot palette plus its chrome.
+# Optional light-panel companion. Real code and terminal chrome remain dark by
+# default; a component must opt in to these values and neutralise the base
+# `<pre>` background explicitly.
+syntaxLight:
+  surface: "#f4f5f7"
+  floor: "4.5:1"
+  roles:
+    - {role: Plain, token: --syntax-plain-light, hex: "#142438"}
+    - {role: Comments, token: --syntax-comment-light, hex: "#5c6f82"}
+    - {role: Operators, token: --syntax-operator-light, hex: "#4a5e74"}
+    - {role: Keywords, token: --syntax-keyword-light, hex: "#1d3352"}
+    - {role: Types and classes, token: --syntax-type-light, hex: "#276754"}
+    - {role: Functions, token: --syntax-function-light, hex: "#3a5a82"}
+    - {role: Strings, token: --syntax-string-light, hex: "#a8461f"}
+    - {role: Numbers, token: --syntax-number-light, hex: "#8b6508"}
+    - {role: Decorators and macros, token: --syntax-macro-light, hex: "#1c6b6b"}
+    - {role: Invalid, token: --syntax-invalid-light, hex: "#a8261c"}
+
+# The dark terminal palette is the default and is measured against its own
+# surface. The optional light companion below is a separate complete palette,
+# not an automatic interface-mode substitution. Neither palette is a ramp.
 #
 # The bright ramp is the brand: where a hue already exists in the system, the
 # bright slot takes that step verbatim. The normal ramp has no brand equivalent
@@ -461,6 +479,44 @@ terminal:
       hex: "#7b8da3"
       contrast: "5.32:1"
 
+# Optional light terminal companion for a deliberately light specimen. It does
+# not replace the dark terminal default and is never selected automatically.
+terminalLight:
+  surface: "#f4f5f7"
+  textFloor: "4.5:1 for the eight base tones"
+  uiFloor: "3:1 for bright slots, cursor, and chrome"
+  ansi:
+    - {slot: 0, name: black, hex: "#1e2b38"}
+    - {slot: 1, name: red, hex: "#b8352f"}
+    - {slot: 2, name: green, hex: "#276754"}
+    - {slot: 3, name: yellow, hex: "#8b6508"}
+    - {slot: 4, name: blue, hex: "#3a5a82"}
+    - {slot: 5, name: magenta, hex: "#8a3f6e"}
+    - {slot: 6, name: cyan, hex: "#1c6b6b"}
+    - {slot: 7, name: white, hex: "#546a82"}
+    - {slot: 8, name: bright-black, hex: "#4a5e74"}
+    - {slot: 9, name: bright-red, hex: "#a8261c"}
+    - {slot: 10, name: bright-green, hex: "#1f7a52"}
+    - {slot: 11, name: bright-yellow, hex: "#6f5106"}
+    - {slot: 12, name: bright-blue, hex: "#1d3352"}
+    - {slot: 13, name: bright-magenta, hex: "#752f5c"}
+    - {slot: 14, name: bright-cyan, hex: "#125555"}
+    - {slot: 15, name: bright-white, hex: "#142438"}
+  chrome:
+    background: "#f4f5f7"
+    foreground: "#142438"
+    cursor: "#E05232"
+    cursorText: "#f4f5f7"
+    selectionBackground: "#dae2ec"
+    selectionText: "#142438"
+    dimComment: "#5c6f82"
+    statusBarSurface: "#e6e8eb"
+    statusBarText: "#142438"
+    inactiveTabAndPaneLabel: "#5c6f82"
+    activeTabFill: "#E05232"
+    activePaneBorder: "#E05232"
+    inactivePaneBorder: "#adb2ba"
+
 # Syntax scopes.
 #
 # IDEs do not define six token types; the Language Server Protocol defines 22
@@ -512,14 +568,14 @@ syntaxScopes:
         of typed code and the most frequent role should hold the best-separated
         hue — 29.9 ΔE2000 from plain text, against cyan's 17.3.
     - role: Functions and methods
-      hex: "#e0a92a"
-      contrast: "7.91:1"
-      step: terminal yellow (bright)
+      hex: "#8aacc8"
+      contrast: "7.06:1"
+      step: midnight-dark-11 / terminal blue (bright)
       lsp: function · method
       textmate: entity.name.function · support.function
       chroma: .nf .fm
-      note: Callables read as callable at a glance — the single most useful
-        distinction beyond the original six.
+      note: Callables use the established informational blue, leaving yellow
+        exclusively to numbers and constants.
     - role: Decorators and macros
       hex: "#74c0c9"
       contrast: "8.11:1"

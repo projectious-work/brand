@@ -79,15 +79,17 @@ Slate is the secondary — supporting text, borders, and neutral surfaces. Step 
 
 ## Terminal
 
-The three scales cover every surface that has a light mode. A terminal does not:
-it has one surface, it is dark, and every colour in it is measured against that
-one background. It also needs six hues where the interface needs three, because
+The dark terminal is the default and every colour in it is measured against
+`midnight-dark-1`. An optional light companion is available for explicitly
+light code and terminal panels; it is a separate measured palette, never an
+automatic colour-mode substitution. A terminal also needs six hues where the
+interface needs three, because
 programs have been writing to sixteen ANSI slots since long before this system
 existed.
 
-So the terminal palette is a fourth member of the system rather than a fifth
-scale — a fixed sixteen-slot palette plus its chrome, derived from the ramps and
-measured against `midnight-dark-1`.
+So each terminal palette is a companion to the three interface scales rather
+than another scale: sixteen fixed ANSI slots plus chrome, derived from the ramps
+and measured against its own background.
 
 {{< terminal-palette >}}
 

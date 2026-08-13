@@ -35,6 +35,11 @@ region to spend.
 Below `lg` (1024px) the sidebar leaves and becomes the mobile navigation
 pattern; see [Responsive]({{< relref "/docs/foundations/responsive" >}}).
 
+On a light marketing or documentation shell, the header uses sentence-case
+navigation, the lowercase brand lockup, and one accent action on the right. The
+footer places the brand mark left and page metadata right in the caption style.
+Headers may stick; decorative elements and other page furniture may not.
+
 ## The KPI row
 
 Directly under the header: **four** stat cards in a `repeat(4, 1fr)` grid,
