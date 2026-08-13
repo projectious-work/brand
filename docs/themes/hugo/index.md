@@ -205,13 +205,7 @@ Attach or record the following for a theme change:
 - a list of project override files, confirming that no vendored theme source
   was edited.
 
-The Docsy and Hextra review fixtures below use comparable content states so
-visual regressions during a theme migration are easy to see.
-
 ## Docsy
-
-[Open the Docsy example](/brand/examples/hugo-docsy/)
-to inspect the documented patterns in a working site.
 
 [Docsy](https://www.docsy.dev/) is Hugo's Bootstrap-and-SCSS documentation
 theme. Its documented project SCSS files are the supported customization seam;
@@ -293,11 +287,6 @@ content/docs/
     └── operations.md   # title: Operations; weight: 20
 ```
 
-For a complete local kitchen-sink implementation, see the
-[Docsy example](/brand/examples/hugo-docsy/).
-It is built manually with the
-scripts in `examples/hugo-docsy/` and deployed beneath the GitHub Pages site.
-
 Use `title`, `linkTitle`, `description`, and `weight` in front matter. A
 description also feeds document summaries and search metadata. Internal links
 use `relref`, so a changed base URL cannot silently break them.
@@ -359,7 +348,7 @@ there is one place to look when a value is wrong.
 
 ```scss
 // assets/scss/_styles_project.scss
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap");
+@import url("/scss/main.css"); /* includes the self-hosted brand font faces */
 
 h1, h2, h3, h4, h5, h6 { letter-spacing: -0.3px; }
 code, pre { font-family: "IBM Plex Mono", monospace; }
@@ -758,9 +747,6 @@ When updating Docsy, diff the generated output and re-check every override in
 
 ## Hextra
 
-[Open the Hextra example](/brand/examples/hugo-hextra/)
-to inspect the documented patterns in a working site.
-
 [Hextra](https://imfing.github.io/hextra/) is a Hugo documentation theme with
 a compact shell, generated side navigation, and a supported custom-CSS entry
 point. Use its quiet, task-focused reading model while retaining
@@ -830,7 +816,7 @@ params:
       tokenize: forward
   editURL:
     enable: true
-    base: https://github.com/projectious-work/brand/edit/development/src/content
+    base: https://github.com/projectious-work/brand/edit/main/src/content
 
 menu:
   main:
@@ -865,11 +851,6 @@ content/docs/
     └── operations.md   # title: Operations; weight: 20
 ```
 
-For a complete local kitchen-sink implementation, see the
-[Hextra example](/brand/examples/hugo-hextra/).
-It is built manually with the
-scripts in `examples/hugo-hextra/` and deployed beneath the GitHub Pages site.
-
 ### Load the brand through custom CSS
 
 Hextra automatically loads `assets/css/custom.css`. Use it as the single brand
@@ -895,7 +876,7 @@ wrapper, which sits behind that tint and has no visible effect.
 
 ```css
 /* assets/css/custom.css */
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap");
+@import url("/scss/main.css"); /* includes the self-hosted brand font faces */
 
 /* midnight-9 #1d3352 expressed as HSL, so Hextra's derived ramp stays in the
    brand's hue rather than its default azure. */
@@ -1121,9 +1102,9 @@ Hextra's built-in `callout` shortcode styles itself entirely with Tailwind
 utility classes and emits no stable class hook, so its semantic tints cannot be
 rebound from `custom.css` — a `.hextra-callout-*` rule matches nothing. The
 brand callout is therefore a small project shortcode in
-`layouts/_shortcodes/pj-callout.html` that emits the class names above; see
-`examples/hugo-hextra/` for the implementation. Give each type a text label as
-well as a colour, so the state never depends on colour alone.
+`layouts/_shortcodes/pj-callout.html` that emits the class names above. Give
+each type a text label as well as a colour, so the state never depends on
+colour alone.
 
 Two further theme behaviours have to be answered, or the result fails contrast
 in light mode specifically:

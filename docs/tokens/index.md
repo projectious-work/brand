@@ -23,6 +23,10 @@ second source of truth.
 
 ## CSS
 
+[Download `variables.css`](/brand/downloads/tokens/variables.css) ·
+[Download `tokens.json`](/brand/downloads/tokens/tokens.json) ·
+[Download `tailwind.config.js`](/brand/downloads/tokens/tailwind.config.js)
+
 ```html
 <link rel="stylesheet" href="variables.css">
 ```

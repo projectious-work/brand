@@ -14,13 +14,15 @@ in the repository. Check it before adding an asset or shipping collateral.
 
 ## Fonts
 
-Loaded at runtime from the Google Fonts CDN — **no font files are bundled**.
+Self-hosted from Fontsource release **5.3.0**. Each file is a Latin WOFF2
+subset, used without modification, and ships with its SIL OFL 1.1 licence.
 
-| Font | Licence | Attribution | Role |
-|---|---|---|---|
-| Plus Jakarta Sans | SIL OFL 1.1 | Not required | Headings, display |
-| Source Sans 3 | SIL OFL 1.1 | Not required | Body, UI |
-| IBM Plex Mono | SIL OFL 1.1 | Not required | Code, data |
+| File | SHA-256 | Source package |
+|---|---|---|
+| `plus-jakarta-sans-latin-variable.woff2` | `153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79` | `@fontsource-variable/plus-jakarta-sans@5.3.0` |
+| `source-sans-3-latin-variable.woff2` | `7a19a7027e125257d310c6dbd78ae3a30b5ea1e3794d60b12bb28227a003bfda` | `@fontsource-variable/source-sans-3@5.3.0` |
+| `ibm-plex-mono-latin-400.woff2` | `08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7` | `@fontsource/ibm-plex-mono@5.3.0` |
+| `ibm-plex-mono-latin-500.woff2` | `01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22` | `@fontsource/ibm-plex-mono@5.3.0` |
 
 ## Icons and photography
 
@@ -40,9 +42,9 @@ are original work, © projectious.work, under the brand-asset terms in
 
 ## Review status
 
-Last reviewed **2026-07-26**: no unlicensed, sensitive, or third-party binary
-assets are committed to this repository. Every physically present file is
-original.
+Last reviewed **2026-08-13**: the four declared font binaries and Font Awesome
+are the only bundled third-party font assets. Their licence material ships with
+the files.
 
 <div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Adding a bundled asset</div>
 

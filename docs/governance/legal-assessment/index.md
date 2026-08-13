@@ -33,11 +33,10 @@ a commercial launch.
 
 ## Fonts
 
-All three families are **SIL Open Font License 1.1** and served from Google
-Fonts. OFL permits commercial use, embedding, and redistribution; it forbids
-selling the fonts on their own and requires that any derivative font use a
-different name. Since the fonts are linked rather than bundled, no font binaries
-are redistributed by this repository.
+All three families are **SIL Open Font License 1.1** and self-hosted as pinned
+Fontsource 5.3.0 WOFF2 subsets. OFL permits commercial use, embedding, and
+redistribution; it forbids selling the fonts on their own and requires that any
+derivative font use a different name. The licence texts ship beside the files.
 
 ## Icons — Lucide
 

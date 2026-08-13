@@ -9,8 +9,8 @@ LLMS index: [llms.txt](/brand/llms.txt)
 ---
 
 The system uses three typefaces, each with one job. All three are licensed under
-the SIL Open Font License 1.1 and served from Google Fonts, so there are no
-bundled font binaries to license or redistribute.
+the SIL Open Font License 1.1 and self-hosted as version-pinned WOFF2 files.
+System and generic fallbacks keep the content usable if a font cannot load.
 
 ## The three families
 
@@ -20,12 +20,10 @@ bundled font binaries to license or redistribute.
 | **Source Sans 3** | 400 · 500 · 600 | Body copy, UI labels, captions | SIL OFL 1.1 |
 | **IBM Plex Mono** | 400 · 500 | Code, terminal output, data | SIL OFL 1.1 |
 
-Loading them:
+Loading them from the published brand assets:
 
 ```html
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/scss/main.css">
 ```
 
 ## The ramp

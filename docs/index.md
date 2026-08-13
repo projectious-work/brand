@@ -109,3 +109,4 @@ Section pages:
 - [Collateral](/brand/docs/collateral/): Artefacts that leave the product — cards, signatures, and social imagery.
 - [Governance](/brand/docs/governance/): Licensing, trademark, the pre-launch legal assessment, and per-asset provenance.
 - [Tokens](/brand/docs/tokens/): Machine-readable exports of the design values, and how to consume them.
+- [AI consumer guide](/brand/docs/ai/): A versioned map from brand use cases to their normative documentation and generated machine-readable material.

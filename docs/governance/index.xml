@@ -98,42 +98,43 @@ a commercial launch.&lt;/p&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;h2 id="fonts"&gt;Fonts&lt;/h2&gt;
-&lt;p&gt;All three families are &lt;strong&gt;SIL Open Font License 1.1&lt;/strong&gt; and served from Google
-Fonts. OFL permits commercial use, embedding, and redistribution; it forbids
-selling the fonts on their own and requires that any derivative font use a
-different name. Since the fonts are linked rather than bundled, no font binaries
-are redistributed by this repository.&lt;/p&gt;</description></item><item><title>Asset provenance</title><link>https://projectious-work.github.io/brand/docs/governance/provenance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/provenance/</guid><description>&lt;p&gt;The authoritative inventory is
+&lt;p&gt;All three families are &lt;strong&gt;SIL Open Font License 1.1&lt;/strong&gt; and self-hosted as pinned
+Fontsource 5.3.0 WOFF2 subsets. OFL permits commercial use, embedding, and
+redistribution; it forbids selling the fonts on their own and requires that any
+derivative font use a different name. The licence texts ship beside the files.&lt;/p&gt;</description></item><item><title>Asset provenance</title><link>https://projectious-work.github.io/brand/docs/governance/provenance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/provenance/</guid><description>&lt;p&gt;The authoritative inventory is
 the project provenance inventory
 in the repository. Check it before adding an asset or shipping collateral.&lt;/p&gt;
 &lt;h2 id="fonts"&gt;Fonts&lt;/h2&gt;
-&lt;p&gt;Loaded at runtime from the Google Fonts CDN — &lt;strong&gt;no font files are bundled&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Self-hosted from Fontsource release &lt;strong&gt;5.3.0&lt;/strong&gt;. Each file is a Latin WOFF2
+subset, used without modification, and ships with its SIL OFL 1.1 licence.&lt;/p&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
-					&lt;th&gt;Font&lt;/th&gt;
-					&lt;th&gt;Licence&lt;/th&gt;
-					&lt;th&gt;Attribution&lt;/th&gt;
-					&lt;th&gt;Role&lt;/th&gt;
+					&lt;th&gt;File&lt;/th&gt;
+					&lt;th&gt;SHA-256&lt;/th&gt;
+					&lt;th&gt;Source package&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 			&lt;tr&gt;
-					&lt;td&gt;Plus Jakarta Sans&lt;/td&gt;
-					&lt;td&gt;SIL OFL 1.1&lt;/td&gt;
-					&lt;td&gt;Not required&lt;/td&gt;
-					&lt;td&gt;Headings, display&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;plus-jakarta-sans-latin-variable.woff2&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;153fc85b70298beeb1d61a5f723331649e7f23bb77302a66e61cb3e2fbdb5e79&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;@fontsource-variable/plus-jakarta-sans@5.3.0&lt;/code&gt;&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-					&lt;td&gt;Source Sans 3&lt;/td&gt;
-					&lt;td&gt;SIL OFL 1.1&lt;/td&gt;
-					&lt;td&gt;Not required&lt;/td&gt;
-					&lt;td&gt;Body, UI&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;source-sans-3-latin-variable.woff2&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;7a19a7027e125257d310c6dbd78ae3a30b5ea1e3794d60b12bb28227a003bfda&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;@fontsource-variable/source-sans-3@5.3.0&lt;/code&gt;&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-					&lt;td&gt;IBM Plex Mono&lt;/td&gt;
-					&lt;td&gt;SIL OFL 1.1&lt;/td&gt;
-					&lt;td&gt;Not required&lt;/td&gt;
-					&lt;td&gt;Code, data&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;ibm-plex-mono-latin-400.woff2&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;08949f728dc52d528e69b1667d15c89a5686a4ee9a296ff90983985f99c380f7&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;@fontsource/ibm-plex-mono@5.3.0&lt;/code&gt;&lt;/td&gt;
+			&lt;/tr&gt;
+			&lt;tr&gt;
+					&lt;td&gt;&lt;code&gt;ibm-plex-mono-latin-500.woff2&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;01d285447409c8a588692162439a038b8cbd7871309ee20267b0d2d91c6e8e22&lt;/code&gt;&lt;/td&gt;
+					&lt;td&gt;&lt;code&gt;@fontsource/ibm-plex-mono@5.3.0&lt;/code&gt;&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;

@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 1,
+  "identity": "projectious.work brand",
+  "version": "v2.1.1",
+  "authority": {
+    "documentation": "src/content/docs/",
+    "structuredTokens": "src/data/brand.yaml"
+  },
+  "boundaries": {
+    "publicRoots": [
+      "src/content/docs/",
+      "src/static/downloads/",
+      "CHANGELOG.md"
+    ],
+    "excluded": [
+      "context/",
+      ".git/",
+      "input/",
+      "public/"
+    ]
+  },
+  "resources": [
+    {
+      "id": "identity",
+      "kind": "normative",
+      "path": "src/content/docs/_index.md"
+    },
+    {
+      "id": "ai-guide",
+      "kind": "normative",
+      "path": "src/content/docs/ai/_index.md"
+    },
+    {
+      "id": "foundations",
+      "kind": "normative",
+      "path": "src/content/docs/foundations/_index.md"
+    },
+    {
+      "id": "tokens-guide",
+      "kind": "normative",
+      "path": "src/content/docs/tokens.md"
+    },
+    {
+      "id": "logo",
+      "kind": "normative",
+      "path": "src/content/docs/logo/_index.md"
+    },
+    {
+      "id": "typography",
+      "kind": "normative",
+      "path": "src/content/docs/foundations/typography.md"
+    },
+    {
+      "id": "components",
+      "kind": "normative",
+      "path": "src/content/docs/interface/components.md"
+    },
+    {
+      "id": "rendered-specimens",
+      "kind": "example",
+      "path": "src/content/docs/interface/code.md"
+    },
+    {
+      "id": "collateral",
+      "kind": "normative",
+      "path": "src/content/docs/collateral/_index.md"
+    },
+    {
+      "id": "licensing",
+      "kind": "normative",
+      "path": "src/content/docs/governance/licensing.md"
+    },
+    {
+      "id": "trademark",
+      "kind": "normative",
+      "path": "src/content/docs/governance/trademark.md"
+    },
+    {
+      "id": "provenance",
+      "kind": "normative",
+      "path": "src/content/docs/governance/provenance.md"
+    },
+    {
+      "id": "changelog",
+      "kind": "normative",
+      "path": "CHANGELOG.md"
+    },
+    {
+      "id": "migrations",
+      "kind": "normative",
+      "path": "CHANGELOG.md"
+    },
+    {
+      "id": "tokens-json",
+      "kind": "download",
+      "path": "src/static/downloads/tokens/tokens.json"
+    },
+    {
+      "id": "tokens-css",
+      "kind": "download",
+      "path": "src/static/downloads/tokens/variables.css"
+    },
+    {
+      "id": "tokens-tailwind",
+      "kind": "download",
+      "path": "src/static/downloads/tokens/tailwind.config.js"
+    }
+  ],
+  "tokens": {
+    "--color-primary": {
+      "value": "#1d3352",
+      "role": "Text, headings, primary surfaces"
+    },
+    "--color-primary-light": {
+      "value": "#2b4d78",
+      "role": "Hover states, dark-mode primary"
+    },
+    "--color-primary-dark": {
+      "value": "#132440",
+      "role": "Dark backgrounds, navbar, code blocks"
+    },
+    "--color-accent": {
+      "value": "#E05232",
+      "role": "CTAs, highlights, active states"
+    },
+    "--color-accent-light": {
+      "value": "#ea7558",
+      "role": "Accent hover on dark, syntax strings"
+    },
+    "--color-accent-dark": {
+      "value": "#b84228",
+      "role": "Accent pressed state"
+    },
+    "--color-accent-solid": {
+      "value": "#cc4528",
+      "role": "Fill for solid controls with white text (4.72:1)"
+    },
+    "--color-secondary": {
+      "value": "#546a82",
+      "role": "Supporting text, borders"
+    },
+    "--midnight-light-1": {
+      "value": "#f8f9fb",
+      "role": "App bg",
+      "mode": "light"
+    },
+    "--midnight-light-2": {
+      "value": "#f0f3f8",
+      "role": "Subtle bg",
+      "mode": "light"
+    },
+    "--midnight-light-3": {
+      "value": "#e2e9f2",
+      "role": "Elem bg",
+      "mode": "light"
+    },
+    "--midnight-light-4": {
+      "value": "#d3deec",
+      "role": "Hover bg",
+      "mode": "light"
+    },
+    "--midnight-light-5": {
+      "value": "#c3d1e3",
+      "role": "Active bg",
+      "mode": "light"
+    },
+    "--midnight-light-6": {
+      "value": "#b0c1d6",
+      "role": "Subtle brd",
+      "mode": "light"
+    },
+    "--midnight-light-7": {
+      "value": "#96abc6",
+      "role": "Border",
+      "mode": "light"
+    },
+    "--midnight-light-8": {
+      "value": "#7490b2",
+      "role": "Strong brd",
+      "mode": "light"
+    },
+    "--midnight-light-9": {
+      "value": "#1d3352",
+      "role": "Solid bg",
+      "mode": "light"
+    },
+    "--midnight-light-10": {
+      "value": "#162944",
+      "role": "Solid hvr",
+      "mode": "light"
+    },
+    "--midnight-light-11": {
+      "value": "#3a5a82",
+      "role": "Lo text",
+      "mode": "light"
+    },
+    "--midnight-light-12": {
+      "value": "#142438",
+      "role": "Hi text",
+      "mode": "light"
+    },
+    "--midnight-dark-1": {
+      "value": "#0e1720",
+      "role": "App bg",
+      "mode": "dark"
+    },
+    "--midnight-dark-2": {
+      "value": "#131e2b",
+      "role": "Subtle bg",
+      "mode": "dark"
+    },
+    "--midnight-dark-3": {
+      "value": "#1a2b3e",
+      "role": "Elem bg",
+      "mode": "dark"
+    },
+    "--midnight-dark-4": {
+      "value": "#20354d",
+      "role": "Hover bg",
+      "mode": "dark"
+    },
+    "--midnight-dark-5": {
+      "value": "#263f5a",
+      "role": "Active bg",
+      "mode": "dark"
+    },
+    "--midnight-dark-6": {
+      "value": "#2e4b68",
+      "role": "Subtle brd",
+      "mode": "dark"
+    },
+    "--midnight-dark-7": {
+      "value": "#3a5c7e",
+      "role": "Border",
+      "mode": "dark"
+    },
+    "--midnight-dark-8": {
+      "value": "#4d7098",
+      "role": "Strong brd",
+      "mode": "dark"
+    },
+    "--midnight-dark-9": {
+      "value": "#1d3352",
+      "role": "Solid bg",
+      "mode": "dark"
+    },
+    "--midnight-dark-10": {
+      "value": "#2b4d78",
+      "role": "Solid hvr",
+      "mode": "dark"
+    },
+    "--midnight-dark-11": {
+      "value": "#8aacc8",
+      "role": "Lo text",
+      "mode": "dark"
+    },
+    "--midnight-dark-12": {
+      "value": "#c5daf0",
+      "role": "Hi text",
+      "mode": "dark"
+    },
+    "--orange-light-1": {
+      "value": "#fef9f7",
+      "role": "App bg",
+      "mode": "light"
+    },
+    "--orange-light-2": {
+      "value": "#fef0ea",
+      "role": "Subtle bg",
+      "mode": "light"
+    },
+    "--orange-light-3": {
+      "value": "#fde0d5",
+      "role": "Elem bg",
+      "mode": "light"
+    },
+    "--orange-light-4": {
+      "value": "#fccebd",
+      "role": "Hover bg",
+      "mode": "light"
+    },
+    "--orange-light-5": {
+      "value": "#f8baa5",
+      "role": "Active bg",
+      "mode": "light"
+    },
+    "--orange-light-6": {
+      "value": "#f0a48c",
+      "role": "Subtle brd",
+      "mode": "light"
+    },
+    "--orange-light-7": {
+      "value": "#e58a6e",
+      "role": "Border",
+      "mode": "light"
+    },
+    "--orange-light-8": {
+      "value": "#d86e4e",
+      "role": "Strong brd",
+      "mode": "light"
+    },
+    "--orange-light-9": {
+      "value": "#E05232",
+      "role": "Solid bg",
+      "mode": "light"
+    },
+    "--orange-light-10": {
+      "value": "#cc4528",
+      "role": "Solid hvr",
+      "mode": "light"
+    },
+    "--orange-light-11": {
+      "value": "#c04424",
+      "role": "Lo text",
+      "mode": "light"
+    },
+    "--orange-light-12": {
+      "value": "#6e2714",
+      "role": "Hi text",
+      "mode": "light"
+    },
+    "--orange-dark-1": {
+      "value": "#1c110d",
+      "role": "App bg",
+      "mode": "dark"
+    },
+    "--orange-dark-2": {
+      "value": "#271610",
+      "role": "Subtle bg",
+      "mode": "dark"
+    },
+    "--orange-dark-3": {
+      "value": "#3d1e13",
+      "role": "Elem bg",
+      "mode": "dark"
+    },
+    "--orange-dark-4": {
+      "value": "#522616",
+      "role": "Hover bg",
+      "mode": "dark"
+    },
+    "--orange-dark-5": {
+      "value": "#643019",
+      "role": "Active bg",
+      "mode": "dark"
+    },
+    "--orange-dark-6": {
+      "value": "#7a3c20",
+      "role": "Subtle brd",
+      "mode": "dark"
+    },
+    "--orange-dark-7": {
+      "value": "#974b28",
+      "role": "Border",
+      "mode": "dark"
+    },
+    "--orange-dark-8": {
+      "value": "#b85c32",
+      "role": "Strong brd",
+      "mode": "dark"
+    },
+    "--orange-dark-9": {
+      "value": "#E05232",
+      "role": "Solid bg",
+      "mode": "dark"
+    },
+    "--orange-dark-10": {
+      "value": "#ea7558",
+      "role": "Solid hvr",
+      "mode": "dark"
+    },
+    "--orange-dark-11": {
+      "value": "#f09878",
+      "role": "Lo text",
+      "mode": "dark"
+    },
+    "--orange-dark-12": {
+      "value": "#fcddd2",
+      "role": "Hi text",
+      "mode": "dark"
+    },
+    "--slate-light-1": {
+      "value": "#f9f9fa",
+      "role": "App bg",
+      "mode": "light"
+    },
+    "--slate-light-2": {
+      "value": "#f1f2f4",
+      "role": "Subtle bg",
+      "mode": "light"
+    },
+    "--slate-light-3": {
+      "value": "#e6e8eb",
+      "role": "Elem bg",
+      "mode": "light"
+    },
+    "--slate-light-4": {
+      "value": "#dadce0",
+      "role": "Hover bg",
+      "mode": "light"
+    },
+    "--slate-light-5": {
+      "value": "#cdd0d5",
+      "role": "Active bg",
+      "mode": "light"
+    },
+    "--slate-light-6": {
+      "value": "#bec2c8",
+      "role": "Subtle brd",
+      "mode": "light"
+    },
+    "--slate-light-7": {
+      "value": "#adb2ba",
+      "role": "Border",
+      "mode": "light"
+    },
+    "--slate-light-8": {
+      "value": "#9299a4",
+      "role": "Strong brd",
+      "mode": "light"
+    },
+    "--slate-light-9": {
+      "value": "#546a82",
+      "role": "Solid bg",
+      "mode": "light"
+    },
+    "--slate-light-10": {
+      "value": "#4a5e74",
+      "role": "Solid hvr",
+      "mode": "light"
+    },
+    "--slate-light-11": {
+      "value": "#5c6f82",
+      "role": "Lo text",
+      "mode": "light"
+    },
+    "--slate-light-12": {
+      "value": "#1e2b38",
+      "role": "Hi text",
+      "mode": "light"
+    },
+    "--slate-dark-1": {
+      "value": "#111416",
+      "role": "App bg",
+      "mode": "dark"
+    },
+    "--slate-dark-2": {
+      "value": "#171b1f",
+      "role": "Subtle bg",
+      "mode": "dark"
+    },
+    "--slate-dark-3": {
+      "value": "#20262c",
+      "role": "Elem bg",
+      "mode": "dark"
+    },
+    "--slate-dark-4": {
+      "value": "#283038",
+      "role": "Hover bg",
+      "mode": "dark"
+    },
+    "--slate-dark-5": {
+      "value": "#303a43",
+      "role": "Active bg",
+      "mode": "dark"
+    },
+    "--slate-dark-6": {
+      "value": "#3a454f",
+      "role": "Subtle brd",
+      "mode": "dark"
+    },
+    "--slate-dark-7": {
+      "value": "#47545f",
+      "role": "Border",
+      "mode": "dark"
+    },
+    "--slate-dark-8": {
+      "value": "#5a6a78",
+      "role": "Strong brd",
+      "mode": "dark"
+    },
+    "--slate-dark-9": {
+      "value": "#546a82",
+      "role": "Solid bg",
+      "mode": "dark"
+    },
+    "--slate-dark-10": {
+      "value": "#627a92",
+      "role": "Solid hvr",
+      "mode": "dark"
+    },
+    "--slate-dark-11": {
+      "value": "#97a8b8",
+      "role": "Lo text",
+      "mode": "dark"
+    },
+    "--slate-dark-12": {
+      "value": "#d5dee8",
+      "role": "Hi text",
+      "mode": "dark"
+    }
+  }
+}
