@@ -1,17 +1,15 @@
 {{- /*
-  Resolve a path against the site's own baseURL.
+  Resolve a generated download or non-page asset against the site's baseURL.
 
-    [Open the Docsy example]({{< siteurl "examples/hugo-docsy/" >}})
+    [Download tokens]({{< siteurl "downloads/tokens/tokens.json" >}})
 
-  For targets that are part of the published site but are NOT pages in this
-  Hugo project — the theme examples are separate Hugo builds copied into
-  public/examples/ — `relref` cannot be used, and a hardcoded
+  For targets that are part of the published site but are not Hugo pages,
+  `relref` cannot be used, and a hardcoded
   https://projectious-work.github.io/... link sends a reader previewing
   locally to the deployed site instead of to their own build.
 
-  `relURL` produces /examples/… when the site is served from a root and
-  /brand/examples/… when it is published under a path, so the same link is
-  correct in a local preview, in a versioned archive, and in production.
+  `relURL` keeps the link correct in a local preview, a versioned archive, and
+  production.
 */ -}}
 {{- $path := .Get 0 -}}
 {{- with $path -}}

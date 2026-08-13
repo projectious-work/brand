@@ -55,6 +55,8 @@ if [[ ! -d "${SRC_DIR}/node_modules" ]]; then
   npm --prefix "${SRC_DIR}" install --no-package-lock
 fi
 
+node "${ROOT_DIR}/scripts/build-brand-manifest.mjs"
+
 cd "${SRC_DIR}"
 # --destination is always passed explicitly so output lands at the repo root
 # rather than src/public, regardless of any caller-supplied arguments.

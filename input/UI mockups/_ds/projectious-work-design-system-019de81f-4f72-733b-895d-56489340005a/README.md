@@ -274,7 +274,7 @@ padding: var(--space-4) var(--space-5);   /* 16px 24px */
 
 ## Files & fonts notes
 
-- **Fonts** (Plus Jakarta Sans, Source Sans 3, IBM Plex Mono) are **all SIL OFL 1.1** and loaded from Google Fonts via `@import` in `colors_and_type.css`. No `.ttf`/`.woff2` files are bundled. **Substitution flag:** none — these are the brand-specified fonts and Google Fonts is the canonical delivery channel per the source brand.
+- **Fonts** (Plus Jakarta Sans, Source Sans 3, IBM Plex Mono) are **all SIL OFL 1.1**. The consuming brand site self-hosts pinned Latin WOFF2 subsets and retains system fallbacks; this reference package does not initiate third-party font requests. **Substitution flag:** none — these remain the brand-specified families.
 - **Lucide icons** are pulled from CDN at use time, not bundled. **Substitution flag:** none — the source brand explicitly recommends Lucide.
 
 ---

@@ -22,9 +22,21 @@ markup:
     endLevel: 4
 
 outputs:
-  home: [HTML, RSS]
+  home: [HTML, RSS, LLMS, LLMSFULL]
   page: [HTML, markdown]
   section: [HTML, RSS, print, markdown]
+
+outputFormats:
+  LLMS:
+    mediaType: text/plain
+    baseName: llms
+    isPlainText: true
+    notAlternative: true
+  LLMSFULL:
+    mediaType: text/plain
+    baseName: llms-full
+    isPlainText: true
+    notAlternative: true
 
 params:
   hugoMinVersion: "0.157.0"

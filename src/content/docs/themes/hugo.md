@@ -348,7 +348,7 @@ there is one place to look when a value is wrong.
 
 ```scss
 // assets/scss/_styles_project.scss
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap");
+@import url("/scss/main.css"); /* includes the self-hosted brand font faces */
 
 h1, h2, h3, h4, h5, h6 { letter-spacing: -0.3px; }
 code, pre { font-family: "IBM Plex Mono", monospace; }
@@ -861,7 +861,7 @@ wrapper, which sits behind that tint and has no visible effect.
 
 ```css
 /* assets/css/custom.css */
-@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&display=swap");
+@import url("/scss/main.css"); /* includes the self-hosted brand font faces */
 
 /* midnight-9 #1d3352 expressed as HSL, so Hextra's derived ramp stays in the
    brand's hue rather than its default azure. */

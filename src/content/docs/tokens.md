@@ -20,6 +20,10 @@ second source of truth.
 
 ## CSS
 
+[Download `variables.css`]({{< siteurl "downloads/tokens/variables.css" >}}) ·
+[Download `tokens.json`]({{< siteurl "downloads/tokens/tokens.json" >}}) ·
+[Download `tailwind.config.js`]({{< siteurl "downloads/tokens/tailwind.config.js" >}})
+
 ```html
 <link rel="stylesheet" href="variables.css">
 ```

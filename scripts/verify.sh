@@ -27,7 +27,10 @@ echo "Verifying ${ROOT_DIR}"
 echo
 
 check "tokens — source and downloads" bash "${ROOT_DIR}/scripts/check-tokens.sh"
+check "fonts — local and pinned"      bash "${ROOT_DIR}/scripts/check-fonts.sh"
 check "site builds"                 "${ROOT_DIR}/scripts/build-docs.sh"
+check "AI discovery"                node "${ROOT_DIR}/scripts/check-discovery.mjs"
+check "brand MCP protocol"           uv run --script "${ROOT_DIR}/scripts/test-brand-mcp.py"
 check "contrast — site (both modes)" node "${ROOT_DIR}/scripts/audit-contrast.mjs" --quiet
 check "internal links"               node "${ROOT_DIR}/scripts/check-links.mjs"
 

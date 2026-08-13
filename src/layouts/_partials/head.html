@@ -58,6 +58,7 @@
   {{ end -}}
 </title>
 <meta name="description" content="{{ partial "page-description.html" . }}">
+<link rel="canonical" href="{{ .Permalink }}">
 {{ partial "opengraph.html" . -}}
 {{ partial "schema.html" . -}}
 {{ partial "twitter_cards.html" . -}}

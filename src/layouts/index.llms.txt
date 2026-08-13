@@ -1,0 +1,34 @@
+# projectious.work brand — {{ .Site.Params.version }}
+
+> The normative, versioned brand and design-system contract for
+> projectious.work. Human documentation and clean Markdown are available
+> without JavaScript.
+
+## Start
+
+- [AI consumer guide]({{ "docs/ai/" | absURL }})
+- [Documentation index]({{ "docs/index.md" | absURL }})
+- [Token downloads]({{ "docs/tokens/index.md" | absURL }})
+
+## Foundations and use
+
+- [Foundations]({{ "docs/foundations/index.md" | absURL }})
+- [Logo]({{ "docs/logo/index.md" | absURL }})
+- [Interface]({{ "docs/interface/index.md" | absURL }})
+- [Media]({{ "docs/media/index.md" | absURL }})
+- [Collateral]({{ "docs/collateral/index.md" | absURL }})
+
+## Governance
+
+- [Governance]({{ "docs/governance/index.md" | absURL }})
+- [Licensing]({{ "docs/governance/licensing/index.md" | absURL }})
+- [Trademark]({{ "docs/governance/trademark/index.md" | absURL }})
+- [Provenance]({{ "docs/governance/provenance/index.md" | absURL }})
+- [Changelog](https://github.com/projectious-work/brand/blob/main/CHANGELOG.md)
+
+## Machine-readable material
+
+- [CSS tokens]({{ "downloads/tokens/variables.css" | absURL }})
+- [JSON tokens]({{ "downloads/tokens/tokens.json" | absURL }})
+- [Tailwind tokens]({{ "downloads/tokens/tailwind.config.js" | absURL }})
+- [Public contract manifest]({{ "downloads/brand-manifest.json" | absURL }})

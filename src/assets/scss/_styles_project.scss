@@ -1,6 +1,38 @@
 // =============================================================================
 // projectious.work brand — Docsy surface styles
 // =============================================================================
+
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("../fonts/brand/plus-jakarta-sans-latin-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("../fonts/brand/source-sans-3-latin-variable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/brand/ibm-plex-mono-latin-400.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("../fonts/brand/ibm-plex-mono-latin-500.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
 // Companion to _variables_project.scss. Everything here implements a rule that
 // Bootstrap variables alone cannot express: the per-step type scale, the
 // always-dark code surface, mode-aware chrome, and the logo lockup.

@@ -1,0 +1,15 @@
+# projectious.work brand — bounded normative corpus
+
+Release: {{ .Site.Params.version }}
+Canonical site: {{ .Site.BaseURL }}
+
+{{ range where .Site.RegularPages "Section" "docs" -}}
+{{ if not (in (slice "search") .Layout) -}}
+## {{ .Title }}
+
+Source: {{ .Permalink }}
+
+{{ .Plain }}
+
+{{ end -}}
+{{ end -}}
