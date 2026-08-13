@@ -6,7 +6,7 @@
    one in examples/hugo-docsy/assets/scss/_styles_project.scss; only the
    selectors differ. Targets Hextra v0.10.0.
 
-   Canonical values: brand/tokens/tokens.json.
+   Canonical values: src/data/brand.yaml, synchronized with design system v2.1.1.
    ========================================================================== */
 
 /* The brand faces are loaded by layouts/_partials/custom/head-end.html, not by
@@ -44,8 +44,8 @@ html.dark {
 /* -----------------------------------------------------------------------------
    The shared semantic layer
    -----------------------------------------------------------------------------
-   Every value is a reference into brand/tokens/variables.css, which is mounted
-   as css/brand-tokens.css and generated from src/data/brand.yaml. Nothing here
+   Every value is a reference into the synchronized v2.1.1 token sheet, mounted
+   as css/brand-tokens.css and mirrored by src/data/brand.yaml. Nothing here
    is a literal, so this example cannot drift from the brand the way a copied
    hex does — and it did: before this, four of the semantic tints here were
    values the brand does not define.

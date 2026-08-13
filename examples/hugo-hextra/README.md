@@ -21,8 +21,8 @@ Hextra v0.10.0; re-check its class names after a theme upgrade.
 ## What this example does not do
 
 It holds **no brand values of its own**. Every colour in `custom.css` is a
-reference into `brand/tokens/variables.css`, which is mounted as
-`css/brand-tokens.css` and generated from `src/data/brand.yaml`. The `*-light-N`
+reference into the synchronized v2.1.1 token sheet, which is mounted as
+`css/brand-tokens.css` and mirrored by `src/data/brand.yaml`. The `*-light-N`
 and `*-dark-N` names are used rather than the mode-swapping `--midnight-N`,
 because those follow `prefers-color-scheme` while Hextra's mode is the
 `html.dark` class — mapping the fixed ramps explicitly is what keeps the theme's

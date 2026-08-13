@@ -64,7 +64,7 @@ The example is built into the published tree at `/examples/hugo-docsy/` by
 It holds **no brand values and no stylesheet of its own** — see above. The
 Hextra example cannot do the same, because Hextra is not Docsy and takes plain
 CSS rather than SCSS; it reaches the same values by reference through
-`brand/tokens/variables.css`.
+the synchronized v2.1.1 design-system token sheet.
 
 Content files carry no raw HTML. The card grid uses Docsy's own `cardpane` /
 `card` shortcodes; the primary action and the form specimen use `pj-action` and

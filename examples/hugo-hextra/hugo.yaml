@@ -32,13 +32,13 @@ module:
     # The mark. Hextra's own navbar-title partial takes navbar.logo.path and
     # navbar.logo.dark, so no template override is needed — only the files and
     # the two settings below.
-    - source: ../../brand/logo/svg/icon-light.svg
+    - source: ../../input/projectious.work Design System/assets/logo/icon-light.svg
       target: static/images/logo.svg
-    - source: ../../brand/logo/svg/icon-dark.svg
+    - source: ../../input/projectious.work Design System/assets/logo/icon-dark.svg
       target: static/images/logo-dark.svg
     # The generated token file. custom.css derives its whole semantic layer from
     # this by reference, so the example holds no brand colour of its own.
-    - source: ../../brand/tokens/variables.css
+    - source: ../../input/projectious.work Design System/colors_and_type.css
       target: assets/css/brand-tokens.css
     # The shortcodes the specimen pages are written with.
     - source: ../../src/layouts/shortcodes
