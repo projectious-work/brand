@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+  <style>
+    a { color: var(--midnight-11); }
+    a:hover { color: var(--color-accent); }
+  </style>
+</helmet>
+<div data-theme="light" style="background:var(--color-bg);min-height:100vh">
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Header" hint-size="100%,66px"></x-import>
+
+  <div style="max-width:var(--container-max);margin:0 auto;padding:64px 32px 32px">
+    <div style="font-family:var(--font-body);font-size:var(--type-overline-size);font-weight:var(--type-overline-weight);letter-spacing:var(--type-overline-tracking);text-transform:uppercase;color:var(--orange-11);margin-bottom:var(--space-4)">Writing</div>
+    <h1 style="font-family:var(--font-heading);font-weight:800;font-size:var(--type-display-size);letter-spacing:-0.5px;color:var(--color-primary);margin:0;max-width:720px">Notes on agent-first work</h1>
+    <p style="font-family:var(--font-body);font-size:var(--type-body-l-size);line-height:var(--type-body-l-lh);color:var(--color-text-secondary);margin-top:var(--space-4);max-width:620px">Field notes from projects where agents run alongside the team, not underneath it.</p>
+  </div>
+
+  <div style="max-width:var(--container-max);margin:0 auto;padding:0 32px 40px;display:flex;gap:var(--space-3);flex-wrap:wrap">
+    <sc-for list="{{ filters }}" as="f" hint-placeholder-count="5">
+      <span style="font-family:var(--font-heading);font-size:13px;font-weight:500;padding:6px 16px;border-radius:var(--radius-full);cursor:pointer;color:{{ f.color }};background:{{ f.bg }};border:1px solid {{ f.border }}">{{ f.label }}</span>
+    </sc-for>
+  </div>
+
+  <div style="max-width:var(--container-max);margin:0 auto;padding:0 32px 40px">
+    <div style="border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface);overflow:hidden;margin-bottom:var(--space-6);display:grid;grid-template-columns:1.3fr 1fr">
+      <div style="padding:var(--space-6)">
+        <div style="display:flex;gap:var(--space-3);align-items:center;margin-bottom:var(--space-3)">
+          <span style="font-family:var(--font-heading);font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--radius-sm);background:var(--tag-bg-accent);color:var(--tag-text-accent)">{{ featured.tag }}</span>
+          <span style="font-family:var(--font-code);font-size:12px;color:var(--color-text-muted)">{{ featured.date }}</span>
+        </div>
+        <h2 style="font-family:var(--font-heading);font-weight:700;font-size:28px;letter-spacing:-0.3px;color:var(--color-primary);margin:0 0 10px">{{ featured.title }}</h2>
+        <p style="font-family:var(--font-body);font-size:15px;line-height:1.6;color:var(--color-text-secondary);margin:0 0 16px">{{ featured.excerpt }}</p>
+        <span style="font-family:var(--font-body);font-size:13px;color:var(--color-text-muted)">{{ featured.author }} &middot; {{ featured.readTime }}</span>
+      </div>
+      <div style="background:var(--midnight-9);display:flex;align-items:center;justify-content:center">
+        <span style="font-family:var(--font-heading);font-weight:800;font-size:15px;color:rgba(255,255,255,0.35);letter-spacing:0.04em">FEATURED</span>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-5)">
+      <sc-for list="{{ posts }}" as="p" hint-placeholder-count="6">
+        <div style="border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface);padding:var(--space-5);display:flex;flex-direction:column">
+          <span style="font-family:var(--font-heading);font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--radius-sm);background:var(--tag-bg);color:var(--tag-text);align-self:flex-start;margin-bottom:var(--space-3)">{{ p.tag }}</span>
+          <h3 style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:var(--color-primary);margin:0 0 8px;line-height:1.3">{{ p.title }}</h3>
+          <p style="font-family:var(--font-body);font-size:13.5px;line-height:1.55;color:var(--color-text-secondary);margin:0 0 var(--space-4);flex:1">{{ p.excerpt }}</p>
+          <div style="display:flex;justify-content:space-between;font-family:var(--font-code);font-size:11px;color:var(--color-text-muted)">
+            <span>{{ p.author }}</span><span>{{ p.date }}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Footer" hint-size="100%,90px"></x-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const filters = ['All', 'Cloud', 'Agile', 'Agentic AI', 'Case studies'].map((label, i) => ({
+      label,
+      color: i === 0 ? '#fff' : 'var(--color-text-secondary)',
+      bg: i === 0 ? 'var(--color-primary)' : 'transparent',
+      border: i === 0 ? 'var(--color-primary)' : 'var(--color-border)'
+    }));
+
+    const featured = {
+      tag: 'Agentic AI', date: 'Aug 4, 2026',
+      title: 'Why lot-of-one software is finally economical',
+      excerpt: 'Agents collapse the marginal cost of bespoke software. That changes what a mid-size company should build for itself instead of bending to fit a generic SaaS tool.',
+      author: 'S. Novak', readTime: '7 min read'
+    };
+
+    const posts = [
+      { tag: 'Cloud', title: 'Provider independence is a design decision, not a policy', excerpt: 'How we structure infrastructure so no single vendor becomes a single point of failure.', author: 'M. Keller', date: 'Jul 28' },
+      { tag: 'Agile', title: 'Continuous audit replaces the sign-off meeting', excerpt: 'What changes when an agent reviews every commit instead of a person reviewing every release.', author: 'J. Berg', date: 'Jul 21' },
+      { tag: 'Case studies', title: 'Rebuilding vendor risk scoring in six weeks', excerpt: 'A walkthrough of the pipeline that replaced a quarterly spreadsheet review.', author: 'L. Almeida', date: 'Jul 12' },
+      { tag: 'Agentic AI', title: 'Agents in the loop, not on the side', excerpt: 'The difference between adding an AI feature and redesigning the workflow around one.', author: 'A. Dubois', date: 'Jul 3' },
+      { tag: 'Cloud', title: 'Self-hosting the parts that matter', excerpt: 'A pragmatic checklist for deciding what stays on your own infrastructure.', author: 'M. Keller', date: 'Jun 24' },
+      { tag: 'Agile', title: 'What we changed after eating our own dogfood', excerpt: 'Three convictions we revised after running our own pipelines for a year.', author: 'S. Novak', date: 'Jun 15' }
+    ];
+
+    return { filters, featured, posts };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!doctype html>
+<!-- @dsCard group="Accessibility" name="Settings · all opt-in" subtitle="Attributes on <html> — nothing applies until set" viewport="700x640" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"><style>
+.demo{border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);background:var(--surface)}
+.btnrow{display:flex;gap:6px;flex-wrap:wrap}
+.btnrow button{font-family:var(--font-body);font-size:11px;padding:5px 10px;border-radius:var(--radius-md);border:1.5px solid var(--color-border);background:var(--surface);color:var(--color-text-primary);cursor:pointer}
+.btnrow button[aria-pressed="true"]{border-color:var(--color-primary);color:var(--color-primary);font-weight:600}
+.grp{display:flex;flex-direction:column;gap:6px}
+.attr{font-family:var(--font-code);font-size:10px;color:var(--color-text-muted)}
+</style></head><body>
+<div class="col" style="gap:14px">
+
+  <div class="grp">
+    <div class="label">Text size <span class="attr">data-font-size</span></div>
+    <div class="btnrow" role="group" aria-label="Text size">
+      <button data-k="data-font-size" data-v="">Off</button>
+      <button data-k="data-font-size" data-v="lg">lg · 112.5%</button>
+      <button data-k="data-font-size" data-v="xl">xl · 125%</button>
+      <button data-k="data-font-size" data-v="xxl">xxl · 150%</button>
+      <button data-k="data-font-size" data-v="xxxl">xxxl · 200%</button>
+    </div>
+  </div>
+
+  <div class="grp">
+    <div class="label">Contrast <span class="attr">data-contrast</span></div>
+    <div class="btnrow" role="group" aria-label="Contrast">
+      <button data-k="data-contrast" data-v="">Off</button>
+      <button data-k="data-contrast" data-v="high">high</button>
+    </div>
+  </div>
+
+  <div class="grp">
+    <div class="label">Focus ring <span class="attr">data-focus</span></div>
+    <div class="btnrow" role="group" aria-label="Focus ring">
+      <button data-k="data-focus" data-v="">Off · 1.2:1</button>
+      <button data-k="data-focus" data-v="strong">strong · 8.6:1</button>
+    </div>
+    <div class="sub">Tab into the demo below to compare. The default ring does not meet WCAG 1.4.11.</div>
+  </div>
+
+  <div class="grp">
+    <div class="label">Prose links <span class="attr">data-link-underline</span></div>
+    <div class="btnrow" role="group" aria-label="Prose links">
+      <button data-k="data-link-underline" data-v="">Off</button>
+      <button data-k="data-link-underline" data-v="on">on</button>
+    </div>
+  </div>
+
+  <div class="grp">
+    <div class="label">Text spacing <span class="attr">data-text-spacing</span></div>
+    <div class="btnrow" role="group" aria-label="Text spacing">
+      <button data-k="data-text-spacing" data-v="">Off</button>
+      <button data-k="data-text-spacing" data-v="loose">loose · WCAG 1.4.12</button>
+    </div>
+    <div class="sub">A diagnostic, not a house style — set it to prove nothing clips.</div>
+  </div>
+
+  <div class="demo">
+    <div style="font-family:var(--font-heading);font-size:var(--type-h3-size);font-weight:var(--type-h3-weight);color:var(--color-text-primary)">Cloud · Agile · Agentic AI</div>
+    <p style="font-size:var(--type-body-size);color:var(--color-text-secondary);margin-top:6px">Augment people's strengths to improve life for everyone. <a href="#">Read the convictions</a>.</p>
+    <div class="btnrow" style="margin-top:10px">
+      <button>Focusable button</button>
+      <button class="target">44px target</button>
+    </div>
+  </div>
+
+  <div class="sub">Also available: <span class="attr">data-motion="reduced"</span> · <span class="attr">data-transparency="reduced"</span> · <span class="attr">data-theme="light|dark"</span> · <span class="attr">data-a11y="auto"</span> to follow OS preferences. Utilities: <span class="attr">.sr-only</span> <span class="attr">.skip-link</span> <span class="attr">.target</span> <span class="attr">.measure</span>.</div>
+</div>
+<script>
+document.querySelectorAll('.btnrow button[data-k]').forEach(function(b){
+  b.addEventListener('click', function(){
+    var k = b.getAttribute('data-k'), v = b.getAttribute('data-v');
+    if (v) document.documentElement.setAttribute(k, v);
+    else document.documentElement.removeAttribute(k);
+    document.querySelectorAll('button[data-k="' + k + '"]').forEach(function(x){
+      x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+    });
+  });
+});
+document.querySelectorAll('.btnrow button[data-v=""]').forEach(function(b){ b.setAttribute('aria-pressed','true'); });
+</script>
+</body></html>

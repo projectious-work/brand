@@ -13,7 +13,7 @@ this page summarises it.
 ## Brand assets — proprietary, source-available
 
 Everything representing the visual identity: logos, brand imagery, and the
-design-system documents under `brand/`.
+supplied design-system documents.
 
 | | |
 |---|---|
@@ -21,7 +21,7 @@ design-system documents under `brand/`.
 | **Prohibited** | Modification, derivative works, sale, or commercial use — including merchandise or software featuring these assets — without prior written consent |
 | **No impersonation** | Use must not imply endorsement, affiliation, or ownership by anyone other than projectious.work |
 
-Document templates under `brand/templates/` fall under these same terms: they
+Document templates fall under these same terms: they
 embed brand identity (colours, fonts, tagline). You may use them as structural
 reference for your own templates, but not redistribute them with projectious.work
 branding intact.
@@ -33,7 +33,7 @@ Source code, automation scripts, and configuration files (`.py`, `.js`, `.sh`,
 distribute, sublicense, and sell, provided the copyright and permission notice
 travel with the software.
 
-The design **tokens** — [`brand/tokens/`]({{< relref "/docs/tokens" >}}) — are in
+The design **tokens** — documented under [Tokens]({{< relref "/docs/tokens" >}}) — are in
 this category. The *values* are free to use; the *marks* are not.
 
 ## What this means in practice

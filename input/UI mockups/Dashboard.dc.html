@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+  <script src="./console-theme.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;background:{{ theme.appBg }};font-family:var(--font-body)">
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Sidebar" active="metrics" theme="{{ theme }}" hint-size="240px,100%"></x-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+    <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Topbar" title="Overview" theme="{{ theme }}" mode="{{ mode }}" on-toggle-mode="{{ toggleMode }}" hint-size="100%,66px"></x-import>
+    <div style="flex:1;overflow:auto;padding:28px 32px;display:flex;flex-direction:column;gap:24px">
+
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px">
+        <sc-for list="{{ metrics }}" as="m" hint-placeholder-count="4">
+          <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;padding:18px 20px">
+            <div style="font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ theme.text2 }};margin-bottom:10px">{{ m.label }}</div>
+            <div style="font-family:var(--font-heading);font-weight:700;font-size:28px;letter-spacing:-0.4px;color:{{ theme.title }}">{{ m.value }}</div>
+            <div style="font-size:12px;margin-top:6px;color:{{ m.deltaColor }}">{{ m.delta }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;padding:20px 22px">
+        <div style="display:flex;align-items:baseline;justify-content:space-between;margin-bottom:16px">
+          <h2 style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:{{ theme.title }};margin:0">Runs per day &middot; last 14 days</h2>
+          <span style="font-family:var(--font-code);font-size:11px;color:{{ theme.text2 }}">peak 24 &middot; avg 15</span>
+        </div>
+        <div style="display:flex;align-items:flex-end;gap:8px;height:120px">
+          <sc-for list="{{ chartBars }}" as="b" hint-placeholder-count="14">
+            <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;height:100%;justify-content:flex-end">
+              <div style="width:100%;border-radius:3px 3px 0 0;background:{{ b.color }};height:{{ b.height }}"></div>
+              <span style="font-family:var(--font-code);font-size:9px;color:{{ theme.text2 }}">{{ b.label }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1.6fr 1fr;gap:20px;align-items:start">
+        <div>
+          <h2 style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:{{ theme.title }};margin:0 0 12px">Recent pipeline activity</h2>
+          <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.PipelineList" rows="{{ rows }}" selected-id="{{ selectedId }}" on-select="{{ onSelectRow }}" theme="{{ theme }}" hint-size="100%,320px"></x-import>
+        </div>
+        <div>
+          <h2 style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:{{ theme.title }};margin:0 0 12px">Run detail</h2>
+          <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.RunDetail" pipeline="{{ selectedPipeline }}" theme="{{ theme }}" hint-size="100%,260px"></x-import>
+        </div>
+      </div>
+
+    </div>
+    <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.StatusBar" theme="{{ theme }}" hint-size="100%,36px"></x-import>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    mode: 'light',
+    selectedId: 'p2',
+    rows: [
+      { id: 'p1', name: 'Invoice reconciliation', tag: 'fin-invoice-recon', status: 'healthy', lastRun: '6 min ago', owner: 'L. Almeida', runs: 812 },
+      { id: 'p2', name: 'Customer onboarding audit', tag: 'onboarding-audit-v3', status: 'running', lastRun: 'now', owner: 'J. Berg', runs: 244 },
+      { id: 'p3', name: 'Contract clause review', tag: 'legal-clause-review', status: 'healthy', lastRun: '22 min ago', owner: 'S. Novak', runs: 1029 },
+      { id: 'p4', name: 'Vendor risk scoring', tag: 'vendor-risk-v2', status: 'warning', lastRun: '1 hr ago', owner: 'M. Keller', runs: 356 },
+      { id: 'p5', name: 'Support ticket triage', tag: 'support-triage', status: 'healthy', lastRun: '3 hr ago', owner: 'A. Dubois', runs: 2140 },
+      { id: 'p6', name: 'Payroll anomaly check', tag: 'payroll-anomaly', status: 'failed', lastRun: '5 hr ago', owner: 'L. Almeida', runs: 98 }
+    ]
+  };
+
+  toggleMode = () => this.setState(s => ({ mode: s.mode === 'light' ? 'dark' : 'light' }));
+  onSelectRow = (id) => this.setState({ selectedId: id });
+
+  renderVals() {
+    const theme = window.ConsoleTheme[this.state.mode];
+    const rows = this.state.rows;
+    const selectedPipeline = rows.find(r => r.id === this.state.selectedId) || null;
+
+    const metrics = [
+      { label: 'Active agents', value: '18', delta: '+3 this week', deltaColor: theme.success },
+      { label: 'Pipelines run today', value: '142', delta: '+11% vs yesterday', deltaColor: theme.success },
+      { label: 'Success rate', value: '98.4%', delta: '+0.6 pt', deltaColor: theme.success },
+      { label: 'Avg audit time', value: '4.2s', delta: '\u22120.8s faster', deltaColor: theme.success }
+    ];
+
+    const days = ['M','T','W','T','F','S','S','M','T','W','T','F','S','S'];
+    const vals = [12,15,9,18,14,7,5,16,20,17,24,19,8,6];
+    const max = 24;
+    const chartBars = vals.map((v, i) => ({
+      height: Math.round((v / max) * 100) + '%',
+      color: v === max ? theme.accentSolid : theme.info,
+      label: days[i]
+    }));
+
+    return { mode: this.state.mode, theme, toggleMode: this.toggleMode, rows, selectedId: this.state.selectedId, selectedPipeline, onSelectRow: this.onSelectRow, metrics, chartBars };
+  }
+}
+
+</script>
+</body>
+</html>

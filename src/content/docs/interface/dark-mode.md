@@ -43,9 +43,9 @@ deepening the shadow — a shadow against a near-black background is invisible.
 
 | Layer | Light | Dark |
 |---|---|---|
-| App background | `#ffffff` | `midnight-dark-1` `#0e1720` |
-| Subtle surface | `midnight-1` | `midnight-dark-2` `#131e2b` |
-| Raised surface | `midnight-2` | `midnight-dark-3` `#1a2b3e` |
+| App background | `midnight-1` `#f8f9fb` | `midnight-dark-1` `#0e1720` |
+| Raised surface | `#ffffff` | `midnight-dark-2` `#131e2b` |
+| Secondary raised surface | `midnight-2` `#f0f3f8` | `midnight-dark-3` `#1a2b3e` |
 
 ## Restating text on dark surfaces
 

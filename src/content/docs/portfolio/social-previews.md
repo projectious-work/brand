@@ -8,17 +8,15 @@ description: Repository artwork that states category and maturity plainly.
 
 Every 1280×640 preview contains only:
 
-1. Projectious organization mark and name.
+1. projectious.work organisation mark and name.
 2. Project name.
 3. One narrow artifact category.
 4. One complete maturity label from the status vocabulary.
 5. An optional short limitation, never a marketing claim.
 
-The editable source is
-`brand/portfolio/social-preview-template.svg`. Replace bracketed text, keep
-the status label intact, and save a project-specific SVG beside the template.
-Examples for aibox, processkit, ai-market-research, and KubeClaw demonstrate
-the content structure; they are not evidence of current maturity.
+Keep the status label intact and save a project-specific SVG beside its source.
+Examples demonstrate the content structure; they are not evidence of current
+maturity.
 
 ## Export and validation
 
@@ -34,7 +32,7 @@ source as the canonical reusable asset. Commit generated PNGs only when a
 repository needs them.
 
 Source and generated exports use this repository's split license. The
-Projectious name and marks remain subject to `TRADEMARK.md`. Record any
-third-party typeface, icon, logo, or screenshot in `brand/PROVENANCE.md`
+projectious.work name and marks remain subject to the trademark terms. Record
+any third-party typeface, icon, logo, or screenshot in the provenance inventory
 before use. The supplied templates contain no third-party logos or
 screenshots.

@@ -26,9 +26,9 @@ truth, customization boundary, and release evidence.
 
 | Need | Canonical input | Do not do this |
 |---|---|---|
-| Colour values | `brand/tokens/tokens.json` | Copy arbitrary hex values into templates |
-| CSS-friendly tokens | `brand/tokens/variables.css` | Create a second, competing token file |
-| Logo and icons | `brand/logo/` supplied SVG or raster variants | Redraw, recolour, crop, or stretch a mark |
+| Colour values | `src/data/brand.yaml` | Copy arbitrary hex values into templates |
+| CSS-friendly tokens | The synchronized design-system token sheet | Create a second, competing token file |
+| Logo and icons | Supplied SVG or raster variants | Redraw, recolour, crop, or stretch a mark |
 | Type roles | Brand typography guidance | Substitute a decorative display face |
 | Content hierarchy | This documentation content tree and front matter | Encode navigation order in CSS |
 | Theme behavior | The selected theme's current official documentation | Patch vendored source as the first option |
@@ -90,7 +90,7 @@ and a Hextra site recognisably the same product, and it is the only reason the
 two dark modes can be reviewed against each other.
 
 Every value below is a step from the canonical scales in
-`brand/tokens/tokens.json`. The ratio column is the measured contrast against
+`src/data/brand.yaml`. The ratio column is the measured contrast against
 the surface that role actually sits on.
 
 | Token | Role | Light | Dark | Contrast (light / dark) |
@@ -615,7 +615,7 @@ Run the validation command locally before requesting promotion.
 
 ## Validate the configuration
 
-Use `brand/tokens/tokens.json` as the input. Do not duplicate token values.
+Use `src/data/brand.yaml` as the input. Do not duplicate token values.
 
 <a class="btn btn-primary" href="#deploy">Deploy configuration</a>
 ```
@@ -699,7 +699,7 @@ params:
   offlineSearch: true
 ```
 
-Inline code such as `brand/tokens/tokens.json` must stay distinct from its
+Inline code such as `src/data/brand.yaml` must stay distinct from its
 paragraph without looking like a second button. The block above stays dark in
 both theme modes, with readable syntax and a discoverable copy control.
 

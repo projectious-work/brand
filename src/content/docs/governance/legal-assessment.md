@@ -6,7 +6,7 @@ description: Pre-launch clearance review of the name, mark, fonts, icons, and im
 ---
 
 A pre-launch review of the elements that carry legal risk. Source:
-`brand/html/projectious-legal-assessment.html`.
+the projectious.work legal assessment supplied with the prior system.
 
 {{% alert title="Not legal advice" color="warning" %}}
 This is a design-side risk assessment, not a legal opinion, and it is not a

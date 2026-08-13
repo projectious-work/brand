@@ -1,0 +1,234 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Components · Code blocks (dark, default)" subtitle="Python, Rust, YAML, TOML, LaTeX" viewport="700x2040" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css">
+<style>
+  .code {
+    background: #0e1720;
+    border-radius: 6px;
+    padding: 12px 14px 12px 0;
+    font-family: var(--font-code);
+    font-size: 12px;
+    line-height: 1.7;
+    color: #c5daf0;
+    overflow: hidden;
+  }
+  .code-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 14px 8px 14px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid rgba(197,218,240,0.08);
+    font-family: var(--font-body);
+    font-size: 11px;
+    color: #7a8a9a;
+  }
+  .code-header .lang {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    color: #c5daf0;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    font-size: 10px;
+  }
+  .code pre {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    column-gap: 12px;
+  }
+  .ln { color: #7a8a9a; text-align: right; user-select: none; padding-left: 6px; }
+  .src { white-space: pre; }
+  /* token palette */
+  .k  { color: #ea7558; }                 /* keyword */
+  .s  { color: #6cc090; }                 /* string */
+  .n  { color: #e6b94a; }                 /* number / constant / boolean */
+  .c  { color: #5c6f82; font-style: italic; } /* comment */
+  .t  { color: #8aacc8; }                 /* type / builtin / class */
+  .f  { color: #d5dee8; }                 /* function name */
+  .p  { color: #97a8b8; }                 /* punctuation, operators */
+  .a  { color: #c08a17; }                 /* attribute / decorator */
+  .e  { color: #ea7558; }                 /* escape / special */
+  .label-block { display: flex; align-items: baseline; justify-content: space-between; }
+</style>
+</head><body>
+<div class="col" style="gap:14px">
+
+  <div class="label-block">
+    <div class="label">Code blocks · syntax highlighting</div>
+    <div class="sub">JetBrains Mono · 12px / 1.7 · dark surface only</div>
+  </div>
+
+  <!-- ============ PYTHON ============ -->
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">Python</span>
+      <span>policy_check.py</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c"># Validate deploy policy before staging rollout</span>
+<span class="k">from</span> <span class="t">dataclasses</span> <span class="k">import</span> dataclass
+<span class="k">from</span> <span class="t">typing</span> <span class="k">import</span> <span class="t">Iterable</span>
+
+<span class="a">@dataclass</span>
+<span class="k">class</span> <span class="t">Policy</span>:
+    name: <span class="t">str</span>
+    max_cost_usd: <span class="t">float</span> = <span class="n">250.0</span>
+
+<span class="k">def</span> <span class="f">enforce</span>(policies: <span class="t">Iterable</span>[<span class="t">Policy</span>]) <span class="p">-></span> <span class="t">bool</span>:
+    <span class="k">return</span> <span class="n">all</span>(p.max_cost_usd <span class="p">&lt;=</span> <span class="n">500</span> <span class="k">for</span> p <span class="k">in</span> policies)
+</span></pre>
+  </div>
+
+  <!-- ============ RUST ============ -->
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">Rust</span>
+      <span>agent/runner.rs</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c">// Execute a single agent step with a 30s timeout</span>
+<span class="k">use</span> <span class="t">tokio</span>::time::{<span class="f">timeout</span>, <span class="t">Duration</span>};
+<span class="k">use</span> <span class="t">anyhow</span>::<span class="t">Result</span>;
+
+<span class="a">#[derive(Debug)]</span>
+<span class="k">pub struct</span> <span class="t">Step</span> { <span class="k">pub</span> id: <span class="t">u64</span>, <span class="k">pub</span> name: <span class="t">String</span> }
+
+<span class="k">pub async fn</span> <span class="f">run</span>(step: <span class="p">&amp;</span><span class="t">Step</span>) <span class="p">-></span> <span class="t">Result</span><span class="p">&lt;</span><span class="t">String</span><span class="p">&gt;</span> {
+    <span class="k">let</span> out = <span class="f">timeout</span>(<span class="t">Duration</span>::<span class="f">from_secs</span>(<span class="n">30</span>), <span class="f">execute</span>(step)).<span class="k">await</span><span class="p">??</span>;
+    <span class="t">Ok</span>(<span class="k">format!</span>(<span class="s">"step {} ok: {}"</span>, step.id, out))
+}
+</span></pre>
+  </div>
+
+  <!-- ============ YAML ============ -->
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">YAML</span>
+      <span>deploy.yaml</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c"># projectious.work — staging deploy</span>
+<span class="t">apiVersion</span><span class="p">:</span> <span class="s">v1</span>
+<span class="t">kind</span><span class="p">:</span> <span class="s">Deployment</span>
+<span class="t">metadata</span><span class="p">:</span>
+  <span class="t">name</span><span class="p">:</span> <span class="s">agent-runner</span>
+  <span class="t">labels</span><span class="p">:</span>
+    <span class="t">env</span><span class="p">:</span> <span class="s">staging</span>
+<span class="t">spec</span><span class="p">:</span>
+  <span class="t">replicas</span><span class="p">:</span> <span class="n">3</span>
+  <span class="t">strategy</span><span class="p">:</span> <span class="s">RollingUpdate</span>
+  <span class="t">timeout</span><span class="p">:</span> <span class="s">"30s"</span>
+  <span class="t">enabled</span><span class="p">:</span> <span class="n">true</span>
+</span></pre>
+  </div>
+
+  <!-- ============ TOML ============ -->
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">TOML</span>
+      <span>Cargo.toml</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c"># Crate manifest for the agent runner</span>
+<span class="p">[</span><span class="t">package</span><span class="p">]</span>
+<span class="a">name</span> = <span class="s">"agent-runner"</span>
+<span class="a">version</span> = <span class="s">"0.4.2"</span>
+<span class="a">edition</span> = <span class="s">"2024"</span>
+<span class="a">authors</span> = <span class="p">[</span><span class="s">"projectious.work &lt;eng@projectious.work&gt;"</span><span class="p">]</span>
+
+<span class="p">[</span><span class="t">dependencies</span><span class="p">]</span>
+<span class="a">tokio</span> = { <span class="a">version</span> = <span class="s">"1.40"</span>, <span class="a">features</span> = <span class="p">[</span><span class="s">"full"</span><span class="p">]</span> }
+<span class="a">anyhow</span> = <span class="s">"1.0"</span>
+<span class="a">serde</span> = { <span class="a">version</span> = <span class="s">"1.0"</span>, <span class="a">features</span> = <span class="p">[</span><span class="s">"derive"</span><span class="p">]</span> }
+<span class="a">retries</span> = <span class="n">3</span>
+</span></pre>
+  </div>
+
+  <!-- ============ LATEX ============ -->
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">LaTeX</span>
+      <span>report.tex</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c">% Quarterly reliability report — projectious.work</span>
+<span class="k">\documentclass</span>{<span class="t">article</span>}
+<span class="k">\usepackage</span>{<span class="t">amsmath</span>}
+<span class="k">\title</span>{<span class="s">Agent reliability, Q3 2025</span>}
+
+<span class="k">\begin</span>{<span class="t">document</span>}
+<span class="k">\maketitle</span>
+The success rate <span class="e">$\rho$</span> across <span class="n">12{,}480</span> runs was:
+<span class="k">\begin</span>{<span class="t">equation</span>}
+  <span class="e">\rho</span> = <span class="e">\frac</span>{<span class="n">N_{\text{ok}}</span>}{<span class="n">N_{\text{total}}</span>} = <span class="n">0.9987</span>
+<span class="k">\end</span>{<span class="t">equation</span>}
+<span class="k">\end</span>{<span class="t">document</span>}
+</span></pre>
+  </div>
+
+  <!-- ============ TOKEN LEGEND ============ -->
+  <div style="background:#0e1720;border-radius:6px;padding:12px 14px;font-family:var(--font-body);font-size:11px;color:#9aaab8">
+    <div style="font-family:var(--font-heading);font-weight:600;color:#c5daf0;text-transform:uppercase;letter-spacing:0.02em;font-size:10px;margin-bottom:8px">Token palette</div>
+    <div class="row" style="gap:14px;row-gap:6px;flex-wrap:wrap;font-family:var(--font-code);font-size:11px">
+      <span><span style="color:#ea7558">●</span> keyword</span>
+      <span><span style="color:#6cc090">●</span> string</span>
+      <span><span style="color:#e6b94a">●</span> number / bool</span>
+      <span><span style="color:#5c6f82">●</span> comment</span>
+      <span><span style="color:#8aacc8">●</span> type / builtin</span>
+      <span><span style="color:#d5dee8">●</span> function</span>
+      <span><span style="color:#c08a17">●</span> attribute / key</span>
+      <span><span style="color:#97a8b8">●</span> punctuation</span>
+    </div>
+  </div>
+
+</div>
+</body></html>

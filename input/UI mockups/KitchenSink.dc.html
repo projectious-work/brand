@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+</helmet>
+<div data-theme="{{ themeAttr }}" style="background:var(--color-bg);min-height:100vh;font-family:var(--font-body);color:var(--color-text-primary)">
+
+  <header style="position:sticky;top:0;z-index:10;background:var(--color-surface);border-bottom:1px solid var(--color-border);padding:16px 32px;display:flex;align-items:center;justify-content:space-between">
+    <div style="display:flex;align-items:center;gap:8px">
+      <img src="{{ logoSrc }}" width="26" height="26" alt="" style="display:block">
+      <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;transform:translateY(-2px);color:var(--color-text-primary)">projectious<span style="color:var(--midnight-8)">&middot;</span><span style="color:var(--color-accent)">work</span></span>
+      <span style="font-family:var(--font-body);font-size:12px;color:var(--color-text-muted);margin-left:8px;padding-left:12px;border-left:1px solid var(--color-border)">Kitchen sink</span>
+    </div>
+    <button onclick="{{ toggleTheme }}" style="font-family:var(--font-heading);font-weight:500;font-size:13px;padding:8px 16px;border:1.5px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface);color:var(--color-text-primary);cursor:pointer">{{ themeLabel }}</button>
+  </header>
+
+  <div style="max-width:var(--container-max);margin:0 auto;padding:48px 32px 96px;display:flex;flex-direction:column;gap:64px">
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Color</h2>
+      <sc-for list="{{ scales }}" as="s" hint-placeholder-count="3">
+        <div style="margin-bottom:16px">
+          <div style="font-family:var(--font-code);font-size:12px;color:var(--color-text-muted);margin-bottom:6px">{{ s.name }}</div>
+          <div style="display:flex;border-radius:var(--radius-md);overflow:hidden;border:1px solid var(--color-border)">
+            <sc-for list="{{ s.steps }}" as="c" hint-placeholder-count="12">
+              <div style="flex:1;height:40px;background:{{ c }}"></div>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:20px">
+        <sc-for list="{{ semantics }}" as="sem" hint-placeholder-count="4">
+          <div style="display:flex;align-items:center;gap:10px;padding:12px 14px;border-radius:var(--radius-md);background:{{ sem.bg }}">
+            <span style="width:10px;height:10px;border-radius:50%;background:{{ sem.fg }}"></span>
+            <span style="font-family:var(--font-body);font-size:13px;color:{{ sem.fg }};font-weight:500">{{ sem.label }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Typography</h2>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div style="font-family:var(--font-heading);font-weight:800;font-size:var(--type-display-size);letter-spacing:-0.5px;color:var(--color-text-primary)">Display / Jakarta 800</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:var(--type-h1-size);color:var(--color-text-primary)">Heading 1 / Jakarta 700</div>
+        <div style="font-family:var(--font-heading);font-weight:700;font-size:var(--type-h2-size);color:var(--color-text-primary)">Heading 2 / Jakarta 700</div>
+        <div style="font-family:var(--font-heading);font-weight:600;font-size:var(--type-h3-size);color:var(--color-text-primary)">Heading 3 / Jakarta 600</div>
+        <div style="font-family:var(--font-body);font-size:var(--type-body-l-size);line-height:var(--type-body-l-lh);color:var(--color-text-primary);max-width:600px">Body large / Source Sans 3 &mdash; the size for lead paragraphs and article intros, set for comfortable reading.</div>
+        <div style="font-family:var(--font-body);font-size:var(--type-body-size);color:var(--color-text-primary)">Body / Source Sans 3 &mdash; the default UI and paragraph size.</div>
+        <div style="font-family:var(--font-body);font-size:var(--type-caption-size);color:var(--color-text-muted)">Caption / Source Sans 3, muted</div>
+        <div style="font-family:var(--font-code);font-size:var(--type-code-size);color:var(--color-text-primary)">code / IBM Plex Mono &mdash; precision</div>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Buttons</h2>
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button style="font-family:var(--font-heading);font-weight:500;font-size:14px;padding:10px 22px;border:0;border-radius:var(--radius-md);color:#fff;background:var(--color-accent-solid);cursor:pointer">Primary</button>
+        <button style="font-family:var(--font-heading);font-weight:500;font-size:14px;padding:10px 22px;border:1.5px solid var(--color-border);border-radius:var(--radius-md);color:var(--color-text-primary);background:transparent;cursor:pointer">Secondary</button>
+        <button style="font-family:var(--font-heading);font-weight:500;font-size:14px;padding:10px 22px;border:0;border-radius:var(--radius-md);color:var(--midnight-11);background:transparent;cursor:pointer">Ghost</button>
+        <button disabled style="font-family:var(--font-heading);font-weight:500;font-size:14px;padding:10px 22px;border:0;border-radius:var(--radius-md);color:var(--slate-8);background:var(--slate-3);cursor:not-allowed">Disabled</button>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Form controls</h2>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;max-width:600px">
+        <input placeholder="Text input" style="font-family:var(--font-body);font-size:14px;padding:10px 14px;width:220px;border:1.5px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface);color:var(--color-text-primary)">
+        <select style="font-family:var(--font-body);font-size:14px;padding:10px 14px;width:180px;border:1.5px solid var(--color-border);border-radius:var(--radius-md);background:var(--color-surface);color:var(--color-text-primary)">
+          <option>Select option</option>
+        </select>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Status pills</h2>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <sc-for list="{{ pills }}" as="p" hint-placeholder-count="5">
+          <span style="display:inline-flex;align-items:center;gap:6px;padding:3px 12px;border-radius:var(--radius-full);font-family:var(--font-body);font-size:12px;font-weight:500;background:{{ p.bg }};color:{{ p.fg }}"><span style="width:6px;height:6px;border-radius:50%;background:{{ p.fg }}"></span>{{ p.label }}</span>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Cards & elevation</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-0)">
+          <div style="font-family:var(--font-code);font-size:11px;color:var(--color-text-muted);margin-bottom:6px">shadow-0</div>
+          <div style="font-family:var(--font-heading);font-weight:600;font-size:14px;color:var(--color-text-primary)">Flat</div>
+        </div>
+        <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-1)">
+          <div style="font-family:var(--font-code);font-size:11px;color:var(--color-text-muted);margin-bottom:6px">shadow-1</div>
+          <div style="font-family:var(--font-heading);font-weight:600;font-size:14px;color:var(--color-text-primary)">Card at rest</div>
+        </div>
+        <div style="background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-2)">
+          <div style="font-family:var(--font-code);font-size:11px;color:var(--color-text-muted);margin-bottom:6px">shadow-2</div>
+          <div style="font-family:var(--font-heading);font-weight:600;font-size:14px;color:var(--color-text-primary)">Dropdown / popover</div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Radii</h2>
+      <div style="display:flex;gap:16px;align-items:center">
+        <sc-for list="{{ radii }}" as="r" hint-placeholder-count="5">
+          <div style="text-align:center">
+            <div style="width:64px;height:64px;background:var(--midnight-4);border-radius:{{ r.value }}"></div>
+            <div style="font-family:var(--font-code);font-size:11px;color:var(--color-text-muted);margin-top:6px">{{ r.name }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Spacing scale (4px base)</h2>
+      <div style="display:flex;align-items:flex-end;gap:8px">
+        <sc-for list="{{ spacing }}" as="sp" hint-placeholder-count="9">
+          <div style="text-align:center">
+            <div style="width:24px;background:var(--color-accent);height:{{ sp.value }}"></div>
+            <div style="font-family:var(--font-code);font-size:10px;color:var(--color-text-muted);margin-top:6px">{{ sp.value }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </section>
+
+    <section>
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:var(--color-text-primary);margin:0 0 20px">Terminal & syntax</h2>
+      <pre style="background:var(--terminal-surface);color:var(--terminal-foreground);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:20px;font-family:var(--font-code);font-size:13px;line-height:1.8;margin:0;overflow-x:auto"><code><div><span style="color:var(--terminal-dim-comment)">// agent-validated deploy</span></div><div><span style="color:var(--syntax-keyword)">const</span> pipeline = <span style="color:var(--syntax-function)">createPipeline</span>({</div><div>&nbsp;&nbsp;name: <span style="color:var(--syntax-string)">"validate-deploy"</span>,</div><div>&nbsp;&nbsp;policy: <span style="color:var(--syntax-string)">"strict"</span>,</div><div>&nbsp;&nbsp;retries: <span style="color:var(--syntax-number)">1</span></div><div>});</div><div>&nbsp;</div><div><span style="color:var(--syntax-type)">Result</span>&lt;<span style="color:var(--syntax-type)">Run</span>&gt; ok = pipeline.run();</div></code></pre>
+    </section>
+
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { theme: 'light' };
+  toggleTheme = () => this.setState(s => ({ theme: s.theme === 'light' ? 'dark' : 'light' }));
+
+  renderVals() {
+    const scales = [
+      { name: 'midnight', steps: Array.from({ length: 12 }, (_, i) => 'var(--midnight-' + (i + 1) + ')') },
+      { name: 'orange', steps: Array.from({ length: 12 }, (_, i) => 'var(--orange-' + (i + 1) + ')') },
+      { name: 'slate', steps: Array.from({ length: 12 }, (_, i) => 'var(--slate-' + (i + 1) + ')') }
+    ];
+    const semantics = [
+      { label: 'Success', bg: 'var(--color-success-bg)', fg: 'var(--color-success-fg)' },
+      { label: 'Warning', bg: 'var(--color-warning-bg)', fg: 'var(--color-warning-fg)' },
+      { label: 'Danger', bg: 'var(--color-danger-bg)', fg: 'var(--color-danger-fg)' },
+      { label: 'Info', bg: 'var(--color-info-bg)', fg: 'var(--color-info-fg)' }
+    ];
+    const pills = [
+      { label: 'Healthy', bg: 'var(--color-success-bg)', fg: 'var(--color-success-fg)' },
+      { label: 'Running', bg: 'var(--color-info-bg)', fg: 'var(--color-info-fg)' },
+      { label: 'Warning', bg: 'var(--color-warning-bg)', fg: 'var(--color-warning-fg)' },
+      { label: 'Failed', bg: 'var(--color-danger-bg)', fg: 'var(--color-danger-fg)' },
+      { label: 'Idle', bg: 'var(--slate-2)', fg: 'var(--slate-11)' }
+    ];
+    const radii = [
+      { name: 'sm 3px', value: 'var(--radius-sm)' },
+      { name: 'md 6px', value: 'var(--radius-md)' },
+      { name: 'lg 9px', value: 'var(--radius-lg)' },
+      { name: 'xl 13px', value: 'var(--radius-xl)' },
+      { name: 'full', value: 'var(--radius-full)' }
+    ];
+    const spacing = [4, 8, 12, 16, 24, 32, 48, 64, 96].map(v => ({ value: v + 'px' }));
+
+    return {
+      logoSrc: '_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/assets/logo/' + (this.state.theme === 'dark' ? 'icon-dark.svg' : 'icon-light.svg'),
+      themeAttr: this.state.theme,
+      themeLabel: this.state.theme === 'light' ? 'Switch to dark' : 'Switch to light',
+      toggleTheme: this.toggleTheme,
+      scales, semantics, pills, radii, spacing
+    };
+  }
+}
+
+</script>
+</body>
+</html>

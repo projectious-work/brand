@@ -10,9 +10,8 @@ square centimetres. The one-pager is the opposite problem: a whole page,
 handed over or attached, that has to explain a single service to someone who has
 not asked yet.
 
-| | Source |
-|---|---|
-| **Service flier** | [`brand/examples/flier.dc.html`]({{< siteurl "downloads/examples/flier.dc.html" >}}) — "Cloud migration accelerator" |
+The rendered service-page mockups are the visual reference for hierarchy,
+spacing, surface treatment, and the single-action close.
 
 ## One service per sheet
 

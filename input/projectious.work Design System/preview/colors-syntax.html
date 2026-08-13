@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Colors · Syntax roles" subtitle="Ten roles, hues assigned by measured perceptual distance" viewport="700x390" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
+<style>
+.rl{display:flex;gap:8px;align-items:center;font-family:var(--font-code);font-size:11px}
+.rl .sw{width:12px;height:12px;border-radius:3px;flex:0 0 12px}
+.rl .nm{width:150px;flex:0 0 150px}
+.tglrow button{font-family:var(--font-body);font-size:11px;padding:4px 10px;border-radius:var(--radius-md);border:1.5px solid var(--color-border);background:var(--surface);color:var(--fg-1);cursor:pointer}
+.tglrow button[aria-pressed="true"]{border-color:var(--color-primary);color:var(--color-primary);font-weight:600}
+</style>
+<div class="row tglrow" style="gap:6px;margin-bottom:10px" role="group" aria-label="Panel">
+  <button data-panel="dark" aria-pressed="true">Dark panel (default)</button>
+  <button data-panel="light">Light panel (optional)</button>
+</div>
+<div id="panel" style="background:#0e1720;border-radius:9px;padding:14px 16px">
+  <div class="row" style="gap:26px;align-items:flex-start">
+    <div class="col" style="gap:6px;flex:0 0 auto" id="legend"></div>
+    <div id="sample" style="font-family:var(--font-code);font-size:11.5px;line-height:1.75;flex:1"></div>
+  </div>
+</div>
+<div class="sub" style="margin-top:8px">Only the three neutrals live in the blue-grey band, separated by lightness. Every chromatic role holds its own hue. LSP modifiers are carried by typography, not colour. The light panel is an optional companion set — real terminal/code-block chrome stays dark by default.</div>
+<script>
+const ROLES = ['plain','operator','comment','keyword','type / class','function','string','number','decorator / macro','invalid'];
+const KEYS  = ['plain','operator','comment','keyword','type','function','string','number','macro','invalid'];
+const DARK  = { plain:'#c5daf0', operator:'#97a8b8', comment:'#72889d', keyword:'#d491b4', type:'#6cc090', function:'#8aacc8', string:'#ea7558', number:'#e0a92a', macro:'#74c0c9', invalid:'#e55b5b' };
+const LIGHT = { plain:'#142438', operator:'#4a5e74', comment:'#5c6f82', keyword:'#1d3352', type:'#276754', function:'#3a5a82', string:'#a8461f', number:'#8b6508', macro:'#1c6b6b', invalid:'#a8261c' };
+function render(mode) {
+  const c = mode === 'light' ? LIGHT : DARK;
+  document.getElementById('panel').style.background = mode === 'light' ? '#f4f5f7' : '#0e1720';
+  document.getElementById('legend').innerHTML = ROLES.map((label, i) => {
+    const k = KEYS[i];
+    return '<div class="rl"><div class="sw" style="background:' + c[k] + '"></div><div class="nm" style="color:' + (mode === 'light' ? '#142438' : '#97a8b8') + '">' + label + '</div><div class="hx" style="color:' + (mode === 'light' ? '#5c6f82' : '#72889d') + '">' + c[k] + '</div></div>';
+  }).join('');
+  document.getElementById('sample').style.color = c.plain;
+  document.getElementById('sample').innerHTML =
+    '<div><span style="color:' + c.comment + '">/// Roll out one pipeline stage.</span></div>' +
+    '<div><span style="color:' + c.macro + '">#[instrument]</span></div>' +
+    '<div><span style="color:' + c.keyword + '">pub async fn</span> <span style="color:' + c.function + '">rollout</span><span style="color:' + c.operator + '">(</span>stage<span style="color:' + c.operator + '">:</span> <span style="color:' + c.type + '">Stage</span><span style="color:' + c.operator + '">)</span> <span style="color:' + c.operator + '">-&gt;</span> <span style="color:' + c.type + '">Result</span><span style="color:' + c.operator + '">&lt;</span><span style="color:' + c.type + '">Report</span><span style="color:' + c.operator + '">&gt; {</span></div>' +
+    '<div>&nbsp;&nbsp;<span style="color:' + c.keyword + '">let</span> budget <span style="color:' + c.operator + '">=</span> <span style="color:' + c.number + '">300</span><span style="color:' + c.operator + '">;</span></div>' +
+    '<div>&nbsp;&nbsp;<span style="color:' + c.keyword + '">let</span> env <span style="color:' + c.operator + '">=</span> <span style="color:' + c.string + '">"production"</span><span style="color:' + c.operator + '">;</span></div>' +
+    '<div>&nbsp;&nbsp;stage<span style="color:' + c.operator + '">.</span><span style="color:' + c.function + '">apply</span><span style="color:' + c.operator + '">(</span>env<span style="color:' + c.operator + '">,</span> budget<span style="color:' + c.operator + '">).</span><span style="color:' + c.invalid + '">unwrap</span><span style="color:' + c.operator + '">()</span></div>' +
+    '<div><span style="color:' + c.operator + '">}</span></div>';
+}
+document.querySelectorAll('[data-panel]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('[data-panel]').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  render(b.getAttribute('data-panel'));
+}));
+render('dark');
+</script>
+</body></html>

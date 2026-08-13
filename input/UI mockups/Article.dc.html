@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+  <style>
+    a { color: var(--midnight-11); }
+    a:hover { color: var(--color-accent); }
+    .article-pre { background: var(--terminal-surface); color: var(--terminal-foreground); border: 1px solid var(--color-border); border-radius: var(--radius-lg); padding: 20px; overflow-x: auto; font-family: var(--font-code); font-size: var(--type-code-size); line-height: var(--type-code-lh); }
+  </style>
+</helmet>
+<div data-theme="light" style="background:var(--color-bg);min-height:100vh">
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Header" hint-size="100%,66px"></x-import>
+
+  <div style="max-width:920px;margin:0 auto;padding:64px 32px 0;display:grid;grid-template-columns:1fr 200px;gap:64px;align-items:start">
+    <article style="max-width:680px">
+      <div style="font-family:var(--font-body);font-size:var(--type-overline-size);font-weight:var(--type-overline-weight);letter-spacing:var(--type-overline-tracking);text-transform:uppercase;color:var(--orange-11);margin-bottom:var(--space-4)">Whitepaper</div>
+      <h1 style="font-family:var(--font-heading);font-weight:800;font-size:40px;line-height:1.1;letter-spacing:-0.5px;color:var(--color-primary);margin:0 0 var(--space-4)">Provider independence in an agentic stack</h1>
+      <p style="font-family:var(--font-body);font-size:var(--type-body-l-size);line-height:var(--type-body-l-lh);color:var(--color-text-secondary);margin:0 0 var(--space-5)">A framework for keeping AI vendor choices reversible without slowing delivery.</p>
+      <div style="display:flex;align-items:center;gap:var(--space-3);padding-bottom:var(--space-6);border-bottom:1px solid var(--color-border);margin-bottom:var(--space-6);font-family:var(--font-code);font-size:12px;color:var(--color-text-muted)">
+        <span>Marius Keller</span><span>&middot;</span><span>Aug 4, 2026</span><span>&middot;</span><span>12 min read</span>
+      </div>
+
+      <p style="font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--color-text-primary);margin:0 0 var(--space-5)">Most teams treat their model provider as a foundation decision, made once and revisited only under duress. That is backwards. The provider is the layer most likely to change &mdash; through pricing, capability shifts, or policy &mdash; and the layer least worth being locked into.</p>
+
+      <h2 id="s1" style="font-family:var(--font-heading);font-weight:700;font-size:24px;color:var(--color-primary);margin:var(--space-7) 0 var(--space-3)">The switching cost is architectural, not contractual</h2>
+      <p style="font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--color-text-primary);margin:0 0 var(--space-4)">A contract can be cancelled in a quarter. A codebase that calls one provider's SDK directly from forty places cannot. The real lock-in lives in how many places assume one vendor's request and response shape.</p>
+      <p style="font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--color-text-primary);margin:0 0 var(--space-4)">We route every model call through one internal interface, regardless of how many providers sit behind it:</p>
+
+      <pre class="article-pre" style="margin:0 0 var(--space-5)"><code><div><span style="color:var(--terminal-dim-comment)">// one interface, swappable backends</span></div><div><span style="color:var(--syntax-keyword)">interface</span> <span style="color:var(--syntax-type)">ModelClient</span> {</div><div>&nbsp;&nbsp;complete(req: <span style="color:var(--syntax-type)">CompletionRequest</span>): <span style="color:var(--syntax-type)">Promise</span>&lt;<span style="color:var(--syntax-type)">CompletionResult</span>&gt;;</div><div>}</div><div>&nbsp;</div><div><span style="color:var(--syntax-keyword)">const</span> client = resolveClient(policy.<span style="color:var(--syntax-function)">preferredProvider</span>);</div></code></pre>
+
+      <div style="display:flex;gap:var(--space-3);padding:14px 16px;border-radius:var(--radius-lg);background:var(--color-info-bg);margin:0 0 var(--space-5)">
+        <span style="color:var(--color-info);font-size:14px">&#9432;</span>
+        <p style="font-family:var(--font-body);font-size:13.5px;line-height:1.6;color:var(--color-info);margin:0">The interface, not the model, is the thing worth testing. Provider swaps become a config change, not a migration.</p>
+      </div>
+
+      <h2 id="s2" style="font-family:var(--font-heading);font-weight:700;font-size:24px;color:var(--color-primary);margin:var(--space-7) 0 var(--space-3)">What this costs you</h2>
+      <p style="font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--color-text-primary);margin:0 0 var(--space-4)">Provider independence is not free. It means giving up the newest provider-specific feature on day one, and it means maintaining an abstraction layer someone has to own. In our experience, that cost is worth paying for anything that touches production data or customer-facing decisions &mdash; and not worth paying for a weekend prototype.</p>
+
+      <blockquote style="border-left:3px solid var(--color-accent);padding-left:var(--space-4);margin:var(--space-6) 0;font-family:var(--font-heading);font-size:20px;font-weight:600;color:var(--color-primary);line-height:1.4">&ldquo;The provider is the layer most likely to change, and the layer least worth being locked into.&rdquo;</blockquote>
+
+      <h2 id="s3" style="font-family:var(--font-heading);font-weight:700;font-size:24px;color:var(--color-primary);margin:var(--space-7) 0 var(--space-3)">Where we draw the line</h2>
+      <p style="font-family:var(--font-body);font-size:16px;line-height:1.75;color:var(--color-text-primary);margin:0 0 var(--space-4)">Self-host where the workload is stable and the data is sensitive. Use a hosted frontier model where the task benefits from the newest capability and the data is not. Reassess quarterly, not annually &mdash; the tradeoff moves faster than most procurement cycles.</p>
+
+      <div style="display:flex;justify-content:space-between;padding-top:var(--space-5);margin-top:var(--space-7);border-top:1px solid var(--color-border);font-family:var(--font-body);font-size:13px;color:var(--color-text-muted)">
+        <a href="#" style="text-decoration:none">&larr; Redesigning work</a>
+        <a href="#" style="text-decoration:none">Continuous audit, explained &rarr;</a>
+      </div>
+    </article>
+
+    <aside style="position:sticky;top:64px">
+      <div style="font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--color-text-muted);margin-bottom:var(--space-3)">On this page</div>
+      <a href="#s1" style="display:block;padding:5px 0;font-family:var(--font-body);font-size:12.5px;color:var(--color-accent);text-decoration:none">The switching cost</a>
+      <a href="#s2" style="display:block;padding:5px 0;font-family:var(--font-body);font-size:12.5px;color:var(--color-text-secondary);text-decoration:none">What this costs you</a>
+      <a href="#s3" style="display:block;padding:5px 0;font-family:var(--font-body);font-size:12.5px;color:var(--color-text-secondary);text-decoration:none">Where we draw the line</a>
+    </aside>
+  </div>
+
+  <div style="margin-top:80px">
+    <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Footer" hint-size="100%,90px"></x-import>
+  </div>
+</div>
+
+</x-dc>
+</body>
+</html>

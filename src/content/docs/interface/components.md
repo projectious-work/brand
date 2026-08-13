@@ -6,7 +6,7 @@ description: The component set as live specimens — buttons, inputs, cards, tab
 ---
 
 Every specimen on this page is live markup styled by the brand tokens, ported
-from `brand/html/projectious-kitchen-sink.html`. They follow your colour mode —
+from the supplied kitchen-sink mockup. They follow your colour mode —
 switch the theme and they change with the documentation.
 
 Measurements listed here are normative: a 40px input is 40px.
@@ -122,7 +122,8 @@ Full rules — labels, validation, focus — are on
 
 ## Cards
 
-Radius 9px, padding 24px, 1px `slate-4` border, `shadow-1` at rest. Nested
+Radius 9px, padding 16px 24px, 1px `slate-5` border, flat at rest. `shadow-1`
+is reserved for hover; nested
 controls step **down** one radius.
 
 {{< demo label="Basic, with image, with actions" variant="grid" >}}

@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Colors · Terminal palette" subtitle="16 ANSI slots plus chrome — dark default, optional light companion" viewport="700x275" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
+<style>
+.slot{display:flex;flex-direction:column;gap:3px;align-items:center;flex:1}
+.dot{width:100%;height:26px;border-radius:4px}
+.n{font-family:var(--font-code);font-size:9px}
+.tglrow button{font-family:var(--font-body);font-size:11px;padding:4px 10px;border-radius:var(--radius-md);border:1.5px solid var(--color-border);background:var(--surface);color:var(--fg-1);cursor:pointer}
+.tglrow button[aria-pressed="true"]{border-color:var(--color-primary);color:var(--color-primary);font-weight:600}
+</style>
+<div class="row tglrow" style="gap:6px;margin-bottom:10px" role="group" aria-label="Panel">
+  <button data-panel="dark" aria-pressed="true">Dark panel (default)</button>
+  <button data-panel="light">Light panel (optional)</button>
+</div>
+<div id="panel" style="background:#0e1720;border-radius:9px;padding:14px 16px">
+  <div class="col" style="gap:10px">
+    <div class="row" style="gap:5px" id="row1"></div>
+    <div class="row" style="gap:5px" id="row2"></div>
+    <div id="chrome" style="font-family:var(--font-code);font-size:11px;line-height:1.7;padding-top:4px"></div>
+  </div>
+</div>
+<div class="sub" style="margin-top:8px">Floor 4.95:1 (dark) / 4.5:1 (light, optional) against the terminal surface. Implementations for tmux, WezTerm, Kitty, iTerm2, Zellij and Ghostty are documented upstream.</div>
+<script>
+const DARK = { surface:'#0e1720', border:'#2e4b68', fg:'#c5daf0', dim:'#72889d',
+  ansi:['#0e1720','#e55b5b','#3f9d74','#c08a1e','#6289b3','#bd6d96','#3f97a3','#97a8b8','#2e4b68','#f08b80','#6cc090','#e0a92a','#8aacc8','#d491b4','#74c0c9','#c5daf0'] };
+const LIGHT = { surface:'#f4f5f7', border:'#cdd0d5', fg:'#142438', dim:'#5c6f82',
+  ansi:['#1e2b38','#b8352f','#276754','#8b6508','#3a5a82','#8a3f6e','#1c6b6b','#546a82','#4a5e74','#a8261c','#1f7a52','#6f5106','#1d3352','#752f5c','#125555','#142438'] };
+function render(mode) {
+  const c = mode === 'light' ? LIGHT : DARK;
+  document.getElementById('panel').style.background = c.surface;
+  document.getElementById('row1').innerHTML = c.ansi.slice(0,8).map((hex,i) =>
+    '<div class="slot"><div class="dot" style="background:' + hex + (i===0?';border:1px solid '+c.border:'') + '"></div><div class="n" style="color:' + c.dim + '">' + i + '</div></div>').join('');
+  document.getElementById('row2').innerHTML = c.ansi.slice(8,16).map((hex,i) =>
+    '<div class="slot"><div class="dot" style="background:' + hex + '"></div><div class="n" style="color:' + c.dim + '">' + (i+8) + '</div></div>').join('');
+  document.getElementById('chrome').style.color = c.fg;
+  document.getElementById('chrome').style.borderTop = '1px solid ' + c.border;
+  document.getElementById('chrome').innerHTML =
+    '<div><span style="color:' + c.dim + '"># surface ' + c.surface + ' · fg ' + c.fg + ' · cursor #e05232</span></div>' +
+    '<div><span style="color:' + c.ansi[10] + '">\u2713</span> <span style="color:' + c.ansi[13] + '">deploy</span> <span style="color:' + c.ansi[7] + '">--env</span> <span style="color:' + c.ansi[9] + '">production</span> <span style="color:' + c.dim + '">&nbsp;# 1.2s</span></div>';
+}
+document.querySelectorAll('[data-panel]').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('[data-panel]').forEach(x => x.setAttribute('aria-pressed', x === b ? 'true' : 'false'));
+  render(b.getAttribute('data-panel'));
+}));
+render('dark');
+</script>
+</body></html>

@@ -2,7 +2,7 @@
 title: Themes
 linkTitle: Themes
 weight: 33
-description: Configuration of theme framworks for usage with the projectious.work brand system
+description: Configuration of theme frameworks for use with the projectious.work brand system.
 ---
 
 This section contains guidance for configuring selected theming frameworks

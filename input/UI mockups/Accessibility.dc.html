@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;font-family:var(--font-body);background:var(--midnight-2)">
+
+  <aside style="width:280px;flex-shrink:0;background:var(--color-surface);border-right:1px solid var(--color-border);padding:22px 20px;overflow-y:auto">
+    <div style="font-family:var(--font-heading);font-weight:700;font-size:15px;color:var(--color-primary);margin-bottom:6px">Accessibility switches</div>
+    <p style="font-family:var(--font-body);font-size:12.5px;line-height:1.55;color:var(--color-text-secondary);margin:0 0 20px">Every setting is opt-in. Toggle one and the screen on the right responds &mdash; nothing else changes.</p>
+    <div style="display:flex;flex-direction:column;gap:18px">
+      <sc-for list="{{ controls }}" as="c" hint-placeholder-count="7">
+        <div>
+          <div style="font-family:var(--font-code);font-size:11px;color:var(--color-text-muted);margin-bottom:6px">{{ c.attr }}</div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap">
+            <sc-for list="{{ c.options }}" as="o" hint-placeholder-count="3">
+              <button onclick="{{ o.onPick }}" style="font-family:var(--font-heading);font-size:12px;font-weight:500;padding:6px 12px;border-radius:var(--radius-md);cursor:pointer;border:1.5px solid {{ o.border }};background:{{ o.bg }};color:{{ o.fg }}">{{ o.label }}</button>
+            </sc-for>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </aside>
+
+  <div data-theme="{{ mode }}" style="flex:1;min-width:0;overflow:auto;background:var(--color-bg);position:relative">
+    <a href="#main" style="{{ skipStyle }}" style-focus="{{ skipFocusStyle }}">Skip to content</a>
+
+    <header style="padding:16px 28px;background:var(--color-surface);border-bottom:1px solid {{ borderColor }};display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <span style="display:flex;align-items:center;gap:8px">
+        <img src="{{ logoSrc }}" width="26" height="26" alt="" style="display:block">
+        <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;transform:translateY(-2px);color:var(--color-text-primary)">projectious<span style="color:var(--midnight-8)">&middot;</span><span style="color:var(--color-accent)">work</span></span>
+      </span>
+      <nav style="display:flex;gap:20px;align-items:center">
+        <a href="#" style="font-family:var(--font-body);color:var(--midnight-11);text-decoration:none;font-size:{{ fs.body }}" style-focus="{{ focusStyle }}">Pipelines</a>
+        <a href="#" style="font-family:var(--font-body);color:var(--midnight-11);text-decoration:none;font-size:{{ fs.body }}" style-focus="{{ focusStyle }}">Runs</a>
+        <button style="font-family:var(--font-heading);font-weight:500;min-height:44px;padding:0 18px;border:0;border-radius:var(--radius-md);color:#fff;background:var(--color-accent-solid);cursor:pointer;font-size:{{ fs.body }};transition:{{ transition }}" style-focus="{{ focusStyle }}">New pipeline</button>
+      </nav>
+    </header>
+
+    <main id="main" style="padding:32px 28px;display:flex;flex-direction:column;gap:28px">
+      <div>
+        <h1 style="font-family:var(--font-heading);font-weight:700;letter-spacing:-0.4px;color:var(--color-text-primary);margin:0 0 10px;font-size:{{ fs.h1 }};line-height:1.15">Onboarding audit</h1>
+        <p style="font-family:var(--font-body);color:var(--color-text-primary);margin:0;max-width:65ch;font-size:{{ fs.bodyL }};line-height:{{ spacing.lineHeight }};letter-spacing:{{ spacing.letterSpacing }};word-spacing:{{ spacing.wordSpacing }}">This run validated 214 documents against <a href="#" style="color:var(--midnight-11);text-decoration:{{ linkDecoration }}" style-focus="{{ focusStyle }}">data-retention-v2</a>. Two records were held for manual review because the source system returned no signature date.</p>
+      </div>
+
+      <div style="border:1px solid {{ borderColor }};border-radius:var(--radius-lg);background:var(--color-surface);overflow:hidden">
+        <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:10px 18px;background:{{ headerBg }};border-bottom:1px solid {{ borderColor }};font-family:var(--font-body);font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ mutedColor }};font-size:{{ fs.overline }}">
+          <div>Stage</div><div>Status</div><div>Duration</div>
+        </div>
+        <sc-for list="{{ rows }}" as="r" hint-placeholder-count="4">
+          <div style="display:grid;grid-template-columns:2fr 1fr 1fr;padding:14px 18px;border-top:1px solid {{ borderColor }};align-items:center">
+            <div style="font-family:var(--font-code);color:var(--color-text-primary);font-size:{{ fs.code }}">{{ r.stage }}</div>
+            <div>
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:2px 10px;border-radius:var(--radius-full);font-family:var(--font-body);font-weight:500;font-size:{{ fs.caption }};background:{{ r.bg }};color:{{ r.fg }};outline:{{ pillOutline }}"><span>{{ r.glyph }}</span>{{ r.status }}</span>
+            </div>
+            <div style="font-family:var(--font-code);color:{{ secondaryColor }};font-size:{{ fs.code }}">{{ r.duration }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;gap:12px;padding:14px 16px;border-radius:var(--radius-lg);background:{{ warnBg }};border:{{ warnBorder }};align-items:flex-start">
+        <span style="color:{{ warnFg }};font-size:14px">&#9888;</span>
+        <p style="font-family:var(--font-body);color:{{ warnFg }};margin:0;font-size:{{ fs.body }};line-height:{{ spacing.lineHeight }};letter-spacing:{{ spacing.letterSpacing }};word-spacing:{{ spacing.wordSpacing }}">Two records need a signature date before this run can close. Status never relies on colour alone &mdash; each state carries a glyph and a written label.</p>
+      </div>
+
+      <div style="display:flex;gap:12px;align-items:center;flex-wrap:wrap">
+        <button style="font-family:var(--font-heading);font-weight:500;min-height:44px;padding:0 22px;border:0;border-radius:var(--radius-md);color:#fff;background:var(--color-accent-solid);cursor:pointer;font-size:{{ fs.body }};transition:{{ transition }}" style-focus="{{ focusStyle }}">Approve run</button>
+        <button style="font-family:var(--font-heading);font-weight:500;min-height:44px;padding:0 22px;border:1.5px solid {{ borderColor }};border-radius:var(--radius-md);background:transparent;color:var(--color-text-primary);cursor:pointer;font-size:{{ fs.body }};transition:{{ transition }}" style-focus="{{ focusStyle }}">Review records</button>
+        <a href="#" style="display:inline-flex;align-items:center;min-height:44px;font-family:var(--font-body);color:var(--midnight-11);text-decoration:{{ linkDecoration }};font-size:{{ fs.body }}" style-focus="{{ focusStyle }}">Download audit export</a>
+      </div>
+
+      <p style="font-family:var(--font-body);color:{{ mutedColor }};margin:0;font-size:{{ fs.caption }};line-height:{{ spacing.lineHeight }}">Tab into this panel to see the focus ring. Currently: <span style="font-family:var(--font-code)">{{ focusNote }}</span></p>
+    </main>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = {
+    fontSize: 'base', contrast: 'off', focus: 'off',
+    linkUnderline: 'off', motion: 'off', textSpacing: 'off', mode: 'light'
+  };
+
+  pick = (key, value) => () => this.setState({ [key]: value });
+
+  renderVals() {
+    const s = this.state;
+    const dark = s.mode === 'dark';
+    const high = s.contrast === 'high';
+    const loose = s.textSpacing === 'loose';
+    const reduced = s.motion === 'reduced';
+    const strongFocus = s.focus === 'strong';
+
+    const scale = { base: 1, lg: 1.125, xl: 1.25, xxl: 1.5, xxxl: 2 }[s.fontSize];
+    const px = (n) => Math.round(n * scale) + 'px';
+    const fs = {
+      h1: px(36), h2: px(28), bodyL: px(16), body: px(14),
+      caption: px(12), overline: px(11), code: px(13)
+    };
+
+    const group = (attr, key, options) => ({
+      attr,
+      options: options.map(([label, value]) => {
+        const on = s[key] === value;
+        return {
+          label, onPick: this.pick(key, value),
+          bg: on ? 'var(--color-primary)' : 'transparent',
+          fg: on ? '#fff' : 'var(--color-text-secondary)',
+          border: on ? 'var(--color-primary)' : 'var(--color-border)'
+        };
+      })
+    });
+
+    const controls = [
+      group('data-theme', 'mode', [['light', 'light'], ['dark', 'dark']]),
+      group('data-font-size', 'fontSize', [['base', 'base'], ['lg 112%', 'lg'], ['xl 125%', 'xl'], ['xxl 150%', 'xxl'], ['xxxl 200%', 'xxxl']]),
+      group('data-contrast', 'contrast', [['off', 'off'], ['high', 'high']]),
+      group('data-focus', 'focus', [['default', 'off'], ['strong', 'strong']]),
+      group('data-link-underline', 'linkUnderline', [['off', 'off'], ['on', 'on']]),
+      group('data-text-spacing', 'textSpacing', [['off', 'off'], ['loose', 'loose']]),
+      group('data-motion', 'motion', [['off', 'off'], ['reduced', 'reduced']])
+    ];
+
+    const sem = (lightFg, lightBg, darkFg, darkBg, highLight, highDark) => {
+      if (high) return { fg: dark ? highDark : highLight, bg: 'transparent' };
+      return dark ? { fg: darkFg, bg: darkBg } : { fg: lightFg, bg: lightBg };
+    };
+    const ok = sem('#276754', '#d1ebe0', '#6cc090', 'rgba(108,192,144,0.16)', '#1c4f40', '#9fdcb8');
+    const warn = sem('#6f5106', '#f5ecd0', '#e0a92a', 'rgba(230,185,74,0.16)', '#4c3804', '#f0cb72');
+    const idle = high
+      ? { fg: dark ? '#d5dee8' : '#1e2b38', bg: 'transparent' }
+      : (dark ? { fg: '#97a8b8', bg: 'rgba(255,255,255,0.05)' } : { fg: '#5c6f82', bg: '#f1f2f4' });
+
+    const rows = [
+      { stage: 'validate_schema', status: 'Passed', glyph: '\u2713', duration: '0.4s', bg: ok.bg, fg: ok.fg },
+      { stage: 'policy_check', status: 'Passed', glyph: '\u2713', duration: '1.1s', bg: ok.bg, fg: ok.fg },
+      { stage: 'manual_review', status: 'Held', glyph: '\u26A0', duration: '\u2014', bg: warn.bg, fg: warn.fg },
+      { stage: 'deploy_staging', status: 'Waiting', glyph: '\u25CB', duration: '\u2014', bg: idle.bg, fg: idle.fg }
+    ];
+
+    const focusRing = strongFocus
+      ? 'outline:2px solid var(--midnight-9);outline-offset:2px;box-shadow:none'
+      : 'outline:none;box-shadow:0 0 0 2px rgba(29,51,82,0.15)';
+
+    return {
+      ...s, controls, rows, fs,
+      logoSrc: '_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/assets/logo/' + (dark ? 'icon-dark.svg' : 'icon-light.svg'),
+      borderColor: high ? (dark ? 'var(--midnight-8)' : 'var(--slate-9)') : 'var(--color-border)',
+      headerBg: high ? 'var(--color-surface)' : 'var(--surface-2)',
+      mutedColor: high ? 'var(--color-text-primary)' : 'var(--color-text-muted)',
+      secondaryColor: high ? 'var(--color-text-primary)' : 'var(--color-text-secondary)',
+      warnBg: warn.bg, warnFg: warn.fg,
+      warnBorder: high ? '1px solid ' + warn.fg : '0',
+      pillOutline: high ? '1px solid currentColor' : 'none',
+      linkDecoration: s.linkUnderline === 'on' ? 'underline' : 'none',
+      transition: reduced ? 'none' : 'background var(--duration-standard) var(--ease-out)',
+      focusStyle: focusRing,
+      focusNote: strongFocus ? 'data-focus="strong" \u2014 2px solid, 8.59:1' : 'default ring \u2014 ~1.2:1, below 1.4.11',
+      skipStyle: 'position:absolute;left:12px;top:-48px;z-index:20;padding:8px 16px;border-radius:6px;background:var(--color-primary);color:#fff;text-decoration:none;font-family:var(--font-heading);font-size:13px;font-weight:500;transition:' + (reduced ? 'none' : 'top var(--duration-standard) var(--ease-out)'),
+      skipFocusStyle: 'top:12px;' + focusRing,
+      spacing: {
+        lineHeight: loose ? '1.5' : '1.65',
+        letterSpacing: loose ? '0.12em' : 'normal',
+        wordSpacing: loose ? '0.16em' : 'normal'
+      }
+    };
+  }
+}
+
+</script>
+</body>
+</html>

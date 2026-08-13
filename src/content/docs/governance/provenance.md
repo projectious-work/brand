@@ -6,7 +6,7 @@ description: Per-asset source, licence, and attribution status for every third-p
 ---
 
 The authoritative inventory is
-[`brand/PROVENANCE.md`](https://github.com/projectious-work/brand/blob/main/brand/PROVENANCE.md)
+the project provenance inventory
 in the repository. Check it before adding an asset or shipping collateral.
 
 ## Fonts
@@ -43,6 +43,6 @@ original.
 
 {{% alert title="Adding a bundled asset" color="warning" %}}
 If you commit a third-party binary — a font file, an icon SVG, an image — add a
-row to `brand/PROVENANCE.md` recording its individual source, licence, and
+row to the provenance inventory recording its individual source, licence, and
 attribution requirement. Do not rely on the summary tables above.
 {{% /alert %}}

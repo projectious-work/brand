@@ -166,7 +166,7 @@ tokens as the product surfaces — no separate "presentation theme".
 
 ## A real deck
 
-[**Slide deck example**]({{< siteurl "downloads/examples/slide-deck.dc.html" >}}) — a full
+The supplied **slide templates** provide a full
 client deck at 1920×1080, populated with a realistic consulting narrative rather
 than lorem text. Arrow keys, `PgUp`/`PgDn`, and `Space` navigate; each slide
 carries its speaker notes in the source.
@@ -212,7 +212,7 @@ above.
 ## Templates and export targets
 
 Document templates for LaTeX and Typst are in
-[`brand/templates/`](https://github.com/projectious-work/brand/tree/main/brand/templates).
+the document template set.
 Both embed brand identity and fall under the brand-asset licence terms — see
 [Licensing]({{< relref "/docs/governance/licensing" >}}).
 
@@ -228,7 +228,7 @@ types above are all reproducible as masters.
 | HTML deck → present | Talks you give yourself | The [example deck](#a-real-deck). Keyboard navigation and speaker notes included |
 | HTML deck → print to PDF | Sending a deck to be read | Landscape, background graphics on, margins none |
 | Slides / PowerPoint / Keynote | Decks the client will edit | Build the twelve types as masters; do not rebuild them per deck |
-| LaTeX / Typst | Documents, not decks | `brand/templates/` |
+| LaTeX / Typst | Documents, not decks | Document templates |
 
 Two things to fix in every native deck tool, because none of them default to the
 system: replace the theme fonts with **Plus Jakarta Sans, Source Sans 3, and IBM

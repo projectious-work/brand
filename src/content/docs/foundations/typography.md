@@ -2,7 +2,7 @@
 title: Typography
 linkTitle: Typography
 weight: 20
-description: Three typefaces, three jobs, and a fixed type ramp.
+description: Three typefaces, three jobs, and the v2.1.1 type ramp.
 ---
 
 The system uses three typefaces, each with one job. All three are licensed under
@@ -34,12 +34,13 @@ documents — this is the live specimen, not a picture of one.
 
 ## Rules
 
-- **Letter-spacing tightens to −0.3px above 20px.** Large type set at default
+- **Display letter-spacing is −0.5px.** Large type set at default
   tracking reads loose and unresolved.
-- **Overline is a label, not a heading.** 11px, 600, uppercase, 0.08em tracking.
+- **Overline is a label, not a heading.** 12px, 600, uppercase, 0.08em tracking.
   Use it above a heading, never as one.
-- **Body copy is 16px / 1.65.** This is the reading size for documentation and
-  long-form prose. Do not set body text below 14px.
+- **Body copy is 16px / 1.6; body-large is 18px / 1.65.** Use body-large for
+  standfirsts and body for documentation and long-form prose. Do not set body
+  text below 14px.
 - **Never set body copy in Plus Jakarta Sans**, and never set headings in
   Source Sans 3. The split is what makes the voice recognisable.
 

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+  <script src="./console-theme.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;background:{{ theme.appBg }};font-family:var(--font-body)">
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Sidebar" active="connections" theme="{{ theme }}" hint-size="240px,100%"></x-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+    <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Topbar" title="Settings" theme="{{ theme }}" mode="{{ mode }}" on-toggle-mode="{{ toggleMode }}" hint-size="100%,66px"></x-import>
+
+    <div style="flex:1;overflow:auto;padding:28px 32px 48px">
+      <div style="max-width:680px;display:flex;flex-direction:column;gap:24px">
+
+        <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;padding:24px">
+          <h2 style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:{{ theme.title }};margin:0 0 4px">General</h2>
+          <p style="font-size:13.5px;color:{{ theme.text2 }};margin:0 0 20px">Identity and defaults for this workspace.</p>
+
+          <div style="display:flex;flex-direction:column;gap:18px">
+            <div>
+              <label style="display:block;font-family:var(--font-heading);font-size:13px;font-weight:600;color:{{ theme.title }};margin-bottom:6px">Workspace name</label>
+              <input value="acme-corp" style="width:100%;font-family:var(--font-body);font-size:14px;padding:10px 14px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:{{ theme.inputBg }};color:{{ theme.inputFg }};outline:0;box-sizing:border-box">
+              <div style="font-size:12px;color:{{ theme.text2 }};margin-top:6px">Appears in run URLs and audit exports.</div>
+            </div>
+
+            <div>
+              <label style="display:block;font-family:var(--font-heading);font-size:13px;font-weight:600;color:{{ theme.title }};margin-bottom:6px">Contact email</label>
+              <input value="ops@acme" style="width:100%;font-family:var(--font-body);font-size:14px;padding:10px 14px;border:1.5px solid {{ theme.danger }};border-radius:6px;background:{{ theme.inputBg }};color:{{ theme.inputFg }};outline:0;box-sizing:border-box">
+              <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:{{ theme.danger }};margin-top:6px"><span>&#9888;</span><span>Enter a full address, including the domain.</span></div>
+            </div>
+
+            <div>
+              <label style="display:block;font-family:var(--font-heading);font-size:13px;font-weight:600;color:{{ theme.title }};margin-bottom:6px">Default region</label>
+              <select style="width:100%;font-family:var(--font-body);font-size:14px;padding:10px 14px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:{{ theme.inputBg }};color:{{ theme.inputFg }};outline:0;box-sizing:border-box">
+                <option>eu-central-1 &middot; Frankfurt</option>
+                <option>eu-west-1 &middot; Dublin</option>
+              </select>
+            </div>
+
+            <div>
+              <label style="display:block;font-family:var(--font-heading);font-size:13px;font-weight:600;color:{{ theme.title }};margin-bottom:6px">Retention window (days)</label>
+              <input value="90" style="width:120px;font-family:var(--font-code);font-size:14px;padding:10px 14px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:{{ theme.inputBg }};color:{{ theme.inputFg }};outline:0">
+              <div style="display:flex;gap:6px;align-items:center;font-size:12px;color:{{ theme.warning }};margin-top:6px"><span>&#9888;</span><span>Below 90 days your compliance policy will fail its next audit.</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;padding:24px">
+          <h2 style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:{{ theme.title }};margin:0 0 20px">Agent behavior</h2>
+          <div style="display:flex;flex-direction:column;gap:2px">
+            <sc-for list="{{ toggles }}" as="t" hint-placeholder-count="3">
+              <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:14px 0;border-top:1px solid {{ theme.rowBorder }}">
+                <div>
+                  <div style="font-family:var(--font-heading);font-weight:600;font-size:13.5px;color:{{ theme.title }}">{{ t.label }}</div>
+                  <div style="font-size:12.5px;color:{{ theme.text2 }};margin-top:2px;max-width:420px">{{ t.help }}</div>
+                </div>
+                <button onclick="{{ t.onToggle }}" style="width:44px;height:26px;border-radius:9999px;border:0;flex-shrink:0;cursor:pointer;position:relative;background:{{ t.trackBg }};transition:background var(--duration-standard) var(--ease-out)">
+                  <span style="position:absolute;top:3px;left:{{ t.knobLeft }};width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:var(--shadow-1);transition:left var(--duration-standard) var(--ease-out)"></span>
+                </button>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+
+        <div style="background:{{ theme.surface }};border:1px solid {{ theme.dangerBorder }};border-radius:9px;padding:24px">
+          <h2 style="font-family:var(--font-heading);font-weight:700;font-size:17px;color:{{ theme.title }};margin:0 0 4px">Delete workspace</h2>
+          <p style="font-size:13.5px;line-height:1.6;color:{{ theme.text2 }};margin:0 0 18px;max-width:520px">Removes all pipelines, runs, and audit history for acme-corp. Exports already downloaded are unaffected. This cannot be undone.</p>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <input placeholder="Type acme-corp to confirm" style="font-family:var(--font-body);font-size:13.5px;padding:9px 14px;width:220px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:{{ theme.inputBg }};color:{{ theme.inputFg }};outline:0">
+            <button disabled style="font-family:var(--font-heading);font-weight:500;font-size:13.5px;padding:10px 20px;border:0;border-radius:6px;background:{{ theme.stageIdle }};color:{{ theme.text2 }};cursor:not-allowed">Delete workspace</button>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;align-items:center;padding-top:4px">
+          <button style="font-family:var(--font-heading);font-weight:500;font-size:14px;padding:10px 22px;border:0;border-radius:6px;color:#fff;background:{{ theme.accentSolid }};cursor:pointer">Save changes</button>
+          <button style="font-family:var(--font-heading);font-weight:500;font-size:14px;padding:10px 22px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:transparent;color:{{ theme.text1 }};cursor:pointer">Discard</button>
+          <span style="font-family:var(--font-code);font-size:12px;color:{{ theme.text2 }};margin-left:6px">2 unsaved changes</span>
+        </div>
+
+      </div>
+    </div>
+    <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.StatusBar" theme="{{ theme }}" hint-size="100%,36px"></x-import>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mode: 'light', flags: { selfHost: true, autoRetry: false, notify: true } };
+  toggleMode = () => this.setState(s => ({ mode: s.mode === 'light' ? 'dark' : 'light' }));
+  flip = (key) => () => this.setState(s => ({ flags: { ...s.flags, [key]: !s.flags[key] } }));
+
+  renderVals() {
+    const base = window.ConsoleTheme[this.state.mode];
+    const theme = Object.assign({}, base, { dangerBorder: base.danger });
+    const f = this.state.flags;
+    const mk = (key, label, help) => ({
+      label, help,
+      trackBg: f[key] ? theme.accentSolid : theme.stageIdle,
+      knobLeft: f[key] ? '21px' : '3px',
+      onToggle: this.flip(key)
+    });
+    const toggles = [
+      mk('selfHost', 'Route auditor through self-hosted model', 'Keeps audit prompts inside your own infrastructure. Adds roughly 300ms per stage.'),
+      mk('autoRetry', 'Retry failed stages automatically', 'One retry with backoff. Policy failures never retry.'),
+      mk('notify', 'Notify on policy failure', 'Sends to the workspace contact email and the ops channel.')
+    ];
+    return { mode: this.state.mode, theme, toggleMode: this.toggleMode, toggles };
+  }
+}
+
+</script>
+</body>
+</html>

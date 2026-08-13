@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+  <script src="./console-theme.js"></script>
+</helmet>
+<div style="display:flex;height:100vh;background:{{ theme.appBg }};font-family:var(--font-body)">
+
+  <aside style="width:240px;flex-shrink:0;background:{{ theme.sidebarBg }};color:{{ theme.sidebarFg }};display:flex;flex-direction:column;border-right:1px solid {{ theme.sidebarBorder }}">
+    <div style="padding:18px 20px;border-bottom:1px solid {{ theme.sidebarBorder }};display:flex;align-items:center;gap:8px">
+      <img src="{{ logoSrc }}" width="26" height="26" alt="" style="display:block">
+      <span style="font-family:var(--font-heading);font-weight:700;font-size:16px;letter-spacing:-0.4px;transform:translateY(-2px);color:{{ theme.sidebarLogoText }}">projectious<span style="color:{{ theme.sidebarLogoSep }}">&middot;</span><span style="color:#E05232">work</span></span>
+    </div>
+    <nav style="padding:14px 12px;flex:1;display:flex;flex-direction:column;gap:18px">
+      <sc-for list="{{ navSections }}" as="sec" hint-placeholder-count="3">
+        <div>
+          <div style="font-size:10px;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:{{ theme.sidebarSection }};padding:4px 10px;margin-bottom:4px">{{ sec.group }}</div>
+          <sc-for list="{{ sec.items }}" as="it" hint-placeholder-count="2">
+            <a href="#" style="display:block;padding:7px 10px;border-radius:6px;font-size:13px;text-decoration:none;color:{{ it.color }};background:{{ it.bg }};border-left:{{ it.borderLeft }};padding-left:{{ it.pl }}">{{ it.label }}</a>
+          </sc-for>
+        </div>
+      </sc-for>
+    </nav>
+    <div style="padding:14px;border-top:1px solid {{ theme.sidebarBorder }};display:flex;align-items:center;gap:10px">
+      <div style="width:30px;height:30px;border-radius:50%;background:{{ theme.sidebarUserBg }};display:flex;align-items:center;justify-content:center;color:{{ theme.sidebarUserFg }};font-family:var(--font-heading);font-weight:600;font-size:12px">JS</div>
+      <div style="min-width:0">
+        <div style="font-size:12px;color:{{ theme.sidebarUserName }};font-weight:500;white-space:nowrap">Jan Schmidt</div>
+        <div style="font-size:11px;color:{{ theme.sidebarMuted }};white-space:nowrap">Platform Eng</div>
+      </div>
+    </div>
+  </aside>
+
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+
+    <header style="padding:14px 28px;border-bottom:1px solid {{ theme.topbarBorder }};background:{{ theme.topbarBg }};display:flex;align-items:center;justify-content:space-between;gap:16px">
+      <div style="min-width:0">
+        <div style="font-size:11px;color:{{ theme.topbarMuted }};font-weight:500;white-space:nowrap">Admin &middot; Organization</div>
+        <h1 style="font-family:var(--font-heading);font-weight:700;font-size:22px;letter-spacing:-0.3px;color:{{ theme.topbarTitle }};margin:0">Users &amp; roles</h1>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <input placeholder="Search members..." style="font-size:13px;padding:8px 14px;width:240px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:{{ theme.inputBg }};color:{{ theme.inputFg }};outline:0;font-family:var(--font-body)">
+        <button onclick="{{ toggleMode }}" style="width:36px;height:36px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:{{ theme.inputBg }};cursor:pointer;color:{{ theme.icon }};display:flex;align-items:center;justify-content:center">
+          <sc-if value="{{ modeIsDark }}" hint-placeholder-val="{{ false }}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="M4.93 4.93l1.41 1.41"></path><path d="M17.66 17.66l1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="M6.34 17.66l-1.41 1.41"></path><path d="M19.07 4.93l-1.41 1.41"></path></svg>
+          </sc-if>
+          <sc-if value="{{ modeIsLight }}" hint-placeholder-val="{{ true }}">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"></path></svg>
+          </sc-if>
+        </button>
+        <button style="font-family:var(--font-heading);font-weight:500;font-size:13px;padding:8px 16px;border:0;border-radius:6px;white-space:nowrap;color:#fff;background:{{ theme.accentSolid }};cursor:pointer">+ Invite member</button>
+      </div>
+    </header>
+
+    <div style="flex:1;overflow:auto;padding:28px 32px;display:flex;flex-direction:column;gap:22px">
+
+      <div style="display:flex;gap:28px">
+        <sc-for list="{{ summary }}" as="s" hint-placeholder-count="4">
+          <div>
+            <div style="font-family:var(--font-heading);font-weight:700;font-size:22px;color:{{ theme.title }}">{{ s.value }}</div>
+            <div style="font-size:12px;color:{{ theme.text2 }};margin-top:2px">{{ s.label }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <div style="display:flex;gap:24px;border-bottom:1px solid {{ theme.surfaceBorder }}">
+        <sc-for list="{{ tabs }}" as="tab" hint-placeholder-count="3">
+          <div style="padding:0 0 10px;font-size:13px;font-weight:600;color:{{ tab.color }};border-bottom:{{ tab.border }};cursor:pointer">{{ tab.label }}</div>
+        </sc-for>
+      </div>
+
+      <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:2.6fr 1fr 1fr 1fr 0.9fr 0.4fr;padding:10px 18px;background:{{ theme.headerBg }};border-bottom:1px solid {{ theme.surfaceBorder }};font-size:10px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ theme.headerFg }}">
+          <div>Member</div><div>Role</div><div>Team</div><div>Status</div><div>Last active</div><div></div>
+        </div>
+        <sc-for list="{{ members }}" as="m" hint-placeholder-count="7">
+          <div style="display:grid;grid-template-columns:2.6fr 1fr 1fr 1fr 0.9fr 0.4fr;padding:14px 18px;border-bottom:1px solid {{ theme.rowBorder }};align-items:center">
+            <div style="display:flex;align-items:center;gap:10px;min-width:0">
+              <div style="width:28px;height:28px;border-radius:50%;background:{{ m.avatarBg }};color:{{ m.avatarFg }};display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:600;font-size:11px;flex-shrink:0">{{ m.initials }}</div>
+              <div style="min-width:0">
+                <div style="font-family:var(--font-heading);font-weight:600;font-size:13px;color:{{ theme.title }};white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.name }}</div>
+                <div style="font-family:var(--font-code);font-size:11px;color:{{ theme.text2 }};margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">{{ m.email }}</div>
+              </div>
+            </div>
+            <div>
+              <span style="display:inline-flex;align-items:center;padding:2px 9px;border-radius:9999px;background:{{ m.roleBg }};color:{{ m.roleFg }};font-size:11px;font-weight:500">{{ m.role }}</span>
+            </div>
+            <div style="font-size:13px;color:{{ theme.text1 }}">{{ m.team }}</div>
+            <div>
+              <span style="display:inline-flex;align-items:center;gap:6px;padding:2px 9px;border-radius:9999px;background:{{ m.statusBg }};color:{{ m.statusFg }};font-size:11px;font-weight:500"><span style="width:6px;height:6px;border-radius:50%;background:{{ m.statusFg }}"></span>{{ m.status }}</span>
+            </div>
+            <div style="font-size:13px;color:{{ theme.text2 }}">{{ m.lastActive }}</div>
+            <div style="text-align:right;color:{{ theme.text2 }};font-size:16px;cursor:pointer">&#8942;</div>
+          </div>
+        </sc-for>
+      </div>
+
+    </div>
+
+    <div style="padding:8px 28px;background:{{ theme.statusBarBg }};color:{{ theme.statusBarFg }};font-family:var(--font-code);font-size:11px;white-space:nowrap;display:flex;align-items:center;gap:16px;flex-shrink:0;border-top:1px solid {{ theme.statusBarBorder }}">
+      <span style="color:{{ theme.statusBarOk }}">&#9679; API healthy</span>
+      <span>&middot;</span>
+      <span>24 members &middot; 3 pending invites</span>
+      <span style="margin-left:auto;color:{{ theme.statusBarMuted }}">v2.1.0 &middot; synced just now</span>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mode: 'light' };
+  toggleMode = () => this.setState(s => ({ mode: s.mode === 'light' ? 'dark' : 'light' }));
+
+  renderVals() {
+    const theme = window.ConsoleTheme[this.state.mode];
+
+    const navItem = (label, active) => ({
+      label,
+      color: active ? theme.sidebarActive : theme.sidebarFg,
+      bg: active ? theme.sidebarActiveBg : 'transparent',
+      borderLeft: active ? '2px solid #E05232' : '2px solid transparent',
+      pl: active ? '8px' : '10px'
+    });
+    const navSections = [
+      { group: 'Organization', items: [navItem('Users & roles', true), navItem('Teams & workspaces', false)] },
+      { group: 'Billing', items: [navItem('Plans & usage', false), navItem('Invoices', false)] },
+      { group: 'Security', items: [navItem('API keys & connections', false), navItem('Policies & permissions', false), navItem('Audit log', false)] }
+    ];
+
+    const summary = [
+      { label: 'Members', value: '24' },
+      { label: 'Pending invites', value: '3' },
+      { label: 'Roles', value: '4' },
+      { label: 'Teams', value: '5' }
+    ];
+
+    const tabs = [
+      { label: 'All members', color: theme.title, border: '2px solid ' + theme.accentSolid },
+      { label: 'Pending invites', color: theme.text2, border: '2px solid transparent' },
+      { label: 'Roles', color: theme.text2, border: '2px solid transparent' }
+    ];
+
+    const roleStyle = (role) => {
+      const map = { Owner: theme.pill.admin, Admin: theme.pill.admin, Editor: theme.pill.running, Viewer: theme.pill.idle };
+      const m = map[role] || theme.pill.idle;
+      return { roleBg: m.bg, roleFg: m.fg };
+    };
+    const statusStyle = (status) => {
+      const map = { Active: theme.pill.healthy, Invited: theme.pill.pending, Suspended: theme.pill.failed };
+      const m = map[status] || theme.pill.idle;
+      return { statusBg: m.bg, statusFg: m.fg };
+    };
+    const raw = [
+      { name: 'Lena Almeida', email: 'lena.almeida@projectious.work', role: 'Owner', team: 'Platform', status: 'Active', lastActive: '2 min ago' },
+      { name: 'Jonas Berg', email: 'jonas.berg@projectious.work', role: 'Admin', team: 'Platform', status: 'Active', lastActive: '18 min ago' },
+      { name: 'Sofia Novak', email: 'sofia.novak@projectious.work', role: 'Editor', team: 'Compliance', status: 'Active', lastActive: '1 hr ago' },
+      { name: 'Marius Keller', email: 'marius.keller@projectious.work', role: 'Editor', team: 'Finance', status: 'Active', lastActive: '3 hr ago' },
+      { name: 'Amelie Dubois', email: 'amelie.dubois@projectious.work', role: 'Viewer', team: 'Support', status: 'Invited', lastActive: '\u2014' },
+      { name: 'Tobias Reinhardt', email: 'tobias.reinhardt@projectious.work', role: 'Viewer', team: 'Finance', status: 'Active', lastActive: '1 day ago' },
+      { name: 'Priya Kapoor', email: 'priya.kapoor@projectious.work', role: 'Editor', team: 'Compliance', status: 'Suspended', lastActive: '12 days ago' }
+    ];
+    const members = raw.map(m => ({
+      ...m,
+      initials: m.name.split(' ').map(p => p[0]).join(''),
+      avatarBg: theme.sidebarUserBg,
+      avatarFg: theme.sidebarUserFg,
+      ...roleStyle(m.role),
+      ...statusStyle(m.status)
+    }));
+
+    const logoSrc = '_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/assets/logo/' + (this.state.mode === 'dark' ? 'icon-dark.svg' : 'icon-light.svg');
+    return {
+      mode: this.state.mode, theme, toggleMode: this.toggleMode, logoSrc,
+      modeIsDark: this.state.mode === 'dark',
+      modeIsLight: this.state.mode === 'light',
+      navSections, summary, tabs, members
+    };
+  }
+}
+
+</script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 title: Files
 linkTitle: Files
 weight: 30
-description: Delivered formats, when to use each, and where to download them.
+description: The canonical SVG, raster, and favicon assets in design system v2.1.1.
 ---
 
 ## Formats
@@ -10,10 +10,8 @@ description: Delivered formats, when to use each, and where to download them.
 | Format | Contents | Use for |
 |---|---|---|
 | **SVG** | Vector source | Primary for web and print |
-| **PNG @1x** | 16 / 32 / 48 / 64 / 128 / 256 / 512px | Native-resolution raster |
-| **PNG @2x** | 2× pixel dimensions | Retina — **required for web** |
-| **PNG @3x** | 3× pixel dimensions | Super-retina — mobile |
-| **ICO** | Multi-resolution (16 + 32 + 48) | Favicon |
+| **PNG** | 128px and 256px colour variants | Raster-only contexts |
+| **favicon PNG** | 32×32 | Browser favicon |
 | **apple-touch** | 180×180 PNG | iOS home screen |
 
 SVG is the source. Raster exports exist for contexts that cannot take vector —
@@ -21,7 +19,7 @@ prefer SVG wherever the medium allows it.
 
 ## Variants
 
-Each raster size ships in five variants:
+The canonical mark variants are:
 
 - `icon-light` — for light surfaces
 - `icon-dark` — for dark surfaces
@@ -29,18 +27,10 @@ Each raster size ships in five variants:
 - `icon-mono-white` — single-colour white, reversed
 - `icon-mono-gray` — single-colour grey
 
-## Downloads
-
-The logo files are served from this site and are also in the repository under
-[`brand/logo/`](https://github.com/projectious-work/brand/tree/main/brand/logo).
-
-| Asset | Link |
-|---|---|
-| SVG — light | [icon-light.svg]({{< siteurl "downloads/logo/svg/icon-light.svg" >}}) |
-| SVG — dark | [icon-dark.svg]({{< siteurl "downloads/logo/svg/icon-dark.svg" >}}) |
-| SVG — mono black | [icon-mono-black.svg]({{< siteurl "downloads/logo/svg/icon-mono-black.svg" >}}) |
-| SVG — mono white | [icon-mono-white.svg]({{< siteurl "downloads/logo/svg/icon-mono-white.svg" >}}) |
-| SVG — mono grey | [icon-mono-gray.svg]({{< siteurl "downloads/logo/svg/icon-mono-gray.svg" >}}) |
+The package also contains three contextual SVG colourways — cool dot on white,
+spot warm on dark, and warm on darker. They are supplied variants, not a licence
+to recolour the canonical files. Use SVG wherever the medium accepts it; choose
+128px or 256px PNG only when a raster format is required.
 
 {{% alert title="Licence" color="warning" %}}
 Logo files are brand assets, not MIT-licensed code. You may reference and

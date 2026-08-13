@@ -1,5 +1,5 @@
-# Canonical brand values, mirrored from brand/tokens/* and
-# brand/html/projectious-brand-system-final.html.
+# Canonical brand values, synchronized from the projectious.work design system
+# v2.1.1 supplied on 2026-08-10.
 #
 # The docs render from this file, so a page can never drift from the value it
 # documents. When a token changes, change it here and in assets/scss (the SCSS
@@ -201,43 +201,43 @@ type:
     family: Plus Jakarta Sans
     sample: Composable infrastructure
   - style: H3
-    size: 22
+    size: 24
     weight: 600
     lh: "1.25"
     family: Plus Jakarta Sans
     sample: How the system fits together
   - style: H4
-    size: 18
+    size: 20
     weight: 600
     lh: "1.3"
     family: Plus Jakarta Sans
     sample: Working in the open
   - style: H5
-    size: 15
+    size: 17
     weight: 600
     lh: "1.35"
     family: Plus Jakarta Sans
     sample: Supporting detail
   - style: Body L
-    size: 16
+    size: 18
     weight: 400
     lh: "1.65"
     family: Source Sans 3
-    sample: Augmenting people's strengths through composable Cloud, Agile, and Agentic AI infrastructure.
+    sample: Augmenting people's strengths through composable Cloud · Agile · Agentic AI infrastructure.
   - style: Caption
-    size: 12
+    size: 13
     weight: 400
     lh: "1.5"
     family: Source Sans 3
     sample: Figure 1 — pipeline stages and their policy gates.
   - style: Overline
-    size: 11
+    size: 12
     weight: 600
     lh: "1.3"
     family: Source Sans 3
     sample: SECTION LABEL
   - style: Code
-    size: 13
+    size: 14
     weight: 400
     lh: "1.6"
     family: IBM Plex Mono
@@ -270,13 +270,13 @@ elevation:
     use: Flat surfaces, default
   - name: shadow-1
     value: 0 1px 3px rgba(0,0,0,0.06)
-    use: Subtle lift — cards at rest
+    use: Cards under hover
   - name: shadow-2
     value: 0 4px 12px rgba(0,0,0,0.08)
-    use: Raised — hover, dropdowns
+    use: Popovers and dropdowns
   - name: shadow-3
     value: 0 8px 24px rgba(0,0,0,0.12)
-    use: Overlay — modals, popovers
+    use: Modals
 
 motion:
   durations:

@@ -301,7 +301,7 @@ hugo = { enabled = true } # Fast Go-based static site generator; default off; op
 
 # Documentation/docs-zensical — Zensical – Python docs site; requires python
 # [addons.docs-zensical.tools]
-# zensical = {} # Python documentation site generator; default on; options: {}, { enabled = true|false }, { version = "0.0.43" | "0.0.44" | "0.0.47" | "0.0.51" | "0.0.52" (default) or "latest" }
+# zensical = {} # Python documentation site generator; default on; options: {}, { enabled = true|false }, { version = "0.0.43" | "0.0.44" | "0.0.47" | "0.0.51" | "0.0.52" | "0.0.53" (default) or "latest" }
 
 # ---- Languages ------------------------------------------------------------
 
@@ -326,7 +326,7 @@ go = {} # Go compiler, tooling, and module workflow; default on; options: {}, { 
 # Languages/node — Node.js runtime with pnpm, yarn, or bun
 [addons.node.tools]
 node = { version = "22" } # Node.js JavaScript and TypeScript runtime; default on; options: {}, { enabled = true|false }, { version = "20" | "22" | "24" | "26" (default) or "latest" }
-pnpm = { version = "10" } # Fast disk-efficient Node package manager; default on; options: {}, { enabled = true|false }, { version = "9" | "10" | "11.1.3" | "11.5.2" | "11.10.0" | "11.18.0" (default) or "latest" }
+pnpm = { version = "10" } # Fast disk-efficient Node package manager; default on; options: {}, { enabled = true|false }, { version = "9" | "10" | "11.1.3" | "11.5.2" | "11.10.0" | "11.18.0" | "11.20.0" | "11.21.0" (default) or "latest" }
 # yarn = { enabled = true } # Yarn Node package manager; default off; options: {}, { enabled = true|false }, { version = "4" | "4.16.0" | "4.17.0" (default) or "latest" }
 # bun = { enabled = true } # Bun JavaScript runtime, package manager, and test runner; default off; options: {}, { enabled = true|false }, { version = "1.2" | "1.3.14" (default) or "latest" }
 
@@ -371,10 +371,6 @@ alsa-pulse = {} # ALSA-to-PulseAudio compatibility layer; default on; options: {
 # [addons.cloud-gcp.tools]
 # gcloud-cli = {} # Google Cloud command-line client and SDK; default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
 
-# Tools/cloudflare — Cloudflare Tunnel connector (cloudflared)
-# [addons.cloudflare.tools]
-# cloudflared = {} # Cloudflare Tunnel connector and command-line client; default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
-
 # Tools/data-preview — SQLite and tabular data preview tools for Yazi
 # [addons.data-preview.tools]
 # sqlite3 = {} # SQLite shell used to preview database schemas and tables; default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
@@ -385,11 +381,12 @@ alsa-pulse = {} # ALSA-to-PulseAudio compatibility layer; default on; options: {
 gh = {} # GitHub CLI for issues, PRs, releases, and auth; default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
 lazygit = { enabled = false } # Interactive terminal UI for Git status, commits, and branches; default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
 
-# Tools/infrastructure — OpenTofu, Ansible, Packer
+# Tools/infrastructure — OpenTofu, Ansible, Packer, and optional rootless Podman
 # [addons.infrastructure.tools]
 # opentofu = {} # Open-source Terraform-compatible infrastructure as code CLI; default on; options: {}, { enabled = true|false }, { version = "1.9.0" | "1.12.0" | "1.12.1" | "1.12.3" | "1.12.5" (default) or "latest" }
 # ansible = {} # Configuration management and automation engine; default on; options: {}, { enabled = true|false }, { version = "13.7.0" | "14.0.0" | "14.1.0" | "14.2.0" (default) or "latest" }
 # packer = {} # Machine image build automation tool; default on; options: {}, { enabled = true|false }, { version = "1.11.2" | "1.15.3" | "1.15.4" | "1.16.0" (default) or "latest" }
+# podman = { enabled = true } # Rootless container engine with Compose support; default off; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
 
 # Tools/kubernetes — kubectl, Helm, Kustomize, k9s
 # [addons.kubernetes.tools]
@@ -414,6 +411,10 @@ resvg = { version = "0.47.0" } # High-quality SVG rasterizer for Yazi previews; 
 # ffmpeg = { enabled = false } # Video and audio metadata plus thumbnail support for previews; default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
 # ghostscript = { enabled = false } # PostScript and EPS rendering support for document previews; default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
 rich = {} # Markdown, JSON, RST, and notebook terminal rendering for Yazi previews; default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
+
+# Tools/yazi-omp — oh-my-posh for the omp.yazi header prompt
+# [addons.yazi-omp.tools]
+# oh-my-posh = {} # default on; options: {}, { enabled = true|false }, { version = "x.y.z" or "latest" }
 
 # =============================================================================
 # [ai] — AI agent harnesses and model providers

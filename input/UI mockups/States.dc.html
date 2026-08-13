@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+  <script src="./console-theme.js"></script>
+  <style>
+    @keyframes skeleton-pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.45 } }
+    @keyframes spin { to { transform: rotate(360deg) } }
+  </style>
+</helmet>
+<div style="display:flex;height:100vh;background:{{ theme.appBg }};font-family:var(--font-body)">
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Sidebar" active="runs" theme="{{ theme }}" hint-size="240px,100%"></x-import>
+  <div style="flex:1;display:flex;flex-direction:column;min-width:0;overflow:hidden">
+    <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Topbar" title="States" theme="{{ theme }}" mode="{{ mode }}" on-toggle-mode="{{ toggleMode }}" hint-size="100%,66px"></x-import>
+
+    <div style="flex:1;overflow:auto;padding:28px 32px;display:flex;flex-direction:column;gap:32px">
+
+      <div>
+        <div style="font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ theme.text2 }};margin-bottom:10px">First run &mdash; the only empty state with an accent action</div>
+        <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;padding:56px 32px;text-align:center">
+          <h3 style="font-family:var(--font-heading);font-weight:700;font-size:20px;color:{{ theme.title }};margin:0 0 8px">No pipelines yet</h3>
+          <p style="font-size:14px;line-height:1.6;color:{{ theme.text2 }};margin:0 auto 24px;max-width:400px">A pipeline declares the steps an agent runs and the policy it must pass. Start from a template or write the YAML yourself.</p>
+          <div style="display:flex;gap:10px;justify-content:center">
+            <button style="font-family:var(--font-heading);font-weight:500;font-size:14px;padding:10px 22px;border:0;border-radius:6px;color:#fff;background:{{ theme.accentSolid }};cursor:pointer">Create a pipeline</button>
+            <button style="font-family:var(--font-heading);font-weight:500;font-size:14px;padding:10px 22px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:transparent;color:{{ theme.text1 }};cursor:pointer">Read the guide</button>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+        <div>
+          <div style="font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ theme.text2 }};margin-bottom:10px">Filtered empty &mdash; no accent action</div>
+          <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;padding:40px 28px;text-align:center;height:calc(100% - 28px);display:flex;flex-direction:column;justify-content:center">
+            <div style="font-family:var(--font-heading);font-weight:600;font-size:15px;color:{{ theme.title }};margin-bottom:6px">No runs match &ldquo;auditor-v2&rdquo;</div>
+            <p style="font-size:13.5px;line-height:1.6;color:{{ theme.text2 }};margin:0 0 16px">Three filters are active.</p>
+            <button style="align-self:center;font-family:var(--font-heading);font-weight:500;font-size:13px;padding:8px 16px;border:1.5px solid {{ theme.inputBorder }};border-radius:6px;background:transparent;color:{{ theme.text1 }};cursor:pointer">Clear filters</button>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ theme.text2 }};margin-bottom:10px">Error, scoped to the panel that failed</div>
+          <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;overflow:hidden;height:calc(100% - 28px)">
+            <div style="padding:12px 18px;border-bottom:1px solid {{ theme.surfaceBorder }};font-family:var(--font-heading);font-weight:600;font-size:14px;color:{{ theme.title }}">Run detail</div>
+            <div style="padding:24px 20px">
+              <div style="display:flex;gap:12px;padding:14px 16px;border-radius:9px;background:{{ theme.dangerBg }};align-items:flex-start">
+                <span style="color:{{ theme.danger }};font-size:14px;line-height:1.4">&#9888;</span>
+                <div>
+                  <div style="font-family:var(--font-heading);font-weight:600;font-size:13.5px;color:{{ theme.danger }};margin-bottom:4px">Could not load run 8fa21c</div>
+                  <p style="font-size:13px;line-height:1.6;color:{{ theme.danger }};margin:0 0 12px">The agent session expired while streaming logs. The run itself is unaffected.</p>
+                  <button style="font-family:var(--font-heading);font-weight:500;font-size:12.5px;padding:6px 14px;border:1.5px solid {{ theme.danger }};border-radius:6px;background:transparent;color:{{ theme.danger }};cursor:pointer">Retry</button>
+                </div>
+              </div>
+              <p style="font-size:13px;color:{{ theme.text2 }};margin:16px 0 0">The rest of the page keeps working &mdash; no page-level takeover.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start">
+        <div>
+          <div style="font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ theme.text2 }};margin-bottom:10px">Skeleton &mdash; expected under 1s, shape is known</div>
+          <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;overflow:hidden">
+            <sc-for list="{{ skeletonRows }}" as="row" hint-placeholder-count="4">
+              <div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:16px;padding:16px 18px;border-bottom:1px solid {{ theme.rowBorder }};align-items:center">
+                <div style="height:12px;border-radius:3px;background:{{ theme.stageIdle }};animation:skeleton-pulse 1.4s ease-in-out infinite;width:{{ row.w1 }}"></div>
+                <div style="height:12px;border-radius:3px;background:{{ theme.stageIdle }};animation:skeleton-pulse 1.4s ease-in-out infinite"></div>
+                <div style="height:12px;border-radius:3px;background:{{ theme.stageIdle }};animation:skeleton-pulse 1.4s ease-in-out infinite;width:{{ row.w3 }}"></div>
+              </div>
+            </sc-for>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ theme.text2 }};margin-bottom:10px">Spinner &mdash; indeterminate work, unknown shape</div>
+          <div style="background:{{ theme.surface }};border:1px solid {{ theme.surfaceBorder }};border-radius:9px;padding:48px 28px;display:flex;flex-direction:column;align-items:center;gap:14px">
+            <div style="width:26px;height:26px;border-radius:50%;border:2.5px solid {{ theme.stageIdle }};border-top-color:{{ theme.accent }};animation:spin 0.9s linear infinite"></div>
+            <div style="font-family:var(--font-code);font-size:12.5px;color:{{ theme.text2 }}">Reconciling 4,812 invoices&hellip;</div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-family:var(--font-body);font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:{{ theme.text2 }};margin-bottom:10px">Inline banners</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <sc-for list="{{ banners }}" as="b" hint-placeholder-count="4">
+            <div style="display:flex;gap:12px;padding:12px 16px;border-radius:9px;background:{{ b.bg }};align-items:center">
+              <span style="color:{{ b.fg }};font-size:13px">{{ b.glyph }}</span>
+              <span style="font-size:13.5px;color:{{ b.fg }}">{{ b.text }}</span>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+
+    </div>
+    <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.StatusBar" theme="{{ theme }}" hint-size="100%,36px"></x-import>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { mode: 'light' };
+  toggleMode = () => this.setState(s => ({ mode: s.mode === 'light' ? 'dark' : 'light' }));
+
+  renderVals() {
+    const theme = window.ConsoleTheme[this.state.mode];
+    const skeletonRows = [
+      { w1: '70%', w3: '50%' }, { w1: '85%', w3: '40%' },
+      { w1: '60%', w3: '65%' }, { w1: '78%', w3: '45%' }
+    ];
+    const banners = [
+      { glyph: '\u2713', text: 'Policy data-retention-v2 attached to 3 pipelines.', bg: theme.successBg, fg: theme.success },
+      { glyph: '\u26A0', text: 'Vendor risk scoring has not run in 14 days.', bg: theme.warningBg, fg: theme.warning },
+      { glyph: '\u2715', text: 'Payroll anomaly check failed at stage policy_check.', bg: theme.dangerBg, fg: theme.danger },
+      { glyph: '\u2139', text: 'Agent auditor-v3 will restart during maintenance tonight.', bg: theme.infoBg, fg: theme.info }
+    ];
+    return { mode: this.state.mode, theme, toggleMode: this.toggleMode, skeletonRows, banners };
+  }
+}
+
+</script>
+</body>
+</html>

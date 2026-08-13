@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+  <style>
+    a { color: var(--midnight-11); }
+    a:hover { color: var(--color-accent); }
+  </style>
+</helmet>
+<div data-theme="light" style="background:var(--color-bg)">
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Header" hint-size="100%,66px"></x-import>
+
+  <section style="padding:80px 32px 48px">
+    <div style="max-width:var(--container-max);margin:0 auto">
+      <div style="font-family:var(--font-body);font-size:var(--type-overline-size);font-weight:600;letter-spacing:var(--type-overline-tracking);text-transform:uppercase;color:var(--orange-11);margin-bottom:var(--space-4)">How we engage</div>
+      <h1 style="font-family:var(--font-heading);font-weight:800;font-size:44px;line-height:1.1;letter-spacing:-0.8px;color:var(--color-primary);margin:0;max-width:760px">Three ways to start. No seat licences.</h1>
+      <p style="font-family:var(--font-body);font-size:17px;line-height:1.6;color:var(--color-text-secondary);margin-top:var(--space-4);max-width:620px">We charge for engineering time and for the platform we run for you. What you build stays yours, self-hostable, on your infrastructure.</p>
+    </div>
+  </section>
+
+  <section style="padding:0 32px 80px">
+    <div style="max-width:var(--container-max);margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start">
+      <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+        <div style="background:{{ p.cardBg }};border:1px solid {{ p.cardBorder }};border-radius:var(--radius-lg);padding:28px 26px;box-shadow:{{ p.shadow }};display:flex;flex-direction:column;height:100%">
+          <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:var(--space-3)">
+            <div style="font-family:var(--font-heading);font-weight:700;font-size:19px;color:{{ p.titleColor }}">{{ p.name }}</div>
+            <sc-if value="{{ p.badge }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family:var(--font-heading);font-size:11px;font-weight:600;padding:3px 10px;border-radius:var(--radius-full);background:var(--color-accent-solid);color:#fff">Most engagements</span>
+            </sc-if>
+          </div>
+          <div style="font-family:var(--font-heading);font-weight:800;font-size:32px;letter-spacing:-0.6px;color:{{ p.titleColor }}">{{ p.price }}</div>
+          <div style="font-family:var(--font-code);font-size:12px;color:{{ p.mutedColor }};margin-top:4px">{{ p.unit }}</div>
+          <p style="font-family:var(--font-body);font-size:14px;line-height:1.6;color:{{ p.bodyColor }};margin:var(--space-4) 0 var(--space-5)">{{ p.summary }}</p>
+          <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:var(--space-5)">
+            <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="4">
+              <div style="display:flex;gap:10px;align-items:flex-start">
+                <span style="color:{{ p.checkColor }};font-size:13px;line-height:1.5;flex-shrink:0">&#10003;</span>
+                <span style="font-family:var(--font-body);font-size:13.5px;line-height:1.5;color:{{ p.bodyColor }}">{{ f }}</span>
+              </div>
+            </sc-for>
+          </div>
+          <button style="margin-top:auto;font-family:var(--font-heading);font-weight:500;font-size:14px;padding:11px 20px;border-radius:var(--radius-md);cursor:pointer;border:{{ p.btnBorder }};color:{{ p.btnFg }};background:{{ p.btnBg }}">{{ p.cta }}</button>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section style="padding:0 32px 96px">
+    <div style="max-width:var(--container-max);margin:0 auto">
+      <h2 style="font-family:var(--font-heading);font-weight:700;font-size:28px;letter-spacing:-0.4px;color:var(--color-primary);margin:0 0 var(--space-5)">What every engagement includes</h2>
+      <div style="border:1px solid var(--color-border);border-radius:var(--radius-lg);background:var(--color-surface);overflow:hidden">
+        <sc-for list="{{ included }}" as="row" hint-placeholder-count="5">
+          <div style="display:grid;grid-template-columns:260px 1fr;gap:32px;padding:18px 24px;border-top:1px solid var(--color-border)">
+            <div style="font-family:var(--font-heading);font-weight:600;font-size:14px;color:var(--color-primary)">{{ row.title }}</div>
+            <div style="font-family:var(--font-body);font-size:14px;line-height:1.6;color:var(--color-text-secondary)">{{ row.body }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.CTA" hint-size="100%,200px"></x-import>
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Footer" hint-size="100%,90px"></x-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const light = {
+      cardBg: 'var(--color-surface)', cardBorder: 'var(--color-border)', shadow: 'var(--shadow-0)',
+      titleColor: 'var(--color-primary)', bodyColor: 'var(--color-text-secondary)',
+      mutedColor: 'var(--color-text-muted)', checkColor: 'var(--color-success-fg)',
+      btnBg: 'transparent', btnFg: 'var(--color-text-primary)', btnBorder: '1.5px solid var(--color-border)'
+    };
+    const featured = {
+      cardBg: 'var(--midnight-9)', cardBorder: 'var(--midnight-9)', shadow: 'var(--shadow-2)',
+      titleColor: '#fff', bodyColor: '#97a8b8', mutedColor: '#7490b2', checkColor: '#6cc090',
+      btnBg: 'var(--color-accent-solid)', btnFg: '#fff', btnBorder: '0'
+    };
+
+    const plans = [
+      {
+        ...light, name: 'Assessment', price: '\u20ac9,500', unit: 'fixed, two weeks', badge: false,
+        summary: 'A read of your current stack and one written recommendation you can act on without us.',
+        features: ['Architecture and delivery review', 'Agent-readiness assessment', 'Written recommendation, no deck', 'Two follow-up sessions'],
+        cta: 'Book an assessment'
+      },
+      {
+        ...featured, name: 'Build', price: '\u20ac24,000', unit: 'per month, one team', badge: true,
+        summary: 'We build and run the first pipelines with your team until they can run them without us.',
+        features: ['Two engineers, embedded', 'Pipelines, policies, and audit set up', 'Self-hostable from day one', 'Weekly working session', 'Handover documentation'],
+        cta: 'Start a project'
+      },
+      {
+        ...light, name: 'Platform', price: '\u20ac1,800', unit: 'per month, per workspace', badge: false,
+        summary: 'The console and runtime, hosted by us or by you, with support and policy updates.',
+        features: ['Console, runtime, and CLI', 'Unlimited members and pipelines', 'Policy library updates', 'Self-host option, same licence'],
+        cta: 'See what is included'
+      }
+    ];
+
+    const included = [
+      { title: 'Provider independence', body: 'Every model call goes through one interface. Switching providers is a config change, not a migration.' },
+      { title: 'Continuous audit', body: 'Agents review output on every run. There is no separate QA phase to schedule.' },
+      { title: 'Your code, your infrastructure', body: 'MIT-licensed platform code. Self-host at any point without renegotiating.' },
+      { title: 'European data residency', body: 'Frankfurt or Dublin by default. No data leaves the region you pick.' },
+      { title: 'No seat licences', body: 'Add the whole team. We charge for the workspace, not the headcount.' }
+    ];
+
+    return { plans, included };
+  }
+}
+
+</script>
+</body>
+</html>

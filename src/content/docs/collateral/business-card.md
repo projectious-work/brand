@@ -78,7 +78,8 @@ If a printed card is required:
 - Single-colour midnight on uncoated white, or reversed white on midnight.
 - Use the [monochrome mark]({{< relref "/docs/logo/usage" >}}) — no accent on
   press unless a spot colour is budgeted.
-- Respect the 1× clear-space rule; do not bleed the mark to the trim edge.
+- Reserve clear space equal to half the mark's height on every side; do not
+  bleed the mark to the trim edge.
 
 ### Handing colour to a printer
 

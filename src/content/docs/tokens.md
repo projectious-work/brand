@@ -10,22 +10,13 @@ The token files are the machine-readable form of the
 the values are free to use, the marks are not. See
 [Licensing]({{< relref "/docs/governance/licensing" >}}).
 
-## Downloads
+## Authoritative definitions
 
-| File | Format | Use |
-|---|---|---|
-| [`variables.css`]({{< siteurl "downloads/tokens/variables.css" >}}) | CSS custom properties | Any web project |
-| [`tokens.json`]({{< siteurl "downloads/tokens/tokens.json" >}}) | JSON | Build pipelines, Style Dictionary |
-| [`tailwind.config.js`]({{< siteurl "downloads/tokens/tailwind.config.js" >}}) | JS | Tailwind CSS projects |
-
-Source: [`brand/tokens/`](https://github.com/projectious-work/brand/tree/main/brand/tokens).
-
-All three are **generated** from
-[`src/data/brand.yaml`](https://github.com/projectious-work/brand/blob/main/src/data/brand.yaml)
-by `scripts/build-tokens.mjs` — the same file this documentation renders from,
-so a page and a download cannot disagree about a value. `scripts/check-tokens.sh`
-fails the build if the committed files drift from a fresh generation, or if
-`brand.yaml` drifts from the SCSS that actually styles the site.
+`src/data/brand.yaml` is the structured source rendered by these pages. The
+v2.1.1 design-system package supplies the synchronized CSS custom properties
+used to verify it. Consumers may export CSS, JSON, or framework configuration
+from the structured values, but an export is generated output rather than a
+second source of truth.
 
 ## CSS
 
@@ -48,11 +39,11 @@ Everything the foundations define, in all three files:
 
 | | Covers |
 |---|---|
-| **Colour — named** | The eight aliases: primary, accent (with `accent-solid`), secondary, and their light and dark variants |
+| **Colour — named** | Primary, accent (including `accent-solid`), secondary, and their light and dark variants |
 | **Colour — scales** | All three 12-step scales, **in both modes** — 72 values |
 | **Colour — semantic** | Success, warning, danger, info: the solid value, its tint, and the foreground to use *on* that tint, per mode |
 | **Surfaces** | Page canvas, elevated surface, three text levels, border — per mode |
-| **Typography** | Three font stacks, and the eleven-style type scale with size, weight, and line height |
+| **Typography** | Three font stacks and the display, heading, body, caption, overline, and code roles |
 | **Spacing** | The nine-step 4px scale |
 | **Radius** | Five steps |
 | **Elevation** | Four shadow levels |
@@ -80,9 +71,8 @@ toggle, so both routes are present and the explicit attribute wins.
 ## Consuming them in SCSS
 
 This site maps the tokens onto Bootstrap and Docsy variables in
-[`src/assets/scss/_variables_project.scss`](https://github.com/projectious-work/brand/blob/main/src/assets/scss/_variables_project.scss),
-which is a worked example of wiring the brand into an existing component
-framework.
+`src/assets/scss/_variables_project.scss`, a worked example of wiring the brand
+into an existing component framework.
 
 {{% alert title="The site is the test" color="info" %}}
 This documentation is styled by those same SCSS files. If a token is wrong, this

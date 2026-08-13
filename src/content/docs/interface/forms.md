@@ -45,7 +45,7 @@ the user is filling the field, and they break at long label lengths.
 
 ```css
 .field__label {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 600;
   line-height: 1.3;
   text-transform: uppercase;

@@ -30,8 +30,8 @@ Consulting deliverables need three, and they answer different questions:
 | **Architecture** | *Where* — what runs, and on whose infrastructure | A control plane above, deployment targets below, connected by plain rules |
 | **Org chart** | *Who* — who owns the work, and who they answer to | One root, a rule, direct reports beneath |
 
-[**Diagram gallery**]({{< siteurl "downloads/examples/diagram-gallery.dc.html" >}}) — all
-three, built from the brand tokens.
+The supplied **UI mockups and component previews** show these rules in context,
+built from the brand tokens.
 
 The drawing rules are the same in all three, and they are deliberately spare:
 

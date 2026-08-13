@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/colors_and_type.css">
+  <link rel="stylesheet" href="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/styles.css">
+  <script src="_ds/projectious-work-design-system-019de81f-4f72-733b-895d-56489340005a/_ds_bundle.js"></script>
+  <style>
+    a { color: var(--midnight-11); }
+    a:hover { color: var(--color-accent); }
+  </style>
+</helmet>
+<div data-theme="light" style="background:var(--color-bg);min-height:100vh">
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Header" hint-size="100%,66px"></x-import>
+
+  <div style="max-width:720px;margin:0 auto;padding:64px 32px 24px">
+    <div style="font-family:var(--font-body);font-size:var(--type-overline-size);font-weight:var(--type-overline-weight);letter-spacing:var(--type-overline-tracking);text-transform:uppercase;color:var(--orange-11);margin-bottom:var(--space-4)">Changelog</div>
+    <h1 style="font-family:var(--font-heading);font-weight:800;font-size:40px;letter-spacing:-0.5px;color:var(--color-primary);margin:0">Platform releases</h1>
+    <p style="font-family:var(--font-body);font-size:16px;line-height:1.6;color:var(--color-text-secondary);margin-top:var(--space-4)">Every change to the console, the pipeline runtime, and the CLI &mdash; in order.</p>
+  </div>
+
+  <div style="max-width:720px;margin:0 auto;padding:var(--space-6) 32px 96px">
+    <sc-for list="{{ releases }}" as="r" hint-placeholder-count="5">
+      <div style="display:grid;grid-template-columns:120px 1fr;gap:var(--space-5);padding-bottom:var(--space-7);position:relative">
+        <div style="position:absolute;left:113px;top:14px;bottom:0;width:1px;background:var(--color-border);display:{{ r.railDisplay }}"></div>
+        <div style="position:absolute;left:110px;top:7px;width:7px;height:7px;border-radius:50%;background:{{ r.dotColor }}"></div>
+        <div>
+          <div style="font-family:var(--font-code);font-size:13px;color:var(--color-text-muted);padding-top:3px;text-align:right;padding-right:20px">{{ r.date }}</div>
+        </div>
+        <div>
+          <div style="display:flex;align-items:baseline;gap:var(--space-3);margin-bottom:var(--space-3)">
+            <h2 style="font-family:var(--font-heading);font-weight:700;font-size:20px;color:var(--color-primary);margin:0">{{ r.version }}</h2>
+            <sc-if value="{{ r.latest }}" hint-placeholder-val="{{ false }}">
+              <span style="font-family:var(--font-heading);font-size:11px;font-weight:600;padding:2px 10px;border-radius:var(--radius-full);background:var(--tag-bg-accent);color:var(--tag-text-accent)">Latest</span>
+            </sc-if>
+          </div>
+          <sc-for list="{{ r.entries }}" as="e" hint-placeholder-count="3">
+            <div style="display:flex;gap:var(--space-3);align-items:flex-start;margin-bottom:var(--space-2)">
+              <span style="font-family:var(--font-heading);font-size:11px;font-weight:600;padding:2px 9px;border-radius:var(--radius-sm);flex-shrink:0;margin-top:2px;color:{{ e.fg }};background:{{ e.bg }}">{{ e.kind }}</span>
+              <p style="font-family:var(--font-body);font-size:14.5px;line-height:1.6;color:var(--color-text-primary);margin:0">{{ e.text }}</p>
+            </div>
+          </sc-for>
+        </div>
+      </div>
+    </sc-for>
+  </div>
+
+  <x-import component-from-global-scope="ProjectiousWorkDesignSystem_019de8.Footer" hint-size="100%,90px"></x-import>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const kindStyle = (kind) => {
+      const map = {
+        Added: { bg: 'var(--color-success-bg)', fg: 'var(--color-success-fg)' },
+        Changed: { bg: 'var(--color-info-bg)', fg: 'var(--color-info-fg)' },
+        Fixed: { bg: 'var(--color-warning-bg)', fg: 'var(--color-warning-fg)' },
+        Removed: { bg: 'var(--color-danger-bg)', fg: 'var(--color-danger-fg)' }
+      };
+      return map[kind];
+    };
+    const mk = (version, date, latest, entries) => ({
+      version, date, latest,
+      dotColor: latest ? 'var(--color-accent)' : 'var(--slate-6)',
+      entries: entries.map(([kind, text]) => ({ kind, text, ...kindStyle(kind) }))
+    });
+
+    const releases = [
+      mk('v2.1.1', 'Aug 10, 2026', true, [
+        ['Fixed', 'Policy attach no longer fails silently when the target pipeline is paused.'],
+        ['Changed', 'Audit log export now streams instead of buffering in memory.']
+      ]),
+      mk('v2.1.0', 'Jul 22, 2026', false, [
+        ['Added', 'Self-hosted model routing for the auditor agent.'],
+        ['Added', 'Team-level API key scoping in Admin.'],
+        ['Changed', 'Run detail panel now shows per-stage duration.']
+      ]),
+      mk('v2.0.2', 'Jun 30, 2026', false, [
+        ['Fixed', 'Dark mode contrast on the pipeline status pills.'],
+        ['Fixed', 'CLI crash when pipeline.yaml omits a trigger.']
+      ]),
+      mk('v2.0.1', 'Jun 9, 2026', false, [
+        ['Removed', 'The legacy /v1 pipelines API.'],
+        ['Changed', 'Default retry policy from 3 attempts to 1 with backoff.']
+      ]),
+      mk('v2.0.0', 'May 18, 2026', false, [
+        ['Added', 'Multi-agent pipelines \u2014 chain agents within a single run.'],
+        ['Added', 'Workspace-level policy inheritance.'],
+        ['Changed', 'Rebuilt the console on the current design system.']
+      ])
+    ];
+
+    releases.forEach((r, i) => { r.railDisplay = i === releases.length - 1 ? 'none' : 'block'; });
+    return { releases };
+  }
+}
+
+</script>
+</body>
+</html>

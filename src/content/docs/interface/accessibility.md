@@ -13,6 +13,28 @@ modals. This page covers what those cannot: **order, announcement, and focus**
 
 The target is **WCAG 2.2 Level AA**.
 
+## Opt-in accessibility settings
+
+The token sheet changes nothing until an attribute is set on `<html>`. New work
+should expose and persist the settings it supports; `data-a11y="auto"` follows
+the operating system's reduced-motion, reduced-transparency, and contrast
+preferences.
+
+| Attribute | Value | Effect |
+|---|---|---|
+| `data-font-size` | `lg`, `xl`, `xxl`, `xxxl` | 112.5%, 125%, 150%, or 200% type through one shared scale |
+| `data-contrast` | `high` | Stronger text and border roles in both modes |
+| `data-focus` | `strong` | Conforming 2px midnight ring with 2px offset |
+| `data-link-underline` | `on` | Underlines links in running text; `.link-plain` opts out |
+| `data-motion` | `reduced` | Near-zero transitions and animation |
+| `data-transparency` | `reduced` | Removes backdrop blur and solidifies the scrim |
+| `data-text-spacing` | `loose` | WCAG 1.4.12 diagnostic spacing, not the house style |
+| `data-theme` | `light`, `dark` | Pins the colour mode |
+
+Use `.sr-only` for an accessible name, `.sr-only-focusable` for content that
+reveals on focus, `.skip-link` for the first control, `.target` for the 44px hit
+floor, and `.measure` for the 65ch reading width.
+
 ## Reading and focus order
 
 There is one order, and the DOM defines it. Keyboard order, screen-reader order,
@@ -94,25 +116,31 @@ levels. If a heading is the wrong size, restyle it — do not renumber it.
 Focus is **always** visible. The system never sets `outline: none` without
 replacing it with something at least as loud.
 
-The focus ring is a **2px `orange-10` (`#cc4528`) outline at 2px offset**, drawn
-with `:focus-visible` so a mouse click on a button does not leave a ring behind
-while keyboard focus still does.
+The base focus ring is intentionally quiet and measures only about 1.2:1. It is
+not conforming on its own. New work sets `data-focus="strong"`, which draws a
+**2px `midnight-9` (`#1d3352`) outline at 2px offset** and clears 8.59:1. Draw
+it with `:focus-visible` so a mouse click does not leave a ring behind while
+keyboard focus still does.
 
-{{< demo label="Focus ring — 2px accent, 2px offset, on both surfaces" >}}
-<button class="pj-btn pj-btn--primary pj-btn--md" style="outline:2px solid #cc4528;outline-offset:2px">Keyboard focus</button>
-<button class="pj-btn pj-btn--outline pj-btn--md" style="outline:2px solid #cc4528;outline-offset:2px">Focused</button>
+{{< demo label="Strong focus ring — 2px midnight, 2px offset" >}}
+<button class="pj-btn pj-btn--primary pj-btn--md" style="outline:2px solid #1d3352;outline-offset:2px">Keyboard focus</button>
+<button class="pj-btn pj-btn--outline pj-btn--md" style="outline:2px solid #1d3352;outline-offset:2px">Focused</button>
 <span class="pj-badge">Tab to see the real thing</span>
 {{< /demo >}}
 
 ```css
 :focus-visible {
-  outline: 2px solid var(--color-accent-solid);
+  outline: 2px solid var(--midnight-9);
   outline-offset: 2px;
 }
 ```
 
-The offset matters: at `0` the ring sits on the control's own border and
-disappears against an outline button, whose border is already the accent.
+The offset matters: at `0` the ring sits on the control's own border and can
+disappear against it.
+
+The two deliberate WCAG 2.1 SC 1.4.3 exemptions are logotypes, where the
+wordmark uses the identity accent, and inactive controls. Treat neither as a
+general exception for copy or interactive content.
 
 ## Moving focus
 
