@@ -275,454 +275,927 @@ marks the primary action, and a code block is not one.</p>
 
 ## Worked examples
 
-Each block below is a real, compilable-shaped fragment chosen to exercise as
-many of the ten roles as its language has. The coverage table after them records
-which roles each language actually reaches — several cannot reach all ten, and
-that is a property of the language, not a gap in the theme.
+Each example below renders the same real, compilable-shaped fragment in the
+default dark palette and the optional light palette. The fragment is chosen to
+exercise as many of the ten roles as its language has. The coverage table after
+them records which roles each language actually reaches — several cannot reach
+all ten, and that is a property of the language, not a gap in the theme.
 
 ### C
 
-```c
-/* Ring buffer — fixed capacity, no allocation after init. */
-#include <stdint.h>
-#define RING_CAP 256          // macro: a decorator-role token
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* Ring buffer — fixed capacity, no allocation after init. */</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define RING_CAP 256          </span><span class="c1">// macro: a decorator-role token
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span> <span class="n">RING_OK</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">RING_FULL</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span> <span class="kt">ring_status_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span>  <span class="n">data</span><span class="p">[</span><span class="n">RING_CAP</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span>   <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_Bool</span>    <span class="n">wrapped</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="kt">ring_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="nf">ring_len</span><span class="p">(</span><span class="k">const</span> <span class="kt">ring_t</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">-</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">tail</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">RING_CAP</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">RING_TAG</span> <span class="o">=</span> <span class="s">&#34;ring</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>   <span class="c1">// string literal
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">ring_status_t</span> <span class="nf">ring_push</span><span class="p">(</span><span class="kt">ring_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">r</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">byte</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Reject when one slot short of capacity, so head never meets tail.
+</span></span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">ring_len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="n">RING_CAP</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">RING_FULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">++</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">RING_CAP</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">byte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">RING_OK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-c" data-lang="c"><span class="line"><span class="cl"><span class="cm">/* Ring buffer — fixed capacity, no allocation after init. */</span>
+</span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;stdint.h&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#define RING_CAP 256          </span><span class="c1">// macro: a decorator-role token
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">enum</span> <span class="p">{</span> <span class="n">RING_OK</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">RING_FULL</span> <span class="o">=</span> <span class="mi">1</span> <span class="p">}</span> <span class="kt">ring_status_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">typedef</span> <span class="k">struct</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">uint8_t</span>  <span class="n">data</span><span class="p">[</span><span class="n">RING_CAP</span><span class="p">];</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">size_t</span>   <span class="n">head</span><span class="p">,</span> <span class="n">tail</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">_Bool</span>    <span class="n">wrapped</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span> <span class="kt">ring_t</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="kr">inline</span> <span class="kt">size_t</span> <span class="nf">ring_len</span><span class="p">(</span><span class="k">const</span> <span class="kt">ring_t</span> <span class="o">*</span><span class="n">r</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="p">(</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">head</span> <span class="o">-</span> <span class="n">r</span><span class="o">-&gt;</span><span class="n">tail</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">RING_CAP</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">static</span> <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">RING_TAG</span> <span class="o">=</span> <span class="s">&#34;ring</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">;</span>   <span class="c1">// string literal
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kt">ring_status_t</span> <span class="nf">ring_push</span><span class="p">(</span><span class="kt">ring_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">r</span><span class="p">,</span> <span class="kt">uint8_t</span> <span class="n">byte</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">    <span class="c1">// Reject when one slot short of capacity, so head never meets tail.
+</span></span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="p">(</span><span class="nf">ring_len</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">==</span> <span class="n">RING_CAP</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="k">return</span> <span class="n">RING_FULL</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="n">r</span><span class="o">-&gt;</span><span class="n">data</span><span class="p">[</span><span class="n">r</span><span class="o">-&gt;</span><span class="n">head</span><span class="o">++</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">RING_CAP</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span> <span class="o">=</span> <span class="n">byte</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="n">RING_OK</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+</div>
 
-typedef enum { RING_OK = 0, RING_FULL = 1 } ring_status_t;
-
-typedef struct {
-    uint8_t  data[RING_CAP];
-    size_t   head, tail;
-    _Bool    wrapped;
-} ring_t;
-
-static inline size_t ring_len(const ring_t *r) {
-    return (r->head - r->tail) & (RING_CAP - 1);
-}
-
-static const char *RING_TAG = "ring\n";   // string literal
-
-ring_status_t ring_push(ring_t *restrict r, uint8_t byte) {
-    // Reject when one slot short of capacity, so head never meets tail.
-    if (ring_len(r) == RING_CAP - 1) return RING_FULL;
-    r->data[r->head++ & (RING_CAP - 1)] = byte;
-    return RING_OK;
-}
-```
 
 ### C++
 
-```cpp
-// Policy-based cache. Types, templates, and a lambda.
-#include <string>
-#include <unordered_map>
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Policy-based cache. Types, templates, and a lambda.
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">projectious</span><span class="o">::</span><span class="n">cache</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Value</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LruCache</span> <span class="k">final</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="n">LruCache</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">capacity</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">:</span> <span class="n">capacity_</span><span class="p">{</span><span class="n">capacity</span><span class="p">}</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="na">[[nodiscard]]</span> <span class="k">auto</span> <span class="n">get</span><span class="p">(</span><span class="k">const</span> <span class="n">Key</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span> <span class="k">const</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">Value</span><span class="o">*</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">entries_</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">it</span> <span class="o">==</span> <span class="n">entries_</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">?</span> <span class="k">nullptr</span> <span class="o">:</span> <span class="o">&amp;</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">put</span><span class="p">(</span><span class="n">Key</span> <span class="n">key</span><span class="p">,</span> <span class="n">Value</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">static</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">kTag</span> <span class="o">=</span> <span class="s">&#34;lru&#34;</span><span class="p">;</span>  <span class="c1">// string literal
+</span></span></span><span class="line"><span class="cl">        <span class="c1">// Evict before insert so size never exceeds the capacity.
+</span></span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">entries_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">capacity_</span><span class="p">)</span> <span class="n">evict</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">entries_</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">evict</span><span class="p">()</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="cm">/* … */</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">capacity_</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span> <span class="n">Value</span><span class="o">&gt;</span> <span class="n">entries_</span><span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>  <span class="c1">// namespace projectious::cache
+</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-cpp" data-lang="cpp"><span class="line"><span class="cl"><span class="c1">// Policy-based cache. Types, templates, and a lambda.
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;string&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#include</span> <span class="cpf">&lt;unordered_map&gt;</span><span class="cp">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">namespace</span> <span class="n">projectious</span><span class="o">::</span><span class="n">cache</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">template</span> <span class="o">&lt;</span><span class="k">typename</span> <span class="n">Key</span><span class="p">,</span> <span class="k">typename</span> <span class="n">Value</span><span class="o">&gt;</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">LruCache</span> <span class="k">final</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl"><span class="k">public</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">explicit</span> <span class="n">LruCache</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">capacity</span><span class="p">)</span> <span class="k">noexcept</span> <span class="o">:</span> <span class="n">capacity_</span><span class="p">{</span><span class="n">capacity</span><span class="p">}</span> <span class="p">{}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="na">[[nodiscard]]</span> <span class="k">auto</span> <span class="n">get</span><span class="p">(</span><span class="k">const</span> <span class="n">Key</span><span class="o">&amp;</span> <span class="n">key</span><span class="p">)</span> <span class="k">const</span> <span class="o">-&gt;</span> <span class="k">const</span> <span class="n">Value</span><span class="o">*</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">const</span> <span class="k">auto</span> <span class="n">it</span> <span class="o">=</span> <span class="n">entries_</span><span class="p">.</span><span class="n">find</span><span class="p">(</span><span class="n">key</span><span class="p">);</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">it</span> <span class="o">==</span> <span class="n">entries_</span><span class="p">.</span><span class="n">end</span><span class="p">()</span> <span class="o">?</span> <span class="k">nullptr</span> <span class="o">:</span> <span class="o">&amp;</span><span class="n">it</span><span class="o">-&gt;</span><span class="n">second</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="nf">put</span><span class="p">(</span><span class="n">Key</span> <span class="n">key</span><span class="p">,</span> <span class="n">Value</span> <span class="n">value</span><span class="p">)</span> <span class="p">{</span>
+</span></span><span class="line"><span class="cl">        <span class="k">static</span> <span class="k">constexpr</span> <span class="k">auto</span> <span class="n">kTag</span> <span class="o">=</span> <span class="s">&#34;lru&#34;</span><span class="p">;</span>  <span class="c1">// string literal
+</span></span></span><span class="line"><span class="cl">        <span class="c1">// Evict before insert so size never exceeds the capacity.
+</span></span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="p">(</span><span class="n">entries_</span><span class="p">.</span><span class="n">size</span><span class="p">()</span> <span class="o">&gt;=</span> <span class="n">capacity_</span><span class="p">)</span> <span class="n">evict</span><span class="p">();</span>
+</span></span><span class="line"><span class="cl">        <span class="n">entries_</span><span class="p">.</span><span class="n">emplace</span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">key</span><span class="p">),</span> <span class="n">std</span><span class="o">::</span><span class="n">move</span><span class="p">(</span><span class="n">value</span><span class="p">));</span>
+</span></span><span class="line"><span class="cl">    <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">private</span><span class="o">:</span>
+</span></span><span class="line"><span class="cl">    <span class="kt">void</span> <span class="n">evict</span><span class="p">()</span> <span class="k">noexcept</span> <span class="p">{</span> <span class="cm">/* … */</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">size_t</span> <span class="n">capacity_</span><span class="p">{</span><span class="mi">0</span><span class="p">};</span>
+</span></span><span class="line"><span class="cl">    <span class="n">std</span><span class="o">::</span><span class="n">unordered_map</span><span class="o">&lt;</span><span class="n">Key</span><span class="p">,</span> <span class="n">Value</span><span class="o">&gt;</span> <span class="n">entries_</span><span class="p">{};</span>
+</span></span><span class="line"><span class="cl"><span class="p">};</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">}</span>  <span class="c1">// namespace projectious::cache
+</span></span></span></code></pre></div>
+  </div>
+</div>
 
-namespace projectious::cache {
-
-template <typename Key, typename Value>
-class LruCache final {
-public:
-    explicit LruCache(std::size_t capacity) noexcept : capacity_{capacity} {}
-
-    [[nodiscard]] auto get(const Key& key) const -> const Value* {
-        const auto it = entries_.find(key);
-        return it == entries_.end() ? nullptr : &it->second;
-    }
-
-    void put(Key key, Value value) {
-        static constexpr auto kTag = "lru";  // string literal
-        // Evict before insert so size never exceeds the capacity.
-        if (entries_.size() >= capacity_) evict();
-        entries_.emplace(std::move(key), std::move(value));
-    }
-
-private:
-    void evict() noexcept { /* … */ }
-
-    std::size_t capacity_{0};
-    std::unordered_map<Key, Value> entries_{};
-};
-
-}  // namespace projectious::cache
-```
 
 ### Python
 
-```python
-"""Pipeline stages and their policy gates."""
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;Pipeline stages and their policy gates.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">functools</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Iterable</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Retry budget is a policy decision, not a tuning knob.</span>
+</span></span><span class="line"><span class="cl"><span class="n">MAX_RETRIES</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="n">DEFAULT_POLICY</span> <span class="o">=</span> <span class="s2">&#34;strict&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">slots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Stage</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;A single stage. Immutable once constructed.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span></span><span class="line"><span class="cl">    <span class="n">policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_POLICY</span>
+</span></span><span class="line"><span class="cl">    <span class="n">retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">is_strict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span> <span class="o">==</span> <span class="s2">&#34;strict&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@staticmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&#34;Stage&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">policy</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&#34;:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Stage</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">policy</span><span class="o">=</span><span class="n">policy</span> <span class="ow">or</span> <span class="n">DEFAULT_POLICY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@functools.lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">stages</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Stage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">stage</span> <span class="ow">in</span> <span class="n">stages</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">stage</span><span class="o">.</span><span class="n">retries</span> <span class="o">&gt;</span> <span class="n">MAX_RETRIES</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">stage</span><span class="o">.</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> exceeds </span><span class="si">{</span><span class="n">MAX_RETRIES</span><span class="si">}</span><span class="s2"> retries&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">True</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-python" data-lang="python"><span class="line"><span class="cl"><span class="s2">&#34;&#34;&#34;Pipeline stages and their policy gates.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">annotations</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="kn">import</span> <span class="nn">functools</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">dataclasses</span> <span class="kn">import</span> <span class="n">dataclass</span><span class="p">,</span> <span class="n">field</span>
+</span></span><span class="line"><span class="cl"><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Final</span><span class="p">,</span> <span class="n">Iterable</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># Retry budget is a policy decision, not a tuning knob.</span>
+</span></span><span class="line"><span class="cl"><span class="n">MAX_RETRIES</span><span class="p">:</span> <span class="n">Final</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="n">DEFAULT_POLICY</span> <span class="o">=</span> <span class="s2">&#34;strict&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@dataclass</span><span class="p">(</span><span class="n">frozen</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">slots</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">class</span> <span class="nc">Stage</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="s2">&#34;&#34;&#34;A single stage. Immutable once constructed.&#34;&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="n">name</span><span class="p">:</span> <span class="nb">str</span>
+</span></span><span class="line"><span class="cl">    <span class="n">policy</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">DEFAULT_POLICY</span>
+</span></span><span class="line"><span class="cl">    <span class="n">retries</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl">    <span class="n">tags</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="n">field</span><span class="p">(</span><span class="n">default_factory</span><span class="o">=</span><span class="nb">list</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@property</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">is_strict</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">policy</span> <span class="o">==</span> <span class="s2">&#34;strict&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">    <span class="nd">@staticmethod</span>
+</span></span><span class="line"><span class="cl">    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="n">raw</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="s2">&#34;Stage&#34;</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="n">name</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">policy</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">partition</span><span class="p">(</span><span class="s2">&#34;:&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="n">Stage</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="o">.</span><span class="n">strip</span><span class="p">(),</span> <span class="n">policy</span><span class="o">=</span><span class="n">policy</span> <span class="ow">or</span> <span class="n">DEFAULT_POLICY</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nd">@functools.lru_cache</span><span class="p">(</span><span class="n">maxsize</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl"><span class="k">def</span> <span class="nf">validate</span><span class="p">(</span><span class="n">stages</span><span class="p">:</span> <span class="n">Iterable</span><span class="p">[</span><span class="n">Stage</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> <span class="n">stage</span> <span class="ow">in</span> <span class="n">stages</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">        <span class="k">if</span> <span class="n">stage</span><span class="o">.</span><span class="n">retries</span> <span class="o">&gt;</span> <span class="n">MAX_RETRIES</span><span class="p">:</span>
+</span></span><span class="line"><span class="cl">            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&#34;</span><span class="si">{</span><span class="n">stage</span><span class="o">.</span><span class="n">name</span><span class="si">!r}</span><span class="s2"> exceeds </span><span class="si">{</span><span class="n">MAX_RETRIES</span><span class="si">}</span><span class="s2"> retries&#34;</span><span class="p">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">return</span> <span class="kc">True</span></span></span></code></pre></div>
+  </div>
+</div>
 
-from __future__ import annotations
-
-import functools
-from dataclasses import dataclass, field
-from typing import Final, Iterable
-
-# Retry budget is a policy decision, not a tuning knob.
-MAX_RETRIES: Final[int] = 3
-DEFAULT_POLICY = "strict"
-
-
-@dataclass(frozen=True, slots=True)
-class Stage:
-    """A single stage. Immutable once constructed."""
-
-    name: str
-    policy: str = DEFAULT_POLICY
-    retries: int = 0
-    tags: list[str] = field(default_factory=list)
-
-    @property
-    def is_strict(self) -> bool:
-        return self.policy == "strict"
-
-    @staticmethod
-    def parse(raw: str) -> "Stage":
-        name, _, policy = raw.partition(":")
-        return Stage(name=name.strip(), policy=policy or DEFAULT_POLICY)
-
-
-@functools.lru_cache(maxsize=None)
-def validate(stages: Iterable[Stage]) -> bool:
-    for stage in stages:
-        if stage.retries > MAX_RETRIES:
-            raise ValueError(f"{stage.name!r} exceeds {MAX_RETRIES} retries")
-    return True
-```
 
 ### Rust
 
-```rust
-//! Policy evaluation for pipeline stages.
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="sd">//! Policy evaluation for pipeline stages.
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">collections</span>::<span class="n">HashMap</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">fmt</span>::<span class="p">{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Display</span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">const</span><span class="w"> </span><span class="no">MAX_RETRIES</span>: <span class="kt">u32</span> <span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="sd">/// How strictly a stage is evaluated.
+</span></span></span><span class="line"><span class="cl"><span class="cp">#[derive(Debug, Clone, Copy, PartialEq, Eq)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">Policy</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Strict</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Advisory</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#[derive(Debug, Default)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">Stage</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">name</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span> <span class="kt">str</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">policy</span>: <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Policy</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">retries</span>: <span class="kt">u32</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">impl</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Stage</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Strict by default: a gate that is not configured should fail closed.
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">name</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span> <span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span>: <span class="nb">Some</span><span class="p">(</span><span class="n">Policy</span>::<span class="n">Strict</span><span class="p">),</span><span class="w"> </span><span class="n">retries</span>: <span class="mi">0</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">validate</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">retries</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="no">MAX_RETRIES</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">&#34;</span><span class="si">{}</span><span class="s"> exceeds </span><span class="si">{MAX_RETRIES}</span><span class="s"> retries&#34;</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">name</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">impl</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">fmt</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">f</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">fmt</span>::<span class="n">Formatter</span><span class="o">&lt;</span><span class="nb">&#39;_</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">fmt</span>::<span class="nb">Result</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="fm">write!</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Policy</span>::<span class="n">Strict</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&#34;strict&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&#34;advisory&#34;</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-rust" data-lang="rust"><span class="line"><span class="cl"><span class="sd">//! Policy evaluation for pipeline stages.
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">collections</span>::<span class="n">HashMap</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">fmt</span>::<span class="p">{</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">Display</span><span class="p">};</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">const</span><span class="w"> </span><span class="no">MAX_RETRIES</span>: <span class="kt">u32</span> <span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="sd">/// How strictly a stage is evaluated.
+</span></span></span><span class="line"><span class="cl"><span class="cp">#[derive(Debug, Clone, Copy, PartialEq, Eq)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">enum</span> <span class="nc">Policy</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Strict</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="n">Advisory</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="cp">#[derive(Debug, Default)]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">pub</span><span class="w"> </span><span class="k">struct</span> <span class="nc">Stage</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">name</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span> <span class="kt">str</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">policy</span>: <span class="nb">Option</span><span class="o">&lt;</span><span class="n">Policy</span><span class="o">&gt;</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="n">retries</span>: <span class="kt">u32</span><span class="p">,</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">impl</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Stage</span><span class="o">&lt;</span><span class="na">&#39;a</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="c1">// Strict by default: a gate that is not configured should fail closed.
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">new</span><span class="p">(</span><span class="n">name</span>: <span class="kp">&amp;</span><span class="na">&#39;a</span> <span class="kt">str</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">Self</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="bp">Self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">policy</span>: <span class="nb">Some</span><span class="p">(</span><span class="n">Policy</span>::<span class="n">Strict</span><span class="p">),</span><span class="w"> </span><span class="n">retries</span>: <span class="mi">0</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">pub</span><span class="w"> </span><span class="k">fn</span> <span class="nf">validate</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nb">Result</span><span class="o">&lt;</span><span class="p">(),</span><span class="w"> </span><span class="nb">String</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">retries</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="no">MAX_RETRIES</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="nb">Err</span><span class="p">(</span><span class="fm">format!</span><span class="p">(</span><span class="s">&#34;</span><span class="si">{}</span><span class="s"> exceeds </span><span class="si">{MAX_RETRIES}</span><span class="s"> retries&#34;</span><span class="p">,</span><span class="w"> </span><span class="bp">self</span><span class="p">.</span><span class="n">name</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nb">Ok</span><span class="p">(())</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="k">impl</span><span class="w"> </span><span class="n">Display</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="k">fn</span> <span class="nf">fmt</span><span class="p">(</span><span class="o">&amp;</span><span class="bp">self</span><span class="p">,</span><span class="w"> </span><span class="n">f</span>: <span class="kp">&amp;</span><span class="nc">mut</span><span class="w"> </span><span class="n">fmt</span>::<span class="n">Formatter</span><span class="o">&lt;</span><span class="nb">&#39;_</span><span class="o">&gt;</span><span class="p">)</span><span class="w"> </span>-&gt; <span class="nc">fmt</span>::<span class="nb">Result</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="fm">write!</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;{}&#34;</span><span class="p">,</span><span class="w"> </span><span class="k">match</span><span class="w"> </span><span class="bp">self</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">Policy</span>::<span class="n">Strict</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&#34;strict&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="s">&#34;advisory&#34;</span><span class="w"> </span><span class="p">})</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+</div>
 
-use std::collections::HashMap;
-use std::fmt::{self, Display};
-
-const MAX_RETRIES: u32 = 3;
-
-/// How strictly a stage is evaluated.
-#[derive(Debug, Clone, Copy, PartialEq, Eq)]
-pub enum Policy {
-    Strict,
-    Advisory,
-}
-
-#[derive(Debug, Default)]
-pub struct Stage<'a> {
-    pub name: &'a str,
-    pub policy: Option<Policy>,
-    pub retries: u32,
-}
-
-impl<'a> Stage<'a> {
-    // Strict by default: a gate that is not configured should fail closed.
-    pub fn new(name: &'a str) -> Self {
-        Self { name, policy: Some(Policy::Strict), retries: 0 }
-    }
-
-    pub fn validate(&self) -> Result<(), String> {
-        if self.retries > MAX_RETRIES {
-            return Err(format!("{} exceeds {MAX_RETRIES} retries", self.name));
-        }
-        Ok(())
-    }
-}
-
-impl Display for Policy {
-    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
-        write!(f, "{}", match self { Policy::Strict => "strict", _ => "advisory" })
-    }
-}
-```
 
 ### Go
 
-```go
-// Package pipeline evaluates stages against their policy gates.
-package pipeline
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// Package pipeline evaluates stages against their policy gates.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nx">pipeline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;errors&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;fmt&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">const</span><span class="w"> </span><span class="nx">MaxRetries</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Policy is how strictly a stage is evaluated.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Policy</span><span class="w"> </span><span class="kt">int</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">const</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Strict</span><span class="w"> </span><span class="nx">Policy</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">iota</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Advisory</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">var</span><span class="w"> </span><span class="nx">ErrTooManyRetries</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;stage exceeds retry budget&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Stage</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Name</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&#34;name&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Policy</span><span class="w">  </span><span class="nx">Policy</span><span class="w"> </span><span class="s">`json:&#34;policy&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Retries</span><span class="w"> </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&#34;retries,omitempty&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Stage</span><span class="p">)</span><span class="w"> </span><span class="nf">Validate</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Retries</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">MaxRetries</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;%q: %w&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span><span class="w"> </span><span class="nx">ErrTooManyRetries</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">ValidateAll</span><span class="p">(</span><span class="nx">stages</span><span class="w"> </span><span class="p">[]</span><span class="nx">Stage</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">ok</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">stages</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">stages</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nf">Validate</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-go" data-lang="go"><span class="line"><span class="cl"><span class="c1">// Package pipeline evaluates stages against their policy gates.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nx">pipeline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;errors&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="s">&#34;fmt&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">const</span><span class="w"> </span><span class="nx">MaxRetries</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="mi">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="c1">// Policy is how strictly a stage is evaluated.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Policy</span><span class="w"> </span><span class="kt">int</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">const</span><span class="w"> </span><span class="p">(</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Strict</span><span class="w"> </span><span class="nx">Policy</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="kc">iota</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Advisory</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">var</span><span class="w"> </span><span class="nx">ErrTooManyRetries</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">errors</span><span class="p">.</span><span class="nf">New</span><span class="p">(</span><span class="s">&#34;stage exceeds retry budget&#34;</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">type</span><span class="w"> </span><span class="nx">Stage</span><span class="w"> </span><span class="kd">struct</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Name</span><span class="w">    </span><span class="kt">string</span><span class="w"> </span><span class="s">`json:&#34;name&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Policy</span><span class="w">  </span><span class="nx">Policy</span><span class="w"> </span><span class="s">`json:&#34;policy&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="nx">Retries</span><span class="w"> </span><span class="kt">int</span><span class="w">    </span><span class="s">`json:&#34;retries,omitempty&#34;`</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="p">(</span><span class="nx">s</span><span class="w"> </span><span class="o">*</span><span class="nx">Stage</span><span class="p">)</span><span class="w"> </span><span class="nf">Validate</span><span class="p">()</span><span class="w"> </span><span class="kt">error</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">if</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Retries</span><span class="w"> </span><span class="p">&gt;</span><span class="w"> </span><span class="nx">MaxRetries</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">return</span><span class="w"> </span><span class="nx">fmt</span><span class="p">.</span><span class="nf">Errorf</span><span class="p">(</span><span class="s">&#34;%q: %w&#34;</span><span class="p">,</span><span class="w"> </span><span class="nx">s</span><span class="p">.</span><span class="nx">Name</span><span class="p">,</span><span class="w"> </span><span class="nx">ErrTooManyRetries</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">func</span><span class="w"> </span><span class="nf">ValidateAll</span><span class="p">(</span><span class="nx">stages</span><span class="w"> </span><span class="p">[]</span><span class="nx">Stage</span><span class="p">)</span><span class="w"> </span><span class="p">(</span><span class="nx">ok</span><span class="w"> </span><span class="kt">bool</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="kt">error</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">for</span><span class="w"> </span><span class="nx">i</span><span class="w"> </span><span class="o">:=</span><span class="w"> </span><span class="k">range</span><span class="w"> </span><span class="nx">stages</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="k">if</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="p">=</span><span class="w"> </span><span class="nx">stages</span><span class="p">[</span><span class="nx">i</span><span class="p">].</span><span class="nf">Validate</span><span class="p">();</span><span class="w"> </span><span class="nx">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="kc">nil</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">			</span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span><span class="w"> </span><span class="nx">err</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">		</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">	</span><span class="k">return</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w"> </span><span class="kc">nil</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+</div>
 
-import (
-	"errors"
-	"fmt"
-)
-
-const MaxRetries = 3
-
-// Policy is how strictly a stage is evaluated.
-type Policy int
-
-const (
-	Strict Policy = iota
-	Advisory
-)
-
-var ErrTooManyRetries = errors.New("stage exceeds retry budget")
-
-type Stage struct {
-	Name    string `json:"name"`
-	Policy  Policy `json:"policy"`
-	Retries int    `json:"retries,omitempty"`
-}
-
-func (s *Stage) Validate() error {
-	if s.Retries > MaxRetries {
-		return fmt.Errorf("%q: %w", s.Name, ErrTooManyRetries)
-	}
-	return nil
-}
-
-func ValidateAll(stages []Stage) (ok bool, err error) {
-	for i := range stages {
-		if err = stages[i].Validate(); err != nil {
-			return false, err
-		}
-	}
-	return true, nil
-}
-```
 
 ### Java
 
-```java
-package work.projectious.pipeline;
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">work.projectious.pipeline</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Objects</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="cm">/** A single pipeline stage and its policy gate. */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Stage</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Stage</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_RETRIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">3</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">TIMEOUT_MS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">30_000L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MASK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0xFF</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="n">policy</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">retries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">budget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">12</span><span class="p">.</span><span class="na">60</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Stage</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="n">policy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;name&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Stage</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Deprecated</span><span class="p">(</span><span class="n">since</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;2.0&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">forRemoval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isStrict</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Policy</span><span class="p">.</span><span class="na">STRICT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">errors</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retries</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">MAX_RETRIES</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&#34;%s exceeds %d retries&#34;</span><span class="p">.</span><span class="na">formatted</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_RETRIES</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">STRICT</span><span class="p">,</span><span class="w"> </span><span class="n">ADVISORY</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-java" data-lang="java"><span class="line"><span class="cl"><span class="kn">package</span><span class="w"> </span><span class="nn">work.projectious.pipeline</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.List</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kn">import</span><span class="w"> </span><span class="nn">java.util.Objects</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="cm">/** A single pipeline stage and its policy gate. */</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Stage</span><span class="w"> </span><span class="kd">implements</span><span class="w"> </span><span class="n">Comparable</span><span class="o">&lt;</span><span class="n">Stage</span><span class="o">&gt;</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MAX_RETRIES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">3</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">TIMEOUT_MS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">30_000L</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">MASK</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0xFF</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="n">policy</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">retries</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">0</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">private</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">budget</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">12</span><span class="p">.</span><span class="na">60</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="nf">Stage</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="n">policy</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Objects</span><span class="p">.</span><span class="na">requireNonNull</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="s">&#34;name&#34;</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">this</span><span class="p">.</span><span class="na">policy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">policy</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Override</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">compareTo</span><span class="p">(</span><span class="n">Stage</span><span class="w"> </span><span class="n">other</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">name</span><span class="p">.</span><span class="na">compareTo</span><span class="p">(</span><span class="n">other</span><span class="p">.</span><span class="na">name</span><span class="p">);</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nd">@Deprecated</span><span class="p">(</span><span class="n">since</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&#34;2.0&#34;</span><span class="p">,</span><span class="w"> </span><span class="n">forRemoval</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">true</span><span class="p">)</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isStrict</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">policy</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">Policy</span><span class="p">.</span><span class="na">STRICT</span><span class="p">;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">validate</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">String</span><span class="o">&gt;</span><span class="w"> </span><span class="n">errors</span><span class="p">)</span><span class="w"> </span><span class="kd">throws</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">retries</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">MAX_RETRIES</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">            </span><span class="k">throw</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">IllegalStateException</span><span class="p">(</span><span class="s">&#34;%s exceeds %d retries&#34;</span><span class="p">.</span><span class="na">formatted</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">MAX_RETRIES</span><span class="p">));</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">enum</span><span class="w"> </span><span class="n">Policy</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">STRICT</span><span class="p">,</span><span class="w"> </span><span class="n">ADVISORY</span><span class="w"> </span><span class="p">}</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+</div>
 
-import java.util.List;
-import java.util.Objects;
-
-/** A single pipeline stage and its policy gate. */
-public final class Stage implements Comparable<Stage> {
-
-    public static final int MAX_RETRIES = 3;
-    public static final long TIMEOUT_MS = 30_000L;
-    public static final int MASK = 0xFF;
-
-    private final String name;
-    private final Policy policy;
-    private int retries = 0;
-    private double budget = 12.60;
-
-    public Stage(String name, Policy policy) {
-        this.name = Objects.requireNonNull(name, "name");
-        this.policy = policy;
-    }
-
-    @Override
-    public int compareTo(Stage other) {
-        return this.name.compareTo(other.name);
-    }
-
-    @Deprecated(since = "2.0", forRemoval = true)
-    public boolean isStrict() {
-        return policy == Policy.STRICT;
-    }
-
-    public void validate(List<String> errors) throws IllegalStateException {
-        if (retries > MAX_RETRIES) {
-            throw new IllegalStateException("%s exceeds %d retries".formatted(name, MAX_RETRIES));
-        }
-    }
-
-    public enum Policy { STRICT, ADVISORY }
-}
-```
 
 ### Assembly (NASM)
 
-```nasm
-; Sum a byte array. rdi = pointer, rsi = length, returns in rax.
-        section .data
-msg:    db  "sum: ", 0
-LEN     equ 5
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nasm" data-lang="nasm"><span class="line"><span class="cl"><span class="c1">; Sum a byte array. rdi = pointer, rsi = length, returns in rax.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">section</span> <span class="nv">.data</span>
+</span></span><span class="line"><span class="cl"><span class="nl">msg:</span>    <span class="kd">db</span>  <span class="s">&#34;sum: &#34;</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="no">LEN</span><span class="kd">     equ</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">section</span> <span class="nv">.text</span>
+</span></span><span class="line"><span class="cl">        <span class="k">global</span>  <span class="nv">sum_bytes</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">sum_bytes:</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">xor</span>     <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>            <span class="c1">; accumulator</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">test</span>    <span class="nb">rsi</span><span class="p">,</span> <span class="nb">rsi</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">jz</span>      <span class="nv">.done</span>               <span class="c1">; empty input</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">.loop:</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">movzx</span>   <span class="nb">rdx</span><span class="p">,</span> <span class="kt">byte</span> <span class="p">[</span><span class="nb">rdi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">add</span>     <span class="nb">rax</span><span class="p">,</span> <span class="nb">rdx</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">inc</span>     <span class="nb">rdi</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">dec</span>     <span class="nb">rsi</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">jnz</span>     <span class="nv">.loop</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">.done:</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">ret</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-nasm" data-lang="nasm"><span class="line"><span class="cl"><span class="c1">; Sum a byte array. rdi = pointer, rsi = length, returns in rax.</span>
+</span></span><span class="line"><span class="cl">        <span class="k">section</span> <span class="nv">.data</span>
+</span></span><span class="line"><span class="cl"><span class="nl">msg:</span>    <span class="kd">db</span>  <span class="s">&#34;sum: &#34;</span><span class="p">,</span> <span class="mi">0</span>
+</span></span><span class="line"><span class="cl"><span class="no">LEN</span><span class="kd">     equ</span> <span class="mi">5</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">        <span class="k">section</span> <span class="nv">.text</span>
+</span></span><span class="line"><span class="cl">        <span class="k">global</span>  <span class="nv">sum_bytes</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">sum_bytes:</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">xor</span>     <span class="nb">rax</span><span class="p">,</span> <span class="nb">rax</span>            <span class="c1">; accumulator</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">test</span>    <span class="nb">rsi</span><span class="p">,</span> <span class="nb">rsi</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">jz</span>      <span class="nv">.done</span>               <span class="c1">; empty input</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">.loop:</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">movzx</span>   <span class="nb">rdx</span><span class="p">,</span> <span class="kt">byte</span> <span class="p">[</span><span class="nb">rdi</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">add</span>     <span class="nb">rax</span><span class="p">,</span> <span class="nb">rdx</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">inc</span>     <span class="nb">rdi</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">dec</span>     <span class="nb">rsi</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">jnz</span>     <span class="nv">.loop</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nl">.done:</span>
+</span></span><span class="line"><span class="cl">        <span class="nf">ret</span></span></span></code></pre></div>
+  </div>
+</div>
 
-        section .text
-        global  sum_bytes
-
-sum_bytes:
-        xor     rax, rax            ; accumulator
-        test    rsi, rsi
-        jz      .done               ; empty input
-
-.loop:
-        movzx   rdx, byte [rdi]
-        add     rax, rdx
-        inc     rdi
-        dec     rsi
-        jnz     .loop
-
-.done:
-        ret
-```
 
 ### Bash
 
-```bash
-#!/usr/bin/env bash
-# Validate a pipeline definition and promote it when the gates pass.
-set -euo pipefail
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/usr/bin/env bash
+</span></span></span><span class="line"><span class="cl"><span class="c1"># Validate a pipeline definition and promote it when the gates pass.</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> -euo pipefail
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">MAX_RETRIES</span><span class="o">=</span><span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">POLICY</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">PIPELINE_POLICY</span><span class="k">:-</span><span class="nv">strict</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">declare</span> -A <span class="nv">GATE_STATUS</span><span class="o">=()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">log<span class="o">()</span> <span class="o">{</span> <span class="nb">printf</span> <span class="s1">&#39;%s  %s\n&#39;</span> <span class="s2">&#34;</span><span class="k">$(</span>date -u +%FT%TZ<span class="k">)</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$*</span><span class="s2">&#34;</span> &gt;<span class="p">&amp;</span>2<span class="p">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">validate_stage<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> -r <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> <span class="nv">retries</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">((</span> retries &gt; MAX_RETRIES <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        log <span class="s2">&#34;ERROR </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2"> exceeds </span><span class="si">${</span><span class="nv">MAX_RETRIES</span><span class="si">}</span><span class="s2"> retries&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">    GATE_STATUS<span class="o">[</span><span class="s2">&#34;</span><span class="nv">$name</span><span class="s2">&#34;</span><span class="o">]=</span><span class="s2">&#34;ok&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">main<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> -a <span class="nv">stages</span><span class="o">=(</span><span class="s2">&#34;validate&#34;</span> <span class="s2">&#34;deploy&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> stage in <span class="s2">&#34;</span><span class="si">${</span><span class="nv">stages</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">        validate_stage <span class="s2">&#34;</span><span class="nv">$stage</span><span class="s2">&#34;</span> <span class="m">0</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">done</span>
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;policy=</span><span class="si">${</span><span class="nv">POLICY</span><span class="si">}</span><span class="s2"> stages=</span><span class="si">${#</span><span class="nv">stages</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">main <span class="s2">&#34;</span><span class="nv">$@</span><span class="s2">&#34;</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-bash" data-lang="bash"><span class="line"><span class="cl"><span class="cp">#!/usr/bin/env bash
+</span></span></span><span class="line"><span class="cl"><span class="c1"># Validate a pipeline definition and promote it when the gates pass.</span>
+</span></span><span class="line"><span class="cl"><span class="nb">set</span> -euo pipefail
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">MAX_RETRIES</span><span class="o">=</span><span class="m">3</span>
+</span></span><span class="line"><span class="cl"><span class="nb">readonly</span> <span class="nv">POLICY</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">PIPELINE_POLICY</span><span class="k">:-</span><span class="nv">strict</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nb">declare</span> -A <span class="nv">GATE_STATUS</span><span class="o">=()</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">log<span class="o">()</span> <span class="o">{</span> <span class="nb">printf</span> <span class="s1">&#39;%s  %s\n&#39;</span> <span class="s2">&#34;</span><span class="k">$(</span>date -u +%FT%TZ<span class="k">)</span><span class="s2">&#34;</span> <span class="s2">&#34;</span><span class="nv">$*</span><span class="s2">&#34;</span> &gt;<span class="p">&amp;</span>2<span class="p">;</span> <span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">validate_stage<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> -r <span class="nv">name</span><span class="o">=</span><span class="s2">&#34;</span><span class="nv">$1</span><span class="s2">&#34;</span> <span class="nv">retries</span><span class="o">=</span><span class="s2">&#34;</span><span class="si">${</span><span class="nv">2</span><span class="k">:-</span><span class="nv">0</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl">    <span class="k">if</span> <span class="o">((</span> retries &gt; MAX_RETRIES <span class="o">))</span><span class="p">;</span> <span class="k">then</span>
+</span></span><span class="line"><span class="cl">        log <span class="s2">&#34;ERROR </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="s2"> exceeds </span><span class="si">${</span><span class="nv">MAX_RETRIES</span><span class="si">}</span><span class="s2"> retries&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="k">return</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">fi</span>
+</span></span><span class="line"><span class="cl">    GATE_STATUS<span class="o">[</span><span class="s2">&#34;</span><span class="nv">$name</span><span class="s2">&#34;</span><span class="o">]=</span><span class="s2">&#34;ok&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">main<span class="o">()</span> <span class="o">{</span>
+</span></span><span class="line"><span class="cl">    <span class="nb">local</span> -a <span class="nv">stages</span><span class="o">=(</span><span class="s2">&#34;validate&#34;</span> <span class="s2">&#34;deploy&#34;</span><span class="o">)</span>
+</span></span><span class="line"><span class="cl">    <span class="k">for</span> stage in <span class="s2">&#34;</span><span class="si">${</span><span class="nv">stages</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span><span class="p">;</span> <span class="k">do</span>
+</span></span><span class="line"><span class="cl">        validate_stage <span class="s2">&#34;</span><span class="nv">$stage</span><span class="s2">&#34;</span> <span class="m">0</span> <span class="o">||</span> <span class="nb">exit</span> <span class="m">1</span>
+</span></span><span class="line"><span class="cl">    <span class="k">done</span>
+</span></span><span class="line"><span class="cl">    log <span class="s2">&#34;policy=</span><span class="si">${</span><span class="nv">POLICY</span><span class="si">}</span><span class="s2"> stages=</span><span class="si">${#</span><span class="nv">stages</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="o">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">main <span class="s2">&#34;</span><span class="nv">$@</span><span class="s2">&#34;</span></span></span></code></pre></div>
+  </div>
+</div>
 
-readonly MAX_RETRIES=3
-readonly POLICY="${PIPELINE_POLICY:-strict}"
-declare -A GATE_STATUS=()
-
-log() { printf '%s  %s\n' "$(date -u +%FT%TZ)" "$*" >&2; }
-
-validate_stage() {
-    local -r name="$1" retries="${2:-0}"
-    if (( retries > MAX_RETRIES )); then
-        log "ERROR ${name} exceeds ${MAX_RETRIES} retries"
-        return 1
-    fi
-    GATE_STATUS["$name"]="ok"
-}
-
-main() {
-    local -a stages=("validate" "deploy")
-    for stage in "${stages[@]}"; do
-        validate_stage "$stage" 0 || exit 1
-    done
-    log "policy=${POLICY} stages=${#stages[@]}"
-}
-
-main "$@"
-```
 
 ### LaTeX
 
-```latex
-\documentclass[11pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\documentclass</span><span class="na">[11pt,a4paper]</span><span class="nb">{</span>article<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Pipeline notation used throughout the paper.
+</span></span></span><span class="line"><span class="cl"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\stage</span><span class="nb">}</span>[2]<span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span>#1 <span class="k">\xrightarrow</span><span class="nb">{</span>#2<span class="nb">}}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\title</span><span class="nb">{</span>Policy Gates in Composable Pipelines<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\author</span><span class="nb">{</span>Jane Doe<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\maketitle</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\section</span><span class="nb">{</span>Definitions<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">A stage <span class="s">$</span><span class="nb">s_i</span><span class="s">$</span> passes when its retry count <span class="s">$</span><span class="nb">r_i </span><span class="nv">\leq</span><span class="nb"> </span><span class="m">3</span><span class="s">$</span>:
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\forall</span> s<span class="nb">_</span>i <span class="k">\in</span> S : r<span class="nb">_</span>i <span class="k">\leq</span> R<span class="nb">_{</span><span class="k">\max</span><span class="nb">}</span>, <span class="k">\quad</span> R<span class="nb">_{</span><span class="k">\max</span><span class="nb">}</span> = 3
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\item</span> <span class="k">\textbf</span><span class="nb">{</span>Strict<span class="nb">}</span> — the gate fails closed.
+</span></span><span class="line"><span class="cl">    <span class="k">\item</span> <span class="k">\emph</span><span class="nb">{</span>Advisory<span class="nb">}</span> — the gate records and continues.
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-latex" data-lang="latex"><span class="line"><span class="cl"><span class="k">\documentclass</span><span class="na">[11pt,a4paper]</span><span class="nb">{</span>article<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="na">[utf8]</span><span class="nb">{</span>inputenc<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\usepackage</span><span class="nb">{</span>amsmath<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c">% Pipeline notation used throughout the paper.
+</span></span></span><span class="line"><span class="cl"><span class="k">\newcommand</span><span class="nb">{</span><span class="k">\stage</span><span class="nb">}</span>[2]<span class="nb">{</span><span class="k">\ensuremath</span><span class="nb">{</span>#1 <span class="k">\xrightarrow</span><span class="nb">{</span>#2<span class="nb">}}}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\title</span><span class="nb">{</span>Policy Gates in Composable Pipelines<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\author</span><span class="nb">{</span>Jane Doe<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</span></span><span class="line"><span class="cl"><span class="k">\maketitle</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\section</span><span class="nb">{</span>Definitions<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">A stage <span class="s">$</span><span class="nb">s_i</span><span class="s">$</span> passes when its retry count <span class="s">$</span><span class="nb">r_i </span><span class="nv">\leq</span><span class="nb"> </span><span class="m">3</span><span class="s">$</span>:
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>equation<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\forall</span> s<span class="nb">_</span>i <span class="k">\in</span> S : r<span class="nb">_</span>i <span class="k">\leq</span> R<span class="nb">_{</span><span class="k">\max</span><span class="nb">}</span>, <span class="k">\quad</span> R<span class="nb">_{</span><span class="k">\max</span><span class="nb">}</span> = 3
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>equation<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\begin</span><span class="nb">{</span>itemize<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">    <span class="k">\item</span> <span class="k">\textbf</span><span class="nb">{</span>Strict<span class="nb">}</span> — the gate fails closed.
+</span></span><span class="line"><span class="cl">    <span class="k">\item</span> <span class="k">\emph</span><span class="nb">{</span>Advisory<span class="nb">}</span> — the gate records and continues.
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>itemize<span class="nb">}</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span></span></span></code></pre></div>
+  </div>
+</div>
 
-% Pipeline notation used throughout the paper.
-\newcommand{\stage}[2]{\ensuremath{#1 \xrightarrow{#2}}}
-
-\title{Policy Gates in Composable Pipelines}
-\author{Jane Doe}
-
-\begin{document}
-\maketitle
-
-\section{Definitions}
-A stage $s_i$ passes when its retry count $r_i \leq 3$:
-\begin{equation}
-    \forall s_i \in S : r_i \leq R_{\max}, \quad R_{\max} = 3
-\end{equation}
-
-\begin{itemize}
-    \item \textbf{Strict} — the gate fails closed.
-    \item \emph{Advisory} — the gate records and continues.
-\end{itemize}
-
-\end{document}
-```
 
 ### Markdown
 
-````markdown
----
-title: Stage reference
-weight: 10
----
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Stage reference</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># Stage reference
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">A stage passes when its retry count stays at or below <span class="gs">**three**</span>. See the
+</span></span><span class="line"><span class="cl">[<span class="nt">policy guide</span>](<span class="na">../policy/</span>) for the full rules.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## Fields
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">| Field | Type | Default |
+</span></span><span class="line"><span class="cl">|---|---|---|
+</span></span><span class="line"><span class="cl">| <span class="sb">`name`</span> | string | — |
+</span></span><span class="line"><span class="cl">| <span class="sb">`policy`</span> | enum | <span class="sb">`strict`</span> |
+</span></span><span class="line"><span class="cl"><span class="k">
+</span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">Advisory gates record a failure and continue. Strict gates fail closed.
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> Validate the configuration
+</span></span><span class="line"><span class="cl"><span class="k">2.</span> Request promotion
+</span></span><span class="line"><span class="cl"><span class="k">3.</span> Deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s">```sh
+</span></span></span><span class="line"><span class="cl">pipeline validate --policy strict
+</span></span><span class="line"><span class="cl"><span class="s">```</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">&lt;!-- Deprecated: `--legacy-gate` is removed in 2.0. --&gt;</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-markdown" data-lang="markdown"><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l">Stage reference</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">weight</span><span class="p">:</span><span class="w"> </span><span class="m">10</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nn">---</span><span class="w">
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gh"># Stage reference
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">A stage passes when its retry count stays at or below <span class="gs">**three**</span>. See the
+</span></span><span class="line"><span class="cl">[<span class="nt">policy guide</span>](<span class="na">../policy/</span>) for the full rules.
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="gu">## Fields
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">| Field | Type | Default |
+</span></span><span class="line"><span class="cl">|---|---|---|
+</span></span><span class="line"><span class="cl">| <span class="sb">`name`</span> | string | — |
+</span></span><span class="line"><span class="cl">| <span class="sb">`policy`</span> | enum | <span class="sb">`strict`</span> |
+</span></span><span class="line"><span class="cl"><span class="k">
+</span></span></span><span class="line"><span class="cl"><span class="k">&gt; </span><span class="ge">Advisory gates record a failure and continue. Strict gates fail closed.
+</span></span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="k">1.</span> Validate the configuration
+</span></span><span class="line"><span class="cl"><span class="k">2.</span> Request promotion
+</span></span><span class="line"><span class="cl"><span class="k">3.</span> Deploy
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="s">```sh
+</span></span></span><span class="line"><span class="cl">pipeline validate --policy strict
+</span></span><span class="line"><span class="cl"><span class="s">```</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="cm">&lt;!-- Deprecated: `--legacy-gate` is removed in 2.0. --&gt;</span></span></span></code></pre></div>
+  </div>
+</div>
 
-# Stage reference
-
-A stage passes when its retry count stays at or below **three**. See the
-[policy guide](../policy/) for the full rules.
-
-## Fields
-
-| Field | Type | Default |
-|---|---|---|
-| `name` | string | — |
-| `policy` | enum | `strict` |
-
-> Advisory gates record a failure and continue. Strict gates fail closed.
-
-1. Validate the configuration
-2. Request promotion
-3. Deploy
-
-```sh
-pipeline validate --policy strict
-```
-
-<!-- Deprecated: `--legacy-gate` is removed in 2.0. -->
-````
 
 ### JSON
 
-```json
-{
-  "$schema": "https://projectious.work/schema/pipeline-2.json",
-  "name": "validate-deploy",
-  "policy": "strict",
-  "retries": 3,
-  "enabled": true,
-  "owner": null,
-  "budget": 12.6,
-  "stages": [
-    { "name": "validate", "gate": "strict", "timeoutSeconds": 120 },
-    { "name": "deploy", "gate": "advisory", "timeoutSeconds": 600 }
-  ],
-  "tags": ["platform", "eu-central"]
-}
-```
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://projectious.work/schema/pipeline-2.json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;validate-deploy&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;policy&#34;</span><span class="p">:</span> <span class="s2">&#34;strict&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;retries&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;owner&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;budget&#34;</span><span class="p">:</span> <span class="mf">12.6</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;stages&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;validate&#34;</span><span class="p">,</span> <span class="nt">&#34;gate&#34;</span><span class="p">:</span> <span class="s2">&#34;strict&#34;</span><span class="p">,</span> <span class="nt">&#34;timeoutSeconds&#34;</span><span class="p">:</span> <span class="mi">120</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;deploy&#34;</span><span class="p">,</span> <span class="nt">&#34;gate&#34;</span><span class="p">:</span> <span class="s2">&#34;advisory&#34;</span><span class="p">,</span> <span class="nt">&#34;timeoutSeconds&#34;</span><span class="p">:</span> <span class="mi">600</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;platform&#34;</span><span class="p">,</span> <span class="s2">&#34;eu-central&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-json" data-lang="json"><span class="line"><span class="cl"><span class="p">{</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;$schema&#34;</span><span class="p">:</span> <span class="s2">&#34;https://projectious.work/schema/pipeline-2.json&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;validate-deploy&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;policy&#34;</span><span class="p">:</span> <span class="s2">&#34;strict&#34;</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;retries&#34;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;enabled&#34;</span><span class="p">:</span> <span class="kc">true</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;owner&#34;</span><span class="p">:</span> <span class="kc">null</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;budget&#34;</span><span class="p">:</span> <span class="mf">12.6</span><span class="p">,</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;stages&#34;</span><span class="p">:</span> <span class="p">[</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;validate&#34;</span><span class="p">,</span> <span class="nt">&#34;gate&#34;</span><span class="p">:</span> <span class="s2">&#34;strict&#34;</span><span class="p">,</span> <span class="nt">&#34;timeoutSeconds&#34;</span><span class="p">:</span> <span class="mi">120</span> <span class="p">},</span>
+</span></span><span class="line"><span class="cl">    <span class="p">{</span> <span class="nt">&#34;name&#34;</span><span class="p">:</span> <span class="s2">&#34;deploy&#34;</span><span class="p">,</span> <span class="nt">&#34;gate&#34;</span><span class="p">:</span> <span class="s2">&#34;advisory&#34;</span><span class="p">,</span> <span class="nt">&#34;timeoutSeconds&#34;</span><span class="p">:</span> <span class="mi">600</span> <span class="p">}</span>
+</span></span><span class="line"><span class="cl">  <span class="p">],</span>
+</span></span><span class="line"><span class="cl">  <span class="nt">&#34;tags&#34;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&#34;platform&#34;</span><span class="p">,</span> <span class="s2">&#34;eu-central&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="p">}</span></span></span></code></pre></div>
+  </div>
+</div>
+
 
 ### YAML
 
-```yaml
-# Pipeline definition — one policy gate per stage.
-apiVersion: projectious.work/v2
-kind: Pipeline
-metadata:
-  name: validate-deploy
-  labels: { team: platform, region: eu-central }
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Pipeline definition — one policy gate per stage.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">projectious.work/v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pipeline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">validate-deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">team</span><span class="p">:</span><span class="w"> </span><span class="nt">platform, region</span><span class="p">:</span><span class="w"> </span><span class="l">eu-central }</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">defaults</span><span class="p">:</span><span class="w"> </span><span class="cp">&amp;defaults</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l">strict</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="cp">*defaults</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">budget</span><span class="p">:</span><span class="w"> </span><span class="m">12.60</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l">~</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">stages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">validate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">120</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l">advisory</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">600</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;platform@projectious.work&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://projectious.work/schema/pipeline-2.json&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">notes</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">    Advisory gates record and continue.
+</span></span></span><span class="line"><span class="cl"><span class="sd">    Strict gates fail closed.</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="c"># Pipeline definition — one policy gate per stage.</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l">projectious.work/v2</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l">Pipeline</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">metadata</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">validate-deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">labels</span><span class="p">:</span><span class="w"> </span>{<span class="w"> </span><span class="nt">team</span><span class="p">:</span><span class="w"> </span><span class="nt">platform, region</span><span class="p">:</span><span class="w"> </span><span class="l">eu-central }</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">defaults</span><span class="p">:</span><span class="w"> </span><span class="cp">&amp;defaults</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l">strict</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">retries</span><span class="p">:</span><span class="w"> </span><span class="m">3</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="nt">spec</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">&lt;&lt;</span><span class="p">:</span><span class="w"> </span><span class="cp">*defaults</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">budget</span><span class="p">:</span><span class="w"> </span><span class="m">12.60</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l">~</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">stages</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">validate</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">120</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">deploy</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">policy</span><span class="p">:</span><span class="w"> </span><span class="l">advisory</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">timeoutSeconds</span><span class="p">:</span><span class="w"> </span><span class="m">600</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;platform@projectious.work&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">schema</span><span class="p">:</span><span class="w"> </span><span class="s1">&#39;https://projectious.work/schema/pipeline-2.json&#39;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">notes</span><span class="p">:</span><span class="w"> </span><span class="p">|</span><span class="sd">
+</span></span></span><span class="line"><span class="cl"><span class="sd">    Advisory gates record and continue.
+</span></span></span><span class="line"><span class="cl"><span class="sd">    Strict gates fail closed.</span></span></span></code></pre></div>
+  </div>
+</div>
 
-defaults: &defaults
-  policy: strict
-  retries: 3
-  enabled: true
-
-spec:
-  <<: *defaults
-  budget: 12.60
-  owner: ~
-  stages:
-    - name: validate
-      timeoutSeconds: 120
-    - name: deploy
-      policy: advisory
-      timeoutSeconds: 600
-  owner: "platform@projectious.work"
-  schema: 'https://projectious.work/schema/pipeline-2.json'
-  notes: |
-    Advisory gates record and continue.
-    Strict gates fail closed.
-```
 
 ### TOML
 
-```toml
-# Pipeline definition — one policy gate per stage.
-schema = "https://projectious.work/schema/pipeline-2.json"
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># Pipeline definition — one policy gate per stage.</span>
+</span></span><span class="line"><span class="cl"><span class="nx">schema</span> <span class="p">=</span> <span class="s2">&#34;https://projectious.work/schema/pipeline-2.json&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">pipeline</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">name</span>    <span class="p">=</span> <span class="s2">&#34;validate-deploy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">policy</span>  <span class="p">=</span> <span class="s2">&#34;strict&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">retries</span> <span class="p">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="nx">enabled</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">budget</span>  <span class="p">=</span> <span class="mf">12.60</span>
+</span></span><span class="line"><span class="cl"><span class="nx">created</span> <span class="p">=</span> <span class="ld">2026-08-02T09:00:00Z</span>
+</span></span><span class="line"><span class="cl"><span class="nx">tags</span>    <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;platform&#34;</span><span class="p">,</span> <span class="s2">&#34;eu-central&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">pipeline</span><span class="p">.</span><span class="nx">stage</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">name</span>           <span class="p">=</span> <span class="s2">&#34;validate&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gate</span>           <span class="p">=</span> <span class="s2">&#34;strict&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timeoutSeconds</span> <span class="p">=</span> <span class="mi">120</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">pipeline</span><span class="p">.</span><span class="nx">stage</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">name</span>           <span class="p">=</span> <span class="s2">&#34;deploy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gate</span>           <span class="p">=</span> <span class="s2">&#34;advisory&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timeoutSeconds</span> <span class="p">=</span> <span class="mi">600</span></span></span></code></pre></div>
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-toml" data-lang="toml"><span class="line"><span class="cl"><span class="c"># Pipeline definition — one policy gate per stage.</span>
+</span></span><span class="line"><span class="cl"><span class="nx">schema</span> <span class="p">=</span> <span class="s2">&#34;https://projectious.work/schema/pipeline-2.json&#34;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[</span><span class="nx">pipeline</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">name</span>    <span class="p">=</span> <span class="s2">&#34;validate-deploy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">policy</span>  <span class="p">=</span> <span class="s2">&#34;strict&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">retries</span> <span class="p">=</span> <span class="mi">3</span>
+</span></span><span class="line"><span class="cl"><span class="nx">enabled</span> <span class="p">=</span> <span class="kc">true</span>
+</span></span><span class="line"><span class="cl"><span class="nx">budget</span>  <span class="p">=</span> <span class="mf">12.60</span>
+</span></span><span class="line"><span class="cl"><span class="nx">created</span> <span class="p">=</span> <span class="ld">2026-08-02T09:00:00Z</span>
+</span></span><span class="line"><span class="cl"><span class="nx">tags</span>    <span class="p">=</span> <span class="p">[</span><span class="s2">&#34;platform&#34;</span><span class="p">,</span> <span class="s2">&#34;eu-central&#34;</span><span class="p">]</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">pipeline</span><span class="p">.</span><span class="nx">stage</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">name</span>           <span class="p">=</span> <span class="s2">&#34;validate&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gate</span>           <span class="p">=</span> <span class="s2">&#34;strict&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timeoutSeconds</span> <span class="p">=</span> <span class="mi">120</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="p">[[</span><span class="nx">pipeline</span><span class="p">.</span><span class="nx">stage</span><span class="p">]]</span>
+</span></span><span class="line"><span class="cl"><span class="nx">name</span>           <span class="p">=</span> <span class="s2">&#34;deploy&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">gate</span>           <span class="p">=</span> <span class="s2">&#34;advisory&#34;</span>
+</span></span><span class="line"><span class="cl"><span class="nx">timeoutSeconds</span> <span class="p">=</span> <span class="mi">600</span></span></span></code></pre></div>
+  </div>
+</div>
 
-[pipeline]
-name    = "validate-deploy"
-policy  = "strict"
-retries = 3
-enabled = true
-budget  = 12.60
-created = 2026-08-02T09:00:00Z
-tags    = ["platform", "eu-central"]
-
-[[pipeline.stage]]
-name           = "validate"
-gate           = "strict"
-timeoutSeconds = 120
-
-[[pipeline.stage]]
-name           = "deploy"
-gate           = "advisory"
-timeoutSeconds = 600
-```
 
 ### What each language reaches
 
