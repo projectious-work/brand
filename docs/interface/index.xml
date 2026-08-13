@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Interface on projectious.work brand</title><link>https://projectious-work.github.io/brand/docs/interface/</link><description>Recent content in Interface on projectious.work brand</description><generator>Hugo</generator><language>en</language><atom:link href="https://projectious-work.github.io/brand/docs/interface/index.xml" rel="self" type="application/rss+xml"/><item><title>Components</title><link>https://projectious-work.github.io/brand/docs/interface/components/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/components/</guid><description>&lt;p&gt;Every specimen on this page is live markup styled by the brand tokens, ported
-from &lt;code&gt;brand/html/projectious-kitchen-sink.html&lt;/code&gt;. They follow your colour mode —
+from the supplied kitchen-sink mockup. They follow your colour mode —
 switch the theme and they change with the documentation.&lt;/p&gt;
 &lt;p&gt;Measurements listed here are normative: a 40px input is 40px.&lt;/p&gt;
 &lt;h2 id="buttons"&gt;Buttons&lt;/h2&gt;
@@ -271,6 +271,8 @@ on &lt;a href="https://projectious-work.github.io/brand/docs/foundations/color/"
 modals. This page covers what those cannot: &lt;strong&gt;order, announcement, and focus&lt;/strong&gt;
 — the properties that only exist once components are composed into a screen.&lt;/p&gt;
 &lt;p&gt;The target is &lt;strong&gt;WCAG 2.2 Level AA&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id="reading-and-focus-order"&gt;Reading and focus order&lt;/h2&gt;
-&lt;p&gt;There is one order, and the DOM defines it. Keyboard order, screen-reader order,
-and visual order must agree.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id="opt-in-accessibility-settings"&gt;Opt-in accessibility settings&lt;/h2&gt;
+&lt;p&gt;The token sheet changes nothing until an attribute is set on &lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;. New work
+should expose and persist the settings it supports; &lt;code&gt;data-a11y=&amp;quot;auto&amp;quot;&lt;/code&gt; follows
+the operating system&amp;rsquo;s reduced-motion, reduced-transparency, and contrast
+preferences.&lt;/p&gt;</description></item></channel></rss>

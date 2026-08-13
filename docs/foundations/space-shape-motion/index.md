@@ -50,9 +50,13 @@ surface tint before it reaches for shadow.
 | Token | Value | Applied to |
 |---|---|---|
 | `--shadow-0` | `none` | Flat surfaces, default |
-| `--shadow-1` | `0 1px 3px rgba(0,0,0,0.06)` | Cards at rest |
-| `--shadow-2` | `0 4px 12px rgba(0,0,0,0.08)` | Hover, dropdowns |
-| `--shadow-3` | `0 8px 24px rgba(0,0,0,0.12)` | Modals, popovers |
+| `--shadow-1` | `0 1px 3px rgba(0,0,0,0.06)` | Cards under hover |
+| `--shadow-2` | `0 4px 12px rgba(0,0,0,0.08)` | Popovers, dropdowns |
+| `--shadow-3` | `0 8px 24px rgba(0,0,0,0.12)` | Modals |
+
+There are no inner, glow, or coloured shadows. Most surfaces remain level 0;
+cards do not need a resting shadow when surface and border already establish
+their edge.
 
 In dark mode, elevation is expressed by *lightening the surface* rather than
 deepening the shadow — a shadow on a near-black background is invisible.
@@ -119,6 +123,10 @@ Things slide into place. They do not bounce.
 - CSS-only for HTML. For React, use Framer Motion with these same timing values.
 - **Never animate text character-by-character.**
 - Page transitions cap at 400ms.
+- Pressed controls do not scale down. Their colour remains at the hover state.
+- Slide transitions are a cut or 200ms fade. Sequential elements may fade up
+  with 40–80ms staggered delays.
+- Do not use overshoots, parallax, or autoplay video.
 
 ```css
 @media (prefers-reduced-motion: reduce) {

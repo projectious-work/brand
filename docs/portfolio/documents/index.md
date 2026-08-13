@@ -11,16 +11,11 @@ LLMS index: [llms.txt](/brand/llms.txt)
 A document is not a screen that happens to be printed. It has a fixed page box,
 no hover state, no dark mode, and one shot at being legible on a printer nobody
 tested. This page defines the pattern the system uses for short, laid-out
-documents, and links the worked example.
-
-| | Source |
-|---|---|
-| **Resume / CV** | [`brand/examples/resume.dc.html`](/brand/downloads/examples/resume.dc.html) |
+documents. The supplied article, documentation, and marketing mockups are the
+visual reference for type hierarchy and fixed-width reading measures.
 
 Longer, flowing documents — reports and papers — use the LaTeX and Typst
-templates in
-[`brand/templates/`](https://github.com/projectious-work/brand/tree/main/brand/templates)
-instead. The split is about pagination, not length; see below.
+templates instead. The split is about pagination, not length; see below.
 
 ## Decide the pagination first
 

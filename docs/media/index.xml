@@ -40,6 +40,7 @@ without scolding.&lt;/p&gt;
 slow, that is information the viewer needs.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Transitions are a cut or a 200ms fade.&lt;/strong&gt; No swoops, wipes, or 3D moves.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;All video uses midnight surfaces.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Video never autoplays.&lt;/strong&gt; Playback begins with a deliberate user action.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Subtitles are always available.&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Export at 1080p minimum&lt;/strong&gt;, 4K when possible.&lt;/li&gt;
 &lt;/ul&gt;
@@ -56,6 +57,11 @@ imagery of handshakes in glass lobbies fails it. A real desk, real hardware, or
 real people working passes it.&lt;/p&gt;
 &lt;h2 id="treatment"&gt;Treatment&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;Photography is not the default and is never full-bleed by default. Prefer a
+diagram when the subject is a system, relationship, or process.&lt;/li&gt;
+&lt;li&gt;Use candid, real workspaces with a warm, desaturated grade. Avoid cool casts,
+tropical saturation, and high-contrast black and white. If grain is useful,
+keep it subtle at 4–6%.&lt;/li&gt;
 &lt;li&gt;Photographs in dark mode receive a subtle black overlay so they do not punch a
 hole in the page.&lt;/li&gt;
 &lt;li&gt;The logo never sits directly on an unmodified photograph — see

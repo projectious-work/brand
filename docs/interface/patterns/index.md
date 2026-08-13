@@ -94,15 +94,13 @@ At `md` the ratio flattens to 1fr / 1fr; below `md` the secondary panel moves
 
 ## Reading the whole thing at once
 
-[**Dashboard mockup**](/brand/downloads/examples/dashboard.dc.html) — a client
+The supplied **dashboard mockup** is a client
 engagement dashboard built entirely from the parts above: page shell, KPI row,
 engagement table, agent-activity feed. Open it beside the components page and
 every element in it should be findable there.
 
-Its narrow counterpart is
-[**Mobile onboarding**](/brand/downloads/examples/mobile-onboarding.dc.html) —
-the same system with the sidebar replaced by a tab bar and every region in one
-column.
+The supplied **mobile mockup** is its narrow counterpart: the same system with
+the sidebar replaced by a tab bar and every region in one column.
 
 ## Density
 

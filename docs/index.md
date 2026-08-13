@@ -17,6 +17,49 @@ pages document.
 </div>
 
 
+The current contract is synchronized from design system **v2.1.1**. It applies
+to every brand surface: product UI, marketing, documentation, slides, email,
+terminal output, and portfolio material. The rendered UI mockups supplied with
+the system are the visual reference when prose could be read more than one way.
+
+## Brand in one view
+
+- **Name:** projectious.work — always lowercase; the dot is part of the name.
+- **Positioning:** Cloud · Agile · Agentic AI — agent-first consulting.
+- **Tagline:** Redesigning work.
+- **Mission:** Augment people's strengths to improve life for everyone.
+- **Vision:** Humanistic ideals determine actions in an AI-completed world.
+- **Voice:** modern, composable, authentic, no-nonsense, agent-first, and
+  humanistic.
+- **Audience:** technical leaders at European and international organisations
+  adopting AI-native workflows.
+
+The four convictions behind the system are: do more with more; specialized
+beats generic now; remain provider-independent; and run what we recommend.
+
+## Writing the brand
+
+Write like an honest principal engineer who has stopped trying to impress:
+direct, technical, humanistic, and restrained. Use plain words, short to medium
+sentences, and a confident claim instead of loud punctuation or marketing
+language. Treat agents as a normal part of good work rather than something to
+gush about.
+
+- Use sentence case except for proper nouns.
+- Use **we** for projectious.work and **you** for the reader; never *I* or
+  *the team*.
+- Address the reader's situation, not their feelings.
+- Join the practices with a middle dot: **Cloud · Agile · Agentic AI**, never
+  an ampersand.
+- Use the middle dot for compact metadata too, and use spaced em dashes
+  sparingly for asides.
+- Do not use emoji on a brand surface.
+- Use digits in technical contexts. In prose, spell out one through nine unless
+  the number has a unit.
+
+Stock lines, in priority order, are **Cloud · Agile · Agentic AI**,
+**Redesigning work**, and **Agent-first consulting, built on what we teach**.
+
 ## Where to start
 
 | If you want to… | Read |
@@ -47,10 +90,11 @@ asset provenance.
 
 ## Source of truth
 
-The canonical design documents live in [`brand/`](https://github.com/projectious-work/brand/tree/main/brand)
-in the repository — the HTML design-system documents, logo files, document
-templates, and the token exports. This site is the readable presentation of
-those sources, not a replacement for them.
+This site is the authoritative readable presentation of the supplied
+projectious.work design system. Values originate in the synchronized token
+sheet and `src/data/brand.yaml`; rendered specimens and mockups provide the
+visual acceptance reference. Code and tokens are MIT-licensed. The name,
+wordmark, and logo remain reserved brand marks.
 
 ---
 
@@ -59,7 +103,7 @@ Section pages:
 - [Foundations](/brand/docs/foundations/): The primitives — colour, typography, spacing, shape, and motion. Everything else composes from these.
 - [Logo](/brand/docs/logo/): The mark, the four lockups, and the rules that keep them legible.
 - [Interface](/brand/docs/interface/): The foundations applied to screens — components, code surfaces, dark mode, icons, and forms.
-- [Themes](/brand/docs/themes/): Configuration of theme framworks for usage with the projectious.work brand system
+- [Themes](/brand/docs/themes/): Configuration of theme frameworks for use with the projectious.work brand system.
 - [Portfolio presentation](/brand/docs/portfolio/): Truthful status, social-preview, diagram, and demo patterns.
 - [Media](/brand/docs/media/): Motion, audio, video, photography, and presentation guidance.
 - [Collateral](/brand/docs/collateral/): Artefacts that leave the product — cards, signatures, and social imagery.

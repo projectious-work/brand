@@ -147,8 +147,9 @@ signed-in context, a favicon.
 </div>
 
 
-Minimum for the standalone mark is **24px**. The 16px rendering exists for
-favicons only, where the browser supplies the name.
+Minimum for the standalone mark is **16px**. Below that the inner rings
+collapse; use a wordmark or a purpose-built favicon instead. Any lockup with a
+wordmark must be at least **24px** high.
 
 ## Product line
 

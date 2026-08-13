@@ -14,7 +14,7 @@ width. This page describes the four points at which the layout does.
 ## Breakpoints
 
 Four breakpoints, declared in
-[`brand/tokens/variables.css`](/brand/downloads/tokens/variables.css) and
+the synchronized design-system token sheet and
 normative here:
 
 | Name | Min width | The layout it describes |
@@ -128,7 +128,7 @@ documentation and marketing surfaces.** The choice follows the shape of the
 navigation, not the shape of the device:
 
 - An **application** has a small, flat set of destinations — the
-  [dashboard example](/brand/downloads/examples/dashboard.dc.html) has five.
+  dashboard mockup has five.
   Five or fewer flat destinations fit a tab bar, which keeps the current
   location permanently visible, sits in the thumb arc, and costs no taps to
   reach. That is worth the 56px of permanent screen it occupies.
@@ -177,10 +177,10 @@ Three content types cannot reflow, and each has one answer:
 
 ## Worked example
 
-[**Mobile onboarding**](/brand/downloads/examples/mobile-onboarding.dc.html) —
+The supplied **mobile mockup** shows
 three screens in a device frame: an onboarding panel on midnight, an engagement
 list of stacked cards, and a finding-review screen with two side-by-side
-actions. It is the [dashboard](/brand/downloads/examples/dashboard.dc.html)
+actions. It is the dashboard
 below `md`: same tokens, same components, one column, tab bar instead of
 sidebar.
 

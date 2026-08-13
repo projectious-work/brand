@@ -9,7 +9,7 @@ LLMS index: [llms.txt](/brand/llms.txt)
 ---
 
 A pre-launch review of the elements that carry legal risk. Source:
-`brand/html/projectious-legal-assessment.html`.
+the projectious.work legal assessment supplied with the prior system.
 
 <div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Not legal advice</div>
 

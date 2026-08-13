@@ -18,4 +18,4 @@ Section pages:
 
 - [Lockups](/brand/docs/logo/lockups/): Four approved lockups, rendered live, and where each one belongs.
 - [Usage](/brand/docs/logo/usage/): Clear space, minimum sizes, monochrome variants, and placing the mark on colour and photography.
-- [Files](/brand/docs/logo/files/): Delivered formats, when to use each, and where to download them.
+- [Files](/brand/docs/logo/files/): The canonical SVG, raster, and favicon assets in design system v2.1.1.

@@ -25,19 +25,16 @@ and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Form&lt;/th&gt;
-					&lt;th&gt;Source&lt;/th&gt;
 					&lt;th&gt;Use for&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;strong&gt;Full&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature.html"&gt;&lt;code&gt;brand/email/signature.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;First contact, and any message leaving the organisation — it carries the legally required details&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;strong&gt;Short&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature-short.html"&gt;&lt;code&gt;brand/email/signature-short.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;Replies and internal mail, where the full block repeated down a thread becomes noise&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -104,22 +101,9 @@ and a footer.&lt;/p&gt;
 &lt;p&gt;Everything the signature page says about construction — tables, inline styles,
 web-safe stacks, literal hex, &lt;code&gt;role=&amp;quot;presentation&amp;quot;&lt;/code&gt; — applies here unchanged and
 is not repeated. What follows is what a whole message adds.&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;&lt;/th&gt;
-					&lt;th&gt;Source&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;Newsletter&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/email-newsletter.html"&gt;&lt;code&gt;brand/examples/email-newsletter.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;It opens straight from the filesystem — no runtime, no build step — so it can be
-pasted into a sending tool and previewed as-is.&lt;/p&gt;</description></item><item><title>Social and OG images</title><link>https://projectious-work.github.io/brand/docs/collateral/social/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/social/</guid><description>&lt;h2 id="priority"&gt;Priority&lt;/h2&gt;
+&lt;p&gt;The supplied email mockup is the visual reference. Its HTML is self-contained,
+so it can be opened without a runtime or build step and translated into the
+sending tool&amp;rsquo;s template format.&lt;/p&gt;</description></item><item><title>Social and OG images</title><link>https://projectious-work.github.io/brand/docs/collateral/social/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/collateral/social/</guid><description>&lt;h2 id="priority"&gt;Priority&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;LinkedIn and GitHub first&lt;/strong&gt;, blog second, Twitter/X as backup. The templates
 are sized for those surfaces in that order.&lt;/p&gt;
 &lt;h2 id="template-rules"&gt;Template rules&lt;/h2&gt;
@@ -160,20 +144,8 @@ design canvas.&lt;/p&gt;</description></item><item><title>Service one-pager</tit
 square centimetres. The one-pager is the opposite problem: a whole page,
 handed over or attached, that has to explain a single service to someone who has
 not asked yet.&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;&lt;/th&gt;
-					&lt;th&gt;Source&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;Service flier&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/flier.dc.html"&gt;&lt;code&gt;brand/examples/flier.dc.html&lt;/code&gt;&lt;/a&gt; — &amp;ldquo;Cloud migration accelerator&amp;rdquo;&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;The rendered service-page mockups are the visual reference for hierarchy,
+spacing, surface treatment, and the single-action close.&lt;/p&gt;
 &lt;h2 id="one-service-per-sheet"&gt;One service per sheet&lt;/h2&gt;
 &lt;p&gt;A one-pager describes &lt;strong&gt;one&lt;/strong&gt; offer. A sheet listing four services is a
 capabilities brochure, and it is read by nobody, because a reader who wants one

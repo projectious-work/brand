@@ -48,17 +48,22 @@ Prefer narrow artifact categories: &lt;strong&gt;CLI&lt;/strong&gt;, &lt;strong&
 &lt;strong&gt;applied research&lt;/strong&gt;, &lt;strong&gt;prototype&lt;/strong&gt;, &lt;strong&gt;library&lt;/strong&gt;, or &lt;strong&gt;supporting asset&lt;/strong&gt;.&lt;/p&gt;</description></item><item><title>Social previews</title><link>https://projectious-work.github.io/brand/docs/portfolio/social-previews/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/social-previews/</guid><description>&lt;h2 id="content-model"&gt;Content model&lt;/h2&gt;
 &lt;p&gt;Every 1280×640 preview contains only:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Projectious organization mark and name.&lt;/li&gt;
+&lt;li&gt;projectious.work organisation mark and name.&lt;/li&gt;
 &lt;li&gt;Project name.&lt;/li&gt;
 &lt;li&gt;One narrow artifact category.&lt;/li&gt;
 &lt;li&gt;One complete maturity label from the status vocabulary.&lt;/li&gt;
 &lt;li&gt;An optional short limitation, never a marketing claim.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The editable source is
-&lt;code&gt;brand/portfolio/social-preview-template.svg&lt;/code&gt;. Replace bracketed text, keep
-the status label intact, and save a project-specific SVG beside the template.
-Examples for aibox, processkit, ai-market-research, and KubeClaw demonstrate
-the content structure; they are not evidence of current maturity.&lt;/p&gt;</description></item><item><title>Diagrams and demos</title><link>https://projectious-work.github.io/brand/docs/portfolio/diagrams/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/diagrams/</guid><description>&lt;h2 id="architecture-and-flow-diagrams"&gt;Architecture and flow diagrams&lt;/h2&gt;
+&lt;p&gt;Keep the status label intact and save a project-specific SVG beside its source.
+Examples demonstrate the content structure; they are not evidence of current
+maturity.&lt;/p&gt;
+&lt;h2 id="export-and-validation"&gt;Export and validation&lt;/h2&gt;
+&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm run portfolio:validate
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm run portfolio:export
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The export script uses &lt;code&gt;resvg&lt;/code&gt; when available and otherwise leaves the SVG
+source as the canonical reusable asset. Commit generated PNGs only when a
+repository needs them.&lt;/p&gt;</description></item><item><title>Diagrams and demos</title><link>https://projectious-work.github.io/brand/docs/portfolio/diagrams/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/diagrams/</guid><description>&lt;h2 id="architecture-and-flow-diagrams"&gt;Architecture and flow diagrams&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Prefer left-to-right flow, explicit boundaries, and named protocols.&lt;/li&gt;
 &lt;li&gt;Distinguish implemented components from planned components with text:
@@ -74,22 +79,7 @@ date.&lt;/li&gt;
 captured YYYY-MM-DD. Planned elements are labelled.&lt;/p&gt;</description></item><item><title>Documents</title><link>https://projectious-work.github.io/brand/docs/portfolio/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/documents/</guid><description>&lt;p&gt;A document is not a screen that happens to be printed. It has a fixed page box,
 no hover state, no dark mode, and one shot at being legible on a printer nobody
 tested. This page defines the pattern the system uses for short, laid-out
-documents, and links the worked example.&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;&lt;/th&gt;
-					&lt;th&gt;Source&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;Resume / CV&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/resume.dc.html"&gt;&lt;code&gt;brand/examples/resume.dc.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
+documents. The supplied article, documentation, and marketing mockups are the
+visual reference for type hierarchy and fixed-width reading measures.&lt;/p&gt;
 &lt;p&gt;Longer, flowing documents — reports and papers — use the LaTeX and Typst
-templates in
-&lt;a href="https://github.com/projectious-work/brand/tree/main/brand/templates"&gt;&lt;code&gt;brand/templates/&lt;/code&gt;&lt;/a&gt;
-instead. The split is about pagination, not length; see below.&lt;/p&gt;</description></item></channel></rss>
+templates instead. The split is about pagination, not length; see below.&lt;/p&gt;</description></item></channel></rss>

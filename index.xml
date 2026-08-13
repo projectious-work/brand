@@ -25,7 +25,7 @@ outside its role is the single most common way to break the system.&lt;/p&gt;
 &lt;h2 id="core-colours"&gt;Core colours&lt;/h2&gt;
 &lt;p&gt;These are the named aliases most projects reach for first. They are shortcuts
 into the scales, not a separate palette.&lt;/p&gt;</description></item><item><title>Components</title><link>https://projectious-work.github.io/brand/docs/interface/components/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/components/</guid><description>&lt;p&gt;Every specimen on this page is live markup styled by the brand tokens, ported
-from &lt;code&gt;brand/html/projectious-kitchen-sink.html&lt;/code&gt;. They follow your colour mode —
+from the supplied kitchen-sink mockup. They follow your colour mode —
 switch the theme and they change with the documentation.&lt;/p&gt;
 &lt;p&gt;Measurements listed here are normative: a 40px input is 40px.&lt;/p&gt;
 &lt;h2 id="buttons"&gt;Buttons&lt;/h2&gt;
@@ -122,13 +122,22 @@ switch the theme and they change with the documentation.&lt;/p&gt;
 border, active state, or syntax colour. But white on it measures &lt;strong&gt;3.87:1&lt;/strong&gt; —
 below the 4.5:1 floor for 13–14px labels. Solid accent controls therefore fill
 with &lt;strong&gt;&lt;code&gt;--color-accent-solid&lt;/code&gt; (&lt;code&gt;#cc4528&lt;/code&gt;)&lt;/strong&gt;, white at &lt;strong&gt;4.72:1&lt;/strong&gt;; hover
-continues to &lt;code&gt;accent-dark&lt;/code&gt; (&lt;code&gt;#b84228&lt;/code&gt;, 5.46:1).&lt;/p&gt;</description></item><item><title>Licensing</title><link>https://projectious-work.github.io/brand/docs/governance/licensing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/licensing/</guid><description>&lt;p&gt;The repository carries &lt;strong&gt;two categories of intellectual property&lt;/strong&gt; under
+continues to &lt;code&gt;accent-dark&lt;/code&gt; (&lt;code&gt;#b84228&lt;/code&gt;, 5.46:1).&lt;/p&gt;</description></item><item><title>Hugo</title><link>https://projectious-work.github.io/brand/docs/themes/hugo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/themes/hugo/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand with
+Hugo. It answers which files supply the brand, where a theme may be changed,
+and how to prove the result is conformant.&lt;/p&gt;
+&lt;p&gt;Choose the &lt;code&gt;Docsy&lt;/code&gt; or &lt;code&gt;Hextra&lt;/code&gt; subsection after reading the shared contract.
+The examples use named values such as &lt;code&gt;midnight-9&lt;/code&gt; and &lt;code&gt;accent-solid&lt;/code&gt;; resolve
+those names from the canonical token source when building a production theme.&lt;/p&gt;
+&lt;h2 id="implementation-contract"&gt;Implementation Contract&lt;/h2&gt;
+&lt;p&gt;This contract applies before choosing Docsy or Hextra. It gives a human
+implementer and an AI agent one unambiguous answer to the theme&amp;rsquo;s source of
+truth, customization boundary, and release evidence.&lt;/p&gt;</description></item><item><title>Licensing</title><link>https://projectious-work.github.io/brand/docs/governance/licensing/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/licensing/</guid><description>&lt;p&gt;The repository carries &lt;strong&gt;two categories of intellectual property&lt;/strong&gt; under
 different terms. The full text is in
 &lt;a href="https://github.com/projectious-work/brand/blob/main/LICENSE.md"&gt;&lt;code&gt;LICENSE.md&lt;/code&gt;&lt;/a&gt;;
 this page summarises it.&lt;/p&gt;
 &lt;h2 id="brand-assets--proprietary-source-available"&gt;Brand assets — proprietary, source-available&lt;/h2&gt;
 &lt;p&gt;Everything representing the visual identity: logos, brand imagery, and the
-design-system documents under &lt;code&gt;brand/&lt;/code&gt;.&lt;/p&gt;
+supplied design-system documents.&lt;/p&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
@@ -151,7 +160,7 @@ design-system documents under &lt;code&gt;brand/&lt;/code&gt;.&lt;/p&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Document templates under &lt;code&gt;brand/templates/&lt;/code&gt; fall under these same terms: they
+&lt;p&gt;Document templates fall under these same terms: they
 embed brand identity (colours, fonts, tagline). You may use them as structural
 reference for your own templates, but not redistribute them with projectious.work
 branding intact.&lt;/p&gt;</description></item><item><title>Lockups</title><link>https://projectious-work.github.io/brand/docs/logo/lockups/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/logo/lockups/</guid><description>&lt;p&gt;Four lockups are approved. Each has a defined context; using one outside its
@@ -339,6 +348,7 @@ without scolding.&lt;/p&gt;
 slow, that is information the viewer needs.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Transitions are a cut or a 200ms fade.&lt;/strong&gt; No swoops, wipes, or 3D moves.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;All video uses midnight surfaces.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Video never autoplays.&lt;/strong&gt; Playback begins with a deliberate user action.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Subtitles are always available.&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Export at 1080p minimum&lt;/strong&gt;, 4K when possible.&lt;/li&gt;
 &lt;/ul&gt;
@@ -387,19 +397,16 @@ and nothing depends on a stylesheet the client is free to discard.&lt;/p&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
 					&lt;th&gt;Form&lt;/th&gt;
-					&lt;th&gt;Source&lt;/th&gt;
 					&lt;th&gt;Use for&lt;/th&gt;
 			&lt;/tr&gt;
 	&lt;/thead&gt;
 	&lt;tbody&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;strong&gt;Full&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature.html"&gt;&lt;code&gt;brand/email/signature.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;First contact, and any message leaving the organisation — it carries the legally required details&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;strong&gt;Short&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/email/signature-short.html"&gt;&lt;code&gt;brand/email/signature-short.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
 					&lt;td&gt;Replies and internal mail, where the full block repeated down a thread becomes noise&lt;/td&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
@@ -462,17 +469,22 @@ actually lives. The surrounding page has a colour mode; a mail message
 generally does not.&lt;/p&gt;</description></item><item><title>Social previews</title><link>https://projectious-work.github.io/brand/docs/portfolio/social-previews/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/social-previews/</guid><description>&lt;h2 id="content-model"&gt;Content model&lt;/h2&gt;
 &lt;p&gt;Every 1280×640 preview contains only:&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;Projectious organization mark and name.&lt;/li&gt;
+&lt;li&gt;projectious.work organisation mark and name.&lt;/li&gt;
 &lt;li&gt;Project name.&lt;/li&gt;
 &lt;li&gt;One narrow artifact category.&lt;/li&gt;
 &lt;li&gt;One complete maturity label from the status vocabulary.&lt;/li&gt;
 &lt;li&gt;An optional short limitation, never a marketing claim.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;The editable source is
-&lt;code&gt;brand/portfolio/social-preview-template.svg&lt;/code&gt;. Replace bracketed text, keep
-the status label intact, and save a project-specific SVG beside the template.
-Examples for aibox, processkit, ai-market-research, and KubeClaw demonstrate
-the content structure; they are not evidence of current maturity.&lt;/p&gt;</description></item><item><title>Terminal</title><link>https://projectious-work.github.io/brand/docs/themes/terminal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/themes/terminal/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand in a
+&lt;p&gt;Keep the status label intact and save a project-specific SVG beside its source.
+Examples demonstrate the content structure; they are not evidence of current
+maturity.&lt;/p&gt;
+&lt;h2 id="export-and-validation"&gt;Export and validation&lt;/h2&gt;
+&lt;p&gt;Run:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-sh" data-lang="sh"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm run portfolio:validate
+&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;npm run portfolio:export
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The export script uses &lt;code&gt;resvg&lt;/code&gt; when available and otherwise leaves the SVG
+source as the canonical reusable asset. Commit generated PNGs only when a
+repository needs them.&lt;/p&gt;</description></item><item><title>Terminal</title><link>https://projectious-work.github.io/brand/docs/themes/terminal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/themes/terminal/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand in a
 terminal. It answers which sixteen colours the brand uses, which program owns
 each part of the result, and how to prove a configuration is conformant.&lt;/p&gt;
 &lt;p&gt;The terminal is where the brand&amp;rsquo;s rule that &lt;em&gt;code surfaces stay dark in both
@@ -547,22 +559,9 @@ and a footer.&lt;/p&gt;
 &lt;p&gt;Everything the signature page says about construction — tables, inline styles,
 web-safe stacks, literal hex, &lt;code&gt;role=&amp;quot;presentation&amp;quot;&lt;/code&gt; — applies here unchanged and
 is not repeated. What follows is what a whole message adds.&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;&lt;/th&gt;
-					&lt;th&gt;Source&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;Newsletter&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/email-newsletter.html"&gt;&lt;code&gt;brand/examples/email-newsletter.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;It opens straight from the filesystem — no runtime, no build step — so it can be
-pasted into a sending tool and previewed as-is.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-always-dark"&gt;Code blocks are always dark&lt;/h2&gt;
+&lt;p&gt;The supplied email mockup is the visual reference. Its HTML is self-contained,
+so it can be opened without a runtime or build step and translated into the
+sending tool&amp;rsquo;s template format.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-always-dark"&gt;Code blocks are always dark&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Code blocks stay dark regardless of colour mode.&lt;/strong&gt; A code surface that flips
 with the theme forces the syntax palette to be designed twice and makes
 screenshots inconsistent between users. The surface is &lt;code&gt;midnight-2&lt;/code&gt; from the
@@ -605,24 +604,14 @@ captured YYYY-MM-DD. Planned elements are labelled.&lt;/p&gt;</description></ite
 					&lt;td&gt;Primary for web and print&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;PNG @1x&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;16 / 32 / 48 / 64 / 128 / 256 / 512px&lt;/td&gt;
-					&lt;td&gt;Native-resolution raster&lt;/td&gt;
+					&lt;td&gt;&lt;strong&gt;PNG&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;128px and 256px colour variants&lt;/td&gt;
+					&lt;td&gt;Raster-only contexts&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;PNG @2x&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;2× pixel dimensions&lt;/td&gt;
-					&lt;td&gt;Retina — &lt;strong&gt;required for web&lt;/strong&gt;&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;PNG @3x&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;3× pixel dimensions&lt;/td&gt;
-					&lt;td&gt;Super-retina — mobile&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;ICO&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;Multi-resolution (16 + 32 + 48)&lt;/td&gt;
-					&lt;td&gt;Favicon&lt;/td&gt;
+					&lt;td&gt;&lt;strong&gt;favicon PNG&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;32×32&lt;/td&gt;
+					&lt;td&gt;Browser favicon&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;strong&gt;apple-touch&lt;/strong&gt;&lt;/td&gt;
@@ -632,8 +621,21 @@ captured YYYY-MM-DD. Planned elements are labelled.&lt;/p&gt;</description></ite
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;SVG is the source. Raster exports exist for contexts that cannot take vector —
-prefer SVG wherever the medium allows it.&lt;/p&gt;</description></item><item><title>Legal assessment</title><link>https://projectious-work.github.io/brand/docs/governance/legal-assessment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/legal-assessment/</guid><description>&lt;p&gt;A pre-launch review of the elements that carry legal risk. Source:
-&lt;code&gt;brand/html/projectious-legal-assessment.html&lt;/code&gt;.&lt;/p&gt;
+prefer SVG wherever the medium allows it.&lt;/p&gt;
+&lt;h2 id="variants"&gt;Variants&lt;/h2&gt;
+&lt;p&gt;The canonical mark variants are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;icon-light&lt;/code&gt; — for light surfaces&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon-dark&lt;/code&gt; — for dark surfaces&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon-mono-black&lt;/code&gt; — single-colour black&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon-mono-white&lt;/code&gt; — single-colour white, reversed&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon-mono-gray&lt;/code&gt; — single-colour grey&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The package also contains three contextual SVG colourways — cool dot on white,
+spot warm on dark, and warm on darker. They are supplied variants, not a licence
+to recolour the canonical files. Use SVG wherever the medium accepts it; choose
+128px or 256px PNG only when a raster format is required.&lt;/p&gt;</description></item><item><title>Legal assessment</title><link>https://projectious-work.github.io/brand/docs/governance/legal-assessment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/legal-assessment/</guid><description>&lt;p&gt;A pre-launch review of the elements that carry legal risk. Source:
+the projectious.work legal assessment supplied with the prior system.&lt;/p&gt;
 &lt;div class="alert alert-warning" role="alert"&gt;&lt;div class="h4 alert-heading" role="heading"&gt;Not legal advice&lt;/div&gt;
 &lt;p&gt;This is a design-side risk assessment, not a legal opinion, and it is not a
 registered-trademark search. Obtain professional advice before relying on it for
@@ -697,6 +699,11 @@ imagery of handshakes in glass lobbies fails it. A real desk, real hardware, or
 real people working passes it.&lt;/p&gt;
 &lt;h2 id="treatment"&gt;Treatment&lt;/h2&gt;
 &lt;ul&gt;
+&lt;li&gt;Photography is not the default and is never full-bleed by default. Prefer a
+diagram when the subject is a system, relationship, or process.&lt;/li&gt;
+&lt;li&gt;Use candid, real workspaces with a warm, desaturated grade. Avoid cool casts,
+tropical saturation, and high-contrast black and white. If grain is useful,
+keep it subtle at 4–6%.&lt;/li&gt;
 &lt;li&gt;Photographs in dark mode receive a subtle black overlay so they do not punch a
 hole in the page.&lt;/li&gt;
 &lt;li&gt;The logo never sits directly on an unmodified photograph — see
@@ -806,45 +813,18 @@ line length.&lt;/p&gt;</description></item><item><title>Service one-pager</title
 square centimetres. The one-pager is the opposite problem: a whole page,
 handed over or attached, that has to explain a single service to someone who has
 not asked yet.&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;&lt;/th&gt;
-					&lt;th&gt;Source&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;Service flier&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/flier.dc.html"&gt;&lt;code&gt;brand/examples/flier.dc.html&lt;/code&gt;&lt;/a&gt; — &amp;ldquo;Cloud migration accelerator&amp;rdquo;&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
+&lt;p&gt;The rendered service-page mockups are the visual reference for hierarchy,
+spacing, surface treatment, and the single-action close.&lt;/p&gt;
 &lt;h2 id="one-service-per-sheet"&gt;One service per sheet&lt;/h2&gt;
 &lt;p&gt;A one-pager describes &lt;strong&gt;one&lt;/strong&gt; offer. A sheet listing four services is a
 capabilities brochure, and it is read by nobody, because a reader who wants one
 of the four has to find it first.&lt;/p&gt;</description></item><item><title>Documents</title><link>https://projectious-work.github.io/brand/docs/portfolio/documents/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/documents/</guid><description>&lt;p&gt;A document is not a screen that happens to be printed. It has a fixed page box,
 no hover state, no dark mode, and one shot at being legible on a printer nobody
 tested. This page defines the pattern the system uses for short, laid-out
-documents, and links the worked example.&lt;/p&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;&lt;/th&gt;
-					&lt;th&gt;Source&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;Resume / CV&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/examples/resume.dc.html"&gt;&lt;code&gt;brand/examples/resume.dc.html&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
+documents. The supplied article, documentation, and marketing mockups are the
+visual reference for type hierarchy and fixed-width reading measures.&lt;/p&gt;
 &lt;p&gt;Longer, flowing documents — reports and papers — use the LaTeX and Typst
-templates in
-&lt;a href="https://github.com/projectious-work/brand/tree/main/brand/templates"&gt;&lt;code&gt;brand/templates/&lt;/code&gt;&lt;/a&gt;
-instead. The split is about pagination, not length; see below.&lt;/p&gt;</description></item><item><title>Icons</title><link>https://projectious-work.github.io/brand/docs/interface/icons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/icons/</guid><description>&lt;h2 id="library"&gt;Library&lt;/h2&gt;
+templates instead. The split is about pagination, not length; see below.&lt;/p&gt;</description></item><item><title>Icons</title><link>https://projectious-work.github.io/brand/docs/interface/icons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/icons/</guid><description>&lt;h2 id="library"&gt;Library&lt;/h2&gt;
 &lt;p&gt;The system uses &lt;strong&gt;&lt;a href="https://lucide.dev"&gt;Lucide&lt;/a&gt;&lt;/strong&gt; — an actively maintained fork
 of Feather with over 1,400 icons.&lt;/p&gt;
 &lt;table&gt;
@@ -918,7 +898,7 @@ is &lt;a href="#the-twelve-types"&gt;below&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="the-full-deck"&gt;The full deck&lt;/h2&gt;
 &lt;p&gt;Twelve slide types cover a complete talk. Each is 16:10 and uses the same
 tokens as the product surfaces — no separate &amp;ldquo;presentation theme&amp;rdquo;.&lt;/p&gt;</description></item><item><title>Asset provenance</title><link>https://projectious-work.github.io/brand/docs/governance/provenance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/provenance/</guid><description>&lt;p&gt;The authoritative inventory is
-&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/PROVENANCE.md"&gt;&lt;code&gt;brand/PROVENANCE.md&lt;/code&gt;&lt;/a&gt;
+the project provenance inventory
 in the repository. Check it before adding an asset or shipping collateral.&lt;/p&gt;
 &lt;h2 id="fonts"&gt;Fonts&lt;/h2&gt;
 &lt;p&gt;Loaded at runtime from the Google Fonts CDN — &lt;strong&gt;no font files are bundled&lt;/strong&gt;.&lt;/p&gt;
@@ -957,7 +937,7 @@ in the repository. Check it before adding an asset or shipping collateral.&lt;/p
 width. This page describes the four points at which the layout does.&lt;/p&gt;
 &lt;h2 id="breakpoints"&gt;Breakpoints&lt;/h2&gt;
 &lt;p&gt;Four breakpoints, declared in
-&lt;a href="https://projectious-work.github.io/brand/downloads/tokens/variables.css"&gt;&lt;code&gt;brand/tokens/variables.css&lt;/code&gt;&lt;/a&gt; and
+the synchronized design-system token sheet and
 normative here:&lt;/p&gt;
 &lt;table&gt;
 	&lt;thead&gt;
@@ -1078,43 +1058,17 @@ on &lt;a href="https://projectious-work.github.io/brand/docs/foundations/color/"
 modals. This page covers what those cannot: &lt;strong&gt;order, announcement, and focus&lt;/strong&gt;
 — the properties that only exist once components are composed into a screen.&lt;/p&gt;
 &lt;p&gt;The target is &lt;strong&gt;WCAG 2.2 Level AA&lt;/strong&gt;.&lt;/p&gt;
-&lt;h2 id="reading-and-focus-order"&gt;Reading and focus order&lt;/h2&gt;
-&lt;p&gt;There is one order, and the DOM defines it. Keyboard order, screen-reader order,
-and visual order must agree.&lt;/p&gt;</description></item><item><title>Tokens</title><link>https://projectious-work.github.io/brand/docs/tokens/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/tokens/</guid><description>&lt;p&gt;The token files are the machine-readable form of the
+&lt;h2 id="opt-in-accessibility-settings"&gt;Opt-in accessibility settings&lt;/h2&gt;
+&lt;p&gt;The token sheet changes nothing until an attribute is set on &lt;code&gt;&amp;lt;html&amp;gt;&lt;/code&gt;. New work
+should expose and persist the settings it supports; &lt;code&gt;data-a11y=&amp;quot;auto&amp;quot;&lt;/code&gt; follows
+the operating system&amp;rsquo;s reduced-motion, reduced-transparency, and contrast
+preferences.&lt;/p&gt;</description></item><item><title>Tokens</title><link>https://projectious-work.github.io/brand/docs/tokens/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/tokens/</guid><description>&lt;p&gt;The token files are the machine-readable form of the
 &lt;a href="https://projectious-work.github.io/brand/docs/foundations/"&gt;foundations&lt;/a&gt;. They are &lt;strong&gt;MIT-licensed&lt;/strong&gt; —
 the values are free to use, the marks are not. See
 &lt;a href="https://projectious-work.github.io/brand/docs/governance/licensing/"&gt;Licensing&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id="downloads"&gt;Downloads&lt;/h2&gt;
-&lt;table&gt;
-	&lt;thead&gt;
-			&lt;tr&gt;
-					&lt;th&gt;File&lt;/th&gt;
-					&lt;th&gt;Format&lt;/th&gt;
-					&lt;th&gt;Use&lt;/th&gt;
-			&lt;/tr&gt;
-	&lt;/thead&gt;
-	&lt;tbody&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/tokens/variables.css"&gt;&lt;code&gt;variables.css&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-					&lt;td&gt;CSS custom properties&lt;/td&gt;
-					&lt;td&gt;Any web project&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/tokens/tokens.json"&gt;&lt;code&gt;tokens.json&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-					&lt;td&gt;JSON&lt;/td&gt;
-					&lt;td&gt;Build pipelines, Style Dictionary&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;a href="https://projectious-work.github.io/brand/downloads/tokens/tailwind.config.js"&gt;&lt;code&gt;tailwind.config.js&lt;/code&gt;&lt;/a&gt;&lt;/td&gt;
-					&lt;td&gt;JS&lt;/td&gt;
-					&lt;td&gt;Tailwind CSS projects&lt;/td&gt;
-			&lt;/tr&gt;
-	&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;Source: &lt;a href="https://github.com/projectious-work/brand/tree/main/brand/tokens"&gt;&lt;code&gt;brand/tokens/&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;All three are &lt;strong&gt;generated&lt;/strong&gt; from
-&lt;a href="https://github.com/projectious-work/brand/blob/main/src/data/brand.yaml"&gt;&lt;code&gt;src/data/brand.yaml&lt;/code&gt;&lt;/a&gt;
-by &lt;code&gt;scripts/build-tokens.mjs&lt;/code&gt; — the same file this documentation renders from,
-so a page and a download cannot disagree about a value. &lt;code&gt;scripts/check-tokens.sh&lt;/code&gt;
-fails the build if the committed files drift from a fresh generation, or if
-&lt;code&gt;brand.yaml&lt;/code&gt; drifts from the SCSS that actually styles the site.&lt;/p&gt;</description></item></channel></rss>
+&lt;h2 id="authoritative-definitions"&gt;Authoritative definitions&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;src/data/brand.yaml&lt;/code&gt; is the structured source rendered by these pages. The
+v2.1.1 design-system package supplies the synchronized CSS custom properties
+used to verify it. Consumers may export CSS, JSON, or framework configuration
+from the structured values, but an export is generated output rather than a
+second source of truth.&lt;/p&gt;</description></item></channel></rss>

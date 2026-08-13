@@ -102,7 +102,7 @@ line length.&lt;/p&gt;</description></item><item><title>Responsive</title><link>
 width. This page describes the four points at which the layout does.&lt;/p&gt;
 &lt;h2 id="breakpoints"&gt;Breakpoints&lt;/h2&gt;
 &lt;p&gt;Four breakpoints, declared in
-&lt;a href="https://projectious-work.github.io/brand/downloads/tokens/variables.css"&gt;&lt;code&gt;brand/tokens/variables.css&lt;/code&gt;&lt;/a&gt; and
+the synchronized design-system token sheet and
 normative here:&lt;/p&gt;
 &lt;table&gt;
 	&lt;thead&gt;

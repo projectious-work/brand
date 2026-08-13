@@ -9,7 +9,7 @@ LLMS index: [llms.txt](/brand/llms.txt)
 ---
 
 The authoritative inventory is
-[`brand/PROVENANCE.md`](https://github.com/projectious-work/brand/blob/main/brand/PROVENANCE.md)
+the project provenance inventory
 in the repository. Check it before adding an asset or shipping collateral.
 
 ## Fonts
@@ -48,6 +48,6 @@ original.
 
 
 If you commit a third-party binary — a font file, an icon SVG, an image — add a
-row to `brand/PROVENANCE.md` recording its individual source, licence, and
+row to the provenance inventory recording its individual source, licence, and
 attribution requirement. Do not rely on the summary tables above.
 </div>

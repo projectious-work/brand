@@ -114,24 +114,14 @@ rules, image edges, other logos — enters that exclusion zone.&lt;/p&gt;</descr
 					&lt;td&gt;Primary for web and print&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;PNG @1x&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;16 / 32 / 48 / 64 / 128 / 256 / 512px&lt;/td&gt;
-					&lt;td&gt;Native-resolution raster&lt;/td&gt;
+					&lt;td&gt;&lt;strong&gt;PNG&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;128px and 256px colour variants&lt;/td&gt;
+					&lt;td&gt;Raster-only contexts&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;PNG @2x&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;2× pixel dimensions&lt;/td&gt;
-					&lt;td&gt;Retina — &lt;strong&gt;required for web&lt;/strong&gt;&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;PNG @3x&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;3× pixel dimensions&lt;/td&gt;
-					&lt;td&gt;Super-retina — mobile&lt;/td&gt;
-			&lt;/tr&gt;
-			&lt;tr&gt;
-					&lt;td&gt;&lt;strong&gt;ICO&lt;/strong&gt;&lt;/td&gt;
-					&lt;td&gt;Multi-resolution (16 + 32 + 48)&lt;/td&gt;
-					&lt;td&gt;Favicon&lt;/td&gt;
+					&lt;td&gt;&lt;strong&gt;favicon PNG&lt;/strong&gt;&lt;/td&gt;
+					&lt;td&gt;32×32&lt;/td&gt;
+					&lt;td&gt;Browser favicon&lt;/td&gt;
 			&lt;/tr&gt;
 			&lt;tr&gt;
 					&lt;td&gt;&lt;strong&gt;apple-touch&lt;/strong&gt;&lt;/td&gt;
@@ -141,4 +131,17 @@ rules, image edges, other logos — enters that exclusion zone.&lt;/p&gt;</descr
 	&lt;/tbody&gt;
 &lt;/table&gt;
 &lt;p&gt;SVG is the source. Raster exports exist for contexts that cannot take vector —
-prefer SVG wherever the medium allows it.&lt;/p&gt;</description></item></channel></rss>
+prefer SVG wherever the medium allows it.&lt;/p&gt;
+&lt;h2 id="variants"&gt;Variants&lt;/h2&gt;
+&lt;p&gt;The canonical mark variants are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;icon-light&lt;/code&gt; — for light surfaces&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon-dark&lt;/code&gt; — for dark surfaces&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon-mono-black&lt;/code&gt; — single-colour black&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon-mono-white&lt;/code&gt; — single-colour white, reversed&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;icon-mono-gray&lt;/code&gt; — single-colour grey&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The package also contains three contextual SVG colourways — cool dot on white,
+spot warm on dark, and warm on darker. They are supplied variants, not a licence
+to recolour the canonical files. Use SVG wherever the medium accepts it; choose
+128px or 256px PNG only when a raster format is required.&lt;/p&gt;</description></item></channel></rss>

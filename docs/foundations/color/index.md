@@ -18,6 +18,11 @@ outside its role is the single most common way to break the system.
 These are the named aliases most projects reach for first. They are shortcuts
 into the scales, not a separate palette.
 
+The light app background is `midnight-1` (`#f8f9fb`), not white. White is the
+raised surface. Links use `midnight-11`, never the accent. Colour carries
+meaning: do not introduce bluish-purple gradients, rainbow categorisation, or
+decorative colour families.
+
 <ul class="pj-swatches">
   <li class="pj-swatch">
     <div class="pj-swatch__chip" style="background:#1d3352"></div>
@@ -865,6 +870,11 @@ adds a separate fill for that job:
 | `--color-accent` | `#E05232` | 3.87:1 — identity only, not for text |
 | `--color-accent-solid` | `#cc4528` | 4.72:1 — solid controls |
 | `--color-accent-dark` | `#b84228` | 5.46:1 — hover and pressed |
+
+The identity accent is never body text. Light-mode accent text uses
+`orange-11` (`#c04424`); dark-mode accent text uses `orange-dark-10`
+(`accent-light`, `#ea7558`). A solid control with a white label always uses
+`accent-solid`.
 
 The same principle produced the
 [`code-comment` token](/brand/docs/interface/code/): when no existing

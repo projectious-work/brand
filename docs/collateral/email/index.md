@@ -17,12 +17,9 @@ Everything the signature page says about construction — tables, inline styles,
 web-safe stacks, literal hex, `role="presentation"` — applies here unchanged and
 is not repeated. What follows is what a whole message adds.
 
-| | Source |
-|---|---|
-| **Newsletter** | [`brand/examples/email-newsletter.html`](/brand/downloads/examples/email-newsletter.html) |
-
-It opens straight from the filesystem — no runtime, no build step — so it can be
-pasted into a sending tool and previewed as-is.
+The supplied email mockup is the visual reference. Its HTML is self-contained,
+so it can be opened without a runtime or build step and translated into the
+sending tool's template format.
 
 ## Structure
 
@@ -83,7 +80,7 @@ for everyone else.
 <![endif]-->
 <!--[if !mso]><!-->
 <table role="presentation" cellpadding="0" cellspacing="0" border="0">
-  <tr><td bgcolor="#cc4528" style="border-radius:4px;" align="center">
+  <tr><td bgcolor="#cc4528" style="border-radius:6px;" align="center">
     <a href="https://…" target="_blank" style="display:block;padding:13px 26px;
        font-family:Arial,Helvetica,sans-serif;font-size:14px;font-weight:bold;
        color:#ffffff;text-decoration:none;mso-line-height-rule:exactly;">Read the case study</a>
@@ -102,7 +99,7 @@ Three things are load-bearing:
 - **44px tall.** A mail is read on a phone more often than not, so the
   [touch floor](/brand/docs/foundations/responsive/) is the binding
   constraint.
-- **`arcsize="9%"`** approximates the 4px radius the HTML path sets. VML has no
+- **`arcsize="9%"`** approximates the 6px `radius-md` the HTML path sets. VML has no
   pixel radius; it takes a percentage of the shorter side.
 
 One button per message. A second call to action does not add a second chance —
@@ -121,7 +118,7 @@ holds, with two additions a whole message needs:
 | Footer text | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | On the `midnight-9` footer, 8.90:1 |
 | Footer link | <span class="pj-color-chip" style="--pj-chip: #f0a48c" aria-hidden="true"></span> `#f0a48c` | Unsubscribe, on midnight — 6.31:1 |
 | Hairline | <span class="pj-color-chip" style="--pj-chip: #e5e3de" aria-hidden="true"></span> `#e5e3de` | Section dividers, as a 1px table row |
-| Page surround | <span class="pj-color-chip" style="--pj-chip: #f5f4f2" aria-hidden="true"></span> `#f5f4f2` | Behind the 600px sheet. Not a system token — it is the neutral the standalone brand documents use, and it exists so the white sheet has an edge in clients that show one |
+| Page surround | <span class="pj-color-chip" style="--pj-chip: #f8f9fb" aria-hidden="true"></span> `#f8f9fb` | `midnight-1`, behind the 600px white sheet so the raised surface retains an edge |
 
 The accent appears as **text** in the overlines and as a **fill** on the one
 button — and `#E05232` itself appears nowhere carrying text, in either role.

@@ -4,7 +4,7 @@ different terms. The full text is in
 this page summarises it.&lt;/p&gt;
 &lt;h2 id="brand-assets--proprietary-source-available"&gt;Brand assets — proprietary, source-available&lt;/h2&gt;
 &lt;p&gt;Everything representing the visual identity: logos, brand imagery, and the
-design-system documents under &lt;code&gt;brand/&lt;/code&gt;.&lt;/p&gt;
+supplied design-system documents.&lt;/p&gt;
 &lt;table&gt;
 	&lt;thead&gt;
 			&lt;tr&gt;
@@ -27,7 +27,7 @@ design-system documents under &lt;code&gt;brand/&lt;/code&gt;.&lt;/p&gt;
 			&lt;/tr&gt;
 	&lt;/tbody&gt;
 &lt;/table&gt;
-&lt;p&gt;Document templates under &lt;code&gt;brand/templates/&lt;/code&gt; fall under these same terms: they
+&lt;p&gt;Document templates fall under these same terms: they
 embed brand identity (colours, fonts, tagline). You may use them as structural
 reference for your own templates, but not redistribute them with projectious.work
 branding intact.&lt;/p&gt;</description></item><item><title>Trademark</title><link>https://projectious-work.github.io/brand/docs/governance/trademark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/trademark/</guid><description>&lt;p&gt;The names, logos, and icons associated with &lt;strong&gt;projectious.work&lt;/strong&gt; are its
@@ -49,7 +49,7 @@ trademarks in a confusingly similar way.&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;These are nominative uses — referring to the thing by its name. They do not
 require permission, and they do not grant any broader licence.&lt;/p&gt;</description></item><item><title>Legal assessment</title><link>https://projectious-work.github.io/brand/docs/governance/legal-assessment/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/legal-assessment/</guid><description>&lt;p&gt;A pre-launch review of the elements that carry legal risk. Source:
-&lt;code&gt;brand/html/projectious-legal-assessment.html&lt;/code&gt;.&lt;/p&gt;
+the projectious.work legal assessment supplied with the prior system.&lt;/p&gt;
 &lt;div class="alert alert-warning" role="alert"&gt;&lt;div class="h4 alert-heading" role="heading"&gt;Not legal advice&lt;/div&gt;
 &lt;p&gt;This is a design-side risk assessment, not a legal opinion, and it is not a
 registered-trademark search. Obtain professional advice before relying on it for
@@ -103,7 +103,7 @@ Fonts. OFL permits commercial use, embedding, and redistribution; it forbids
 selling the fonts on their own and requires that any derivative font use a
 different name. Since the fonts are linked rather than bundled, no font binaries
 are redistributed by this repository.&lt;/p&gt;</description></item><item><title>Asset provenance</title><link>https://projectious-work.github.io/brand/docs/governance/provenance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/provenance/</guid><description>&lt;p&gt;The authoritative inventory is
-&lt;a href="https://github.com/projectious-work/brand/blob/main/brand/PROVENANCE.md"&gt;&lt;code&gt;brand/PROVENANCE.md&lt;/code&gt;&lt;/a&gt;
+the project provenance inventory
 in the repository. Check it before adding an asset or shipping collateral.&lt;/p&gt;
 &lt;h2 id="fonts"&gt;Fonts&lt;/h2&gt;
 &lt;p&gt;Loaded at runtime from the Google Fonts CDN — &lt;strong&gt;no font files are bundled&lt;/strong&gt;.&lt;/p&gt;

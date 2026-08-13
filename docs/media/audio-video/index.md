@@ -29,6 +29,7 @@ without scolding.
   slow, that is information the viewer needs.
 - **Transitions are a cut or a 200ms fade.** No swoops, wipes, or 3D moves.
 - **All video uses midnight surfaces.**
+- **Video never autoplays.** Playback begins with a deliberate user action.
 - **Subtitles are always available.**
 - **Export at 1080p minimum**, 4K when possible.
 

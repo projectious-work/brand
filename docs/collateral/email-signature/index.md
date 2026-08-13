@@ -13,10 +13,10 @@ and nothing depends on a stylesheet the client is free to discard.
 
 Two forms are supplied:
 
-| Form | Source | Use for |
-|---|---|---|
-| **Full** | [`brand/email/signature.html`](https://github.com/projectious-work/brand/blob/main/brand/email/signature.html) | First contact, and any message leaving the organisation — it carries the legally required details |
-| **Short** | [`brand/email/signature-short.html`](https://github.com/projectious-work/brand/blob/main/brand/email/signature-short.html) | Replies and internal mail, where the full block repeated down a thread becomes noise |
+| Form | Use for |
+|---|---|
+| **Full** | First contact, and any message leaving the organisation — it carries the legally required details |
+| **Short** | Replies and internal mail, where the full block repeated down a thread becomes noise |
 
 ## The signature
 
