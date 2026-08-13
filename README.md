@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="brand/logo/png-2x/icon-light-128px.png" alt="projectious.work" width="88">
+  <img src="src/static/favicons/icon-128x128.png" alt="projectious.work" width="88">
   <h1>projectious.work — Brand &amp; Design System</h1>
   <p>
     <strong><a href="https://projectious-work.github.io/brand/">projectious-work.github.io/brand</a></strong>
@@ -18,7 +18,7 @@ tokens, and document templates. The published site at
 is generated from this repository and is **built with the system it documents** —
 the colour scales rendering those pages are the scales the pages describe.
 
-**Status:** Active — maintained · **Release:** v1.0.0
+**Status:** Active — maintained · **Release:** v2.1.1
 
 ## What's inside
 
@@ -83,31 +83,22 @@ service. The release dropdown in the top bar switches between versions.
 ## Repository layout
 
 ```
-brand/              Canonical source — the authority for every value
-├── html/           The design-system documents (open in a browser)
-├── logo/           SVG, PNG @1x/@2x/@3x, favicons
-├── tokens/         variables.css · tokens.json · tailwind.config.js
-├── templates/      LaTeX and Typst document templates
-├── portfolio/      Portfolio presentation assets
-├── research/       Source research behind the system
-└── email/          Email signature
-
-src/                Hugo site source
-├── hugo.yaml       Site config; mounts ../brand/tokens and ../brand/logo
-├── content/        Documentation content
+src/                Normative brand contract and Hugo site
+├── hugo.yaml       Site and release configuration
+├── content/        Authoritative human-readable documentation
 ├── assets/scss/    Brand tokens → Bootstrap/Docsy — the dogfooding seam
 ├── layouts/        Layouts and the specimen shortcodes
-├── data/brand.yaml Machine-readable values the docs render from
+├── data/brand.yaml Authoritative structured values
+├── static/         Public assets and generated token downloads
 └── themes/docsy    Docsy, pinned as a submodule
 
-scripts/            Local build, serve, deploy, and screenshot scripts
-examples/           Standalone Hugo kitchen-sink implementations
-├── hugo-docsy/     Docsy example with local build and serve scripts
-└── hugo-hextra/    Hextra example with local build and serve scripts
+input/              Designer-supplied upstream reference material
+scripts/            Local generation, verification, release, and deploy tools
 ```
 
-`brand/` is the source of truth; `src/` renders it. The site is a readable
-presentation, not a replacement — see [`brand/README.md`](brand/README.md).
+`src/data/brand.yaml` and `src/content/docs/` are the local sources of truth.
+Public downloads are generated from them. `input/` is reference material for
+reconciliation and is not a second runtime authority.
 
 Build output goes to `public/` at the repository root, not inside `src/`.
 
@@ -134,21 +125,11 @@ deployments all run locally and are pushed to the `gh-pages` branch, which
 GitHub Pages serves from its root. `scripts/verify.sh` is what "the checks
 passed" means here:
 
-`build-docs.sh` also builds the theme examples into the same tree, at
-`/examples/hugo-docsy/` and `/examples/hugo-hextra/`, so a local `public/` is
-exactly what gets published — paths included. `serve-docs.sh` stages them for
-the authoring server too, and `serve-docs.sh --built` serves the whole
-published tree. They have no CI or independent deployment configuration; see
-each example's README for its local build and serve commands.
-
 | Check | What it covers |
 |---|---|
 | `build-docs.sh` | Hugo build, including `relref` resolution |
 | `audit-contrast.mjs` | Every page in **both** colour modes against WCAG AA |
-| `audit-contrast-brand.mjs` | The authoritative documents in `brand/html/` |
-| `validate-portfolio-assets.sh` | Portfolio template and status vocabulary |
 | `check-links.mjs` | Every internal link and asset resolves |
-| `check-templates.sh` | LaTeX and Typst templates compile |
 
 ### Releasing
 
@@ -157,11 +138,10 @@ each example's README for its local build and serve commands.
 ./scripts/release.sh v1.2.0             # verify, stamp, tag, push, publish
 ```
 
-`release.sh` refuses to run on a dirty tree or a non-default branch, runs the
-full suite, stamps the version into `src/hugo.yaml` and the release dropdown,
-moves the CHANGELOG's *Unreleased* section into a dated release, tags, and
-publishes twice — the archived snapshot at `/vX.Y.Z/` and the site root as
-latest. See [`CHANGELOG.md`](CHANGELOG.md).
+Prepare version metadata and the changelog on `release/vX.Y.Z`, review and
+squash-merge it, then run `release.sh` from clean `main`. It verifies the
+merged release, creates the tag and GitHub Release, and publishes the archived
+snapshot plus the latest root in one Pages push. See [`CHANGELOG.md`](CHANGELOG.md).
 
 To regenerate the screenshots in this README:
 
@@ -174,16 +154,16 @@ npx playwright install chromium
 
 This repository is **split-licensed**:
 
-- **Brand assets** — logos, brand imagery, and the design documents under
-  `brand/` — are proprietary and source-available. You may view and reference
+- **Brand assets** — logos, brand imagery, and normative design documentation
+  under `src/` — are proprietary and source-available. You may view and reference
   them; you may not modify, redistribute, or use them commercially without
   written consent.
 - **Code, scripts, and design tokens** are **MIT**. The token *values* are free
   to use.
 
 Full terms in [`LICENSE.md`](LICENSE.md) and [`TRADEMARK.md`](TRADEMARK.md).
-Third-party asset provenance is inventoried in
-[`brand/PROVENANCE.md`](brand/PROVENANCE.md).
+Third-party asset provenance is documented in the
+[governance section](https://projectious-work.github.io/brand/docs/governance/provenance/).
 
 ## Contributing
 

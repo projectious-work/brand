@@ -1,6 +1,6 @@
-// Generate the downloadable token files in brand/tokens/ from src/data/brand.yaml.
+// Generate public token downloads from src/data/brand.yaml.
 //
-// brand/tokens/* are what a consumer downloads and what the documentation links
+// src/static/downloads/tokens/* are what consumers download and the docs link
 // to. They used to be maintained by hand, which is why they had drifted badly:
 // neither variables.css nor tokens.json carried a single one of the three
 // 12-step scales, tailwind.config.js carried the light scales but no dark ones
@@ -21,7 +21,9 @@ import { parse } from "yaml";
 const ROOT = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
 const args = process.argv.slice(2);
 const outIdx = args.indexOf("--out");
-const OUT = outIdx === -1 ? join(ROOT, "brand", "tokens") : args[outIdx + 1];
+const OUT = outIdx === -1
+  ? join(ROOT, "src", "static", "downloads", "tokens")
+  : args[outIdx + 1];
 mkdirSync(OUT, { recursive: true });
 
 const brand = parse(readFileSync(join(ROOT, "src/data/brand.yaml"), "utf8"));

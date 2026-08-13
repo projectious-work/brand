@@ -15,8 +15,7 @@
 // and plain SCSS variables, which is what lets the same specimen set render
 // under Docsy and under Hextra.
 //
-// Consumed by examples/hugo-hextra via layouts/_partials/custom/head-end.html.
-// The Docsy example imports the same partials through its own project SCSS.
+// This standalone entry point is retained for generated documentation assets.
 // =============================================================================
 
 @import "variables_project";

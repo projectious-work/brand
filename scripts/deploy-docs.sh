@@ -71,9 +71,6 @@ for v in "${VERSIONS[@]}"; do
       ! -name .git \
       ! -regex '.*/v[0-9]+\.[0-9]+\.[0-9]+\(-[0-9A-Za-z.-]+\)?$' \
       -exec rm -rf {} +
-    # build-docs.sh already produced examples/<theme>/ inside the build dir, with
-    # each example's baseURL matching where it lands here. Copying the tree
-    # wholesale keeps the published layout identical to the one built locally.
     cp -R "${PUBLIC_DIR}/." "${WORKTREE_DIR}/"
   else
     echo "Building ${v} -> ${PUBLIC_DIR}/${v} (baseURL ${SITE_BASE_URL}${v}/)"

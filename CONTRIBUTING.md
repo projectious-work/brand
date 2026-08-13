@@ -2,17 +2,23 @@
 
 This repository holds proprietary brand assets alongside MIT-licensed code/automation (see [`LICENSE.md`](./LICENSE.md)). Contributions are handled differently depending on which category they touch.
 
-## Brand assets (`brand/`)
+## Brand authority (`src/`)
 
-Changes to logos, color scales, typography specs, or license/trademark terms are proprietary to projectious.work. Open an issue describing the proposed change before submitting a PR — do not submit unsolicited redesigns.
+Changes to logos, colour scales, typography specifications, or
+licence/trademark terms are proprietary to projectious.work. The normative
+human documentation is under `src/content/docs/`; structured values live in
+`src/data/brand.yaml`. Open an issue before submitting a change—do not submit
+unsolicited redesigns.
 
 ## Code, tokens, and templates
 
-Design tokens (`brand/tokens/`), document templates (`brand/templates/`), and any scripts/automation are MIT-licensed and open to PRs. Before submitting:
+Generated token downloads (`src/static/downloads/tokens/`) and scripts are
+MIT-licensed and open to PRs. Before submitting:
 
 1. Open an issue describing the bug or change.
 2. Keep PRs scoped to one concern.
-3. If you add or modify an asset that depends on a third-party source (font, icon set, stock image), add an entry to [`brand/PROVENANCE.md`](./brand/PROVENANCE.md) with its source, license, and attribution requirement.
+3. If an asset depends on a third-party source, update the public provenance
+   documentation with its source, licence, version, and hashes.
 
 ## Git identity
 
@@ -33,50 +39,36 @@ Contributions from individuals should still be attributable via the PR/commit me
 
 ## Branching and deployment
 
-We use a lightweight two-tier flow:
+We use a simple maintenance flow:
 
 ```text
-feat/*, fix/*, docs/*, chore/*
-            | pull request + squash merge
-            v
-      development
-            | release pull request + merge commit
+feat/*, fix/*, docs/*, chore/*, release/*
+            | reviewed pull request + squash merge
             v
           main
-            | tag + deploy
+            | verify + SemVer tag + GitHub Release
             v
-        vX.Y.Z
+        gh-pages
 ```
 
-- `main` is the published, release-only branch and remains GitHub's default
-  branch for consumers. It requires pull requests; direct pushes, force
-  pushes, and deletion are disabled.
-- `development` is the protected shared integration branch. Ordinary work
-  lands here through approved pull requests; direct pushes, force pushes,
-  and deletion are disabled.
-- Create short-lived branches from `development` for ordinary work, using
+- `main` is the sole development and release line and GitHub's default branch.
+  Changes land through reviewed, squash-merged pull requests. Force pushes and
+  deletion are disabled.
+- Create short-lived branches from `main` for ordinary work, using
   `feat/*`, `fix/*`, `docs/*`, or `chore/*` (for example,
   `feat/42-provider-refresh`). Open those pull requests against
-  `development`, squash-merge them, and delete the source branch.
+  `main`, squash-merge them, and delete the source branch.
 
 For a release:
 
-1. Confirm that `development` is green and contains every intended release
-   change.
-2. Open a pull request from `development` to `main` and merge it with a
-   merge commit.
-3. From `main`, run the established release process to tag and deploy the
-   resulting `vX.Y.Z` release.
-4. Merge `main` back into `development` after the release so the branches
-   stay aligned.
+1. Prepare version metadata and the changelog on `release/vX.Y.Z`.
+2. Review and squash-merge that branch into `main`.
+3. From a clean, synchronized `main`, run the release script to verify, tag,
+   create the GitHub Release, archive the version, and publish the latest site.
 
-For an urgent production fix, create `fix/*` from `main`, merge it into
-`main` through a pull request, run the release process, then merge `main`
-back into `development`.
-
-The team convention is that ordinary feature pull requests use
-`development` as their base branch; use `main` only for release and urgent
-production-fix pull requests.
+`gh-pages` contains generated deployment output only. It is not a development
+or promotion branch. There is no host CI gate; `./scripts/verify.sh` is run
+locally before merge and release.
 
 ## Reporting issues
 

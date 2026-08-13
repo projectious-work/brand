@@ -8,7 +8,7 @@ set -euo pipefail
 #      actually styles the site. If they disagree, a page documents a value the
 #      site does not use.
 #
-#   2. brand/tokens/* matches a fresh run of scripts/build-tokens.mjs.
+#   2. src/static/downloads/tokens/* matches a fresh generator run.
 #      The downloads are generated. A hand-edit here is silently reverted by the
 #      next build, so it has to fail now rather than surprise someone later.
 #
@@ -75,15 +75,15 @@ trap 'rm -rf "${tmp}"' EXIT
 node scripts/build-tokens.mjs --out "${tmp}" >/dev/null
 
 for f in variables.css tokens.json tailwind.config.js; do
-  if ! diff -q "brand/tokens/${f}" "${tmp}/${f}" >/dev/null 2>&1; then
-    echo "brand/tokens/${f} is not what scripts/build-tokens.mjs produces." >&2
+  if ! diff -q "src/static/downloads/tokens/${f}" "${tmp}/${f}" >/dev/null 2>&1; then
+    echo "src/static/downloads/tokens/${f} is stale or missing." >&2
     echo "Edit src/data/brand.yaml and re-run 'node scripts/build-tokens.mjs'." >&2
-    diff -u "brand/tokens/${f}" "${tmp}/${f}" | head -40 >&2 || true
+    diff -u "src/static/downloads/tokens/${f}" "${tmp}/${f}" | head -40 >&2 || true
     fail=1
   fi
 done
 
 if [[ ${fail} -eq 0 ]]; then
-  echo "  brand/tokens/* matches src/data/brand.yaml"
+  echo "  public token downloads match src/data/brand.yaml"
 fi
 exit ${fail}

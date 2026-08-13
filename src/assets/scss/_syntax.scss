@@ -10,8 +10,7 @@
 // Every colour here is measured against the code surface; the ratios are
 // recorded in src/data/brand.yaml under `syntax`.
 //
-// Shared by the documentation site and by examples/hugo-hextra through
-// specimens.scss, so both render the same tokens at the same contrast.
+// Shared by the documentation site and standalone generated specimens.
 // =============================================================================
 
 $pj-code-bg: $midnight-dark-2;

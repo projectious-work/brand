@@ -1,8 +1,8 @@
 // =============================================================================
 // projectious.work brand tokens -> Bootstrap / Docsy SCSS variables
 // =============================================================================
-// Source of truth: brand/tokens/*, brand/html/projectious-brand-system-final.html,
-// brand/html/projectious-digital-experience.html — all in this repository.
+// Source of truth: src/data/brand.yaml and the normative documentation under
+// src/content/docs/.
 //
 // This file is the dogfooding seam: the site you are reading is styled by the
 // same scales it documents. Changing a step here changes the docs themselves.
@@ -22,7 +22,7 @@
 // -----------------------------------------------------------------------------
 // Colour scales, brand aliases, and Bootstrap theme colours
 // -----------------------------------------------------------------------------
-// Shared with examples/hugo-docsy and examples/hugo-hextra. See _scales.scss.
+// See _scales.scss for the generated scale mapping.
 @import "scales";
 
 // -----------------------------------------------------------------------------

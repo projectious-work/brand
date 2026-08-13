@@ -109,7 +109,7 @@ $slate-dark-11: #97a8b8;
 $slate-dark-12: #d5dee8;
 
 // -----------------------------------------------------------------------------
-// Named brand aliases (brand/tokens/variables.css)
+// Named brand aliases (src/data/brand.yaml)
 // -----------------------------------------------------------------------------
 $brand-primary: $midnight-9; // #1d3352 Midnight
 $brand-primary-light: #2b4d78;
@@ -119,7 +119,7 @@ $brand-accent-light: #ea7558;
 $brand-accent-dark: #b84228;
 // Accent fill for solid controls carrying white text. Step 9 is the identity
 // colour, but white on it is 3.87:1 — under the 4.5:1 AA floor for normal
-// text. This measures 4.72:1. Source: brand/tokens/variables.css.
+// text. This measures 4.72:1. Source: src/data/brand.yaml.
 $brand-accent-solid: #cc4528;
 $brand-secondary: $slate-9; // #546a82
 
@@ -146,7 +146,7 @@ $danger: #a8261c;
 // accent so "danger" never reads as "accent".
 // $warning is the accent (orange-9) as a BORDER/fill; as warning TEXT on the
 // light warning tint it is 3.28:1, so the foreground is a deep gold — matching
-// brand/html/projectious-digital-experience.html.
+// the normative interface documentation.
 $warning-fg: #6f5106; // 6.23:1 on #f5ecd0
 $success-fg: #276754; // 5.06:1 on #d1ebe0 — $success is 3.93:1 there
 

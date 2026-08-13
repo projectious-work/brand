@@ -58,7 +58,7 @@ html.light {
   --pj-nav-active-bg: #{$midnight-3};
   --pj-nav-active-text: #{$midnight-9};
 
-  // Motion (brand/tokens/variables.css)
+  // Motion (generated from src/data/brand.yaml)
   --pj-duration-micro: 100ms;
   --pj-duration-standard: 200ms;
   --pj-duration-expand: 300ms;
@@ -124,7 +124,7 @@ html.dark {
 
   // Semantic colours, dark mode. The light-mode values are tuned for dark text
   // on tinted light backgrounds and fall to 2.6-3.7:1 as foregrounds on the
-  // dark app surface. See brand/html/projectious-digital-experience.html.
+  // dark app surface. See the normative interface documentation.
   --pj-success: #{$success-dark};
   --pj-warning: #{$warning-dark};
   --pj-danger: #{$danger-dark};
