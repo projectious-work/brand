@@ -52,7 +52,8 @@ Everything the foundations define, in all three files:
 | **Elevation** | Four shadow levels |
 | **Motion** | Four durations, two easing curves |
 | **Breakpoints** | `sm` 640, `md` 768, `lg` 1024, `xl` 1280 |
-| **Terminal** | The sixteen ANSI slots plus thirteen chrome values |
+| **Syntax** | Ten dark-panel roles plus ten separately measured optional light-panel roles |
+| **Terminal** | Default dark and optional light 16-slot ANSI palettes with chrome roles |
 
 <div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Two things the exports cannot do for you</div>
 

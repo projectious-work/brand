@@ -96,7 +96,7 @@ switch the theme and they change with the documentation.&lt;/p&gt;
 border, active state, or syntax colour. But white on it measures &lt;strong&gt;3.87:1&lt;/strong&gt; —
 below the 4.5:1 floor for 13–14px labels. Solid accent controls therefore fill
 with &lt;strong&gt;&lt;code&gt;--color-accent-solid&lt;/code&gt; (&lt;code&gt;#cc4528&lt;/code&gt;)&lt;/strong&gt;, white at &lt;strong&gt;4.72:1&lt;/strong&gt;; hover
-continues to &lt;code&gt;accent-dark&lt;/code&gt; (&lt;code&gt;#b84228&lt;/code&gt;, 5.46:1).&lt;/p&gt;</description></item><item><title>Composed patterns</title><link>https://projectious-work.github.io/brand/docs/interface/patterns/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/patterns/</guid><description>&lt;p&gt;&lt;a href="https://projectious-work.github.io/brand/docs/interface/components/"&gt;Components&lt;/a&gt; answers &amp;ldquo;what does a
+uses opacity &lt;code&gt;0.88&lt;/code&gt; rather than inventing a lighter or darker brand colour.&lt;/p&gt;</description></item><item><title>Composed patterns</title><link>https://projectious-work.github.io/brand/docs/interface/patterns/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/patterns/</guid><description>&lt;p&gt;&lt;a href="https://projectious-work.github.io/brand/docs/interface/components/"&gt;Components&lt;/a&gt; answers &amp;ldquo;what does a
 card look like&amp;rdquo;. This page answers the question after it: &lt;strong&gt;what does a whole
 screen look like when it is made only of those parts.&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Nothing here is a new component. Every element below already exists on the
@@ -117,7 +117,9 @@ everywhere.&lt;/li&gt;
 &lt;code&gt;#142438&lt;/code&gt; on light.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Images get a subtle overlay&lt;/strong&gt; (black at low alpha) in dark mode, so a bright
 photograph does not punch a hole in a dark page.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Code blocks are always dark&lt;/strong&gt;, regardless of mode. See
+&lt;li&gt;&lt;strong&gt;Code blocks are dark by default&lt;/strong&gt;, regardless of interface mode. An
+explicitly selected light code panel uses the complete light companion
+palette; it never switches automatically. See
 &lt;a href="https://projectious-work.github.io/brand/docs/interface/code/"&gt;Code&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;The same card in both modes&lt;/div&gt;
@@ -139,21 +141,13 @@ photograph does not punch a hole in a dark page.&lt;/li&gt;
 
 &lt;h2 id="surfaces"&gt;Surfaces&lt;/h2&gt;
 &lt;p&gt;Elevation in dark mode is expressed by &lt;strong&gt;lightening the surface&lt;/strong&gt;, not by
-deepening the shadow — a shadow against a near-black background is invisible.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-always-dark"&gt;Code blocks are always dark&lt;/h2&gt;
+deepening the shadow — a shadow against a near-black background is invisible.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-dark-by-default"&gt;Code blocks are dark by default&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Code blocks stay dark regardless of colour mode.&lt;/strong&gt; A code surface that flips
 with the theme forces the syntax palette to be designed twice and makes
 screenshots inconsistent between users. The surface is &lt;code&gt;midnight-2&lt;/code&gt; from the
-&lt;strong&gt;dark&lt;/strong&gt; scale (&lt;code&gt;#131e2b&lt;/code&gt;) in both light and dark mode.&lt;/p&gt;
-&lt;p&gt;The block you are reading is rendered by that rule:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// Agent pipeline definition
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;pipeline&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;createPipeline&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;validate-deploy&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;policy&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;strict&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;agents&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;auditor&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;deployer&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;});&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="syntax-theme"&gt;Syntax theme&lt;/h2&gt;
-&lt;p&gt;Because the surface is always dark, every syntax value is read from the &lt;strong&gt;dark&lt;/strong&gt;
-scale. Contrast is measured against &lt;code&gt;#131e2b&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Icons</title><link>https://projectious-work.github.io/brand/docs/interface/icons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/icons/</guid><description>&lt;h2 id="library"&gt;Library&lt;/h2&gt;
+&lt;strong&gt;dark&lt;/strong&gt; scale (&lt;code&gt;#131e2b&lt;/code&gt;) in both light and dark mode. A deliberately light
+specimen may opt into the companion palette below; colour mode never switches a
+code block to it automatically.&lt;/p&gt;</description></item><item><title>Icons</title><link>https://projectious-work.github.io/brand/docs/interface/icons/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/icons/</guid><description>&lt;h2 id="library"&gt;Library&lt;/h2&gt;
 &lt;p&gt;The system uses &lt;strong&gt;&lt;a href="https://lucide.dev"&gt;Lucide&lt;/a&gt;&lt;/strong&gt; — an actively maintained fork
 of Feather with over 1,400 icons.&lt;/p&gt;
 &lt;table&gt;

@@ -74,7 +74,7 @@ pipelines drawn in the brand palette.&lt;/p&gt;</description></item><item><title
 &lt;p&gt;Six of the twelve slide types cover most decks. Build with these first and reach
 for the other six only when the content actually calls for one — the full table
 is &lt;a href="#the-twelve-types"&gt;below&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 16:10&lt;/div&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 1280×720 · 16:9&lt;/div&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  
 &lt;div class="pj-slides-grid"&gt;
@@ -110,5 +110,5 @@ is &lt;a href="#the-twelve-types"&gt;below&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id="the-full-deck"&gt;The full deck&lt;/h2&gt;
-&lt;p&gt;Twelve slide types cover a complete talk. Each is 16:10 and uses the same
+&lt;p&gt;Twelve slide types cover a complete talk. Each is 1280×720 (16:9) and uses the same
 tokens as the product surfaces — no separate &amp;ldquo;presentation theme&amp;rdquo;.&lt;/p&gt;</description></item></channel></rss>

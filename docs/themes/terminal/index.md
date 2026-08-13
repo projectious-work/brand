@@ -1,6 +1,6 @@
 # Terminal
 
-> The projectious.work terminal palette and the configuration that applies it to tmux, WezTerm, Kitty, Ghostty, iTerm2, and Zellij.
+> The default dark and optional light projectious.work terminal palettes, plus configuration for tmux, WezTerm, Kitty, Ghostty, iTerm2, and Zellij.
 
 ---
 
@@ -12,9 +12,10 @@ This page is the source of truth for rendering the projectious.work brand in a
 terminal. It answers which sixteen colours the brand uses, which program owns
 each part of the result, and how to prove a configuration is conformant.
 
-The terminal is where the brand's rule that *code surfaces stay dark in both
-modes* stops being a stylistic choice and becomes the only option: a terminal
-has one surface, it is dark, and everything is measured against it.
+Real terminal and code chrome stays dark by default. The design system also
+defines an optional light companion for deliberately light specimens. It is a
+separate explicit choice—not a colour-mode response—and every value is measured
+against its own surface.
 
 ## Implementation contract
 
@@ -52,8 +53,8 @@ palette programs receive — that remains the emulator's. Set both.
 
 ### Non-negotiable rules
 
-1. The background is `midnight-dark-1` (`#0e1720`). The terminal has one
-   surface and it does not follow a light mode.
+1. The default background is `midnight-dark-1` (`#0e1720`). It does not follow
+   page colour mode. A light terminal must explicitly select the companion set.
 2. Every one of the fourteen non-background colours clears **4.5:1** against
    that surface. The measured floor for this palette is 4.95:1.
 3. `orange-9` (`#e05232`) is the cursor and the active marker. It is not a
@@ -342,6 +343,29 @@ The brand accent has no ANSI slot, because it is not a semantic colour: it marks
 </table>
 </div>
 
+### Optional light companion
+
+The optional light terminal uses `#f4f5f7` and a separately measured 16-slot
+ANSI palette. It is appropriate for a light-surface specimen or an environment
+whose operator has explicitly chosen a light terminal—not as an automatic
+response to the surrounding page.
+
+| Slot | Normal | Slot | Bright |
+|---|---|---|---|
+| 0 black | `#1e2b38` | 8 bright black | `#4a5e74` |
+| 1 red | `#b8352f` | 9 bright red | `#a8261c` |
+| 2 green | `#276754` | 10 bright green | `#1f7a52` |
+| 3 yellow | `#8b6508` | 11 bright yellow | `#6f5106` |
+| 4 blue | `#3a5a82` | 12 bright blue | `#1d3352` |
+| 5 magenta | `#8a3f6e` | 13 bright magenta | `#752f5c` |
+| 6 cyan | `#1c6b6b` | 14 bright cyan | `#125555` |
+| 7 white | `#546a82` | 15 bright white | `#142438` |
+
+Chrome uses foreground `#142438`, cursor `#E05232`, selection
+`#dae2ec` / `#142438`, dim text `#5c6f82`, status-bar surface `#e6e8eb`, and
+inactive pane border `#adb2ba`. The eight base tones clear 4.5:1; bright slots,
+the cursor, and UI chrome clear 3:1. Nothing switches to it automatically.
+
 ## Syntax in the terminal
 
 An editor running inside a terminal paints code from the sixteen ANSI slots, not
@@ -355,7 +379,7 @@ looks like the same file on the documentation site.
 | Plain and variables | <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span> `#c5daf0` | 15 · bright white |
 | Keywords and modifiers | <span class="pj-color-chip" style="--pj-chip: #d491b4" aria-hidden="true"></span> `#d491b4` | 13 · bright magenta |
 | Types and classes | <span class="pj-color-chip" style="--pj-chip: #6cc090" aria-hidden="true"></span> `#6cc090` | 10 · bright green |
-| Functions and methods | <span class="pj-color-chip" style="--pj-chip: #e0a92a" aria-hidden="true"></span> `#e0a92a` | 11 · bright yellow |
+| Functions and methods | <span class="pj-color-chip" style="--pj-chip: #8aacc8" aria-hidden="true"></span> `#8aacc8` | 12 · bright blue |
 | Decorators and macros | <span class="pj-color-chip" style="--pj-chip: #74c0c9" aria-hidden="true"></span> `#74c0c9` | 14 · bright cyan |
 | Operators and punctuation | <span class="pj-color-chip" style="--pj-chip: #97a8b8" aria-hidden="true"></span> `#97a8b8` | 7 · white |
 | Invalid and deprecated | <span class="pj-color-chip" style="--pj-chip: #e55b5b" aria-hidden="true"></span> `#e55b5b` | 1 · red |
@@ -671,9 +695,10 @@ link-url = true
 checked into a dotfiles repository: `theme = /Users/you/dotfiles/ghostty/projectious`.
 
 Ghostty's `theme` accepts a `light:…,dark:…` pair that follows the system
-appearance. **Do not use it here.** This palette has one surface and every ratio
-on this page is measured against it; a light variant would be a different
-palette, not a mode of this one — see
+appearance. Do not use that automatic pairing for the default configuration:
+dark is the product default. If a deliberately light terminal is required,
+configure the complete light companion palette as a separate named theme; do
+not mix its slots with the dark set. See
 [Colour](/brand/docs/foundations/color/).
 
 Four defaults have to be set explicitly, because each one moves rendered colour

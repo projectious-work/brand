@@ -10,6 +10,7 @@ implementer and an AI agent one unambiguous answer to the theme&amp;rsquo;s sour
 truth, customization boundary, and release evidence.&lt;/p&gt;</description></item><item><title>Terminal</title><link>https://projectious-work.github.io/brand/docs/themes/terminal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/themes/terminal/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand in a
 terminal. It answers which sixteen colours the brand uses, which program owns
 each part of the result, and how to prove a configuration is conformant.&lt;/p&gt;
-&lt;p&gt;The terminal is where the brand&amp;rsquo;s rule that &lt;em&gt;code surfaces stay dark in both
-modes&lt;/em&gt; stops being a stylistic choice and becomes the only option: a terminal
-has one surface, it is dark, and everything is measured against it.&lt;/p&gt;</description></item></channel></rss>
+&lt;p&gt;Real terminal and code chrome stays dark by default. The design system also
+defines an optional light companion for deliberately light specimens. It is a
+separate explicit choice—not a colour-mode response—and every value is measured
+against its own surface.&lt;/p&gt;</description></item></channel></rss>

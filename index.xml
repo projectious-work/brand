@@ -122,7 +122,7 @@ switch the theme and they change with the documentation.&lt;/p&gt;
 border, active state, or syntax colour. But white on it measures &lt;strong&gt;3.87:1&lt;/strong&gt; —
 below the 4.5:1 floor for 13–14px labels. Solid accent controls therefore fill
 with &lt;strong&gt;&lt;code&gt;--color-accent-solid&lt;/code&gt; (&lt;code&gt;#cc4528&lt;/code&gt;)&lt;/strong&gt;, white at &lt;strong&gt;4.72:1&lt;/strong&gt;; hover
-continues to &lt;code&gt;accent-dark&lt;/code&gt; (&lt;code&gt;#b84228&lt;/code&gt;, 5.46:1).&lt;/p&gt;</description></item><item><title>Hugo</title><link>https://projectious-work.github.io/brand/docs/themes/hugo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/themes/hugo/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand with
+uses opacity &lt;code&gt;0.88&lt;/code&gt; rather than inventing a lighter or darker brand colour.&lt;/p&gt;</description></item><item><title>Hugo</title><link>https://projectious-work.github.io/brand/docs/themes/hugo/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/themes/hugo/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand with
 Hugo. It answers which files supply the brand, where a theme may be changed,
 and how to prove the result is conformant.&lt;/p&gt;
 &lt;p&gt;Choose the &lt;code&gt;Docsy&lt;/code&gt; or &lt;code&gt;Hextra&lt;/code&gt; subsection after reading the shared contract.
@@ -368,7 +368,9 @@ everywhere.&lt;/li&gt;
 &lt;code&gt;#142438&lt;/code&gt; on light.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Images get a subtle overlay&lt;/strong&gt; (black at low alpha) in dark mode, so a bright
 photograph does not punch a hole in a dark page.&lt;/li&gt;
-&lt;li&gt;&lt;strong&gt;Code blocks are always dark&lt;/strong&gt;, regardless of mode. See
+&lt;li&gt;&lt;strong&gt;Code blocks are dark by default&lt;/strong&gt;, regardless of interface mode. An
+explicitly selected light code panel uses the complete light companion
+palette; it never switches automatically. See
 &lt;a href="https://projectious-work.github.io/brand/docs/interface/code/"&gt;Code&lt;/a&gt;.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;The same card in both modes&lt;/div&gt;
@@ -487,9 +489,10 @@ source as the canonical reusable asset. Commit generated PNGs only when a
 repository needs them.&lt;/p&gt;</description></item><item><title>Terminal</title><link>https://projectious-work.github.io/brand/docs/themes/terminal/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/themes/terminal/</guid><description>&lt;p&gt;This page is the source of truth for rendering the projectious.work brand in a
 terminal. It answers which sixteen colours the brand uses, which program owns
 each part of the result, and how to prove a configuration is conformant.&lt;/p&gt;
-&lt;p&gt;The terminal is where the brand&amp;rsquo;s rule that &lt;em&gt;code surfaces stay dark in both
-modes&lt;/em&gt; stops being a stylistic choice and becomes the only option: a terminal
-has one surface, it is dark, and everything is measured against it.&lt;/p&gt;</description></item><item><title>Trademark</title><link>https://projectious-work.github.io/brand/docs/governance/trademark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/trademark/</guid><description>&lt;p&gt;The names, logos, and icons associated with &lt;strong&gt;projectious.work&lt;/strong&gt; are its
+&lt;p&gt;Real terminal and code chrome stays dark by default. The design system also
+defines an optional light companion for deliberately light specimens. It is a
+separate explicit choice—not a colour-mode response—and every value is measured
+against its own surface.&lt;/p&gt;</description></item><item><title>Trademark</title><link>https://projectious-work.github.io/brand/docs/governance/trademark/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/trademark/</guid><description>&lt;p&gt;The names, logos, and icons associated with &lt;strong&gt;projectious.work&lt;/strong&gt; are its
 trademarks. Full text:
 &lt;a href="https://github.com/projectious-work/brand/blob/main/TRADEMARK.md"&gt;&lt;code&gt;TRADEMARK.md&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id="not-permitted"&gt;Not permitted&lt;/h2&gt;
@@ -561,21 +564,13 @@ web-safe stacks, literal hex, &lt;code&gt;role=&amp;quot;presentation&amp;quot;&
 is not repeated. What follows is what a whole message adds.&lt;/p&gt;
 &lt;p&gt;The supplied email mockup is the visual reference. Its HTML is self-contained,
 so it can be opened without a runtime or build step and translated into the
-sending tool&amp;rsquo;s template format.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-always-dark"&gt;Code blocks are always dark&lt;/h2&gt;
+sending tool&amp;rsquo;s template format.&lt;/p&gt;</description></item><item><title>Code</title><link>https://projectious-work.github.io/brand/docs/interface/code/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/interface/code/</guid><description>&lt;h2 id="code-blocks-are-dark-by-default"&gt;Code blocks are dark by default&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Code blocks stay dark regardless of colour mode.&lt;/strong&gt; A code surface that flips
 with the theme forces the syntax palette to be designed twice and makes
 screenshots inconsistent between users. The surface is &lt;code&gt;midnight-2&lt;/code&gt; from the
-&lt;strong&gt;dark&lt;/strong&gt; scale (&lt;code&gt;#131e2b&lt;/code&gt;) in both light and dark mode.&lt;/p&gt;
-&lt;p&gt;The block you are reading is rendered by that rule:&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre tabindex="0" class="chroma"&gt;&lt;code class="language-js" data-lang="js"&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="c1"&gt;// Agent pipeline definition
-&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="kr"&gt;const&lt;/span&gt; &lt;span class="nx"&gt;pipeline&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nx"&gt;createPipeline&lt;/span&gt;&lt;span class="p"&gt;({&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;name&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;validate-deploy&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;policy&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;strict&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt; &lt;span class="nx"&gt;agents&lt;/span&gt;&lt;span class="o"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="s2"&gt;&amp;#34;auditor&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="s2"&gt;&amp;#34;deployer&amp;#34;&lt;/span&gt;&lt;span class="p"&gt;],&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;span class="line"&gt;&lt;span class="cl"&gt;&lt;span class="p"&gt;});&lt;/span&gt;
-&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id="syntax-theme"&gt;Syntax theme&lt;/h2&gt;
-&lt;p&gt;Because the surface is always dark, every syntax value is read from the &lt;strong&gt;dark&lt;/strong&gt;
-scale. Contrast is measured against &lt;code&gt;#131e2b&lt;/code&gt;.&lt;/p&gt;</description></item><item><title>Diagrams and demos</title><link>https://projectious-work.github.io/brand/docs/portfolio/diagrams/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/diagrams/</guid><description>&lt;h2 id="architecture-and-flow-diagrams"&gt;Architecture and flow diagrams&lt;/h2&gt;
+&lt;strong&gt;dark&lt;/strong&gt; scale (&lt;code&gt;#131e2b&lt;/code&gt;) in both light and dark mode. A deliberately light
+specimen may opt into the companion palette below; colour mode never switches a
+code block to it automatically.&lt;/p&gt;</description></item><item><title>Diagrams and demos</title><link>https://projectious-work.github.io/brand/docs/portfolio/diagrams/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/portfolio/diagrams/</guid><description>&lt;h2 id="architecture-and-flow-diagrams"&gt;Architecture and flow diagrams&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Prefer left-to-right flow, explicit boundaries, and named protocols.&lt;/li&gt;
 &lt;li&gt;Distinguish implemented components from planned components with text:
@@ -860,7 +855,7 @@ clearance detail.&lt;/p&gt;</description></item><item><title>Presentations</titl
 &lt;p&gt;Six of the twelve slide types cover most decks. Build with these first and reach
 for the other six only when the content actually calls for one — the full table
 is &lt;a href="#the-twelve-types"&gt;below&lt;/a&gt;.&lt;/p&gt;
-&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 16:10&lt;/div&gt;
+&lt;div class="pj-demo"&gt;&lt;div class="pj-demo__label"&gt;Core slide types — 1280×720 · 16:9&lt;/div&gt;
  &lt;div class="pj-demo__body pj-demo__body--stack"&gt;
  
 &lt;div class="pj-slides-grid"&gt;
@@ -896,7 +891,7 @@ is &lt;a href="#the-twelve-types"&gt;below&lt;/a&gt;.&lt;/p&gt;
 &lt;/div&gt;
 
 &lt;h2 id="the-full-deck"&gt;The full deck&lt;/h2&gt;
-&lt;p&gt;Twelve slide types cover a complete talk. Each is 16:10 and uses the same
+&lt;p&gt;Twelve slide types cover a complete talk. Each is 1280×720 (16:9) and uses the same
 tokens as the product surfaces — no separate &amp;ldquo;presentation theme&amp;rdquo;.&lt;/p&gt;</description></item><item><title>Asset provenance</title><link>https://projectious-work.github.io/brand/docs/governance/provenance/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://projectious-work.github.io/brand/docs/governance/provenance/</guid><description>&lt;p&gt;The authoritative inventory is
 the project provenance inventory
 in the repository. Check it before adding an asset or shipping collateral.&lt;/p&gt;

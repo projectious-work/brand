@@ -69,9 +69,14 @@ Five variants, three sizes. Plus Jakarta Sans 600, 6px radius, 200ms transitions
 border, active state, or syntax colour. But white on it measures **3.87:1** —
 below the 4.5:1 floor for 13–14px labels. Solid accent controls therefore fill
 with **`--color-accent-solid` (`#cc4528`)**, white at **4.72:1**; hover
-continues to `accent-dark` (`#b84228`, 5.46:1).
+uses opacity `0.88` rather than inventing a lighter or darker brand colour.
 </div>
 
+
+Hover is structural across components: primary surfaces move to `opacity:.88`
+and card borders move to `midnight-7`. Pressed controls remain at their hover
+state and never scale down. Do not lighten or darken a brand colour to create an
+interaction state.
 
 <div class="pj-rules"><div class="pj-rule pj-rule--do">
   <div class="pj-rule__label">Do</div>
@@ -163,6 +168,11 @@ Full rules — labels, validation, focus — are on
 Radius 9px, padding 16px 24px, 1px `slate-5` border, flat at rest. `shadow-1`
 is reserved for hover; nested
 controls step **down** one radius.
+
+Transparency is restricted. Use backdrop blur only for dark-on-dark modal
+scrims and dark-panel inner cards, where the inner surface is
+`rgba(255,255,255,.04)`. Do not put frosted glass on a light surface. Tags and
+badges use solid pale tints, never alpha overlays.
 
 <div class="pj-demo"><div class="pj-demo__label">Basic, with image, with actions</div>
   <div class="pj-demo__body pj-demo__body--grid">
@@ -536,7 +546,9 @@ perception.</p>
 
 ## Code and terminal
 
-The code surface is always dark — see [Code](/brand/docs/interface/code/).
+The code surface is dark by default. Use the complete light companion only for
+an explicitly light panel; never switch it automatically with interface mode.
+See [Code](/brand/docs/interface/code/).
 
 <div class="pj-demo"><div class="pj-demo__label">Terminal</div>
   <div class="pj-demo__body pj-demo__body--stack">

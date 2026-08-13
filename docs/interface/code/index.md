@@ -1,6 +1,6 @@
 # Code
 
-> The always-dark code surface and the syntax theme, with measured contrast for every token.
+> The default dark code surface, optional light-panel companion, and measured syntax roles.
 
 ---
 
@@ -8,12 +8,14 @@ LLMS index: [llms.txt](/brand/llms.txt)
 
 ---
 
-## Code blocks are always dark
+## Code blocks are dark by default
 
 **Code blocks stay dark regardless of colour mode.** A code surface that flips
 with the theme forces the syntax palette to be designed twice and makes
 screenshots inconsistent between users. The surface is `midnight-2` from the
-**dark** scale (`#131e2b`) in both light and dark mode.
+**dark** scale (`#131e2b`) in both light and dark mode. A deliberately light
+specimen may opt into the companion palette below; colour mode never switches a
+code block to it automatically.
 
 The block you are reading is rendered by that rule:
 
@@ -28,8 +30,9 @@ const pipeline = createPipeline({
 
 ## Syntax theme
 
-Because the surface is always dark, every syntax value is read from the **dark**
-scale. Contrast is measured against `#131e2b`.
+For the default dark surface, every syntax value is read from the **dark** scale
+and contrast is measured against `#131e2b`. The optional light panel uses the
+separate light syntax set defined below.
 
 ### Ten roles, not twenty-two tokens
 
@@ -92,11 +95,11 @@ magenta, that a syntax theme needs and the three interface scales do not have.
     </tr>
     <tr>
       <td>
-        <span class="pj-color-chip" style="--pj-chip: #e0a92a" aria-hidden="true"></span>
+        <span class="pj-color-chip" style="--pj-chip: #8aacc8" aria-hidden="true"></span>
         <strong>Functions and methods</strong><br>
-        <code>#e0a92a</code> <span class="pj-cap" style="display:inline;margin:0">terminal yellow (bright)</span><br><span class="pj-cap" style="display:inline;margin:0">Callables read as callable at a glance — the single most useful distinction beyond the original six.</span>
+        <code>#8aacc8</code> <span class="pj-cap" style="display:inline;margin:0">midnight-dark-11 / terminal blue (bright)</span><br><span class="pj-cap" style="display:inline;margin:0">Callables use the established informational blue, leaving yellow exclusively to numbers and constants.</span>
       </td>
-      <td class="pj-table__num">7.91:1</td>
+      <td class="pj-table__num">7.06:1</td>
       <td>function · method</td>
       <td>entity.name.function · support.function<br><code class="pj-cap">.nf .fm</code></td>
     </tr>
@@ -163,6 +166,45 @@ magenta, that a syntax theme needs and the three interface scales do not have.
   </tbody>
 </table>
 </div>
+
+### Optional light-panel companion
+
+Use a light code panel only when the surrounding artifact specifically needs a
+light specimen. The surface is `#f4f5f7`; all ten roles are separately measured
+for a 4.5:1 floor. These tokens are companions, not mode-swapped aliases:
+
+| Role | Token | Value |
+|---|---|---|
+| Plain | `--syntax-plain-light` | `#142438` |
+| Comments | `--syntax-comment-light` | `#5c6f82` |
+| Operators | `--syntax-operator-light` | `#4a5e74` |
+| Keywords | `--syntax-keyword-light` | `#1d3352` |
+| Types and classes | `--syntax-type-light` | `#276754` |
+| Functions | `--syntax-function-light` | `#3a5a82` |
+| Strings | `--syntax-string-light` | `#a8461f` |
+| Numbers | `--syntax-number-light` | `#8b6508` |
+| Decorators and macros | `--syntax-macro-light` | `#1c6b6b` |
+| Invalid | `--syntax-invalid-light` | `#a8261c` |
+
+The base stylesheet paints every `<pre>` dark. Styling only a wrapper therefore
+leaves a dark rectangle over the intended light panel. The opt-in must
+neutralise the nested element explicitly:
+
+```css
+.code--light {
+  background: var(--terminal-light-surface);
+  color: var(--syntax-plain-light);
+}
+
+.code--light pre {
+  background: transparent;
+  color: var(--syntax-plain-light);
+  padding: 0;
+}
+```
+
+Do not reuse the dark syntax values on this surface and do not make the light
+set the automatic counterpart of dark mode.
 
 ### Modifiers are not colours
 
