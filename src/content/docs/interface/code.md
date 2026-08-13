@@ -126,14 +126,15 @@ marks the primary action, and a code block is not one.
 
 ## Worked examples
 
-Each block below is a real, compilable-shaped fragment chosen to exercise as
-many of the ten roles as its language has. The coverage table after them records
-which roles each language actually reaches — several cannot reach all ten, and
-that is a property of the language, not a gap in the theme.
+Each example below renders the same real, compilable-shaped fragment in the
+default dark palette and the optional light palette. The fragment is chosen to
+exercise as many of the ten roles as its language has. The coverage table after
+them records which roles each language actually reaches — several cannot reach
+all ten, and that is a property of the language, not a gap in the theme.
 
 ### C
 
-```c
+{{< code-pair language="c" >}}
 /* Ring buffer — fixed capacity, no allocation after init. */
 #include <stdint.h>
 #define RING_CAP 256          // macro: a decorator-role token
@@ -158,11 +159,11 @@ ring_status_t ring_push(ring_t *restrict r, uint8_t byte) {
     r->data[r->head++ & (RING_CAP - 1)] = byte;
     return RING_OK;
 }
-```
+{{< /code-pair >}}
 
 ### C++
 
-```cpp
+{{< code-pair language="cpp" >}}
 // Policy-based cache. Types, templates, and a lambda.
 #include <string>
 #include <unordered_map>
@@ -194,11 +195,11 @@ private:
 };
 
 }  // namespace projectious::cache
-```
+{{< /code-pair >}}
 
 ### Python
 
-```python
+{{< code-pair language="python" >}}
 """Pipeline stages and their policy gates."""
 
 from __future__ import annotations
@@ -237,11 +238,11 @@ def validate(stages: Iterable[Stage]) -> bool:
         if stage.retries > MAX_RETRIES:
             raise ValueError(f"{stage.name!r} exceeds {MAX_RETRIES} retries")
     return True
-```
+{{< /code-pair >}}
 
 ### Rust
 
-```rust
+{{< code-pair language="rust" >}}
 //! Policy evaluation for pipeline stages.
 
 use std::collections::HashMap;
@@ -282,11 +283,11 @@ impl Display for Policy {
         write!(f, "{}", match self { Policy::Strict => "strict", _ => "advisory" })
     }
 }
-```
+{{< /code-pair >}}
 
 ### Go
 
-```go
+{{< code-pair language="go" >}}
 // Package pipeline evaluates stages against their policy gates.
 package pipeline
 
@@ -328,11 +329,11 @@ func ValidateAll(stages []Stage) (ok bool, err error) {
 	}
 	return true, nil
 }
-```
+{{< /code-pair >}}
 
 ### Java
 
-```java
+{{< code-pair language="java" >}}
 package work.projectious.pipeline;
 
 import java.util.List;
@@ -373,11 +374,11 @@ public final class Stage implements Comparable<Stage> {
 
     public enum Policy { STRICT, ADVISORY }
 }
-```
+{{< /code-pair >}}
 
 ### Assembly (NASM)
 
-```nasm
+{{< code-pair language="nasm" >}}
 ; Sum a byte array. rdi = pointer, rsi = length, returns in rax.
         section .data
 msg:    db  "sum: ", 0
@@ -400,11 +401,11 @@ sum_bytes:
 
 .done:
         ret
-```
+{{< /code-pair >}}
 
 ### Bash
 
-```bash
+{{< code-pair language="bash" >}}
 #!/usr/bin/env bash
 # Validate a pipeline definition and promote it when the gates pass.
 set -euo pipefail
@@ -433,11 +434,11 @@ main() {
 }
 
 main "$@"
-```
+{{< /code-pair >}}
 
 ### LaTeX
 
-```latex
+{{< code-pair language="latex" >}}
 \documentclass[11pt,a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
@@ -463,11 +464,11 @@ A stage $s_i$ passes when its retry count $r_i \leq 3$:
 \end{itemize}
 
 \end{document}
-```
+{{< /code-pair >}}
 
 ### Markdown
 
-````markdown
+{{< code-pair language="markdown" >}}
 ---
 title: Stage reference
 weight: 10
@@ -496,11 +497,11 @@ pipeline validate --policy strict
 ```
 
 <!-- Deprecated: `--legacy-gate` is removed in 2.0. -->
-````
+{{< /code-pair >}}
 
 ### JSON
 
-```json
+{{< code-pair language="json" >}}
 {
   "$schema": "https://projectious.work/schema/pipeline-2.json",
   "name": "validate-deploy",
@@ -515,11 +516,11 @@ pipeline validate --policy strict
   ],
   "tags": ["platform", "eu-central"]
 }
-```
+{{< /code-pair >}}
 
 ### YAML
 
-```yaml
+{{< code-pair language="yaml" >}}
 # Pipeline definition — one policy gate per stage.
 apiVersion: projectious.work/v2
 kind: Pipeline
@@ -547,11 +548,11 @@ spec:
   notes: |
     Advisory gates record and continue.
     Strict gates fail closed.
-```
+{{< /code-pair >}}
 
 ### TOML
 
-```toml
+{{< code-pair language="toml" >}}
 # Pipeline definition — one policy gate per stage.
 schema = "https://projectious.work/schema/pipeline-2.json"
 
@@ -573,7 +574,7 @@ timeoutSeconds = 120
 name           = "deploy"
 gate           = "advisory"
 timeoutSeconds = 600
-```
+{{< /code-pair >}}
 
 ### What each language reaches
 

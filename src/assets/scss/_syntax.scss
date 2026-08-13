@@ -140,3 +140,53 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
 
 // The documentation site needs no extra scope.
 @include pj-syntax-theme;
+
+// Optional light-panel companion. This is deliberately opt-in and does not
+// follow the page colour mode. Every role is separately measured on #f4f5f7.
+.pj-code-pair {
+  display: grid;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pj-code-pair__label {
+  margin-bottom: .375rem;
+  color: var(--pj-text-muted);
+  font-family: $font-family-sans-serif;
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+html .pj-code-pair__example--light .highlight,
+html.dark .pj-code-pair__example--light .highlight {
+  &,
+  .chroma,
+  pre {
+    background: #f4f5f7;
+    color: #142438;
+  }
+
+  code { background: transparent; color: inherit; }
+  .c, .ch, .cm, .c1, .cs, .sd, .gp, .ln, .lnt {
+    color: #5c6f82;
+  }
+  .o, .ow, .p, .go { color: #4a5e74; }
+  .k, .kc, .kd, .kn, .kp, .kr, .nt, .na { color: #1d3352; }
+  .kt, .nc, .nn, .ne, .bp { color: #276754; }
+  .nf, .fm { color: #3a5a82; }
+  .n, .nb, .nx, .py, .nv, .vc, .vg, .vi { color: #142438; }
+  .s, .sa, .sb, .sc, .dl, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
+    color: #a8461f;
+  }
+  .m, .mb, .mf, .mh, .mi, .il, .mo, .no { color: #8b6508; }
+  .nd, .ni, .nl, .cp, .cpf { color: #1c6b6b; }
+  .err, .gd { color: #a8261c; }
+  .gi { color: #276754; }
+  .hl { background-color: rgba(58, 90, 130, .1); }
+}
+
+@media (min-width: 992px) {
+  .pj-code-pair { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

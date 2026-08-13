@@ -1,0 +1,12 @@
+{{- $language := .Get "language" -}}
+{{- $source := strings.TrimSpace .Inner -}}
+<div class="pj-code-pair">
+  <div class="pj-code-pair__example">
+    <div class="pj-code-pair__label">Dark · default</div>
+    {{ transform.Highlight $source $language }}
+  </div>
+  <div class="pj-code-pair__example pj-code-pair__example--light">
+    <div class="pj-code-pair__label">Light · optional</div>
+    {{ transform.Highlight $source $language }}
+  </div>
+</div>
