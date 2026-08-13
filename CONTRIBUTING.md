@@ -52,8 +52,9 @@ feat/*, fix/*, docs/*, chore/*, release/*
 ```
 
 - `main` is the sole development and release line and GitHub's default branch.
-  Changes land through reviewed, squash-merged pull requests. Force pushes and
-  deletion are disabled.
+  Changes land through squash-merged pull requests. Approval may be recorded
+  on GitHub or given explicitly by the project owner in the active agent
+  conversation. Force pushes and deletion are disabled.
 - Create short-lived branches from `main` for ordinary work, using
   `feat/*`, `fix/*`, `docs/*`, or `chore/*` (for example,
   `feat/42-provider-refresh`). Open those pull requests against
