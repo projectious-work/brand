@@ -15,3 +15,7 @@ The server exposes token lookup and role explanation, public asset discovery,
 provenance lookup, and token-reference validation. Every operation is
 read-only, deterministic, version-aware, and bounded to the released public
 contract.
+
+The complete user guide, client configuration, resource URI catalog, tool
+reference, version behavior, and security boundary are published under
+**Documentation → AI consumption** on the brand site.
