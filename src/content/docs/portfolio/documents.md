@@ -56,7 +56,7 @@ Entries are separated by space, not by rules. A one-page document accumulates
 horizontal rules faster than anything else in the system, and each one costs a
 line of content while adding a section break to a document with one section per
 heading — the same argument the
-[signature]({{< relref "/docs/collateral/email-signature" >}}) makes, on a bigger
+[signature](/docs/collateral/email-signature/) makes, on a bigger
 sheet.
 
 Dates and other data are set in IBM Plex Mono and right-aligned against the
@@ -100,7 +100,7 @@ with different section names:
 | Memo | Subject and date | Context · Options · Recommendation | Decision and owner |
 
 Where the document makes a claim about a project's maturity, the
-[status vocabulary]({{< relref "/docs/portfolio/status" >}}) applies — a document
+[status vocabulary](/docs/portfolio/status/) applies — a document
 is not exempt from it because it is prose.
 
 {{< rules >}}

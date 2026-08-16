@@ -6,8 +6,8 @@ description: Keyboard order, skip links, focus management across composed layout
 ---
 
 Accessibility appears throughout this system as measurements — contrast ratios
-on [Colour]({{< relref "/docs/foundations/color" >}}), the 44px touch floor on
-[Responsive]({{< relref "/docs/foundations/responsive" >}}), the focus trap on
+on [Colour](/docs/foundations/color/), the 44px touch floor on
+[Responsive](/docs/foundations/responsive/), the focus trap on
 modals. This page covers what those cannot: **order, announcement, and focus**
 — the properties that only exist once components are composed into a screen.
 
@@ -42,14 +42,14 @@ and visual order must agree.
 
 That makes source order a **layout constraint**, not a detail: write regions in
 the order they should be read, and let CSS place them. The
-[page shell]({{< relref "/docs/interface/patterns" >}}) is therefore authored as
+[page shell](/docs/interface/patterns/) is therefore authored as
 skip link → header → sidebar → main → complementary, and Grid puts the sidebar
 on the left.
 
 **Never use `order`, `row-reverse`, or `grid-area` to change the sequence a
 reader encounters.** It moves the pixels and leaves the keyboard behind, which
 is exactly the bug that a
-[stacked mobile layout]({{< relref "/docs/foundations/responsive" >}}) exposes:
+[stacked mobile layout](/docs/foundations/responsive/) exposes:
 if the DOM is already in reading order, the collapse to one column is free.
 
 **Never set a positive `tabindex`.** `tabindex="0"` puts an element in the
@@ -209,19 +209,19 @@ that fires on every keystroke makes the page unusable with a screen reader.
 An icon that repeats its label is `aria-hidden="true"`. An icon that *is* the
 control carries the accessible name:
 `<button aria-label="Security settings">`. See
-[Icons]({{< relref "/docs/interface/icons" >}}).
+[Icons](/docs/interface/icons/).
 
 ### Tables
 
 A `pj-table` uses `<th scope="col">`, and `scope="row"` on the identifying
 column. Sortable headers carry `aria-sort="ascending" | "descending" | "none"`,
 updated when the sort changes — the arrow glyph alone is not announced.
-[Multi-level headers]({{< relref "/docs/interface/components" >}}) need
+[Multi-level headers](/docs/interface/components/) need
 `scope="colgroup"` on the group row.
 
 ## Motion and preference
 
-The [motion rules]({{< relref "/docs/foundations/space-shape-motion" >}}) are an
+The [motion rules](/docs/foundations/space-shape-motion/) are an
 accessibility requirement, not a stylistic one. Everything animated is wrapped in
 `prefers-reduced-motion: no-preference`, or neutralised under `reduce`.
 

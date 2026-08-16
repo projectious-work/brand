@@ -5,7 +5,7 @@ weight: 15
 description: How the components combine into whole screens — the page shell, the KPI row, and the primary/secondary split.
 ---
 
-[Components]({{< relref "/docs/interface/components" >}}) answers "what does a
+[Components](/docs/interface/components/) answers "what does a
 card look like". This page answers the question after it: **what does a whole
 screen look like when it is made only of those parts.**
 
@@ -28,12 +28,12 @@ application's frame, so it stays constant while the content region changes; a
 sidebar that re-renders per route reads as a page reload.
 
 The header carries **exactly one** accent button. That is the whole quota for
-the screen — [one accent per view]({{< relref "/docs/interface/components" >}})
+the screen — [one accent per view](/docs/interface/components/)
 — which is why the pattern places it here rather than leaving it to the content
 region to spend.
 
 Below `lg` (1024px) the sidebar leaves and becomes the mobile navigation
-pattern; see [Responsive]({{< relref "/docs/foundations/responsive" >}}).
+pattern; see [Responsive](/docs/foundations/responsive/).
 
 On a light marketing or documentation shell, the header uses sentence-case
 navigation, the lowercase brand lockup, and one accent action on the right. The
@@ -49,7 +49,7 @@ Four, not three and not six. Three leaves a hole in a 12-column grid; six turns
 the row into a wall of numbers nobody reads. If there are five things worth
 measuring, the fifth one is not a KPI.
 
-Each card is a [`pj-stat`]({{< relref "/docs/interface/components" >}}) — the
+Each card is a [`pj-stat`](/docs/interface/components/) — the
 number first in Plus Jakarta Sans 800, its label under it in the overline style,
 then a delta line. The `pj-stat` carries its own border and radius, so it is
 *not* nested inside a `pj-card`; that would draw the box twice.
@@ -73,7 +73,7 @@ than borrowing a semantic one.
 Under the KPI row, a **1.5fr / 1fr** split: the thing the page is about on the
 left, the thing that gives it context on the right.
 
-- **Primary** is the record set — a [table]({{< relref "/docs/interface/components" >}})
+- **Primary** is the record set — a [table](/docs/interface/components/)
   in a `pj-table-shell`, with its toolbar, filter chips, and pagination footer.
 - **Secondary** is a `pj-card` holding a feed: a `pj-timeline` or `pj-list` of
   recent events, each with a status dot **and** a text label.
@@ -115,7 +115,7 @@ screens whose job is scanning many rows at once — an audit log, a run history:
 Density changes padding and control height. It does **not** change type size,
 radius, or border weight — a compact table is the same table with less air, not
 a smaller one. Compact is never used on touch-primary surfaces, where the
-[44px floor]({{< relref "/docs/foundations/responsive" >}}) applies regardless.
+[44px floor](/docs/foundations/responsive/) applies regardless.
 
 {{< rules >}}
 {{% do %}}

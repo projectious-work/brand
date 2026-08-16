@@ -35,7 +35,7 @@ Neither is bundled in this repository. Both are cleared for future use:
 
 All logo files, design tokens, document templates, and design-system documents
 are original work, © projectious.work, under the brand-asset terms in
-[Licensing]({{< relref "/docs/governance/licensing" >}}).
+[Licensing](/docs/governance/licensing/).
 
 ## Review status
 
@@ -43,8 +43,8 @@ Last reviewed **2026-08-13**: the four declared font binaries and Font Awesome
 are the only bundled third-party font assets. Their licence material ships with
 the files.
 
-{{% alert title="Adding a bundled asset" color="warning" %}}
+{{% callout title="Adding a bundled asset" type="warning" %}}
 If you commit a third-party binary — a font file, an icon SVG, an image — add a
 row to the provenance inventory recording its individual source, licence, and
 attribution requirement. Do not rely on the summary tables above.
-{{% /alert %}}
+{{% /callout %}}

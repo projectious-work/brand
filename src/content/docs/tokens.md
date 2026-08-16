@@ -6,9 +6,9 @@ description: Machine-readable exports of the design values, and how to consume t
 ---
 
 The token files are the machine-readable form of the
-[foundations]({{< relref "/docs/foundations/" >}}). They are **MIT-licensed** —
+[foundations](/docs/foundations/). They are **MIT-licensed** —
 the values are free to use, the marks are not. See
-[Licensing]({{< relref "/docs/governance/licensing" >}}).
+[Licensing](/docs/governance/licensing/).
 
 ## Authoritative definitions
 
@@ -20,9 +20,9 @@ second source of truth.
 
 ## CSS
 
-[Download `variables.css`]({{< siteurl "downloads/tokens/variables.css" >}}) ·
-[Download `tokens.json`]({{< siteurl "downloads/tokens/tokens.json" >}}) ·
-[Download `tailwind.config.js`]({{< siteurl "downloads/tokens/tailwind.config.js" >}})
+[Download `variables.css`](/downloads/tokens/variables.css) ·
+[Download `tokens.json`](/downloads/tokens/tokens.json) ·
+[Download `tailwind.config.js`](/downloads/tokens/tailwind.config.js)
 
 ```html
 <link rel="stylesheet" href="variables.css">
@@ -56,7 +56,7 @@ Everything the foundations define, in all three files:
 | **Syntax** | Ten dark-panel roles plus ten separately measured optional light-panel roles |
 | **Terminal** | Default dark and optional light 16-slot ANSI palettes with chrome roles |
 
-{{% alert title="Two things the exports cannot do for you" color="info" %}}
+{{% callout title="Two things the exports cannot do for you" type="info" %}}
 **Breakpoints are exported as values, not as queries.** A custom property cannot
 be used in a `@media` condition, so `--breakpoint-md` is available to `calc()`
 and to JavaScript, but the query itself still has to be written out.
@@ -64,7 +64,7 @@ and to JavaScript, but the query itself still has to be written out.
 **Tailwind has no notion of a colour mode**, so the dark scales are exported as
 their own `midnightDark` / `orangeDark` / `slateDark` keys rather than swapped in
 behind `dark:`. Wire them to whatever dark strategy your project already uses.
-{{% /alert %}}
+{{% /callout %}}
 
 ### Modes
 
@@ -79,8 +79,8 @@ This site maps the tokens onto Bootstrap and Docsy variables in
 `src/assets/scss/_variables_project.scss`, a worked example of wiring the brand
 into an existing component framework.
 
-{{% alert title="The site is the test" color="info" %}}
+{{% callout title="The site is the test" type="info" %}}
 This documentation is styled by those same SCSS files. If a token is wrong, this
 page renders wrong — which is the point. There is no separate brand-site theme
 that can drift away from the system it documents.
-{{% /alert %}}
+{{% /callout %}}

@@ -155,13 +155,13 @@ one needs it in both forms: the `bgcolor` attribute, which Outlook's renderer
 prefers, and `background-color`, because several clients strip the `background`
 shorthand while keeping longhands.
 
-{{% alert title="Dark mode will recolour this, and that is fine" color="info" %}}
+{{% callout title="Dark mode will recolour this, and that is fine" type="info" %}}
 Several clients — Outlook mobile and some webmail among them — invert or shift
 signature colours in dark mode, and none can be reliably prevented from doing
 so. The signature is therefore built to survive recolouring rather than to fight
 it: the hierarchy is carried by *size and weight* as much as by hue, so it still
 reads when the palette is altered.
-{{% /alert %}}
+{{% /callout %}}
 
 ### Colours
 

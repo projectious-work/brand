@@ -8,10 +8,10 @@ description: Configuration of theme frameworks for use with the projectious.work
 This section contains guidance for configuring selected theming frameworks
 to use the projectious.work brand.
 
-The [Hugo guide]({{< relref "hugo" >}}) combines the implementation contract,
+The [Hugo guide](hugo.md) combines the implementation contract,
 theme-specific guidance, and review fixtures in one page. It currently contains configurations
 for [Docsy](https://www.docsy.dev/) and [Hextra](https://imfing.github.io/hextra/).
 
-The [Terminal guide]({{< relref "terminal" >}}) covers the sixteen-colour ANSI
+The [Terminal guide](terminal.md) covers the sixteen-colour ANSI
 palette and the configuration that applies it to tmux, WezTerm, Kitty, Ghostty, iTerm2,
 and Zellij.

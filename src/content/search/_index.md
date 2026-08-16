@@ -1,7 +1,7 @@
 ---
 title: Search
 linkTitle: Search
-type: search
-layout: list
+layout: search
+private: true
 description: Search every page of the projectious.work brand documentation.
 ---

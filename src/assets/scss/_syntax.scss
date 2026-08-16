@@ -96,7 +96,7 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
     }
 
     // Plain identifiers and variables — the default.
-    .n, .nb, .nx, .py, .nv, .vc, .vg, .vi {
+    .n, .nb, .nx, .py, .nv, .vc, .vg, .vi, .cl, .l, .gu {
       color: $pj-code-identifier;
     }
 
@@ -140,6 +140,11 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
 // The documentation site needs no extra scope.
 @include pj-syntax-theme;
 
+// Win over the theme's adaptive light/dark Chroma rules for the brand's
+// always-dark specimen surface. This scoped copy must precede the optional
+// light-panel rules below so that the opt-in companion can override it.
+html[data-code] body .prose .highlight { @include pj-syntax-theme; }
+
 // Optional light-panel companion. This is deliberately opt-in and does not
 // follow the page colour mode. Every role is separately measured on #f4f5f7.
 .pj-code-pair {
@@ -158,8 +163,7 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
   text-transform: uppercase;
 }
 
-html .pj-code-pair__example--light .highlight,
-html.dark .pj-code-pair__example--light .highlight {
+html[data-code] body .prose .pj-code-pair__example--light .highlight {
   & {
     background: #f4f5f7;
     color: #142438;
@@ -173,7 +177,7 @@ html.dark .pj-code-pair__example--light .highlight {
   .k, .kc, .kd, .kn, .kp, .kr, .nt, .na { color: #1d3352; }
   .kt, .nc, .nn, .ne, .bp { color: #276754; }
   .nf, .fm { color: #3a5a82; }
-  .n, .nb, .nx, .py, .nv, .vc, .vg, .vi { color: #142438; }
+  .n, .nb, .nx, .py, .nv, .vc, .vg, .vi, .cl, .l, .gu { color: #142438; }
   .s, .sa, .sb, .sc, .dl, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
     color: #a8461f;
   }
@@ -187,8 +191,7 @@ html.dark .pj-code-pair__example--light .highlight {
 // The documentation shell repeats `.highlight` in its block-code selector and
 // emits it after this partial. Match that cascade explicitly: the panel owns
 // the light surface, while the nested Chroma `<pre>` must be transparent.
-html body .td-content .pj-code-pair__example--light .highlight pre.chroma,
-html.dark body .td-content .pj-code-pair__example--light .highlight pre.chroma {
+html[data-code] body .prose .pj-code-pair__example--light .highlight pre.chroma {
   background: transparent;
   color: #142438;
   border-color: #cdd0d5;

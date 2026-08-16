@@ -32,10 +32,10 @@ spot warm on dark, and warm on darker. They are supplied variants, not a licence
 to recolour the canonical files. Use SVG wherever the medium accepts it; choose
 128px or 256px PNG only when a raster format is required.
 
-{{% alert title="Licence" color="warning" %}}
+{{% callout title="Licence" type="warning" %}}
 Logo files are brand assets, not MIT-licensed code. You may reference and
 display them under the terms in
-[Licensing]({{< relref "/docs/governance/licensing" >}}); you may not modify
+[Licensing](/docs/governance/licensing/); you may not modify
 them or use them to imply endorsement. See also the
-[Trademark guidelines]({{< relref "/docs/governance/trademark" >}}).
-{{% /alert %}}
+[Trademark guidelines](/docs/governance/trademark/).
+{{% /callout %}}

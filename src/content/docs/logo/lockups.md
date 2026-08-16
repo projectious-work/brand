@@ -103,12 +103,12 @@ geometry, not a typed period. It takes slate on light surfaces and `midnight-11`
 on dark. Spacing is handled by flex layout so the wordmark reflows naturally —
 do not hand-kern it or convert it to a static image.
 
-{{% alert title="The wordmark keeps the accent" color="info" %}}
+{{% callout title="The wordmark keeps the accent" type="info" %}}
 "work" is set in `orange-9` (`#E05232`). As body text that value would be too
 low-contrast, but WCAG 2.1 SC 1.4.3 exempts logotypes — "text that is part of a
 logo or brand name has no minimum contrast requirement". The wordmark is the one
 place the identity accent is used as letterforms.
-{{% /alert %}}
+{{% /callout %}}
 
 {{< rules >}}
 {{% do %}}

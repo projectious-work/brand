@@ -598,9 +598,9 @@ description: Validate a provider configuration and promote it safely.
 weight: 10
 ---
 
-{{% alert title="Before you begin" color="info" %}}
+{{% callout title="Before you begin" type="info" %}}
 Run the validation command locally before requesting promotion.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Validate the configuration
 
@@ -626,10 +626,10 @@ place. The page must remain readable before any interaction is available.
 
 <p><a class="btn btn-primary" href="#docsy-release-check">Review release check</a></p>
 
-{{% alert title="Release boundary" color="info" %}}
+{{% callout title="Release boundary" type="info" %}}
 Validate the configuration locally, then request promotion. The action above
 is the only primary action in this view.
-{{% /alert %}}
+{{% /callout %}}
 
 #### What the reader needs first
 
@@ -640,7 +640,7 @@ is the only primary action in this view.
 | Release | Waiting for approval | Release manager |
 
 The table should remain inside a scrollable container on narrow screens. Link
-text remains blue, such as the [token reference]({{< relref "/docs/tokens" >}}),
+text remains blue, such as the [token reference](/docs/tokens/),
 while the accent-filled control remains reserved for the next action.
 
 #### A card-led decision surface
@@ -694,18 +694,18 @@ both theme modes, with readable syntax and a discoverable copy control.
 
 #### Status language is semantic
 
-{{% alert title="Validated" color="success" %}}
+{{% callout title="Validated" type="success" %}}
 Use success only for a completed, evidenced check.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert title="Needs attention" color="warning" %}}
+{{% callout title="Needs attention" type="warning" %}}
 Warnings describe a condition to assess; do not use the brand accent as a
 generic warning colour.
-{{% /alert %}}
+{{% /callout %}}
 
-{{% alert title="Blocked" color="danger" %}}
+{{% callout title="Blocked" type="error" %}}
 Errors need a clear next action and must not rely on colour as their only cue.
-{{% /alert %}}
+{{% /callout %}}
 
 #### Release check {#docsy-release-check}
 

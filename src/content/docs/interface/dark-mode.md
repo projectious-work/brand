@@ -23,7 +23,7 @@ designed, tested, and shipped together.
 - **Code blocks are dark by default**, regardless of interface mode. An
   explicitly selected light code panel uses the complete light companion
   palette; it never switches automatically. See
-  [Code]({{< relref "/docs/interface/code" >}}).
+  [Code](/docs/interface/code/).
 
 {{< demo label="The same card in both modes" variant="grid" >}}
 <div style="background:#ffffff;border:1px solid #dadce0;border-radius:9px;padding:1rem">

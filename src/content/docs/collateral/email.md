@@ -5,7 +5,7 @@ weight: 25
 description: A sendable message — the newsletter layout, its bulletproof button, and the constraints a signature does not have to solve.
 ---
 
-The [signature]({{< relref "/docs/collateral/email-signature" >}}) covers the
+The [signature](/docs/collateral/email-signature/) covers the
 block at the bottom of someone else's message. This page covers the message
 itself: a full-width, sendable email with a header, sections, a call to action,
 and a footer.
@@ -33,7 +33,7 @@ sending tool's template format.
 
 **600px** is the width every mail client can be relied on to render without
 horizontal scrolling, and it is the reason the message is not laid out on the
-[1100px measure]({{< relref "/docs/foundations/space-shape-motion" >}}). Below
+[1100px measure](/docs/foundations/space-shape-motion/). Below
 that, `max-width:100%` on the outer table lets the content reflow in a phone
 client.
 
@@ -90,11 +90,11 @@ Three things are load-bearing:
 
 - **The fill is `#cc4528`, not `#E05232`.** White on the identity accent is
   3.87:1; on `accent-solid` it is 4.72:1. The same rule as
-  [solid controls in the interface]({{< relref "/docs/interface/components" >}}),
+  [solid controls in the interface](/docs/interface/components/),
   and email is where it matters most, because a mail client will not offer a
   hover state to compensate.
 - **44px tall.** A mail is read on a phone more often than not, so the
-  [touch floor]({{< relref "/docs/foundations/responsive" >}}) is the binding
+  [touch floor](/docs/foundations/responsive/) is the binding
   constraint.
 - **`arcsize="9%"`** approximates the 6px `radius-md` the HTML path sets. VML has no
   pixel radius; it takes a percentage of the shorter side.
@@ -104,7 +104,7 @@ it splits the first one.
 
 ## Colour in a message
 
-The [signature's colour table]({{< relref "/docs/collateral/email-signature" >}})
+The [signature's colour table](/docs/collateral/email-signature/)
 holds, with two additions a whole message needs:
 
 | Role | Value | Use |
@@ -131,7 +131,7 @@ Those three facts are the footer's whole job:
   require signing in.
 
 An unsubscribe that leads to a login screen is, in most of the jurisdictions on
-the [signature page]({{< relref "/docs/collateral/email-signature" >}}), not an
+the [signature page](/docs/collateral/email-signature/), not an
 unsubscribe.
 
 ## Before sending

@@ -23,8 +23,8 @@ maturity.
 Run:
 
 ```sh
-npm run portfolio:validate
-npm run portfolio:export
+bash scripts/validate-portfolio-assets.sh
+bash scripts/export-portfolio-assets.sh
 ```
 
 The export script uses `resvg` when available and otherwise leaves the SVG

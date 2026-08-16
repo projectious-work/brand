@@ -97,11 +97,11 @@ hundred states. Hue cannot carry that, so it does not try.
 
 {{< syntax-scopes part="modifiers" >}}
 
-{{% alert title="Deprecated must survive greyscale" color="warning" %}}
+{{% callout title="Deprecated must survive greyscale" type="warning" %}}
 `deprecated` is a state, not a category. It is struck through as well as
 recoloured, so a reader who cannot separate the red from the plain text still
 sees that the symbol should not be used.
-{{% /alert %}}
+{{% /callout %}}
 
 ### Why comments have a dedicated token
 
@@ -612,7 +612,7 @@ Where a language falls short, the reason is the language or the lexer:
 - **YAML** — Anchors and merge keys take the macro role; there are no callables or types.
 - **TOML** — Table headers take the plain role; there are no callables or types.
 
-{{% alert title="Two findings worth carrying into any theme" color="info" %}}
+{{% callout title="Two findings worth carrying into any theme" type="info" %}}
 Chroma files C preprocessor directives and Rust attributes under
 **Comment.Preproc**, which would colour `#define` and `#[derive(…)]` as
 commentary. They are macros — the LSP says so — and are coloured as macros here.
@@ -620,7 +620,7 @@ commentary. They are macros — the LSP says so — and are coloured as macros h
 It also files documentation comments under **String.Doc**, which would colour a
 Rust `///` line and a Python docstring as data. Both are documentation, and take
 the comment role.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Inline code
 

@@ -182,7 +182,7 @@ not:
   Three-up stretched to four steps along a rule: same parallel-points structure,
   same tokens, one axis added.
 - **Metric row** — four stat cards across the slide. That is the
-  [KPI row]({{< relref "/docs/interface/patterns" >}}) from the interface, used
+  [KPI row](/docs/interface/patterns/) from the interface, used
   on a slide. The single-number **Metric** type is for the one number a section
   is about; the row is for the four that summarise an engagement.
 
@@ -215,7 +215,7 @@ above.
 Document templates for LaTeX and Typst are in
 the document template set.
 Both embed brand identity and fall under the brand-asset licence terms — see
-[Licensing]({{< relref "/docs/governance/licensing" >}}).
+[Licensing](/docs/governance/licensing/).
 
 Those two are for documents. A **deck** usually has to arrive somewhere a client
 can open and edit it, so **Google Slides, PowerPoint, and Keynote are

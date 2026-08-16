@@ -42,21 +42,6 @@ command -v hugo >/dev/null 2>&1 || {
   echo "Hugo extended is required: https://gohugo.io/installation/" >&2
   exit 1
 }
-command -v npm >/dev/null 2>&1 || {
-  echo "Node.js and npm are required for Docsy assets." >&2
-  exit 1
-}
-
-if [[ ! -f "${SRC_DIR}/themes/docsy/theme.toml" ]]; then
-  git -C "${ROOT_DIR}" submodule update --init --recursive src/themes/docsy
-fi
-
-if [[ ! -d "${SRC_DIR}/node_modules" ]]; then
-  npm --prefix "${SRC_DIR}" install --no-package-lock
-fi
-
-node "${ROOT_DIR}/scripts/build-brand-manifest.mjs"
-
 cd "${SRC_DIR}"
 # --destination is always passed explicitly so output lands at the repo root
 # rather than src/public, regardless of any caller-supplied arguments.
