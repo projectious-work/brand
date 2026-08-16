@@ -1,0 +1,11 @@
+{{- /* v0.3.1 theme scripts plus the site's progressive swatch enhancer. */ -}}
+{{ partial "script.html" (dict "src" "interactions.js" "defer" true) }}
+{{ if ne site.Params.search false }}
+  {{ with resources.Get "js/vendor/flexsearch.bundle.min.js" }}
+    {{ $f := . | fingerprint "sha384" }}
+    <script src="{{ $f.RelPermalink }}" integrity="{{ $f.Data.Integrity }}" defer></script>
+  {{ end }}
+  {{ partial "script.html" (dict "src" "search.js" "defer" true) }}
+{{ end }}
+{{ if ne site.Params.commandPalette false }}{{ partial "script.html" (dict "src" "palette.js" "defer" true) }}{{ end }}
+{{ partial "script.html" (dict "src" "color-swatches.js" "defer" true) }}

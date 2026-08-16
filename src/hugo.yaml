@@ -1,7 +1,6 @@
 baseURL: "https://projectious-work.github.io/brand/"
 title: projectious.work brand
 description: The brand and design system for projectious.work — colour, type, logo, components, and usage terms.
-theme: [docsy]
 enableRobotsTXT: true
 enableGitInfo: true
 enableEmoji: true
@@ -22,11 +21,29 @@ markup:
     endLevel: 4
 
 outputs:
-  home: [HTML, RSS, LLMS, LLMSFULL]
+  home: [HTML, RSS, SearchIndex, LLMS, LLMSFULL]
   page: [HTML, markdown]
   section: [HTML, RSS, print, markdown]
 
 outputFormats:
+  SearchIndex:
+    mediaType: application/json
+    baseName: index
+    isPlainText: true
+    notAlternative: true
+  Print:
+    mediaType: text/html
+    # Retain the public Docsy-era print URLs while using the new theme's
+    # section-print layout.
+    baseName: index
+    path: _print
+    isHTML: true
+    notAlternative: true
+    permalinkable: true
+  Markdown:
+    mediaType: text/markdown
+    isPlainText: true
+    permalinkable: true
   LLMS:
     mediaType: text/plain
     baseName: llms
@@ -39,11 +56,17 @@ outputFormats:
     notAlternative: true
 
 params:
-  hugoMinVersion: "0.157.0"
+  description: The brand and design system for projectious.work — colour, type, logo, components, and usage terms.
+  github: https://github.com/projectious-work/brand
+  codeTheme: adaptive
+  sidebarSections: [docs]
+  sidebarOpenDepth: 1
+  versionProbe: false
+  build:
+    # The theme's component and token layers are complete without Tailwind.
+    # Keeping this false makes the consuming site Hugo-only: no Node/npm step.
+    tailwind: false
   productionURL: "https://projectious-work.github.io/brand/"
-  offlineSearch: true
-  offlineSearchSummaryLength: 200
-  offlineSearchMaxResults: 25
   # Versioning. The latest release is served from the site root; every release
   # is also archived under /vX.Y.Z/ so links into a specific version keep
   # working after the next release ships. scripts/release.sh maintains this
@@ -54,66 +77,29 @@ params:
   archived_version: false
   url_latest_version: "https://projectious-work.github.io/brand/"
   versions:
-    - version: "v2.1.1"
-      kind: latest
+    - label: "v2.1.1"
+      note: latest
       url: "https://projectious-work.github.io/brand/"
-    - version: "v2.1.0"
+    - label: "v2.1.0"
       url: "https://projectious-work.github.io/brand/v2.1.0/"
-    - version: "v2.0.2"
+    - label: "v2.0.2"
       url: "https://projectious-work.github.io/brand/v2.0.2/"
-    - version: "v2.0.1"
+    - label: "v2.0.1"
       url: "https://projectious-work.github.io/brand/v2.0.1/"
-    - version: "v2.0.0"
+    - label: "v2.0.0"
       url: "https://projectious-work.github.io/brand/v2.0.0/"
-    - version: "v1.0.0"
+    - label: "v1.0.0"
       url: "https://projectious-work.github.io/brand/v1.0.0/"
-  ui:
-    navbar_logo: true
-    navbar_theme: light
-    showLightDarkModeMenu: true
-    sidebar_menu_compact: true
-    sidebar_menu_foldable: true
-    sidebar_search_disable: false
-    feedback:
-      enable: false
-  links:
-    user:
-      - name: GitHub
-        url: "https://github.com/projectious-work/brand"
-        icon: "fa-brands fa-github"
-        desc: Source code and issue tracker
-  copyright:
-    authors: "Projectious"
-    from_year: 2026
 
+menus:
+  main:
+    - name: Documentation
+      pageRef: /docs
+      weight: 10
 
 module:
-  replacements:
-    - "github.com/FortAwesome/Font-Awesome -> ../node_modules/@fortawesome/fontawesome-free"
-    - "github.com/twbs/bootstrap -> ../node_modules/bootstrap"
-  mounts:
-    # Declaring any mount for a component replaces Hugo's default mount for
-    # that component. The vendor mounts below target `assets/` and `static/`,
-    # so both defaults must be restored explicitly — otherwise the project's
-    # brand SCSS, logo, and favicons are silently ignored in favour of the
-    # theme's own assets.
-    - source: assets
-      target: assets
-    - source: static
-      target: static
-    - source: node_modules/bootstrap
-      target: assets/vendor/bootstrap
-    # jQuery and lunr are vendored rather than pulled from code.jquery.com and
-    # unpkg.com, which Docsy hardcodes. Builds and deploys are local, so the
-    # site must not depend on third-party CDNs being reachable at page load.
-    - source: node_modules/jquery/dist/jquery.min.js
-      target: assets/vendor/jquery/jquery.min.js
-    - source: node_modules/lunr/lunr.min.js
-      target: assets/vendor/lunr/lunr.min.js
-    - source: node_modules/@fortawesome/fontawesome-free
-      target: assets/vendor/Font-Awesome
-    - source: node_modules/@fortawesome/fontawesome-free/webfonts
-      target: static/webfonts
+  imports:
+    - path: github.com/projectious-work/brand-theme-hugo-vanilla
 
 taxonomies:
   tag: tags

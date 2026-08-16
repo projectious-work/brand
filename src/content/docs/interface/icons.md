@@ -19,7 +19,7 @@ of Feather with over 1,400 icons.
 
 ISC is one of the most permissive open-source licences available, which is why
 it was chosen over icon sets with attribution or share-alike terms. See the
-[legal assessment]({{< relref "/docs/governance/legal-assessment" >}}) for the
+[legal assessment](/docs/governance/legal-assessment/) for the
 clearance detail.
 
 ## Getting the actual icon

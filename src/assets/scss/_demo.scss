@@ -180,7 +180,7 @@
   border-radius: $border-radius;
   border: 1.5px solid var(--pj-slate-7);
   background: var(--pj-surface);
-  color: var(--bs-body-color);
+  color: var(--color-text-primary);
   padding: 0 0.75rem;
   font-family: $font-family-sans-serif;
   font-size: 0.8125rem;
@@ -285,7 +285,7 @@ select.pj-input { cursor: pointer; }
     font-family: $headings-font-family;
     font-size: 0.9375rem;
     font-weight: 600;
-    color: var(--bs-heading-color);
+    color: var(--color-text-primary);
     margin-bottom: 0.25rem;
   }
 
@@ -400,10 +400,8 @@ select.pj-input { cursor: pointer; }
   }
 }
 
-// Docsy sets data-bs-theme; Hextra and Tailwind-based themes set a .dark class.
-// Both are matched so the specimen follows whichever host renders it.
-[data-bs-theme="dark"] .pj-navbar,
-.dark .pj-navbar {
+// Follow the public projectious.work theme mode contract.
+[data-theme="dark"] .pj-navbar {
   --pj-navbar-bg: #{rgba($midnight-dark-1, 0.88)};
   --pj-navbar-border: rgba(255, 255, 255, 0.1);
   --pj-navbar-shadow: none;
@@ -614,8 +612,7 @@ select.pj-input { cursor: pointer; }
   border-radius: $border-radius-sm;
 }
 
-[data-bs-theme="dark"] .pj-tooltip,
-html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
+[data-theme="dark"] .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
 
 // -----------------------------------------------------------------------------
 // Data display
@@ -647,7 +644,7 @@ html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
     font-size: 1.5rem;
     font-weight: 800;
     line-height: 1.1;
-    color: var(--bs-heading-color);
+    color: var(--color-text-primary);
   }
 
   &__label {
@@ -772,7 +769,7 @@ html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
   letter-spacing: -0.3px;
   // Step 9 is constant across modes, so it cannot serve as the wordmark colour
   // on a dark page (1.42:1). Use the mode's high-emphasis text step.
-  color: var(--bs-body-color);
+  color: var(--color-text-primary);
   display: inline-flex;
   align-items: baseline;
   gap: 0.125rem;
@@ -974,9 +971,9 @@ html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
 
   &--content {
     background: var(--pj-surface);
-    color: var(--bs-body-color);
+    color: var(--color-text-primary);
 
-    .pj-slide__h { color: var(--bs-heading-color); }
+    .pj-slide__h { color: var(--color-text-primary); }
   }
 
   &__h {
@@ -1023,9 +1020,7 @@ html.dark .pj-tooltip { background: $slate-dark-4; color: $midnight-dark-12; }
 
 // Alert tints, mode-aware.
 :root,
-:root,
-[data-bs-theme="light"],
-html.light {
+[data-theme="light"] {
   // Text on the tinted accent chip: the tint inverts between modes, so the
   // foreground must too (#a8391c is 5.15:1 on the light tint; orange-11 from
   // the dark scale is 7.6:1 on the dark tint).
@@ -1036,8 +1031,7 @@ html.light {
   --pj-alert-danger-bg: #{$danger-bg};
 }
 
-[data-bs-theme="dark"],
-html.dark {
+[data-theme="dark"] {
   --pj-chip-accent-fg: #{$orange-dark-11};
   --pj-alert-info-bg: #{$info-bg-dark};
   --pj-alert-success-bg: #{$success-bg-dark};
@@ -1092,7 +1086,7 @@ html.dark {
     font-size: 0.875rem;
     line-height: 1.6;
     margin: 0.375rem 0 0;
-    color: var(--bs-body-color);
+    color: var(--color-text-primary);
 
     mark {
       background: var(--pj-orange-3);
@@ -1195,7 +1189,7 @@ html.dark {
     border-radius: $border-radius;
     border: 1.5px solid var(--pj-slate-7);
     background: var(--pj-surface);
-    color: var(--bs-body-color);
+    color: var(--color-text-primary);
     padding: 0 0.625rem;
     font-size: 0.75rem;
     font-family: $font-family-sans-serif;
@@ -1375,7 +1369,7 @@ html.dark {
     font-family: $headings-font-family;
     font-weight: 700;
     font-size: 1rem;
-    color: var(--bs-heading-color);
+    color: var(--color-text-primary);
   }
 
   // Four KPIs is the documented count, but four across a phone is four
@@ -1421,7 +1415,7 @@ html.dark {
   font-weight: 500;
   text-transform: none;
   letter-spacing: normal;
-  color: var(--bs-body-color);
+  color: var(--color-text-primary);
   text-align: left;
 }
 

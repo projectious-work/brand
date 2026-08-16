@@ -51,7 +51,7 @@ The drawing rules are the same in all three, and they are deliberately spare:
   hostname — and the body face for anything that is prose.
 
 An org chart names **roles**, and names people only with their agreement. The
-[portfolio identity rules]({{< relref "/docs/portfolio/" >}}) apply: a chart is a
+[portfolio identity rules](/docs/portfolio/) apply: a chart is a
 public artefact, and a person's name in one is a disclosure about them.
 
 ## Screenshots and demos

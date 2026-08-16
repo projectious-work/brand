@@ -33,7 +33,7 @@ Source code, automation scripts, and configuration files (`.py`, `.js`, `.sh`,
 distribute, sublicense, and sell, provided the copyright and permission notice
 travel with the software.
 
-The design **tokens** — documented under [Tokens]({{< relref "/docs/tokens" >}}) — are in
+The design **tokens** — documented under [Tokens](/docs/tokens/) — are in
 this category. The *values* are free to use; the *marks* are not.
 
 ## What this means in practice

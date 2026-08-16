@@ -57,14 +57,14 @@ nothing" gets a ghost button, because the fix is to undo, not to create.
 {{< /demo >}}
 
 An empty state is **body text, not an illustration**. The system's answer to a
-blank screen is [a diagram or nothing]({{< relref "/docs/portfolio/diagrams" >}}),
+blank screen is [a diagram or nothing](/docs/portfolio/diagrams/),
 never a mascot or a spot illustration of a person holding a magnifying glass.
 
-{{% alert title="Never show an empty state you are not sure about" color="warning" %}}
+{{% callout title="Never show an empty state you are not sure about" type="warning" %}}
 "No results" while a request is still in flight is a lie the user acts on. A
 region is in the loading state until the response arrives, and only then
 resolves to empty, populated, or error. Empty is a *result*, not a default.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Loading states
 
@@ -168,7 +168,7 @@ Not every failure takes the page. A failure scoped to one region stays in that
 region, so the rest of the screen remains usable:
 
 - **A field** fails with [`pj-input--error` and a message below
-  it]({{< relref "/docs/interface/forms" >}}) — never a tooltip, never colour on
+  it](/docs/interface/forms/) — never a tooltip, never colour on
   the border alone.
 - **A panel** fails with a `pj-alert--danger` inside the panel and a retry
   control, while the surrounding page keeps working.

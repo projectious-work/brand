@@ -28,7 +28,7 @@ real people working passes it.
 - Photographs in dark mode receive a subtle black overlay so they do not punch a
   hole in the page.
 - The logo never sits directly on an unmodified photograph — see
-  [Logo usage]({{< relref "/docs/logo/usage" >}}).
+  [Logo usage](/docs/logo/usage/).
 - Never place text over a busy region. Add a scrim or crop to a quiet area.
 
 ## Illustration

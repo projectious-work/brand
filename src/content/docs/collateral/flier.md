@@ -38,7 +38,7 @@ source and prints to a single A4 or Letter page.
 Two midnight bands, at the top and the bottom, with white between them. The
 sheet opens and closes on the brand and leaves the middle to the content — the
 same shape as a [title-and-closer
-deck]({{< relref "/docs/media/presentations" >}}), for the same reason.
+deck](/docs/media/presentations/), for the same reason.
 
 The header carries a single decorative element: an `orange-9` circle at 6%
 opacity bleeding off the top-right corner. That is the entire ornament budget for
@@ -52,7 +52,7 @@ retains from a page they were handed.
 
 Each benefit is an icon tile, a heading of no more than five words, and body text
 of no more than two lines. The icon is
-[Lucide]({{< relref "/docs/interface/icons" >}}) at 20px inside a 40px tile
+[Lucide](/docs/interface/icons/) at 20px inside a 40px tile
 filled with the tag background — it is a marker, not an illustration.
 
 The heading states the benefit, not the feature: "Self-hosted where it matters",
@@ -70,7 +70,7 @@ data. The connector is a 1px `slate-5` rule, not an arrow — the numbers alread
 carry the direction.
 
 **Do not put a duration on the sheet that the engagement cannot hold.** The
-[portfolio principle]({{< relref "/docs/portfolio/status" >}}) — make maturity
+[portfolio principle](/docs/portfolio/status/) — make maturity
 and limitations easier to see, not harder — applies to sales collateral without
 modification.
 
@@ -78,8 +78,8 @@ modification.
 
 The close band gets one accent element. It is a button shape carrying white text,
 so it fills with `accent-solid` (`#cc4528`) and not the identity accent — the
-same [4.72:1 rule]({{< relref "/docs/interface/components" >}}) as the interface
-and the [email]({{< relref "/docs/collateral/email" >}}).
+same [4.72:1 rule](/docs/interface/components/) as the interface
+and the [email](/docs/collateral/email/).
 
 Beside it, exactly one contact route, in mono. Two routes make the reader choose
 before they act.
@@ -88,7 +88,7 @@ before they act.
 
 The example is HTML, and the export path is the browser's print dialogue — the
 same route as the [resume
-template]({{< relref "/docs/portfolio/documents" >}}).
+template](/docs/portfolio/documents/).
 
 - **Colour is not guaranteed.** A one-pager is frequently reprinted on an office
   mono laser. The layout must survive greyscale: the bands separate by value,
@@ -98,7 +98,7 @@ template]({{< relref "/docs/portfolio/documents" >}}).
 - **Check the fold.** If the sheet will be folded, nothing important sits within
   10mm of the fold line.
 - For volume print, hand the vendor the
-  [CMYK values]({{< relref "/docs/collateral/business-card" >}}) rather than the
+  [CMYK values](/docs/collateral/business-card/) rather than the
   hex.
 
 {{< rules >}}

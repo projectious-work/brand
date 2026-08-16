@@ -32,9 +32,6 @@
 // and `.chroma …`, so this resolves to `html .highlight .chroma .xx` — four
 // compound parts against the theme's three, and five against its four-part
 // dark variant.
-html .highlight { @include pj-syntax-theme; }
-html.dark .highlight { @include pj-syntax-theme; }
-
 // The documentation site gets these from Bootstrap and Docsy. A standalone
 // consumer needs the reading defaults the specimens are measured against.
 .pj-specimen-scope {

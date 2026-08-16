@@ -33,11 +33,11 @@ A multiplexer cannot fix a wrong ANSI palette, and an emulator cannot style a
 status bar. Configure the emulator first; a multiplexer theme applied over an
 unbranded emulator will look wrong no matter how carefully it is written.
 
-{{% alert title="Zellij is the exception worth knowing" color="info" %}}
+{{% callout title="Zellij is the exception worth knowing" type="info" %}}
 Zellij is a multiplexer, but its theme definition also *declares* the sixteen
 colour names it paints its own UI with. It still does not change the ANSI
 palette programs receive — that remains the emulator's. Set both.
-{{% /alert %}}
+{{% /callout %}}
 
 ### Inputs and ownership
 
@@ -68,7 +68,7 @@ palette programs receive — that remains the emulator's. Set both.
 
 ### Sixteen colours
 
-The palette is defined in the [Colour foundations]({{< relref "/docs/foundations/color" >}})
+The palette is defined in the [Colour foundations](/docs/foundations/color/)
 and rendered here from the same source, so this page cannot state a value the
 foundations do not.
 
@@ -118,7 +118,7 @@ the cursor, and UI chrome clear 3:1. Nothing switches to it automatically.
 ## Syntax in the terminal
 
 An editor running inside a terminal paints code from the sixteen ANSI slots, not
-from a stylesheet. Since the [syntax roles]({{< relref "/docs/interface/code" >}}) were
+from a stylesheet. Since the [syntax roles](/docs/interface/code/) were
 reassigned by measured perceptual distance, seven of the nine now resolve to an
 ANSI slot exactly — so a file open in Helix, Neovim or Vim under this palette
 looks like the same file on the documentation site.
@@ -143,14 +143,14 @@ truecolour should be given those three literally; one limited to sixteen colours
 should use bright red for strings, red for numbers, and bright black for
 comments, accepting that the last of those falls below the text floor.
 
-{{% alert title="This convergence was not designed for; it fell out" color="info" %}}
+{{% callout title="This convergence was not designed for; it fell out" type="info" %}}
 The syntax roles were reassigned to fix a legibility problem — keywords and
 operators measured ΔE2000 5.2 apart, which is the same colour for reading
 purposes. Because the only hues available were the ones the terminal palette had
 already added to the system, the fix pulled the web theme onto the ANSI slots.
 Worth noticing: a constraint that looked like a limitation produced the
 coherence.
-{{% /alert %}}
+{{% /callout %}}
 
 ## tmux
 
@@ -445,7 +445,7 @@ appearance. Do not use that automatic pairing for the default configuration:
 dark is the product default. If a deliberately light terminal is required,
 configure the complete light companion palette as a separate named theme; do
 not mix its slots with the dark set. See
-[Colour]({{< relref "/docs/foundations/color" >}}).
+[Colour](/docs/foundations/color/).
 
 Four defaults have to be set explicitly, because each one moves rendered colour
 off the measured palette:

@@ -17,14 +17,14 @@ the projectious.work brand contract. The current release is **v2.1.1**.
 
 | Need | Normative source | Machine-readable material |
 |---|---|---|
-| Identity, voice, and status | [Documentation]({{< relref "/docs/" >}}) | [`llms.txt`]({{< siteurl "llms.txt" >}}) |
-| Colours, type, spacing, shape, and motion | [Foundations]({{< relref "/docs/foundations/" >}}) | [JSON tokens]({{< siteurl "downloads/tokens/tokens.json" >}}) |
-| CSS integration | [Tokens]({{< relref "/docs/tokens" >}}) | [CSS variables]({{< siteurl "downloads/tokens/variables.css" >}}) |
-| Logo selection and placement | [Logo]({{< relref "/docs/logo/" >}}) | [Manifest]({{< siteurl "downloads/brand-manifest.json" >}}) |
-| Components and product surfaces | [Interface]({{< relref "/docs/interface/" >}}) | [Clean Markdown]({{< siteurl "docs/interface/index.md" >}}) |
-| Templates and collateral | [Collateral]({{< relref "/docs/collateral/" >}}) | [Manifest]({{< siteurl "downloads/brand-manifest.json" >}}) |
-| Licence and trademark limits | [Governance]({{< relref "/docs/governance/" >}}) | [`llms.txt`]({{< siteurl "llms.txt" >}}) |
-| Provenance | [Asset provenance]({{< relref "/docs/governance/provenance" >}}) | [Manifest]({{< siteurl "downloads/brand-manifest.json" >}}) |
+| Identity, voice, and status | [Documentation](/docs/) | [`llms.txt`](/llms.txt) |
+| Colours, type, spacing, shape, and motion | [Foundations](/docs/foundations/) | [JSON tokens](/downloads/tokens/tokens.json) |
+| CSS integration | [Tokens](/docs/tokens/) | [CSS variables](/downloads/tokens/variables.css) |
+| Logo selection and placement | [Logo](/docs/logo/) | [Manifest](/downloads/brand-manifest.json) |
+| Components and product surfaces | [Interface](/docs/interface/) | [Clean Markdown](/docs/interface/index.md) |
+| Templates and collateral | [Collateral](/docs/collateral/) | [Manifest](/downloads/brand-manifest.json) |
+| Licence and trademark limits | [Governance](/docs/governance/) | [`llms.txt`](/llms.txt) |
+| Provenance | [Asset provenance](/docs/governance/provenance/) | [Manifest](/downloads/brand-manifest.json) |
 
 ## Brand MCP server
 
@@ -96,7 +96,7 @@ For the current checkout, examples include:
 | `brand://v2.1.1/changelog` | Release history and migrations |
 
 Use MCP resource discovery rather than assuming this list is exhaustive. The
-public [brand manifest]({{< siteurl "downloads/brand-manifest.json" >}}) is the
+public [brand manifest](/downloads/brand-manifest.json) is the
 allowlist behind discovery and reads.
 
 ### Tools

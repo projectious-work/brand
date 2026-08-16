@@ -7,14 +7,12 @@
 // reads only these custom properties, which is what makes the specimen set
 // portable across two themes that share no CSS framework.
 //
-// Both mode switches are covered: Docsy/Bootstrap sets `data-bs-theme` on the
-// root element, Hextra sets the `dark` class. A site that uses one simply never
-// matches the other selector.
+// The projectious.work Hugo theme exposes the reader's chosen mode through
+// `data-theme` on the root element.
 // =============================================================================
 
 :root,
-[data-bs-theme="light"],
-html.light {
+[data-theme="light"] {
   --pj-midnight-1: #{$midnight-1};
   --pj-midnight-2: #{$midnight-2};
   --pj-midnight-3: #{$midnight-3};
@@ -77,8 +75,7 @@ html.light {
   --pj-mark-bud: #{$orange-9};
 }
 
-[data-bs-theme="dark"],
-html.dark {
+[data-theme="dark"] {
   --pj-midnight-1: #{$midnight-dark-1};
   --pj-midnight-2: #{$midnight-dark-2};
   --pj-midnight-3: #{$midnight-dark-3};

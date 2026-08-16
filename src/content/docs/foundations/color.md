@@ -34,13 +34,13 @@ Every scale uses the same twelve roles in the same order:
 | 9–10 | Solid | Solid fills and their hover state |
 | 11–12 | Text | Low-emphasis and high-emphasis text |
 
-{{% alert title="Only 11 and 12 are text steps" color="warning" %}}
+{{% callout title="Only 11 and 12 are text steps" type="warning" %}}
 Steps 8, 9, and 10 are border and solid-surface roles. They are not held to text
 contrast thresholds and must not be used for body text. If you need dimmer text
 than step 11, define a dedicated token and verify its contrast — see
-[the code-comment token]({{< relref "/docs/interface/code" >}}) for a worked
+[the code-comment token](/docs/interface/code/) for a worked
 example.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Midnight
 
@@ -102,12 +102,12 @@ counterpart darkened until it reads a step back while still clearing the floor.
 Magenta and cyan exist in neither half of the brand. They are here because a
 terminal requires them, and nowhere else.
 
-{{% alert title="A terminal value is not a brand value" color="warning" %}}
+{{% callout title="A terminal value is not a brand value" type="warning" %}}
 `#e55b5b` is the terminal's red. It is **not** `$danger`, which is `#a8261c`.
 The normal ramp exists to fill ANSI slots and is measured only against the
 terminal surface; using one of its values in the interface puts an unmeasured
 colour on an unrelated background.
-{{% /alert %}}
+{{% /callout %}}
 
 ### Terminal chrome
 
@@ -121,7 +121,7 @@ is 4.95:1. ANSI 0 bright is the one deliberate exception — programs use it for
 box drawing and rules, not for text.
 
 Configuration for tmux, WezTerm, Kitty, Ghostty, iTerm2, and Zellij is on the
-[Terminal theming page]({{< relref "/docs/themes/terminal" >}}).
+[Terminal theming page](/docs/themes/terminal/).
 
 ## Contrast rules
 
@@ -152,7 +152,7 @@ The identity accent is never body text. Light-mode accent text uses
 `accent-solid`.
 
 The same principle produced the
-[`code-comment` token]({{< relref "/docs/interface/code" >}}): when no existing
+[`code-comment` token](/docs/interface/code/): when no existing
 step can do the job accessibly, name a new one rather than misuse a step.
 
 ### Semantic colours are mode-specific
@@ -204,7 +204,7 @@ than a fourth series would have gained them.
 </div>
 {{< /demo >}}
 
-{{% alert title="Orange and slate differ in hue, not in value" color="warning" %}}
+{{% callout title="Orange and slate differ in hue, not in value" type="warning" %}}
 `orange-9` against `slate-9` measures **1.44:1**. On screen they are easy to
 tell apart — orange against blue-grey is also one of the safest pairs for the
 common colour-vision deficiencies. Printed in greyscale, or on a projector with
@@ -213,7 +213,7 @@ the colour turned down, they merge.
 So when exactly two series are being compared, use **midnight-9 and orange-9**
 (3.29:1) and leave slate for the third. And direct-label every series — the
 legend is the fallback, not the mechanism.
-{{% /alert %}}
+{{% /callout %}}
 
 ### There is no fourth series
 
@@ -232,7 +232,7 @@ When a chart has more than three categories, one of these is the answer:
 - **Direct labelling with one highlight.** Draw every series in `slate-7`, draw
   the one being discussed in `orange-9`, and label it in place. This is the
   house style for a line chart in a
-  [deck]({{< relref "/docs/media/presentations" >}}) — one idea per slide holds
+  [deck](/docs/media/presentations/) — one idea per slide holds
   for charts too.
 - **Stop using colour.** A ranked bar chart in a single colour, sorted by value,
   answers "which is biggest" better than any palette does.
@@ -274,7 +274,7 @@ carry a judgement, and "below average" is not "wrong".
 | Annotation, callout rule | `--orange-9` |
 
 Numbers are set in IBM Plex Mono, right-aligned, for the same reason
-[table numerics are]({{< relref "/docs/interface/components" >}}): digits have
+[table numerics are](/docs/interface/components/): digits have
 to line up to be compared.
 
 {{< rules >}}
@@ -292,6 +292,6 @@ diverging scale from the success and danger hues.
 ## Dark mode
 
 Both modes are equally supported. See
-[Dark mode]({{< relref "/docs/interface/dark-mode" >}}) for the implementation
+[Dark mode](/docs/interface/dark-mode/) for the implementation
 rules — theme switching, persistence, image treatment, and the always-dark code
 surface.

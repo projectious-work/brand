@@ -5,11 +5,11 @@ weight: 10
 description: The projectious.work brand and design system — foundations, logo, interface patterns, collateral, and usage terms.
 ---
 
-{{% pageinfo %}}
+{{% callout type="info" title="About this documentation" %}}
 This documentation is rendered by the design system it describes. Every colour
 chip, type row, and code block on this site is produced from the same tokens the
 pages document.
-{{% /pageinfo %}}
+{{% /callout %}}
 
 The current contract is synchronized from design system **v2.1.1**. It applies
 to every brand surface: product UI, marketing, documentation, slides, email,
@@ -58,13 +58,13 @@ Stock lines, in priority order, are **Cloud · Agile · Agentic AI**,
 
 | If you want to… | Read |
 |---|---|
-| Use the palette correctly, including dark mode | [Colour]({{< relref "/docs/foundations/color" >}}) |
-| Set text in the brand's voice | [Typography]({{< relref "/docs/foundations/typography" >}}) |
-| Place the logo without breaking it | [Logo usage]({{< relref "/docs/logo/usage" >}}) |
-| Build an interface | [Interface]({{< relref "/docs/interface/" >}}) |
-| Produce a deck, signature, or social card | [Collateral]({{< relref "/docs/collateral/" >}}) |
-| Know what you are allowed to reuse | [Governance]({{< relref "/docs/governance/" >}}) |
-| Pull the raw values into a project | [Tokens]({{< relref "/docs/tokens" >}}) |
+| Use the palette correctly, including dark mode | [Colour](/docs/foundations/color/) |
+| Set text in the brand's voice | [Typography](/docs/foundations/typography/) |
+| Place the logo without breaking it | [Logo usage](/docs/logo/usage/) |
+| Build an interface | [Interface](/docs/interface/) |
+| Produce a deck, signature, or social card | [Collateral](/docs/collateral/) |
+| Know what you are allowed to reuse | [Governance](/docs/governance/) |
+| Pull the raw values into a project | [Tokens](/docs/tokens/) |
 
 ## How the system is organised
 

@@ -5,7 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 cd "${ROOT_DIR}"
 
 if rg -n 'fonts\.(googleapis|gstatic)\.com' \
-  README.md CONTRIBUTING.md scripts src input --glob '!src/themes/docsy/**'; then
+  README.md CONTRIBUTING.md scripts src input; then
   echo "Remote Google Fonts dependency found." >&2
   exit 1
 fi

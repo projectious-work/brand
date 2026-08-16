@@ -50,7 +50,7 @@ viewport gets the single-column layout rather than a clipped desktop one.
 ## How the grid collapses
 
 The grid is 12 columns inside the
-[1100px measure]({{< relref "/docs/foundations/space-shape-motion" >}}). It does
+[1100px measure](/docs/foundations/space-shape-motion/). It does
 not stay twelve columns all the way down — it resolves to four column counts:
 
 | From | Columns | Gutter | Page padding |
@@ -65,19 +65,19 @@ two-column layout on a phone: two 160px columns are two unreadable columns.
 Regions stack in **source order**, so the DOM must already be in reading order
 — do not rely on `order` or `grid-area` to fix a sequence that is wrong in the
 markup, because that breaks the [focus and reading
-order]({{< relref "/docs/interface/accessibility" >}}).
+order](/docs/interface/accessibility/).
 
 Spacing steps **down** one rung when the grid collapses: a `--space-6` (32px)
 section gap on desktop becomes `--space-5` (24px) below `md`. Radius, type
 scale, and border weights do **not** change — a card is a 9px card at every
 width.
 
-{{% alert title="The 1100px measure is a maximum, not a target" color="info" %}}
+{{% callout title="The 1100px measure is a maximum, not a target" type="info" %}}
 Wider viewports gain margin, not line length. At `xl` the content stays 1100px
 wide and centres; it does not grow to fill a 1920px display. This is the same
 rule the spacing page states, restated here because it is the most common thing
 a responsive rewrite breaks.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Touch targets
 
@@ -132,7 +132,7 @@ is a drawer surface.
 Both patterns carry the same obligations: the current destination is marked with
 **an accent underline or fill plus the label**, never colour alone; the drawer
 traps focus while open, closes on `Esc`, and returns focus to its trigger — the
-same contract as a [modal]({{< relref "/docs/interface/components" >}}).
+same contract as a [modal](/docs/interface/components/).
 
 {{< demo label="Bottom tab bar — 5 destinations, current marked with fill and label" variant="stack" >}}
 <div style="max-width:340px;border:1px solid var(--pj-border);border-radius:9px;overflow:hidden;background:var(--pj-surface)">
@@ -152,7 +152,7 @@ Three content types cannot reflow, and each has one answer:
 
 - **Tables** scroll horizontally inside their own container with the first
   column pinned — never the page. See [wide
-  tables]({{< relref "/docs/interface/components" >}}).
+  tables](/docs/interface/components/).
 - **Code blocks** scroll horizontally. Do not soft-wrap code: a wrapped line
   changes what the code appears to say.
 - **Diagrams** get a scrollable container or a re-drawn narrow variant. Do not

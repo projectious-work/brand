@@ -86,11 +86,11 @@ service. The release dropdown in the top bar switches between versions.
 src/                Normative brand contract and Hugo site
 ├── hugo.yaml       Site and release configuration
 ├── content/        Authoritative human-readable documentation
-├── assets/scss/    Brand tokens → Bootstrap/Docsy — the dogfooding seam
+├── assets/scss/    Site-owned, data-driven design-system specimens
 ├── layouts/        Layouts and the specimen shortcodes
 ├── data/brand.yaml Authoritative structured values
 ├── static/         Public assets and generated token downloads
-└── themes/docsy    Docsy, pinned as a submodule
+└── go.mod          Pinned projectious.work Hugo theme release
 
 input/              Designer-supplied upstream reference material
 scripts/            Local generation, verification, release, and deploy tools
@@ -104,10 +104,11 @@ Build output goes to `public/` at the repository root, not inside `src/`.
 
 ## Building the site locally
 
-Requires [Hugo extended](https://gohugo.io/installation/) ≥ 0.157 and Node ≥ 18.
+Requires [Hugo extended](https://gohugo.io/installation/) ≥ 0.157. The site
+uses the theme's Hugo-only CSS path and does not require Node or npm.
 
 ```bash
-git clone --recurse-submodules https://github.com/projectious-work/brand.git
+git clone https://github.com/projectious-work/brand.git
 cd brand
 
 ./scripts/serve-docs.sh     # live preview at http://localhost:1313/
@@ -128,7 +129,7 @@ passed" means here:
 | Check | What it covers |
 |---|---|
 | `build-docs.sh` | Hugo build, including `relref` resolution |
-| `audit-contrast.mjs` | Every page in **both** colour modes against WCAG AA |
+| `audit_contrast.py` | Every page in **both** colour modes against WCAG AA |
 | `check-links.mjs` | Every internal link and asset resolves |
 
 ### Releasing
@@ -146,7 +147,7 @@ snapshot plus the latest root in one Pages push. See [`CHANGELOG.md`](CHANGELOG.
 To regenerate the screenshots in this README:
 
 ```bash
-npx playwright install chromium
+uv run --with playwright playwright install chromium
 ./scripts/capture-readme-images.sh
 ```
 

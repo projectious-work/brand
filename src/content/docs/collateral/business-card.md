@@ -48,18 +48,18 @@ a soft light source; at 12% on white it reads as a printing fault — an uneven
 patch of ink that a press will faithfully reproduce. So the accent moves to a
 rule down the leading edge, which is one line, prints cleanly at any size, and
 is the same device the
-[signature]({{< relref "/docs/collateral/email-signature" >}}) uses.
+[signature](/docs/collateral/email-signature/) uses.
 
 The name, role, and contact rows keep their type sizes and weights exactly. Only
 their colours change, to the light-mode text steps: `midnight-9` for the name,
 `slate-9` for the role at 5.58:1, and `slate-11` for the mono rows at 5.18:1.
 
-{{% alert title="This specimen is white in both modes, deliberately" color="info" %}}
+{{% callout title="This specimen is white in both modes, deliberately" type="info" %}}
 Switch the site's theme and the digital card follows it; this one does not. A
 card printed on white stock is white under every lighting condition there is,
 and a specimen that goes dark when the reader's browser does would be showing
 something that cannot be printed.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Layout
 
@@ -76,7 +76,7 @@ If a printed card is required:
 
 - 85×55mm, matte stock.
 - Single-colour midnight on uncoated white, or reversed white on midnight.
-- Use the [monochrome mark]({{< relref "/docs/logo/usage" >}}) — no accent on
+- Use the [monochrome mark](/docs/logo/usage/) — no accent on
   press unless a spot colour is budgeted.
 - Reserve clear space equal to half the mark's height on every side; do not
   bleed the mark to the trim edge.
@@ -98,7 +98,7 @@ them on whatever stock and profile the job actually runs on.
 | Slate | `#546a82` | L 43.7, a −3.7, b −16.2 | 35 / 18 / 0 / 49 |
 | Midnight dark | `#132440` | L 13.9, a 1.0, b −20.3 | 70 / 44 / 0 / 75 |
 
-{{% alert title="The CMYK column is a starting point, not a specification" color="warning" %}}
+{{% callout title="The CMYK column is a starting point, not a specification" type="warning" %}}
 Those numbers are the **naive** device conversion — the arithmetic one, with no
 colour management. They are here so a proof is not blocked on a phone call, and
 they are wrong on any specific press.
@@ -107,7 +107,7 @@ Convert through the vendor's own ICC profile before production — FOGRA51 for
 coated stock in Europe, GRACoL 2013 in North America — and sign off on a
 physical proof on the actual stock. Matte and uncoated paper absorb ink and will
 run darker and flatter than the screen, most visibly on Orange.
-{{% /alert %}}
+{{% /callout %}}
 
 Do not guess a Pantone equivalent. If the job budgets a spot colour, give the
 vendor the Lab value and let them specify the closest ink; a Pantone number

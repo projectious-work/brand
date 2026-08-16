@@ -26,8 +26,8 @@ trademarks. Full text:
 These are nominative uses — referring to the thing by its name. They do not
 require permission, and they do not grant any broader licence.
 
-{{% alert title="When in doubt, ask" color="info" %}}
+{{% callout title="When in doubt, ask" type="info" %}}
 Unauthorised use of the trademarks may result in a request for removal.
 Contact **info@projectious.work** before shipping anything you are unsure about
 — asking first is always cheaper than a takedown.
-{{% /alert %}}
+{{% /callout %}}

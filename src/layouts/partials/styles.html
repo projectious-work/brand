@@ -1,0 +1,22 @@
+{{- /* v0.3.1 theme pipeline plus the site-owned design-system specimens.
+       This override is intentionally limited to appending one Hugo-piped SCSS
+       asset; compare it with the upstream partial on every theme update. */ -}}
+{{- $tailwind := true -}}
+{{- if isset site.Params "build" }}{{ if isset site.Params.build "tailwind" }}{{ $tailwind = site.Params.build.tailwind }}{{ end }}{{ end -}}
+{{- $out := "" -}}
+{{- if $tailwind -}}
+  {{- with resources.Get "css/main.css" -}}
+    {{- $out = . | css.TailwindCSS (dict "minify" hugo.IsProduction "inlineImports" true) -}}
+  {{- end -}}
+{{- else -}}
+  {{- $out = slice (resources.Get "css/brand-tokens.css") (resources.Get "css/fonts.css") (resources.Get "css/syntax.css") (resources.Get "css/components.css") | resources.Concat "css/theme.css" -}}
+  {{- if hugo.IsProduction }}{{ $out = $out | minify }}{{ end -}}
+{{- end -}}
+{{- with $out -}}
+  {{- $f := . | fingerprint -}}
+  <link rel="stylesheet" href="{{ $f.RelPermalink }}" integrity="{{ $f.Data.Integrity }}">
+{{- end -}}
+{{- with resources.Get "scss/specimens.scss" -}}
+  {{- $site := . | css.Sass (dict "targetPath" "css/brand-site.css" "outputStyle" (cond hugo.IsProduction "compressed" "expanded")) | fingerprint -}}
+  <link rel="stylesheet" href="{{ $site.RelPermalink }}" integrity="{{ $site.Data.Integrity }}">
+{{- end -}}

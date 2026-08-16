@@ -44,13 +44,13 @@ Five variants, three sizes. Plus Jakarta Sans 600, 6px radius, 200ms transitions
 | **Ghost** | transparent | 1px border | `slate-9` | — | Tertiary, toolbars |
 | **Danger** | `#a8261c` | none | white | 7.10:1 | Destructive action |
 
-{{% alert title="Accent buttons fill with accent-solid, not step 9" color="warning" %}}
+{{% callout title="Accent buttons fill with accent-solid, not step 9" type="warning" %}}
 `orange-9` (`#E05232`) is the identity accent and is unchanged as a mark,
 border, active state, or syntax colour. But white on it measures **3.87:1** —
 below the 4.5:1 floor for 13–14px labels. Solid accent controls therefore fill
 with **`--color-accent-solid` (`#cc4528`)**, white at **4.72:1**; hover
 uses opacity `0.88` rather than inventing a lighter or darker brand colour.
-{{% /alert %}}
+{{% /callout %}}
 
 Hover is structural across components: primary surfaces move to `opacity:.88`
 and card borders move to `midnight-7`. Pressed controls remain at their hover
@@ -123,7 +123,7 @@ and a 2px focus ring at midnight 15% alpha.
 {{< /demo >}}
 
 Full rules — labels, validation, focus — are on
-[Forms]({{< relref "/docs/interface/forms" >}}).
+[Forms](/docs/interface/forms/).
 
 ## Cards
 
@@ -339,7 +339,7 @@ the theme and both change together.
 ## Alerts and feedback
 
 Four semantic colours as a 4px left border on a tinted background. The hues are
-**mode-specific** — see [Colour]({{< relref "/docs/foundations/color" >}}).
+**mode-specific** — see [Colour](/docs/foundations/color/).
 
 {{< demo label="Alerts" variant="stack" >}}
 <div class="pj-alert pj-alert--info"><div class="pj-alert__title">Info</div><div class="pj-alert__text">Pipeline requires at least one validation agent.</div></div>
@@ -357,10 +357,10 @@ Four semantic colours as a 4px left border on a tinted background. The hues are
 <span class="pj-spinner" role="status" aria-label="Loading"></span>
 {{< /demo >}}
 
-{{% alert title="Semantic colour is not decoration" color="info" %}}
+{{% callout title="Semantic colour is not decoration" type="info" %}}
 Success, warning, and danger carry meaning. Do not use them to add visual
 variety to neutral content.
-{{% /alert %}}
+{{% /callout %}}
 
 ## Modals and overlays
 
@@ -433,7 +433,7 @@ Use a bare coloured dot, or rely on red/green alone to distinguish states.
 
 The code surface is dark by default. Use the complete light companion only for
 an explicitly light panel; never switch it automatically with interface mode.
-See [Code]({{< relref "/docs/interface/code" >}}).
+See [Code](/docs/interface/code/).
 
 {{< demo label="Terminal" variant="stack" >}}
 <div class="pj-terminal">
