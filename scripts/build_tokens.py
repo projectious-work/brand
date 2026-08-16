@@ -16,6 +16,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parents[1]
 SCALES = ("midnight", "orange", "slate")
+NAVY_MIDNIGHT = ("#132440", "#1a2b3e", "#20354d", "#263f5a", "#2e4b68")
 BANNER = (
     "projectious.work brand tokens",
     "",
@@ -26,6 +27,7 @@ BANNER = (
 
 
 def slug(value: str) -> str:
+    value = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", "-", value)
     return re.sub(r"^-|-?$", "", re.sub(r"[^a-z0-9]+", "-", value.lower()))
 
 
@@ -48,8 +50,7 @@ def css(brand: dict) -> str:
         scale = brand["scales"][name]
         lines.append(f"  /* {scale['name']} — {scale['note']} */")
         lines.extend(f"  --{name}-{i}: {value};" for i, value in enumerate(scale["light"], 1))
-    lines.extend(("", "  /* Both ramps again under fixed names, so a consumer whose dark mode is a"))
-    lines.extend(("     class or an attribute this file does not know about can map to them", "     directly. The names above swap with the mode; these never do. */"))
+    lines.extend(("", "  /* Appearance-pinned ramps for consumers with their own selector strategy.", "     The names above swap with the appearance; these never do. */"))
     for name in SCALES:
         scale = brand["scales"][name]
         lines.extend(f"  --{name}-light-{i}: {value};" for i, value in enumerate(scale["light"], 1))
@@ -60,7 +61,7 @@ def css(brand: dict) -> str:
         lines.append(f"  --color-{key}-dark: {item['darkSolid']};  --color-{key}-dark-bg: {item['darkTint']};  --color-{key}-dark-fg: {item['darkSolid']};")
     for item in brand["surfaces"]:
         key = re.sub(r"^--color-", "", item["token"])
-        lines.append(f"  --color-{key}-light: {item['light']};  --color-{key}-dark: {item['dark']};")
+        lines.append(f"  --color-{key}-light: {item['light']};  --color-{key}-navy: {item['navy']};  --color-{key}-deep: {item['deep']};")
     lines.extend(("", "  /* Semantic colours. `-fg` is the foreground for the matching tint,", "     where the solid value does not clear AA against it. */"))
     for item in brand["semantic"]:
         key = item["role"].lower()
@@ -74,10 +75,10 @@ def css(brand: dict) -> str:
         key = "heading" if "Jakarta" in font["family"] else "body" if "Source" in font["family"] else "code"
         fallback = "monospace" if key == "code" else "sans-serif"
         lines.append(f"  --font-{key}: '{font['family']}', {fallback};")
-    lines.append("")
+    lines.extend(("", "  /* Layout and portable surface aliases */", "  --font-scale: 1;", "  --container-max: 1100px;", "  --grid-gutter: 16px;", "  --touch-target: 44px;", "  --measure: 65ch;", "  --scrim: rgba(20,36,56,0.72);", "  --code-panel-surface: #131e2b;"))
     for item in brand["type"]:
         key = re.sub(r"\s+", "-", item["style"].lower())
-        lines.append(f"  --type-{key}-size: {item['size']}px;  --type-{key}-weight: {item['weight']};  --type-{key}-lh: {item['lh']};")
+        lines.append(f"  --type-{key}-size: calc({item['size']}px * var(--font-scale));  --type-{key}-weight: {item['weight']};  --type-{key}-lh: {item['lh']};")
     lines.extend(("", f"  /* Spacing ({brand['spacing']['base']}px base) */"))
     lines.extend(f"  --space-{i}: {value}px;" for i, value in enumerate(brand["spacing"]["steps"], 1))
     lines.extend(("", "  /* Border radius */"))
@@ -94,11 +95,20 @@ def css(brand: dict) -> str:
     lines.extend(f"  --terminal-ansi-{item['slot']}: {item['normal']};   /* {item['name']} */" for item in terminal["ansi"])
     lines.extend(f"  --terminal-ansi-{item['slot'] + 8}: {item['bright']};   /* bright {item['name']} */" for item in terminal["ansi"])
     lines.extend(f"  --terminal-{slug(item['role'])}: {item['hex']};" for item in terminal["chrome"])
+    lines.extend(("", "  /* Optional light code and terminal companions */", f"  --syntax-light-surface: {brand['syntaxLight']['surface']};"))
+    lines.extend(f"  {item['token']}: {item['hex']};" for item in brand["syntaxLight"]["roles"])
+    light_terminal = brand["terminalLight"]
+    lines.append(f"  --terminal-light-surface: {light_terminal['surface']};")
+    lines.extend(f"  --terminal-light-ansi-{item['slot']}: {item['hex']};" for item in light_terminal["ansi"])
+    lines.extend(f"  --terminal-light-{slug(key)}: {value};" for key, value in light_terminal["chrome"].items())
     lines.append("}")
     dark: list[str] = []
     for name in SCALES:
         dark.append(f"  /* {brand['scales'][name]['name']} */")
-        dark.extend(f"  --{name}-{i}: {value};" for i, value in enumerate(brand["scales"][name]["dark"], 1))
+        values = list(brand["scales"][name]["dark"])
+        if name == "midnight":
+            values[:5] = NAVY_MIDNIGHT
+        dark.extend(f"  --{name}-{i}: {value};" for i, value in enumerate(values, 1))
     dark.append("")
     for item in brand["semantic"]:
         key = item["role"].lower()
@@ -106,10 +116,11 @@ def css(brand: dict) -> str:
     dark.append("")
     for item in brand["surfaces"]:
         note = f"   /* {item['contrast'].split(' / ')[1]} */" if item.get("contrast") else ""
-        dark.append(f"  {item['token']}: {item['dark']};{note}")
-    lines.extend(("", "/* Dark mode. The scales, the semantic colours and the surface aliases all", "   have a dark variant; everything else is mode-independent. Step 9 is", "   constant across modes by design. */", "@media (prefers-color-scheme: dark) {", "  :root {"))
+        dark.append(f"  {item['token']}: {item['navy']};{note}")
+    dark.extend(("  --surface-2: #20354d;", "  --border-strong: #4d7098;", "  --tag-bg: #20354d;"))
+    lines.extend(("", "/* Navy is the default dark appearance. Step 9 remains constant. */", "@media (prefers-color-scheme: dark) {", "  :root {"))
     lines.extend("  " + line if line else line for line in dark)
-    lines.extend(("  }", "}", "", '[data-theme="dark"] {', *dark, "}", ""))
+    lines.extend(("  }", "}", "", '[data-theme="dark"] {', *dark, "}", "", "/* Deep dark overrides exactly the low ramp and aliases derived from it. */", '[data-theme="dark"][data-surface="deep"] {', "  --midnight-1: #0e1720;", "  --midnight-2: #131e2b;", "  --midnight-3: #1a2b3e;", "  --midnight-4: #20354d;", "  --midnight-5: #263f5a;", "  --color-bg: #0e1720;", "  --color-surface: #131e2b;", "  --color-border: #263f5a;", "  --surface-2: #1a2b3e;", "  --border-strong: #3a5c7e;", "  --tag-bg: #1a2b3e;", "}", ""))
     return "\n".join(lines)
 
 
@@ -118,19 +129,23 @@ def value(item, comment=None):
 
 
 def token_json(brand: dict) -> str:
-    out = {"$description": " ".join(filter(None, BANNER)), "color": {}, "scale": {}, "semantic": {}, "surface": {}, "font": {}, "type": {}, "spacing": {}, "radius": {}, "elevation": {}, "motion": {"duration": {}, "easing": {}}, "breakpoint": {}, "terminal": {}}
+    out = {"$description": " ".join(filter(None, BANNER)), "color": {}, "scale": {}, "semantic": {}, "surface": {}, "font": {}, "type": {}, "spacing": {}, "radius": {}, "elevation": {}, "motion": {"duration": {}, "easing": {}}, "breakpoint": {}, "syntax": {"dark": {}, "light": {}}, "terminal": {"dark": {}, "light": {}}}
     for item in brand["core"]:
         out["color"][camel(re.sub(r"^--color-", "", item["token"]))] = value(item["hex"], item["use"])
     for name in SCALES:
         scale = brand["scales"][name]
-        out["scale"][name] = {"$description": scale["note"], "light": {}, "dark": {}}
-        for mode in ("light", "dark"):
-            for i, hex_value in enumerate(scale[mode], 1):
+        out["scale"][name] = {"$description": scale["note"], "light": {}, "navy": {}, "deep": {}}
+        modes = {"light": scale["light"], "deep": scale["dark"], "navy": list(scale["dark"])}
+        if name == "midnight":
+            modes["navy"][:5] = NAVY_MIDNIGHT
+        for mode, values in modes.items():
+            for i, hex_value in enumerate(values, 1):
                 out["scale"][name][mode][str(i)] = value(hex_value, brand["stepRoles"][i - 1])
     for item in brand["semantic"]:
-        out["semantic"][item["role"].lower()] = {"$description": item["use"], "light": {"solid": value(item["lightSolid"]), "tint": value(item["lightTint"]), "onTint": value(item["lightOnTint"], f"{item['lightContrast']} on the tint")}, "dark": {"solid": value(item["darkSolid"]), "tint": value(item["darkTint"]), "onTint": value(item["darkSolid"], f"{item['darkContrast']} on the tint")}}
+        dark_values = {"solid": value(item["darkSolid"]), "tint": value(item["darkTint"]), "onTint": value(item["darkSolid"], f"{item['darkContrast']} on the tint")}
+        out["semantic"][item["role"].lower()] = {"$description": item["use"], "light": {"solid": value(item["lightSolid"]), "tint": value(item["lightTint"]), "onTint": value(item["lightOnTint"], f"{item['lightContrast']} on the tint")}, "navy": dark_values, "deep": dark_values}
     for item in brand["surfaces"]:
-        out["surface"][camel(re.sub(r"^--color-", "", item["token"]))] = {"light": value(item["light"]), "dark": value(item["dark"]), "$comment": f"{item['use']} — {item['contrast']}" if item.get("contrast") else item["use"]}
+        out["surface"][camel(re.sub(r"^--color-", "", item["token"]))] = {"light": value(item["light"]), "navy": value(item["navy"]), "deep": value(item["deep"]), "$comment": f"{item['use']} — {item['contrast']}" if item.get("contrast") else item["use"]}
     for font in brand["fonts"]:
         key = "heading" if "Jakarta" in font["family"] else "body" if "Source" in font["family"] else "code"
         out["font"][key] = value(f"'{font['family']}', {'monospace' if key == 'code' else 'sans-serif'}", f"{font['role']} — {font['license']}")
@@ -142,12 +157,20 @@ def token_json(brand: dict) -> str:
     for item in brand["motion"]["durations"]: out["motion"]["duration"][item["name"]] = value(item["value"], item["use"])
     for item in brand["motion"]["easing"]: out["motion"]["easing"][camel(item["name"])] = value(item["value"], item["use"])
     for item in brand["breakpoints"]: out["breakpoint"][item["name"]] = value(f"{item['value']}px", item["use"])
+    for item in brand["syntax"]:
+        out["syntax"]["dark"][camel(item["token"])] = value(item["hex"], f"{item.get('weight', 400)} {item.get('style', 'normal')}")
+    out["syntax"]["light"]["surface"] = value(brand["syntaxLight"]["surface"])
+    for item in brand["syntaxLight"]["roles"]:
+        out["syntax"]["light"][camel(item["role"])] = value(item["hex"])
     terminal = brand["terminal"]
-    out["terminal"]["surface"] = value(terminal["surface"], "The terminal has one surface and it does not follow a light mode")
+    out["terminal"]["dark"]["surface"] = value(terminal["surface"], "Default terminal surface")
     for item in terminal["ansi"]:
-        out["terminal"][f"ansi{item['slot']}"] = value(item["normal"], f"{item['name']} — {item['normalContrast']} on surface")
-        out["terminal"][f"ansi{item['slot'] + 8}"] = value(item["bright"], f"bright {item['name']} — {item['brightContrast']} on surface")
-    for item in terminal["chrome"]: out["terminal"][camel(item["role"])] = value(item["hex"], f"{item['role']} — {item['contrast']}")
+        out["terminal"]["dark"][f"ansi{item['slot']}"] = value(item["normal"], f"{item['name']} — {item['normalContrast']} on surface")
+        out["terminal"]["dark"][f"ansi{item['slot'] + 8}"] = value(item["bright"], f"bright {item['name']} — {item['brightContrast']} on surface")
+    for item in terminal["chrome"]: out["terminal"]["dark"][camel(item["role"])] = value(item["hex"], f"{item['role']} — {item['contrast']}")
+    out["terminal"]["light"]["surface"] = value(brand["terminalLight"]["surface"], "Optional light companion")
+    for item in brand["terminalLight"]["ansi"]: out["terminal"]["light"][f"ansi{item['slot']}"] = value(item["hex"], item["name"])
+    for key, item in brand["terminalLight"]["chrome"].items(): out["terminal"]["light"][camel(key)] = value(item)
     return json.dumps(out, indent=2, ensure_ascii=False) + "\n"
 
 
@@ -156,7 +179,7 @@ def row(values, start, end):
 
 
 def tailwind(brand: dict) -> str:
-    lines = ["/**", *(f" * {line}" if line else " *" for line in BANNER), " *", " * Both modes are present. Tailwind has no built-in notion of a colour mode,", " * so the dark scales are exposed as their own `*Dark` keys rather than being", " * swapped in behind `dark:` — a consumer wires them up with whatever dark", " * strategy their project already uses.", " *", " * @type {import('tailwindcss').Config}", " */", "module.exports = {", "  theme: {", "    extend: {", "      colors: {"]
+    lines = ["/**", *(f" * {line}" if line else " *" for line in BANNER), " *", " * Light, navy, and deep appearances are explicit. A consumer maps these", " * values to its own class or attribute strategy.", " *", " * @type {import('tailwindcss').Config}", " */", "module.exports = {", "  theme: {", "    extend: {", "      colors: {"]
     aliases = {"midnight": "primary", "orange": "accent", "slate": "secondary"}
     for name in SCALES:
         scale, alias = brand["scales"][name], aliases[name]
@@ -164,11 +187,13 @@ def tailwind(brand: dict) -> str:
         for item in (c for c in brand["core"] if alias in c["token"]):
             key = item["token"].replace(f"--color-{alias}", "").lstrip("-") or "DEFAULT"
             lines.append(f"          {key}: '{item['hex']}',   // {item['use']}")
-        lines.extend(("          " + row(scale["light"], 1, 6), "          " + row(scale["light"], 7, 12), "        },", f"        {name}Dark: {{", "          " + row(scale["dark"], 1, 6), "          " + row(scale["dark"], 7, 12), "        },"))
+        navy = list(scale["dark"])
+        if name == "midnight": navy[:5] = NAVY_MIDNIGHT
+        lines.extend(("          " + row(scale["light"], 1, 6), "          " + row(scale["light"], 7, 12), "        },", f"        {name}Navy: {{", "          " + row(navy, 1, 6), "          " + row(navy, 7, 12), "        },", f"        {name}Deep: {{", "          " + row(scale["dark"], 1, 6), "          " + row(scale["dark"], 7, 12), "        },"))
     lines.append("        // Semantic. `fg` is the foreground for the matching `bg` tint.")
     for item in brand["semantic"]:
         key = item["role"].lower()
-        lines.extend((f"        {key}: {{ DEFAULT: '{item['lightSolid']}', bg: '{item['lightTint']}', fg: '{item['lightOnTint']}' }},", f"        {key}Dark: {{ DEFAULT: '{item['darkSolid']}', bg: '{item['darkTint']}', fg: '{item['darkSolid']}' }},"))
+        lines.extend((f"        {key}: {{ DEFAULT: '{item['lightSolid']}', bg: '{item['lightTint']}', fg: '{item['lightOnTint']}' }},", f"        {key}Navy: {{ DEFAULT: '{item['darkSolid']}', bg: '{item['darkTint']}', fg: '{item['darkSolid']}' }},", f"        {key}Deep: {{ DEFAULT: '{item['darkSolid']}', bg: '{item['darkTint']}', fg: '{item['darkSolid']}' }},"))
     terminal = brand["terminal"]
     lines.extend(("        // Terminal — one dark surface, sixteen ANSI slots plus chrome.", "        terminal: {", f"          surface: '{terminal['surface']}',"))
     for item in terminal["ansi"]: lines.append(f"          ansi{item['slot']}: '{item['normal']}', ansi{item['slot'] + 8}: '{item['bright']}',   // {item['name']}")

@@ -2,11 +2,12 @@
 title: Colour
 linkTitle: Colour
 weight: 10
-description: Three 12-step scales in two modes, their step roles, and the contrast rules that govern them.
+description: Three 12-step scales, three appearances, semantic pairs, and the contrast rules that govern them.
 ---
 
 The palette is three scales — **midnight**, **orange**, and **slate** — each
-expressed as a 12-step ramp in a light and a dark variant. The step numbering
+expressed as a 12-step ramp in light and dark variants. Semantic aliases map
+those ramps into light, navy dark, and deep dark appearances. The step numbering
 follows the Radix convention, which assigns every step a *role*. Using a step
 outside its role is the single most common way to break the system.
 
@@ -48,7 +49,8 @@ example.
 {{< scale name="midnight" mode="dark" >}}
 
 Midnight is the primary. It carries structure, text, and the calm end of the
-system. Step 9 (`#1d3352`) is the brand primary and is identical in both modes.
+system. Step 9 (`#1d3352`) is the brand primary and is identical in every
+appearance.
 
 ## Orange
 
@@ -56,7 +58,7 @@ system. Step 9 (`#1d3352`) is the brand primary and is identical in both modes.
 {{< scale name="orange" mode="dark" >}}
 
 Orange is the accent. It marks the primary action, the active state, and little
-else. Step 9 (`#E05232`) is constant across modes.
+else. Step 9 (`#e05232`) is constant across appearances.
 
 {{< rules >}}
 {{% do %}}
@@ -103,7 +105,8 @@ Magenta and cyan exist in neither half of the brand. They are here because a
 terminal requires them, and nowhere else.
 
 {{% callout title="A terminal value is not a brand value" type="warning" %}}
-`#e55b5b` is the terminal's red. It is **not** `$danger`, which is `#a8261c`.
+`#e55b5b` is the terminal's red. It is **not** the light danger solid,
+`#d92d20`.
 The normal ramp exists to fill ANSI slots and is measured only against the
 terminal surface; using one of its values in the interface puts an unmeasured
 colour on an unrelated background.
@@ -125,8 +128,8 @@ Configuration for tmux, WezTerm, Kitty, Ghostty, iTerm2, and Zellij is on the
 
 ## Contrast rules
 
-- **Never use pure `#000` or `#fff` as text.** Use step 12 of the relevant
-  scale: `#142438` on light, `#c5daf0` on dark.
+- **Use semantic foreground roles for text.** The fixed white token is valid on
+  measured solid controls; screen copy uses the appearance's foreground role.
 - **Step 9 is constant across modes.** The solid accent does not shift when the
   theme changes.
 - **Body text targets 4.5:1**, large text (≥24px, or ≥18.66px bold) targets 3:1.
@@ -136,13 +139,13 @@ Configuration for tmux, WezTerm, Kitty, Ghostty, iTerm2, and Zellij is on the
 ### Where an identity colour cannot carry text
 
 Being the brand colour does not make a value a legible background. White on
-`orange-9` (`#E05232`) measures **3.87:1** — fine as a mark or a border, but
+`orange-9` (`#e05232`) measures **3.87:1** — fine as a mark or a border, but
 below the floor for button labels. Rather than dilute the accent, the system
 adds a separate fill for that job:
 
 | Token | Hex | With white text |
 |---|---|---|
-| `--color-accent` | `#E05232` | 3.87:1 — identity only, not for text |
+| `--color-accent` | `#e05232` | 3.87:1 — identity only, not for text |
 | `--color-accent-solid` | `#cc4528` | 4.72:1 — solid controls |
 | `--color-accent-dark` | `#b84228` | 5.46:1 — hover and pressed |
 
@@ -161,12 +164,16 @@ The callout hues are tuned for **dark text on tinted light backgrounds**. Used
 as foregrounds on the dark app surface they fall below AA, so dark mode has its
 own set:
 
-| Role | Light | Dark | On `#0e1720` |
+| Role | Light solid | Light tint foreground | Dark solid |
 |---|---|---|---|
-| Success | `#2f7d65` | `#6cc090` | 3.65:1 → 8.24:1 |
-| Warning | `#8b6508` | `#e0a92a` | 3.41:1 → 8.50:1 |
-| Danger | `#a8261c` | `#f08b80` | 2.55:1 → 7.49:1 |
-| Info | `#3a5a82` | `#8aacc8` | 2.55:1 → 7.59:1 |
+| Success | `#17945f` | `#17734c` on `#d1ebe0` | `#6cc090` |
+| Warning | `#ef8b0b` | `#b3520c` on `#fff1e0` | `#eda44a` |
+| Danger | `#d92d20` | `#b3261e` on `#fce8e8` | `#f08b80` |
+| Info | `#2563c9` | `#2f5fa8` on `#dae2ec` | `#8aacc8` |
+
+Use the matching `-fg` on a tint. Use `--on-solid-*` on a solid status fill:
+white in light, dark ink on the pale solids used by dark appearances. A muted
+page role is not automatically valid on a semantic tint.
 
 ## Data visualisation
 
@@ -179,7 +186,7 @@ when colour stops being the right tool.
 | Series | Token | Hex | On white |
 |---|---|---|---|
 | 1 | `--midnight-9` | `#1d3352` | 12.75:1 |
-| 2 | `--orange-9` | `#E05232` | 3.87:1 |
+| 2 | `--orange-9` | `#e05232` | 3.87:1 |
 | 3 | `--slate-9` | `#546a82` | 5.58:1 |
 
 One step-9 solid per family, in that order. All three clear the **3:1 non-text
@@ -289,9 +296,9 @@ diverging scale from the success and danger hues.
 {{% /dont %}}
 {{< /rules >}}
 
-## Dark mode
+## Three appearances
 
-Both modes are equally supported. See
-[Dark mode](/docs/interface/dark-mode/) for the implementation
-rules — theme switching, persistence, image treatment, and the always-dark code
-surface.
+Light, navy dark, and deep dark are equally supported. See
+[Appearances](/docs/interface/dark-mode/) for the derivative relationship,
+surface ladders, selection, elevation, and always-dark code and terminal
+surfaces.

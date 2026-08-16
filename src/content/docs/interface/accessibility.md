@@ -22,14 +22,19 @@ preferences.
 
 | Attribute | Value | Effect |
 |---|---|---|
+| `data-a11y` | `auto` | Follows supported reduced-motion, reduced-transparency, and contrast operating-system preferences |
 | `data-font-size` | `lg`, `xl`, `xxl`, `xxxl` | 112.5%, 125%, 150%, or 200% type through one shared scale |
-| `data-contrast` | `high` | Stronger text and border roles in both modes |
+| `data-contrast` | `high` | Stronger text and border roles in every appearance |
 | `data-focus` | `strong` | Conforming 2px midnight ring with 2px offset |
 | `data-link-underline` | `on` | Underlines links in running text; `.link-plain` opts out |
 | `data-motion` | `reduced` | Near-zero transitions and animation |
-| `data-transparency` | `reduced` | Removes backdrop blur and solidifies the scrim |
+| `data-transparency` | `reduced` | Removes backdrop blur and solidifies every scrim |
 | `data-text-spacing` | `loose` | WCAG 1.4.12 diagnostic spacing, not the house style |
 | `data-theme` | `light`, `dark` | Pins the colour mode |
+
+The navy appearance is `data-theme="dark"`. Add `data-surface="deep"` for the
+opt-in near-black appearance; it is a surface choice within dark mode, not a
+third operating-system colour-scheme value.
 
 Use `.sr-only` for an accessible name, `.sr-only-focusable` for content that
 reveals on focus, `.skip-link` for the first control, `.target` for the 44px hit

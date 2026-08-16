@@ -52,7 +52,7 @@ retains from a page they were handed.
 
 Each benefit is an icon tile, a heading of no more than five words, and body text
 of no more than two lines. The icon is
-[Lucide](/docs/interface/icons/) at 20px inside a 40px tile
+[Tabler](/docs/interface/icons/) at 20px inside a 40px tile
 filled with the tag background — it is a marker, not an illustration.
 
 The heading states the benefit, not the feature: "Self-hosted where it matters",

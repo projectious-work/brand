@@ -1,7 +1,7 @@
 // =============================================================================
-// projectious.work brand — syntax theme for the always-dark code surface
+// projectious.work brand — syntax theme for the default dark code surface
 // =============================================================================
-// The brand keeps code surfaces dark in both colour modes, which is only safe
+// The brand keeps default code surfaces dark in all three appearances, which is only safe
 // if the syntax palette is pinned to that surface. A theme that ships separate
 // light and dark Chroma stylesheets will otherwise put its light palette —
 // navy keywords, near-black identifiers — on a midnight background in light
@@ -24,7 +24,7 @@ $pj-code-operator: $slate-dark-11; // #97a8b8 -- 6.90:1
 // and need 4.5:1, but slate-8 gives 3.02:1 on this surface and slate-11 is
 // already spoken for by operators. This value clears AA at 4.59:1 while
 // staying visibly dimmer than operators.
-$pj-code-comment: #72889d;
+$pj-code-comment: #7d90a3;
 
 // Hue assignment is set by perceptual distance weighted by frequency: the role
 // that appears most often gets the best-separated hue. Types are referenced on
@@ -40,7 +40,7 @@ $pj-code-comment: #72889d;
 // terminal palette, which had already extended the system with the cyan and
 // magenta the three interface scales do not carry. Measured on #131e2b.
 $pj-code-type: #6cc090; // 7.67:1 — types, classes, interfaces, namespaces
-$pj-code-function: #e0a92a; // 7.91:1 — functions and methods
+$pj-code-function: #8aacc8; // 7.59:1 — functions and methods
 $pj-code-decorator: #74c0c9; // 8.11:1 — decorators, macros, annotations
 $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
 
@@ -73,13 +73,14 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
     // the keyword of its line.
     .k, .kc, .kd, .kn, .kp, .kr, .nt, .na {
       color: $pj-code-keyword;
-      font-weight: 500;
+      font-weight: 700;
     }
 
     // Types, classes, interfaces, namespaces. These previously fell in with
     // plain identifiers, so a class name and a local variable looked alike.
     .kt, .nc, .nn, .ne, .bp {
       color: $pj-code-type;
+      font-weight: 600;
     }
 
     // Functions and methods — the most useful distinction beyond the original
@@ -93,6 +94,7 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
     // the code around it.
     .nd, .ni, .nl, .cp, .cpf {
       color: $pj-code-decorator;
+      font-style: italic;
     }
 
     // Plain identifiers and variables — the default.
@@ -104,6 +106,7 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
     // does not depend on hue.
     .err {
       color: $pj-code-invalid;
+      font-weight: 600;
       text-decoration: line-through;
     }
 
@@ -114,7 +117,7 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
 
     // Numbers and constants, including true/false/nil.
     .m, .mb, .mf, .mh, .mi, .il, .mo, .no {
-      color: $orange-dark-11;
+      color: #e0a92a;
     }
 
     // Operators and punctuation
@@ -171,20 +174,20 @@ html[data-code] body .prose .pj-code-pair__example--light .highlight {
 
   code { background: transparent; color: inherit; }
   .c, .ch, .cm, .c1, .cs, .sd, .gp, .ln, .lnt {
-    color: #5c6f82;
+    color: #5e7082;
   }
-  .o, .ow, .p, .go { color: #4a5e74; }
-  .k, .kc, .kd, .kn, .kp, .kr, .nt, .na { color: #1d3352; }
-  .kt, .nc, .nn, .ne, .bp { color: #276754; }
-  .nf, .fm { color: #3a5a82; }
-  .n, .nb, .nx, .py, .nv, .vc, .vg, .vi, .cl, .l, .gu { color: #142438; }
+  .o, .ow, .p, .go { color: #54697f; }
+  .k, .kc, .kd, .kn, .kp, .kr, .nt, .na { color: #c2117f; font-weight: 700; }
+  .kt, .nc, .nn, .ne, .bp { color: #08804e; font-weight: 600; }
+  .nf, .fm { color: #1668d8; font-weight: 500; }
+  .n, .nb, .nx, .py, .nv, .vc, .vg, .vi, .cl, .l, .gu { color: #0f1c2e; }
   .s, .sa, .sb, .sc, .dl, .s2, .se, .sh, .si, .sx, .sr, .s1, .ss {
-    color: #a8461f;
+    color: #c94208;
   }
-  .m, .mb, .mf, .mh, .mi, .il, .mo, .no { color: #8b6508; }
-  .nd, .ni, .nl, .cp, .cpf { color: #1c6b6b; }
-  .err, .gd { color: #a8261c; }
-  .gi { color: #276754; }
+  .m, .mb, .mf, .mh, .mi, .il, .mo, .no { color: #94620a; }
+  .nd, .ni, .nl, .cp, .cpf { color: #0d7d82; font-style: italic; }
+  .err, .gd { color: #d81420; font-weight: 600; }
+  .gi { color: #08804e; }
   .hl { background-color: rgba(58, 90, 130, .1); }
 }
 
@@ -193,7 +196,7 @@ html[data-code] body .prose .pj-code-pair__example--light .highlight {
 // the light surface, while the nested Chroma `<pre>` must be transparent.
 html[data-code] body .prose .pj-code-pair__example--light .highlight pre.chroma {
   background: transparent;
-  color: #142438;
+  color: #0f1c2e;
   border-color: #cdd0d5;
 }
 
