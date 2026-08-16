@@ -296,6 +296,17 @@ elevation:
     value: 0 8px 24px rgba(0,0,0,0.12)
     use: Modals
 
+elevationAppearances:
+  light:
+    surfaces: ["#f8f9fb", "#ffffff", "#ffffff", "#ffffff"]
+    rims: [none, none, none, none]
+  navy:
+    surfaces: ["#132440", "#1a2b3e", "#263f5a", "#2e4b68"]
+    rims: [none, "inset 0 1px 0 rgba(255,255,255,0.05)", "inset 0 1px 0 rgba(255,255,255,0.09)", "inset 0 1px 0 rgba(255,255,255,0.14)"]
+  deep:
+    surfaces: ["#0e1720", "#131e2b", "#20354d", "#2e4b68"]
+    rims: [none, "inset 0 1px 0 rgba(255,255,255,0.05)", "inset 0 1px 0 rgba(255,255,255,0.09)", "inset 0 1px 0 rgba(255,255,255,0.14)"]
+
 motion:
   durations:
     - name: micro

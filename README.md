@@ -25,10 +25,10 @@ the colour scales rendering those pages are the scales the pages describe.
 ### Three scales, defined step roles
 
 The palette is three 12-step Radix-convention ramps — midnight, orange, slate —
-each in a light and dark variant. Every step carries a *role*, so a border step
-never gets pressed into service as text.
+across light, navy-default dark, and opt-in deep-dark appearances. Every step
+carries a *role*, so a border step never gets pressed into service as text.
 
-![Midnight scale in light and dark mode, with each step labelled by role](.github/images/scales.png)
+![Midnight scale across its appearances, with each step labelled by role](.github/images/scales.png)
 
 ### A named entry point for each colour
 
@@ -37,9 +37,10 @@ first.
 
 ![Core palette swatches — primary, accent, secondary and their variants](.github/images/palette.png)
 
-Both modes are designed together, not derived from one another:
+Each appearance is token-driven. Navy is the default dark experience; deep dark
+is an explicit focused-workspace option:
 
-![The same swatches rendered in dark mode](.github/images/dark-mode.png)
+![The same swatches rendered in a dark appearance](.github/images/dark-mode.png)
 
 ### Three typefaces, three jobs
 
@@ -49,10 +50,11 @@ documents.
 
 ![Type ramp from Display 48 through Code 13, each row set in its own specification](.github/images/typography.png)
 
-### Code surfaces stay dark in both modes
+### Code is dark by default, with a real light companion
 
-…because a code block that flips with the theme forces the syntax palette to be
-designed twice. Every token in the theme carries a measured contrast ratio.
+The default code panel stays dark in every page appearance. A separately
+measured light syntax palette supports deliberate light-panel specimens; it is
+never produced by inversion or an automatic page-mode switch.
 
 ![A JavaScript snippet on the dark code surface showing the syntax theme](.github/images/code.png)
 
@@ -74,7 +76,7 @@ service. The release dropdown in the top bar switches between versions.
 |---|---|
 | [Foundations](https://projectious-work.github.io/brand/docs/foundations/) | Colour, typography, spacing, shape, motion |
 | [Logo](https://projectious-work.github.io/brand/docs/logo/) | Lockups, clear space, minimum sizes, file formats |
-| [Interface](https://projectious-work.github.io/brand/docs/interface/) | Components, code, dark mode, icons, forms |
+| [Interface](https://projectious-work.github.io/brand/docs/interface/) | Components, code, appearances, icons, forms |
 | [Media](https://projectious-work.github.io/brand/docs/media/) | Motion, audio, video, photography, presentations |
 | [Collateral](https://projectious-work.github.io/brand/docs/collateral/) | Business card, email signature, social and OG |
 | [Governance](https://projectious-work.github.io/brand/docs/governance/) | Licensing, trademark, legal assessment, provenance |

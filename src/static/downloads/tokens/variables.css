@@ -219,6 +219,13 @@
   --shadow-1: 0 1px 3px rgba(0,0,0,0.06);   /* Cards under hover */
   --shadow-2: 0 4px 12px rgba(0,0,0,0.08);   /* Popovers and dropdowns */
   --shadow-3: 0 8px 24px rgba(0,0,0,0.12);   /* Modals */
+  --elevated-0: #f8f9fb;
+  --elevated-1: #ffffff;
+  --elevated-2: #ffffff;
+  --elevated-3: #ffffff;
+  --rim-1: none;
+  --rim-2: none;
+  --rim-3: none;
 
   /* Motion */
   --duration-micro: 100ms;   /* Colour and opacity changes */
@@ -379,6 +386,13 @@
     --surface-2: #20354d;
     --border-strong: #4d7098;
     --tag-bg: #20354d;
+    --elevated-0: #132440;
+    --elevated-1: #1a2b3e;
+    --elevated-2: #263f5a;
+    --elevated-3: #2e4b68;
+    --rim-1: inset 0 1px 0 rgba(255,255,255,0.05);
+    --rim-2: inset 0 1px 0 rgba(255,255,255,0.09);
+    --rim-3: inset 0 1px 0 rgba(255,255,255,0.14);
   }
 }
 
@@ -445,6 +459,13 @@
   --surface-2: #20354d;
   --border-strong: #4d7098;
   --tag-bg: #20354d;
+  --elevated-0: #132440;
+  --elevated-1: #1a2b3e;
+  --elevated-2: #263f5a;
+  --elevated-3: #2e4b68;
+  --rim-1: inset 0 1px 0 rgba(255,255,255,0.05);
+  --rim-2: inset 0 1px 0 rgba(255,255,255,0.09);
+  --rim-3: inset 0 1px 0 rgba(255,255,255,0.14);
 }
 
 /* Deep dark overrides exactly the low ramp and aliases derived from it. */
@@ -460,4 +481,8 @@
   --surface-2: #1a2b3e;
   --border-strong: #3a5c7e;
   --tag-bg: #1a2b3e;
+  --elevated-0: #0e1720;
+  --elevated-1: #131e2b;
+  --elevated-2: #20354d;
+  --elevated-3: #2e4b68;
 }

@@ -2,7 +2,7 @@
 title: Interface
 linkTitle: Interface
 weight: 30
-description: The foundations applied to screens — components, code surfaces, dark mode, icons, and forms.
+description: The foundations applied to screens — components, code surfaces, appearances, icons, and forms.
 ---
 
 Interface guidance applies the [foundations](/docs/foundations/)

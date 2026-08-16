@@ -17,6 +17,12 @@ do not permit component-specific colour forks.
 With no explicit mode, the interface follows `prefers-color-scheme`. A dark
 preference resolves to navy dark. Deep dark is an explicit choice.
 
+{{< appearance-specimen >}}
+
+The specimen translates the designer's shared three-way preview control into a
+simultaneous comparison: the component recipe stays identical while only its
+semantic token context changes.
+
 ## Why navy is the default dark
 
 Deep dark begins at the bottom of the midnight ramp. Across a full interface,

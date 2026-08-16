@@ -59,7 +59,7 @@ Stock lines, in priority order, are **Cloud · Agile · Agentic AI**,
 
 | If you want to… | Read |
 |---|---|
-| Use the palette correctly, including dark mode | [Colour](/docs/foundations/color/) |
+| Use the palette correctly across all appearances | [Colour](/docs/foundations/color/) |
 | Set text in the brand's voice | [Typography](/docs/foundations/typography/) |
 | Place the logo without breaking it | [Logo usage](/docs/logo/usage/) |
 | Build an interface | [Interface](/docs/interface/) |
@@ -79,7 +79,7 @@ Everything else composes from them.
 **Logo** covers the mark, the four lockups, and the rules that keep them legible.
 
 **Interface** applies the foundations to screens: components, code surfaces,
-dark mode, icons, and forms.
+appearances, icons, and forms.
 
 **Collateral** covers the artefacts that leave the product — decks, cards,
 signatures, social imagery.

@@ -16,7 +16,7 @@
   present, so a consumer can retitle it without touching markup; the defaults
   below are the worked example from the patterns page.
 */ -}}
-{{- $d := site.Data.dashboard -}}
+{{- $d := hugo.Data.dashboard -}}
 {{- $nav := or $d.nav (slice "Overview" "Engagements" "Agents" "Reports" "Settings") -}}
 {{- $kpis := or $d.kpis (slice
       (dict "value" "6"    "label" "Active engagements" "delta" "▲ 1 this month")

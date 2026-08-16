@@ -85,6 +85,10 @@ def css(brand: dict) -> str:
     lines.extend(f"  --radius-{item['name']}: {item['value']};   /* {item['use']} */" for item in brand["radius"])
     lines.extend(("", "  /* Elevation */"))
     lines.extend(f"  --{item['name']}: {item['value']};   /* {item['use']} */" for item in brand["elevation"])
+    for i, surface in enumerate(brand["elevationAppearances"]["light"]["surfaces"]):
+        lines.append(f"  --elevated-{i}: {surface};")
+    for i, rim in enumerate(brand["elevationAppearances"]["light"]["rims"][1:], 1):
+        lines.append(f"  --rim-{i}: {rim};")
     lines.extend(("", "  /* Motion */"))
     lines.extend(f"  --duration-{item['name']}: {item['value']};   /* {item['use']} */" for item in brand["motion"]["durations"])
     lines.extend(f"  --{item['name']}: {item['value']};   /* {item['use']} */" for item in brand["motion"]["easing"])
@@ -118,9 +122,14 @@ def css(brand: dict) -> str:
         note = f"   /* {item['contrast'].split(' / ')[1]} */" if item.get("contrast") else ""
         dark.append(f"  {item['token']}: {item['navy']};{note}")
     dark.extend(("  --surface-2: #20354d;", "  --border-strong: #4d7098;", "  --tag-bg: #20354d;"))
+    for i, surface in enumerate(brand["elevationAppearances"]["navy"]["surfaces"]):
+        dark.append(f"  --elevated-{i}: {surface};")
+    for i, rim in enumerate(brand["elevationAppearances"]["navy"]["rims"][1:], 1):
+        dark.append(f"  --rim-{i}: {rim};")
     lines.extend(("", "/* Navy is the default dark appearance. Step 9 remains constant. */", "@media (prefers-color-scheme: dark) {", "  :root {"))
     lines.extend("  " + line if line else line for line in dark)
-    lines.extend(("  }", "}", "", '[data-theme="dark"] {', *dark, "}", "", "/* Deep dark overrides exactly the low ramp and aliases derived from it. */", '[data-theme="dark"][data-surface="deep"] {', "  --midnight-1: #0e1720;", "  --midnight-2: #131e2b;", "  --midnight-3: #1a2b3e;", "  --midnight-4: #20354d;", "  --midnight-5: #263f5a;", "  --color-bg: #0e1720;", "  --color-surface: #131e2b;", "  --color-border: #263f5a;", "  --surface-2: #1a2b3e;", "  --border-strong: #3a5c7e;", "  --tag-bg: #1a2b3e;", "}", ""))
+    deep_elevation = [f"  --elevated-{i}: {surface};" for i, surface in enumerate(brand["elevationAppearances"]["deep"]["surfaces"])]
+    lines.extend(("  }", "}", "", '[data-theme="dark"] {', *dark, "}", "", "/* Deep dark overrides exactly the low ramp and aliases derived from it. */", '[data-theme="dark"][data-surface="deep"] {', "  --midnight-1: #0e1720;", "  --midnight-2: #131e2b;", "  --midnight-3: #1a2b3e;", "  --midnight-4: #20354d;", "  --midnight-5: #263f5a;", "  --color-bg: #0e1720;", "  --color-surface: #131e2b;", "  --color-border: #263f5a;", "  --surface-2: #1a2b3e;", "  --border-strong: #3a5c7e;", "  --tag-bg: #1a2b3e;", *deep_elevation, "}", ""))
     return "\n".join(lines)
 
 
@@ -154,6 +163,9 @@ def token_json(brand: dict) -> str:
     for i, spacing in enumerate(brand["spacing"]["steps"], 1): out["spacing"][str(i)] = value(f"{spacing}px")
     for item in brand["radius"]: out["radius"][item["name"]] = value(item["value"], item["use"])
     for item in brand["elevation"]: out["elevation"][item["name"].replace("shadow-", "")] = value(item["value"], item["use"])
+    out["elevation"]["appearance"] = {}
+    for appearance, values in brand["elevationAppearances"].items():
+        out["elevation"]["appearance"][appearance] = {"surface": {str(i): value(v) for i, v in enumerate(values["surfaces"])}, "rim": {str(i): value(v) for i, v in enumerate(values["rims"])}}
     for item in brand["motion"]["durations"]: out["motion"]["duration"][item["name"]] = value(item["value"], item["use"])
     for item in brand["motion"]["easing"]: out["motion"]["easing"][camel(item["name"])] = value(item["value"], item["use"])
     for item in brand["breakpoints"]: out["breakpoint"][item["name"]] = value(f"{item['value']}px", item["use"])

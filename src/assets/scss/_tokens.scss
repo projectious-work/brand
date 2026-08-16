@@ -53,6 +53,13 @@
   --pj-link-fg: #{$midnight-11};
   --pj-nav-active-bg: #{$midnight-3};
   --pj-nav-active-text: #{$midnight-9};
+  --pj-elevated-0: #{$midnight-1};
+  --pj-elevated-1: #ffffff;
+  --pj-elevated-2: #ffffff;
+  --pj-elevated-3: #ffffff;
+  --pj-rim-1: none;
+  --pj-rim-2: none;
+  --pj-rim-3: none;
 
   // Motion (generated from src/data/brand.yaml)
   --pj-duration-micro: 100ms;
@@ -63,9 +70,14 @@
 
   // Semantic colours, light mode.
   --pj-success: #{$success-fg};
+  --pj-success-bg: #{$success-bg};
   --pj-warning: #{$warning-fg};
+  --pj-warning-bg: #{$warning-bg};
   --pj-danger: #{$danger-fg};
+  --pj-danger-bg: #{$danger-bg};
   --pj-info: #{$info};
+  --pj-info-bg: #{$info-bg};
+  --pj-on-solid-danger: #ffffff;
 
   // The mark renders on light surfaces here.
   --pj-mark-shell: #{$midnight-9};
@@ -114,6 +126,13 @@
   --pj-link-fg: #{$midnight-dark-11};
   --pj-nav-active-bg: #263f5a;
   --pj-nav-active-text: #{$midnight-dark-12};
+  --pj-elevated-0: #132440;
+  --pj-elevated-1: #1a2b3e;
+  --pj-elevated-2: #263f5a;
+  --pj-elevated-3: #2e4b68;
+  --pj-rim-1: inset 0 1px 0 rgba(255, 255, 255, .05);
+  --pj-rim-2: inset 0 1px 0 rgba(255, 255, 255, .09);
+  --pj-rim-3: inset 0 1px 0 rgba(255, 255, 255, .14);
 
   --pj-mark-shell: #6b8db2;
   --pj-mark-cut: #{$brand-primary-dark};
@@ -123,9 +142,14 @@
   // on tinted light backgrounds and fall to 2.6-3.7:1 as foregrounds on the
   // dark app surface. See the normative interface documentation.
   --pj-success: #{$success-dark};
+  --pj-success-bg: #{$success-bg-dark};
   --pj-warning: #{$warning-dark};
+  --pj-warning-bg: #{$warning-bg-dark};
   --pj-danger: #{$danger-dark};
+  --pj-danger-bg: #{$danger-bg-dark};
   --pj-info: #{$midnight-dark-11};
+  --pj-info-bg: #{$info-bg-dark};
+  --pj-on-solid-danger: #{$midnight-dark-1};
 }
 
 [data-theme="dark"][data-surface="deep"] {
@@ -137,4 +161,8 @@
   --pj-border: #{$midnight-dark-5};
   --pj-band: #{$midnight-dark-2};
   --pj-nav-active-bg: #{$midnight-dark-4};
+  --pj-elevated-0: #{$midnight-dark-1};
+  --pj-elevated-1: #{$midnight-dark-2};
+  --pj-elevated-2: #{$midnight-dark-4};
+  --pj-elevated-3: #{$midnight-dark-6};
 }

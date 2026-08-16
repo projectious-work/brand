@@ -26,8 +26,8 @@ result rather than to become a public documentation page.
 | `README.md` — preview convention and audit | Maintenance | Three-appearance review requirement and contrast floor | Described |
 | `README.md` — offline profile | Developer guide; Downloads; SBOM | Self-hosted fonts/icons and licence obligations | Described |
 | `README.md` — licensing | Legal; Governance | MIT code/tokens, font licences, Tabler MIT, reserved marks | Described |
-| `colors_and_type.css` | Tokens; Foundations; Downloads | CSS, JSON, and Tailwind outputs generated from canonical data | In progress |
-| `styles.css` | Interface and Foundation pages | Behaviour and component regulations translated into specimens | In progress |
+| `colors_and_type.css` | Tokens; Foundations; Downloads | CSS, JSON, and Tailwind outputs generated from canonical data | Described |
+| `styles.css` | Interface and Foundation pages | Behaviour and component regulations translated into specimens | Described |
 | `github.md` | Maintenance | Source/provenance and sync expectations | Described |
 | `UPSTREAM-REPLY.md`, `upstream-sync-note.md`, `uploads/UPSTREAM-BRIEFING.md` | Maintenance; Provenance | Derivative decisions and upstream reconciliation | Described |
 | `SKILL.md` | Getting started; Developer guide | Non-negotiables and implementation workflow | Described |
@@ -42,7 +42,7 @@ result rather than to become a public documentation page.
 | `brand-logo-marks.html` | Logo / Usage | Colour, dark, mono-black, mono-grey, and mono-white marks | Live |
 | `brand-taglines.html` | Documentation landing | Stock lines in priority order and voice context | Described |
 | `colors-core.html` | Foundations / Colour | Three identity constants with allowed roles | Live |
-| `colors-scales.html` | Foundations / Colour | Twelve steps across light, navy, and deep appearances | In progress |
+| `colors-scales.html` | Foundations / Colour | Twelve steps across light, navy, and deep appearances | Live |
 | `colors-semantic.html` | Foundations / Colour; Interface / States | Solid, tint, on-tint, label, and glyph pairing | Live |
 | `colors-syntax-0-roles.html` | Interface / Code | Ten-role legend with weight and slant | Live |
 | `colors-syntax-1-python.html` | Interface / Code | Light and dark Python specimen | Live |
@@ -57,7 +57,7 @@ result rather than to become a public documentation page.
 | `components-cards.html` | Interface / Components | Flat, raised, and action-card recipes | Live |
 | `components-inputs.html` | Interface / Forms | Default, focus, error, and disabled states | Live |
 | `components-tags-badges.html` | Interface / Components | Neutral/selected tags and semantic badges | Live |
-| `elevation.html` | Foundations / Space, shape, and motion | Appearance-aware four-level elevation | In progress |
+| `elevation.html` | Foundations / Space, shape, and motion | Appearance-aware four-level elevation | Live |
 | `iconography.html` | Interface / Icons | Real Tabler glyphs at approved sizes and states | Live |
 | `layout-responsive.html` | Foundations / Responsive | Breakpoints, collapse behaviour, and touch floor | Live |
 | `radii.html` | Foundations / Space, shape, and motion | Five-radius ladder | Live |
@@ -67,7 +67,7 @@ result rather than to become a public documentation page.
 | `type-display.html` | Foundations / Typography | Plus Jakarta Sans weights and display sample | Live |
 | `type-families.html` | Foundations / Typography | Three roles with no cross-role substitution | Live |
 | `type-scale.html` | Foundations / Typography | Full scalable eleven-role type ramp | Live |
-| `_audit.html` | Maintenance and automated checks | Every public specimen checked in all three appearances | In progress |
+| `_audit.html` | Maintenance and automated checks | Every public specimen checked in all three appearances | Live |
 
 ## Larger artefacts
 
@@ -75,7 +75,7 @@ result rather than to become a public documentation page.
 |---|---|---|---|
 | Slides `01`–`06` | Media / Presentations | Six live slide recipes with hierarchy and safe areas | Live |
 | Agent-console UI kit | Interface / Patterns | Shell, pipeline list, run detail, logs, and status bar | Live |
-| Marketing-site UI kit | Interface / Patterns | Header, hero, pillars, code, convictions, CTA, and footer | In progress |
+| Marketing-site UI kit | Interface / Patterns | Header, hero, pillars, code, convictions, CTA, and footer | Live |
 | Logo SVG/PNG assets | Logo / Files; Downloads | Approved originals and format/use guidance | Live |
 | `_ds_manifest.json`, `_ds_bundle.js`, `_adherence.oxlintrc.json` | Maintenance | Machine inventory and source audit inputs | Audit |
 | `scratch/` images and `.thumbnail` | No public page | Designer review/thumbnail evidence only | Audit |
