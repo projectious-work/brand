@@ -40,7 +40,7 @@ result rather than to become a public documentation page.
 | `brand-logo-primary.html` | Logo / Overview | Primary two-line lockup on semantic surfaces | Live |
 | `brand-logo-lockups.html` | Logo / Lockups | One-line, dot-replace, and stacked lockups | Live |
 | `brand-logo-marks.html` | Logo / Usage | Colour, dark, mono-black, mono-grey, and mono-white marks | Live |
-| `brand-taglines.html` | Documentation landing | Stock lines in priority order and voice context | Described |
+| `brand-taglines.html` | Documentation landing | Stock lines in priority order and voice context | Live |
 | `colors-core.html` | Foundations / Colour | Three identity constants with allowed roles | Live |
 | `colors-scales.html` | Foundations / Colour | Twelve steps across light, navy, and deep appearances | Live |
 | `colors-semantic.html` | Foundations / Colour; Interface / States | Solid, tint, on-tint, label, and glyph pairing | Live |
@@ -73,9 +73,14 @@ result rather than to become a public documentation page.
 
 | Source | Destination | Translation | Status |
 |---|---|---|---|
-| Slides `01`–`06` | Media / Presentations | Six live slide recipes with hierarchy and safe areas | Live |
-| Agent-console UI kit | Interface / Patterns | Shell, pipeline list, run detail, logs, and status bar | Live |
-| Marketing-site UI kit | Interface / Patterns | Header, hero, pillars, code, convictions, CTA, and footer | Live |
+| `slides/01-title.html` | Media / Presentations | Dark title/hero recipe | Live |
+| `slides/02-section-statement.html` | Media / Presentations | Warm-paper section statement | Live |
+| `slides/03-three-up.html` | Media / Presentations | Cloud, Agile, and Agentic AI columns | Live |
+| `slides/04-quote.html` | Media / Presentations | Midnight customer-voice quote | Live |
+| `slides/05-code-showcase.html` | Media / Presentations | Two-column terminal/code showcase | Live |
+| `slides/06-cta-closer.html` | Media / Presentations | Dark closing action with primary and ghost controls | Live |
+| `ui_kits/agent-console/index.html` | Interface / Patterns | Shell, pipeline list, run detail, logs, and status bar | Live |
+| `ui_kits/marketing-site/index.html` | Interface / Patterns | Header, hero, pillars, code, convictions, CTA, and footer | Live |
 | Logo SVG/PNG assets | Logo / Files; Downloads | Approved originals and format/use guidance | Live |
 | `_ds_manifest.json`, `_ds_bundle.js`, `_adherence.oxlintrc.json` | Maintenance | Machine inventory and source audit inputs | Audit |
 | `scratch/` images and `.thumbnail` | No public page | Designer review/thumbnail evidence only | Audit |

@@ -55,6 +55,29 @@ gush about.
 Stock lines, in priority order, are **Cloud · Agile · Agentic AI**,
 **Redesigning work**, and **Agent-first consulting, built on what we teach**.
 
+{{< demo label="Stock lines — use in this priority order" variant="stack" >}}
+<div style="display:grid;gap:1rem">
+  <div>
+    <strong style="font-family:var(--font-heading);font-size:1.5rem">
+      Cloud · Agile · Agentic AI
+    </strong>
+    <span class="pj-cap">Primary positioning line</span>
+  </div>
+  <div>
+    <strong style="font-family:var(--font-heading);font-size:1.25rem">
+      Redesigning work
+    </strong>
+    <span class="pj-cap">Alternative campaign line</span>
+  </div>
+  <div>
+    <strong style="font-family:var(--font-heading);font-size:1rem">
+      Agent-first consulting, built on what we teach
+    </strong>
+    <span class="pj-cap">Long-form descriptor</span>
+  </div>
+</div>
+{{< /demo >}}
+
 ## Where to start
 
 | If you want to… | Read |
