@@ -300,5 +300,5 @@ diverging scale from the success and danger hues.
 
 Light, navy dark, and deep dark are equally supported. See
 [Appearances](/docs/interface/dark-mode/) for the derivative relationship,
-surface ladders, selection, elevation, and always-dark code and terminal
+surface ladders, selection, elevation, and default-dark code and terminal
 surfaces.

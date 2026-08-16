@@ -4,10 +4,8 @@
     {{< pj-action href="#release-check" >}}Review release check{{< /pj-action >}}
 
   Exists so a content file never has to hand-write an anchor with classes on it.
-  Both theme examples mount this directory, and both mount _demo.scss, so the
-  same call renders the same control under Docsy and under Hextra — which is the
-  point of the review fixtures: a difference between them should be a difference
-  between the themes, not between two hand-written buttons.
+  The same call renders the same control wherever this public shortcode and the
+  specimen stylesheet are mounted, avoiding hand-written button drift.
 
   It emits the brand's own accent button rather than a theme's (`btn
   btn-primary`, or a Tailwind stack), so the accent-solid fill and the 4.72:1

@@ -144,7 +144,7 @@ $pj-code-invalid: #e55b5b; // 4.79:1 — invalid and deprecated
 @include pj-syntax-theme;
 
 // Win over the theme's adaptive light/dark Chroma rules for the brand's
-// always-dark specimen surface. This scoped copy must precede the optional
+// default-dark specimen surface. This scoped copy must precede the optional
 // light-panel rules below so that the opt-in companion can override it.
 html[data-code] body .prose .highlight { @include pj-syntax-theme; }
 

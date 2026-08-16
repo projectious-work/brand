@@ -66,13 +66,13 @@ def lookup_token(name: str, version: str = VERSION) -> dict:
 
 @server.tool(annotations=READ_ONLY)
 def explain_token_role(name: str, version: str = VERSION) -> dict:
-    """Explain the semantic role and mode of a named token."""
+    """Explain the semantic role and appearance of a named token."""
     result = lookup_token(name, version)
     return {
         "name": name,
         "version": version,
         "role": result["role"],
-        "mode": result.get("mode", "mode-independent"),
+        "appearance": result.get("appearance", "appearance-independent"),
         "value": result["value"],
     }
 

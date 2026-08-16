@@ -1,13 +1,13 @@
 // =============================================================================
 // projectious.work brand — the colour scales as SCSS variables
 // =============================================================================
-// Extracted from _variables_project.scss so that the documentation site, the
-// Docsy example, and the Hextra example all compile the specimens against one
-// definition of the scales. This file is pure variable declarations: it depends
-// on nothing and imports nothing, so any SCSS entry point can pull it in.
+// Shared by the documentation specimens and token parity checks. This file is
+// pure variable declarations: it depends on nothing and imports nothing, so any
+// SCSS entry point can pull it in.
 //
 // The brand uses three 12-step Radix-convention scales (midnight, orange,
-// slate) in two modes. Step roles:
+// slate) with light and dark ramps. Navy overrides the first five dark midnight
+// steps; the high steps remain shared with deep dark. Step roles:
 //
 //   1 app bg      2 subtle bg   3 element bg   4 hover bg
 //   5 active bg   6 subtle brd  7 border       8 strong brd

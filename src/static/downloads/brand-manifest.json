@@ -120,7 +120,7 @@
       "role": "Dark backgrounds, navbar, code blocks"
     },
     "--color-accent": {
-      "value": "#E05232",
+      "value": "#e05232",
       "role": "CTAs, highlights, active states"
     },
     "--color-accent-light": {
@@ -142,362 +142,1268 @@
     "--midnight-light-1": {
       "value": "#f8f9fb",
       "role": "App bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-2": {
       "value": "#f0f3f8",
       "role": "Subtle bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-3": {
       "value": "#e2e9f2",
       "role": "Elem bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-4": {
       "value": "#d3deec",
       "role": "Hover bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-5": {
       "value": "#c3d1e3",
       "role": "Active bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-6": {
       "value": "#b0c1d6",
       "role": "Subtle brd",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-7": {
       "value": "#96abc6",
       "role": "Border",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-8": {
       "value": "#7490b2",
       "role": "Strong brd",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-9": {
       "value": "#1d3352",
       "role": "Solid bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-10": {
       "value": "#162944",
       "role": "Solid hvr",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-11": {
       "value": "#3a5a82",
       "role": "Lo text",
-      "mode": "light"
+      "appearance": "light"
     },
     "--midnight-light-12": {
       "value": "#142438",
       "role": "Hi text",
-      "mode": "light"
+      "appearance": "light"
     },
-    "--midnight-dark-1": {
+    "--midnight-deep-1": {
       "value": "#0e1720",
       "role": "App bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-2": {
+    "--midnight-deep-2": {
       "value": "#131e2b",
       "role": "Subtle bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-3": {
+    "--midnight-deep-3": {
       "value": "#1a2b3e",
       "role": "Elem bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-4": {
+    "--midnight-deep-4": {
       "value": "#20354d",
       "role": "Hover bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-5": {
+    "--midnight-deep-5": {
       "value": "#263f5a",
       "role": "Active bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-6": {
+    "--midnight-deep-6": {
       "value": "#2e4b68",
       "role": "Subtle brd",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-7": {
+    "--midnight-deep-7": {
       "value": "#3a5c7e",
       "role": "Border",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-8": {
+    "--midnight-deep-8": {
       "value": "#4d7098",
       "role": "Strong brd",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-9": {
+    "--midnight-deep-9": {
       "value": "#1d3352",
       "role": "Solid bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-10": {
+    "--midnight-deep-10": {
       "value": "#2b4d78",
       "role": "Solid hvr",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-11": {
+    "--midnight-deep-11": {
       "value": "#8aacc8",
       "role": "Lo text",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--midnight-dark-12": {
+    "--midnight-deep-12": {
       "value": "#c5daf0",
       "role": "Hi text",
-      "mode": "dark"
+      "appearance": "deep"
+    },
+    "--midnight-navy-1": {
+      "value": "#132440",
+      "role": "App bg",
+      "appearance": "navy"
+    },
+    "--midnight-navy-2": {
+      "value": "#1a2b3e",
+      "role": "Subtle bg",
+      "appearance": "navy"
+    },
+    "--midnight-navy-3": {
+      "value": "#20354d",
+      "role": "Elem bg",
+      "appearance": "navy"
+    },
+    "--midnight-navy-4": {
+      "value": "#263f5a",
+      "role": "Hover bg",
+      "appearance": "navy"
+    },
+    "--midnight-navy-5": {
+      "value": "#2e4b68",
+      "role": "Active bg",
+      "appearance": "navy"
+    },
+    "--midnight-navy-6": {
+      "value": "#2e4b68",
+      "role": "Subtle brd",
+      "appearance": "navy"
+    },
+    "--midnight-navy-7": {
+      "value": "#3a5c7e",
+      "role": "Border",
+      "appearance": "navy"
+    },
+    "--midnight-navy-8": {
+      "value": "#4d7098",
+      "role": "Strong brd",
+      "appearance": "navy"
+    },
+    "--midnight-navy-9": {
+      "value": "#1d3352",
+      "role": "Solid bg",
+      "appearance": "navy"
+    },
+    "--midnight-navy-10": {
+      "value": "#2b4d78",
+      "role": "Solid hvr",
+      "appearance": "navy"
+    },
+    "--midnight-navy-11": {
+      "value": "#8aacc8",
+      "role": "Lo text",
+      "appearance": "navy"
+    },
+    "--midnight-navy-12": {
+      "value": "#c5daf0",
+      "role": "Hi text",
+      "appearance": "navy"
     },
     "--orange-light-1": {
       "value": "#fef9f7",
       "role": "App bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-2": {
       "value": "#fef0ea",
       "role": "Subtle bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-3": {
       "value": "#fde0d5",
       "role": "Elem bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-4": {
       "value": "#fccebd",
       "role": "Hover bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-5": {
       "value": "#f8baa5",
       "role": "Active bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-6": {
       "value": "#f0a48c",
       "role": "Subtle brd",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-7": {
       "value": "#e58a6e",
       "role": "Border",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-8": {
       "value": "#d86e4e",
       "role": "Strong brd",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-9": {
-      "value": "#E05232",
+      "value": "#e05232",
       "role": "Solid bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-10": {
       "value": "#cc4528",
       "role": "Solid hvr",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-11": {
       "value": "#c04424",
       "role": "Lo text",
-      "mode": "light"
+      "appearance": "light"
     },
     "--orange-light-12": {
       "value": "#6e2714",
       "role": "Hi text",
-      "mode": "light"
+      "appearance": "light"
     },
-    "--orange-dark-1": {
+    "--orange-deep-1": {
       "value": "#1c110d",
       "role": "App bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-2": {
+    "--orange-deep-2": {
       "value": "#271610",
       "role": "Subtle bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-3": {
+    "--orange-deep-3": {
       "value": "#3d1e13",
       "role": "Elem bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-4": {
+    "--orange-deep-4": {
       "value": "#522616",
       "role": "Hover bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-5": {
+    "--orange-deep-5": {
       "value": "#643019",
       "role": "Active bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-6": {
+    "--orange-deep-6": {
       "value": "#7a3c20",
       "role": "Subtle brd",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-7": {
+    "--orange-deep-7": {
       "value": "#974b28",
       "role": "Border",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-8": {
+    "--orange-deep-8": {
       "value": "#b85c32",
       "role": "Strong brd",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-9": {
-      "value": "#E05232",
+    "--orange-deep-9": {
+      "value": "#e05232",
       "role": "Solid bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-10": {
+    "--orange-deep-10": {
       "value": "#ea7558",
       "role": "Solid hvr",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-11": {
+    "--orange-deep-11": {
       "value": "#f09878",
       "role": "Lo text",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--orange-dark-12": {
+    "--orange-deep-12": {
       "value": "#fcddd2",
       "role": "Hi text",
-      "mode": "dark"
+      "appearance": "deep"
+    },
+    "--orange-navy-1": {
+      "value": "#1c110d",
+      "role": "App bg",
+      "appearance": "navy"
+    },
+    "--orange-navy-2": {
+      "value": "#271610",
+      "role": "Subtle bg",
+      "appearance": "navy"
+    },
+    "--orange-navy-3": {
+      "value": "#3d1e13",
+      "role": "Elem bg",
+      "appearance": "navy"
+    },
+    "--orange-navy-4": {
+      "value": "#522616",
+      "role": "Hover bg",
+      "appearance": "navy"
+    },
+    "--orange-navy-5": {
+      "value": "#643019",
+      "role": "Active bg",
+      "appearance": "navy"
+    },
+    "--orange-navy-6": {
+      "value": "#7a3c20",
+      "role": "Subtle brd",
+      "appearance": "navy"
+    },
+    "--orange-navy-7": {
+      "value": "#974b28",
+      "role": "Border",
+      "appearance": "navy"
+    },
+    "--orange-navy-8": {
+      "value": "#b85c32",
+      "role": "Strong brd",
+      "appearance": "navy"
+    },
+    "--orange-navy-9": {
+      "value": "#e05232",
+      "role": "Solid bg",
+      "appearance": "navy"
+    },
+    "--orange-navy-10": {
+      "value": "#ea7558",
+      "role": "Solid hvr",
+      "appearance": "navy"
+    },
+    "--orange-navy-11": {
+      "value": "#f09878",
+      "role": "Lo text",
+      "appearance": "navy"
+    },
+    "--orange-navy-12": {
+      "value": "#fcddd2",
+      "role": "Hi text",
+      "appearance": "navy"
     },
     "--slate-light-1": {
       "value": "#f9f9fa",
       "role": "App bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-2": {
       "value": "#f1f2f4",
       "role": "Subtle bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-3": {
       "value": "#e6e8eb",
       "role": "Elem bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-4": {
       "value": "#dadce0",
       "role": "Hover bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-5": {
       "value": "#cdd0d5",
       "role": "Active bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-6": {
       "value": "#bec2c8",
       "role": "Subtle brd",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-7": {
       "value": "#adb2ba",
       "role": "Border",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-8": {
       "value": "#9299a4",
       "role": "Strong brd",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-9": {
       "value": "#546a82",
       "role": "Solid bg",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-10": {
       "value": "#4a5e74",
       "role": "Solid hvr",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-11": {
       "value": "#5c6f82",
       "role": "Lo text",
-      "mode": "light"
+      "appearance": "light"
     },
     "--slate-light-12": {
       "value": "#1e2b38",
       "role": "Hi text",
-      "mode": "light"
+      "appearance": "light"
     },
-    "--slate-dark-1": {
+    "--slate-deep-1": {
       "value": "#111416",
       "role": "App bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-2": {
+    "--slate-deep-2": {
       "value": "#171b1f",
       "role": "Subtle bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-3": {
+    "--slate-deep-3": {
       "value": "#20262c",
       "role": "Elem bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-4": {
+    "--slate-deep-4": {
       "value": "#283038",
       "role": "Hover bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-5": {
+    "--slate-deep-5": {
       "value": "#303a43",
       "role": "Active bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-6": {
+    "--slate-deep-6": {
       "value": "#3a454f",
       "role": "Subtle brd",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-7": {
+    "--slate-deep-7": {
       "value": "#47545f",
       "role": "Border",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-8": {
+    "--slate-deep-8": {
       "value": "#5a6a78",
       "role": "Strong brd",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-9": {
+    "--slate-deep-9": {
       "value": "#546a82",
       "role": "Solid bg",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-10": {
+    "--slate-deep-10": {
       "value": "#627a92",
       "role": "Solid hvr",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-11": {
+    "--slate-deep-11": {
       "value": "#97a8b8",
       "role": "Lo text",
-      "mode": "dark"
+      "appearance": "deep"
     },
-    "--slate-dark-12": {
+    "--slate-deep-12": {
       "value": "#d5dee8",
       "role": "Hi text",
-      "mode": "dark"
+      "appearance": "deep"
+    },
+    "--slate-navy-1": {
+      "value": "#111416",
+      "role": "App bg",
+      "appearance": "navy"
+    },
+    "--slate-navy-2": {
+      "value": "#171b1f",
+      "role": "Subtle bg",
+      "appearance": "navy"
+    },
+    "--slate-navy-3": {
+      "value": "#20262c",
+      "role": "Elem bg",
+      "appearance": "navy"
+    },
+    "--slate-navy-4": {
+      "value": "#283038",
+      "role": "Hover bg",
+      "appearance": "navy"
+    },
+    "--slate-navy-5": {
+      "value": "#303a43",
+      "role": "Active bg",
+      "appearance": "navy"
+    },
+    "--slate-navy-6": {
+      "value": "#3a454f",
+      "role": "Subtle brd",
+      "appearance": "navy"
+    },
+    "--slate-navy-7": {
+      "value": "#47545f",
+      "role": "Border",
+      "appearance": "navy"
+    },
+    "--slate-navy-8": {
+      "value": "#5a6a78",
+      "role": "Strong brd",
+      "appearance": "navy"
+    },
+    "--slate-navy-9": {
+      "value": "#546a82",
+      "role": "Solid bg",
+      "appearance": "navy"
+    },
+    "--slate-navy-10": {
+      "value": "#627a92",
+      "role": "Solid hvr",
+      "appearance": "navy"
+    },
+    "--slate-navy-11": {
+      "value": "#97a8b8",
+      "role": "Lo text",
+      "appearance": "navy"
+    },
+    "--slate-navy-12": {
+      "value": "#d5dee8",
+      "role": "Hi text",
+      "appearance": "navy"
+    },
+    "--color-success-light": {
+      "value": "#17945f",
+      "role": "A completed, evidenced check",
+      "appearance": "light"
+    },
+    "--color-success-light-bg": {
+      "value": "#d1ebe0",
+      "role": "A completed, evidenced check",
+      "appearance": "light"
+    },
+    "--color-success-light-fg": {
+      "value": "#17734c",
+      "role": "A completed, evidenced check",
+      "appearance": "light"
+    },
+    "--color-success-navy": {
+      "value": "#6cc090",
+      "role": "A completed, evidenced check",
+      "appearance": "navy"
+    },
+    "--color-success-navy-bg": {
+      "value": "#16302a",
+      "role": "A completed, evidenced check",
+      "appearance": "navy"
+    },
+    "--color-success-navy-fg": {
+      "value": "#6cc090",
+      "role": "A completed, evidenced check",
+      "appearance": "navy"
+    },
+    "--color-success-deep": {
+      "value": "#6cc090",
+      "role": "A completed, evidenced check",
+      "appearance": "deep"
+    },
+    "--color-success-deep-bg": {
+      "value": "#16302a",
+      "role": "A completed, evidenced check",
+      "appearance": "deep"
+    },
+    "--color-success-deep-fg": {
+      "value": "#6cc090",
+      "role": "A completed, evidenced check",
+      "appearance": "deep"
+    },
+    "--color-warning-light": {
+      "value": "#ef8b0b",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "light"
+    },
+    "--color-warning-light-bg": {
+      "value": "#fff1e0",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "light"
+    },
+    "--color-warning-light-fg": {
+      "value": "#b3520c",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "light"
+    },
+    "--color-warning-navy": {
+      "value": "#eda44a",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "navy"
+    },
+    "--color-warning-navy-bg": {
+      "value": "#3a2611",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "navy"
+    },
+    "--color-warning-navy-fg": {
+      "value": "#eda44a",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "navy"
+    },
+    "--color-warning-deep": {
+      "value": "#eda44a",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "deep"
+    },
+    "--color-warning-deep-bg": {
+      "value": "#3a2611",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "deep"
+    },
+    "--color-warning-deep-fg": {
+      "value": "#eda44a",
+      "role": "A condition to assess. Gold, never the accent",
+      "appearance": "deep"
+    },
+    "--color-danger-light": {
+      "value": "#d92d20",
+      "role": "A failure needing a next action",
+      "appearance": "light"
+    },
+    "--color-danger-light-bg": {
+      "value": "#fce8e8",
+      "role": "A failure needing a next action",
+      "appearance": "light"
+    },
+    "--color-danger-light-fg": {
+      "value": "#b3261e",
+      "role": "A failure needing a next action",
+      "appearance": "light"
+    },
+    "--color-danger-navy": {
+      "value": "#f08b80",
+      "role": "A failure needing a next action",
+      "appearance": "navy"
+    },
+    "--color-danger-navy-bg": {
+      "value": "#3a1c19",
+      "role": "A failure needing a next action",
+      "appearance": "navy"
+    },
+    "--color-danger-navy-fg": {
+      "value": "#f08b80",
+      "role": "A failure needing a next action",
+      "appearance": "navy"
+    },
+    "--color-danger-deep": {
+      "value": "#f08b80",
+      "role": "A failure needing a next action",
+      "appearance": "deep"
+    },
+    "--color-danger-deep-bg": {
+      "value": "#3a1c19",
+      "role": "A failure needing a next action",
+      "appearance": "deep"
+    },
+    "--color-danger-deep-fg": {
+      "value": "#f08b80",
+      "role": "A failure needing a next action",
+      "appearance": "deep"
+    },
+    "--color-info-light": {
+      "value": "#2563c9",
+      "role": "Neutral context, no judgement",
+      "appearance": "light"
+    },
+    "--color-info-light-bg": {
+      "value": "#dae2ec",
+      "role": "Neutral context, no judgement",
+      "appearance": "light"
+    },
+    "--color-info-light-fg": {
+      "value": "#2f5fa8",
+      "role": "Neutral context, no judgement",
+      "appearance": "light"
+    },
+    "--color-info-navy": {
+      "value": "#8aacc8",
+      "role": "Neutral context, no judgement",
+      "appearance": "navy"
+    },
+    "--color-info-navy-bg": {
+      "value": "#1a2b3e",
+      "role": "Neutral context, no judgement",
+      "appearance": "navy"
+    },
+    "--color-info-navy-fg": {
+      "value": "#8aacc8",
+      "role": "Neutral context, no judgement",
+      "appearance": "navy"
+    },
+    "--color-info-deep": {
+      "value": "#8aacc8",
+      "role": "Neutral context, no judgement",
+      "appearance": "deep"
+    },
+    "--color-info-deep-bg": {
+      "value": "#1a2b3e",
+      "role": "Neutral context, no judgement",
+      "appearance": "deep"
+    },
+    "--color-info-deep-fg": {
+      "value": "#8aacc8",
+      "role": "Neutral context, no judgement",
+      "appearance": "deep"
+    },
+    "--color-bg-light": {
+      "value": "#f8f9fb",
+      "role": "Page canvas",
+      "appearance": "light"
+    },
+    "--color-bg-navy": {
+      "value": "#132440",
+      "role": "Page canvas",
+      "appearance": "navy"
+    },
+    "--color-bg-deep": {
+      "value": "#0e1720",
+      "role": "Page canvas",
+      "appearance": "deep"
+    },
+    "--color-surface-light": {
+      "value": "#ffffff",
+      "role": "Cards, panels, elevated surfaces",
+      "appearance": "light"
+    },
+    "--color-surface-navy": {
+      "value": "#1a2b3e",
+      "role": "Cards, panels, elevated surfaces",
+      "appearance": "navy"
+    },
+    "--color-surface-deep": {
+      "value": "#131e2b",
+      "role": "Cards, panels, elevated surfaces",
+      "appearance": "deep"
+    },
+    "--color-text-primary-light": {
+      "value": "#142438",
+      "role": "Body and heading text",
+      "appearance": "light"
+    },
+    "--color-text-primary-navy": {
+      "value": "#c5daf0",
+      "role": "Body and heading text",
+      "appearance": "navy"
+    },
+    "--color-text-primary-deep": {
+      "value": "#c5daf0",
+      "role": "Body and heading text",
+      "appearance": "deep"
+    },
+    "--color-text-secondary-light": {
+      "value": "#546a82",
+      "role": "Supporting text",
+      "appearance": "light"
+    },
+    "--color-text-secondary-navy": {
+      "value": "#97a8b8",
+      "role": "Supporting text",
+      "appearance": "navy"
+    },
+    "--color-text-secondary-deep": {
+      "value": "#97a8b8",
+      "role": "Supporting text",
+      "appearance": "deep"
+    },
+    "--color-text-muted-light": {
+      "value": "#5c6f82",
+      "role": "Captions and low-emphasis text",
+      "appearance": "light"
+    },
+    "--color-text-muted-navy": {
+      "value": "#97a8b8",
+      "role": "Captions and low-emphasis text",
+      "appearance": "navy"
+    },
+    "--color-text-muted-deep": {
+      "value": "#97a8b8",
+      "role": "Captions and low-emphasis text",
+      "appearance": "deep"
+    },
+    "--color-border-light": {
+      "value": "#cdd0d5",
+      "role": "Dividers and component borders",
+      "appearance": "light"
+    },
+    "--color-border-navy": {
+      "value": "#2e4b68",
+      "role": "Dividers and component borders",
+      "appearance": "navy"
+    },
+    "--color-border-deep": {
+      "value": "#263f5a",
+      "role": "Dividers and component borders",
+      "appearance": "deep"
+    },
+    "--syntax-plain": {
+      "value": "#c5daf0",
+      "role": "Plain",
+      "appearance": "dark panel"
+    },
+    "--syntax-keyword": {
+      "value": "#d491b4",
+      "role": "Keywords",
+      "appearance": "dark panel"
+    },
+    "--syntax-type": {
+      "value": "#6cc090",
+      "role": "Types and classes",
+      "appearance": "dark panel"
+    },
+    "--syntax-function": {
+      "value": "#8aacc8",
+      "role": "Functions",
+      "appearance": "dark panel"
+    },
+    "--syntax-string": {
+      "value": "#ea7558",
+      "role": "Strings",
+      "appearance": "dark panel"
+    },
+    "--syntax-number": {
+      "value": "#e0a92a",
+      "role": "Numbers",
+      "appearance": "dark panel"
+    },
+    "--syntax-macro": {
+      "value": "#74c0c9",
+      "role": "Macros and decorators",
+      "appearance": "dark panel"
+    },
+    "--syntax-operator": {
+      "value": "#97a8b8",
+      "role": "Operators",
+      "appearance": "dark panel"
+    },
+    "--syntax-comment": {
+      "value": "#7d90a3",
+      "role": "Comments",
+      "appearance": "dark panel"
+    },
+    "--syntax-invalid": {
+      "value": "#e55b5b",
+      "role": "Invalid and deprecated",
+      "appearance": "dark panel"
+    },
+    "--syntax-plain-light": {
+      "value": "#0f1c2e",
+      "role": "Plain",
+      "appearance": "light panel"
+    },
+    "--syntax-comment-light": {
+      "value": "#5e7082",
+      "role": "Comments",
+      "appearance": "light panel"
+    },
+    "--syntax-operator-light": {
+      "value": "#54697f",
+      "role": "Operators",
+      "appearance": "light panel"
+    },
+    "--syntax-keyword-light": {
+      "value": "#c2117f",
+      "role": "Keywords",
+      "appearance": "light panel"
+    },
+    "--syntax-type-light": {
+      "value": "#08804e",
+      "role": "Types and classes",
+      "appearance": "light panel"
+    },
+    "--syntax-function-light": {
+      "value": "#1668d8",
+      "role": "Functions",
+      "appearance": "light panel"
+    },
+    "--syntax-string-light": {
+      "value": "#c94208",
+      "role": "Strings",
+      "appearance": "light panel"
+    },
+    "--syntax-number-light": {
+      "value": "#94620a",
+      "role": "Numbers",
+      "appearance": "light panel"
+    },
+    "--syntax-macro-light": {
+      "value": "#0d7d82",
+      "role": "Decorators and macros",
+      "appearance": "light panel"
+    },
+    "--syntax-invalid-light": {
+      "value": "#d81420",
+      "role": "Invalid",
+      "appearance": "light panel"
+    },
+    "--terminal-surface": {
+      "value": "#0e1720",
+      "role": "Default terminal surface"
+    },
+    "--terminal-ansi-0": {
+      "value": "#0e1720",
+      "role": "black"
+    },
+    "--terminal-ansi-8": {
+      "value": "#2e4b68",
+      "role": "bright black"
+    },
+    "--terminal-ansi-1": {
+      "value": "#e55b5b",
+      "role": "red"
+    },
+    "--terminal-ansi-9": {
+      "value": "#f08b80",
+      "role": "bright red"
+    },
+    "--terminal-ansi-2": {
+      "value": "#3f9d74",
+      "role": "green"
+    },
+    "--terminal-ansi-10": {
+      "value": "#6cc090",
+      "role": "bright green"
+    },
+    "--terminal-ansi-3": {
+      "value": "#c08a1e",
+      "role": "yellow"
+    },
+    "--terminal-ansi-11": {
+      "value": "#e0a92a",
+      "role": "bright yellow"
+    },
+    "--terminal-ansi-4": {
+      "value": "#6289b3",
+      "role": "blue"
+    },
+    "--terminal-ansi-12": {
+      "value": "#8aacc8",
+      "role": "bright blue"
+    },
+    "--terminal-ansi-5": {
+      "value": "#bd6d96",
+      "role": "magenta"
+    },
+    "--terminal-ansi-13": {
+      "value": "#d491b4",
+      "role": "bright magenta"
+    },
+    "--terminal-ansi-6": {
+      "value": "#3f97a3",
+      "role": "cyan"
+    },
+    "--terminal-ansi-14": {
+      "value": "#74c0c9",
+      "role": "bright cyan"
+    },
+    "--terminal-ansi-7": {
+      "value": "#97a8b8",
+      "role": "white"
+    },
+    "--terminal-ansi-15": {
+      "value": "#c5daf0",
+      "role": "bright white"
+    },
+    "--terminal-background": {
+      "value": "#0e1720",
+      "role": "Background"
+    },
+    "--terminal-foreground": {
+      "value": "#c5daf0",
+      "role": "Foreground"
+    },
+    "--terminal-cursor": {
+      "value": "#e05232",
+      "role": "Cursor"
+    },
+    "--terminal-cursor-text": {
+      "value": "#0e1720",
+      "role": "Cursor text"
+    },
+    "--terminal-selection-background": {
+      "value": "#20354d",
+      "role": "Selection background"
+    },
+    "--terminal-selection-text": {
+      "value": "#c5daf0",
+      "role": "Selection text"
+    },
+    "--terminal-dim-comment": {
+      "value": "#72889d",
+      "role": "Dim / comment"
+    },
+    "--terminal-status-bar-surface": {
+      "value": "#131e2b",
+      "role": "Status bar surface"
+    },
+    "--terminal-status-bar-text": {
+      "value": "#c5daf0",
+      "role": "Status bar text"
+    },
+    "--terminal-inactive-tab-and-pane-label": {
+      "value": "#7b8da3",
+      "role": "Inactive tab and pane label"
+    },
+    "--terminal-active-tab-fill": {
+      "value": "#e05232",
+      "role": "Active tab fill"
+    },
+    "--terminal-active-pane-border": {
+      "value": "#e05232",
+      "role": "Active pane border"
+    },
+    "--terminal-inactive-pane-border": {
+      "value": "#7b8da3",
+      "role": "Inactive pane border"
+    },
+    "--terminal-light-surface": {
+      "value": "#f4f5f7",
+      "role": "Optional light terminal surface"
+    },
+    "--terminal-light-ansi-0": {
+      "value": "#1e2b38",
+      "role": "black"
+    },
+    "--terminal-light-ansi-1": {
+      "value": "#b8352f",
+      "role": "red"
+    },
+    "--terminal-light-ansi-2": {
+      "value": "#276754",
+      "role": "green"
+    },
+    "--terminal-light-ansi-3": {
+      "value": "#8b6508",
+      "role": "yellow"
+    },
+    "--terminal-light-ansi-4": {
+      "value": "#3a5a82",
+      "role": "blue"
+    },
+    "--terminal-light-ansi-5": {
+      "value": "#8a3f6e",
+      "role": "magenta"
+    },
+    "--terminal-light-ansi-6": {
+      "value": "#1c6b6b",
+      "role": "cyan"
+    },
+    "--terminal-light-ansi-7": {
+      "value": "#546a82",
+      "role": "white"
+    },
+    "--terminal-light-ansi-8": {
+      "value": "#4a5e74",
+      "role": "bright-black"
+    },
+    "--terminal-light-ansi-9": {
+      "value": "#a8261c",
+      "role": "bright-red"
+    },
+    "--terminal-light-ansi-10": {
+      "value": "#1f7a52",
+      "role": "bright-green"
+    },
+    "--terminal-light-ansi-11": {
+      "value": "#6f5106",
+      "role": "bright-yellow"
+    },
+    "--terminal-light-ansi-12": {
+      "value": "#1d3352",
+      "role": "bright-blue"
+    },
+    "--terminal-light-ansi-13": {
+      "value": "#752f5c",
+      "role": "bright-magenta"
+    },
+    "--terminal-light-ansi-14": {
+      "value": "#125555",
+      "role": "bright-cyan"
+    },
+    "--terminal-light-ansi-15": {
+      "value": "#142438",
+      "role": "bright-white"
+    },
+    "--terminal-light-background": {
+      "value": "#f4f5f7",
+      "role": "background"
+    },
+    "--terminal-light-foreground": {
+      "value": "#142438",
+      "role": "foreground"
+    },
+    "--terminal-light-cursor": {
+      "value": "#e05232",
+      "role": "cursor"
+    },
+    "--terminal-light-cursor-text": {
+      "value": "#f4f5f7",
+      "role": "cursorText"
+    },
+    "--terminal-light-selection-background": {
+      "value": "#dae2ec",
+      "role": "selectionBackground"
+    },
+    "--terminal-light-selection-text": {
+      "value": "#142438",
+      "role": "selectionText"
+    },
+    "--terminal-light-dim-comment": {
+      "value": "#5c6f82",
+      "role": "dimComment"
+    },
+    "--terminal-light-status-bar-surface": {
+      "value": "#e6e8eb",
+      "role": "statusBarSurface"
+    },
+    "--terminal-light-status-bar-text": {
+      "value": "#142438",
+      "role": "statusBarText"
+    },
+    "--terminal-light-inactive-tab-and-pane-label": {
+      "value": "#4a5e74",
+      "role": "inactiveTabAndPaneLabel"
+    },
+    "--terminal-light-active-tab-fill": {
+      "value": "#e05232",
+      "role": "activeTabFill"
+    },
+    "--terminal-light-active-tab-text": {
+      "value": "#0e1720",
+      "role": "activeTabText"
+    },
+    "--terminal-light-active-pane-border": {
+      "value": "#e05232",
+      "role": "activePaneBorder"
+    },
+    "--terminal-light-inactive-pane-border": {
+      "value": "#adb2ba",
+      "role": "inactivePaneBorder"
+    },
+    "--space-1": {
+      "value": "4px",
+      "role": "Spacing scale"
+    },
+    "--space-2": {
+      "value": "8px",
+      "role": "Spacing scale"
+    },
+    "--space-3": {
+      "value": "12px",
+      "role": "Spacing scale"
+    },
+    "--space-4": {
+      "value": "16px",
+      "role": "Spacing scale"
+    },
+    "--space-5": {
+      "value": "24px",
+      "role": "Spacing scale"
+    },
+    "--space-6": {
+      "value": "32px",
+      "role": "Spacing scale"
+    },
+    "--space-7": {
+      "value": "48px",
+      "role": "Spacing scale"
+    },
+    "--space-8": {
+      "value": "64px",
+      "role": "Spacing scale"
+    },
+    "--space-9": {
+      "value": "96px",
+      "role": "Spacing scale"
+    },
+    "--radius-sm": {
+      "value": "3px",
+      "role": "Tags, chips, small indicators"
+    },
+    "--radius-md": {
+      "value": "6px",
+      "role": "Buttons, inputs, code blocks"
+    },
+    "--radius-lg": {
+      "value": "9px",
+      "role": "Cards, panels"
+    },
+    "--radius-xl": {
+      "value": "13px",
+      "role": "Large panels, modals"
+    },
+    "--radius-full": {
+      "value": "9999px",
+      "role": "Pills, avatars"
+    },
+    "--shadow-0": {
+      "value": "none",
+      "role": "Flat surfaces, default"
+    },
+    "--shadow-1": {
+      "value": "0 1px 3px rgba(0,0,0,0.06)",
+      "role": "Cards under hover"
+    },
+    "--shadow-2": {
+      "value": "0 4px 12px rgba(0,0,0,0.08)",
+      "role": "Popovers and dropdowns"
+    },
+    "--shadow-3": {
+      "value": "0 8px 24px rgba(0,0,0,0.12)",
+      "role": "Modals"
+    },
+    "--duration-micro": {
+      "value": "100ms",
+      "role": "Colour and opacity changes"
+    },
+    "--duration-standard": {
+      "value": "200ms",
+      "role": "Most transitions — hover, focus, small moves"
+    },
+    "--duration-expand": {
+      "value": "300ms",
+      "role": "Height and width changes, accordions"
+    },
+    "--duration-page": {
+      "value": "400ms",
+      "role": "Route and view transitions"
+    },
+    "--ease-out": {
+      "value": "cubic-bezier(0.33, 1, 0.68, 1)",
+      "role": "Entering — elements arriving on screen"
+    },
+    "--ease-in": {
+      "value": "cubic-bezier(0.32, 0, 0.67, 0)",
+      "role": "Exiting — elements leaving screen"
+    },
+    "--breakpoint-sm": {
+      "value": "640px",
+      "role": "Large phone, landscape phone"
+    },
+    "--breakpoint-md": {
+      "value": "768px",
+      "role": "Small tablet — the first two-column layout"
+    },
+    "--breakpoint-lg": {
+      "value": "1024px",
+      "role": "Tablet landscape, small laptop — sidebars appear"
+    },
+    "--breakpoint-xl": {
+      "value": "1280px",
+      "role": "Desktop — the 1100px measure is fully margined"
     }
   }
 }

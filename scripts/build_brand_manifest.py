@@ -50,14 +50,129 @@ tokens = {
     item["token"]: {"value": item["hex"], "role": item["use"]}
     for item in brand["core"]
 }
+
+
+def token_slug(value: str) -> str:
+    value = re.sub(r"(?<=[a-z0-9])(?=[A-Z])", "-", value)
+    return re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
 for name, scale in brand["scales"].items():
-    for mode in ("light", "dark"):
-        for index, value in enumerate(scale[mode], 1):
-            tokens[f"--{name}-{mode}-{index}"] = {
+    appearances = {
+        "light": scale["light"],
+        "deep": scale["dark"],
+        "navy": list(scale["dark"]),
+    }
+    if name == "midnight":
+        appearances["navy"][:5] = (
+            "#132440",
+            "#1a2b3e",
+            "#20354d",
+            "#263f5a",
+            "#2e4b68",
+        )
+    for appearance, values in appearances.items():
+        for index, value in enumerate(values, 1):
+            tokens[f"--{name}-{appearance}-{index}"] = {
                 "value": value,
                 "role": brand["stepRoles"][index - 1],
-                "mode": mode,
+                "appearance": appearance,
             }
+
+for item in brand["semantic"]:
+    role = item["role"].lower()
+    for appearance in ("light", "navy", "deep"):
+        dark = appearance != "light"
+        values = {
+            "": item["darkSolid"] if dark else item["lightSolid"],
+            "-bg": item["darkTint"] if dark else item["lightTint"],
+            "-fg": item["darkSolid"] if dark else item["lightOnTint"],
+        }
+        for suffix, value in values.items():
+            tokens[f"--color-{role}-{appearance}{suffix}"] = {
+                "value": value,
+                "role": item["use"],
+                "appearance": appearance,
+            }
+
+for item in brand["surfaces"]:
+    name = item["token"].removeprefix("--color-")
+    for appearance in ("light", "navy", "deep"):
+        tokens[f"--color-{name}-{appearance}"] = {
+            "value": item[appearance],
+            "role": item["use"],
+            "appearance": appearance,
+        }
+
+syntax_names = (
+    "plain",
+    "keyword",
+    "type",
+    "function",
+    "string",
+    "number",
+    "macro",
+    "operator",
+    "comment",
+    "invalid",
+)
+for name, item in zip(syntax_names, brand["syntax"], strict=True):
+    tokens[f"--syntax-{name}"] = {
+        "value": item["hex"],
+        "role": item["token"],
+        "appearance": "dark panel",
+    }
+for item in brand["syntaxLight"]["roles"]:
+    tokens[item["token"]] = {
+        "value": item["hex"],
+        "role": item["role"],
+        "appearance": "light panel",
+    }
+
+terminal = brand["terminal"]
+tokens["--terminal-surface"] = {
+    "value": terminal["surface"],
+    "role": "Default terminal surface",
+}
+for item in terminal["ansi"]:
+    tokens[f"--terminal-ansi-{item['slot']}"] = {
+        "value": item["normal"],
+        "role": item["name"],
+    }
+    tokens[f"--terminal-ansi-{item['slot'] + 8}"] = {
+        "value": item["bright"],
+        "role": f"bright {item['name']}",
+    }
+for item in terminal["chrome"]:
+    tokens[f"--terminal-{token_slug(item['role'])}"] = {
+        "value": item["hex"],
+        "role": item["role"],
+    }
+tokens["--terminal-light-surface"] = {
+    "value": brand["terminalLight"]["surface"],
+    "role": "Optional light terminal surface",
+}
+for item in brand["terminalLight"]["ansi"]:
+    tokens[f"--terminal-light-ansi-{item['slot']}"] = {
+        "value": item["hex"],
+        "role": item["name"],
+    }
+for name, value in brand["terminalLight"]["chrome"].items():
+    tokens[f"--terminal-light-{token_slug(name)}"] = {"value": value, "role": name}
+
+for index, value in enumerate(brand["spacing"]["steps"], 1):
+    tokens[f"--space-{index}"] = {"value": f"{value}px", "role": "Spacing scale"}
+for item in brand["radius"]:
+    tokens[f"--radius-{item['name']}"] = {"value": item["value"], "role": item["use"]}
+for item in brand["elevation"]:
+    tokens[f"--{item['name']}"] = {"value": item["value"], "role": item["use"]}
+for item in brand["motion"]["durations"]:
+    tokens[f"--duration-{item['name']}"] = {"value": item["value"], "role": item["use"]}
+for item in brand["motion"]["easing"]:
+    tokens[f"--{item['name']}"] = {"value": item["value"], "role": item["use"]}
+for item in brand["breakpoints"]:
+    tokens[f"--breakpoint-{item['name']}"] = {
+        "value": f"{item['value']}px",
+        "role": item["use"],
+    }
 
 manifest = {
     "schemaVersion": 1,

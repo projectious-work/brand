@@ -344,15 +344,10 @@ select.pj-input { cursor: pointer; }
 // -----------------------------------------------------------------------------
 // Navigation
 // -----------------------------------------------------------------------------
-// The navbar follows the colour mode — it is not a permanently midnight bar.
-// These values mirror .td-navbar in _styles_project.scss, which is what this
-// site's own header actually uses; a specimen that disagrees with the header
-// directly above it is worse than no specimen.
+// The navbar follows the appearance — it is not a permanently midnight bar.
 // The specimen's colours are published as custom properties rather than kept as
-// SCSS literals. A host theme that outranks a component class — Hextra colours
-// every `.content a`, which is (0,2,0) against this component's (0,1,0) — can
-// then restate the property instead of restating the value, so the reference
-// implementations cannot drift from the brand the way a copied hex does.
+// SCSS literals. A host theme with higher-specificity link rules can restate the
+// property instead of copying a value, preventing adapter drift.
 .pj-navbar {
   --pj-navbar-bg: #{rgba($midnight-1, 0.88)};
   --pj-navbar-border: #{$slate-3};
@@ -724,7 +719,7 @@ select.pj-input { cursor: pointer; }
 }
 
 // -----------------------------------------------------------------------------
-// Terminal — the always-dark surface, same as code blocks
+// Terminal — the default-dark device surface
 // -----------------------------------------------------------------------------
 .pj-terminal {
   background: $midnight-dark-2;
@@ -779,7 +774,7 @@ select.pj-input { cursor: pointer; }
 
   &__ext { color: $brand-accent; }
   &--on-dark { color: $midnight-dark-12; }
-  // For surfaces that are white in both modes — paper stock, a mail message —
+  // For surfaces that stay white in every appearance — paper or email —
   // where the mode-aware default would go light-on-white in dark mode.
   &--on-light { color: $brand-primary; }
 }
@@ -895,7 +890,7 @@ select.pj-input { cursor: pointer; }
     opacity: 0.12;
   }
 
-  // Paper stock. Fixed white in both modes, like the signature specimens: the
+  // Paper stock. Fixed white in every appearance, like signature specimens: the
   // point of this card is how it looks printed, and paper has no colour mode.
   //
   // The glow does not carry over. A 12% accent wash reads as a soft shadow on
@@ -1409,9 +1404,9 @@ select.pj-input { cursor: pointer; }
 }
 
 // A row-identifying cell is a `<th scope="row">` — that is what makes a data
-// table navigable with a screen reader. Both Docsy and Hextra style every `th`
-// as a column header, so the row identity came out uppercase, letter-spaced and
-// muted. Keep the semantics, restore the presentation of a body cell.
+// table navigable with a screen reader. A generic table rule may style every
+// `th` as a column header; keep the semantics while presenting this as a body
+// cell.
 .pj-table tbody th[scope="row"] {
   font-family: inherit;
   font-size: inherit;
@@ -1425,10 +1420,8 @@ select.pj-input { cursor: pointer; }
 // -----------------------------------------------------------------------------
 // The mark
 // -----------------------------------------------------------------------------
-// Lives here rather than in the documentation site's own stylesheet because the
-// theme examples mount this file and not that one. Without these three rules
-// the inlined logo.svg has no fill and renders as a solid black blob — which is
-// exactly what the Docsy example did once its navbar logo was switched on.
+// Lives with the specimens because the inline SVG needs explicit semantic fills
+// in every appearance.
 //
 // The values come from _tokens.scss and follow the colour mode, so one SVG
 // serves both; there is no separate dark-mode asset.

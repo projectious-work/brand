@@ -8,9 +8,8 @@
   dashboard-specific component, which is the point the patterns page makes: a
   screen is an arrangement of the parts, not a new part.
 
-  It lives in the shared shortcode directory because both theme examples mount
-  it, so the same markup renders under Docsy and under Hextra and any difference
-  is the theme's.
+  It lives in the shared shortcode directory so the same markup renders in
+  every supported output.
 
   Data is read from the `dashboard` key in the site's data directory when one is
   present, so a consumer can retitle it without touching markup; the defaults
