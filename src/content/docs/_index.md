@@ -14,7 +14,8 @@ pages document.
 The current contract is synchronized from design system **v2.1.1**. It applies
 to every brand surface: product UI, marketing, documentation, slides, email,
 terminal output, and portfolio material. The rendered UI mockups supplied with
-the system are the visual reference when prose could be read more than one way.
+the system's preview cards, UI kits, and slides are the visual reference when
+prose could be read more than one way.
 
 ## Brand in one view
 
@@ -65,6 +66,10 @@ Stock lines, in priority order, are **Cloud · Agile · Agentic AI**,
 | Produce a deck, signature, or social card | [Collateral](/docs/collateral/) |
 | Know what you are allowed to reuse | [Governance](/docs/governance/) |
 | Pull the raw values into a project | [Tokens](/docs/tokens/) |
+| See what the system includes | [Features](/docs/features/) |
+| Implement it in a product | [Developer guide](/docs/developer-guide/) |
+| Synchronize or release it | [Maintenance](/docs/maintenance/) |
+| Review shipped dependencies | [SBOM](/docs/sbom/) |
 
 ## How the system is organised
 

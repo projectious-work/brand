@@ -95,9 +95,21 @@ params:
 
 menus:
   main:
+    - name: Getting started
+      pageRef: /getting-started
+      weight: 10
     - name: Documentation
       pageRef: /docs
-      weight: 10
+      weight: 20
+    - name: Contributing
+      pageRef: /contributing
+      weight: 30
+    - name: Downloads
+      pageRef: /downloads
+      weight: 40
+    - name: Legal
+      pageRef: /legal
+      weight: 50
 
 module:
   imports:

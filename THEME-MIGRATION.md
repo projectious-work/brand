@@ -1,8 +1,7 @@
 # Hugo theme migration notes
 
 The documentation site is pinned to
-`github.com/projectious-work/brand-theme-hugo-vanilla` v0.3.1
-(`64382c7d9fe09c2db956ac4a4e2de447d1bcfb52`). The site uses the theme's
+`github.com/projectious-work/brand-theme-hugo-vanilla` v0.3.2. The site uses the theme's
 Hugo-only build path (`params.build.tailwind: false`); Node and npm are not
 part of the build.
 
@@ -14,19 +13,16 @@ brand-specific examples rather than reusable theme behaviour. This includes
 paired Do/Don't guidance, rules, component specimens, syntax-scope tables, and
 the paired dark/default and light/optional code examples.
 
-Two theme partials are overridden only because v0.3.1 has no public append
-hook:
+The site appends its assets through the public hooks released in v0.3.2:
 
-| Override | Site addition | Upstream removal criterion |
+| Public hook | Site addition |
 |---|---|---|
-| `layouts/partials/styles.html` | Hugo-compiles `scss/specimens.scss` after the theme CSS | A documented extra-styles hook or resource parameter is released |
-| `layouts/partials/scripts.html` | Loads the progressive `color-swatches.js` enhancer | A documented extra-scripts hook or resource parameter is released |
+| `hooks/styles-end.html` | Hugo-compiles `scss/specimens.scss` after the theme CSS |
+| `hooks/scripts-end.html` | Loads the progressive `color-swatches.js` enhancer |
 
-Both overrides otherwise reproduce the v0.3.1 partial verbatim. They must be
-compared with upstream whenever the theme version changes.
-
-The missing extension point is tracked upstream as
-[brand-theme-hugo-vanilla#35](https://github.com/projectious-work/brand-theme-hugo-vanilla/issues/35).
+The extension point was requested in
+[brand-theme-hugo-vanilla#35](https://github.com/projectious-work/brand-theme-hugo-vanilla/issues/35)
+and resolved by v0.3.2. No internal asset-pipeline partial is overridden.
 
 ## Public theme API used
 
