@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "identity": "projectious.work brand",
-  "version": "v2.1.1",
+  "version": "v3.0.0",
   "authority": {
     "documentation": "src/content/docs/",
     "structuredTokens": "src/data/brand.yaml"

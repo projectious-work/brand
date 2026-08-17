@@ -21,6 +21,51 @@ documentation are not.
 
 Nothing yet.
 
+## [v3.0.0] — 2026-08-17
+
+### Highlights
+
+- **The documentation site now uses the first-party projectious.work Hugo
+  theme.** The migration preserves the published routes, Markdown and print
+  outputs, AI discovery surfaces, content, specimens, search, and accessible
+  light and dark rendering while removing the Docsy and npm build stack.
+- **Company engineering standards now live beside the product.** Brand's
+  documentation, library, schema, AI-accessibility, compatibility, security,
+  verification, and host-gated release obligations are locally reviewable.
+- **AI consumers gain a complete offline contract.** The release includes the
+  generated brand manifest, versioned read-only MCP resources and tools, and
+  full public guidance for local MCP client integration.
+
+### Added
+
+- The applicable company engineering standards, Brand application profile,
+  host-gated release conformance cases, and versioned handover schema.
+- A generated machine-readable brand manifest and offline AI-readable product
+  contract covering identity, foundations, tokens, logo, components,
+  licensing, trademark, provenance, and release history.
+- Published documentation for starting and consuming the read-only Brand MCP
+  server over stdio, including its versioned resources, five tools, security
+  boundary, and protocol-verification path.
+
+### Changed
+
+- **Breaking:** the documentation renderer moves from the vendored Docsy
+  submodule to `brand-theme-hugo-vanilla` v0.3.1. Site builds now require only
+  standard Hugo and the pinned Hugo module; the previous npm, PostCSS, SCSS,
+  Docsy, and Hugo Extended build path is removed.
+- The repository's brand authority is consolidated around canonical source
+  data, generated machine contracts, and shared theme assets, reducing copied
+  generated output and stale resource caches.
+- Syntax examples retain paired dark-default and light-optional specimens for
+  every documented language under the new renderer.
+
+### Fixed
+
+- Light syntax specimens now use explicit light panel backgrounds, keeping
+  their code roles readable independently of the surrounding site mode.
+- The generated and documented v2.1.1 palette coverage is complete across the
+  downloadable contracts consumed by the new site and MCP surfaces.
+
 ## [v2.1.1] — 2026-08-04
 
 ### Added
@@ -467,5 +512,6 @@ around, and are encoded in the audits: **logotypes** (the wordmark sets "work"
 in the identity accent) and **inactive user-interface components** (the disabled
 control specification).
 
-[Unreleased]: https://github.com/projectious-work/brand/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/projectious-work/brand/compare/v3.0.0...HEAD
+[v3.0.0]: https://github.com/projectious-work/brand/compare/v2.1.1...v3.0.0
 [v1.0.0]: https://github.com/projectious-work/brand/releases/tag/v1.0.0

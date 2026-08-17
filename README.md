@@ -18,7 +18,7 @@ tokens, and document templates. The published site at
 is generated from this repository and is **built with the system it documents** —
 the colour scales rendering those pages are the scales the pages describe.
 
-**Status:** Active — maintained · **Release:** v2.1.1
+**Status:** Active — maintained · **Release:** v3.0.0
 
 ## What's inside
 
