@@ -1,0 +1,7 @@
+{{- /* Site-owned design-system specimens, appended through the v0.3.2 public
+       asset hook rather than replacing the theme pipeline. */ -}}
+{{- with resources.Get "scss/specimens.scss" -}}
+  {{- $site := . | css.Sass (dict "targetPath" "css/brand-site.css" "outputStyle" (cond hugo.IsProduction "compressed" "expanded")) | fingerprint "sha384" -}}
+  <link rel="stylesheet" href="{{ $site.RelPermalink }}"
+    integrity="{{ $site.Data.Integrity }}" crossorigin="anonymous">
+{{- end -}}
