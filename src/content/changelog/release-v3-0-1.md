@@ -2,7 +2,7 @@
 title: v3.0.1 — recovered design-system site
 linkTitle: v3.0.1 — recovered design-system site
 description: Restores the complete revised documentation and visual specimens.
-date: 2026-08-17T18:00:00Z
+date: 2026-08-17T15:55:00Z
 changes:
   - kind: Added
     text: Added the on-site change log and recovered design-system guidance.
