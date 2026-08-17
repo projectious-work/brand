@@ -4,12 +4,12 @@
 
 
 This page is the canonical guide for agents and other automated consumers of
-the projectious.work brand contract. The current release is **v3.0.0**.
+the projectious.work brand contract. The current release is **v3.0.1**.
 
 `src/content/docs/` is the normative human-readable authority and
 `src/data/brand.yaml` is the structured authority. Files under
-`/downloads/` are generated from those sources. Designer material under
-`input/` is upstream reference material and is not a public runtime contract.
+`/downloads/` are generated from those sources. Designer intake material is
+upstream reference material and is not a public runtime contract.
 
 ## Use-case map
 
@@ -80,18 +80,18 @@ For the current checkout, examples include:
 
 | URI | Content class |
 |---|---|
-| `brand://v3.0.0/identity` | Normative identity and voice guidance |
-| `brand://v3.0.0/foundations` | Normative colour, type, spacing, shape, and motion index |
-| `brand://v3.0.0/tokens-guide` | Normative token usage guidance |
-| `brand://v3.0.0/tokens-json` | Generated JSON token download |
-| `brand://v3.0.0/tokens-css` | Generated CSS custom properties |
-| `brand://v3.0.0/logo` | Normative logo guidance |
-| `brand://v3.0.0/components` | Normative component guidance |
-| `brand://v3.0.0/rendered-specimens` | Rendered code specimens used as examples |
-| `brand://v3.0.0/licensing` | Licence contract |
-| `brand://v3.0.0/trademark` | Trademark limits |
-| `brand://v3.0.0/provenance` | Third-party asset provenance |
-| `brand://v3.0.0/changelog` | Release history and migrations |
+| `brand://v3.0.1/identity` | Normative identity and voice guidance |
+| `brand://v3.0.1/foundations` | Normative colour, type, spacing, shape, and motion index |
+| `brand://v3.0.1/tokens-guide` | Normative token usage guidance |
+| `brand://v3.0.1/tokens-json` | Generated JSON token download |
+| `brand://v3.0.1/tokens-css` | Generated CSS custom properties |
+| `brand://v3.0.1/logo` | Normative logo guidance |
+| `brand://v3.0.1/components` | Normative component guidance |
+| `brand://v3.0.1/rendered-specimens` | Rendered code specimens used as examples |
+| `brand://v3.0.1/licensing` | Licence contract |
+| `brand://v3.0.1/trademark` | Trademark limits |
+| `brand://v3.0.1/provenance` | Third-party asset provenance |
+| `brand://v3.0.1/changelog` | Release history and migrations |
 
 Use MCP resource discovery rather than assuming this list is exhaustive. The
 public [brand manifest](/downloads/brand-manifest.json) is the
@@ -127,9 +127,10 @@ versioned documentation site instead.
 
 Every tool is annotated read-only, non-destructive, idempotent, and closed to
 the outside world. The server accepts resource IDs and token names—not paths or
-URLs. Its allowlist excludes `context/`, `.git/`, `input/`, build caches,
-credentials, and maintainer operations. It rejects unknown versions,
-resources, kinds, and tokens, and it cannot modify the checkout.
+URLs. Its allowlist excludes internal process data, version-control metadata,
+designer intake material, build caches, credentials, and maintainer
+operations. It rejects unknown versions, resources, kinds, and tokens, and it
+cannot modify the checkout.
 
 The protocol smoke test initializes a real stdio session, discovers resources
 and tools, reads a resource, exercises lookup and validation, and runs as part
@@ -153,3 +154,5 @@ or generated Pages history as brand guidance. Marks remain subject to the
 trademark and brand-asset terms even when token values or code are MIT licensed.
 
 
+---
+Source: https://projectious-work.github.io/brand/docs/ai/index.md

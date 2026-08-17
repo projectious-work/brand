@@ -28,7 +28,7 @@
     {
       "id": "ai-guide",
       "kind": "normative",
-      "path": "src/content/docs/ai/_index.md"
+      "path": "src/content/docs/ai/index.md"
     },
     {
       "id": "foundations",
