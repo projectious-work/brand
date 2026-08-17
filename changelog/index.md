@@ -7,7 +7,7 @@ Published changes to the projectious.work brand system, documentation, tokens,
 and supporting assets.
 
 
-- [v3.0.1 — recovered design-system site](https://projectious-work.github.io/brand/changelog/release-v3-0-1/index.md) — Restores the complete revised documentation and visual specimens.
+- [v3.0.2 — recovered design-system site](https://projectious-work.github.io/brand/changelog/release-v3-0-2/index.md) — Restores the complete revised documentation and visual specimens.
 - [v3.0.0 — first-party Hugo theme and company standards](https://projectious-work.github.io/brand/changelog/release-v3-0-0/index.md) — Brand moved to its first-party Hugo theme and adopted company standards.
 - [v2.1.1 — release and deployment corrections](https://projectious-work.github.io/brand/changelog/release-v2-1-1/index.md) — Theme examples and release deployment now behave consistently.
 - [v2.1.0 — complete tokens and worked examples](https://projectious-work.github.io/brand/changelog/release-v2-1-0/index.md) — Complete generated tokens, seven worked examples, and broader implementation guidance.

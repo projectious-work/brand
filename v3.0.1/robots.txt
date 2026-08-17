@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /brand/v3.0.1/search/
-Disallow: *print.html
-
-Sitemap: https://projectious-work.github.io/brand/v3.0.1/sitemap.xml
