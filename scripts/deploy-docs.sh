@@ -84,6 +84,11 @@ for v in "${VERSIONS[@]}"; do
   echo "Staged ${v}"
 done
 
+# Archived releases retain their original content and renderer, but every
+# release selector points at the same supported release set. This post-process
+# updates only the selector markup in the staged static snapshots.
+node "${ROOT_DIR}/scripts/sync-release-menus.mjs" "${WORKTREE_DIR}"
+
 # Tell GitHub Pages to publish the prebuilt Hugo output without Jekyll.
 : > "${WORKTREE_DIR}/.nojekyll"
 
