@@ -10,6 +10,14 @@
     html, body { margin: 0; padding: 0; height: 100%; }
     body { font-family: var(--font-body); color: var(--color-text-primary); overflow: hidden; }
     #root { height: 100vh; display: flex; flex-direction: column; }
+    /* Same labelled three-way switch every other card carries. The topbar icon
+       cycles the same state, but an icon alone is not discoverable. */
+    .appearance { position: fixed; right: 16px; bottom: 16px; z-index: 50; display: flex; gap: 4px;
+      background: var(--surface); border: 1px solid var(--border); border-radius: 9999px;
+      padding: 4px; box-shadow: var(--shadow-2); }
+    .appearance button { font-family: var(--font-body); font-size: 12px; line-height: 1; padding: 7px 13px;
+      border: 0; border-radius: 9999px; background: transparent; color: var(--fg-2); cursor: pointer; }
+    .appearance button[aria-pressed="true"] { background: var(--surface-2); color: var(--fg-1); font-weight: 600; }
   </style>
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -17,6 +25,11 @@
 </head>
 <body>
   <div id="root"></div>
+  <div class="appearance" role="group" aria-label="Appearance">
+    <button data-appearance="light">Light</button>
+    <button data-appearance="navy">Navy dark</button>
+    <button data-appearance="dark">Deep dark</button>
+  </div>
   <script>
     const NS = window.ProjectiousWorkDesignSystem_019de8;
     const { Sidebar, Topbar, PipelineList, RunDetail, StatusBar, THEMES } = NS;
@@ -34,15 +47,32 @@
       const [active, setActive] = React.useState('pipelines');
       const [selectedId, setSelectedId] = React.useState(1);
       const [mode, setMode] = React.useState(() => {
-        try { return localStorage.getItem('pw-theme-mode') || 'light'; } catch (e) { return 'light'; }
+        try { var v = localStorage.getItem('pw-theme-mode'); return (v === 'dark' && !localStorage.getItem('pw-theme-explicit')) ? 'navy' : (v || 'light'); } catch (e) { return 'light'; }
       });
       const theme = THEMES[mode] || THEMES.light;
       const selected = PIPELINES.find(p => p.id === selectedId);
       React.useEffect(() => {
         try { localStorage.setItem('pw-theme-mode', mode); } catch (e) {}
         document.body.style.background = theme.appBg;
+        // Keep the token layer in step, so the switch chrome itself re-themes.
+        var root = document.documentElement;
+        root.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
+        document.body.setAttribute('data-theme', mode === 'light' ? 'light' : 'dark');
+        if (mode === 'dark') { root.setAttribute('data-surface', 'deep'); document.body.setAttribute('data-surface', 'deep'); }
+        else { root.removeAttribute('data-surface'); document.body.removeAttribute('data-surface'); }
+        document.querySelectorAll('[data-appearance]').forEach(function (b) {
+          b.setAttribute('aria-pressed', b.getAttribute('data-appearance') === mode ? 'true' : 'false');
+        });
       }, [mode]);
-      const toggleMode = () => setMode(m => m === 'dark' ? 'light' : 'dark');
+      const toggleMode = () => setMode(m => m === 'light' ? 'navy' : m === 'navy' ? 'dark' : 'light');
+      React.useEffect(() => {
+        function onPick(e) {
+          var b = e.target.closest('[data-appearance]');
+          if (b) setMode(b.getAttribute('data-appearance'));
+        }
+        document.addEventListener('click', onPick);
+        return () => document.removeEventListener('click', onPick);
+      }, []);
       return h('div', { style: { display: 'flex', flex: 1, minHeight: 0, background: theme.appBg } },
         h(Sidebar, { active, onNav: setActive, theme }),
         h('div', { style: { flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 } },

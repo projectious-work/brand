@@ -1,7 +1,7 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Layout · Responsive" subtitle="Four breakpoints, grid collapse, 44px touch floor" viewport="700x275" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
-<style>.bp{flex:1;border:1px solid #cdd0d5;border-radius:6px;padding:8px 10px;display:flex;flex-direction:column;gap:3px}.bp .v{font-family:var(--font-code);font-size:13px;color:#1d3352;font-weight:500}.bp .k{font-family:var(--font-heading);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:#c04424}.bp .d{font-family:var(--font-body);font-size:10.5px;color:#5c6f82;line-height:1.4}
-.gcell{height:22px;background:#d3deec;border-radius:2px;flex:1}</style>
+<!-- @dsCard group="Brand" name="Layout · Responsive" subtitle="Four breakpoints, grid collapse, 44px touch floor" viewport="700x275" --><html data-theme="light"><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>.bp{flex:1;border:1px solid var(--border);border-radius:6px;padding:8px 10px;display:flex;flex-direction:column;gap:3px}.bp .v{font-family:var(--font-code);font-size:13px;color:var(--fg-1);font-weight:500}.bp .k{font-family:var(--font-heading);font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.08em;color:var(--orange-11)}.bp .d{font-family:var(--font-body);font-size:10.5px;color:var(--fg-3);line-height:1.4}
+.gcell{height:22px;background:var(--midnight-4);border-radius:2px;flex:1}</style>
 <div class="col" style="gap:12px">
   <div class="row" style="gap:8px;align-items:stretch">
     <div class="bp"><div class="k">base</div><div class="v">&lt; 640</div><div class="d">Phone. 4 columns. Not a breakpoint — the starting point.</div></div>
@@ -18,10 +18,11 @@
     <div class="col" style="gap:4px;flex:0 0 200px">
       <div class="mono">44px touch floor</div>
       <div class="row" style="gap:6px;align-items:center">
-        <div style="width:44px;height:44px;border:1.5px dashed #E05232;border-radius:6px;display:flex;align-items:center;justify-content:center"><div style="width:32px;height:32px;background:#1d3352;border-radius:6px"></div></div>
+        <div style="width:44px;height:44px;border:1.5px dashed #E05232;border-radius:6px;display:flex;align-items:center;justify-content:center"><div style="width:32px;height:32px;background:var(--midnight-9);border-radius:6px"></div></div>
         <div class="sub" style="font-size:10.5px">32/40/48px control heights sit inside a 44px hit area.</div>
       </div>
     </div>
   </div>
 </div>
+<script src="card-mode.js"></script>
 </body></html>

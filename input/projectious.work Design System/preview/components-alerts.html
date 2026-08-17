@@ -1,9 +1,21 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Components · Alerts" subtitle="Info · Success · Warning · Danger" viewport="700x260" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
+<!-- @dsCard group="Brand" name="Components · Alerts" subtitle="Info · Success · Warning · Danger" viewport="700x340" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  /* One role per alert: tint, rule, label and body text all resolve from the
+     same --color-<role>-* set, so they cannot drift apart in any appearance. */
+  .alert { padding:12px 16px; border-radius:4px; font-family:var(--font-body); font-size:14px; line-height:1.5; border-left:3px solid }
+  .alert strong { font-family:var(--font-heading); font-weight:600; color:inherit }
+  .info    { background:var(--color-info-bg);    border-left-color:var(--color-info);    color:var(--color-info-fg) }
+  .success { background:var(--color-success-bg); border-left-color:var(--color-success); color:var(--color-success-fg) }
+  .warning { background:var(--color-warning-bg); border-left-color:var(--color-warning); color:var(--color-warning-fg) }
+  .danger  { background:var(--color-danger-bg);  border-left-color:var(--color-danger);  color:var(--color-danger-fg) }
+</style>
 <div class="col" style="gap:8px">
-  <div style="padding:12px 16px;border-radius:4px;background:#dae2ec;border-left:3px solid #1d3352;font-family:var(--font-body);font-size:14px;line-height:1.5;color:#142438"><strong style="font-family:var(--font-heading);font-weight:600;color:#1d3352">Info</strong> · Pipeline validation passed all 12 checks.</div>
-  <div style="padding:12px 16px;border-radius:4px;background:#d1ebe0;border-left:3px solid #2f7d65;font-family:var(--font-body);font-size:14px;line-height:1.5;color:#142438"><strong style="font-family:var(--font-heading);font-weight:600;color:#2f7d65">Success</strong> · Deployment complete. All agents healthy.</div>
-  <div style="padding:12px 16px;border-radius:4px;background:#f5ecd0;border-left:3px solid #8b6508;font-family:var(--font-body);font-size:14px;line-height:1.5;color:#142438"><strong style="font-family:var(--font-heading);font-weight:600;color:#8b6508">Warning</strong> · Agent "monitor" idle for 2 hours.</div>
-  <div style="padding:12px 16px;border-radius:4px;background:#fce8e8;border-left:3px solid #a8261c;font-family:var(--font-body);font-size:14px;line-height:1.5;color:#142438"><strong style="font-family:var(--font-heading);font-weight:600;color:#a8261c">Danger</strong> · Policy violation — deployment blocked.</div>
+  <div class="alert info"><strong>Info</strong> · Pipeline validation passed all 12 checks.</div>
+  <div class="alert success"><strong>Success</strong> · Deployment complete. All agents healthy.</div>
+  <div class="alert warning"><strong>Warning</strong> · Agent "monitor" idle for 2 hours.</div>
+  <div class="alert danger"><strong>Danger</strong> · Policy violation — deployment blocked.</div>
+  <div class="sub">The label takes <span class="mono">color:inherit</span> rather than its own value — one role per alert, so a label can never end up in a different hue from the text beside it.</div>
 </div>
+<script src="card-mode.js"></script>
 </body></html>

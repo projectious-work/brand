@@ -1,8 +1,8 @@
-export function Header({ dark = false }) {
-  const fg = dark ? '#c5daf0' : '#142438';
-  const sub = dark ? '#97a8b8' : '#5c6f82';
-  const border = dark ? 'rgba(255,255,255,0.08)' : '#cdd0d5';
-  const bg = dark ? '#0e1720' : 'rgba(248,249,251,0.88)';
+export function Header() {
+  const fg = 'var(--fg-1)';
+  const sub = 'var(--fg-2)';
+  const border = 'var(--border)';
+  const bg = 'var(--header-bg)';
   return (
     <header style={{
       position: 'sticky', top: 0, zIndex: 10,
@@ -14,7 +14,7 @@ export function Header({ dark = false }) {
         <img src="../../assets/logo/icon-light.svg" width="28" height="28" style={{ display: dark ? 'none' : 'block' }} alt="" />
         <img src="../../assets/logo/icon-dark.svg" width="28" height="28" style={{ display: dark ? 'block' : 'none' }} alt="" />
         <span style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 17, color: fg, letterSpacing: '-0.3px' }}>
-          projectious<span style={{ color: '#7490b2' }}>·</span><span style={{ color: '#E05232' }}>work</span>
+          projectious<span style={{ color: 'var(--midnight-8)' }}>·</span><span style={{ color: 'var(--logo-accent)' }}>work</span>
         </span>
       </a>
       <nav style={{ display: 'flex', alignItems: 'center', gap: 28 }}>
@@ -24,7 +24,7 @@ export function Header({ dark = false }) {
         <button style={{
           fontFamily: 'var(--font-heading)', fontWeight: 500, fontSize: 13,
           padding: '8px 18px', border: 0, borderRadius: 6, whiteSpace: 'nowrap',
-          color: '#fff', background: '#cc4528', cursor: 'pointer'
+          color: 'var(--fixed-control-text)', background: 'var(--color-accent-solid)', cursor: 'pointer'
         }}>Start a project</button>
       </nav>
     </header>

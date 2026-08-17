@@ -4,7 +4,7 @@
  * change values upstream, then re-sync. Base element styles below are local.
  * Self-contained: includes Google Font @import for the three brand families. */
 
-/* Font binaries are self-hosted by the consuming brand site. */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap');
 
 :root {
   /* ── Named brand colors — shortcuts into the scales, not a separate palette ── */

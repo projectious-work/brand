@@ -1,5 +1,5 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Brand · Mark variants" subtitle="Color light · dark · mono-black · mono-white" viewport="700x960" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css">
+<!-- @dsCard group="Brand" name="Brand · Mark variants" subtitle="Color light · dark · mono-black · mono-white" viewport="700x960" --><html data-theme="light"><head><meta charset="utf-8"><link rel="stylesheet" href="card.css">
 <style>
   .chip { flex:0 0 96px; height:96px; border-radius:9px; padding:14px; display:flex; align-items:center; justify-content:center; }
   .smallchip { width:48px; height:48px; border-radius:6px; padding:6px; display:flex; align-items:center; justify-content:center; }
@@ -10,7 +10,7 @@
   .specrow { display:flex; align-items:flex-end; gap:18px; }
   .specgroup { display:flex; flex-direction:column; align-items:center; }
 </style>
-</head><body>
+</head><body data-theme="light" data-mode="light">
 <div class="col" style="gap:18px">
 
   <!-- Row 1: the four canonical variants -->
@@ -18,17 +18,17 @@
     <div class="label" style="margin-bottom:8px">Canonical mark variants</div>
     <div class="row" style="gap:10px;align-items:flex-start">
       <div class="group">
-        <div class="chip" style="background:#f8f9fb"><img src="../assets/logo/icon-light.svg" width="64" height="64" alt=""></div>
+        <div class="chip" style="background:var(--bg)"><img src="../assets/logo/icon-light.svg" width="64" height="64" alt=""></div>
         <div class="chiplabel">Color · light</div>
         <div class="chipsub">on Midnight-1<br>#f8f9fb</div>
       </div>
       <div class="group">
-        <div class="chip" style="background:#1d3352"><img src="../assets/logo/icon-dark.svg" width="64" height="64" alt=""></div>
+        <div class="chip" style="background:var(--midnight-9)"><img src="../assets/logo/icon-dark.svg" width="64" height="64" alt=""></div>
         <div class="chiplabel">Color · dark</div>
         <div class="chipsub">on Midnight-9<br>#1d3352</div>
       </div>
       <div class="group">
-        <div class="chip" style="background:#fff;border:1px solid #cdd0d5"><img src="../assets/logo/icon-mono-black.svg" width="64" height="64" alt=""></div>
+        <div class="chip" style="background:#fff;border:1px solid var(--border)"><img src="../assets/logo/icon-mono-black.svg" width="64" height="64" alt=""></div>
         <div class="chiplabel">Mono · black</div>
         <div class="chipsub">true mono · single tone</div>
       </div>
@@ -45,11 +45,11 @@
     <div class="label" style="margin-bottom:8px">Min size · specimen</div>
     <div class="sub" style="margin-bottom:8px">Below 16 px the inner rings collapse — use a wordmark or favicon instead.</div>
     <div class="specrow">
-      <div class="specgroup"><img src="../assets/logo/icon-light.svg" width="16" height="16" alt=""><div class="pxlabel">16 px · min</div></div>
-      <div class="specgroup"><img src="../assets/logo/icon-light.svg" width="24" height="24" alt=""><div class="pxlabel">24 px</div></div>
-      <div class="specgroup"><img src="../assets/logo/icon-light.svg" width="32" height="32" alt=""><div class="pxlabel">32 px</div></div>
-      <div class="specgroup"><img src="../assets/logo/icon-light.svg" width="48" height="48" alt=""><div class="pxlabel">48 px</div></div>
-      <div class="specgroup"><img src="../assets/logo/icon-light.svg" width="64" height="64" alt=""><div class="pxlabel">64 px</div></div>
+      <div class="specgroup"><img class="ctx" src="../assets/logo/icon-light.svg" width="16" height="16" alt=""><div class="pxlabel">16 px · min</div></div>
+      <div class="specgroup"><img class="ctx" src="../assets/logo/icon-light.svg" width="24" height="24" alt=""><div class="pxlabel">24 px</div></div>
+      <div class="specgroup"><img class="ctx" src="../assets/logo/icon-light.svg" width="32" height="32" alt=""><div class="pxlabel">32 px</div></div>
+      <div class="specgroup"><img class="ctx" src="../assets/logo/icon-light.svg" width="48" height="48" alt=""><div class="pxlabel">48 px</div></div>
+      <div class="specgroup"><img class="ctx" src="../assets/logo/icon-light.svg" width="64" height="64" alt=""><div class="pxlabel">64 px</div></div>
     </div>
   </div>
 
@@ -57,13 +57,13 @@
   <div>
     <div class="label" style="margin-bottom:8px">Clear space · ½ mark height</div>
     <div class="sub" style="margin-bottom:8px">Reserve clear space equal to half the mark's height on every side.</div>
-    <div style="position:relative;display:inline-block;background:#f8f9fb;padding:32px;border-radius:9px;border:1px dashed #c3d1e3">
-      <div style="position:absolute;left:0;top:0;right:0;bottom:0;background:repeating-linear-gradient(45deg,transparent 0 6px,rgba(29,51,82,0.05) 6px 7px);border-radius:9px;pointer-events:none"></div>
-      <img src="../assets/logo/icon-light.svg" width="64" height="64" alt="" style="display:block;position:relative;z-index:1">
-      <div style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--font-code);font-size:9px;color:#7490b2">x/2</div>
-      <div style="position:absolute;right:8px;top:50%;transform:translateY(-50%);font-family:var(--font-code);font-size:9px;color:#7490b2">x/2</div>
-      <div style="position:absolute;top:8px;left:50%;transform:translateX(-50%);font-family:var(--font-code);font-size:9px;color:#7490b2">x/2</div>
-      <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-family:var(--font-code);font-size:9px;color:#7490b2">x/2</div>
+    <div style="position:relative;display:inline-block;background:var(--bg);padding:32px;border-radius:9px;border:1px dashed var(--border-strong)">
+      <div style="position:absolute;left:0;top:0;right:0;bottom:0;background:repeating-linear-gradient(45deg,transparent 0 6px,var(--tint-highlight-line) 6px 7px);border-radius:9px;pointer-events:none"></div>
+      <img class="ctx" src="../assets/logo/icon-light.svg" width="64" height="64" alt="" style="display:block;position:relative;z-index:1">
+      <div style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--font-code);font-size:9px;color:var(--fg-3)">x/2</div>
+      <div style="position:absolute;right:8px;top:50%;transform:translateY(-50%);font-family:var(--font-code);font-size:9px;color:var(--fg-3)">x/2</div>
+      <div style="position:absolute;top:8px;left:50%;transform:translateX(-50%);font-family:var(--font-code);font-size:9px;color:var(--fg-3)">x/2</div>
+      <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);font-family:var(--font-code);font-size:9px;color:var(--fg-3)">x/2</div>
     </div>
   </div>
 
@@ -73,11 +73,11 @@
     <div class="sub" style="margin-bottom:8px">The mark already reads as round, but verify cropping behavior at avatar / favicon sizes.</div>
     <div class="row" style="gap:14px;align-items:center">
       <div class="specgroup">
-        <div style="width:40px;height:40px;border-radius:50%;background:#f8f9fb;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #cdd0d5"><img src="../assets/logo/icon-light.svg" width="32" height="32" alt=""></div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--border)"><img src="../assets/logo/icon-light.svg" width="32" height="32" alt=""></div>
         <div class="pxlabel">40 · light</div>
       </div>
       <div class="specgroup">
-        <div style="width:40px;height:40px;border-radius:50%;background:#1d3352;display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="../assets/logo/icon-dark.svg" width="32" height="32" alt=""></div>
+        <div style="width:40px;height:40px;border-radius:50%;background:var(--midnight-9);display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="../assets/logo/icon-dark.svg" width="32" height="32" alt=""></div>
         <div class="pxlabel">40 · dark</div>
       </div>
       <div class="specgroup">
@@ -85,7 +85,7 @@
         <div class="pxlabel">32 · mono</div>
       </div>
       <div class="specgroup">
-        <div style="width:24px;height:24px;border-radius:50%;background:#f8f9fb;display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid #cdd0d5"><img src="../assets/logo/icon-light.svg" width="20" height="20" alt=""></div>
+        <div style="width:24px;height:24px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--border)"><img src="../assets/logo/icon-light.svg" width="20" height="20" alt=""></div>
         <div class="pxlabel">24 · favicon</div>
       </div>
     </div>
@@ -95,16 +95,23 @@
   <div>
     <div class="label" style="margin-bottom:8px">Transparent · no chip</div>
     <div class="sub" style="margin-bottom:8px">Silhouette on body color — header bars, document margins, slide corners.</div>
-    <div class="row" style="gap:18px;align-items:center;background:#f8f9fb;padding:14px 18px;border-radius:9px">
-      <img src="../assets/logo/icon-light.svg" width="40" height="40" alt="">
-      <span style="font-family:var(--font-body);font-size:13px;color:#1d3352">Reads cleanly on the off-white surface without a containing chip.</span>
+    <div class="row" style="gap:18px;align-items:center;background:var(--bg);padding:14px 18px;border-radius:9px">
+      <img class="ctx" src="../assets/logo/icon-light.svg" width="40" height="40" alt="">
+      <span style="font-family:var(--font-body);font-size:13px;color:var(--fg-1)">Reads cleanly on the off-white surface without a containing chip.</span>
     </div>
-    <div class="row" style="gap:18px;align-items:center;background:#1d3352;padding:14px 18px;border-radius:9px;margin-top:6px">
+    <div class="row" style="gap:18px;align-items:center;background:var(--midnight-9);padding:14px 18px;border-radius:9px;margin-top:6px">
       <img src="../assets/logo/icon-dark.svg" width="40" height="40" alt="">
-      <span style="font-family:var(--font-body);font-size:13px;color:#e8eef5">And on Midnight-9, the canonical brand surface for dark UI.</span>
+      <span style="font-family:var(--font-body);font-size:13px;color:#c5daf0">And on Midnight-9, the canonical brand surface for dark UI.</span>
     </div>
   </div>
 
   <div class="sub" style="margin-top:4px">Min size 16 px · clear space ½ mark height · monos are single-tone (no orange dot)</div>
 </div>
+<script src="card-mode.js"></script>
+<script>
+document.addEventListener('cardmode', function (e) {
+  var src = '../assets/logo/icon-' + (e.detail.id === 'light' ? 'light' : 'dark') + '.svg';
+  document.querySelectorAll('img.ctx').forEach(function (i) { i.src = src; });
+});
+</script>
 </body></html>

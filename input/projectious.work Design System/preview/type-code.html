@@ -1,13 +1,28 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Type · Code (IBM Plex Mono)" subtitle="Syntax theme for code blocks" viewport="700x210" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
+<!-- @dsCard group="Brand" name="Type · Code (IBM Plex Mono)" subtitle="Syntax theme for code blocks — same roles as Colors · Syntax roles" viewport="700x340" --><html data-theme="light"><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  .spec { background:var(--code-surface); border:1px solid var(--code-edge); border-radius:6px; padding:16px 18px; font-family:var(--font-code); font-size:var(--type-code-size); line-height:var(--type-code-lh); color:var(--code-plain) }
+  .spec::selection, .spec *::selection { background:var(--code-selection-bg); color:var(--code-selection-fg) }
+  .c { color:var(--code-comment); font-style:italic }
+  .k { color:var(--code-keyword); font-weight:700 }
+  .t { color:var(--code-type); font-weight:600 }
+  .f { color:var(--code-function); font-weight:500 }
+  .s { color:var(--code-string) }
+  .n { color:var(--code-number) }
+  .p { color:var(--code-operator) }
+  .a { color:var(--code-macro); font-style:italic }
+  .spec pre { background:transparent; color:inherit; font-size:var(--type-code-size); line-height:var(--type-code-lh); margin:0; padding:0; border:0 }
+</style>
 <div class="col" style="gap:8px">
-  <div style="background:#131e2b;border-radius:6px;padding:14px 16px;font-family:var(--font-code);font-size:12px;line-height:1.8;color:#c5daf0">
-    <span style="color:#7e8f9e">// Agent pipeline definition</span><br>
-    <span style="color:#8aacc8">const</span> <span style="color:#c5daf0">pipeline</span> <span style="color:#97a8b8">=</span> <span style="color:#c5daf0">createPipeline</span><span style="color:#97a8b8">({</span><br>
-    &nbsp;&nbsp;<span style="color:#97a8b8">name:</span> <span style="color:#ea7558">"validate-deploy"</span><span style="color:#97a8b8">,</span><br>
-    &nbsp;&nbsp;<span style="color:#97a8b8">policy:</span> <span style="color:#ea7558">"strict"</span><br>
-    <span style="color:#97a8b8">});</span>
+  <div class="spec">
+    <span class="c">// Agent pipeline definition</span><br>
+    <span class="k">const</span> pipeline<span class="p">:</span> <span class="t">Pipeline</span> <span class="p">=</span> <span class="f">createPipeline</span><span class="p">({</span><br>
+    &nbsp;&nbsp;<span class="a">name</span><span class="p">:</span> <span class="s">"validate-deploy"</span><span class="p">,</span><br>
+    &nbsp;&nbsp;<span class="a">retries</span><span class="p">:</span> <span class="n">3</span><span class="p">,</span><br>
+    &nbsp;&nbsp;<span class="a">policy</span><span class="p">:</span> <span class="s">"strict"</span><br>
+    <span class="p">});</span>
   </div>
-  <div class="sub">IBM Plex Mono · syntax theme — keywords midnight-11, strings orange-light, comments slate-8, bg midnight-2</div>
+  <div class="sub">IBM Plex Mono on <span class="mono">--code-panel-surface</span>. Roles are the canonical ten — keyword <span class="mono">--syntax-keyword</span> 700, type <span class="mono">--syntax-type</span> 600, function <span class="mono">--syntax-function</span> 500, string <span class="mono">--syntax-string</span>, number <span class="mono">--syntax-number</span>, decorator <span class="mono">--syntax-macro</span> italic, comment <span class="mono">--syntax-comment</span> italic, operator <span class="mono">--syntax-operator</span>. See <em>Colors · Syntax roles</em> for the full set and the optional light companion.</div>
 </div>
+<script src="card-mode.js"></script>
 </body></html>

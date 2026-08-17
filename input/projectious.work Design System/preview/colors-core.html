@@ -1,33 +1,69 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Colors · Core (3-color brand)" subtitle="Midnight · Orange · Slate" viewport="700x185" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
-<div class="col">
-  <div class="row" style="gap:14px;align-items:flex-end">
-    <div class="col" style="gap:4px;flex:0 0 auto">
-      <div style="width:96px;height:96px;border-radius:13px;background:#1d3352"></div>
-      <div class="label">Midnight</div>
-      <div class="mono">#1d3352</div>
+<!-- @dsCard group="Brand" name="Colors · Core (3-color brand)" subtitle="Identity constants — the same in all three appearances" viewport="700x505" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  .core { display:grid; grid-template-columns:repeat(3,1fr); gap:14px }
+  .vars { display:grid; grid-template-columns:repeat(4,1fr); gap:10px }
+  /* A hairline on every chip: three of these values sit within a step or two of
+     one of the page surfaces (primary-dark IS the navy page), so without an edge
+     a swatch can disappear into the card it is printed on. */
+  .chip { border-radius:13px; box-shadow:inset 0 0 0 1px var(--border); }
+  .chip.lg { height:104px }
+  .chip.sm { height:46px; border-radius:8px }
+  .nm { font-family:var(--font-heading); font-size:13px; font-weight:600; color:var(--fg-1); margin-top:7px }
+  .hx { font-family:var(--font-code); font-size:11px; color:var(--fg-3); margin-top:1px }
+  .use { font-family:var(--font-body); font-size:12px; color:var(--fg-2); margin-top:2px }
+  .flag { font-family:var(--font-body); font-size:11px; line-height:1.4; min-height:16px; color:var(--fg-3); margin-top:1px; font-style:italic }
+</style>
+<div class="col" style="gap:16px">
+
+  <div class="core">
+    <div>
+      <div class="chip lg" style="background:#1d3352"></div>
+      <div class="nm">Midnight</div><div class="hx">#1d3352</div>
+      <div class="use">Authority and depth</div>
     </div>
-    <div class="col" style="gap:4px;flex:0 0 auto">
-      <div style="width:96px;height:96px;border-radius:13px;background:#E05232"></div>
-      <div class="label">Accent (Orange)</div>
-      <div class="mono">#E05232</div>
+    <div>
+      <div class="chip lg" style="background:#e05232"></div>
+      <div class="nm">Accent · Orange</div><div class="hx">#e05232</div>
+      <div class="use">Moments of decision</div>
     </div>
-    <div class="col" style="gap:4px;flex:0 0 auto">
-      <div style="width:96px;height:96px;border-radius:13px;background:#546a82"></div>
-      <div class="label">Slate</div>
-      <div class="mono">#546a82</div>
-    </div>
-    <div class="col" style="gap:6px;flex:1;min-width:0">
-      <div class="row" style="gap:6px">
-        <div style="flex:1;height:32px;border-radius:6px;background:#132440"></div>
-        <div style="flex:1;height:32px;border-radius:6px;background:#2b4d78"></div>
-      </div>
-      <div class="row" style="gap:6px">
-        <div style="flex:1;height:32px;border-radius:6px;background:#b84228"></div>
-        <div style="flex:1;height:32px;border-radius:6px;background:#ea7558"></div>
-      </div>
-      <div class="sub">Primary dark / light · Accent dark / light</div>
+    <div>
+      <div class="chip lg" style="background:#546a82"></div>
+      <div class="nm">Slate</div><div class="hx">#546a82</div>
+      <div class="use">Connective tissue</div>
     </div>
   </div>
+
+  <div>
+    <div class="label" style="margin-bottom:7px">Identity variants</div>
+    <div class="vars">
+      <div>
+        <div class="chip sm" style="background:#132440"></div>
+        <div class="hx" style="margin-top:6px">#132440</div><div class="use">Primary dark</div>
+        <div class="flag" id="navyflag"></div>
+      </div>
+      <div>
+        <div class="chip sm" style="background:#2b4d78"></div>
+        <div class="hx" style="margin-top:6px">#2b4d78</div><div class="use">Primary light</div>
+      </div>
+      <div>
+        <div class="chip sm" style="background:#b84228"></div>
+        <div class="hx" style="margin-top:6px">#b84228</div><div class="use">Accent pressed</div>
+      </div>
+      <div>
+        <div class="chip sm" style="background:#ea7558"></div>
+        <div class="hx" style="margin-top:6px">#ea7558</div><div class="use">Accent on dark</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">Yes — one identity for all three appearances. These seven values are <strong>constants</strong>: they are what the brand <em>is</em>, so a mark, a CTA or a pressed state is the same colour on light, deep dark and navy dark. What changes between appearances is everything around them — surfaces, borders and text roles — which is why the same accent reads correctly on all three. Scale step 9 is constant for the same reason; see <em>Colors · 12-step scales</em>.</div>
 </div>
+<script src="card-mode.js"></script>
+<script>
+document.addEventListener('cardmode', function (e) {
+  document.getElementById('navyflag').textContent =
+    e.detail.id === 'navy' ? '— this is the navy page colour' : '';
+});
+</script>
 </body></html>

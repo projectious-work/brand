@@ -28,13 +28,19 @@ SITE_BASE_URL="${DOCS_BASE_URL:-https://projectious-work.github.io/brand/}"
 
 # DOCS_VERSION stays supported so anything calling this directly keeps working.
 DOCS_VERSIONS="${DOCS_VERSIONS:-${DOCS_VERSION:-main}}"
+DOCS_REMOVE_VERSIONS="${DOCS_REMOVE_VERSIONS:-}"
 
 read -r -a VERSIONS <<< "${DOCS_VERSIONS}"
+read -r -a REMOVE_VERSIONS <<< "${DOCS_REMOVE_VERSIONS}"
 [[ ${#VERSIONS[@]} -gt 0 ]] || { echo "DOCS_VERSIONS is empty." >&2; exit 1; }
 
 for v in "${VERSIONS[@]}"; do
   [[ "${v}" =~ ^[A-Za-z0-9._-]+$ ]] \
     || { echo "version '${v}' may contain only letters, numbers, dots, underscores, or hyphens." >&2; exit 1; }
+done
+for v in "${REMOVE_VERSIONS[@]}"; do
+  [[ "${v}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]] \
+    || { echo "removed version '${v}' must be a stable semver tag." >&2; exit 1; }
 done
 
 # --- one worktree, staged before anything is built ----------------------------
@@ -58,6 +64,11 @@ else
   git -C "${ROOT_DIR}" worktree add --detach "${WORKTREE_DIR}"
   git -C "${WORKTREE_DIR}" checkout --orphan "${PAGES_BRANCH}"
 fi
+
+for v in "${REMOVE_VERSIONS[@]}"; do
+  rm -rf "${WORKTREE_DIR:?}/${v}"
+  echo "Removed archived ${v}"
+done
 
 for v in "${VERSIONS[@]}"; do
   if [[ "${v}" == "main" ]]; then

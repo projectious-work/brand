@@ -150,13 +150,32 @@ projectious.work writes like an honest principal engineer who has stopped trying
 
 The visual system is **disciplined, dual-mode, and quietly opinionated**. It looks like infrastructure — readable, repairable, no decorative noise.
 
+### Three appearances
+
+The system supports **three** appearances, not two:
+
+| Appearance | Selector | Page | Raised | Subtle | Border |
+|---|---|---|---|---|---|
+| Light | `[data-theme="light"]` | `#f8f9fb` | `#ffffff` | `#f0f3f8` | `#cdd0d5` |
+| Navy dark *(default dark)* | `[data-theme="dark"]` | `#132440` | `#1a2b3e` | `#20354d` | `#2e4b68` |
+| Deep dark | `[data-theme="dark"][data-surface="deep"]` | `#0e1720` | `#131e2b` | `#1a2b3e` | `#263f5a` |
+
+With no explicit `data-theme`, the system follows `prefers-color-scheme`; dark resolves to **navy dark**, and `data-surface="deep"` opts back into deep dark.
+
+**Navy is the default dark, not deep dark.** Deep dark sits at the very bottom of the ramp, which leaves panels almost no room above the page and reads as heavy across a whole interface. Navy starts higher, so raised surfaces and code panels separate properly while the appearance still reads as dark. Deep dark remains a full, supported appearance — it is simply not what anyone sees first. *(This inverts the upstream briefing's default; see `upstream-sync-note.md`.)*
+
+**Navy dark is a documented derivative of deep dark, not a separate theme.** It overrides only midnight steps 1–5 and the surfaces, borders and neutral tag background that read off them. Orange and slate, every text and status role, the terminal palette and the syntax palette are inherited from deep dark unchanged. Code and terminal panels deliberately stay on `#0e1720` — deeper than the navy page — so a code block still reads as an inset panel instead of merging into the surface behind it.
+
+Because navy is now the default, the *deep* block is the one that carries the overrides. `colors_and_type.css` prints the complete list as an **override manifest** above that block — fourteen names — so a consumer can check "did I miss one?" mechanically instead of by eye.
+
 ### Color
-- **Three-color core.** Midnight (`#1d3352`) for authority and depth. Tempered orange (`#E05232`) for moments of decision. Slate (`#546a82`) for connective tissue.
+- **Three-color core.** Midnight (`#1d3352`) for authority and depth. Tempered orange (`#e05232`) for moments of decision. Slate (`#546a82`) for connective tissue.
 - **12-step scales** (Radix convention) for midnight, orange, and slate, in both light and dark modes — see `colors_and_type.css`. Step 9 is the saturated brand color and stays constant across modes.
 - **The light app background is `midnight-1` (`#f8f9fb`)**, not white. Step 1 is the app background in the step roles. White (`#fff`) returns as the **raised surface**, so a card lifts off the page instead of separating by border alone. *(Changed in upstream v2.0.0 — the previous warm paper `#f5f4f2` and white page background are both retired.)*
 - **Step roles are binding.** 1 app bg · 2 subtle bg · 3 elem bg · 4 hover bg · 5 active bg · 6 subtle border · 7 border · 8 strong border · 9 solid bg · 10 solid hover · 11 low text · 12 high text. Only 11 and 12 are text roles — a border step never gets used as text.
 - **The accent is never body text.** `#E05232` measures 3.87:1 on white. Accent text takes `orange-11` (`#c04424`) on light, `accent-light` (`#ea7558`) on dark. `#E05232` remains the identity colour for marks, borders, active states and syntax.
 - **Solid accent fills carrying white text use `--color-accent-solid` (`#cc4528`)**, 4.72:1 — not `orange-9`.
+- **Tag pairs are text-role over element-background.** `--tag-bg` / `--tag-text` and `--tag-bg-accent` / `--tag-text-accent`: step 3 as the tint, step 12 as the ink on light (8.54:1 for the accent pair — step 11 lands at 4.10 and was corrected). Solid pale tint, no outline.
 - **Semantic colours ship as a triple:** solid, tint (`-bg`), and on-tint foreground (`-fg`). Use `-fg` on the tint; the solid does not always clear AA against its own tint. Dark mode re-picks all three rather than reusing the light values.
 - **Links take `midnight-11`**, not the accent.
 - **No bluish-purple gradients.** No emoji-decorated cards. No rainbow categorization. Color is meaning, not garnish.
@@ -194,13 +213,25 @@ The visual system is **disciplined, dual-mode, and quietly opinionated**. It loo
 ### Hover and press
 - **Hover:** opacity drops to `0.88` for primary surfaces; border color shifts to `--midnight-7` for cards. **Never** lighten or darken brand colors on hover — the structure provides the hover affordance.
 - **Press (:active):** no scale-shrink; the button color simply locks at its hover state.
-- **Focus:** 2 px focus ring at midnight-9 with 15% alpha — `box-shadow: 0 0 0 2px rgba(29,51,82,0.15)`.
+- **Focus:** 2 px ring, `box-shadow: 0 0 0 2px var(--focus-ring-default)`. The conforming ring is `--focus-ring-strong`, applied by `data-focus="strong"` — see *Known default* below.
 
 ### Animation & motion
 - **Four durations:** 100 ms (micro/hover), 200 ms (standard/toggle), 300 ms (expand/accordion), 400 ms (page/modal).
 - **Two eases:** `ease-out` for things appearing, `ease-in` for things leaving.
 - **No bounces, no springs, no overshoots.** No parallax. No autoplay video.
 - **Slide transitions:** cut, or 200 ms fade. Staggered fade-up (40–80 ms increments) for sequential elements.
+
+### Overlays and fixed UI
+
+Overlay alphas and non-theming values are **named tokens**, never literals repeated through component CSS: `--scrim-modal`, `--scrim-palette`, `--scrim-lightbox`, `--tint-accent-active`, `--shadow-focus-light`, `--tint-code-header`, `--tint-highlight-line`, and the three dark code tints (`--tint-code-header-dark`, `--tint-code-divider-dark`, `--tint-code-control-dark`). Values that must *not* follow the theme — white on a solid control, print output, the reduced-transparency fallback — are `--fixed-*`.
+
+`data-transparency="reduced"` solidifies all three scrims, not just `--scrim`, so they cannot diverge under that setting.
+
+**Print is a `--fixed-*` context.** Paper does not follow `data-theme`, so the print set is the light value, always: `--fixed-print-page`, `--fixed-print-text`, `--fixed-print-muted`, `--fixed-print-border`, `--fixed-print-panel`, `--fixed-print-panel-bar`, plus `--fixed-print-code-bg` / `-border` / `-text` and `--fixed-print-external-url`. A print stylesheet carries no literals.
+
+**Selection.** The page pair is `--orange-3` under `--orange-12`, both theme-following. Code panels take their own pair (`--code-panel-selection-bg` / `-fg`, and `--code-panel-light-selection-*` for the opt-in light panel, reached with `data-code-surface="light"`) — the page tint is unreadable over a dark panel.
+
+Hex output is lowercase throughout.
 
 ### Transparency & blur
 - Used sparingly. Backdrop-blur only on dark-on-dark overlays (modal scrim) and on the dark-panel inner cards (`background: rgba(255,255,255,0.04)`). No frosted glass on light surfaces.
@@ -213,7 +244,8 @@ The visual system is **disciplined, dual-mode, and quietly opinionated**. It loo
 - **Mobile navigation:** tab bar for application surfaces, drawer for documentation.
 
 ### Terminal & syntax
-- **One dark terminal surface** (`#0e1720`) with sixteen ANSI slots plus chrome roles, all measured against that surface at a 4.95:1 floor. Configurations for tmux, WezTerm, Kitty, iTerm2, Zellij and Ghostty are documented upstream.
+- **One dark terminal surface** (`#0e1720`) with sixteen ANSI slots plus chrome roles, all measured against that surface at a 4.95:1 floor. Configurations for tmux, WezTerm, Kitty, iTerm2, Zellij and Ghostty are documented upstream. *(This bullet is about the terminal; a **code panel** is a different, lighter surface — see the dark-surface table below.)*
+- **The active tab's ink is a token, not white.** `--terminal-active-tab-fill` is `orange-9`, and white on it measures 3.76:1, so the label takes `--terminal-active-tab-text` (`#0e1720`, 4.81:1) — the same inversion the dark-mode status solids use.
 - **Ten syntax roles**, with hues assigned by measured perceptual distance rather than taste. Only the three neutrals (plain, operators, comments) share the blue-grey band, separated by lightness; every chromatic role holds its own hue.
 - **LSP modifiers are typography, not hue.** Ten modifiers against ten roles is a hundred states, which colour cannot carry.
 
@@ -234,7 +266,7 @@ The visual system is **disciplined, dual-mode, and quietly opinionated**. It loo
 
 ### Card recipe
 ```
-background: var(--color-surface);
+background: var(--elevated-1);     /* resolves to the surface; pairs with --shadow-1 */
 border: 1px solid var(--color-border);
 border-radius: var(--radius-lg);   /* 9px */
 padding: var(--space-4) var(--space-5);   /* 16px 24px */
@@ -248,12 +280,12 @@ padding: var(--space-4) var(--space-5);   /* 16px 24px */
 
 ## Iconography
 
-- **Library:** [Lucide](https://lucide.dev/) (MIT). Stroke-only, never filled.
-- **Stroke width:** 1.5 px. **Caps & joins:** round.
-- **Sizes:** 16 px (inline with text), 20 px (button glyphs), 24 px (nav, large affordances).
+- **Library:** [Tabler Icons](https://tabler.io/icons) (MIT). Stroke-only outline set, never filled — Tabler also ships a filled variant; it is not used.
+- **Stroke width:** 1.5 px. **Caps & joins:** round. Tabler ships at `stroke-width="2"`; override it to 1.5 — the set is drawn so the stroke can be varied.
+- **Sizes:** 16 px (inline with text), 20 px (button glyphs), 24 px (nav, large affordances). Tabler's native grid is 24 px, so all three are clean multiples.
 - **Color:** default `slate-11` (`#5c6f82`), active/selected `midnight-9` (`#1d3352`), danger `--danger`. Never colored unless meaningful (e.g. status).
-- **Custom icons** (when Lucide doesn't have it) must match: 24 px grid, 1.5 px stroke, round caps, single color, no fills.
-- **CDN usage:** `<script src="https://unpkg.com/lucide@latest"></script>` or per-icon `<img src="https://unpkg.com/lucide-static@latest/icons/check.svg">`. The icon set is **not** bundled into this project — pull from CDN at use time. This is documented as a deliberate substitution: the codebase recommends Lucide but doesn't ship a frozen copy.
+- **Custom icons** (when Tabler doesn't have it) must match: 24 px grid, 1.5 px stroke, round caps, single color, no fills.
+- **CDN usage:** per-icon `<img src="https://cdn.jsdelivr.net/npm/@tabler/icons@latest/icons/outline/check.svg">`, or the webfont `<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">` then `<i class="ti ti-check"></i>`. For React surfaces, inline the SVG rather than loading a script — a DOM-mutating icon script is overwritten on re-render. The icon set is **not** bundled into this project — pull from CDN at use time.
 - **Emoji:** not used in any brand surface (UI, slides, marketing, docs). See content fundamentals.
 - **Unicode glyphs as iconography:** the middle dot `·` (U+00B7) is approved for inline metadata separators and brand wordmarks. The check `✓`, dot `●`, and circle `○` are used inside terminal/log output where copy/paste compatibility matters. Otherwise prefer Lucide.
 - **The brand mark** (the stencil "peony bud" icon — see `assets/logo/icon-light.svg`) is **not** an icon — never use it as a generic glyph. It only appears in lockups.
@@ -292,7 +324,7 @@ padding: var(--space-4) var(--space-5);   /* 16px 24px */
 
 ### Known default
 
-The base focus ring (`box-shadow: 0 0 0 2px rgba(29,51,82,0.15)`) measures ~1.2:1 and does **not** meet WCAG 1.4.11. It is left as the default so that adopting this stylesheet changes nothing visually; `data-focus="strong"` is the conforming ring. New work should set it.
+The base focus ring (`--focus-ring-default`, `rgba(29,51,82,0.15)`) measures ~1.2:1 and does **not** meet WCAG 1.4.11. It is left as the default so that adopting this stylesheet changes nothing visually; `data-focus="strong"` is the conforming ring. New work should set it.
 
 ### Non-negotiable: never status by colour alone
 
@@ -302,9 +334,51 @@ See `preview/accessibility.html` for a live toggle demo of every setting above.
 
 ### Syntax and terminal — dark by default, light is optional
 
-The brand rule is **code blocks always dark** (`pre { background: var(--terminal-surface) }`). `--syntax-*` and `--terminal-*` are that dark-panel palette and remain the default for real code/terminal chrome.
+The brand rule is **code blocks always dark by default**. Two dark surfaces, not one:
 
-An optional companion set exists for the rare light-surface specimen: `--syntax-<role>-light` (same ten roles, darkened for ~4.7:1+ on white) and `--terminal-light-*` (full 16-slot ANSI set plus chrome, same slot names). Nothing switches to these automatically — a component opts in by using the token, the same way any other colour choice is made. See `preview/colors-syntax.html` and `preview/colors-terminal.html` for a live dark/light toggle, and `preview/components-code-blocks-light.html` for the light-panel code specimen.
+| | Token | Dark value | Why |
+|---|---|---|---|
+| Terminal | `--terminal-surface` | `#0e1720` | Black-ish — a terminal should read as a device surface |
+| Code panel | `--code-panel-surface` | `#131e2b` | One step up, so a code block reads as a panel rather than a hole in the page |
+
+The code surface is the same in both dark appearances: lighter than the deep-dark page, darker than the navy page, and every syntax role clears **4.79:1** on it. Lifting it further to `#1a2b3e` would drop `invalid` to 4.10 and break AA, which is why it stops here.
+
+An optional companion set exists for the rare light-surface specimen: `--syntax-<role>-light` (same ten roles, each measured at **4.5–5.8:1 (AA)** on the light panel and pitched toward chroma rather than sitting at the contrast ceiling). These were briefly held at AAA; at that level every role collapses toward black and the hues stop being tellable apart, which defeats the purpose of a syntax palette. AA with real chroma is the correct trade here — a code panel is not running prose and `--terminal-light-*` (full 16-slot ANSI set plus chrome, same slot names). Nothing switches to these automatically — a component opts in by using the token, the same way any other colour choice is made. See `preview/colors-syntax.html` and `preview/colors-terminal.html`, which show both sets together, and `preview/components-code-blocks-light.html` for the light-panel code specimen.
+
+### Card convention — every card carries the appearance switch
+
+**One rule, no exceptions: every preview card has the same three-way appearance switch** — Light, Deep dark, Navy dark — injected by `preview/card-mode.js`. There is no mixed set of light-only cards, dark-only cards and side-by-side cards; each card is read in whichever appearance you need.
+
+The switch sets `data-theme` (and `data-surface` for navy) on **`body`**, not on `<html>`: a card may be embedded as markup rather than loaded as a document, and an `<html>` attribute is lost when it is. `colors_and_type.css` therefore declares light, deep dark and navy dark as plain attribute blocks that work on any element.
+
+Because of that, **cards must be token-driven**. A literal like `color:#142438` reads correctly in one appearance and fails in the other two, which is precisely the defect class this convention removes. Two consequences worth stating:
+
+- **Solid controls take `--fixed-control-text` (white), not `--surface`.** A solid status fill takes `--on-solid-<role>`, which is white on light and `#0e1720` on the dark appearances — the dark status solids are light tints, where white measures 2.41:1.
+- **Elevation on dark is a surface step, not a shadow.** Pair `--shadow-N` with `--elevated-N`; a black shadow has nothing to darken on a dark page.
+- **Never use step 9 as a text colour.** Midnight/orange/slate step 9 is constant across all three appearances by design, so text set in it fails on dark. Text takes `--fg-1` / `--fg-2` / `--fg-3` (or steps 11–12).
+- **Status text takes the matching `-fg` on the matching `-bg`.** Never a literal tint under a token foreground.
+
+Three cards deliberately hold fixed values, because those values are the card's *content* rather than its chrome:
+
+- **`Colors · Core`** — the identity colours, which are mode-independent by definition.
+- **`Brand · Logo marks`** — each mark variant sits on the background that variant requires. Its *contextual* uses (size ladder, clear space, transparent surface) do follow the appearance.
+- **Code specimens are one card per language** (`Code · Python`, `Code · Rust`, `Code · YAML`, `Code · TOML`, `Code · LaTeX`), each at a readable 17px and each carrying the switch. They sit directly after `Colors · Syntax roles` and share `preview/code-card.css`, which maps the nine highlight classes onto the canonical ten roles — so a code block cannot drift from the roles card.
+
+`preview/_audit.html` renders all 28 cards in all three appearances and reports any text under 3:1 against its own background. It should always report `ALL CLEAR`.
+
+**Colour is not the only channel.** Both palettes pair hue with weight and style, so structure survives greyscale, colour-blindness, and low-quality projection:
+
+| Role | Weight | Style |
+|---|---|---|
+| Keyword | 700 | — |
+| Type / class | 600 | — |
+| Escape / invalid | 600 | — |
+| Function name | 500 | — |
+| Comment | 400 | *italic* |
+| Attribute / decorator | 400 | *italic* |
+| Everything else | 400 | — |
+
+This requires the italic and bold cuts of IBM Plex Mono, which the font `@import` now loads (`ital,wght@0,400;0,500;0,600;0,700;1,400;1,500`). Without them the browser synthesises a faux oblique and no bold at all.
 
 **Using them on a `<pre>` needs one extra line.** The base sheet pins every `pre` to the dark terminal surface, so a light code panel must neutralise it explicitly — styling only the wrapper leaves the `<pre>` painting dark on top of your light background:
 
@@ -327,8 +401,26 @@ An optional companion set exists for the rare light-surface specimen: `--syntax-
 
 ## Files & fonts notes
 
-- **Fonts** (Plus Jakarta Sans, Source Sans 3, IBM Plex Mono) are **all SIL OFL 1.1**. The consuming brand site self-hosts pinned Latin WOFF2 subsets and retains system fallbacks; this reference package does not initiate third-party font requests. **Substitution flag:** none — these remain the brand-specified families.
-- **Lucide icons** are pulled from CDN at use time, not bundled. **Substitution flag:** none — the source brand explicitly recommends Lucide.
+- **Fonts** (Plus Jakarta Sans, Source Sans 3, IBM Plex Mono) are **all SIL OFL 1.1** and loaded from Google Fonts via `@import` in `colors_and_type.css`. No `.ttf`/`.woff2` files are bundled. **Substitution flag:** none — these are the brand-specified fonts and Google Fonts is the canonical delivery channel per the source brand.
+- **Tabler Icons** are pulled from CDN at use time, not bundled. **Substitution flag:** yes — upstream `brand/` recommends Lucide; this project uses Tabler at the same 24 px grid and 1.5 px stroke. See `upstream-sync-note.md`.
+
+### Distributable-theme profile
+
+Google Fonts and icon-CDN-at-use-time are the defaults, not a requirement. A theme, plugin or documentation site that must build offline or pin its supply chain **may self-host**, under these terms.
+
+**Fonts.** Self-hosting is permitted; all three families are SIL OFL 1.1, so ship the licence text alongside the files and do not rename the families. The required cuts are not negotiable, because two of them carry meaning:
+
+| Family | Cuts |
+|---|---|
+| Plus Jakarta Sans | 400 500 600 700 800, upright |
+| Source Sans 3 | 400 500 600, upright |
+| IBM Plex Mono | 400 500 600 700 in **both** upright and italic |
+
+The syntax contract carries role identity in weight and italic as well as hue (keyword 700, type 600, function 500, comment italic). Ship IBM Plex Mono without the bold or the italic cuts and the browser synthesises a faux oblique and no bold, so the roles stop being tellable apart in greyscale — which is exactly what the second channel exists to prevent.
+
+**Icons.** Vendoring a Tabler subset is permitted (MIT; keep the licence file). Vendor the outline set only, at the native 24 px grid, and override `stroke-width` to 1.5 rather than re-drawing. Do not mix in another library to fill gaps — a custom icon drawn to the brand rules is the approved fallback.
+
+**Opt-out.** A theme that self-hosts should say so in its own README and state the version it pinned, so a token re-sync does not silently leave the fonts behind.
 
 ---
 
@@ -354,5 +446,5 @@ The split matters, and the documentation states it on every page:
 - **Code and tokens are MIT.** Take them.
 - **Brand marks are not.** The logo, the wordmark and the name are reserved — see `TRADEMARK.md` upstream.
 - **Fonts** (Plus Jakarta Sans, Source Sans 3, IBM Plex Mono) are SIL OFL 1.1.
-- **Lucide icons** are ISC.
+- **Tabler Icons** are MIT.
 - A per-asset provenance inventory records the licence of every third-party dependency (`brand/PROVENANCE.md` upstream).

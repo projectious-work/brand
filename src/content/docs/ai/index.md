@@ -6,7 +6,7 @@ description: A versioned map from brand use cases to their normative documentati
 ---
 
 This page is the canonical guide for agents and other automated consumers of
-the projectious.work brand contract. The current release is **v3.0.1**.
+the projectious.work brand contract. The current release is **v3.0.2**.
 
 `src/content/docs/` is the normative human-readable authority and
 `src/data/brand.yaml` is the structured authority. Files under
@@ -82,18 +82,18 @@ For the current checkout, examples include:
 
 | URI | Content class |
 |---|---|
-| `brand://v3.0.1/identity` | Normative identity and voice guidance |
-| `brand://v3.0.1/foundations` | Normative colour, type, spacing, shape, and motion index |
-| `brand://v3.0.1/tokens-guide` | Normative token usage guidance |
-| `brand://v3.0.1/tokens-json` | Generated JSON token download |
-| `brand://v3.0.1/tokens-css` | Generated CSS custom properties |
-| `brand://v3.0.1/logo` | Normative logo guidance |
-| `brand://v3.0.1/components` | Normative component guidance |
-| `brand://v3.0.1/rendered-specimens` | Rendered code specimens used as examples |
-| `brand://v3.0.1/licensing` | Licence contract |
-| `brand://v3.0.1/trademark` | Trademark limits |
-| `brand://v3.0.1/provenance` | Third-party asset provenance |
-| `brand://v3.0.1/changelog` | Release history and migrations |
+| `brand://v3.0.2/identity` | Normative identity and voice guidance |
+| `brand://v3.0.2/foundations` | Normative colour, type, spacing, shape, and motion index |
+| `brand://v3.0.2/tokens-guide` | Normative token usage guidance |
+| `brand://v3.0.2/tokens-json` | Generated JSON token download |
+| `brand://v3.0.2/tokens-css` | Generated CSS custom properties |
+| `brand://v3.0.2/logo` | Normative logo guidance |
+| `brand://v3.0.2/components` | Normative component guidance |
+| `brand://v3.0.2/rendered-specimens` | Rendered code specimens used as examples |
+| `brand://v3.0.2/licensing` | Licence contract |
+| `brand://v3.0.2/trademark` | Trademark limits |
+| `brand://v3.0.2/provenance` | Third-party asset provenance |
+| `brand://v3.0.2/changelog` | Release history and migrations |
 
 Use MCP resource discovery rather than assuming this list is exhaustive. The
 public [brand manifest](/downloads/brand-manifest.json) is the

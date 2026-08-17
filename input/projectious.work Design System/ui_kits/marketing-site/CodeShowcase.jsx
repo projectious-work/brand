@@ -1,12 +1,12 @@
 export function CodeShowcase() {
   return (
-    <section style={{ padding: '96px 32px', background: '#fff' }}>
+    <section style={{ padding: '96px 32px', background: 'var(--surface)' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 64, alignItems: 'center' }}>
         <div>
-          <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c04424', marginBottom: 16 }}>What we ship</div>
-          <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 36, lineHeight: 1.2, letterSpacing: '-0.4px', color: '#1d3352', margin: 0 }}>Pipelines you can reason about.</h2>
-          <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.6, color: '#5c6f82', marginTop: 16 }}>Declarative configs. Auditable runs. Policies that fail closed. Whether the operator is human or agent, the pipeline behaves the same way.</p>
-          <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 24, fontFamily: 'var(--font-heading)', fontSize: 14, fontWeight: 500, color: '#c04424', textDecoration: 'none' }}>
+          <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--orange-11)', marginBottom: 16 }}>What we ship</div>
+          <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 36, lineHeight: 1.2, letterSpacing: '-0.4px', color: 'var(--fg-1)', margin: 0 }}>Pipelines you can reason about.</h2>
+          <p style={{ fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.6, color: 'var(--fg-3)', marginTop: 16 }}>Declarative configs. Auditable runs. Policies that fail closed. Whether the operator is human or agent, the pipeline behaves the same way.</p>
+          <a href="#" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, marginTop: 24, fontFamily: 'var(--font-heading)', fontSize: 14, fontWeight: 500, color: 'var(--orange-11)', textDecoration: 'none' }}>
             View the docs <span style={{ fontSize: 16 }}>→</span>
           </a>
         </div>

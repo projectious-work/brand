@@ -1,16 +1,28 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Brand · Logo (primary lockup)" subtitle="Two-line mark + projectious / ·work" viewport="700x160" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
-<div class="col" style="gap:14px">
-  <div class="row" style="gap:14px;align-items:center">
-    <img src="../assets/logo/icon-light.svg" width="80" height="80" alt="">
+<!-- @dsCard group="Brand" name="Brand · Logo (primary lockup)" subtitle="Two-line mark + projectious / ·work — switch appearance to see each surface" viewport="700x215" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+.panel{border-radius:9px;padding:24px 26px;display:flex;align-items:center;gap:16px;background:var(--surface);border:1px solid var(--border)}
+.wm{font-family:var(--font-heading);font-weight:700;font-size:30px;line-height:1.05;letter-spacing:-0.6px;color:var(--fg-1)}
+.sfx{display:flex;gap:6px;align-items:center;line-height:1;margin-top:6px}
+.dot{width:8px;height:8px;border-radius:50%;display:inline-block;transform:translateY(2px);background:var(--midnight-8)}
+.wk{font-family:var(--font-heading);font-weight:600;font-size:17px;line-height:1;color:var(--logo-accent)}
+body[data-mode="light"]{--logo-accent:#e05232}
+body[data-theme="dark"]{--logo-accent:#ea7558}
+</style>
+<div class="col" style="gap:11px">
+  <div class="panel">
+    <img id="mark" src="../assets/logo/icon-light.svg" width="72" height="72" alt="">
     <div class="col" style="gap:0;transform:translateY(-3px)">
-      <div style="font-family:var(--font-heading);font-weight:700;font-size:24px;line-height:1.05;color:#1d3352;letter-spacing:-0.5px">projectious</div>
-      <div style="display:flex;gap:5px;align-items:center;line-height:1;margin-top:5px">
-        <span style="width:7px;height:7px;border-radius:50%;background:#7490b2;display:inline-block;transform:translateY(2px)"></span>
-        <span style="font-family:var(--font-heading);font-weight:600;font-size:14px;color:#E05232;line-height:1">work</span>
-      </div>
+      <div class="wm">projectious</div>
+      <div class="sfx"><span class="dot"></span><span class="wk">work</span></div>
     </div>
   </div>
-  <div class="sub">Primary lockup · two-line · for headers, slides, hero cards</div>
+  <div class="sub">Primary lockup · two-line · for headers, slides, hero cards. The wordmark is not a fixed colour — it takes the primary text role on whatever surface it sits on, paired with its matching mark variant (<span class="mono">icon-light.svg</span> / <span class="mono">icon-dark.svg</span>). The <span class="mono">·work</span> accent follows suit: <span class="mono">#e05232</span> on light, <span class="mono">#ea7558</span> on both dark appearances.</div>
 </div>
+<script src="card-mode.js"></script>
+<script>
+document.addEventListener('cardmode', function (e) {
+  document.getElementById('mark').src = '../assets/logo/icon-' + (e.detail.id === 'light' ? 'light' : 'dark') + '.svg';
+});
+</script>
 </body></html>

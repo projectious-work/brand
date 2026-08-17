@@ -1,0 +1,57 @@
+<!doctype html><html><head><meta charset="utf-8"><style>body{font:11px/1.5 monospace;padding:10px}iframe{position:absolute;left:-9999px;width:700px;height:1400px}b{color:#b00}</style></head><body>
+<div id="out">running…</div>
+<script>
+const FILES=["accessibility","brand-logo-lockups","brand-logo-marks","brand-logo-primary","brand-taglines","colors-core","colors-scales","colors-semantic","colors-syntax-0-roles","colors-syntax-1-python","colors-syntax-2-rust","colors-syntax-3-yaml","colors-syntax-4-toml","colors-syntax-5-latex","colors-terminal-0-palette","colors-terminal-1-status","components-alerts","components-buttons","components-cards","components-inputs","components-tags-badges","elevation","iconography","layout-responsive","radii","spacing-scale","type-body","type-code","type-display","type-families","type-scale"];
+function lum(c){const m=c.match(/\d+(\.\d+)?/g);if(!m)return null;const v=[m[0],m[1],m[2]].map(x=>{let n=x/255;return n<=.03928?n/12.92:Math.pow((n+.055)/1.055,2.4)});return .2126*v[0]+.7152*v[1]+.0722*v[2];}
+function norm(c){c=(c||'').trim();if(/^#/.test(c)){const h=c.slice(1);const s=h.length===3?h.split('').map(x=>x+x):(h.match(/../g)||[]);return 'rgb('+s.map(x=>parseInt(x,16)).join(', ')+')';}return c;}
+function ratio(a,b){const L1=lum(norm(a)),L2=lum(norm(b));if(L1==null||L2==null)return null;const[h,l]=L1>L2?[L1,L2]:[L2,L1];return (h+.05)/(l+.05);}
+// WCAG 1.4.3: normal text 4.5:1; large text (>=24px, or >=18.66px bold) 3:1.
+function need(fs,weight){const w=parseInt(weight,10)||400;return (fs>=24||(w>=700&&fs>=18.66))?3:4.5;}
+function bgOf(el,win){let n=el;while(n&&n!==win.document.documentElement){const c=win.getComputedStyle(n).backgroundColor;if(c&&!/rgba\(0, 0, 0, 0\)|transparent/.test(c))return c;n=n.parentElement;}return win.getComputedStyle(win.document.body).backgroundColor;}
+(async()=>{
+  const bad=[];
+  for(const f of FILES){
+    const fr=document.createElement('iframe');fr.src=f+'.html';document.body.appendChild(fr);
+    await new Promise(r=>{fr.onload=r;setTimeout(r,2500)});
+    await new Promise(r=>setTimeout(r,400));
+    for(const mode of ['light','deep','navy']){
+      try{
+        fr.contentWindow.cardMode.apply(mode);
+        await new Promise(r=>setTimeout(r,220));
+        const w=fr.contentWindow,d=w.document;
+        for(const el of d.body.querySelectorAll('input,textarea,select')){
+          const cs=w.getComputedStyle(el);
+          const lim=need(parseFloat(cs.fontSize),cs.fontWeight);
+          const r=ratio(cs.color,bgOf(el,w));
+          if(r!==null&&r<lim){bad.push([f,mode,'value',r.toFixed(2)+'<'+lim,(el.value||el.placeholder||'(field)').slice(0,30)]);}
+          const ph=w.getComputedStyle(el,'::placeholder');
+          if(ph&&ph.color){const rp=ratio(ph.color,bgOf(el,w));if(rp!==null&&rp<lim){bad.push([f,mode,'placeholder',rp.toFixed(2)+'<'+lim,(el.placeholder||'').slice(0,30)]);}}
+        }
+        for(const el of d.body.querySelectorAll('*')){
+          if(el.closest('.mode-switch'))continue;
+          // WCAG 1.4.3 exempts logotypes; the wordmark sets "work" in the accent.
+          if(el.closest('.wk,.wm,[data-logotype]'))continue;
+          const t=[...el.childNodes].filter(n=>n.nodeType===3&&n.textContent.trim()).map(n=>n.textContent.trim()).join(' ');
+          if(!t)continue;
+          const cs=w.getComputedStyle(el);
+          const fs=parseFloat(cs.fontSize);
+          const lim=need(fs,cs.fontWeight);
+          const r=ratio(cs.color,bgOf(el,w));
+          if(r!==null&&r<lim){bad.push([f,mode,Math.round(fs)+'px',r.toFixed(2)+'<'+lim,t.slice(0,34)]);}
+        }
+        // Selection pairs. ::selection is not readable via getComputedStyle in
+        // every engine, so measure the token pairs the base sheet applies.
+        const rs=w.getComputedStyle(d.documentElement),tok=n=>rs.getPropertyValue(n);
+        for(const[bg,fg,label]of[['--code-panel-selection-bg','--code-panel-selection-fg','sel:code'],['--code-panel-light-selection-bg','--code-panel-light-selection-fg','sel:code-light'],['--orange-3','--orange-12','sel:page']]){
+          const a=tok(bg),b=tok(fg);if(!a||!b)continue;
+          const r=ratio(b,a);
+          if(r!==null&&r<4.5){bad.push([f,mode,label,r.toFixed(2)+'<4.5',bg+' / '+fg]);}
+        }
+      }catch(e){bad.push([f,mode,'ERR','',String(e).slice(0,60)]);}
+    }
+    fr.remove();
+  }
+  document.getElementById('out').innerHTML = bad.length? ('<b>'+bad.length+' failures</b><br>'+bad.map(r=>r.join(' | ')).join('<br>')) : 'ALL CLEAR';
+  window.__bad=bad;window.__done=1;
+})();
+</script></body></html>

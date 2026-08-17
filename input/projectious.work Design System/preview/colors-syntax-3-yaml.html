@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Code · YAML" subtitle="Keys against scalars — the case where only two roles carry the structure." viewport="700x380" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="code-card.css"></head><body data-theme="light" data-mode="light">
+<div class="col" style="gap:12px">
+  <div class="label-block">
+    <div class="label">YAML · <span style="font-family:var(--font-code);font-weight:400">deploy.yaml</span></div>
+    <div class="sub" style="font-size:12px">IBM Plex Mono · 14px / 1.6 — the real <span class="mono" style="font-size:11px">--type-code-size</span></div>
+  </div>
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">YAML</span>
+      <span>deploy.yaml</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c"># projectious.work — staging deploy</span>
+<span class="t">apiVersion</span><span class="p">:</span> <span class="s">v1</span>
+<span class="t">kind</span><span class="p">:</span> <span class="s">Deployment</span>
+<span class="t">metadata</span><span class="p">:</span>
+  <span class="t">name</span><span class="p">:</span> <span class="s">agent-runner</span>
+  <span class="t">labels</span><span class="p">:</span>
+    <span class="t">env</span><span class="p">:</span> <span class="s">staging</span>
+<span class="t">spec</span><span class="p">:</span>
+  <span class="t">replicas</span><span class="p">:</span> <span class="n">3</span>
+  <span class="t">strategy</span><span class="p">:</span> <span class="s">RollingUpdate</span>
+  <span class="t">timeout</span><span class="p">:</span> <span class="s">"30s"</span>
+  <span class="t">enabled</span><span class="p">:</span> <span class="n">true</span>
+</span></pre>
+  </div>
+  <div class="sub">Keys against scalars — the case where only two roles carry the structure. Dark is the brand default; switch to Light for the optional light panel. Colours come from the canonical <span class="mono">--syntax-*</span> roles, so this block cannot drift from <em>Colors · Syntax roles</em>.</div>
+</div>
+<script src="card-mode.js"></script>
+</body></html>

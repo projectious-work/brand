@@ -72,8 +72,8 @@ export const THEMES = {
   },
 
   dark: {
-    appBg:        '#070b13',
-    sidebarBg:    '#0e1720',
+    appBg:        '#0e1720',
+    sidebarBg:    '#131e2b',
     sidebarBorder:'rgba(255,255,255,0.06)',
     sidebarFg:    '#c5daf0',
     sidebarMuted: '#97a8b8',
@@ -85,23 +85,23 @@ export const THEMES = {
     sidebarUserBg:'#2b4d78',
     sidebarUserFg:'#fff',
     sidebarUserName:'#fff',
-    topbarBg:     '#0e1720',
+    topbarBg:     '#131e2b',
     topbarBorder: 'rgba(255,255,255,0.06)',
     topbarMuted:  '#97a8b8',
-    topbarTitle:  '#e8eef5',
+    topbarTitle:  '#c5daf0',
     inputBg:      '#1a2b3e',
     inputBorder:  '#2e4b68',
-    inputFg:      '#e8eef5',
-    surface:      '#162132',
+    inputFg:      '#c5daf0',
+    surface:      '#131e2b',
     surfaceBorder:'rgba(255,255,255,0.10)',
     rowBorder:    'rgba(255,255,255,0.05)',
     rowSelected:  'rgba(224,82,50,0.10)',
-    headerBg:     '#1f2f44',
+    headerBg:     '#1a2b3e',
     headerFg:     '#97a8b8',
-    text1:        '#e8eef5',
+    text1:        '#c5daf0',
     text2:        '#97a8b8',
     icon:         '#97a8b8',
-    title:        '#e8eef5',
+    title:        '#c5daf0',
     code:         '#c5daf0',
     stageDone:    'rgba(108,192,144,0.15)',
     stageRun:     'rgba(122,148,176,0.18)',
@@ -111,12 +111,12 @@ export const THEMES = {
     stageDotRun:  '#7494b0',
     stageDotIdle: '#5a6a78',
     stageLabel:   '#c5daf0',
-    statusBarBg:  '#0e1720',
+    statusBarBg:  '#131e2b',
     statusBarFg:  '#97a8b8',
     statusBarMuted:'#97a8b8',
     statusBarBorder:'rgba(255,255,255,0.06)',
     statusBarOk:  '#6cc090',
-    termBg:        '#03060c',
+    termBg:        '#0e1720',
     termBorder:    'rgba(108,192,144,0.18)',
     termComment:   '#7e8f9e',
     termPrompt:    '#6cc090',
@@ -133,3 +133,17 @@ export const THEMES = {
     }
   }
 };
+
+// Navy dark — a derivative of deep dark, exactly as in colors_and_type.css:
+// only the surfaces, borders and input/header steps move onto the navy ramp.
+THEMES.navy = Object.assign({}, THEMES.dark, {
+  appBg:        '#132440',
+  sidebarBg:    '#1a2b3e',
+  topbarBg:     '#1a2b3e',
+  surface:      '#1a2b3e',
+  inputBg:      '#20354d',
+  inputBorder:  '#2e4b68',
+  headerBg:     '#20354d',
+  statusBarBg:  '#1a2b3e',
+  termBg:       '#0e1720'
+});

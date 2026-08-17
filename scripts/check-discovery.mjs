@@ -54,11 +54,13 @@ try {
     join(menuFixture, "v3.0.0/index.html"),
     "utf8",
   );
-  if (!latestMenu.match(/aria-checked=true[^>]*>v3\.0\.1/)) {
-    throw new Error("latest release menu does not select v3.0.1");
+  if (!latestMenu.includes(`aria-checked=true>${version}`)) {
+    throw new Error(`latest release menu does not select ${version}`);
   }
-  if (!latestMenu.match(/>v3\.0\.1 <span class=badge>latest<\/span>/)) {
-    throw new Error("latest release menu does not mark v3.0.1 latest");
+  if (!latestMenu.includes(
+    `>${version} <span class=badge>latest</span>`,
+  )) {
+    throw new Error(`latest release menu does not mark ${version} latest`);
   }
   if (!archivedMenu.match(/aria-checked=true[^>]*>v3\.0\.0/)) {
     throw new Error("archived release menu does not select its version");

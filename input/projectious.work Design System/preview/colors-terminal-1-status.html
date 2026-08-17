@@ -1,0 +1,45 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Components · Terminal & status" subtitle="Terminal output plus status rows — rows follow the appearance, the terminal stays dark" viewport="700x290" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  .dot { width:11px; height:11px; border-radius:50%; display:inline-block; flex:0 0 11px }
+  .stat { font-family:var(--font-heading); font-weight:600; width:80px; flex:0 0 80px }
+  .det { font-family:var(--font-code); font-size:12px; color:var(--fg-3) }
+  .term { background:var(--terminal-surface); border:1px solid var(--terminal-border); border-radius:6px; padding:14px 16px; font-family:var(--font-code); font-size:12px; line-height:1.75; color:var(--terminal-ansi-7) }
+  body[data-mode="light"] .term { border-color:var(--terminal-border-light) }
+</style>
+<div class="col" style="gap:11px">
+
+  <div class="term">
+    <div><span style="color:var(--terminal-ansi-10)">$</span> <span style="color:var(--terminal-foreground)">projectious deploy --env staging</span></div>
+    <div><span style="color:var(--terminal-ansi-10)">✓</span> Policy check passed</div>
+    <div><span style="color:var(--color-accent-light)">●</span> Deploying to staging…</div>
+    <div><span style="color:var(--terminal-ansi-10)">✓</span> Deploy complete (1.2s)</div>
+  </div>
+
+  <div class="col" style="gap:5px;font-family:var(--font-body);font-size:13px;color:var(--fg-1)">
+    <div class="row" style="gap:10px">
+      <span class="dot" style="background:var(--color-success)"></span>
+      <span class="stat" style="color:var(--color-success-fg)">Healthy</span>
+      <span class="det">api.projectious.work · 99.98% uptime · 12ms p50</span>
+    </div>
+    <div class="row" style="gap:10px">
+      <span class="dot" style="background:var(--color-warning)"></span>
+      <span class="stat" style="color:var(--color-warning-fg)">Warning</span>
+      <span class="det">cost-rebalance · drifted 8% over budget</span>
+    </div>
+    <div class="row" style="gap:10px">
+      <span class="dot" style="background:var(--color-danger)"></span>
+      <span class="stat" style="color:var(--color-danger-fg)">Error</span>
+      <span class="det">k8s-rollout · pod restart loop · 3 retries</span>
+    </div>
+    <div class="row" style="gap:10px">
+      <span class="dot" style="background:var(--border-strong)"></span>
+      <span class="stat" style="color:var(--fg-2)">Idle</span>
+      <span class="det">monitor · last activity 2h ago</span>
+    </div>
+  </div>
+
+  <div class="sub">Status rows follow the page appearance and take their colour from the semantic <span class="mono">--color-&lt;role&gt;-fg</span> pair, never a literal. The terminal panel stays on <span class="mono">--terminal-surface</span> in all three appearances. On the deep-dark page that value <em>is</em> the page colour, so it carries <span class="mono">--terminal-border</span> to hold its edge — a terminal must keep its black-ish surface, so unlike a code panel it cannot solve this by lifting.</div>
+</div>
+<script src="card-mode.js"></script>
+</body></html>

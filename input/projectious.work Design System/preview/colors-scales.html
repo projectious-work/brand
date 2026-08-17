@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Colors · 12-step scales" subtitle="Midnight, orange and slate — switch appearance to see each ramp" viewport="700x330" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  .ramp { display:flex; gap:2px }
+  .st { flex:1; height:34px; border-radius:3px; position:relative }
+  .st:first-child { box-shadow:inset 0 0 0 1px var(--border) }
+  .nums { display:flex; gap:2px; margin-top:3px }
+  .nums span { flex:1; text-align:center; font-family:var(--font-code); font-size:9px; color:var(--fg-3) }
+</style>
+<div class="col" style="gap:11px">
+  <div>
+    <div class="label" style="margin-bottom:4px">Midnight</div>
+    <div class="ramp">
+      <div class="st" style="background:var(--midnight-1)"></div><div class="st" style="background:var(--midnight-2)"></div>
+      <div class="st" style="background:var(--midnight-3)"></div><div class="st" style="background:var(--midnight-4)"></div>
+      <div class="st" style="background:var(--midnight-5)"></div><div class="st" style="background:var(--midnight-6)"></div>
+      <div class="st" style="background:var(--midnight-7)"></div><div class="st" style="background:var(--midnight-8)"></div>
+      <div class="st" style="background:var(--midnight-9)"></div><div class="st" style="background:var(--midnight-10)"></div>
+      <div class="st" style="background:var(--midnight-11)"></div><div class="st" style="background:var(--midnight-12)"></div>
+    </div>
+    <div class="nums"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+  </div>
+  <div>
+    <div class="label" style="margin-bottom:4px">Orange (accent)</div>
+    <div class="ramp">
+      <div class="st" style="background:var(--orange-1)"></div><div class="st" style="background:var(--orange-2)"></div>
+      <div class="st" style="background:var(--orange-3)"></div><div class="st" style="background:var(--orange-4)"></div>
+      <div class="st" style="background:var(--orange-5)"></div><div class="st" style="background:var(--orange-6)"></div>
+      <div class="st" style="background:var(--orange-7)"></div><div class="st" style="background:var(--orange-8)"></div>
+      <div class="st" style="background:var(--orange-9)"></div><div class="st" style="background:var(--orange-10)"></div>
+      <div class="st" style="background:var(--orange-11)"></div><div class="st" style="background:var(--orange-12)"></div>
+    </div>
+  </div>
+  <div>
+    <div class="label" style="margin-bottom:4px">Slate</div>
+    <div class="ramp">
+      <div class="st" style="background:var(--slate-1)"></div><div class="st" style="background:var(--slate-2)"></div>
+      <div class="st" style="background:var(--slate-3)"></div><div class="st" style="background:var(--slate-4)"></div>
+      <div class="st" style="background:var(--slate-5)"></div><div class="st" style="background:var(--slate-6)"></div>
+      <div class="st" style="background:var(--slate-7)"></div><div class="st" style="background:var(--slate-8)"></div>
+      <div class="st" style="background:var(--slate-9)"></div><div class="st" style="background:var(--slate-10)"></div>
+      <div class="st" style="background:var(--slate-11)"></div><div class="st" style="background:var(--slate-12)"></div>
+    </div>
+  </div>
+  <div class="sub" id="note">Steps 1–8 are surfaces and borders, 9 is the solid brand colour, 10–12 carry text. Step 9 is identical in all three appearances by design, so a brand mark never shifts. Rendered from the tokens themselves — the swatches cannot drift from the scale.</div>
+</div>
+<script src="card-mode.js"></script>
+<script>
+document.addEventListener('cardmode', function (e) {
+  document.getElementById('note').innerHTML = e.detail.id === 'navy'
+    ? 'Navy dark overrides only midnight steps 1–5; steps 6–12, the whole orange and slate ramps, and every text and status role are inherited from deep dark unchanged. Step 9 is constant across all three appearances.'
+    : 'Steps 1–8 are surfaces and borders, 9 is the solid brand colour, 10–12 carry text. Step 9 is identical in all three appearances by design, so a brand mark never shifts. Rendered from the tokens themselves — the swatches cannot drift from the scale.';
+});
+</script>
+</body></html>
