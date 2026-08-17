@@ -8,16 +8,28 @@ if (!root) {
   throw new Error("usage: sync-release-menus.mjs <published-site-root>");
 }
 
-const releases = [
-  ["v3.0.0", "https://projectious-work.github.io/brand/", "latest"],
-  ["v2.1.1", "https://projectious-work.github.io/brand/v2.1.1/", ""],
-  ["v2.0.0", "https://projectious-work.github.io/brand/v2.0.0/", ""],
-  ["v1.0.0", "https://projectious-work.github.io/brand/v1.0.0/", ""],
-];
+// The freshly built root is the authority for the supported release set.
+// Deriving the list here prevents deployment post-processing from silently
+// replacing a newly released version with a stale hard-coded menu.
+const rootHTML = await readFile(path.join(root, "index.html"), "utf8");
+const versionPanel = rootHTML.match(
+  /<div class="?menu__label"?>Version<\/div>(.*?)(?:<\/div><\/div>)/s,
+)?.[1];
+if (!versionPanel) throw new Error("latest site has no version menu");
+
+const releases = [...versionPanel.matchAll(
+  /<a href=([^ >]+)[^>]*>(v\d+\.\d+\.\d+)(?: <span class=badge>([^<]+)<\/span>)?<\/a>/g,
+)].map((match) => [match[2], match[1], match[3] || ""]);
+if (!releases.length) throw new Error("latest site version menu is empty");
+
+const latestVersion = releases.find((release) => release[2] === "latest")?.[0];
+if (!latestVersion) throw new Error("latest site version menu has no latest release");
 
 function currentVersion(file) {
   const relative = path.relative(root, file).split(path.sep);
-  return /^v\d+\.\d+\.\d+$/.test(relative[0]) ? relative[0] : "v3.0.0";
+  return /^v\d+\.\d+\.\d+$/.test(relative[0])
+    ? relative[0]
+    : latestVersion;
 }
 
 function docsyItems(current) {

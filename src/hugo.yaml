@@ -65,7 +65,7 @@ params:
   github: https://github.com/projectious-work/brand
   codeTheme: adaptive
   sidebarSections: [docs]
-  sidebarOpenDepth: 1
+  sidebarOpenDepth: 0
   versionProbe: false
   build:
     # The theme's component and token layers are complete without Tailwind.

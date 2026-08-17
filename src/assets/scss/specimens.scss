@@ -29,6 +29,14 @@
   line-height: 1.65;
 }
 
+// The theme gives menu items width: 100% plus horizontal padding. Keep that
+// padding inside the declared width so the active background stays within the
+// panel's right border.
+.menu__panel > a,
+.menu__panel > button {
+  box-sizing: border-box;
+}
+
 // Keep the landing page's final action visually separate from the site footer.
 // The first shell is the hero; this is the content shell immediately after it.
 .hero--landing + .shell {

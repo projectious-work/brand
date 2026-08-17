@@ -24,7 +24,7 @@ brand = yaml.safe_load((ROOT / "src/data/brand.yaml").read_text())
 
 resource_rows = (
     ("identity", "normative", "src/content/docs/_index.md"),
-    ("ai-guide", "normative", "src/content/docs/ai/_index.md"),
+    ("ai-guide", "normative", "src/content/docs/ai/index.md"),
     ("foundations", "normative", "src/content/docs/foundations/_index.md"),
     ("tokens-guide", "normative", "src/content/docs/tokens.md"),
     ("logo", "normative", "src/content/docs/logo/_index.md"),
