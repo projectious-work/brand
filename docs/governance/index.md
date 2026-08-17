@@ -2,21 +2,13 @@
 
 > Licensing, trademark, the pre-launch legal assessment, and per-asset provenance.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 This section states what you may and may not do with the material in this
 repository. It is deliberately explicit: a design system that is
 source-available without clear terms is a liability for everyone who touches it.
 
----
 
-Section pages:
-
-- [Licensing](/brand/docs/governance/licensing/): A split licence — brand assets are proprietary, code and tokens are MIT.
-- [Trademark](/brand/docs/governance/trademark/): Guidelines for referring to projectious.work and using its marks.
-- [Legal assessment](/brand/docs/governance/legal-assessment/): Pre-launch clearance review of the name, mark, fonts, icons, and imagery sources.
-- [Asset provenance](/brand/docs/governance/provenance/): Per-asset source, licence, and attribution status for every third-party dependency.
+- [Licensing](https://projectious-work.github.io/brand/docs/governance/licensing/index.md) — A split licence — brand assets are proprietary, code and tokens are MIT.
+- [Trademark](https://projectious-work.github.io/brand/docs/governance/trademark/index.md) — Guidelines for referring to projectious.work and using its marks.
+- [Legal assessment](https://projectious-work.github.io/brand/docs/governance/legal-assessment/index.md) — Pre-launch clearance review of the name, mark, fonts, icons, and imagery sources.
+- [Provenance](https://projectious-work.github.io/brand/docs/governance/provenance/index.md) — Per-asset source, licence, and attribution status for every third-party dependency.

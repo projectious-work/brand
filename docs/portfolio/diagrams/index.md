@@ -2,11 +2,6 @@
 
 > Evidence-first architecture, flow, screenshot, and demo framing.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Architecture and flow diagrams
 
@@ -55,7 +50,7 @@ The drawing rules are the same in all three, and they are deliberately spare:
   hostname — and the body face for anything that is prose.
 
 An org chart names **roles**, and names people only with their agreement. The
-[portfolio identity rules](/brand/docs/portfolio/) apply: a chart is a
+[portfolio identity rules](/docs/portfolio/) apply: a chart is a
 public artefact, and a person's name in one is a disclosure about them.
 
 ## Screenshots and demos
@@ -70,3 +65,7 @@ public artefact, and a person's name in one is a disclosure about them.
 When there is no real output yet, use a text-first project card labelled
 **Idea / implementation starting**. A truthful absence is better than a
 fictional interface.
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/portfolio/diagrams/index.md

@@ -2,11 +2,6 @@
 
 > Per-asset source, licence, and attribution status for every third-party dependency.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 The authoritative inventory is
 the project provenance inventory
@@ -38,7 +33,7 @@ Neither is bundled in this repository. Both are cleared for future use:
 
 All logo files, design tokens, document templates, and design-system documents
 are original work, © projectious.work, under the brand-asset terms in
-[Licensing](/brand/docs/governance/licensing/).
+[Licensing](/docs/governance/licensing/).
 
 ## Review status
 
@@ -46,10 +41,12 @@ Last reviewed **2026-08-13**: the four declared font binaries and Font Awesome
 are the only bundled third-party font assets. Their licence material ships with
 the files.
 
-<div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Adding a bundled asset</div>
-
-
+{{% callout title="Adding a bundled asset" type="warning" %}}
 If you commit a third-party binary — a font file, an icon SVG, an image — add a
 row to the provenance inventory recording its individual source, licence, and
 attribution requirement. Do not rely on the summary tables above.
-</div>
+{{% /callout %}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/governance/provenance/index.md

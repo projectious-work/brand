@@ -2,13 +2,8 @@
 
 > A sendable message — the newsletter layout, its bulletproof button, and the constraints a signature does not have to solve.
 
----
 
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
-
-The [signature](/brand/docs/collateral/email-signature/) covers the
+The [signature](/docs/collateral/email-signature/) covers the
 block at the bottom of someone else's message. This page covers the message
 itself: a full-width, sendable email with a header, sections, a call to action,
 and a footer.
@@ -36,7 +31,7 @@ sending tool's template format.
 
 **600px** is the width every mail client can be relied on to render without
 horizontal scrolling, and it is the reason the message is not laid out on the
-[1100px measure](/brand/docs/foundations/space-shape-motion/). Below
+[1100px measure](/docs/foundations/space-shape-motion/). Below
 that, `max-width:100%` on the outer table lets the content reflow in a phone
 client.
 
@@ -93,11 +88,11 @@ Three things are load-bearing:
 
 - **The fill is `#cc4528`, not `#E05232`.** White on the identity accent is
   3.87:1; on `accent-solid` it is 4.72:1. The same rule as
-  [solid controls in the interface](/brand/docs/interface/components/),
+  [solid controls in the interface](/docs/interface/components/),
   and email is where it matters most, because a mail client will not offer a
   hover state to compensate.
 - **44px tall.** A mail is read on a phone more often than not, so the
-  [touch floor](/brand/docs/foundations/responsive/) is the binding
+  [touch floor](/docs/foundations/responsive/) is the binding
   constraint.
 - **`arcsize="9%"`** approximates the 6px `radius-md` the HTML path sets. VML has no
   pixel radius; it takes a percentage of the shorter side.
@@ -107,7 +102,7 @@ it splits the first one.
 
 ## Colour in a message
 
-The [signature's colour table](/brand/docs/collateral/email-signature/)
+The [signature's colour table](/docs/collateral/email-signature/)
 holds, with two additions a whole message needs:
 
 | Role | Value | Use |
@@ -134,7 +129,7 @@ Those three facts are the footer's whole job:
   require signing in.
 
 An unsubscribe that leads to a login screen is, in most of the jurisdictions on
-the [signature page](/brand/docs/collateral/email-signature/), not an
+the [signature page](/docs/collateral/email-signature/), not an
 unsubscribe.
 
 ## Before sending
@@ -148,14 +143,17 @@ unsubscribe.
   hierarchy is carried by size and weight so it survives.
 - Click the unsubscribe link from a logged-out browser.
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Write the preheader. Keep the message at one call to action. Fill solid buttons
-with <code>accent-solid</code>. State why the reader is receiving it.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Ship a styled <code>&lt;a&gt;</code> as the only button, use <code>#E05232</code> behind white text, rely on
-an image to carry the message, or hide the unsubscribe behind a login.</p>
-</div>
-</div>
+{{< rules >}}
+{{% do %}}
+Write the preheader. Keep the message at one call to action. Fill solid buttons
+with `accent-solid`. State why the reader is receiving it.
+{{% /do %}}
+{{% dont %}}
+Ship a styled `<a>` as the only button, use `#E05232` behind white text, rely on
+an image to carry the message, or hide the unsubscribe behind a login.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/collateral/email/index.md

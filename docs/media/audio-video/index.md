@@ -2,11 +2,6 @@
 
 > Sonic identity and video production rules.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Audio identity
 
@@ -33,13 +28,16 @@ without scolding.
 - **Subtitles are always available.**
 - **Export at 1080p minimum**, 4K when possible.
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Show the real thing at real speed. Caption everything.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Speed up a demo to hide latency, or use a transition that draws attention to
-itself.</p>
-</div>
-</div>
+{{< rules >}}
+{{% do %}}
+Show the real thing at real speed. Caption everything.
+{{% /do %}}
+{{% dont %}}
+Speed up a demo to hide latency, or use a transition that draws attention to
+itself.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/media/audio-video/index.md

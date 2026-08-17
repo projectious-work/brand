@@ -2,11 +2,6 @@
 
 > The canonical SVG, raster, and favicon assets in design system v2.1.1.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Formats
 
@@ -35,12 +30,14 @@ spot warm on dark, and warm on darker. They are supplied variants, not a licence
 to recolour the canonical files. Use SVG wherever the medium accepts it; choose
 128px or 256px PNG only when a raster format is required.
 
-<div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Licence</div>
-
-
+{{% callout title="Licence" type="warning" %}}
 Logo files are brand assets, not MIT-licensed code. You may reference and
 display them under the terms in
-[Licensing](/brand/docs/governance/licensing/); you may not modify
+[Licensing](/docs/governance/licensing/); you may not modify
 them or use them to imply endorsement. See also the
-[Trademark guidelines](/brand/docs/governance/trademark/).
-</div>
+[Trademark guidelines](/docs/governance/trademark/).
+{{% /callout %}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/logo/files/index.md

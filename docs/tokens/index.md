@@ -2,16 +2,11 @@
 
 > Machine-readable exports of the design values, and how to consume them.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 The token files are the machine-readable form of the
-[foundations](/brand/docs/foundations/). They are **MIT-licensed** —
+[foundations](/docs/foundations/). They are **MIT-licensed** —
 the values are free to use, the marks are not. See
-[Licensing](/brand/docs/governance/licensing/).
+[Licensing](/docs/governance/licensing/).
 
 ## Authoritative definitions
 
@@ -23,9 +18,9 @@ second source of truth.
 
 ## CSS
 
-[Download `variables.css`](/brand/downloads/tokens/variables.css) ·
-[Download `tokens.json`](/brand/downloads/tokens/tokens.json) ·
-[Download `tailwind.config.js`](/brand/downloads/tokens/tailwind.config.js)
+[Download `variables.css`](/downloads/tokens/variables.css) ·
+[Download `tokens.json`](/downloads/tokens/tokens.json) ·
+[Download `tailwind.config.js`](/downloads/tokens/tailwind.config.js)
 
 ```html
 <link rel="stylesheet" href="variables.css">
@@ -59,9 +54,7 @@ Everything the foundations define, in all three files:
 | **Syntax** | Ten dark-panel roles plus ten separately measured optional light-panel roles |
 | **Terminal** | Default dark and optional light 16-slot ANSI palettes with chrome roles |
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Two things the exports cannot do for you</div>
-
-
+{{% callout title="Two things the exports cannot do for you" type="info" %}}
 **Breakpoints are exported as values, not as queries.** A custom property cannot
 be used in a `@media` condition, so `--breakpoint-md` is available to `calc()`
 and to JavaScript, but the query itself still has to be written out.
@@ -69,8 +62,7 @@ and to JavaScript, but the query itself still has to be written out.
 **Tailwind has no notion of a colour mode**, so the dark scales are exported as
 their own `midnightDark` / `orangeDark` / `slateDark` keys rather than swapped in
 behind `dark:`. Wire them to whatever dark strategy your project already uses.
-</div>
-
+{{% /callout %}}
 
 ### Modes
 
@@ -85,10 +77,12 @@ This site maps the tokens onto Bootstrap and Docsy variables in
 `src/assets/scss/_variables_project.scss`, a worked example of wiring the brand
 into an existing component framework.
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">The site is the test</div>
-
-
+{{% callout title="The site is the test" type="info" %}}
 This documentation is styled by those same SCSS files. If a token is wrong, this
 page renders wrong — which is the point. There is no separate brand-site theme
 that can drift away from the system it documents.
-</div>
+{{% /callout %}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/tokens/index.md

@@ -2,11 +2,6 @@
 
 > The projectious.work implementation contract and theme guidance for selected Hugo theme frameworks: [Docsy](https://www.docsy.dev/) and [Hextra](https://imfing.github.io/hextra/).
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 This page is the source of truth for rendering the projectious.work brand with
 Hugo. It answers which files supply the brand, where a theme may be changed,
@@ -598,12 +593,9 @@ description: Validate a provider configuration and promote it safely.
 weight: 10
 ---
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Before you begin</div>
-
-
+{{% callout title="Before you begin" type="info" %}}
 Run the validation command locally before requesting promotion.
-</div>
-
+{{% /callout %}}
 
 ## Validate the configuration
 
@@ -629,13 +621,10 @@ place. The page must remain readable before any interaction is available.
 
 <p><a class="btn btn-primary" href="#docsy-release-check">Review release check</a></p>
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Release boundary</div>
-
-
+{{% callout title="Release boundary" type="info" %}}
 Validate the configuration locally, then request promotion. The action above
 is the only primary action in this view.
-</div>
-
+{{% /callout %}}
 
 #### What the reader needs first
 
@@ -646,7 +635,7 @@ is the only primary action in this view.
 | Release | Waiting for approval | Release manager |
 
 The table should remain inside a scrollable container on narrow screens. Link
-text remains blue, such as the [token reference](/brand/docs/tokens/),
+text remains blue, such as the [token reference](/docs/tokens/),
 while the accent-filled control remains reserved for the next action.
 
 #### A card-led decision surface
@@ -700,27 +689,18 @@ both theme modes, with readable syntax and a discoverable copy control.
 
 #### Status language is semantic
 
-<div class="alert alert-success" role="alert"><div class="h4 alert-heading" role="heading">Validated</div>
-
-
+{{% callout title="Validated" type="success" %}}
 Use success only for a completed, evidenced check.
-</div>
+{{% /callout %}}
 
-
-<div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Needs attention</div>
-
-
+{{% callout title="Needs attention" type="warning" %}}
 Warnings describe a condition to assess; do not use the brand accent as a
 generic warning colour.
-</div>
+{{% /callout %}}
 
-
-<div class="alert alert-danger" role="alert"><div class="h4 alert-heading" role="heading">Blocked</div>
-
-
+{{% callout title="Blocked" type="error" %}}
 Errors need a clear next action and must not rely on colour as their only cue.
-</div>
-
+{{% /callout %}}
 
 #### Release check {#docsy-release-check}
 
@@ -1164,9 +1144,9 @@ description: A task-focused theme review fixture.
 weight: 10
 ---
 
-{{< callout type="info" >}}
+{{</* callout type="info" */>}}
 Validate the configuration locally, then request promotion.
-{{< /callout >}}
+{{</* /callout */>}}
 
 <a class="pj-primary-action" href="#release-check">Review release check</a>
 
@@ -1178,14 +1158,14 @@ Validate the configuration locally, then request promotion.
 | Documentation | Reviewed | Technical writer |
 | Release | Waiting for approval | Release manager |
 
-{{< cards >}}
-  {{< card link="#validate" title="Validate"
-      subtitle="Check tokens, configuration, and internal links" >}}
-  {{< card link="#review" title="Review"
-      subtitle="Confirm accessibility in light and dark modes" >}}
-  {{< card link="#release-check" title="Promote"
-      subtitle="Create a release from verified content" >}}
-{{< /cards >}}
+{{</* cards */>}}
+  {{</* card link="#validate" title="Validate"
+      subtitle="Check tokens, configuration, and internal links" */>}}
+  {{</* card link="#review" title="Review"
+      subtitle="Confirm accessibility in light and dark modes" */>}}
+  {{</* card link="#release-check" title="Promote"
+      subtitle="Create a release from verified content" */>}}
+{{</* /cards */>}}
 
 ## Code remains a dark working surface
 
@@ -1255,3 +1235,7 @@ semantic headings, or text selection.
 When upgrading Hextra, compare the generated shell before and after the
 change. Limit overrides to documented settings and public classes; a copied
 theme template becomes the project's maintenance burden.
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/themes/hugo/index.md

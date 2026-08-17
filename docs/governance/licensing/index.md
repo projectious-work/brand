@@ -2,11 +2,6 @@
 
 > A split licence — brand assets are proprietary, code and tokens are MIT.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 The repository carries **two categories of intellectual property** under
 different terms. The full text is in
@@ -36,22 +31,24 @@ Source code, automation scripts, and configuration files (`.py`, `.js`, `.sh`,
 distribute, sublicense, and sell, provided the copyright and permission notice
 travel with the software.
 
-The design **tokens** — documented under [Tokens](/brand/docs/tokens/) — are in
+The design **tokens** — documented under [Tokens](/docs/tokens/) — are in
 this category. The *values* are free to use; the *marks* are not.
 
 ## What this means in practice
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Use the token files, the spacing scale, and the component measurements in your
-own work. Link to this documentation. Write about the brand editorially.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Ship the logo in your product, sell anything carrying the marks, or present
-modified brand assets as projectious.work&rsquo;s.</p>
-</div>
-</div>
-
+{{< rules >}}
+{{% do %}}
+Use the token files, the spacing scale, and the component measurements in your
+own work. Link to this documentation. Write about the brand editorially.
+{{% /do %}}
+{{% dont %}}
+Ship the logo in your product, sell anything carrying the marks, or present
+modified brand assets as projectious.work's.
+{{% /dont %}}
+{{< /rules >}}
 
 For commercial inquiries or brand consent: **info@projectious.work**
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/governance/licensing/index.md

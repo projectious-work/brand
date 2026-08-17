@@ -2,11 +2,6 @@
 
 > The four breakpoints, how the 12-column grid collapses, touch-target sizes, and the mobile navigation pattern.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 The rest of the foundations describe values that do not change with viewport
 width. This page describes the four points at which the layout does.
@@ -40,9 +35,7 @@ viewport gets the single-column layout rather than a clipped desktop one.
 }
 ```
 
-<div class="pj-demo"><div class="pj-demo__label">Breakpoint ruler — base · 640 · 768 · 1024 · 1280</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Breakpoint ruler — base · 640 · 768 · 1024 · 1280" variant="stack" >}}
 <div style="display:flex;align-items:stretch;gap:2px;font-size:.6875rem;line-height:1.4">
   <div style="flex:64;background:var(--pj-midnight-2);color:var(--pj-body-fg);padding:.5rem .375rem;border-radius:3px 0 0 3px">base<br><span>1 col</span></div>
   <div style="flex:13;background:var(--pj-midnight-3);color:var(--pj-body-fg);padding:.5rem .375rem">640<br><span>1 col</span></div>
@@ -50,15 +43,12 @@ viewport gets the single-column layout rather than a clipped desktop one.
   <div style="flex:26;background:var(--pj-midnight-9);color:#fff;padding:.5rem .375rem">1024<br><span style="color:#c3d1e3">+ sidebar</span></div>
   <div style="flex:20;background:var(--pj-midnight-9);color:#fff;padding:.5rem .375rem;border-left:3px solid var(--pj-orange-9);border-radius:0 3px 3px 0">1280<br><span style="color:#c3d1e3">margined</span></div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ## How the grid collapses
 
 The grid is 12 columns inside the
-[1100px measure](/brand/docs/foundations/space-shape-motion/). It does
+[1100px measure](/docs/foundations/space-shape-motion/). It does
 not stay twelve columns all the way down — it resolves to four column counts:
 
 | From | Columns | Gutter | Page padding |
@@ -73,22 +63,19 @@ two-column layout on a phone: two 160px columns are two unreadable columns.
 Regions stack in **source order**, so the DOM must already be in reading order
 — do not rely on `order` or `grid-area` to fix a sequence that is wrong in the
 markup, because that breaks the [focus and reading
-order](/brand/docs/interface/accessibility/).
+order](/docs/interface/accessibility/).
 
 Spacing steps **down** one rung when the grid collapses: a `--space-6` (32px)
 section gap on desktop becomes `--space-5` (24px) below `md`. Radius, type
 scale, and border weights do **not** change — a card is a 9px card at every
 width.
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">The 1100px measure is a maximum, not a target</div>
-
-
+{{% callout title="The 1100px measure is a maximum, not a target" type="info" %}}
 Wider viewports gain margin, not line length. At `xl` the content stays 1100px
 wide and centres; it does not grow to fill a 1920px display. This is the same
 rule the spacing page states, restated here because it is the most common thing
 a responsive rewrite breaks.
-</div>
-
+{{% /callout %}}
 
 ## Touch targets
 
@@ -143,11 +130,9 @@ is a drawer surface.
 Both patterns carry the same obligations: the current destination is marked with
 **an accent underline or fill plus the label**, never colour alone; the drawer
 traps focus while open, closes on `Esc`, and returns focus to its trigger — the
-same contract as a [modal](/brand/docs/interface/components/).
+same contract as a [modal](/docs/interface/components/).
 
-<div class="pj-demo"><div class="pj-demo__label">Bottom tab bar — 5 destinations, current marked with fill and label</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Bottom tab bar — 5 destinations, current marked with fill and label" variant="stack" >}}
 <div style="max-width:340px;border:1px solid var(--pj-border);border-radius:9px;overflow:hidden;background:var(--pj-surface)">
   <div style="height:88px;background:var(--pj-surface-subtle);display:flex;align-items:center;justify-content:center;color:var(--pj-text-muted);font-size:.75rem">screen content</div>
   <div style="display:flex;border-top:1px solid var(--pj-border)">
@@ -157,10 +142,7 @@ same contract as a [modal](/brand/docs/interface/components/).
     <span style="flex:1;min-height:44px;display:flex;align-items:center;justify-content:center;font-size:.625rem;color:var(--pj-text-muted)">Account</span>
   </div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ## Tables, code, and diagrams
 
@@ -168,7 +150,7 @@ Three content types cannot reflow, and each has one answer:
 
 - **Tables** scroll horizontally inside their own container with the first
   column pinned — never the page. See [wide
-  tables](/brand/docs/interface/components/).
+  tables](/docs/interface/components/).
 - **Code blocks** scroll horizontally. Do not soft-wrap code: a wrapped line
   changes what the code appears to say.
 - **Diagrams** get a scrollable container or a re-drawn narrow variant. Do not
@@ -184,15 +166,18 @@ actions. It is the dashboard
 below `md`: same tokens, same components, one column, tab bar instead of
 sidebar.
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Write the base layout first and add width with <code>min-width</code> queries. Put regions
-in the DOM in reading order. Give every tappable thing a 44px target.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Keep two columns below 768px, reorder regions with CSS to fix source order,
+{{< rules >}}
+{{% do %}}
+Write the base layout first and add width with `min-width` queries. Put regions
+in the DOM in reading order. Give every tappable thing a 44px target.
+{{% /do %}}
+{{% dont %}}
+Keep two columns below 768px, reorder regions with CSS to fix source order,
 scale a diagram until its labels are illegible, or let a wide table scroll the
-whole page.</p>
-</div>
-</div>
+whole page.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/foundations/responsive/index.md

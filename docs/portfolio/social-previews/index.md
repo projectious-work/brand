@@ -2,11 +2,6 @@
 
 > Repository artwork that states category and maturity plainly.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Content model
 
@@ -27,8 +22,8 @@ maturity.
 Run:
 
 ```sh
-npm run portfolio:validate
-npm run portfolio:export
+bash scripts/validate-portfolio-assets.sh
+bash scripts/export-portfolio-assets.sh
 ```
 
 The export script uses `resvg` when available and otherwise leaves the SVG
@@ -40,3 +35,7 @@ projectious.work name and marks remain subject to the trademark terms. Record
 any third-party typeface, icon, logo, or screenshot in the provenance inventory
 before use. The supplied templates contain no third-party logos or
 screenshots.
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/portfolio/social-previews/index.md

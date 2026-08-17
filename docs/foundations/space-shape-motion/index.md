@@ -2,11 +2,6 @@
 
 > The 4px spacing base, the radius and elevation ladders, and the motion tokens.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Spacing
 
@@ -81,40 +76,25 @@ Things slide into place. They do not bounce.
 | `--ease-out` | `cubic-bezier(0.33, 1, 0.68, 1)` | Entering — arriving on screen |
 | `--ease-in` | `cubic-bezier(0.32, 0, 0.67, 0)` | Exiting — leaving screen |
 
-<div class="pj-demo"><div class="pj-demo__label">Radius ladder — 3 / 6 / 9 / 13 / full</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Radius ladder — 3 / 6 / 9 / 13 / full" >}}
 <div class="pj-demo-item"><span style="width:56px;height:40px;background:var(--pj-midnight-9);border-radius:3px;display:block"></span><span class="pj-cap">sm 3px</span></div>
 <div class="pj-demo-item"><span style="width:56px;height:40px;background:var(--pj-midnight-9);border-radius:6px;display:block"></span><span class="pj-cap">md 6px</span></div>
 <div class="pj-demo-item"><span style="width:56px;height:40px;background:var(--pj-midnight-9);border-radius:9px;display:block"></span><span class="pj-cap">lg 9px</span></div>
 <div class="pj-demo-item"><span style="width:56px;height:40px;background:var(--pj-midnight-9);border-radius:13px;display:block"></span><span class="pj-cap">xl 13px</span></div>
 <div class="pj-demo-item"><span style="width:56px;height:40px;background:var(--pj-midnight-9);border-radius:9999px;display:block"></span><span class="pj-cap">full</span></div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Elevation — shadow-0 through shadow-3</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Elevation — shadow-0 through shadow-3" >}}
 <div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-surface);border:1px solid var(--pj-border);border-radius:9px;display:block"></span><span class="pj-cap">shadow-0</span></div>
 <div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-surface);border-radius:9px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:block"></span><span class="pj-cap">shadow-1</span></div>
 <div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-surface);border-radius:9px;box-shadow:0 4px 12px rgba(0,0,0,.08);display:block"></span><span class="pj-cap">shadow-2</span></div>
 <div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-surface);border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:block"></span><span class="pj-cap">shadow-3</span></div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Motion — slides into place, never bounces</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Motion — slides into place, never bounces" variant="stack" >}}
 <div class="pj-motion"><span class="pj-motion__box pj-motion__box--slide"></span><span>200ms · ease-out — entering</span></div>
 <div class="pj-motion" style="margin-top:.75rem"><span class="pj-motion__box pj-motion__box--fade"></span><span>100ms · colour and opacity</span></div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ### Motion rules
 
@@ -137,14 +117,17 @@ Things slide into place. They do not bounce.
 }
 ```
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Use <code>--ease-out</code> for anything appearing and <code>--ease-in</code> for anything leaving.
-Keep durations on the ladder.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Add spring or bounce easing, animate layout-shifting properties, or exceed 400ms
-for any single transition.</p>
-</div>
-</div>
+{{< rules >}}
+{{% do %}}
+Use `--ease-out` for anything appearing and `--ease-in` for anything leaving.
+Keep durations on the ladder.
+{{% /do %}}
+{{% dont %}}
+Add spring or bounce easing, animate layout-shifting properties, or exceed 400ms
+for any single transition.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/foundations/space-shape-motion/index.md

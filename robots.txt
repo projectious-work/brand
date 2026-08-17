@@ -1,3 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /brand/search/
+Disallow: *print.html
+
 Sitemap: https://projectious-work.github.io/brand/sitemap.xml

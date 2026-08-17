@@ -2,11 +2,6 @@
 
 > The component set as live specimens — buttons, inputs, cards, tables, navigation, feedback, overlays, and data display.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 Every specimen on this page is live markup styled by the brand tokens, ported
 from the supplied kitchen-sink mockup. They follow your colour mode —
@@ -18,41 +13,26 @@ Measurements listed here are normative: a 40px input is 40px.
 
 Five variants, three sizes. Plus Jakarta Sans 600, 6px radius, 200ms transitions.
 
-<div class="pj-demo"><div class="pj-demo__label">Variants — medium (40px)</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Variants — medium (40px)" >}}
 <button class="pj-btn pj-btn--primary pj-btn--md">Get started</button>
 <button class="pj-btn pj-btn--accent pj-btn--md">Deploy</button>
 <button class="pj-btn pj-btn--outline pj-btn--md">Learn more</button>
 <button class="pj-btn pj-btn--ghost pj-btn--md">Cancel</button>
 <button class="pj-btn pj-btn--danger pj-btn--md">Delete</button>
 <button class="pj-btn pj-btn--primary pj-btn--md" disabled>Disabled</button>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Sizes — sm 32px · md 40px · lg 48px</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Sizes — sm 32px · md 40px · lg 48px" >}}
 <button class="pj-btn pj-btn--accent pj-btn--sm">Small</button>
 <button class="pj-btn pj-btn--accent pj-btn--md">Medium</button>
 <button class="pj-btn pj-btn--accent pj-btn--lg">Large</button>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">On a midnight surface</div>
-  <div class="pj-demo__body pj-demo__body--dark">
-    
+{{< demo label="On a midnight surface" variant="dark" >}}
 <button class="pj-btn pj-btn--accent pj-btn--md">Deploy</button>
 <button class="pj-btn pj-btn--outline pj-btn--md">View logs</button>
 <button class="pj-btn pj-btn--ghost pj-btn--md">Dismiss</button>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 | Variant | Fill | Border | Text | Contrast | Use |
 |---|---|---|---|---|---|
@@ -62,43 +42,36 @@ Five variants, three sizes. Plus Jakarta Sans 600, 6px radius, 200ms transitions
 | **Ghost** | transparent | 1px border | `slate-9` | — | Tertiary, toolbars |
 | **Danger** | `#a8261c` | none | white | 7.10:1 | Destructive action |
 
-<div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Accent buttons fill with accent-solid, not step 9</div>
-
-
+{{% callout title="Accent buttons fill with accent-solid, not step 9" type="warning" %}}
 `orange-9` (`#E05232`) is the identity accent and is unchanged as a mark,
 border, active state, or syntax colour. But white on it measures **3.87:1** —
 below the 4.5:1 floor for 13–14px labels. Solid accent controls therefore fill
 with **`--color-accent-solid` (`#cc4528`)**, white at **4.72:1**; hover
 uses opacity `0.88` rather than inventing a lighter or darker brand colour.
-</div>
-
+{{% /callout %}}
 
 Hover is structural across components: primary surfaces move to `opacity:.88`
 and card borders move to `midnight-7`. Pressed controls remain at their hover
 state and never scale down. Do not lighten or darken a brand colour to create an
 interaction state.
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Use exactly one accent button per view. Give every button a verb — &ldquo;Deploy&rdquo;,
-&ldquo;Save changes&rdquo;.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Place two accent buttons side by side, or use a danger button for a reversible
-action.</p>
-</div>
-</div>
-
+{{< rules >}}
+{{% do %}}
+Use exactly one accent button per view. Give every button a verb — "Deploy",
+"Save changes".
+{{% /do %}}
+{{% dont %}}
+Place two accent buttons side by side, or use a danger button for a reversible
+action.
+{{% /dont %}}
+{{< /rules >}}
 
 ## Inputs
 
 Default height 40px (sm 32, lg 48). Source Sans 3 at 13px, `slate-7` border,
 and a 2px focus ring at midnight 15% alpha.
 
-<div class="pj-demo"><div class="pj-demo__label">Text, textarea, select</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="Text, textarea, select" variant="grid" >}}
 <div class="pj-field">
   <label class="pj-field__label" for="d1">Pipeline name</label>
   <input class="pj-input" id="d1" type="text" placeholder="validate-deploy">
@@ -111,14 +84,9 @@ and a 2px focus ring at midnight 15% alpha.
   <label class="pj-field__label" for="d3">Description</label>
   <textarea class="pj-input" id="d3" placeholder="What does this pipeline do?"></textarea>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">States — default, focus, error, disabled</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="States — default, focus, error, disabled" variant="grid" >}}
 <div class="pj-field">
   <span class="pj-field__label">Default</span>
   <input class="pj-input" type="text" value="agents/auditor" readonly>
@@ -140,14 +108,9 @@ and a 2px focus ring at midnight 15% alpha.
   <input class="pj-input" type="text" value="locked" disabled>
   <span class="pj-field__hint">slate-4 bg, cursor not-allowed</span>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Checkbox, radio, toggle, slider</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Checkbox, radio, toggle, slider" >}}
 <label class="pj-check"><input type="checkbox" checked> Checked</label>
 <label class="pj-check"><input type="checkbox"> Unchecked</label>
 <label class="pj-check"><input type="radio" name="d" checked> Selected</label>
@@ -155,13 +118,10 @@ and a 2px focus ring at midnight 15% alpha.
 <span class="pj-toggle pj-toggle--on"><span class="pj-toggle__track"><span class="pj-toggle__thumb"></span></span> On</span>
 <span class="pj-toggle"><span class="pj-toggle__track"><span class="pj-toggle__thumb"></span></span> Off</span>
 <input class="pj-range" type="range" value="60" style="max-width:160px">
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 Full rules — labels, validation, focus — are on
-[Forms](/brand/docs/interface/forms/).
+[Forms](/docs/interface/forms/).
 
 ## Cards
 
@@ -174,9 +134,7 @@ scrims and dark-panel inner cards, where the inner surface is
 `rgba(255,255,255,.04)`. Do not put frosted glass on a light surface. Tags and
 badges use solid pale tints, never alpha overlays.
 
-<div class="pj-demo"><div class="pj-demo__label">Basic, with image, with actions</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="Basic, with image, with actions" variant="grid" >}}
 <div class="pj-card">
   <div class="pj-card__body">
     <div class="pj-card__title">Validate &amp; deploy</div>
@@ -200,19 +158,14 @@ badges use solid pale tints, never alpha overlays.
     <button class="pj-btn pj-btn--ghost pj-btn--sm">Download</button>
   </div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ## Tables
 
 Header cells use the overline style. Striping uses the subtle background step,
 never a border-only rule. **Wide tables scroll inside their own container.**
 
-<div class="pj-demo"><div class="pj-demo__label">Data table with sort indicator</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Data table with sort indicator" variant="stack" >}}
 <table class="pj-table">
   <thead><tr><th class="pj-table__sort">Pipeline</th><th>Policy</th><th>Agents</th><th>Status</th></tr></thead>
   <tbody>
@@ -221,10 +174,7 @@ never a border-only rule. **Wide tables scroll inside their own container.**
     <tr><td>release-train</td><td>strict</td><td>4</td><td><span class="pj-status pj-status--err"><span class="pj-status__dot"></span>Blocked</span></td></tr>
   </tbody>
 </table>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 
 ### Table with search and filters
@@ -233,9 +183,7 @@ A toolbar above the table carries the search field and filter chips. Active
 filters are shown as removable chips so the current view is always legible —
 never leave a filter applied with no visible indication.
 
-<div class="pj-demo"><div class="pj-demo__label">Search, filter chips, pagination footer</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Search, filter chips, pagination footer" variant="stack" >}}
 <div class="pj-table-shell">
   <div class="pj-table-shell__toolbar">
     <input class="pj-table-shell__search" type="search" placeholder="Search pipelines…" aria-label="Search pipelines">
@@ -260,19 +208,14 @@ never leave a filter applied with no visible indication.
     </span>
   </div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ### Multi-level headers
 
 Grouped columns use a two-row header. The group row is centred over its span and
 separated by a vertical rule — the only place the system uses one.
 
-<div class="pj-demo"><div class="pj-demo__label">Two-row header with column groups</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Two-row header with column groups" variant="stack" >}}
 <div class="pj-scroll-x">
 <table class="pj-table">
   <thead>
@@ -293,10 +236,7 @@ separated by a vertical rule — the only place the system uses one.
   </tbody>
 </table>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ### Grouped rows and totals
 
@@ -304,9 +244,7 @@ Row groups act as sub-headings inside the table. A totals row is separated by a
 2px rule — heavier than the body rules, so it reads as a summary rather than
 another record.
 
-<div class="pj-demo"><div class="pj-demo__label">Row groups, indented children, totals</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Row groups, indented children, totals" variant="stack" >}}
 <table class="pj-table">
   <thead><tr><th>Workload</th><th class="pj-table__num">Runs</th><th class="pj-table__num">Cost</th></tr></thead>
   <tbody>
@@ -319,19 +257,14 @@ another record.
     <tr class="pj-table__total"><td>Total</td><td class="pj-table__num">529</td><td class="pj-table__num">€91.15</td></tr>
   </tbody>
 </table>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ### Wide tables
 
 A wide table scrolls **inside its own container**, never the page, and pins its
 first column so the row identity stays visible while scrolling.
 
-<div class="pj-demo"><div class="pj-demo__label">Horizontal scroll with a sticky first column</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Horizontal scroll with a sticky first column" variant="stack" >}}
 <div class="pj-scroll-x">
 <table class="pj-table pj-table--sticky" style="min-width:720px">
   <thead><tr><th>Pipeline</th><th>Policy</th><th>Owner</th><th class="pj-table__num">Runs</th><th class="pj-table__num">Pass</th><th class="pj-table__num">p50</th><th class="pj-table__num">p95</th><th>Region</th><th>Status</th></tr></thead>
@@ -341,23 +274,18 @@ first column so the row identity stays visible while scrolling.
   </tbody>
 </table>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Right-align numeric columns and set them in IBM Plex Mono so digits line up.
-Show the active filter state and the result count together.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Add vertical rules between ordinary columns, let a wide table scroll the whole
-page, or apply a filter without a visible chip saying so.</p>
-</div>
-</div>
-
+{{< rules >}}
+{{% do %}}
+Right-align numeric columns and set them in IBM Plex Mono so digits line up.
+Show the active filter state and the result count together.
+{{% /do %}}
+{{% dont %}}
+Add vertical rules between ordinary columns, let a wide table scroll the whole
+page, or apply a filter without a visible chip saying so.
+{{% /dont %}}
+{{< /rules >}}
 
 ## Navigation
 
@@ -371,26 +299,19 @@ The active link carries a **2px `accent-solid` underline** plus the
 high-emphasis text step. The underline is `accent-solid` rather than `orange-9`
 because it sits directly against 13px text and is read as part of it.
 
-<div class="pj-demo"><div class="pj-demo__label">Navbar — follows the colour mode; 1px border, 2px accent underline on the active link</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Navbar — follows the colour mode; 1px border, 2px accent underline on the active link" variant="stack" >}}
 <div class="pj-navbar">
   <span class="pj-navbar__brand">projectious.work</span>
   <a class="pj-navbar__link pj-navbar__link--active" href="#">Documentation</a>
   <a class="pj-navbar__link" href="#">Pipelines</a>
   <a class="pj-navbar__link" href="#">Agents</a>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 This specimen mirrors `.td-navbar` — the header at the top of this page. Switch
 the theme and both change together.
 
-<div class="pj-demo"><div class="pj-demo__label">Breadcrumbs, tabs, pagination, sidebar</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="Breadcrumbs, tabs, pagination, sidebar" variant="grid" >}}
 <div>
   <div class="pj-breadcrumb"><span><a href="#">Docs</a></span><span><a href="#">Interface</a></span><span>Components</span></div>
   <span class="pj-cap">13px, secondary</span>
@@ -411,58 +332,40 @@ the theme and both change together.
   </div>
   <span class="pj-cap">active: 600 weight</span>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ## Alerts and feedback
 
 Four semantic colours as a 4px left border on a tinted background. The hues are
-**mode-specific** — see [Colour](/brand/docs/foundations/color/).
+**mode-specific** — see [Colour](/docs/foundations/color/).
 
-<div class="pj-demo"><div class="pj-demo__label">Alerts</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Alerts" variant="stack" >}}
 <div class="pj-alert pj-alert--info"><div class="pj-alert__title">Info</div><div class="pj-alert__text">Pipeline requires at least one validation agent.</div></div>
 <div class="pj-alert pj-alert--success" style="margin-top:.5rem"><div class="pj-alert__title">Success</div><div class="pj-alert__text">All checks passed. Deployment ready.</div></div>
 <div class="pj-alert pj-alert--warning" style="margin-top:.5rem"><div class="pj-alert__title">Warning</div><div class="pj-alert__text">Agent "monitor" has been idle for 2 hours.</div></div>
 <div class="pj-alert pj-alert--danger" style="margin-top:.5rem"><div class="pj-alert__title">Danger</div><div class="pj-alert__text">Policy violation — deployment blocked.</div></div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Badges, progress, spinner</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Badges, progress, spinner" >}}
 <span class="pj-badge">Default</span>
 <span class="pj-badge pj-badge--accent">Urgent</span>
 <span class="pj-badge pj-badge--pill">v0.1.0</span>
 <span class="pj-badge pj-badge--accent pj-badge--pill">Breaking</span>
 <span class="pj-progress"><span class="pj-progress__bar" style="width:62%"></span></span>
 <span class="pj-spinner" role="status" aria-label="Loading"></span>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Semantic colour is not decoration</div>
-
-
+{{% callout title="Semantic colour is not decoration" type="info" %}}
 Success, warning, and danger carry meaning. Do not use them to add visual
 variety to neutral content.
-</div>
-
+{{% /callout %}}
 
 ## Modals and overlays
 
 Modal radius 13px with `shadow-3`; scrim is midnight at 40% alpha. Focus is
 trapped while open and restored to the trigger on close; `Esc` always closes.
 
-<div class="pj-demo"><div class="pj-demo__label">Dialog, dropdown, tooltip</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="Dialog, dropdown, tooltip" variant="grid" >}}
 <div class="pj-modal">
   <div class="pj-modal__head">Delete pipeline?</div>
   <div class="pj-modal__body">This removes the pipeline and its run history. This cannot be undone.</div>
@@ -477,16 +380,11 @@ trapped while open and restored to the trigger on close; `Esc` always closes.
   <div class="pj-dropdown__item">Export logs</div>
 </div>
 <div><span class="pj-tooltip">Last run 4 minutes ago</span><span class="pj-cap">12px, 3px radius</span></div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ## Data display
 
-<div class="pj-demo"><div class="pj-demo__label">Avatar, stat card, tags</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Avatar, stat card, tags" >}}
 <span class="pj-avatar">JD</span>
 <span class="pj-avatar pj-avatar--accent">AS</span>
 <div class="pj-stat">
@@ -497,14 +395,9 @@ trapped while open and restored to the trigger on close; `Esc` always closes.
 <span class="pj-badge">Composable</span>
 <span class="pj-badge pj-badge--accent">Agent-first</span>
 <span class="pj-badge">Humanistic</span>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">List and timeline</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="List and timeline" variant="grid" >}}
 <div class="pj-list">
   <div class="pj-list__row"><span>validate-deploy</span><span class="pj-cap" style="margin:0">4m ago</span></div>
   <div class="pj-list__row"><span>nightly-audit</span><span class="pj-cap" style="margin:0">2h ago</span></div>
@@ -515,50 +408,40 @@ trapped while open and restored to the trigger on close; `Esc` always closes.
   <div class="pj-timeline__item pj-timeline__item--current"><div>Deploying to staging</div><span class="pj-timeline__time">09:16</span></div>
   <div class="pj-timeline__item"><div>Production</div><span class="pj-timeline__time">pending</span></div>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Status indicators — always a dot plus a label</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Status indicators — always a dot plus a label" >}}
 <span class="pj-status pj-status--ok"><span class="pj-status__dot"></span>Healthy</span>
 <span class="pj-status pj-status--warn"><span class="pj-status__dot"></span>Degraded</span>
 <span class="pj-status pj-status--err"><span class="pj-status__dot"></span>Failed</span>
 <span class="pj-status pj-status--idle"><span class="pj-status__dot"></span>Idle</span>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Pair every status dot with a text label, so meaning does not depend on colour
-perception.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Use a bare coloured dot, or rely on red/green alone to distinguish states.</p>
-</div>
-</div>
-
+{{< rules >}}
+{{% do %}}
+Pair every status dot with a text label, so meaning does not depend on colour
+perception.
+{{% /do %}}
+{{% dont %}}
+Use a bare coloured dot, or rely on red/green alone to distinguish states.
+{{% /dont %}}
+{{< /rules >}}
 
 ## Code and terminal
 
 The code surface is dark by default. Use the complete light companion only for
 an explicitly light panel; never switch it automatically with interface mode.
-See [Code](/brand/docs/interface/code/).
+See [Code](/docs/interface/code/).
 
-<div class="pj-demo"><div class="pj-demo__label">Terminal</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Terminal" variant="stack" >}}
 <div class="pj-terminal">
 <span class="pj-terminal__prompt">$</span> tofu apply -auto-approve<br>
 <span class="pj-terminal__out">Plan: 3 to add, 0 to change, 0 to destroy.</span><br>
 <span class="pj-terminal__ok">✓</span> <span class="pj-terminal__out">Policy check passed</span><br>
 <span class="pj-terminal__accent">●</span> <span class="pj-terminal__out">Deploying to staging…</span>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
+
+---
+Source: https://projectious-work.github.io/brand/docs/interface/components/index.md

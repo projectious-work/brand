@@ -2,19 +2,11 @@
 
 > Motion, audio, video, photography, and presentation guidance.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 Media guidance covers everything with a time dimension or a photographic
 surface — the places where the system meets material it does not fully control.
 
----
 
-Section pages:
-
-- [Audio and video](/brand/docs/media/audio-video/): Sonic identity and video production rules.
-- [Photography and illustration](/brand/docs/media/photography/): Sourcing rules, treatment, and the abstract illustration style.
-- [Presentations](/brand/docs/media/presentations/): Slide templates, animation, and the core deck structure.
+- [Audio & video](https://projectious-work.github.io/brand/docs/media/audio-video/index.md) — Sonic identity and video production rules.
+- [Photography & illustration](https://projectious-work.github.io/brand/docs/media/photography/index.md) — Sourcing rules, treatment, and the abstract illustration style.
+- [Presentations](https://projectious-work.github.io/brand/docs/media/presentations/index.md) — Slide templates, animation, and the core deck structure.

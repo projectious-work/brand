@@ -2,11 +2,6 @@
 
 > The one-page document pattern — CV, proposal, memo — and how it paginates.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 A document is not a screen that happens to be printed. It has a fixed page box,
 no hover state, no dark mode, and one shot at being legible on a printer nobody
@@ -59,7 +54,7 @@ Entries are separated by space, not by rules. A one-page document accumulates
 horizontal rules faster than anything else in the system, and each one costs a
 line of content while adding a section break to a document with one section per
 heading — the same argument the
-[signature](/brand/docs/collateral/email-signature/) makes, on a bigger
+[signature](/docs/collateral/email-signature/) makes, on a bigger
 sheet.
 
 Dates and other data are set in IBM Plex Mono and right-aligned against the
@@ -103,18 +98,21 @@ with different section names:
 | Memo | Subject and date | Context · Options · Recommendation | Decision and owner |
 
 Where the document makes a claim about a project's maturity, the
-[status vocabulary](/brand/docs/portfolio/status/) applies — a document
+[status vocabulary](/docs/portfolio/status/) applies — a document
 is not exempt from it because it is prose.
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Decide flowing or paginated before laying anything out. Keep the accent to the
+{{< rules >}}
+{{% do %}}
+Decide flowing or paginated before laying anything out. Keep the accent to the
 section markers. Separate entries with space. Export to PDF and check it
-printed.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Shrink type to make content fit, pin a paper size on a flowing document, add
-rules between entries, or send the HTML in place of the PDF.</p>
-</div>
-</div>
+printed.
+{{% /do %}}
+{{% dont %}}
+Shrink type to make content fit, pin a paper size on a flowing document, add
+rules between entries, or send the HTML in place of the PDF.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/portfolio/documents/index.md

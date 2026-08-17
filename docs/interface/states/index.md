@@ -2,11 +2,6 @@
 
 > Empty, loading, and error states — the screens a component set never shows you.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 A component set shows every part working. A product spends a lot of its life in
 the three states where nothing is working yet: **there is no data**, **the data
@@ -35,9 +30,7 @@ The first-run empty state is the only one that gets an accent button — it is t
 only one where creating something is what the user came to do. "Filtered to
 nothing" gets a ghost button, because the fix is to undo, not to create.
 
-<div class="pj-demo"><div class="pj-demo__label">First run, filtered to nothing, nothing to report</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="First run, filtered to nothing, nothing to report" variant="grid" >}}
 <div class="pj-card">
   <div class="pj-card__body" style="text-align:center;padding-block:1.5rem">
     <div class="pj-card__title">No pipelines yet</div>
@@ -59,23 +52,17 @@ nothing" gets a ghost button, because the fix is to undo, not to create.
     <div style="margin-top:1rem"><span class="pj-status pj-status--ok"><span class="pj-status__dot"></span>Healthy</span></div>
   </div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 An empty state is **body text, not an illustration**. The system's answer to a
-blank screen is [a diagram or nothing](/brand/docs/portfolio/diagrams/),
+blank screen is [a diagram or nothing](/docs/portfolio/diagrams/),
 never a mascot or a spot illustration of a person holding a magnifying glass.
 
-<div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Never show an empty state you are not sure about</div>
-
-
+{{% callout title="Never show an empty state you are not sure about" type="warning" %}}
 "No results" while a request is still in flight is a lie the user acts on. A
 region is in the loading state until the response arrives, and only then
 resolves to empty, populated, or error. Empty is a *result*, not a default.
-</div>
-
+{{% /callout %}}
 
 ## Loading states
 
@@ -94,9 +81,7 @@ with the real gaps and the real number of rows where that is known. It carries a
 100ms shimmer at `--duration-standard`, and it does not shimmer at all under
 `prefers-reduced-motion: reduce` — it simply sits there as static blocks.
 
-<div class="pj-demo"><div class="pj-demo__label">Skeleton — real dimensions, real row count</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Skeleton — real dimensions, real row count" variant="stack" >}}
 <div class="pj-card" role="status" aria-label="Loading pipelines">
   <div class="pj-card__body">
     <div style="display:flex;flex-direction:column;gap:.625rem">
@@ -107,21 +92,13 @@ with the real gaps and the real number of rows where that is known. It carries a
     </div>
   </div>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Spinner — indeterminate work, with its label</div>
-  <div class="pj-demo__body">
-    
+{{< demo label="Spinner — indeterminate work, with its label" >}}
 <span class="pj-spinner" role="status" aria-label="Applying changes"></span>
 <span style="font-size:.8125rem;color:var(--pj-muted-fg)">Applying changes…</span>
 <button class="pj-btn pj-btn--primary pj-btn--md" disabled>Applying…</button>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 Timing rules, so the loading state does not become its own flicker:
 
@@ -153,9 +130,7 @@ The code (`404`, `500`) appears as an overline above the headline, in the muted
 foreground — findable when someone is reporting the problem, never the loudest
 thing on the page.
 
-<div class="pj-demo"><div class="pj-demo__label">404 and 500 — same shell, different obligation</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="404 and 500 — same shell, different obligation" variant="grid" >}}
 <div class="pj-card">
   <div class="pj-card__body">
     <div class="pj-overline" style="color:var(--pj-muted-fg)">Error 404</div>
@@ -178,10 +153,7 @@ thing on the page.
     <button class="pj-btn pj-btn--ghost pj-btn--sm">Service status</button>
   </div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 A 500 says **what did not happen**. "Nothing was deployed" is the sentence the
 reader needs; "an unexpected error occurred" is the sentence they cannot act on.
@@ -194,16 +166,14 @@ Not every failure takes the page. A failure scoped to one region stays in that
 region, so the rest of the screen remains usable:
 
 - **A field** fails with [`pj-input--error` and a message below
-  it](/brand/docs/interface/forms/) — never a tooltip, never colour on
+  it](/docs/interface/forms/) — never a tooltip, never colour on
   the border alone.
 - **A panel** fails with a `pj-alert--danger` inside the panel and a retry
   control, while the surrounding page keeps working.
 - **A background job** fails into a row in the activity feed with a `pj-status
   --err` dot **and** the word "Failed".
 
-<div class="pj-demo"><div class="pj-demo__label">Panel-scoped failure — the page keeps working</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Panel-scoped failure — the page keeps working" variant="stack" >}}
 <div class="pj-card">
   <div class="pj-card__body">
     <div class="pj-card__title">Agent activity</div>
@@ -214,21 +184,21 @@ region, so the rest of the screen remains usable:
   </div>
   <div class="pj-card__actions"><button class="pj-btn pj-btn--ghost pj-btn--sm">Retry</button></div>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Say what is true, why, and the one thing to do. Use a skeleton wherever the
+{{< rules >}}
+{{% do %}}
+Say what is true, why, and the one thing to do. Use a skeleton wherever the
 layout is known. Label every loading region for screen readers. Tell a reader
-what did <em>not</em> happen when something failed.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Show &ldquo;no results&rdquo; before the response arrives, put an accent button on a
-&ldquo;filtered to nothing&rdquo; state, headline an error with its status code, or let a
-region-scoped failure take the whole page.</p>
-</div>
-</div>
+what did *not* happen when something failed.
+{{% /do %}}
+{{% dont %}}
+Show "no results" before the response arrives, put an accent button on a
+"filtered to nothing" state, headline an error with its status code, or let a
+region-scoped failure take the whole page.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/interface/states/index.md

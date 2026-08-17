@@ -2,11 +2,6 @@
 
 > Both modes are equally supported. The implementation rules that keep them in step.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 Dark mode is not a variant of the brand — it is half of it. Both modes are
 designed, tested, and shipped together.
@@ -26,11 +21,9 @@ designed, tested, and shipped together.
 - **Code blocks are dark by default**, regardless of interface mode. An
   explicitly selected light code panel uses the complete light companion
   palette; it never switches automatically. See
-  [Code](/brand/docs/interface/code/).
+  [Code](/docs/interface/code/).
 
-<div class="pj-demo"><div class="pj-demo__label">The same card in both modes</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="The same card in both modes" variant="grid" >}}
 <div style="background:#ffffff;border:1px solid #dadce0;border-radius:9px;padding:1rem">
   <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9375rem;color:#1d3352">Light mode</div>
   <div style="font-size:.8125rem;color:#5c6f82;margin-top:.25rem">Body text is midnight-12; supporting copy is slate-11.</div>
@@ -41,10 +34,7 @@ designed, tested, and shipped together.
   <div style="font-size:.8125rem;color:#97a8b8;margin-top:.25rem">Never pure white — midnight-12 from the dark scale.</div>
   <div style="margin-top:.625rem"><span style="background:#cc4528;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;padding:.3125rem .75rem;border-radius:6px">Deploy</span></div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ## Surfaces
 
@@ -74,14 +64,17 @@ text colours. This applies to covers, dark boxes, footers, and overlays:
 }
 ```
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Test every surface in both modes. Restate text colours on any component that
-sets its own dark background.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Ship a component that only works in one mode, or use pure black or white as a
-text colour in either.</p>
-</div>
-</div>
+{{< rules >}}
+{{% do %}}
+Test every surface in both modes. Restate text colours on any component that
+sets its own dark background.
+{{% /do %}}
+{{% dont %}}
+Ship a component that only works in one mode, or use pure black or white as a
+text colour in either.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/interface/dark-mode/index.md

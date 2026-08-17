@@ -2,11 +2,6 @@
 
 > Text-first maturity labels for truthful portfolio presentation.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Required pattern
 
@@ -51,3 +46,7 @@ each status and limitation with the owning repository before publishing.
 | processkit | Process layer | **Working prototype** | State current API/version constraints. |
 | ai-market-research | Applied research | **Applied research** | State dataset date and methodology limits. |
 | KubeClaw | Prototype | **Idea / implementation starting** | State which flows are implemented. |
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/portfolio/status/index.md

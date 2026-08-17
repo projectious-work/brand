@@ -1,4 +1,4 @@
-# projectious.work brand — v2.1.1
+# projectious.work brand — v3.0.0
 
 > The normative, versioned brand and design-system contract for
 > projectious.work. Human documentation and clean Markdown are available

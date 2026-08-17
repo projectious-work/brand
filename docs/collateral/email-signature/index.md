@@ -2,11 +2,6 @@
 
 > A signature that survives every mail client, carries the details business mail is required to carry, and stays quiet on a white message.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 Email is not the web. Every value below is a literal, every layout is a table,
 and nothing depends on a stylesheet the client is free to discard.
@@ -20,9 +15,7 @@ Two forms are supplied:
 
 ## The signature
 
-<div class="pj-demo"><div class="pj-demo__label">Full form — a white message is the design constraint</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Full form — a white message is the design constraint" variant="stack" >}}
 <div class="pj-email-sheet">
 <table cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#ffffff" style="border-collapse:collapse;max-width:520px;background:#ffffff;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438">
  <tr bgcolor="#ffffff" style="background-color:#ffffff"><td bgcolor="#ffffff" style="background:#ffffff;background-color:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px">
@@ -48,14 +41,9 @@ Two forms are supplied:
  </td></tr>
 </table>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Short form — replies and internal mail</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Short form — replies and internal mail" variant="stack" >}}
 <div class="pj-email-sheet">
 <table cellpadding="0" cellspacing="0" border="0" role="presentation" bgcolor="#ffffff" style="border-collapse:collapse;max-width:520px;background:#ffffff;background-color:#ffffff;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif;font-size:13px;line-height:1.5;color:#142438">
  <tr bgcolor="#ffffff" style="background-color:#ffffff"><td bgcolor="#ffffff" style="background:#ffffff;background-color:#ffffff;border-left:3px solid #E05232;padding:2px 0 2px 14px">
@@ -69,10 +57,7 @@ Two forms are supplied:
  </td></tr>
 </table>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 Both specimens are rendered on **white**, because that is where a signature
 actually lives. The surrounding page has a colour mode; a mail message
@@ -90,18 +75,16 @@ the left of the whole block: it marks the signature as a unit, ties it to the
 brand, and costs one line instead of four. Everything else is separated by space
 and by type size.
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Group the fields — identity, contact, address, legal — and separate the groups
-with about 9px of space. Let the type sizes do the ranking.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Add a rule between groups, a coloured band behind the name, social icon rows, a
-quotation, or a &ldquo;please consider the environment&rdquo; line.</p>
-</div>
-</div>
-
+{{< rules >}}
+{{% do %}}
+Group the fields — identity, contact, address, legal — and separate the groups
+with about 9px of space. Let the type sizes do the ranking.
+{{% /do %}}
+{{% dont %}}
+Add a rule between groups, a coloured band behind the name, social icon rows, a
+quotation, or a "please consider the environment" line.
+{{% /dont %}}
+{{< /rules >}}
 
 ## Fields
 
@@ -170,16 +153,13 @@ one needs it in both forms: the `bgcolor` attribute, which Outlook's renderer
 prefers, and `background-color`, because several clients strip the `background`
 shorthand while keeping longhands.
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Dark mode will recolour this, and that is fine</div>
-
-
+{{% callout title="Dark mode will recolour this, and that is fine" type="info" %}}
 Several clients — Outlook mobile and some webmail among them — invert or shift
 signature colours in dark mode, and none can be reliably prevented from doing
 so. The signature is therefore built to survive recolouring rather than to fight
 it: the hierarchy is carried by *size and weight* as much as by hue, so it still
 reads when the palette is altered.
-</div>
-
+{{% /callout %}}
 
 ### Colours
 
@@ -201,3 +181,7 @@ Three families, which is what a signature should have.
   thread.
 - Turn on the client's dark mode and confirm the hierarchy still reads.
 - Forward it, to confirm nothing depends on the original message's styles.
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/collateral/email-signature/index.md

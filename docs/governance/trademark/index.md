@@ -2,11 +2,6 @@
 
 > Guidelines for referring to projectious.work and using its marks.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 The names, logos, and icons associated with **projectious.work** are its
 trademarks. Full text:
@@ -29,10 +24,12 @@ trademarks. Full text:
 These are nominative uses — referring to the thing by its name. They do not
 require permission, and they do not grant any broader licence.
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">When in doubt, ask</div>
-
-
+{{% callout title="When in doubt, ask" type="info" %}}
 Unauthorised use of the trademarks may result in a request for removal.
 Contact **info@projectious.work** before shipping anything you are unsure about
 — asking first is always cheaper than a takedown.
-</div>
+{{% /callout %}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/governance/trademark/index.md

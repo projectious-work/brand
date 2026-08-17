@@ -2,11 +2,6 @@
 
 > Input sizing, labels, focus, error, and disabled states.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Sizing
 
@@ -18,16 +13,11 @@ LLMS index: [llms.txt](/brand/llms.txt)
 
 All inputs are set in **Source Sans 3 at 13px**.
 
-<div class="pj-demo"><div class="pj-demo__label">Sizes — sm 32 · md 40 · lg 48</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="Sizes — sm 32 · md 40 · lg 48" variant="grid" >}}
 <div class="pj-field"><span class="pj-field__label">Small</span><input class="pj-input pj-input--sm" value="32px" readonly></div>
 <div class="pj-field"><span class="pj-field__label">Medium</span><input class="pj-input" value="40px — default" readonly></div>
 <div class="pj-field"><span class="pj-field__label">Large</span><input class="pj-input pj-input--lg" value="48px" readonly></div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ## States
 
@@ -38,17 +28,12 @@ All inputs are set in **Source Sans 3 at 13px**.
 | Error | `orange-9` border + `orange-1` background |
 | Disabled | `slate-4` background, `slate-8` text, `cursor: not-allowed` |
 
-<div class="pj-demo"><div class="pj-demo__label">Every state</div>
-  <div class="pj-demo__body pj-demo__body--grid">
-    
+{{< demo label="Every state" variant="grid" >}}
 <div class="pj-field"><span class="pj-field__label">Default</span><input class="pj-input" placeholder="slate-7 border"></div>
 <div class="pj-field"><span class="pj-field__label">Focus</span><input class="pj-input" value="midnight ring" readonly style="border-color:#1d3352;box-shadow:0 0 0 2px rgba(29,51,82,.15)"></div>
 <div class="pj-field"><span class="pj-field__label">Error</span><input class="pj-input pj-input--error" value="invalid" readonly><span class="pj-field__error">Describe the problem in words.</span></div>
 <div class="pj-field"><span class="pj-field__label">Disabled</span><input class="pj-input" value="locked" disabled></div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ## Labels
 
@@ -73,14 +58,17 @@ the user is filling the field, and they break at long label lengths.
 - Never rely on border colour alone to signal an error — pair it with text.
 - Validate on blur, not on every keystroke; re-validate on submit.
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Keep labels visible at all times. Give every field an associated <code>&lt;label&gt;</code> and
-describe errors in words.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Use placeholder text as a label, signal errors with colour alone, or disable the
-submit button without explaining what is missing.</p>
-</div>
-</div>
+{{< rules >}}
+{{% do %}}
+Keep labels visible at all times. Give every field an associated `<label>` and
+describe errors in words.
+{{% /do %}}
+{{% dont %}}
+Use placeholder text as a label, signal errors with colour alone, or disable the
+submit button without explaining what is missing.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/interface/forms/index.md

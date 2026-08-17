@@ -2,11 +2,6 @@
 
 > Sourcing rules, treatment, and the abstract illustration style.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Sources
 
@@ -31,7 +26,7 @@ real people working passes it.
 - Photographs in dark mode receive a subtle black overlay so they do not punch a
   hole in the page.
 - The logo never sits directly on an unmodified photograph — see
-  [Logo usage](/brand/docs/logo/usage/).
+  [Logo usage](/docs/logo/usage/).
 - Never place text over a busy region. Add a scrim or crop to a quiet area.
 
 ## Illustration
@@ -50,14 +45,17 @@ a dark hero panel.
 - Diagrams are line-based, not filled — the system reads as engineering
   drawing, not infographic.
 
-<div class="pj-rules"><div class="pj-rule pj-rule--do">
-  <div class="pj-rule__label">Do</div>
-  <p>Draw the actual architecture. Use accent once per diagram, on the element the
-reader should look at first.</p>
-</div>
-<div class="pj-rule pj-rule--dont">
-  <div class="pj-rule__label">Don't</div>
-  <p>Use isometric 3D illustration, gradient-filled shapes, or generic &ldquo;tech&rdquo; clip
-art.</p>
-</div>
-</div>
+{{< rules >}}
+{{% do %}}
+Draw the actual architecture. Use accent once per diagram, on the element the
+reader should look at first.
+{{% /do %}}
+{{% dont %}}
+Use isometric 3D illustration, gradient-filled shapes, or generic "tech" clip
+art.
+{{% /dont %}}
+{{< /rules >}}
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/media/photography/index.md

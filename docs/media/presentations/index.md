@@ -2,11 +2,6 @@
 
 > Slide templates, animation, and the core deck structure.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 ## Core slides
 
@@ -14,9 +9,7 @@ Six of the twelve slide types cover most decks. Build with these first and reach
 for the other six only when the content actually calls for one — the full table
 is [below](#the-twelve-types).
 
-<div class="pj-demo"><div class="pj-demo__label">Core slide types — 1280×720 · 16:9</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Core slide types — 1280×720 · 16:9" variant="stack" >}}
 <div class="pj-slides-grid">
   <div class="pj-slide pj-slide--title">
     <div class="pj-slide__h">Redesigning work</div>
@@ -45,10 +38,7 @@ is [below](#the-twelve-types).
     <div class="pj-slide__sub">projectious.work</div>
   </div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 
 ## The full deck
@@ -56,9 +46,7 @@ is [below](#the-twelve-types).
 Twelve slide types cover a complete talk. Each is 1280×720 (16:9) and uses the same
 tokens as the product surfaces — no separate "presentation theme".
 
-<div class="pj-demo"><div class="pj-demo__label">Opening — title, agenda, section statement</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Opening — title, agenda, section statement" variant="stack" >}}
 <div class="pj-slides-grid">
   <div class="pj-slide pj-slide--title">
     <div class="pj-slide__rule"></div>
@@ -75,14 +63,9 @@ tokens as the product surfaces — no separate "presentation theme".
   </div>
   <div class="pj-slide pj-slide--statement"><div class="pj-slide__h">Bad software is a decision, not a constraint.</div></div>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Content — three-up, split, comparison</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Content — three-up, split, comparison" variant="stack" >}}
 <div class="pj-slides-grid">
   <div class="pj-slide pj-slide--content">
     <div class="pj-slide__h">The agent-first approach</div>
@@ -112,14 +95,9 @@ tokens as the product surfaces — no separate "presentation theme".
     </table>
   </div>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Evidence — metric, quote, code, diagram</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Evidence — metric, quote, code, diagram" variant="stack" >}}
 <div class="pj-slides-grid">
   <div class="pj-slide pj-slide--metric">
     <div class="pj-slide__metric">1,284</div>
@@ -149,14 +127,9 @@ tokens as the product surfaces — no separate "presentation theme".
     </svg>
   </div>
 </div>
+{{< /demo >}}
 
-  </div>
-</div>
-
-
-<div class="pj-demo"><div class="pj-demo__label">Closing — CTA and contact</div>
-  <div class="pj-demo__body pj-demo__body--stack">
-    
+{{< demo label="Closing — CTA and contact" variant="stack" >}}
 <div class="pj-slides-grid">
   <div class="pj-slide pj-slide--title" style="justify-content:center;align-items:center;text-align:center">
     <div class="pj-slide__h">Let's talk</div>
@@ -167,10 +140,7 @@ tokens as the product surfaces — no separate "presentation theme".
     <div class="pj-slide__sub" style="margin-top:.25rem">info@projectious.work</div>
   </div>
 </div>
-
-  </div>
-</div>
-
+{{< /demo >}}
 
 ### The twelve types
 
@@ -210,7 +180,7 @@ not:
   Three-up stretched to four steps along a rule: same parallel-points structure,
   same tokens, one axis added.
 - **Metric row** — four stat cards across the slide. That is the
-  [KPI row](/brand/docs/interface/patterns/) from the interface, used
+  [KPI row](/docs/interface/patterns/) from the interface, used
   on a slide. The single-number **Metric** type is for the one number a section
   is about; the row is for the four that summarise an engagement.
 
@@ -243,7 +213,7 @@ above.
 Document templates for LaTeX and Typst are in
 the document template set.
 Both embed brand identity and fall under the brand-asset licence terms — see
-[Licensing](/brand/docs/governance/licensing/).
+[Licensing](/docs/governance/licensing/).
 
 Those two are for documents. A **deck** usually has to arrive somewhere a client
 can open and edit it, so **Google Slides, PowerPoint, and Keynote are
@@ -268,3 +238,7 @@ tool's approximations of them in the theme.
 Everything else is subtraction: no shadow presets, no gradient fills, no
 transition other than a cut or a 200ms fade, no bulleted list where the type
 table above offers a slide.
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/media/presentations/index.md

@@ -2,23 +2,15 @@
 
 > Pre-launch clearance review of the name, mark, fonts, icons, and imagery sources.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 A pre-launch review of the elements that carry legal risk. Source:
 the projectious.work legal assessment supplied with the prior system.
 
-<div class="alert alert-warning" role="alert"><div class="h4 alert-heading" role="heading">Not legal advice</div>
-
-
+{{% callout title="Not legal advice" type="warning" %}}
 This is a design-side risk assessment, not a legal opinion, and it is not a
 registered-trademark search. Obtain professional advice before relying on it for
 a commercial launch.
-</div>
-
+{{% /callout %}}
 
 ## Summary
 
@@ -67,6 +59,10 @@ trademark in the IT consulting space.
 ## Recommended actions before launch
 
 - Run a registered-trademark search in the operating jurisdictions.
-- Keep the [asset provenance inventory](/brand/docs/governance/provenance/)
+- Keep the [asset provenance inventory](/docs/governance/provenance/)
   current as assets are added.
 - Retain licence notices in source for all third-party dependencies.
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/governance/legal-assessment/index.md

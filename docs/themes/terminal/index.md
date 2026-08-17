@@ -2,11 +2,6 @@
 
 > The default dark and optional light projectious.work terminal palettes, plus configuration for tmux, WezTerm, Kitty, Ghostty, iTerm2, and Zellij.
 
----
-
-LLMS index: [llms.txt](/brand/llms.txt)
-
----
 
 This page is the source of truth for rendering the projectious.work brand in a
 terminal. It answers which sixteen colours the brand uses, which program owns
@@ -33,14 +28,11 @@ A multiplexer cannot fix a wrong ANSI palette, and an emulator cannot style a
 status bar. Configure the emulator first; a multiplexer theme applied over an
 unbranded emulator will look wrong no matter how carefully it is written.
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">Zellij is the exception worth knowing</div>
-
-
+{{% callout title="Zellij is the exception worth knowing" type="info" %}}
 Zellij is a multiplexer, but its theme definition also *declares* the sixteen
 colour names it paints its own UI with. It still does not change the ANSI
 palette programs receive — that remains the emulator's. Set both.
-</div>
-
+{{% /callout %}}
 
 ### Inputs and ownership
 
@@ -71,147 +63,11 @@ palette programs receive — that remains the emulator's. Set both.
 
 ### Sixteen colours
 
-The palette is defined in the [Colour foundations](/brand/docs/foundations/color/)
+The palette is defined in the [Colour foundations](/docs/foundations/color/)
 and rendered here from the same source, so this page cannot state a value the
 foundations do not.
 
-<div class="pj-scroll-x">
-<table class="pj-table pj-terminal-palette">
-  <thead>
-    <tr>
-      <th class="pj-table__num">#</th>
-      <th>Name</th>
-      <th>Normal</th>
-      <th class="pj-table__num">On surface</th>
-      <th>Bright</th>
-      <th class="pj-table__num">On surface</th>
-      <th>Provenance</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td class="pj-table__num">0</td>
-      <td>black</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span>
-        <code>#0e1720</code>
-      </td>
-      <td class="pj-table__num">—</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #2e4b68" aria-hidden="true"></span>
-        <code>#2e4b68</code>
-      </td>
-      <td class="pj-table__num">2.00:1</td>
-      <td>midnight-dark-1 / midnight-dark-6 — Box drawing and rules, not text — deliberately below the floor.</td>
-    </tr>
-    <tr>
-      <td class="pj-table__num">1</td>
-      <td>red</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #e55b5b" aria-hidden="true"></span>
-        <code>#e55b5b</code>
-      </td>
-      <td class="pj-table__num">5.15:1</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #f08b80" aria-hidden="true"></span>
-        <code>#f08b80</code>
-      </td>
-      <td class="pj-table__num">7.49:1</td>
-      <td>bright = danger-dark — Never the accent — an error and the brand must not look alike.</td>
-    </tr>
-    <tr>
-      <td class="pj-table__num">2</td>
-      <td>green</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #3f9d74" aria-hidden="true"></span>
-        <code>#3f9d74</code>
-      </td>
-      <td class="pj-table__num">5.41:1</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #6cc090" aria-hidden="true"></span>
-        <code>#6cc090</code>
-      </td>
-      <td class="pj-table__num">8.24:1</td>
-      <td>bright = success-dark</td>
-    </tr>
-    <tr>
-      <td class="pj-table__num">3</td>
-      <td>yellow</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #c08a1e" aria-hidden="true"></span>
-        <code>#c08a1e</code>
-      </td>
-      <td class="pj-table__num">5.93:1</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #e0a92a" aria-hidden="true"></span>
-        <code>#e0a92a</code>
-      </td>
-      <td class="pj-table__num">8.50:1</td>
-      <td>bright = warning-dark — Gold, matching the warning role in the interface.</td>
-    </tr>
-    <tr>
-      <td class="pj-table__num">4</td>
-      <td>blue</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #6289b3" aria-hidden="true"></span>
-        <code>#6289b3</code>
-      </td>
-      <td class="pj-table__num">4.95:1</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #8aacc8" aria-hidden="true"></span>
-        <code>#8aacc8</code>
-      </td>
-      <td class="pj-table__num">7.59:1</td>
-      <td>bright = midnight-dark-11</td>
-    </tr>
-    <tr>
-      <td class="pj-table__num">5</td>
-      <td>magenta</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #bd6d96" aria-hidden="true"></span>
-        <code>#bd6d96</code>
-      </td>
-      <td class="pj-table__num">4.98:1</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #d491b4" aria-hidden="true"></span>
-        <code>#d491b4</code>
-      </td>
-      <td class="pj-table__num">7.32:1</td>
-      <td>terminal-only — The brand defines no magenta; this slot exists only here.</td>
-    </tr>
-    <tr>
-      <td class="pj-table__num">6</td>
-      <td>cyan</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #3f97a3" aria-hidden="true"></span>
-        <code>#3f97a3</code>
-      </td>
-      <td class="pj-table__num">5.31:1</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #74c0c9" aria-hidden="true"></span>
-        <code>#74c0c9</code>
-      </td>
-      <td class="pj-table__num">8.71:1</td>
-      <td>terminal-only — The brand defines no cyan; this slot exists only here.</td>
-    </tr>
-    <tr>
-      <td class="pj-table__num">7</td>
-      <td>white</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #97a8b8" aria-hidden="true"></span>
-        <code>#97a8b8</code>
-      </td>
-      <td class="pj-table__num">7.41:1</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span>
-        <code>#c5daf0</code>
-      </td>
-      <td class="pj-table__num">12.62:1</td>
-      <td>slate-dark-11 / midnight-dark-12</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+{{< terminal-palette >}}
 
 The **bright** ramp is the brand: where a hue already exists in the system, the
 bright slot takes that step verbatim. The **normal** ramp is derived from it —
@@ -229,119 +85,7 @@ The brand accent has no ANSI slot, because it is not a semantic colour: it marks
 
 ### Chrome
 
-<div class="pj-scroll-x">
-<table class="pj-table pj-terminal-palette">
-  <thead>
-    <tr><th>Role</th><th>Value</th><th class="pj-table__num">Measured</th></tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Background</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span>
-        <code>#0e1720</code>
-      </td>
-      <td class="pj-table__num">the surface</td>
-    </tr>
-    <tr>
-      <td>Foreground</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span>
-        <code>#c5daf0</code>
-      </td>
-      <td class="pj-table__num">12.62:1</td>
-    </tr>
-    <tr>
-      <td>Cursor</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #e05232" aria-hidden="true"></span>
-        <code>#e05232</code>
-      </td>
-      <td class="pj-table__num">4.67:1</td>
-    </tr>
-    <tr>
-      <td>Cursor text</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #0e1720" aria-hidden="true"></span>
-        <code>#0e1720</code>
-      </td>
-      <td class="pj-table__num">4.67:1 on the cursor</td>
-    </tr>
-    <tr>
-      <td>Selection background</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #20354d" aria-hidden="true"></span>
-        <code>#20354d</code>
-      </td>
-      <td class="pj-table__num">—</td>
-    </tr>
-    <tr>
-      <td>Selection text</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span>
-        <code>#c5daf0</code>
-      </td>
-      <td class="pj-table__num">8.74:1</td>
-    </tr>
-    <tr>
-      <td>Dim / comment</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #72889d" aria-hidden="true"></span>
-        <code>#72889d</code>
-      </td>
-      <td class="pj-table__num">4.93:1</td>
-    </tr>
-    <tr>
-      <td>Status bar surface</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #131e2b" aria-hidden="true"></span>
-        <code>#131e2b</code>
-      </td>
-      <td class="pj-table__num">—</td>
-    </tr>
-    <tr>
-      <td>Status bar text</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #c5daf0" aria-hidden="true"></span>
-        <code>#c5daf0</code>
-      </td>
-      <td class="pj-table__num">11.74:1</td>
-    </tr>
-    <tr>
-      <td>Inactive tab and pane label</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #7b8da3" aria-hidden="true"></span>
-        <code>#7b8da3</code>
-      </td>
-      <td class="pj-table__num">4.95:1</td>
-    </tr>
-    <tr>
-      <td>Active tab fill</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #e05232" aria-hidden="true"></span>
-        <code>#e05232</code>
-      </td>
-      <td class="pj-table__num">4.67:1 with #0e1720 text</td>
-    </tr>
-    <tr>
-      <td>Active pane border</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #e05232" aria-hidden="true"></span>
-        <code>#e05232</code>
-      </td>
-      <td class="pj-table__num">4.67:1</td>
-    </tr>
-    <tr>
-      <td>Inactive pane border</td>
-      <td class="pj-inline-color">
-        <span class="pj-color-chip" style="--pj-chip: #7b8da3" aria-hidden="true"></span>
-        <code>#7b8da3</code>
-      </td>
-      <td class="pj-table__num">5.32:1</td>
-    </tr>
-  </tbody>
-</table>
-</div>
+{{< terminal-palette part="chrome" >}}
 
 ### Optional light companion
 
@@ -369,7 +113,7 @@ the cursor, and UI chrome clear 3:1. Nothing switches to it automatically.
 ## Syntax in the terminal
 
 An editor running inside a terminal paints code from the sixteen ANSI slots, not
-from a stylesheet. Since the [syntax roles](/brand/docs/interface/code/) were
+from a stylesheet. Since the [syntax roles](/docs/interface/code/) were
 reassigned by measured perceptual distance, seven of the nine now resolve to an
 ANSI slot exactly — so a file open in Helix, Neovim or Vim under this palette
 looks like the same file on the documentation site.
@@ -394,17 +138,14 @@ truecolour should be given those three literally; one limited to sixteen colours
 should use bright red for strings, red for numbers, and bright black for
 comments, accepting that the last of those falls below the text floor.
 
-<div class="alert alert-info" role="alert"><div class="h4 alert-heading" role="heading">This convergence was not designed for; it fell out</div>
-
-
+{{% callout title="This convergence was not designed for; it fell out" type="info" %}}
 The syntax roles were reassigned to fix a legibility problem — keywords and
 operators measured ΔE2000 5.2 apart, which is the same colour for reading
 purposes. Because the only hues available were the ones the terminal palette had
 already added to the system, the fix pulled the web theme onto the ANSI slots.
 Worth noticing: a constraint that looked like a limitation produced the
 coherence.
-</div>
-
+{{% /callout %}}
 
 ## tmux
 
@@ -699,7 +440,7 @@ appearance. Do not use that automatic pairing for the default configuration:
 dark is the product default. If a deliberately light terminal is required,
 configure the complete light companion palette as a separate named theme; do
 not mix its slots with the dark set. See
-[Colour](/brand/docs/foundations/color/).
+[Colour](/docs/foundations/color/).
 
 Four defaults have to be set explicitly, because each one moves rendered colour
 off the measured palette:
@@ -898,3 +639,7 @@ When a terminal is upgraded, re-print the sixteen-slot ramp before assuming the
 theme survived. Emulators change their default handling of bold, dim, and
 minimum contrast between releases more often than they change colour parsing,
 and each of those silently moves values off the measured palette.
+
+
+---
+Source: https://projectious-work.github.io/brand/docs/themes/terminal/index.md
