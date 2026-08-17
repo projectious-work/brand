@@ -164,6 +164,8 @@ The callout hues are tuned for **dark text on tinted light backgrounds**. Used
 as foregrounds on the dark app surface they fall below AA, so dark mode has its
 own set:
 
+{{< semantic-swatches >}}
+
 | Role | Light solid | Light tint foreground | Dark solid |
 |---|---|---|---|
 | Success | `#17945f` | `#17734c` on `#d1ebe0` | `#6cc090` |

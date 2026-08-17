@@ -1,0 +1,56 @@
+{{ define "main" }}
+<div class="shell changelog-shell">
+  <main id="main">
+    <div class="changelog-hero">
+      <div class="changelog-hero__eyebrow">Change log</div>
+      <h1>{{ .Title }}</h1>
+      {{ with .Description }}<p>{{ . }}</p>{{ end }}
+      {{ with .Params.fullChangelogURL }}
+        <a class="btn btn--secondary" href="{{ . }}">
+          View full changelog
+        </a>
+      {{ end }}
+    </div>
+
+    {{ with .Content }}<div class="prose changelog-intro">{{ . }}</div>{{ end }}
+
+    {{ $paginator := .Paginate .Pages.ByDate.Reverse }}
+    {{ $latest := index $paginator.Pages 0 }}
+    <div class="release-timeline">
+      {{ range $paginator.Pages }}
+      <article class="release{{ if eq . $latest }} release--latest{{ end }}">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">
+          {{ time.Format ":date_medium" .Date }}
+        </time>
+        <div class="release__body">
+          <div class="release__heading">
+            <h2><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></h2>
+            {{ if eq . $latest }}
+              <span class="release__latest">Latest</span>
+            {{ end }}
+          </div>
+          {{ with .Params.changes }}
+          <ul class="release__changes">
+            {{ range . }}
+            <li>
+              <span class="release-kind release-kind--{{ .kind | lower }}">
+                {{ .kind }}
+              </span>
+              <span>{{ .text }}</span>
+            </li>
+            {{ end }}
+          </ul>
+          {{ else }}
+            <p>{{ .Description }}</p>
+          {{ end }}
+          <a class="release__notes" href="{{ .RelPermalink }}">
+            Read release notes →
+          </a>
+        </div>
+      </article>
+      {{ end }}
+    </div>
+    {{ template "_internal/pagination.html" . }}
+  </main>
+</div>
+{{ end }}
