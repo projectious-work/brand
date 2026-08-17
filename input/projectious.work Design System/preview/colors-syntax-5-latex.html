@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Code · LaTeX" subtitle="Control sequences and math — the escape role earns its place here." viewport="700x380" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="code-card.css"></head><body data-theme="light" data-mode="light">
+<div class="col" style="gap:12px">
+  <div class="label-block">
+    <div class="label">LaTeX · <span style="font-family:var(--font-code);font-weight:400">report.tex</span></div>
+    <div class="sub" style="font-size:12px">IBM Plex Mono · 14px / 1.6 — the real <span class="mono" style="font-size:11px">--type-code-size</span></div>
+  </div>
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">LaTeX</span>
+      <span>report.tex</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c">% Quarterly reliability report — projectious.work</span>
+<span class="k">\documentclass</span>{<span class="t">article</span>}
+<span class="k">\usepackage</span>{<span class="t">amsmath</span>}
+<span class="k">\title</span>{<span class="s">Agent reliability, Q3 2025</span>}
+
+<span class="k">\begin</span>{<span class="t">document</span>}
+<span class="k">\maketitle</span>
+The success rate <span class="e">$\rho$</span> across <span class="n">12{,}480</span> runs was:
+<span class="k">\begin</span>{<span class="t">equation</span>}
+  <span class="e">\rho</span> = <span class="e">\frac</span>{<span class="n">N_{\text{ok}}</span>}{<span class="n">N_{\text{total}}</span>} = <span class="n">0.9987</span>
+<span class="k">\end</span>{<span class="t">equation</span>}
+<span class="k">\end</span>{<span class="t">document</span>}
+</span></pre>
+  </div>
+  <div class="sub">Control sequences and math — the escape role earns its place here. Dark is the brand default; switch to Light for the optional light panel. Colours come from the canonical <span class="mono">--syntax-*</span> roles, so this block cannot drift from <em>Colors · Syntax roles</em>.</div>
+</div>
+<script src="card-mode.js"></script>
+</body></html>

@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Code · TOML" subtitle="Tables and keys — attribute and type must stay distinct." viewport="700x380" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="code-card.css"></head><body data-theme="light" data-mode="light">
+<div class="col" style="gap:12px">
+  <div class="label-block">
+    <div class="label">TOML · <span style="font-family:var(--font-code);font-weight:400">Cargo.toml</span></div>
+    <div class="sub" style="font-size:12px">IBM Plex Mono · 14px / 1.6 — the real <span class="mono" style="font-size:11px">--type-code-size</span></div>
+  </div>
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">TOML</span>
+      <span>Cargo.toml</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c"># Crate manifest for the agent runner</span>
+<span class="p">[</span><span class="t">package</span><span class="p">]</span>
+<span class="a">name</span> = <span class="s">"agent-runner"</span>
+<span class="a">version</span> = <span class="s">"0.4.2"</span>
+<span class="a">edition</span> = <span class="s">"2024"</span>
+<span class="a">authors</span> = <span class="p">[</span><span class="s">"projectious.work &lt;eng@projectious.work&gt;"</span><span class="p">]</span>
+
+<span class="p">[</span><span class="t">dependencies</span><span class="p">]</span>
+<span class="a">tokio</span> = { <span class="a">version</span> = <span class="s">"1.40"</span>, <span class="a">features</span> = <span class="p">[</span><span class="s">"full"</span><span class="p">]</span> }
+<span class="a">anyhow</span> = <span class="s">"1.0"</span>
+<span class="a">serde</span> = { <span class="a">version</span> = <span class="s">"1.0"</span>, <span class="a">features</span> = <span class="p">[</span><span class="s">"derive"</span><span class="p">]</span> }
+<span class="a">retries</span> = <span class="n">3</span>
+</span></pre>
+  </div>
+  <div class="sub">Tables and keys — attribute and type must stay distinct. Dark is the brand default; switch to Light for the optional light panel. Colours come from the canonical <span class="mono">--syntax-*</span> roles, so this block cannot drift from <em>Colors · Syntax roles</em>.</div>
+</div>
+<script src="card-mode.js"></script>
+</body></html>

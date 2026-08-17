@@ -1,38 +1,53 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Colors · Semantic" subtitle="Solid · tint · on-tint foreground, both modes" viewport="700x340" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
-<style>.sw{width:34px;height:34px;border-radius:6px;flex:0 0 34px}.tint{flex:1;height:34px;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-family:var(--font-heading);font-size:11px;font-weight:600}</style>
-<div class="col" style="gap:12px">
-  <div class="col" style="gap:8px">
-    <div class="row" style="gap:14px">
-      <div style="flex:1"><div class="label">Success</div>
-        <div class="row" style="gap:6px;margin-top:4px"><div class="sw" style="background:#2f7d65"></div><div class="tint" style="background:#d1ebe0;color:#276754">5.28:1</div></div>
-        <div class="mono" style="margin-top:3px">#2f7d65 · #d1ebe0 · fg #276754</div>
-      </div>
-      <div style="flex:1"><div class="label">Warning</div>
-        <div class="row" style="gap:6px;margin-top:4px"><div class="sw" style="background:#8b6508"></div><div class="tint" style="background:#f5ecd0;color:#6f5106">6.23:1</div></div>
-        <div class="mono" style="margin-top:3px">#8b6508 · #f5ecd0 · fg #6f5106</div>
-      </div>
+<!-- @dsCard group="Brand" name="Colors · Semantic states" subtitle="Success, warning, danger, info — each appearance re-picks its own pair" viewport="700x300" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  .cell { flex:1; min-width:0 }
+  .sw { width:34px; height:34px; border-radius:6px; flex:0 0 34px; box-shadow:inset 0 0 0 1px rgba(20,36,56,0.18) }
+  body[data-theme="dark"] .sw { box-shadow:inset 0 0 0 1px rgba(255,255,255,0.16) }
+  .tint { flex:1; height:34px; border-radius:6px; display:flex; align-items:center; justify-content:center; font-family:var(--font-code); font-size:12px; font-weight:600 }
+  .hex { font-family:var(--font-code); font-size:10px; color:var(--fg-3); margin-top:4px }
+</style>
+<div class="col" style="gap:13px">
+  <div class="row" style="gap:14px;align-items:flex-start">
+    <div class="cell"><div class="label">Success</div>
+      <div class="row" style="gap:6px;margin-top:4px"><div class="sw" style="background:var(--color-success)"></div><div class="tint" data-role="success" style="background:var(--color-success-bg);color:var(--color-success-fg)">–</div></div>
+      <div class="hex" data-hex="success">–</div>
     </div>
-    <div class="row" style="gap:14px">
-      <div style="flex:1"><div class="label">Danger</div>
-        <div class="row" style="gap:6px;margin-top:4px"><div class="sw" style="background:#a8261c"></div><div class="tint" style="background:#fce8e8;color:#a8261c">6.03:1</div></div>
-        <div class="mono" style="margin-top:3px">#a8261c · #fce8e8 · fg #a8261c</div>
-      </div>
-      <div style="flex:1"><div class="label">Info</div>
-        <div class="row" style="gap:6px;margin-top:4px"><div class="sw" style="background:#3a5a82"></div><div class="tint" style="background:#dae2ec;color:#3a5a82">5.42:1</div></div>
-        <div class="mono" style="margin-top:3px">#3a5a82 · #dae2ec · fg #3a5a82</div>
-      </div>
+    <div class="cell"><div class="label">Warning</div>
+      <div class="row" style="gap:6px;margin-top:4px"><div class="sw" style="background:var(--color-warning)"></div><div class="tint" data-role="warning" style="background:var(--color-warning-bg);color:var(--color-warning-fg)">–</div></div>
+      <div class="hex" data-hex="warning">–</div>
     </div>
   </div>
-  <div style="background:#0e1720;border-radius:9px;padding:12px 14px">
-    <div class="label" style="color:#97a8b8;margin-bottom:8px">Dark mode re-picks — it never reuses the light values</div>
-    <div class="row" style="gap:8px">
-      <div class="tint" style="background:#16302a;color:#6cc090">Success</div>
-      <div class="tint" style="background:#33280d;color:#e0a92a">Warning</div>
-      <div class="tint" style="background:#3a1c19;color:#f08b80">Danger</div>
-      <div class="tint" style="background:#1a2b3e;color:#8aacc8">Info</div>
+  <div class="row" style="gap:14px;align-items:flex-start">
+    <div class="cell"><div class="label">Danger</div>
+      <div class="row" style="gap:6px;margin-top:4px"><div class="sw" style="background:var(--color-danger)"></div><div class="tint" data-role="danger" style="background:var(--color-danger-bg);color:var(--color-danger-fg)">–</div></div>
+      <div class="hex" data-hex="danger">–</div>
+    </div>
+    <div class="cell"><div class="label">Info</div>
+      <div class="row" style="gap:6px;margin-top:4px"><div class="sw" style="background:var(--color-info)"></div><div class="tint" data-role="info" style="background:var(--color-info-bg);color:var(--color-info-fg)">–</div></div>
+      <div class="hex" data-hex="info">–</div>
     </div>
   </div>
-  <div class="sub">Pair the solid with its tint. On the tint, use the <code style="font-family:var(--font-code);font-size:11px">-fg</code> value — the solid does not always clear AA against its own tint.</div>
+  <div class="sub">Solid and foreground do different jobs and are pitched separately: the solid is a graphic, so it can be vivid; the foreground is text on the tint and holds 4.5:1. Warning sits at hue 32–33° in every appearance — orange, but held clear of the brand accent at 11–12° so a caution is never mistaken for a call to action. The swatches carry a hairline because several tints sit close to the surface they print on. Each appearance re-picks its own solid, tint and foreground — the dark modes never reuse a light value at lower opacity. The ratio shown on each tint is measured live from the resolved tokens, so it cannot drift from the palette. Navy dark inherits deep dark's status set unchanged.</div>
 </div>
+<script src="card-mode.js"></script>
+<script>
+function lum(c){var m=c.match(/\d+(\.\d+)?/g);var v=[m[0],m[1],m[2]].map(function(x){var n=x/255;return n<=0.03928?n/12.92:Math.pow((n+0.055)/1.055,2.4)});return 0.2126*v[0]+0.7152*v[1]+0.0722*v[2]}
+function ratio(a,b){var L1=lum(a),L2=lum(b);var hi=Math.max(L1,L2),lo=Math.min(L1,L2);return (hi+0.05)/(lo+0.05)}
+function toHex(c){var m=c.match(/\d+/g);return '#'+[m[0],m[1],m[2]].map(function(x){return ('0'+(+x).toString(16)).slice(-2)}).join('')}
+function paint(){
+  document.querySelectorAll('[data-role]').forEach(function(el){
+    var cs=getComputedStyle(el);
+    el.textContent=ratio(cs.color,cs.backgroundColor).toFixed(2)+':1';
+  });
+  document.querySelectorAll('[data-hex]').forEach(function(el){
+    var role=el.getAttribute('data-hex');
+    var t=document.querySelector('[data-role="'+role+'"]');
+    var s=t.previousElementSibling, cs=getComputedStyle(t);
+    el.textContent=toHex(getComputedStyle(s).backgroundColor)+' · '+toHex(cs.backgroundColor)+' · fg '+toHex(cs.color);
+  });
+}
+document.addEventListener('cardmode', function(){ requestAnimationFrame(paint) });
+requestAnimationFrame(paint);
+</script>
 </body></html>

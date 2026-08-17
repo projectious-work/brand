@@ -1,4 +1,4 @@
-/* @ds-bundle: {"format":4,"namespace":"ProjectiousWorkDesignSystem_019de8","components":[{"name":"StatusPill","sourcePath":"ui_kits/agent-console/PipelineList.jsx"},{"name":"PipelineList","sourcePath":"ui_kits/agent-console/PipelineList.jsx"},{"name":"RunDetail","sourcePath":"ui_kits/agent-console/RunDetail.jsx"},{"name":"Sidebar","sourcePath":"ui_kits/agent-console/Sidebar.jsx"},{"name":"StatusBar","sourcePath":"ui_kits/agent-console/StatusBar.jsx"},{"name":"Topbar","sourcePath":"ui_kits/agent-console/Topbar.jsx"},{"name":"THEMES","sourcePath":"ui_kits/agent-console/theme.jsx"},{"name":"CTA","sourcePath":"ui_kits/marketing-site/CTA.jsx"},{"name":"CodeShowcase","sourcePath":"ui_kits/marketing-site/CodeShowcase.jsx"},{"name":"Convictions","sourcePath":"ui_kits/marketing-site/Convictions.jsx"},{"name":"Footer","sourcePath":"ui_kits/marketing-site/Footer.jsx"},{"name":"Header","sourcePath":"ui_kits/marketing-site/Header.jsx"},{"name":"Hero","sourcePath":"ui_kits/marketing-site/Hero.jsx"},{"name":"Pillars","sourcePath":"ui_kits/marketing-site/Pillars.jsx"}],"sourceHashes":{"ui_kits/agent-console/PipelineList.jsx":"71965b6175b6","ui_kits/agent-console/RunDetail.jsx":"cc75d58f8f1f","ui_kits/agent-console/Sidebar.jsx":"598be646be7b","ui_kits/agent-console/StatusBar.jsx":"ce1d5ffe6468","ui_kits/agent-console/Topbar.jsx":"d6d5eece78d4","ui_kits/agent-console/theme.jsx":"c620a7cef79a","ui_kits/marketing-site/CTA.jsx":"8ee148cdf5dc","ui_kits/marketing-site/CodeShowcase.jsx":"ec554606753d","ui_kits/marketing-site/Convictions.jsx":"6200145688e3","ui_kits/marketing-site/Footer.jsx":"dae83dec1855","ui_kits/marketing-site/Header.jsx":"af4bbbeddfe2","ui_kits/marketing-site/Hero.jsx":"91d0bb84664e","ui_kits/marketing-site/Pillars.jsx":"1be628e25209"},"inlinedExternals":[],"unexposedExports":[]} */
+/* @ds-bundle: {"format":4,"namespace":"ProjectiousWorkDesignSystem_019de8","components":[{"name":"StatusPill","sourcePath":"ui_kits/agent-console/PipelineList.jsx"},{"name":"PipelineList","sourcePath":"ui_kits/agent-console/PipelineList.jsx"},{"name":"RunDetail","sourcePath":"ui_kits/agent-console/RunDetail.jsx"},{"name":"Sidebar","sourcePath":"ui_kits/agent-console/Sidebar.jsx"},{"name":"StatusBar","sourcePath":"ui_kits/agent-console/StatusBar.jsx"},{"name":"Topbar","sourcePath":"ui_kits/agent-console/Topbar.jsx"},{"name":"THEMES","sourcePath":"ui_kits/agent-console/theme.jsx"},{"name":"CTA","sourcePath":"ui_kits/marketing-site/CTA.jsx"},{"name":"CodeShowcase","sourcePath":"ui_kits/marketing-site/CodeShowcase.jsx"},{"name":"Convictions","sourcePath":"ui_kits/marketing-site/Convictions.jsx"},{"name":"Footer","sourcePath":"ui_kits/marketing-site/Footer.jsx"},{"name":"Header","sourcePath":"ui_kits/marketing-site/Header.jsx"},{"name":"Hero","sourcePath":"ui_kits/marketing-site/Hero.jsx"},{"name":"Pillars","sourcePath":"ui_kits/marketing-site/Pillars.jsx"}],"sourceHashes":{"preview/card-mode.js":"1f4fd56b7b3d","ui_kits/agent-console/PipelineList.jsx":"71965b6175b6","ui_kits/agent-console/RunDetail.jsx":"cc75d58f8f1f","ui_kits/agent-console/Sidebar.jsx":"598be646be7b","ui_kits/agent-console/StatusBar.jsx":"ce1d5ffe6468","ui_kits/agent-console/Topbar.jsx":"604b6fe9e02f","ui_kits/agent-console/theme.jsx":"cf625aebba93","ui_kits/marketing-site/CTA.jsx":"d110f781261b","ui_kits/marketing-site/CodeShowcase.jsx":"05de65e28826","ui_kits/marketing-site/Convictions.jsx":"bb0de458ad16","ui_kits/marketing-site/Footer.jsx":"750c3f5fc786","ui_kits/marketing-site/Header.jsx":"fb8c1189b294","ui_kits/marketing-site/Hero.jsx":"c600876a3bb1","ui_kits/marketing-site/Pillars.jsx":"63741835ee0c"},"inlinedExternals":[],"unexposedExports":[]} */
 
 (() => {
 
@@ -7,6 +7,92 @@ const __ds_ns = (window.ProjectiousWorkDesignSystem_019de8 = window.ProjectiousW
 const __ds_scope = {};
 
 (__ds_ns.__errors = __ds_ns.__errors || []);
+
+// preview/card-mode.js
+try { (() => {
+/* preview/card-mode.js — the appearance switch every card carries.
+   Three appearances, matching the system's three supported modes:
+     light      body[data-theme="light"]
+     deep dark  body[data-theme="dark"]
+     navy dark  body[data-theme="dark"][data-surface="navy"]
+   The attributes go on <body>, not <html>: a card may be embedded as markup
+   rather than loaded as a document, and an <html> attribute is lost when it is.
+   Cards that show a fixed palette as their *content* (a light ramp, a dark
+   ramp) opt out with `data-mode-lock` and only re-chrome themselves. */
+(function () {
+  var MODES = [{
+    id: 'light',
+    label: 'Light',
+    theme: 'light',
+    surface: null
+  }, {
+    id: 'navy',
+    label: 'Navy dark',
+    theme: 'dark',
+    surface: null
+  }, {
+    id: 'deep',
+    label: 'Deep dark',
+    theme: 'dark',
+    surface: 'deep'
+  }];
+  function apply(id) {
+    var m = MODES.filter(function (x) {
+      return x.id === id;
+    })[0] || MODES[0];
+    var b = document.body;
+    b.setAttribute('data-theme', m.theme);
+    if (m.surface) {
+      b.setAttribute('data-surface', m.surface);
+    } else {
+      b.removeAttribute('data-surface');
+    }
+    b.setAttribute('data-mode', m.id);
+    document.documentElement.setAttribute('data-theme', m.theme);
+    if (m.surface) {
+      document.documentElement.setAttribute('data-surface', m.surface);
+    } else {
+      document.documentElement.removeAttribute('data-surface');
+    }
+    Array.prototype.forEach.call(document.querySelectorAll('[data-mode-btn]'), function (btn) {
+      btn.setAttribute('aria-pressed', btn.getAttribute('data-mode-btn') === m.id ? 'true' : 'false');
+    });
+    document.dispatchEvent(new CustomEvent('cardmode', {
+      detail: m
+    }));
+  }
+  function build() {
+    var bar = document.createElement('div');
+    bar.className = 'mode-switch';
+    bar.setAttribute('role', 'group');
+    bar.setAttribute('aria-label', 'Appearance');
+    MODES.forEach(function (m) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.textContent = m.label;
+      b.setAttribute('data-mode-btn', m.id);
+      b.setAttribute('aria-pressed', 'false');
+      b.addEventListener('click', function () {
+        apply(m.id);
+      });
+      bar.appendChild(b);
+    });
+    document.body.insertBefore(bar, document.body.firstChild);
+    apply(document.body.getAttribute('data-mode') || 'light');
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', build);
+  } else {
+    build();
+  }
+  window.cardMode = {
+    apply: apply,
+    current: function () {
+      return document.body.getAttribute('data-mode');
+    }
+  };
+})();
+})(); } catch (e) { __ds_ns.__errors.push({ path: "preview/card-mode.js", error: String((e && e.message) || e) }); }
 
 // ui_kits/agent-console/PipelineList.jsx
 try { (() => {
@@ -513,7 +599,8 @@ Object.assign(__ds_scope, { StatusBar });
 
 // ui_kits/agent-console/Topbar.jsx
 try { (() => {
-// Lucide `sun` / `moon` (MIT) inlined — stroke-only, 24px grid, 1.5px stroke, round caps.
+// Tabler `sun` / `moon` (MIT) inlined — 24px grid, round caps.
+// Tabler ships at stroke-width 2; the brand rule is 1.5, which the set supports.
 function ModeIcon({
   mode,
   color
@@ -530,31 +617,15 @@ function ModeIcon({
     'aria-hidden': 'true',
     focusable: 'false'
   };
-  if (mode === 'dark') {
-    return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("circle", {
-      cx: "12",
-      cy: "12",
-      r: "4"
+  if (mode === 'dark' || mode === 'navy') {
+    return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
+      d: "M8 12a4 4 0 1 0 8 0a4 4 0 1 0 -8 0"
     }), /*#__PURE__*/React.createElement("path", {
-      d: "M12 2v2"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M12 20v2"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M4.93 4.93l1.41 1.41"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M17.66 17.66l1.41 1.41"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M2 12h2"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M20 12h2"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M6.34 17.66l-1.41 1.41"
-    }), /*#__PURE__*/React.createElement("path", {
-      d: "M19.07 4.93l-1.41 1.41"
+      d: "M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7"
     }));
   }
   return /*#__PURE__*/React.createElement("svg", common, /*#__PURE__*/React.createElement("path", {
-    d: "M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"
+    d: "M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454l0 .008"
   }));
 }
 function Topbar({
@@ -564,6 +635,8 @@ function Topbar({
   onToggleMode
 }) {
   const t = theme;
+  // Three appearances, cycled in order: light → deep dark → navy dark.
+  const nextLabel = mode === 'light' ? 'deep dark' : mode === 'dark' ? 'navy dark' : 'light';
   return /*#__PURE__*/React.createElement("header", {
     style: {
       padding: '14px 28px',
@@ -616,8 +689,8 @@ function Topbar({
     }
   }), /*#__PURE__*/React.createElement("button", {
     onClick: onToggleMode,
-    "aria-label": mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
-    title: mode === 'dark' ? 'Switch to light mode' : 'Switch to dark mode',
+    "aria-label": 'Switch to ' + nextLabel + ' mode',
+    title: 'Switch to ' + nextLabel + ' mode',
     style: {
       width: 36,
       height: 36,
@@ -741,8 +814,8 @@ const THEMES = {
     ...LIGHT_PILLS
   },
   dark: {
-    appBg: '#070b13',
-    sidebarBg: '#0e1720',
+    appBg: '#0e1720',
+    sidebarBg: '#131e2b',
     sidebarBorder: 'rgba(255,255,255,0.06)',
     sidebarFg: '#c5daf0',
     sidebarMuted: '#97a8b8',
@@ -754,23 +827,23 @@ const THEMES = {
     sidebarUserBg: '#2b4d78',
     sidebarUserFg: '#fff',
     sidebarUserName: '#fff',
-    topbarBg: '#0e1720',
+    topbarBg: '#131e2b',
     topbarBorder: 'rgba(255,255,255,0.06)',
     topbarMuted: '#97a8b8',
-    topbarTitle: '#e8eef5',
+    topbarTitle: '#c5daf0',
     inputBg: '#1a2b3e',
     inputBorder: '#2e4b68',
-    inputFg: '#e8eef5',
-    surface: '#162132',
+    inputFg: '#c5daf0',
+    surface: '#131e2b',
     surfaceBorder: 'rgba(255,255,255,0.10)',
     rowBorder: 'rgba(255,255,255,0.05)',
     rowSelected: 'rgba(224,82,50,0.10)',
-    headerBg: '#1f2f44',
+    headerBg: '#1a2b3e',
     headerFg: '#97a8b8',
-    text1: '#e8eef5',
+    text1: '#c5daf0',
     text2: '#97a8b8',
     icon: '#97a8b8',
-    title: '#e8eef5',
+    title: '#c5daf0',
     code: '#c5daf0',
     stageDone: 'rgba(108,192,144,0.15)',
     stageRun: 'rgba(122,148,176,0.18)',
@@ -780,12 +853,12 @@ const THEMES = {
     stageDotRun: '#7494b0',
     stageDotIdle: '#5a6a78',
     stageLabel: '#c5daf0',
-    statusBarBg: '#0e1720',
+    statusBarBg: '#131e2b',
     statusBarFg: '#97a8b8',
     statusBarMuted: '#97a8b8',
     statusBarBorder: 'rgba(255,255,255,0.06)',
     statusBarOk: '#6cc090',
-    termBg: '#03060c',
+    termBg: '#0e1720',
     termBorder: 'rgba(108,192,144,0.18)',
     termComment: '#7e8f9e',
     termPrompt: '#6cc090',
@@ -817,6 +890,20 @@ const THEMES = {
     }
   }
 };
+
+// Navy dark — a derivative of deep dark, exactly as in colors_and_type.css:
+// only the surfaces, borders and input/header steps move onto the navy ramp.
+THEMES.navy = Object.assign({}, THEMES.dark, {
+  appBg: '#132440',
+  sidebarBg: '#1a2b3e',
+  topbarBg: '#1a2b3e',
+  surface: '#1a2b3e',
+  inputBg: '#20354d',
+  inputBorder: '#2e4b68',
+  headerBg: '#20354d',
+  statusBarBg: '#1a2b3e',
+  termBg: '#0e1720'
+});
 Object.assign(__ds_scope, { THEMES });
 })(); } catch (e) { __ds_ns.__errors.push({ path: "ui_kits/agent-console/theme.jsx", error: String((e && e.message) || e) }); }
 
@@ -825,7 +912,7 @@ try { (() => {
 function CTA() {
   return /*#__PURE__*/React.createElement("section", {
     style: {
-      background: '#1d3352',
+      background: 'var(--fg-1)',
       padding: '80px 32px',
       position: 'relative',
       overflow: 'hidden'
@@ -855,7 +942,7 @@ function CTA() {
       fontFamily: 'var(--font-heading)',
       fontWeight: 700,
       fontSize: 36,
-      color: '#fff',
+      color: 'var(--surface)',
       margin: 0,
       letterSpacing: '-0.4px'
     }
@@ -874,8 +961,8 @@ function CTA() {
       padding: '14px 28px',
       border: 0,
       borderRadius: 6,
-      color: '#fff',
-      background: '#cc4528',
+      color: 'var(--surface)',
+      background: 'var(--color-accent-solid)',
       cursor: 'pointer',
       flexShrink: 0
     }
@@ -890,7 +977,7 @@ function CodeShowcase() {
   return /*#__PURE__*/React.createElement("section", {
     style: {
       padding: '96px 32px',
-      background: '#fff'
+      background: 'var(--surface)'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -908,7 +995,7 @@ function CodeShowcase() {
       fontWeight: 600,
       letterSpacing: '0.12em',
       textTransform: 'uppercase',
-      color: '#c04424',
+      color: 'var(--orange-11)',
       marginBottom: 16
     }
   }, "What we ship"), /*#__PURE__*/React.createElement("h2", {
@@ -918,7 +1005,7 @@ function CodeShowcase() {
       fontSize: 36,
       lineHeight: 1.2,
       letterSpacing: '-0.4px',
-      color: '#1d3352',
+      color: 'var(--fg-1)',
       margin: 0
     }
   }, "Pipelines you can reason about."), /*#__PURE__*/React.createElement("p", {
@@ -926,7 +1013,7 @@ function CodeShowcase() {
       fontFamily: 'var(--font-body)',
       fontSize: 15,
       lineHeight: 1.6,
-      color: '#5c6f82',
+      color: 'var(--fg-3)',
       marginTop: 16
     }
   }, "Declarative configs. Auditable runs. Policies that fail closed. Whether the operator is human or agent, the pipeline behaves the same way."), /*#__PURE__*/React.createElement("a", {
@@ -939,7 +1026,7 @@ function CodeShowcase() {
       fontFamily: 'var(--font-heading)',
       fontSize: 14,
       fontWeight: 500,
-      color: '#c04424',
+      color: 'var(--orange-11)',
       textDecoration: 'none'
     }
   }, "View the docs ", /*#__PURE__*/React.createElement("span", {
@@ -1040,7 +1127,7 @@ function Convictions() {
   return /*#__PURE__*/React.createElement("section", {
     style: {
       padding: '96px 32px',
-      background: '#f8f9fb'
+      background: 'var(--bg)'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1054,7 +1141,7 @@ function Convictions() {
       fontWeight: 600,
       letterSpacing: '0.12em',
       textTransform: 'uppercase',
-      color: '#c04424',
+      color: 'var(--orange-11)',
       marginBottom: 16
     }
   }, "Convictions"), /*#__PURE__*/React.createElement("h2", {
@@ -1064,7 +1151,7 @@ function Convictions() {
       fontSize: 40,
       lineHeight: 1.15,
       letterSpacing: '-0.6px',
-      color: '#1d3352',
+      color: 'var(--fg-1)',
       margin: 0,
       maxWidth: 720
     }
@@ -1085,7 +1172,7 @@ function Convictions() {
     style: {
       fontFamily: 'var(--font-code)',
       fontSize: 14,
-      color: '#c04424',
+      color: 'var(--orange-11)',
       fontWeight: 500
     }
   }, it.n), /*#__PURE__*/React.createElement("div", null, /*#__PURE__*/React.createElement("div", {
@@ -1093,7 +1180,7 @@ function Convictions() {
       fontFamily: 'var(--font-heading)',
       fontWeight: 700,
       fontSize: 22,
-      color: '#1d3352',
+      color: 'var(--fg-1)',
       letterSpacing: '-0.2px'
     }
   }, it.t), /*#__PURE__*/React.createElement("div", {
@@ -1101,7 +1188,7 @@ function Convictions() {
       fontFamily: 'var(--font-body)',
       fontSize: 15,
       lineHeight: 1.6,
-      color: '#5c6f82',
+      color: 'var(--fg-3)',
       marginTop: 6,
       maxWidth: 760
     }
@@ -1116,7 +1203,7 @@ function Footer() {
   return /*#__PURE__*/React.createElement("footer", {
     style: {
       padding: '36px 32px',
-      background: '#f8f9fb',
+      background: 'var(--bg)',
       borderTop: '1px solid #cdd0d5'
     }
   }, /*#__PURE__*/React.createElement("div", {
@@ -1143,7 +1230,7 @@ function Footer() {
       fontFamily: 'var(--font-heading)',
       fontWeight: 700,
       fontSize: 14,
-      color: '#1d3352'
+      color: 'var(--fg-1)'
     }
   }, "projectious", /*#__PURE__*/React.createElement("span", {
     style: {
@@ -1157,7 +1244,7 @@ function Footer() {
     style: {
       fontFamily: 'var(--font-body)',
       fontSize: 12,
-      color: '#5c6f82'
+      color: 'var(--fg-3)'
     }
   }, "Cloud \xB7 Agile \xB7 Agentic AI \xA0\xB7\xA0 \xA9 2026")));
 }
@@ -1166,13 +1253,11 @@ Object.assign(__ds_scope, { Footer });
 
 // ui_kits/marketing-site/Header.jsx
 try { (() => {
-function Header({
-  dark = false
-}) {
-  const fg = dark ? '#c5daf0' : '#142438';
-  const sub = dark ? '#97a8b8' : '#5c6f82';
-  const border = dark ? 'rgba(255,255,255,0.08)' : '#cdd0d5';
-  const bg = dark ? '#0e1720' : 'rgba(248,249,251,0.88)';
+function Header() {
+  const fg = 'var(--fg-1)';
+  const sub = 'var(--fg-2)';
+  const border = 'var(--border)';
+  const bg = 'var(--header-bg)';
   return /*#__PURE__*/React.createElement("header", {
     style: {
       position: 'sticky',
@@ -1220,11 +1305,11 @@ function Header({
     }
   }, "projectious", /*#__PURE__*/React.createElement("span", {
     style: {
-      color: '#7490b2'
+      color: 'var(--midnight-8)'
     }
   }, "\xB7"), /*#__PURE__*/React.createElement("span", {
     style: {
-      color: '#E05232'
+      color: 'var(--logo-accent)'
     }
   }, "work"))), /*#__PURE__*/React.createElement("nav", {
     style: {
@@ -1251,8 +1336,8 @@ function Header({
       border: 0,
       borderRadius: 6,
       whiteSpace: 'nowrap',
-      color: '#fff',
-      background: '#cc4528',
+      color: 'var(--fixed-control-text)',
+      background: 'var(--color-accent-solid)',
       cursor: 'pointer'
     }
   }, "Start a project")));
@@ -1265,8 +1350,8 @@ try { (() => {
 function Hero() {
   return /*#__PURE__*/React.createElement("section", {
     style: {
-      background: '#0e1720',
-      color: '#c5daf0',
+      background: 'var(--hero-bg)',
+      color: 'var(--hero-fg)',
       padding: '110px 32px 100px',
       position: 'relative',
       overflow: 'hidden'
@@ -1294,7 +1379,7 @@ function Hero() {
       fontWeight: 600,
       letterSpacing: '0.12em',
       textTransform: 'uppercase',
-      color: '#ea7558',
+      color: 'var(--hero-eyebrow)',
       marginBottom: 24
     }
   }, "Cloud \xB7 Agile \xB7 Agentic AI"), /*#__PURE__*/React.createElement("h1", {
@@ -1304,7 +1389,7 @@ function Hero() {
       fontSize: 72,
       lineHeight: 1.05,
       letterSpacing: '-1.5px',
-      color: '#fff',
+      color: 'var(--hero-title)',
       margin: 0,
       maxWidth: 820
     }
@@ -1313,7 +1398,7 @@ function Hero() {
       fontFamily: 'var(--font-body)',
       fontSize: 19,
       lineHeight: 1.6,
-      color: '#97a8b8',
+      color: 'var(--hero-body)',
       marginTop: 28,
       maxWidth: 620
     }
@@ -1331,8 +1416,8 @@ function Hero() {
       padding: '13px 28px',
       border: 0,
       borderRadius: 6,
-      color: '#fff',
-      background: '#cc4528',
+      color: 'var(--fixed-control-text)',
+      background: 'var(--color-accent-solid)',
       cursor: 'pointer'
     }
   }, "Start a project"), /*#__PURE__*/React.createElement("button", {
@@ -1343,7 +1428,7 @@ function Hero() {
       padding: '13px 28px',
       borderRadius: 6,
       background: 'transparent',
-      color: '#c5daf0',
+      color: 'var(--hero-fg)',
       border: '1.5px solid rgba(255,255,255,0.18)',
       cursor: 'pointer'
     }
@@ -1368,7 +1453,7 @@ function Pillars() {
   return /*#__PURE__*/React.createElement("section", {
     style: {
       padding: '96px 32px',
-      background: '#f8f9fb'
+      background: 'var(--bg)'
     }
   }, /*#__PURE__*/React.createElement("div", {
     style: {
@@ -1382,7 +1467,7 @@ function Pillars() {
       fontWeight: 600,
       letterSpacing: '0.12em',
       textTransform: 'uppercase',
-      color: '#c04424',
+      color: 'var(--orange-11)',
       marginBottom: 16
     }
   }, "Practice areas"), /*#__PURE__*/React.createElement("h2", {
@@ -1392,7 +1477,7 @@ function Pillars() {
       fontSize: 40,
       lineHeight: 1.15,
       letterSpacing: '-0.6px',
-      color: '#1d3352',
+      color: 'var(--fg-1)',
       margin: 0,
       maxWidth: 720
     }
@@ -1401,7 +1486,7 @@ function Pillars() {
       fontFamily: 'var(--font-body)',
       fontSize: 16,
       lineHeight: 1.6,
-      color: '#5c6f82',
+      color: 'var(--fg-3)',
       marginTop: 16,
       maxWidth: 620
     }
@@ -1415,7 +1500,7 @@ function Pillars() {
   }, items.map(it => /*#__PURE__*/React.createElement("div", {
     key: it.title,
     style: {
-      background: '#fff',
+      background: 'var(--surface)',
       border: '1px solid #cdd0d5',
       borderRadius: 9,
       padding: '28px 26px'
@@ -1431,7 +1516,7 @@ function Pillars() {
       justifyContent: 'center',
       fontFamily: 'var(--font-heading)',
       fontWeight: 700,
-      color: '#1d3352',
+      color: 'var(--fg-1)',
       marginBottom: 18
     }
   }, it.title[0]), /*#__PURE__*/React.createElement("div", {
@@ -1439,7 +1524,7 @@ function Pillars() {
       fontFamily: 'var(--font-heading)',
       fontWeight: 700,
       fontSize: 20,
-      color: '#1d3352',
+      color: 'var(--fg-1)',
       marginBottom: 8
     }
   }, it.title), /*#__PURE__*/React.createElement("div", {
@@ -1447,7 +1532,7 @@ function Pillars() {
       fontFamily: 'var(--font-body)',
       fontSize: 14,
       lineHeight: 1.6,
-      color: '#5c6f82'
+      color: 'var(--fg-3)'
     }
   }, it.body))))));
 }

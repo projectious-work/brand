@@ -1,0 +1,76 @@
+/* preview/code-card.css — one code specimen per language.
+   The nine highlight classes map onto the canonical ten syntax roles, so a code
+   block cannot drift from `Colors · Syntax roles`. Dark is the brand default;
+   the light set swaps in only in the light appearance. */
+@import url('card.css');
+
+.code {
+  --c-plain:    var(--syntax-plain);
+  --c-comment:  var(--syntax-comment);
+  --c-operator: var(--syntax-operator);
+  --c-keyword:  var(--syntax-keyword);
+  --c-type:     var(--syntax-type);
+  --c-function: var(--syntax-function);
+  --c-string:   var(--syntax-string);
+  --c-number:   var(--syntax-number);
+  --c-macro:    var(--syntax-macro);
+  --c-invalid:  var(--syntax-invalid);
+  --c-surface:  var(--code-panel-surface);
+  --c-edge:     var(--code-panel-border);
+  --c-gutter:   #7a8a9a;
+  --c-rule:     rgba(255,255,255,0.08);
+  background: var(--c-surface);
+  border: 1px solid var(--c-edge);
+  border-radius: 6px;
+  padding: 12px 14px 12px 0;
+  font-family: var(--font-code);
+  font-size: var(--type-code-size);
+  line-height: var(--type-code-lh);
+  color: var(--c-plain);
+  overflow: hidden;
+}
+body[data-mode="light"] .code {
+  --c-plain:    var(--syntax-plain-light);
+  --c-comment:  var(--syntax-comment-light);
+  --c-operator: var(--syntax-operator-light);
+  --c-keyword:  var(--syntax-keyword-light);
+  --c-type:     var(--syntax-type-light);
+  --c-function: var(--syntax-function-light);
+  --c-string:   var(--syntax-string-light);
+  --c-number:   var(--syntax-number-light);
+  --c-macro:    var(--syntax-macro-light);
+  --c-invalid:  var(--syntax-invalid-light);
+  --c-surface:  var(--code-panel-surface-light);
+  --c-edge:     var(--code-panel-border-light);
+  --c-gutter:   #546a82;
+  --c-rule:     rgba(20,36,56,0.10);
+}
+.code-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 14px 8px 14px; margin-bottom: 6px;
+  border-bottom: 1px solid var(--c-rule);
+  font-family: var(--font-body); font-size: 14px; color: var(--c-gutter);
+}
+.code-header .lang {
+  font-family: var(--font-heading); font-weight: 600; color: var(--c-plain);
+  letter-spacing: 0.02em; text-transform: uppercase; font-size: 13px;
+}
+/* The base sheet sets font-size/line-height AND `background: var(--terminal-surface)`
+   on the <pre> ELEMENT, which beats anything inherited from .code. Size and
+   line-height are restated from the SAME tokens (not a literal) so a specimen
+   can never disagree with the code role it documents; the background is cleared
+   so an opt-in light panel is not painted dark underneath. */
+.code pre { display: grid; grid-template-columns: 42px 1fr; column-gap: 16px; font-size: var(--type-code-size); line-height: var(--type-code-lh); background: transparent; color: inherit; padding: 0; margin: 0; border: 0; }
+.ln { color: var(--c-gutter); text-align: right; user-select: none; padding-left: 6px; }
+.src { white-space: pre; }
+.k { color: var(--c-keyword);  font-weight: 700; }
+.s { color: var(--c-string); }
+.n { color: var(--c-number); }
+.c { color: var(--c-comment);  font-style: italic; }
+.t { color: var(--c-type);     font-weight: 600; }
+.f { color: var(--c-function); font-weight: 500; }
+.p { color: var(--c-operator); }
+.a { color: var(--c-macro);    font-style: italic; }
+.e { color: var(--c-invalid);  font-weight: 600; }
+.code::selection, .code *::selection { background: var(--code-selection-bg); color: var(--code-selection-fg); }
+.label-block { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }

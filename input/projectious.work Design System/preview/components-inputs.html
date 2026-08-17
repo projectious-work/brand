@@ -1,15 +1,25 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Components · Inputs" subtitle="Default · focus · error · disabled" viewport="700x160" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body>
+<!-- @dsCard group="Brand" name="Components · Inputs" subtitle="Default · focus · error · disabled" viewport="700x175" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
 <style>
-  .lab { font-family:var(--font-heading); font-size:10px; font-weight:600; color:#546a82; text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; display:block }
-  .inp { font-family:var(--font-body); font-size:13px; padding:8px 12px; border:1.5px solid #cdd0d5; border-radius:6px; background:#fff; width:100%; color:#142438; outline:none }
+  .lab { font-family:var(--font-heading); font-size:10px; font-weight:600; color:var(--fg-2); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; display:block }
+  .inp { font-family:var(--font-body); font-size:14px; padding:9px 12px; border:1.5px solid var(--border); border-radius:6px; background:var(--surface); width:100%; color:var(--fg-1); outline:none }
+  /* fg-2, not fg-3: the muted role is measured against the page and raised
+     surfaces; on a semantic tint (the error field) it lands at 4.41:1. */
+  .inp::placeholder { color:var(--fg-2); opacity:1 }
+  .inp:disabled { background:var(--surface-2); color:var(--fg-3); border-color:var(--border); -webkit-text-fill-color:var(--fg-3); opacity:1 }
+  .focus { border-color:var(--color-accent); box-shadow:0 0 0 3px var(--tint-accent-active) }
+  .err { border-color:var(--color-danger); background:var(--color-danger-bg); color:var(--color-danger-fg) }
 </style>
-<div class="row" style="gap:12px">
-  <div style="flex:1"><span class="lab">Default</span><input class="inp" placeholder="Pipeline name"></div>
-  <div style="flex:1"><span class="lab">Focus</span><input class="inp" value="validate-deploy" style="border-color:#1d3352;box-shadow:0 0 0 2px rgba(29,51,82,0.15)"></div>
+<div class="col" style="gap:9px">
+  <div class="row" style="gap:12px;align-items:flex-start">
+    <div style="flex:1"><span class="lab">Default</span><input class="inp" placeholder="Pipeline name"></div>
+    <div style="flex:1"><span class="lab">Focus</span><input class="inp focus" value="validate-deploy"></div>
+  </div>
+  <div class="row" style="gap:12px;align-items:flex-start">
+    <div style="flex:1"><span class="lab">Error</span><input class="inp err" value="Invalid config"></div>
+    <div style="flex:1"><span class="lab">Disabled</span><input class="inp" value="Locked" disabled></div>
+  </div>
+  <div class="sub">Field, value and placeholder all resolve from tokens, so an input is legible in every appearance. The focus ring is the accent at 12% — the one place a coloured ring is used, because a neutral ring disappears on the dark surfaces.</div>
 </div>
-<div class="row" style="gap:12px;margin-top:8px">
-  <div style="flex:1"><span class="lab">Error</span><input class="inp" value="Invalid config" style="border-color:#E05232;background:#fef9f7;color:#b84228"></div>
-  <div style="flex:1"><span class="lab">Disabled</span><input class="inp" value="Locked" disabled style="background:#f1f2f4;color:#9299a4;border-color:#dadce0"></div>
-</div>
+<script src="card-mode.js"></script>
 </body></html>

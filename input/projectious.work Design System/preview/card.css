@@ -1,15 +1,72 @@
-/* preview/card.css — shared styles for Design System tab cards */
+/* preview/card.css — shared styles for Design System tab cards.
+
+   Cards are token-driven and carry an appearance switch (card-mode.js), so
+   every card can be read in all three supported appearances: light, deep dark
+   and navy dark. Nothing here pins a palette — the mode attributes live on
+   <body> (see card-mode.js for why not <html>) and colors_and_type.css
+   resolves them. */
 @import url('../colors_and_type.css');
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { background: var(--surface); }
+html { background: var(--bg); }
 body {
   padding: 18px 22px;
   width: 700px;
   font-family: var(--font-body);
+  background: var(--bg);
   color: var(--fg-1);
 }
 .row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
 .col { display: flex; flex-direction: column; gap: 8px; }
-.mono { font-family: var(--font-code); font-size: 10px; color: var(--fg-3); }
-.label { font-family: var(--font-heading); font-size: 11px; font-weight: 600; color: var(--color-primary); }
-.sub { font-family: var(--font-body); font-size: 11px; color: var(--fg-2); }
+.mono { font-family: var(--font-code); font-size: 12px; color: var(--fg-3); }
+.label { font-family: var(--font-heading); font-size: 13px; font-weight: 600; color: var(--midnight-11); }
+.sub { font-family: var(--font-body); font-size: 13px; color: var(--fg-2); }
+
+/* ── The appearance switch, injected into every card ─────────────────── */
+.mode-switch { display: flex; gap: 6px; margin-bottom: 14px; }
+.mode-switch button {
+  font-family: var(--font-body); font-size: 12px; line-height: 1;
+  padding: 6px 12px; border-radius: var(--radius-md);
+  border: 1.5px solid var(--border); background: var(--surface);
+  color: var(--fg-2); cursor: pointer;
+}
+.mode-switch button:hover { border-color: var(--border-strong); color: var(--fg-1); }
+.mode-switch button[aria-pressed="true"] {
+  border-color: var(--color-accent); color: var(--fg-1); font-weight: 600;
+}
+
+/* ── Code role aliases. Any card can use --code-<role> and get the dark set by
+      default, the light set in the light appearance. Saves every code specimen
+      re-declaring the mapping. ──────────────────────────────────────────── */
+body {
+  --code-surface: var(--code-panel-surface);
+  --code-selection-bg: var(--code-panel-selection-bg);
+  --code-selection-fg: var(--code-panel-selection-fg);
+  --code-edge: var(--code-panel-border);
+  --code-plain: var(--syntax-plain);       --code-comment: var(--syntax-comment);
+  --code-operator: var(--syntax-operator); --code-keyword: var(--syntax-keyword);
+  --code-type: var(--syntax-type);         --code-function: var(--syntax-function);
+  --code-string: var(--syntax-string);     --code-number: var(--syntax-number);
+  --code-macro: var(--syntax-macro);       --code-invalid: var(--syntax-invalid);
+}
+body[data-mode="light"] {
+  --code-surface: var(--code-panel-surface-light);
+  --code-selection-bg: var(--code-panel-light-selection-bg);
+  --code-selection-fg: var(--code-panel-light-selection-fg);
+  --code-edge: var(--code-panel-border-light);
+  --code-plain: var(--syntax-plain-light);       --code-comment: var(--syntax-comment-light);
+  --code-operator: var(--syntax-operator-light); --code-keyword: var(--syntax-keyword-light);
+  --code-type: var(--syntax-type-light);         --code-function: var(--syntax-function-light);
+  --code-string: var(--syntax-string-light);     --code-number: var(--syntax-number-light);
+  --code-macro: var(--syntax-macro-light);       --code-invalid: var(--syntax-invalid-light);
+}
+
+/* A panel that is dark in every appearance — code, terminal. Deliberately
+   deeper than the navy page so it still reads as an inset panel. */
+.fixed-dark { background: var(--terminal-surface); color: var(--terminal-foreground); }
+
+/* ── Selection. Without this the browser default applies, which on the dark
+      appearances lands a dark highlight under dark text. Token-driven, so it
+      inverts correctly in all three. Panels that pin their own surface
+      (code, terminal) override this locally. ─────────────────────────────── */
+::selection { background: var(--tag-bg); color: var(--tag-text); }
+body[data-theme="dark"] ::selection { background: var(--midnight-5); color: var(--midnight-12); }

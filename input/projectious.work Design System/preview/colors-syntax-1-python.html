@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Code · Python" subtitle="Decorators, dataclasses and type hints — the annotation-heavy case." viewport="700x380" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="code-card.css"></head><body data-theme="light" data-mode="light">
+<div class="col" style="gap:12px">
+  <div class="label-block">
+    <div class="label">Python · <span style="font-family:var(--font-code);font-weight:400">policy_check.py</span></div>
+    <div class="sub" style="font-size:12px">IBM Plex Mono · 14px / 1.6 — the real <span class="mono" style="font-size:11px">--type-code-size</span></div>
+  </div>
+  <div class="code">
+    <div class="code-header">
+      <span class="lang">Python</span>
+      <span>policy_check.py</span>
+    </div>
+    <pre><span class="ln">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12</span><span class="src"><span class="c"># Validate deploy policy before staging rollout</span>
+<span class="k">from</span> <span class="t">dataclasses</span> <span class="k">import</span> dataclass
+<span class="k">from</span> <span class="t">typing</span> <span class="k">import</span> <span class="t">Iterable</span>
+
+<span class="a">@dataclass</span>
+<span class="k">class</span> <span class="t">Policy</span>:
+    name: <span class="t">str</span>
+    max_cost_usd: <span class="t">float</span> = <span class="n">250.0</span>
+
+<span class="k">def</span> <span class="f">enforce</span>(policies: <span class="t">Iterable</span>[<span class="t">Policy</span>]) <span class="p">-></span> <span class="t">bool</span>:
+    <span class="k">return</span> <span class="n">all</span>(p.max_cost_usd <span class="p">&lt;=</span> <span class="n">500</span> <span class="k">for</span> p <span class="k">in</span> policies)
+</span></pre>
+  </div>
+  <div class="sub">Decorators, dataclasses and type hints — the annotation-heavy case. Dark is the brand default; switch to Light for the optional light panel. Colours come from the canonical <span class="mono">--syntax-*</span> roles, so this block cannot drift from <em>Colors · Syntax roles</em>.</div>
+</div>
+<script src="card-mode.js"></script>
+</body></html>

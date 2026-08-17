@@ -1,0 +1,86 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Colors · Terminal palette" subtitle="16 ANSI slots and the chrome roles, shown in a real session" viewport="700x560" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  .slot { display:flex; flex-direction:column; gap:3px; align-items:center; flex:1 }
+  .dot { width:100%; height:26px; border-radius:4px }
+  .n { font-family:var(--font-code); font-size:10px }
+  #panel { border-radius:9px; padding:15px 17px }
+  #term { border-radius:9px; overflow:hidden; font-family:var(--font-code); font-size:13px; line-height:1.7 }
+  #term .body { padding:12px 14px }
+  #status { display:flex; align-items:center; gap:0; font-family:var(--font-code); font-size:12px; padding:0 }
+  #status .tab { padding:4px 11px }
+  #status .spacer { flex:1 }
+  #status .right { padding:4px 12px }
+  .cur { display:inline-block; width:8px; height:15px; vertical-align:-3px }
+  #panel[data-mode="dark"]::selection, #panel[data-mode="dark"] *::selection, #term[data-mode="dark"]::selection, #term[data-mode="dark"] *::selection { background:#20354d; color:#c5daf0 }
+  #panel[data-mode="light"]::selection, #panel[data-mode="light"] *::selection, #term[data-mode="light"]::selection, #term[data-mode="light"] *::selection { background:#dae2ec; color:#142438 }
+</style>
+<div class="col" style="gap:11px">
+
+  <div id="panel" data-mode="dark">
+    <div class="col" style="gap:9px">
+      <div class="row" style="gap:4px" id="row1"></div>
+      <div class="row" style="gap:4px" id="row2"></div>
+    </div>
+  </div>
+
+  <div id="term" data-mode="dark">
+    <div class="body" id="session"></div>
+    <div id="status"></div>
+  </div>
+
+  <div class="sub">Floor 4.95:1 (dark) / 4.5:1 (light) against the terminal surface. The session uses the slots as they are actually consumed — <span class="mono">2/10</span> for success, <span class="mono">3/11</span> for warnings, <span class="mono">1/9</span> for errors, <span class="mono">8</span> for dimmed continuation, and the chrome roles for the status bar and the active pane border. Implementations for tmux, WezTerm, Kitty, iTerm2, Zellij and Ghostty are documented upstream.</div>
+</div>
+<script src="card-mode.js"></script>
+<script>
+const DARK = { surface:'#0e1720', border:'#2e4b68', fg:'#c5daf0', dim:'#72889d', cursor:'#e05232', cursorText:'#0e1720',
+  statusBg:'#131e2b', statusFg:'#c5daf0', inactive:'#7b8da3', activeTab:'#e05232', activeTabText:'#0e1720', activePane:'#e05232', inactivePane:'#7b8da3',
+  ansi:['#0e1720','#e55b5b','#3f9d74','#c08a1e','#6289b3','#bd6d96','#3f97a3','#97a8b8','#2e4b68','#f08b80','#6cc090','#e0a92a','#8aacc8','#d491b4','#74c0c9','#c5daf0'] };
+const LIGHT = { surface:'#f4f5f7', border:'#cdd0d5', fg:'#142438', dim:'#5c6f82', cursor:'#e05232', cursorText:'#f4f5f7',
+  statusBg:'#e6e8eb', statusFg:'#142438', inactive:'#4a5e74', activeTab:'#e05232', activeTabText:'#0e1720', activePane:'#e05232', inactivePane:'#adb2ba',
+  ansi:['#1e2b38','#b8352f','#276754','#8b6508','#3a5a82','#8a3f6e','#1c6b6b','#546a82','#4a5e74','#a8261c','#1f7a52','#6f5106','#1d3352','#752f5c','#125555','#142438'] };
+
+function render(mode) {
+  const c = mode === 'light' ? LIGHT : DARK;
+  const panel = document.getElementById('panel');
+  panel.style.background = c.surface;
+  panel.style.border = '1px solid ' + (mode === 'light' ? c.border : '#2e4b68');
+  panel.dataset.mode = mode;
+
+  const slot = (hex, i) =>
+    '<div class="slot"><div class="dot" style="background:' + hex + (i === 0 ? ';border:1px solid ' + c.border : '') +
+    '"></div><div class="n" style="color:' + c.dim + '">' + i + '</div></div>';
+  document.getElementById('row1').innerHTML = c.ansi.slice(0, 8).map((h, i) => slot(h, i)).join('');
+  document.getElementById('row2').innerHTML = c.ansi.slice(8, 16).map((h, i) => slot(h, i + 8)).join('');
+
+  const term = document.getElementById('term');
+  term.style.background = c.surface;
+  term.style.border = '1px solid ' + c.activePane;   // active pane border
+  term.dataset.mode = mode;
+
+  const g = (col, s) => '<span style="color:' + col + '">' + s + '</span>';
+  document.getElementById('session').innerHTML =
+    '<div>' + g(c.ansi[12], '~/agents') + ' ' + g(c.ansi[13], 'git:(main)') + ' ' + g(c.ansi[9], '✗') + '</div>' +
+    '<div>' + g(c.ansi[10], '$') + ' ' + g(c.fg, 'projectious run --pipeline nightly --verbose') + '</div>' +
+    '<div>' + g(c.dim, '[14:02:11]') + ' ' + g(c.ansi[12], 'INFO ') + ' ' + g(c.fg, 'loading 12 policies from ./policies') + '</div>' +
+    '<div>' + g(c.dim, '[14:02:11]') + ' ' + g(c.ansi[10], 'OK   ') + ' ' + g(c.fg, 'policy check passed') + '</div>' +
+    '<div>' + g(c.dim, '[14:02:12]') + ' ' + g(c.ansi[11], 'WARN ') + ' ' + g(c.fg, 'cost-rebalance drifted 8% over budget') + '</div>' +
+    '<div>' + g(c.dim, '[14:02:14]') + ' ' + g(c.ansi[9], 'ERROR') + ' ' + g(c.fg, 'k8s-rollout: pod restart loop') + '</div>' +
+    '<div>' + g(c.dim, '           ↳ retrying 3/5 …') + '</div>' +
+    '<div>' + g(c.dim, '[14:02:19]') + ' ' + g(c.ansi[10], 'OK   ') + ' ' + g(c.fg, '4 of 5 stages complete') + '</div>' +
+    '<div>' + g(c.ansi[10], '$') + ' <span class="cur" style="background:' + c.cursor + '"></span></div>';
+
+  document.getElementById('status').innerHTML =
+    '<span class="tab" style="background:' + c.activeTab + ';color:' + c.activeTabText + '">0:agents</span>' +
+    '<span class="tab" style="color:' + c.inactive + '">1:logs</span>' +
+    '<span class="tab" style="color:' + c.inactive + '">2:shell</span>' +
+    '<span class="spacer"></span>' +
+    '<span class="right" style="color:' + c.statusFg + '">projectious.work · 14:02</span>';
+  const st = document.getElementById('status');
+  st.style.background = c.statusBg;
+  st.style.borderTop = '1px solid ' + c.border;
+}
+document.addEventListener('cardmode', e => render(e.detail.id === 'light' ? 'light' : 'dark'));
+render(document.body.getAttribute('data-mode') === 'light' ? 'light' : 'dark');
+</script>
+</body></html>

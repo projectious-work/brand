@@ -1,9 +1,52 @@
 <!doctype html>
-<!-- @dsCard group="Brand" name="Spacing · Elevation" subtitle="Four shadow levels — flat, card, popover, modal" viewport="700x120" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body style="background:#f8f9fb">
-<div class="row" style="gap:18px;align-items:flex-end">
-  <div class="col" style="gap:6px;align-items:center"><div style="width:120px;height:48px;background:#fff;border:1px solid #e6e8eb;border-radius:6px"></div><div class="mono">level 0 · flat</div></div>
-  <div class="col" style="gap:6px;align-items:center"><div style="width:120px;height:48px;background:#fff;border-radius:6px;box-shadow:0 1px 3px rgba(0,0,0,0.06)"></div><div class="mono">level 1 · cards</div></div>
-  <div class="col" style="gap:6px;align-items:center"><div style="width:120px;height:48px;background:#fff;border-radius:6px;box-shadow:0 4px 12px rgba(0,0,0,0.08)"></div><div class="mono">level 2 · popover</div></div>
-  <div class="col" style="gap:6px;align-items:center"><div style="width:120px;height:48px;background:#fff;border-radius:6px;box-shadow:0 8px 24px rgba(0,0,0,0.12)"></div><div class="mono">level 3 · modal</div></div>
+<!-- @dsCard group="Brand" name="Spacing · Elevation" subtitle="Four levels — shadow on light, surface step plus deeper shadow on dark" viewport="700x250" --><html><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  .lv { display:flex; flex-direction:column; align-items:center; gap:10px; flex:1 }
+  .box { width:100%; height:66px; border-radius:6px }
+  .lvn { font-family:var(--font-heading); font-size:15px; font-weight:600; color:var(--fg-1) }
+  .lvu { font-family:var(--font-body); font-size:13px; color:var(--fg-2); margin-top:-6px }
+  .lvv { font-family:var(--font-code); font-size:11px; color:var(--fg-3); text-align:center; line-height:1.45 }
+</style>
+<div class="col" style="gap:13px">
+  <div class="row" style="gap:20px;align-items:flex-start">
+    <div class="lv">
+      <div class="box" style="background:var(--elevated-0);border:1px solid var(--border)"></div>
+      <div class="lvn">Level 0</div><div class="lvu">flat</div>
+      <div class="lvv" data-v="0">no shadow<br>1px border</div>
+    </div>
+    <div class="lv">
+      <div class="box" style="background:var(--elevated-1);box-shadow:var(--shadow-1),var(--rim-1)"></div>
+      <div class="lvn">Level 1</div><div class="lvu">cards</div>
+      <div class="lvv" data-v="1">–</div>
+    </div>
+    <div class="lv">
+      <div class="box" style="background:var(--elevated-2);box-shadow:var(--shadow-2),var(--rim-2)"></div>
+      <div class="lvn">Level 2</div><div class="lvu">popover</div>
+      <div class="lvv" data-v="2">–</div>
+    </div>
+    <div class="lv">
+      <div class="box" style="background:var(--elevated-3);box-shadow:var(--shadow-3),var(--rim-3)"></div>
+      <div class="lvn">Level 3</div><div class="lvu">modal</div>
+      <div class="lvv" data-v="3">–</div>
+    </div>
+  </div>
+  <div class="sub" id="note">–</div>
 </div>
+<script src="card-mode.js"></script>
+<script>
+function paint() {
+  var light = document.body.getAttribute('data-mode') === 'light';
+  var cs = getComputedStyle(document.body);
+  for (var i = 1; i <= 3; i++) {
+    var el = document.querySelector('[data-v="' + i + '"]');
+    var sh = cs.getPropertyValue('--shadow-' + i).trim().replace(/^0 /, '0 ');
+    el.innerHTML = sh.replace(/rgba\([^)]+\)/, function (m) { return '<br>' + m; });
+  }
+  document.getElementById('note').innerHTML = light
+    ? 'On light, elevation is shadow alone — the surface stays white at every level. Shadow only at level 1 and above. No inner shadows, no glow, no coloured shadows.'
+    : 'On dark, elevation is <strong>inverted</strong>: a raised surface gets <strong>lighter</strong>, not shadowed — a black shadow has nothing to darken. The step climbs midnight 1 → 2 → 4 → 6 (every other step, since adjacent ones are too close to read), and each level adds a <strong>rim light</strong> on its top edge, which is what actually signals lift on a dark surface. The shadow only seats the panel.';
+}
+document.addEventListener('cardmode', function () { requestAnimationFrame(paint); });
+requestAnimationFrame(paint);
+</script>
 </body></html>

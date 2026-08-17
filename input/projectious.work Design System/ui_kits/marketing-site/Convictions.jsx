@@ -6,20 +6,20 @@ export function Convictions() {
     { n: '04', t: 'We run what we recommend', b: 'Same convictions, same software, applied to ourselves first.' }
   ];
   return (
-    <section style={{ padding: '96px 32px', background: '#f8f9fb' }}>
+    <section style={{ padding: '96px 32px', background: 'var(--bg)' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#c04424', marginBottom: 16 }}>Convictions</div>
-        <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 40, lineHeight: 1.15, letterSpacing: '-0.6px', color: '#1d3352', margin: 0, maxWidth: 720 }}>What we believe, on the record.</h2>
+        <div style={{ fontFamily: 'var(--font-body)', fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--orange-11)', marginBottom: 16 }}>Convictions</div>
+        <h2 style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 40, lineHeight: 1.15, letterSpacing: '-0.6px', color: 'var(--fg-1)', margin: 0, maxWidth: 720 }}>What we believe, on the record.</h2>
         <div style={{ marginTop: 40 }}>
           {items.map(it => (
             <div key={it.n} style={{
               display: 'grid', gridTemplateColumns: '90px 1fr', gap: 32,
               padding: '24px 0', borderTop: '1px solid #cdd0d5'
             }}>
-              <div style={{ fontFamily: 'var(--font-code)', fontSize: 14, color: '#c04424', fontWeight: 500 }}>{it.n}</div>
+              <div style={{ fontFamily: 'var(--font-code)', fontSize: 14, color: 'var(--orange-11)', fontWeight: 500 }}>{it.n}</div>
               <div>
-                <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 22, color: '#1d3352', letterSpacing: '-0.2px' }}>{it.t}</div>
-                <div style={{ fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.6, color: '#5c6f82', marginTop: 6, maxWidth: 760 }}>{it.b}</div>
+                <div style={{ fontFamily: 'var(--font-heading)', fontWeight: 700, fontSize: 22, color: 'var(--fg-1)', letterSpacing: '-0.2px' }}>{it.t}</div>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: 15, lineHeight: 1.6, color: 'var(--fg-3)', marginTop: 6, maxWidth: 760 }}>{it.b}</div>
               </div>
             </div>
           ))}

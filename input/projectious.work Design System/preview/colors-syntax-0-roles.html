@@ -1,0 +1,54 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Colors · Syntax roles" subtitle="Ten roles — the dark default, and the optional light set in light appearance" viewport="700x470" --><html data-theme="light"><head><meta charset="utf-8"><link rel="stylesheet" href="card.css"></head><body data-theme="light" data-mode="light">
+<style>
+  .rl { display:flex; gap:9px; align-items:center; font-family:var(--font-code); font-size:12px }
+  .rl .sw { width:13px; height:13px; border-radius:3px; flex:0 0 13px }
+  .rl .nm { width:150px; flex:0 0 150px }
+  #panel { border-radius:9px; padding:15px 17px }
+  #panel[data-mode="dark"]::selection, #panel[data-mode="dark"] *::selection { background:#20354d; color:#c5daf0 }
+  #panel[data-mode="light"]::selection, #panel[data-mode="light"] *::selection { background:#dae2ec; color:#142438 }
+  #sample { font-family:var(--font-code); font-size:13px; line-height:1.75; flex:1 }
+</style>
+<div id="panel" data-mode="dark" style="background:#0e1720">
+  <div class="row" style="gap:26px;align-items:flex-start">
+    <div class="col" style="gap:7px;flex:0 0 auto" id="legend"></div>
+    <div id="sample"></div>
+  </div>
+</div>
+<div class="sub" style="margin-top:9px">Only the three neutrals live in the blue-grey band, separated by lightness; every chromatic role holds its own hue. Weight and italic carry structure alongside colour — keyword 700, type 600, invalid 600, function 500, comment and decorator italic — so the palette survives greyscale. Dark is the default. Note the two dark surfaces are not the same: a <em>terminal</em> keeps the black-ish <span class="mono">#0e1720</span>, while a <em>code panel</em> lifts to <span class="mono">#131e2b</span> so it reads as a panel rather than a hole in the page — every role still clears 4.79:1 there. Light roles sit at 4.5–5.8:1 (AA), pitched for chroma: held at AAA they collapsed toward black and the hues stopped being tellable apart, which defeats the point of a syntax palette.</div>
+<script>
+const ROLES = ['plain','operator','comment','keyword','type / class','function','string','number','decorator / macro','invalid'];
+const KEYS  = ['plain','operator','comment','keyword','type','function','string','number','macro','invalid'];
+const DARK  = { plain:'#c5daf0', operator:'#97a8b8', comment:'#7d90a3', keyword:'#d491b4', type:'#6cc090', function:'#8aacc8', string:'#ea7558', number:'#e0a92a', macro:'#74c0c9', invalid:'#e55b5b' };
+const LIGHT = { plain:'#0f1c2e', operator:'#54697f', comment:'#5e7082', keyword:'#c2117f', type:'#08804e', function:'#1668d8', string:'#c94208', number:'#94620a', macro:'#0d7d82', invalid:'#d81420' };
+const FACE  = { keyword:'font-weight:700', type:'font-weight:600', invalid:'font-weight:600', function:'font-weight:500', comment:'font-style:italic', macro:'font-style:italic' };
+const face = k => FACE[k] ? ';' + FACE[k] : '';
+function render(mode) {
+  const c = mode === 'light' ? LIGHT : DARK;
+  const panel = document.getElementById('panel');
+  panel.style.background = mode === 'light' ? '#f4f5f7' : '#131e2b';
+  panel.style.border = '1px solid ' + (mode === 'light' ? '#cdd0d5' : '#2e4b68');
+  panel.style.boxShadow = mode === 'light' ? 'none' : 'inset 0 1px 0 rgba(255,255,255,0.04)';
+  panel.dataset.mode = mode;
+  const nm = mode === 'light' ? '#0f1c2e' : '#c5daf0';
+  const hx = mode === 'light' ? '#5e7082' : '#7d90a3';
+  document.getElementById('legend').innerHTML = ROLES.map((label, i) => {
+    const k = KEYS[i];
+    return '<div class="rl"><div class="sw" style="background:' + c[k] + '"></div><div class="nm" style="color:' + nm + face(k) + '">' + label + '</div><div style="color:' + hx + '">' + c[k] + '</div></div>';
+  }).join('');
+  const s = document.getElementById('sample');
+  s.style.color = c.plain;
+  s.innerHTML =
+    '<div><span style="color:' + c.comment + ';font-style:italic">/// Roll out one pipeline stage.</span></div>' +
+    '<div><span style="color:' + c.macro + ';font-style:italic">#[instrument]</span></div>' +
+    '<div><span style="color:' + c.keyword + ';font-weight:700">pub async fn</span> <span style="color:' + c.function + ';font-weight:500">rollout</span><span style="color:' + c.operator + '">(</span>stage<span style="color:' + c.operator + '">:</span> <span style="color:' + c.type + ';font-weight:600">Stage</span><span style="color:' + c.operator + '">)</span> <span style="color:' + c.operator + '">-&gt;</span> <span style="color:' + c.type + ';font-weight:600">Result</span><span style="color:' + c.operator + '">&lt;</span><span style="color:' + c.type + ';font-weight:600">Report</span><span style="color:' + c.operator + '">&gt; {</span></div>' +
+    '<div>&nbsp;&nbsp;<span style="color:' + c.keyword + ';font-weight:700">let</span> budget <span style="color:' + c.operator + '">=</span> <span style="color:' + c.number + '">300</span><span style="color:' + c.operator + '">;</span></div>' +
+    '<div>&nbsp;&nbsp;<span style="color:' + c.keyword + ';font-weight:700">let</span> env <span style="color:' + c.operator + '">=</span> <span style="color:' + c.string + '">"production"</span><span style="color:' + c.operator + '">;</span></div>' +
+    '<div>&nbsp;&nbsp;stage<span style="color:' + c.operator + '">.</span><span style="color:' + c.function + ';font-weight:500">apply</span><span style="color:' + c.operator + '">(</span>env<span style="color:' + c.operator + '">,</span> budget<span style="color:' + c.operator + '">).</span><span style="color:' + c.invalid + ';font-weight:600">unwrap</span><span style="color:' + c.operator + '">()</span></div>' +
+    '<div><span style="color:' + c.operator + '">}</span></div>';
+}
+document.addEventListener('cardmode', e => render(e.detail.id === 'light' ? 'light' : 'dark'));
+render(document.body.getAttribute('data-mode') === 'light' ? 'light' : 'dark');
+</script>
+<script src="card-mode.js"></script>
+</body></html>
