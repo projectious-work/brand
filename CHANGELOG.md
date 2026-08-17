@@ -21,6 +21,36 @@ documentation are not.
 
 Nothing yet.
 
+## [v3.0.1] — 2026-08-17
+
+### Added
+
+- An on-site change log with retained release pages for v1.0.0, v2.0.0,
+  v2.0.1, v2.0.2, v2.1.0, v2.1.1, v3.0.0, and v3.0.1.
+- Revised foundation, interface, theme, governance, machine-contract, and
+  legacy-alignment documentation recovered from the design-system branch.
+- Semantic colour specimens and automatic inline chips for literal, scale,
+  token, and named colour references.
+
+### Changed
+
+- The release menu now retains v1.0.0, v2.0.0, v2.1.1, v3.0.0, and every
+  release from v3.0.1 onward.
+- The header links to the complete Getting started, Change log,
+  Documentation, Contributing, Downloads, and Legal destinations.
+- The announcement banner and release metadata identify v3.0.1 as latest.
+
+### Fixed
+
+- Restored the colour-scale, palette, semantic-swatch, and inline colour-chip
+  styles that were left in the retired Docsy stylesheet during the v3 theme
+  migration.
+- Restored spacing between the landing-page licence action and the footer.
+- Integrated the site through the public theme style and script hooks while
+  retaining the v0.3.3 navigation and release chrome.
+- Corrected the repository build and test metadata to invoke Brand's actual
+  Hugo build and full verification suite.
+
 ## [v3.0.0] — 2026-08-17
 
 ### Highlights
@@ -512,6 +542,7 @@ around, and are encoded in the audits: **logotypes** (the wordmark sets "work"
 in the identity accent) and **inactive user-interface components** (the disabled
 control specification).
 
-[Unreleased]: https://github.com/projectious-work/brand/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/projectious-work/brand/compare/v3.0.1...HEAD
+[v3.0.1]: https://github.com/projectious-work/brand/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/projectious-work/brand/compare/v2.1.1...v3.0.0
 [v1.0.0]: https://github.com/projectious-work/brand/releases/tag/v1.0.0
