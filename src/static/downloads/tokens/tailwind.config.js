@@ -5,10 +5,8 @@
  * Do not edit by hand — edit brand.yaml and regenerate, or the next run
  * silently reverts the change. scripts/check-tokens.sh enforces this.
  *
- * Both modes are present. Tailwind has no built-in notion of a colour mode,
- * so the dark scales are exposed as their own `*Dark` keys rather than being
- * swapped in behind `dark:` — a consumer wires them up with whatever dark
- * strategy their project already uses.
+ * Light, navy, and deep appearances are explicit. A consumer maps these
+ * values to its own class or attribute strategy.
  *
  * @type {import('tailwindcss').Config}
  */
@@ -24,22 +22,30 @@ module.exports = {
           1: '#f8f9fb', 2: '#f0f3f8', 3: '#e2e9f2', 4: '#d3deec', 5: '#c3d1e3', 6: '#b0c1d6',
           7: '#96abc6', 8: '#7490b2', 9: '#1d3352', 10: '#162944', 11: '#3a5a82', 12: '#142438',
         },
-        midnightDark: {
+        midnightNavy: {
+          1: '#132440', 2: '#1a2b3e', 3: '#20354d', 4: '#263f5a', 5: '#2e4b68', 6: '#2e4b68',
+          7: '#3a5c7e', 8: '#4d7098', 9: '#1d3352', 10: '#2b4d78', 11: '#8aacc8', 12: '#c5daf0',
+        },
+        midnightDeep: {
           1: '#0e1720', 2: '#131e2b', 3: '#1a2b3e', 4: '#20354d', 5: '#263f5a', 6: '#2e4b68',
           7: '#3a5c7e', 8: '#4d7098', 9: '#1d3352', 10: '#2b4d78', 11: '#8aacc8', 12: '#c5daf0',
         },
         // Orange — Accent. Calls to action, active states, and emphasis. Used sparingly.
         orange: {
-          DEFAULT: '#E05232',   // CTAs, highlights, active states
+          DEFAULT: '#e05232',   // CTAs, highlights, active states
           light: '#ea7558',   // Accent hover on dark, syntax strings
           dark: '#b84228',   // Accent pressed state
           solid: '#cc4528',   // Fill for solid controls with white text (4.72:1)
           1: '#fef9f7', 2: '#fef0ea', 3: '#fde0d5', 4: '#fccebd', 5: '#f8baa5', 6: '#f0a48c',
-          7: '#e58a6e', 8: '#d86e4e', 9: '#E05232', 10: '#cc4528', 11: '#c04424', 12: '#6e2714',
+          7: '#e58a6e', 8: '#d86e4e', 9: '#e05232', 10: '#cc4528', 11: '#c04424', 12: '#6e2714',
         },
-        orangeDark: {
+        orangeNavy: {
           1: '#1c110d', 2: '#271610', 3: '#3d1e13', 4: '#522616', 5: '#643019', 6: '#7a3c20',
-          7: '#974b28', 8: '#b85c32', 9: '#E05232', 10: '#ea7558', 11: '#f09878', 12: '#fcddd2',
+          7: '#974b28', 8: '#b85c32', 9: '#e05232', 10: '#ea7558', 11: '#f09878', 12: '#fcddd2',
+        },
+        orangeDeep: {
+          1: '#1c110d', 2: '#271610', 3: '#3d1e13', 4: '#522616', 5: '#643019', 6: '#7a3c20',
+          7: '#974b28', 8: '#b85c32', 9: '#e05232', 10: '#ea7558', 11: '#f09878', 12: '#fcddd2',
         },
         // Slate — Secondary. Supporting text, borders, and neutral surfaces.
         slate: {
@@ -47,19 +53,27 @@ module.exports = {
           1: '#f9f9fa', 2: '#f1f2f4', 3: '#e6e8eb', 4: '#dadce0', 5: '#cdd0d5', 6: '#bec2c8',
           7: '#adb2ba', 8: '#9299a4', 9: '#546a82', 10: '#4a5e74', 11: '#5c6f82', 12: '#1e2b38',
         },
-        slateDark: {
+        slateNavy: {
+          1: '#111416', 2: '#171b1f', 3: '#20262c', 4: '#283038', 5: '#303a43', 6: '#3a454f',
+          7: '#47545f', 8: '#5a6a78', 9: '#546a82', 10: '#627a92', 11: '#97a8b8', 12: '#d5dee8',
+        },
+        slateDeep: {
           1: '#111416', 2: '#171b1f', 3: '#20262c', 4: '#283038', 5: '#303a43', 6: '#3a454f',
           7: '#47545f', 8: '#5a6a78', 9: '#546a82', 10: '#627a92', 11: '#97a8b8', 12: '#d5dee8',
         },
         // Semantic. `fg` is the foreground for the matching `bg` tint.
-        success: { DEFAULT: '#2f7d65', bg: '#d1ebe0', fg: '#276754' },
-        successDark: { DEFAULT: '#6cc090', bg: '#16302a', fg: '#6cc090' },
-        warning: { DEFAULT: '#8b6508', bg: '#f5ecd0', fg: '#6f5106' },
-        warningDark: { DEFAULT: '#e0a92a', bg: '#33280d', fg: '#e0a92a' },
-        danger: { DEFAULT: '#a8261c', bg: '#fce8e8', fg: '#a8261c' },
-        dangerDark: { DEFAULT: '#f08b80', bg: '#3a1c19', fg: '#f08b80' },
-        info: { DEFAULT: '#3a5a82', bg: '#dae2ec', fg: '#3a5a82' },
-        infoDark: { DEFAULT: '#8aacc8', bg: '#1a2b3e', fg: '#8aacc8' },
+        success: { DEFAULT: '#17945f', bg: '#d1ebe0', fg: '#17734c' },
+        successNavy: { DEFAULT: '#6cc090', bg: '#16302a', fg: '#6cc090' },
+        successDeep: { DEFAULT: '#6cc090', bg: '#16302a', fg: '#6cc090' },
+        warning: { DEFAULT: '#ef8b0b', bg: '#fff1e0', fg: '#b3520c' },
+        warningNavy: { DEFAULT: '#eda44a', bg: '#3a2611', fg: '#eda44a' },
+        warningDeep: { DEFAULT: '#eda44a', bg: '#3a2611', fg: '#eda44a' },
+        danger: { DEFAULT: '#d92d20', bg: '#fce8e8', fg: '#b3261e' },
+        dangerNavy: { DEFAULT: '#f08b80', bg: '#3a1c19', fg: '#f08b80' },
+        dangerDeep: { DEFAULT: '#f08b80', bg: '#3a1c19', fg: '#f08b80' },
+        info: { DEFAULT: '#2563c9', bg: '#dae2ec', fg: '#2f5fa8' },
+        infoNavy: { DEFAULT: '#8aacc8', bg: '#1a2b3e', fg: '#8aacc8' },
+        infoDeep: { DEFAULT: '#8aacc8', bg: '#1a2b3e', fg: '#8aacc8' },
         // Terminal — one dark surface, sixteen ANSI slots plus chrome.
         terminal: {
           surface: '#0e1720',
@@ -99,6 +113,7 @@ module.exports = {
         h4: ['20px', { lineHeight: '1.3', fontWeight: '600' }],
         h5: ['17px', { lineHeight: '1.35', fontWeight: '600' }],
         bodyL: ['18px', { lineHeight: '1.65', fontWeight: '400' }],
+        body: ['16px', { lineHeight: '1.6', fontWeight: '400' }],
         caption: ['13px', { lineHeight: '1.5', fontWeight: '400' }],
         overline: ['12px', { lineHeight: '1.3', fontWeight: '600' }],
         code: ['14px', { lineHeight: '1.6', fontWeight: '400' }],

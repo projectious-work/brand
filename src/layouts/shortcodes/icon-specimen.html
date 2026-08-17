@@ -1,0 +1,23 @@
+{{- /* Theme-idiomatic translation of preview/iconography.html. The theme's
+       public icon partial supplies the pinned Tabler paths. */ -}}
+{{- $icons := slice "device-desktop" "pencil" "search" "versions" "tag" -}}
+<div class="pj-demo">
+  <div class="pj-demo__label">Tabler outline · 1.5 px stroke · 24 px grid</div>
+  <div class="pj-demo__body">
+    {{- range $icons }}
+    <div class="pj-demo-item">
+      {{ partial "icon.html" (dict "name" . "class" "ico--md") | safeHTML }}
+      <span class="pj-cap">{{ . }}</span>
+    </div>
+    {{- end }}
+  </div>
+</div>
+<div class="pj-demo">
+  <div class="pj-demo__label">Size and state</div>
+  <div class="pj-demo__body">
+    <div class="pj-demo-item">{{ partial "icon.html" (dict "name" "search" "class" "ico--sm") | safeHTML }}<span class="pj-cap">16 · inline</span></div>
+    <div class="pj-demo-item">{{ partial "icon.html" (dict "name" "search") | safeHTML }}<span class="pj-cap">20 · button</span></div>
+    <div class="pj-demo-item">{{ partial "icon.html" (dict "name" "search" "class" "ico--md") | safeHTML }}<span class="pj-cap">24 · navigation</span></div>
+    <div class="pj-demo-item" style="color:var(--color-danger)">{{ partial "icon.html" (dict "name" "alert-circle" "class" "ico--md") | safeHTML }}<span class="pj-cap">danger · meaningful</span></div>
+  </div>
+</div>

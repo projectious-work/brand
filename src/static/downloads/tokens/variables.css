@@ -10,7 +10,7 @@
   --color-primary: #1d3352;   /* Text, headings, primary surfaces */
   --color-primary-light: #2b4d78;   /* Hover states, dark-mode primary */
   --color-primary-dark: #132440;   /* Dark backgrounds, navbar, code blocks */
-  --color-accent: #E05232;   /* CTAs, highlights, active states */
+  --color-accent: #e05232;   /* CTAs, highlights, active states */
   --color-accent-light: #ea7558;   /* Accent hover on dark, syntax strings */
   --color-accent-dark: #b84228;   /* Accent pressed state */
   --color-accent-solid: #cc4528;   /* Fill for solid controls with white text (4.72:1) */
@@ -41,7 +41,7 @@
   --orange-6: #f0a48c;
   --orange-7: #e58a6e;
   --orange-8: #d86e4e;
-  --orange-9: #E05232;
+  --orange-9: #e05232;
   --orange-10: #cc4528;
   --orange-11: #c04424;
   --orange-12: #6e2714;
@@ -59,9 +59,8 @@
   --slate-11: #5c6f82;
   --slate-12: #1e2b38;
 
-  /* Both ramps again under fixed names, so a consumer whose dark mode is a
-     class or an attribute this file does not know about can map to them
-     directly. The names above swap with the mode; these never do. */
+  /* Appearance-pinned ramps for consumers with their own selector strategy.
+     The names above swap with the appearance; these never do. */
   --midnight-light-1: #f8f9fb;
   --midnight-light-2: #f0f3f8;
   --midnight-light-3: #e2e9f2;
@@ -94,7 +93,7 @@
   --orange-light-6: #f0a48c;
   --orange-light-7: #e58a6e;
   --orange-light-8: #d86e4e;
-  --orange-light-9: #E05232;
+  --orange-light-9: #e05232;
   --orange-light-10: #cc4528;
   --orange-light-11: #c04424;
   --orange-light-12: #6e2714;
@@ -106,7 +105,7 @@
   --orange-dark-6: #7a3c20;
   --orange-dark-7: #974b28;
   --orange-dark-8: #b85c32;
-  --orange-dark-9: #E05232;
+  --orange-dark-9: #e05232;
   --orange-dark-10: #ea7558;
   --orange-dark-11: #f09878;
   --orange-dark-12: #fcddd2;
@@ -134,35 +133,35 @@
   --slate-dark-10: #627a92;
   --slate-dark-11: #97a8b8;
   --slate-dark-12: #d5dee8;
-  --color-success-light: #2f7d65;  --color-success-light-bg: #d1ebe0;  --color-success-light-fg: #276754;
+  --color-success-light: #17945f;  --color-success-light-bg: #d1ebe0;  --color-success-light-fg: #17734c;
   --color-success-dark: #6cc090;  --color-success-dark-bg: #16302a;  --color-success-dark-fg: #6cc090;
-  --color-warning-light: #8b6508;  --color-warning-light-bg: #f5ecd0;  --color-warning-light-fg: #6f5106;
-  --color-warning-dark: #e0a92a;  --color-warning-dark-bg: #33280d;  --color-warning-dark-fg: #e0a92a;
-  --color-danger-light: #a8261c;  --color-danger-light-bg: #fce8e8;  --color-danger-light-fg: #a8261c;
+  --color-warning-light: #ef8b0b;  --color-warning-light-bg: #fff1e0;  --color-warning-light-fg: #b3520c;
+  --color-warning-dark: #eda44a;  --color-warning-dark-bg: #3a2611;  --color-warning-dark-fg: #eda44a;
+  --color-danger-light: #d92d20;  --color-danger-light-bg: #fce8e8;  --color-danger-light-fg: #b3261e;
   --color-danger-dark: #f08b80;  --color-danger-dark-bg: #3a1c19;  --color-danger-dark-fg: #f08b80;
-  --color-info-light: #3a5a82;  --color-info-light-bg: #dae2ec;  --color-info-light-fg: #3a5a82;
+  --color-info-light: #2563c9;  --color-info-light-bg: #dae2ec;  --color-info-light-fg: #2f5fa8;
   --color-info-dark: #8aacc8;  --color-info-dark-bg: #1a2b3e;  --color-info-dark-fg: #8aacc8;
-  --color-bg-light: #f8f9fb;  --color-bg-dark: #0e1720;
-  --color-surface-light: #ffffff;  --color-surface-dark: #131e2b;
-  --color-text-primary-light: #142438;  --color-text-primary-dark: #c5daf0;
-  --color-text-secondary-light: #546a82;  --color-text-secondary-dark: #97a8b8;
-  --color-text-muted-light: #5c6f82;  --color-text-muted-dark: #97a8b8;
-  --color-border-light: #cdd0d5;  --color-border-dark: #263f5a;
+  --color-bg-light: #f8f9fb;  --color-bg-navy: #132440;  --color-bg-deep: #0e1720;
+  --color-surface-light: #ffffff;  --color-surface-navy: #1a2b3e;  --color-surface-deep: #131e2b;
+  --color-text-primary-light: #142438;  --color-text-primary-navy: #c5daf0;  --color-text-primary-deep: #c5daf0;
+  --color-text-secondary-light: #546a82;  --color-text-secondary-navy: #97a8b8;  --color-text-secondary-deep: #97a8b8;
+  --color-text-muted-light: #5c6f82;  --color-text-muted-navy: #97a8b8;  --color-text-muted-deep: #97a8b8;
+  --color-border-light: #cdd0d5;  --color-border-navy: #2e4b68;  --color-border-deep: #263f5a;
 
   /* Semantic colours. `-fg` is the foreground for the matching tint,
      where the solid value does not clear AA against it. */
-  --color-success: #2f7d65;
+  --color-success: #17945f;
   --color-success-bg: #d1ebe0;
-  --color-success-fg: #276754;   /* 5.28:1 on the tint */
-  --color-warning: #8b6508;
-  --color-warning-bg: #f5ecd0;
-  --color-warning-fg: #6f5106;   /* 6.23:1 on the tint */
-  --color-danger: #a8261c;
+  --color-success-fg: #17734c;   /* 5.03:1 on the tint */
+  --color-warning: #ef8b0b;
+  --color-warning-bg: #fff1e0;
+  --color-warning-fg: #b3520c;   /* 5.01:1 on the tint */
+  --color-danger: #d92d20;
   --color-danger-bg: #fce8e8;
-  --color-danger-fg: #a8261c;   /* 6.03:1 on the tint */
-  --color-info: #3a5a82;
+  --color-danger-fg: #b3261e;   /* 5.32:1 on the tint */
+  --color-info: #2563c9;
   --color-info-bg: #dae2ec;
-  --color-info-fg: #3a5a82;   /* 5.42:1 on the tint */
+  --color-info-fg: #2f5fa8;   /* 4.73:1 on the tint */
 
   /* App surfaces and text */
   --color-bg: #f8f9fb;
@@ -177,16 +176,25 @@
   --font-body: 'Source Sans 3', sans-serif;
   --font-code: 'IBM Plex Mono', monospace;
 
-  --type-display-size: 48px;  --type-display-weight: 800;  --type-display-lh: 1.1;
-  --type-h1-size: 36px;  --type-h1-weight: 700;  --type-h1-lh: 1.15;
-  --type-h2-size: 28px;  --type-h2-weight: 700;  --type-h2-lh: 1.2;
-  --type-h3-size: 24px;  --type-h3-weight: 600;  --type-h3-lh: 1.25;
-  --type-h4-size: 20px;  --type-h4-weight: 600;  --type-h4-lh: 1.3;
-  --type-h5-size: 17px;  --type-h5-weight: 600;  --type-h5-lh: 1.35;
-  --type-body-l-size: 18px;  --type-body-l-weight: 400;  --type-body-l-lh: 1.65;
-  --type-caption-size: 13px;  --type-caption-weight: 400;  --type-caption-lh: 1.5;
-  --type-overline-size: 12px;  --type-overline-weight: 600;  --type-overline-lh: 1.3;
-  --type-code-size: 14px;  --type-code-weight: 400;  --type-code-lh: 1.6;
+  /* Layout and portable surface aliases */
+  --font-scale: 1;
+  --container-max: 1100px;
+  --grid-gutter: 16px;
+  --touch-target: 44px;
+  --measure: 65ch;
+  --scrim: rgba(20,36,56,0.72);
+  --code-panel-surface: #131e2b;
+  --type-display-size: calc(48px * var(--font-scale));  --type-display-weight: 800;  --type-display-lh: 1.1;
+  --type-h1-size: calc(36px * var(--font-scale));  --type-h1-weight: 700;  --type-h1-lh: 1.15;
+  --type-h2-size: calc(28px * var(--font-scale));  --type-h2-weight: 700;  --type-h2-lh: 1.2;
+  --type-h3-size: calc(24px * var(--font-scale));  --type-h3-weight: 600;  --type-h3-lh: 1.25;
+  --type-h4-size: calc(20px * var(--font-scale));  --type-h4-weight: 600;  --type-h4-lh: 1.3;
+  --type-h5-size: calc(17px * var(--font-scale));  --type-h5-weight: 600;  --type-h5-lh: 1.35;
+  --type-body-l-size: calc(18px * var(--font-scale));  --type-body-l-weight: 400;  --type-body-l-lh: 1.65;
+  --type-body-size: calc(16px * var(--font-scale));  --type-body-weight: 400;  --type-body-lh: 1.6;
+  --type-caption-size: calc(13px * var(--font-scale));  --type-caption-weight: 400;  --type-caption-lh: 1.5;
+  --type-overline-size: calc(12px * var(--font-scale));  --type-overline-weight: 600;  --type-overline-lh: 1.3;
+  --type-code-size: calc(14px * var(--font-scale));  --type-code-weight: 400;  --type-code-lh: 1.6;
 
   /* Spacing (4px base) */
   --space-1: 4px;
@@ -211,6 +219,13 @@
   --shadow-1: 0 1px 3px rgba(0,0,0,0.06);   /* Cards under hover */
   --shadow-2: 0 4px 12px rgba(0,0,0,0.08);   /* Popovers and dropdowns */
   --shadow-3: 0 8px 24px rgba(0,0,0,0.12);   /* Modals */
+  --elevated-0: #f8f9fb;
+  --elevated-1: #ffffff;
+  --elevated-2: #ffffff;
+  --elevated-3: #ffffff;
+  --rim-1: none;
+  --rim-2: none;
+  --rim-3: none;
 
   /* Motion */
   --duration-micro: 100ms;   /* Colour and opacity changes */
@@ -260,19 +275,61 @@
   --terminal-active-tab-fill: #e05232;
   --terminal-active-pane-border: #e05232;
   --terminal-inactive-pane-border: #7b8da3;
+
+  /* Optional light code and terminal companions */
+  --syntax-light-surface: #f4f5f7;
+  --syntax-plain-light: #0f1c2e;
+  --syntax-comment-light: #5e7082;
+  --syntax-operator-light: #54697f;
+  --syntax-keyword-light: #c2117f;
+  --syntax-type-light: #08804e;
+  --syntax-function-light: #1668d8;
+  --syntax-string-light: #c94208;
+  --syntax-number-light: #94620a;
+  --syntax-macro-light: #0d7d82;
+  --syntax-invalid-light: #d81420;
+  --terminal-light-surface: #f4f5f7;
+  --terminal-light-ansi-0: #1e2b38;
+  --terminal-light-ansi-1: #b8352f;
+  --terminal-light-ansi-2: #276754;
+  --terminal-light-ansi-3: #8b6508;
+  --terminal-light-ansi-4: #3a5a82;
+  --terminal-light-ansi-5: #8a3f6e;
+  --terminal-light-ansi-6: #1c6b6b;
+  --terminal-light-ansi-7: #546a82;
+  --terminal-light-ansi-8: #4a5e74;
+  --terminal-light-ansi-9: #a8261c;
+  --terminal-light-ansi-10: #1f7a52;
+  --terminal-light-ansi-11: #6f5106;
+  --terminal-light-ansi-12: #1d3352;
+  --terminal-light-ansi-13: #752f5c;
+  --terminal-light-ansi-14: #125555;
+  --terminal-light-ansi-15: #142438;
+  --terminal-light-background: #f4f5f7;
+  --terminal-light-foreground: #142438;
+  --terminal-light-cursor: #e05232;
+  --terminal-light-cursor-text: #f4f5f7;
+  --terminal-light-selection-background: #dae2ec;
+  --terminal-light-selection-text: #142438;
+  --terminal-light-dim-comment: #5c6f82;
+  --terminal-light-status-bar-surface: #e6e8eb;
+  --terminal-light-status-bar-text: #142438;
+  --terminal-light-inactive-tab-and-pane-label: #4a5e74;
+  --terminal-light-active-tab-fill: #e05232;
+  --terminal-light-active-tab-text: #0e1720;
+  --terminal-light-active-pane-border: #e05232;
+  --terminal-light-inactive-pane-border: #adb2ba;
 }
 
-/* Dark mode. The scales, the semantic colours and the surface aliases all
-   have a dark variant; everything else is mode-independent. Step 9 is
-   constant across modes by design. */
+/* Navy is the default dark appearance. Step 9 remains constant. */
 @media (prefers-color-scheme: dark) {
   :root {
     /* Midnight */
-    --midnight-1: #0e1720;
-    --midnight-2: #131e2b;
-    --midnight-3: #1a2b3e;
-    --midnight-4: #20354d;
-    --midnight-5: #263f5a;
+    --midnight-1: #132440;
+    --midnight-2: #1a2b3e;
+    --midnight-3: #20354d;
+    --midnight-4: #263f5a;
+    --midnight-5: #2e4b68;
     --midnight-6: #2e4b68;
     --midnight-7: #3a5c7e;
     --midnight-8: #4d7098;
@@ -289,7 +346,7 @@
     --orange-6: #7a3c20;
     --orange-7: #974b28;
     --orange-8: #b85c32;
-    --orange-9: #E05232;
+    --orange-9: #e05232;
     --orange-10: #ea7558;
     --orange-11: #f09878;
     --orange-12: #fcddd2;
@@ -310,9 +367,9 @@
     --color-success: #6cc090;
     --color-success-bg: #16302a;
     --color-success-fg: #6cc090;   /* 6.43:1 on the tint */
-    --color-warning: #e0a92a;
-    --color-warning-bg: #33280d;
-    --color-warning-fg: #e0a92a;   /* 6.81:1 on the tint */
+    --color-warning: #eda44a;
+    --color-warning-bg: #3a2611;
+    --color-warning-fg: #eda44a;   /* 6.81:1 on the tint */
     --color-danger: #f08b80;
     --color-danger-bg: #3a1c19;
     --color-danger-fg: #f08b80;   /* 6.40:1 on the tint */
@@ -320,22 +377,32 @@
     --color-info-bg: #1a2b3e;
     --color-info-fg: #8aacc8;   /* 6.04:1 on the tint */
 
-    --color-bg: #0e1720;
-    --color-surface: #131e2b;
+    --color-bg: #132440;
+    --color-surface: #1a2b3e;
     --color-text-primary: #c5daf0;   /* 12.62:1 */
     --color-text-secondary: #97a8b8;   /* 7.41:1 */
     --color-text-muted: #97a8b8;   /* 7.41:1 */
-    --color-border: #263f5a;
+    --color-border: #2e4b68;
+    --surface-2: #20354d;
+    --border-strong: #4d7098;
+    --tag-bg: #20354d;
+    --elevated-0: #132440;
+    --elevated-1: #1a2b3e;
+    --elevated-2: #263f5a;
+    --elevated-3: #2e4b68;
+    --rim-1: inset 0 1px 0 rgba(255,255,255,0.05);
+    --rim-2: inset 0 1px 0 rgba(255,255,255,0.09);
+    --rim-3: inset 0 1px 0 rgba(255,255,255,0.14);
   }
 }
 
 [data-theme="dark"] {
   /* Midnight */
-  --midnight-1: #0e1720;
-  --midnight-2: #131e2b;
-  --midnight-3: #1a2b3e;
-  --midnight-4: #20354d;
-  --midnight-5: #263f5a;
+  --midnight-1: #132440;
+  --midnight-2: #1a2b3e;
+  --midnight-3: #20354d;
+  --midnight-4: #263f5a;
+  --midnight-5: #2e4b68;
   --midnight-6: #2e4b68;
   --midnight-7: #3a5c7e;
   --midnight-8: #4d7098;
@@ -352,7 +419,7 @@
   --orange-6: #7a3c20;
   --orange-7: #974b28;
   --orange-8: #b85c32;
-  --orange-9: #E05232;
+  --orange-9: #e05232;
   --orange-10: #ea7558;
   --orange-11: #f09878;
   --orange-12: #fcddd2;
@@ -373,9 +440,9 @@
   --color-success: #6cc090;
   --color-success-bg: #16302a;
   --color-success-fg: #6cc090;   /* 6.43:1 on the tint */
-  --color-warning: #e0a92a;
-  --color-warning-bg: #33280d;
-  --color-warning-fg: #e0a92a;   /* 6.81:1 on the tint */
+  --color-warning: #eda44a;
+  --color-warning-bg: #3a2611;
+  --color-warning-fg: #eda44a;   /* 6.81:1 on the tint */
   --color-danger: #f08b80;
   --color-danger-bg: #3a1c19;
   --color-danger-fg: #f08b80;   /* 6.40:1 on the tint */
@@ -383,10 +450,39 @@
   --color-info-bg: #1a2b3e;
   --color-info-fg: #8aacc8;   /* 6.04:1 on the tint */
 
-  --color-bg: #0e1720;
-  --color-surface: #131e2b;
+  --color-bg: #132440;
+  --color-surface: #1a2b3e;
   --color-text-primary: #c5daf0;   /* 12.62:1 */
   --color-text-secondary: #97a8b8;   /* 7.41:1 */
   --color-text-muted: #97a8b8;   /* 7.41:1 */
+  --color-border: #2e4b68;
+  --surface-2: #20354d;
+  --border-strong: #4d7098;
+  --tag-bg: #20354d;
+  --elevated-0: #132440;
+  --elevated-1: #1a2b3e;
+  --elevated-2: #263f5a;
+  --elevated-3: #2e4b68;
+  --rim-1: inset 0 1px 0 rgba(255,255,255,0.05);
+  --rim-2: inset 0 1px 0 rgba(255,255,255,0.09);
+  --rim-3: inset 0 1px 0 rgba(255,255,255,0.14);
+}
+
+/* Deep dark overrides exactly the low ramp and aliases derived from it. */
+[data-theme="dark"][data-surface="deep"] {
+  --midnight-1: #0e1720;
+  --midnight-2: #131e2b;
+  --midnight-3: #1a2b3e;
+  --midnight-4: #20354d;
+  --midnight-5: #263f5a;
+  --color-bg: #0e1720;
+  --color-surface: #131e2b;
   --color-border: #263f5a;
+  --surface-2: #1a2b3e;
+  --border-strong: #3a5c7e;
+  --tag-bg: #1a2b3e;
+  --elevated-0: #0e1720;
+  --elevated-1: #131e2b;
+  --elevated-2: #20354d;
+  --elevated-3: #2e4b68;
 }

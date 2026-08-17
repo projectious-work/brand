@@ -80,7 +80,7 @@
 // -----------------------------------------------------------------------------
 .pj-btn {
   font-family: $headings-font-family;
-  font-weight: 600;
+  font-weight: 500;
   border-radius: $border-radius;
   border: 1.5px solid transparent;
   cursor: pointer;
@@ -125,9 +125,9 @@
   }
 
   &--danger {
-    background: $danger;
-    color: #fff;
-    &:hover { background: #8d1f16; }
+    background: var(--pj-danger);
+    color: var(--pj-on-solid-danger);
+    &:hover { opacity: .88; }
   }
 
   &:disabled,
@@ -146,7 +146,7 @@
 }
 
 // -----------------------------------------------------------------------------
-// Form controls — 40px default, slate-7 border, midnight focus ring
+// Form controls — 40px default, semantic border, accent focus halo
 // -----------------------------------------------------------------------------
 .pj-field {
   display: flex;
@@ -178,33 +178,36 @@
 .pj-input {
   height: 40px;
   border-radius: $border-radius;
-  border: 1.5px solid var(--pj-slate-7);
+  border: 1.5px solid var(--pj-border);
   background: var(--pj-surface);
   color: var(--color-text-primary);
   padding: 0 0.75rem;
   font-family: $font-family-sans-serif;
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   width: 100%;
 
-  &::placeholder { color: var(--pj-text-muted); }
+  &::placeholder { color: var(--pj-muted-fg); opacity: 1; }
 
   &:focus {
     outline: none;
-    border-color: var(--pj-midnight-9);
-    box-shadow: 0 0 0 2px rgba($midnight-9, 0.15);
+    border-color: var(--pj-orange-9);
+    box-shadow: 0 0 0 3px rgba($orange-9, 0.12);
   }
 
   &--sm { height: 32px; font-size: 0.75rem; }
   &--lg { height: 48px; font-size: 0.875rem; }
 
   &--error {
-    border-color: var(--pj-orange-9);
-    background: var(--pj-orange-1);
+    border-color: var(--pj-danger);
+    background: var(--pj-danger-bg);
+    color: var(--pj-danger);
   }
 
   &:disabled {
-    background: var(--pj-slate-4);
-    color: var(--pj-slate-8);
+    background: var(--pj-surface-subtle);
+    color: var(--pj-muted-fg);
+    border-color: var(--pj-border);
+    opacity: 1;
     cursor: not-allowed;
   }
 }
@@ -341,15 +344,10 @@ select.pj-input { cursor: pointer; }
 // -----------------------------------------------------------------------------
 // Navigation
 // -----------------------------------------------------------------------------
-// The navbar follows the colour mode — it is not a permanently midnight bar.
-// These values mirror .td-navbar in _styles_project.scss, which is what this
-// site's own header actually uses; a specimen that disagrees with the header
-// directly above it is worse than no specimen.
+// The navbar follows the appearance — it is not a permanently midnight bar.
 // The specimen's colours are published as custom properties rather than kept as
-// SCSS literals. A host theme that outranks a component class — Hextra colours
-// every `.content a`, which is (0,2,0) against this component's (0,1,0) — can
-// then restate the property instead of restating the value, so the reference
-// implementations cannot drift from the brand the way a copied hex does.
+// SCSS literals. A host theme with higher-specificity link rules can restate the
+// property instead of copying a value, preventing adapter drift.
 .pj-navbar {
   --pj-navbar-bg: #{rgba($midnight-1, 0.88)};
   --pj-navbar-border: #{$slate-3};
@@ -721,7 +719,7 @@ select.pj-input { cursor: pointer; }
 }
 
 // -----------------------------------------------------------------------------
-// Terminal — the always-dark surface, same as code blocks
+// Terminal — the default-dark device surface
 // -----------------------------------------------------------------------------
 .pj-terminal {
   background: $midnight-dark-2;
@@ -776,7 +774,7 @@ select.pj-input { cursor: pointer; }
 
   &__ext { color: $brand-accent; }
   &--on-dark { color: $midnight-dark-12; }
-  // For surfaces that are white in both modes — paper stock, a mail message —
+  // For surfaces that stay white in every appearance — paper or email —
   // where the mode-aware default would go light-on-white in dark mode.
   &--on-light { color: $brand-primary; }
 }
@@ -892,7 +890,7 @@ select.pj-input { cursor: pointer; }
     opacity: 0.12;
   }
 
-  // Paper stock. Fixed white in both modes, like the signature specimens: the
+  // Paper stock. Fixed white in every appearance, like signature specimens: the
   // point of this card is how it looks printed, and paper has no colour mode.
   //
   // The glow does not carry over. A 12% accent wash reads as a soft shadow on
@@ -1406,9 +1404,9 @@ select.pj-input { cursor: pointer; }
 }
 
 // A row-identifying cell is a `<th scope="row">` — that is what makes a data
-// table navigable with a screen reader. Both Docsy and Hextra style every `th`
-// as a column header, so the row identity came out uppercase, letter-spaced and
-// muted. Keep the semantics, restore the presentation of a body cell.
+// table navigable with a screen reader. A generic table rule may style every
+// `th` as a column header; keep the semantics while presenting this as a body
+// cell.
 .pj-table tbody th[scope="row"] {
   font-family: inherit;
   font-size: inherit;
@@ -1422,10 +1420,8 @@ select.pj-input { cursor: pointer; }
 // -----------------------------------------------------------------------------
 // The mark
 // -----------------------------------------------------------------------------
-// Lives here rather than in the documentation site's own stylesheet because the
-// theme examples mount this file and not that one. Without these three rules
-// the inlined logo.svg has no fill and renders as a solid black blob — which is
-// exactly what the Docsy example did once its navbar logo was switched on.
+// Lives with the specimens because the inline SVG needs explicit semantic fills
+// in every appearance.
 //
 // The values come from _tokens.scss and follow the colour mode, so one SVG
 // serves both; there is no separate dark-mode asset.
@@ -1433,4 +1429,379 @@ select.pj-input { cursor: pointer; }
   &__shell { fill: var(--pj-mark-shell); }
   &__cut { fill: var(--pj-mark-cut); }
   &__bud { fill: var(--pj-mark-bud); }
+}
+// Three-appearance comparison. Each card owns a token context, so the markup
+// remains identical and only semantic aliases change.
+.pj-appearance-specimen {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  margin: 1.5rem 0;
+}
+
+.pj-appearance-card {
+  background: var(--pj-midnight-1);
+  color: var(--pj-body-fg);
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  padding: 1rem;
+}
+
+.pj-appearance-card__label {
+  margin-bottom: .75rem;
+  color: var(--pj-muted-fg);
+  font-family: $headings-font-family;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+}
+
+.pj-appearance-card__surface {
+  display: grid;
+  gap: .5rem;
+  background: var(--pj-surface);
+  color: var(--pj-body-fg);
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius;
+  box-shadow: $box-shadow-sm;
+  padding: 1rem;
+
+  strong { color: var(--pj-heading-fg); }
+  > span:not(.pj-badge) { color: var(--pj-muted-fg); }
+  .pj-badge { justify-self: start; }
+}
+
+// Condensed marketing-surface translation: the theme owns the outer page and
+// this specimen preserves the source kit's content sequence and token logic.
+.pj-marketing {
+  margin: 1.5rem 0;
+  overflow: hidden;
+  background: var(--pj-midnight-1);
+  color: var(--pj-body-fg);
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  font-family: $font-family-sans-serif;
+}
+
+.pj-marketing__header,
+.pj-marketing__footer,
+.pj-marketing__cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+}
+
+.pj-marketing__header {
+  background: color-mix(in srgb, var(--pj-surface) 88%, transparent);
+  border-bottom: 1px solid var(--pj-border);
+
+  nav { display: flex; gap: 1rem; color: var(--pj-muted-fg); font-size: .8125rem; }
+}
+
+.pj-marketing__brand {
+  color: var(--pj-heading-fg);
+  font-family: $headings-font-family;
+  font-weight: 700;
+  white-space: nowrap;
+
+  span { color: var(--pj-orange-11); }
+}
+
+.pj-marketing__hero {
+  position: relative;
+  padding: clamp(2.5rem, 7vw, 5rem) clamp(1.25rem, 5vw, 3.5rem);
+  background: var(--pj-surface);
+
+  &::after {
+    content: "";
+    position: absolute;
+    width: 18rem;
+    height: 18rem;
+    top: -9rem;
+    right: -7rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(224, 82, 50, .12), transparent 66%);
+    pointer-events: none;
+  }
+
+  h3 { margin: 0; color: var(--pj-heading-fg); font-size: clamp(2rem, 6vw, 4rem); }
+  p { max-width: 38rem; color: var(--pj-muted-fg); }
+}
+
+.pj-marketing__eyebrow {
+  margin-bottom: .75rem;
+  color: var(--pj-orange-11);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.pj-marketing__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  margin-top: 1.5rem;
+}
+
+.pj-marketing__pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  padding: 2rem 1.25rem;
+
+  article {
+    display: grid;
+    gap: .5rem;
+    background: var(--pj-surface);
+    border: 1px solid var(--pj-border);
+    border-radius: $border-radius-lg;
+    padding: 1.25rem;
+  }
+  b { color: var(--pj-heading-fg); font-family: $headings-font-family; }
+  span { color: var(--pj-muted-fg); font-size: .875rem; }
+}
+
+.pj-marketing__showcase {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+  padding: 2rem 1.25rem;
+  background: var(--pj-surface);
+
+  h4 { margin: 0; color: var(--pj-heading-fg); }
+  p { color: var(--pj-muted-fg); }
+  pre { margin: 0; font-size: .75rem; }
+}
+
+.pj-marketing__convictions {
+  display: grid;
+  grid-template-columns: 2rem 1fr;
+  gap: .75rem 1rem;
+  padding: 2rem 1.25rem;
+
+  span { color: var(--pj-orange-11); font-family: $font-family-monospace; }
+  b { color: var(--pj-heading-fg); }
+}
+
+.pj-marketing__cta {
+  background: #142438;
+  color: #c5daf0;
+
+  > div { display: grid; gap: .25rem; }
+  b { font-family: $headings-font-family; font-size: 1.25rem; }
+  span { color: #97a8b8; }
+}
+
+.pj-marketing__footer {
+  color: var(--pj-muted-fg);
+  border-top: 1px solid var(--pj-border);
+  font-size: .75rem;
+}
+
+@media (max-width: 48rem) {
+  .pj-marketing__header nav { display: none; }
+  .pj-marketing__pillars,
+  .pj-marketing__showcase { grid-template-columns: 1fr; }
+  .pj-marketing__cta,
+  .pj-marketing__footer { align-items: flex-start; flex-direction: column; }
+}
+// Colour overviews — the designer's preview cards use visible chips rather
+// than making readers infer a palette from hex values. Hairlines keep pale
+// steps and the navy page colour visible against adjacent surfaces.
+.pj-color-chip {
+  display: inline-block;
+  width: .8em;
+  height: .8em;
+  flex: 0 0 .8em;
+  margin-right: .3em;
+  vertical-align: -.04em;
+  background: var(--pj-chip);
+  border: 1px solid var(--pj-border);
+  border-radius: .18em;
+  box-shadow: inset 0 0 0 1px rgba(20, 36, 56, .04);
+}
+
+.pj-inline-color,
+.pj-color-mention {
+  display: inline-flex;
+  align-items: baseline;
+  white-space: nowrap;
+}
+
+.pj-color-mention .pj-color-chip {
+  margin-left: .1em;
+}
+
+.pj-swatches {
+  display: grid;
+  gap: 1.25rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.pj-swatches__core {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .875rem;
+}
+
+.pj-swatches__variants {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: .625rem;
+}
+
+.pj-swatches__label,
+.pj-scale__name,
+.pj-semantic-swatch__name {
+  color: var(--pj-heading-fg);
+  font-family: $headings-font-family;
+  font-size: .8125rem;
+  font-weight: 600;
+}
+
+.pj-swatches__label { margin-bottom: -.75rem; }
+
+.pj-swatch__chip {
+  min-height: 6.5rem;
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  box-shadow: inset 0 0 0 1px rgba(20, 36, 56, .04);
+}
+
+.pj-swatch--variant .pj-swatch__chip {
+  min-height: 2.875rem;
+  border-radius: $border-radius;
+}
+
+.pj-swatch__body { padding-top: .45rem; }
+.pj-swatch__name {
+  color: var(--pj-heading-fg);
+  font-family: $headings-font-family;
+  font-size: .8125rem;
+  font-weight: 600;
+}
+.pj-swatch__hex,
+.pj-semantic-swatch__values {
+  color: var(--pj-muted-fg);
+  font-family: $font-family-monospace;
+  font-size: .6875rem;
+}
+.pj-swatch__use,
+.pj-semantic-swatch__use {
+  color: var(--pj-body-fg);
+  font-size: .75rem;
+  line-height: 1.4;
+  margin-top: .15rem;
+}
+
+.pj-scale {
+  margin: 1.25rem 0;
+}
+.pj-scale__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: .3rem;
+}
+.pj-scale__meta {
+  color: var(--pj-muted-fg);
+  font-family: $font-family-monospace;
+  font-size: .6875rem;
+}
+.pj-scale__steps {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 2px;
+}
+.pj-scale__step { min-width: 0; text-align: center; }
+.pj-scale__chip {
+  height: 2.5rem;
+  border-radius: .2rem;
+  box-shadow: inset 0 0 0 1px rgba(20, 36, 56, .05);
+}
+.pj-scale__num {
+  display: block;
+  color: var(--pj-muted-fg);
+  font-family: $font-family-monospace;
+  font-size: .625rem;
+  margin-top: .25rem;
+}
+.pj-scale__role {
+  display: block;
+  color: var(--pj-muted-fg);
+  font-size: .5625rem;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+
+.pj-semantic-swatches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.pj-semantic-swatch {
+  min-width: 0;
+  padding: .875rem;
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius-lg;
+  background: var(--pj-surface);
+}
+.pj-semantic-swatch__pair {
+  display: grid;
+  grid-template-columns: 2.125rem minmax(0, 1fr);
+  gap: .375rem;
+  margin-top: .35rem;
+}
+.pj-semantic-swatch__solid,
+.pj-semantic-swatch__tint {
+  height: 2.125rem;
+  border: 1px solid var(--pj-border);
+  border-radius: $border-radius;
+}
+.pj-semantic-swatch__solid { background: var(--semantic-light); }
+.pj-semantic-swatch__tint {
+  display: grid;
+  place-items: center;
+  background: var(--semantic-tint-light);
+  color: var(--semantic-fg-light);
+  font-family: $font-family-monospace;
+  font-size: .6875rem;
+  font-weight: 600;
+}
+.pj-semantic-swatch__values {
+  display: block;
+  margin-top: .3rem;
+  overflow-wrap: anywhere;
+}
+.pj-semantic-swatch__ratio--dark,
+.pj-semantic-swatch__values-dark { display: none; }
+
+[data-theme="dark"] {
+  .pj-swatch__chip,
+  .pj-scale__chip,
+  .pj-semantic-swatch__solid,
+  .pj-semantic-swatch__tint { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .08); }
+  .pj-semantic-swatch__solid { background: var(--semantic-dark); }
+  .pj-semantic-swatch__tint {
+    background: var(--semantic-tint-dark);
+    color: var(--semantic-fg-dark);
+  }
+  .pj-semantic-swatch__ratio--light,
+  .pj-semantic-swatch__values-light { display: none; }
+  .pj-semantic-swatch__ratio--dark,
+  .pj-semantic-swatch__values-dark { display: inline; }
+}
+
+@media (max-width: 48rem) {
+  .pj-swatches__core { grid-template-columns: 1fr; }
+  .pj-swatches__variants { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .pj-semantic-swatches { grid-template-columns: 1fr; }
+  .pj-scale__role { display: none; }
 }

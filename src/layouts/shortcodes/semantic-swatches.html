@@ -1,0 +1,24 @@
+{{- /* Visual semantic-state overview, rendered from data/brand.yaml. */ -}}
+<div class="pj-semantic-swatches" aria-label="Semantic state colours">
+  {{- range hugo.Data.brand.semantic }}
+  {{- $role := lower .role -}}
+  <div class="pj-semantic-swatch">
+    <div class="pj-semantic-swatch__name">{{ .role }}</div>
+    <div class="pj-semantic-swatch__pair">
+      <div class="pj-semantic-swatch__solid"
+        style="--semantic-light:{{ .lightSolid }};--semantic-dark:{{ .darkSolid }}"
+        title="{{ .role }} solid"></div>
+      <div class="pj-semantic-swatch__tint"
+        style="--semantic-tint-light:{{ .lightTint }};--semantic-fg-light:{{ .lightOnTint }};--semantic-tint-dark:{{ .darkTint }};--semantic-fg-dark:{{ .darkSolid }}">
+        <span class="pj-semantic-swatch__ratio pj-semantic-swatch__ratio--light">{{ .lightContrast }}</span>
+        <span class="pj-semantic-swatch__ratio pj-semantic-swatch__ratio--dark">{{ .darkContrast }}</span>
+      </div>
+    </div>
+    <code class="pj-semantic-swatch__values">
+      <span class="pj-semantic-swatch__values-light">{{ .lightSolid }} · {{ .lightTint }} · fg {{ .lightOnTint }}</span>
+      <span class="pj-semantic-swatch__values-dark">{{ .darkSolid }} · {{ .darkTint }}</span>
+    </code>
+    <div class="pj-semantic-swatch__use">{{ .use }}</div>
+  </div>
+  {{- end }}
+</div>

@@ -99,6 +99,24 @@ every element in it should be findable there.
 The supplied **mobile mockup** is its narrow counterpart: the same system with
 the sidebar replaced by a tab bar and every region in one column.
 
+{{< pj-dashboard >}}
+
+## Marketing page
+
+A marketing page uses the same tokens at a calmer editorial density. The
+designer's UI kit composes seven regions: header, hero, practice pillars, code
+showcase, convictions, call to action, and footer. This condensed live
+translation keeps that sequence and hierarchy while allowing the documentation
+theme to own the surrounding page.
+
+{{< pj-marketing >}}
+
+The hero makes one claim, not a carousel of claims. The accent appears at
+decision points, the practice names remain joined by a middle dot, and the code
+panel stays an inset technical surface. At narrow widths the navigation
+disappears, pillars stack, and the showcase and call to action become one
+column; the source order already matches the reading order.
+
 ## Density
 
 One pattern, two densities. The measurements on the components page are the

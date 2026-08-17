@@ -1,13 +1,13 @@
 // =============================================================================
 // projectious.work brand — the colour scales as SCSS variables
 // =============================================================================
-// Extracted from _variables_project.scss so that the documentation site, the
-// Docsy example, and the Hextra example all compile the specimens against one
-// definition of the scales. This file is pure variable declarations: it depends
-// on nothing and imports nothing, so any SCSS entry point can pull it in.
+// Shared by the documentation specimens and token parity checks. This file is
+// pure variable declarations: it depends on nothing and imports nothing, so any
+// SCSS entry point can pull it in.
 //
 // The brand uses three 12-step Radix-convention scales (midnight, orange,
-// slate) in two modes. Step roles:
+// slate) with light and dark ramps. Navy overrides the first five dark midnight
+// steps; the high steps remain shared with deep dark. Step roles:
 //
 //   1 app bg      2 subtle bg   3 element bg   4 hover bg
 //   5 active bg   6 subtle brd  7 border       8 strong brd
@@ -135,9 +135,9 @@ $brand-secondary: $slate-9; // #546a82
 $primary: $brand-primary;
 $secondary: $brand-secondary;
 $info: $midnight-11;
-$success: #2f7d65;
-$warning: #8b6508; // gold — 5.30:1 on white, and never confusable with the accent
-$danger: #a8261c;
+$success: #17945f;
+$warning: #ef8b0b;
+$danger: #d92d20;
 
 // Dark-mode semantic foregrounds. The light values above are tuned for dark
 // text on tinted light backgrounds; used as foregrounds on the dark app
@@ -147,11 +147,12 @@ $danger: #a8261c;
 // $warning is the accent (orange-9) as a BORDER/fill; as warning TEXT on the
 // light warning tint it is 3.28:1, so the foreground is a deep gold — matching
 // the normative interface documentation.
-$warning-fg: #6f5106; // 6.23:1 on #f5ecd0
-$success-fg: #276754; // 5.06:1 on #d1ebe0 — $success is 3.93:1 there
+$warning-fg: #b3520c;
+$success-fg: #17734c;
+$danger-fg: #b3261e;
 
 $success-dark: #6cc090; // 8.24:1
-$warning-dark: #e0a92a; // 8.50:1
+$warning-dark: #eda44a;
 $danger-dark: #f08b80; // 7.49:1
 $light: $midnight-1;
 $dark: $brand-primary-dark;
@@ -164,10 +165,10 @@ $dark: $brand-primary-dark;
 // `-fg` values above on light, the `-dark` values above on dark.
 $info-bg: #dae2ec; // $info 5.42:1
 $success-bg: #d1ebe0; // $success-fg 5.28:1
-$warning-bg: #f5ecd0; // $warning-fg 6.23:1
+$warning-bg: #fff1e0;
 $danger-bg: #fce8e8; // $danger 6.03:1
 
 $info-bg-dark: $midnight-dark-3; // $midnight-dark-11 6.04:1
 $success-bg-dark: #16302a; // $success-dark 6.43:1
-$warning-bg-dark: #33280d; // $warning-dark 6.81:1
+$warning-bg-dark: #3a2611;
 $danger-bg-dark: #3a1c19; // $danger-dark 6.40:1

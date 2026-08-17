@@ -3,15 +3,30 @@
 
     {{< swatches >}}
 */ -}}
-<ul class="pj-swatches">
-  {{- range hugo.Data.brand.core }}
-  <li class="pj-swatch">
+<div class="pj-swatches" aria-label="Core brand colours">
+  <div class="pj-swatches__core">
+  {{- range where hugo.Data.brand.core "token" "in" (slice "--color-primary" "--color-accent" "--color-secondary") }}
+  <div class="pj-swatch pj-swatch--core">
     <div class="pj-swatch__chip" style="background:{{ .hex }}"></div>
     <div class="pj-swatch__body">
       <div class="pj-swatch__name">{{ .name }}</div>
       <div class="pj-swatch__hex">{{ .hex }}</div>
       <div class="pj-swatch__use">{{ .use }}</div>
     </div>
-  </li>
+  </div>
   {{- end }}
-</ul>
+  </div>
+  <div class="pj-swatches__label">Identity variants</div>
+  <div class="pj-swatches__variants">
+  {{- range where hugo.Data.brand.core "token" "not in" (slice "--color-primary" "--color-accent" "--color-secondary") }}
+  <div class="pj-swatch pj-swatch--variant">
+    <div class="pj-swatch__chip" style="background:{{ .hex }}"></div>
+    <div class="pj-swatch__body">
+      <div class="pj-swatch__name">{{ .name }}</div>
+      <div class="pj-swatch__hex">{{ .hex }}</div>
+      <div class="pj-swatch__use">{{ .use }}</div>
+    </div>
+  </div>
+  {{- end }}
+  </div>
+</div>

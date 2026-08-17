@@ -1,11 +1,9 @@
 // =============================================================================
 // projectious.work brand — palette as custom properties
 // =============================================================================
-// Extracted from _styles_project.scss so that every site in this repository —
-// the documentation, the Docsy example, and the Hextra example — resolves the
-// same token names to the same values. _demo.scss (the component specimens)
-// reads only these custom properties, which is what makes the specimen set
-// portable across two themes that share no CSS framework.
+// Site-local aliases for the documentation specimens. The public theme owns
+// the shell; these names keep the translated design-system artefacts portable
+// and independent of the theme's internal selectors.
 //
 // The projectious.work Hugo theme exposes the reader's chosen mode through
 // `data-theme` on the root element.
@@ -42,7 +40,7 @@
   --pj-border: #{$slate-5}; // 1.55:1 — a divider you can see, still not a line you read
   --pj-text-muted: #{$slate-9};
   --pj-focus: #{$orange-10};
-  // Constant in both modes, like the solid action fill it names.
+  // Constant in every appearance, like the solid action fill it names.
   --pj-action: #{$orange-10};
 
   // The page's surface ladder, all from the midnight ramp. Section surfaces are
@@ -55,6 +53,13 @@
   --pj-link-fg: #{$midnight-11};
   --pj-nav-active-bg: #{$midnight-3};
   --pj-nav-active-text: #{$midnight-9};
+  --pj-elevated-0: #{$midnight-1};
+  --pj-elevated-1: #ffffff;
+  --pj-elevated-2: #ffffff;
+  --pj-elevated-3: #ffffff;
+  --pj-rim-1: none;
+  --pj-rim-2: none;
+  --pj-rim-3: none;
 
   // Motion (generated from src/data/brand.yaml)
   --pj-duration-micro: 100ms;
@@ -65,9 +70,14 @@
 
   // Semantic colours, light mode.
   --pj-success: #{$success-fg};
+  --pj-success-bg: #{$success-bg};
   --pj-warning: #{$warning-fg};
-  --pj-danger: #{$danger};
+  --pj-warning-bg: #{$warning-bg};
+  --pj-danger: #{$danger-fg};
+  --pj-danger-bg: #{$danger-bg};
   --pj-info: #{$info};
+  --pj-info-bg: #{$info-bg};
+  --pj-on-solid-danger: #ffffff;
 
   // The mark renders on light surfaces here.
   --pj-mark-shell: #{$midnight-9};
@@ -76,9 +86,11 @@
 }
 
 [data-theme="dark"] {
-  --pj-midnight-1: #{$midnight-dark-1};
-  --pj-midnight-2: #{$midnight-dark-2};
-  --pj-midnight-3: #{$midnight-dark-3};
+  // Navy is the default dark appearance. It is a derivative of deep dark and
+  // changes only the low midnight steps and aliases that resolve from them.
+  --pj-midnight-1: #132440;
+  --pj-midnight-2: #1a2b3e;
+  --pj-midnight-3: #20354d;
   --pj-midnight-6: #{$midnight-dark-6};
   --pj-midnight-7: #{$midnight-dark-7};
   --pj-midnight-9: #{$midnight-dark-9};
@@ -100,20 +112,27 @@
   --pj-slate-11: #{$slate-dark-11};
   --pj-slate-12: #{$slate-dark-12};
 
-  --pj-surface: #{$midnight-dark-2};
-  --pj-surface-subtle: #{$midnight-dark-3};
-  --pj-border: #{$midnight-dark-5}; // 1.67:1, and navy — the divider carries the hue too
+  --pj-surface: #1a2b3e;
+  --pj-surface-subtle: #20354d;
+  --pj-border: #2e4b68;
   --pj-text-muted: #{$slate-dark-11};
   --pj-focus: #{$orange-dark-11};
   --pj-action: #{$orange-10};
 
-  --pj-band: #{$midnight-dark-2};
+  --pj-band: #1a2b3e;
   --pj-body-fg: #{$midnight-dark-12};
   --pj-heading-fg: #{$midnight-dark-12};
   --pj-muted-fg: #{$slate-dark-11};
   --pj-link-fg: #{$midnight-dark-11};
-  --pj-nav-active-bg: #{$midnight-dark-4};
+  --pj-nav-active-bg: #263f5a;
   --pj-nav-active-text: #{$midnight-dark-12};
+  --pj-elevated-0: #132440;
+  --pj-elevated-1: #1a2b3e;
+  --pj-elevated-2: #263f5a;
+  --pj-elevated-3: #2e4b68;
+  --pj-rim-1: inset 0 1px 0 rgba(255, 255, 255, .05);
+  --pj-rim-2: inset 0 1px 0 rgba(255, 255, 255, .09);
+  --pj-rim-3: inset 0 1px 0 rgba(255, 255, 255, .14);
 
   --pj-mark-shell: #6b8db2;
   --pj-mark-cut: #{$brand-primary-dark};
@@ -123,7 +142,27 @@
   // on tinted light backgrounds and fall to 2.6-3.7:1 as foregrounds on the
   // dark app surface. See the normative interface documentation.
   --pj-success: #{$success-dark};
+  --pj-success-bg: #{$success-bg-dark};
   --pj-warning: #{$warning-dark};
+  --pj-warning-bg: #{$warning-bg-dark};
   --pj-danger: #{$danger-dark};
+  --pj-danger-bg: #{$danger-bg-dark};
   --pj-info: #{$midnight-dark-11};
+  --pj-info-bg: #{$info-bg-dark};
+  --pj-on-solid-danger: #{$midnight-dark-1};
+}
+
+[data-theme="dark"][data-surface="deep"] {
+  --pj-midnight-1: #{$midnight-dark-1};
+  --pj-midnight-2: #{$midnight-dark-2};
+  --pj-midnight-3: #{$midnight-dark-3};
+  --pj-surface: #{$midnight-dark-2};
+  --pj-surface-subtle: #{$midnight-dark-3};
+  --pj-border: #{$midnight-dark-5};
+  --pj-band: #{$midnight-dark-2};
+  --pj-nav-active-bg: #{$midnight-dark-4};
+  --pj-elevated-0: #{$midnight-dark-1};
+  --pj-elevated-1: #{$midnight-dark-2};
+  --pj-elevated-2: #{$midnight-dark-4};
+  --pj-elevated-3: #{$midnight-dark-6};
 }

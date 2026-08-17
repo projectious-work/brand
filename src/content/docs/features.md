@@ -17,7 +17,7 @@ weight: 5
 
 ## Design stance
 
-The system is disciplined, dual-mode, and quietly opinionated. It looks like
+The system is disciplined, three-appearance, and quietly opinionated. It looks like
 infrastructure: readable, repairable, and free of decorative noise. Colour
 communicates meaning. Typography communicates role. Components remain ordinary
 enough to understand without learning a private visual language.

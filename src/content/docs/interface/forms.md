@@ -13,7 +13,7 @@ description: Input sizing, labels, focus, error, and disabled states.
 | **md** | **40px** — the default |
 | lg | 48px |
 
-All inputs are set in **Source Sans 3 at 13px**.
+All inputs are set in **Source Sans 3 at 14px**.
 
 {{< demo label="Sizes — sm 32 · md 40 · lg 48" variant="grid" >}}
 <div class="pj-field"><span class="pj-field__label">Small</span><input class="pj-input pj-input--sm" value="32px" readonly></div>
@@ -25,14 +25,14 @@ All inputs are set in **Source Sans 3 at 13px**.
 
 | State | Treatment |
 |---|---|
-| Default | `slate-7` border |
-| Focus | `midnight-9` border + **2px focus ring, midnight at 15% alpha**, 2px offset |
-| Error | `orange-9` border + `orange-1` background |
-| Disabled | `slate-4` background, `slate-8` text, `cursor: not-allowed` |
+| Default | 1.5px `--border` on `--surface` |
+| Focus | Accent border + **3px `--tint-accent-active` halo** |
+| Error | Danger border, danger tint, and matching danger foreground |
+| Disabled | `--surface-2`, muted text, semantic border, `cursor: not-allowed` |
 
 {{< demo label="Every state" variant="grid" >}}
-<div class="pj-field"><span class="pj-field__label">Default</span><input class="pj-input" placeholder="slate-7 border"></div>
-<div class="pj-field"><span class="pj-field__label">Focus</span><input class="pj-input" value="midnight ring" readonly style="border-color:#1d3352;box-shadow:0 0 0 2px rgba(29,51,82,.15)"></div>
+<div class="pj-field"><span class="pj-field__label">Default</span><input class="pj-input" placeholder="semantic border"></div>
+<div class="pj-field"><span class="pj-field__label">Focus</span><input class="pj-input" value="accent focus" readonly style="border-color:var(--pj-orange-9);box-shadow:0 0 0 3px rgba(224,82,50,.12)"></div>
 <div class="pj-field"><span class="pj-field__label">Error</span><input class="pj-input pj-input--error" value="invalid" readonly><span class="pj-field__error">Describe the problem in words.</span></div>
 <div class="pj-field"><span class="pj-field__label">Disabled</span><input class="pj-input" value="locked" disabled></div>
 {{< /demo >}}
@@ -56,7 +56,7 @@ the user is filling the field, and they break at long label lengths.
 
 ## Validation
 
-- Error text sits **below** the field, in `orange-11` on light surfaces.
+- Error text sits **below** the field in the appearance's danger foreground.
 - Never rely on border colour alone to signal an error — pair it with text.
 - Validate on blur, not on every keystroke; re-validate on submit.
 

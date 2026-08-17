@@ -17,7 +17,7 @@ those roles. A screenshot is verification evidence, not a source file.
 ```
 
 Use `data-theme="dark"` for navy dark, the default dark appearance. Add
-`data-surface="deep"` for deep dark. Review both because elevation, borders,
+`data-surface="deep"` for deep dark. Review all three because elevation, borders,
 and page/surface separation change even when typography and status roles do
 not.
 

@@ -7,10 +7,10 @@ description: The default dark code surface, optional light-panel companion, and 
 
 ## Code blocks are dark by default
 
-**Code blocks stay dark regardless of colour mode.** A code surface that flips
+**Code blocks stay dark regardless of appearance.** A code surface that flips
 with the theme forces the syntax palette to be designed twice and makes
 screenshots inconsistent between users. The surface is `midnight-2` from the
-**dark** scale (`#131e2b`) in both light and dark mode. A deliberately light
+**dark** scale (`#131e2b`) in light, navy, and deep appearances. A deliberately light
 specimen may opt into the companion palette below; colour mode never switches a
 code block to it automatically.
 
@@ -59,16 +59,16 @@ for a 4.5:1 floor. These tokens are companions, not mode-swapped aliases:
 
 | Role | Token | Value |
 |---|---|---|
-| Plain | `--syntax-plain-light` | `#142438` |
-| Comments | `--syntax-comment-light` | `#5c6f82` |
-| Operators | `--syntax-operator-light` | `#4a5e74` |
-| Keywords | `--syntax-keyword-light` | `#1d3352` |
-| Types and classes | `--syntax-type-light` | `#276754` |
-| Functions | `--syntax-function-light` | `#3a5a82` |
-| Strings | `--syntax-string-light` | `#a8461f` |
-| Numbers | `--syntax-number-light` | `#8b6508` |
-| Decorators and macros | `--syntax-macro-light` | `#1c6b6b` |
-| Invalid | `--syntax-invalid-light` | `#a8261c` |
+| Plain | `--syntax-plain-light` | `#0f1c2e` |
+| Comments | `--syntax-comment-light` | `#5e7082` |
+| Operators | `--syntax-operator-light` | `#54697f` |
+| Keywords | `--syntax-keyword-light` | `#c2117f` |
+| Types and classes | `--syntax-type-light` | `#08804e` |
+| Functions | `--syntax-function-light` | `#1668d8` |
+| Strings | `--syntax-string-light` | `#c94208` |
+| Numbers | `--syntax-number-light` | `#94620a` |
+| Decorators and macros | `--syntax-macro-light` | `#0d7d82` |
+| Invalid | `--syntax-invalid-light` | `#d81420` |
 
 The base stylesheet paints every `<pre>` dark. Styling only a wrapper therefore
 leaves a dark rectangle over the intended light panel. The opt-in must
@@ -109,7 +109,7 @@ Comments are the one syntax role with no scale step available to it. Steps 8–1
 are border and solid-surface roles and are not held to text thresholds; step 11
 is already spoken for by operators.
 
-So `code-comment` (`#72889d`, **4.59:1**) exists as a dedicated syntax token —
+So `code-comment` (`#7d90a3`, **5.19:1**) exists as a dedicated syntax token —
 the dimmest value that clears AA while staying visibly below operators. It is
 not a scale step and should not be treated as one.
 

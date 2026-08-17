@@ -3,7 +3,7 @@
 # requires-python = ">=3.10"
 # dependencies = ["playwright>=1.50,<2"]
 # ///
-"""Audit text contrast across the built site in both theme modes."""
+"""Audit text contrast across every built page in all three appearances."""
 
 from __future__ import annotations
 
@@ -103,7 +103,13 @@ def main() -> None:
     try:
         with sync_playwright() as playwright:
             browser = playwright.chromium.launch()
-            for mode in ("light", "dark"):
+            appearances = (
+                {"name": "light", "theme": "light", "surface": None},
+                {"name": "navy", "theme": "dark", "surface": None},
+                {"name": "deep", "theme": "dark", "surface": "deep"},
+            )
+            for appearance in appearances:
+                mode = appearance["theme"]
                 context = browser.new_context(
                     viewport={"width": 1280, "height": 1000}, color_scheme=mode
                 )
@@ -118,6 +124,10 @@ def main() -> None:
                     )
                     page.evaluate("() => document.fonts.ready")
                     page.evaluate("mode => window.pwTheme && window.pwTheme.set(mode)", mode)
+                    page.evaluate(
+                        "surface => surface ? document.documentElement.setAttribute('data-surface', surface) : document.documentElement.removeAttribute('data-surface')",
+                        appearance["surface"],
+                    )
                     applied = page.evaluate(
                         "() => document.documentElement.getAttribute('data-theme')"
                     )
@@ -126,9 +136,10 @@ def main() -> None:
                             f"theme not applied on {relative_url}: wanted {mode}, got {applied}"
                         )
                     for finding in page.evaluate(AUDIT):
-                        key = (mode, finding["sel"], finding["color"], finding["bg"])
+                        name = appearance["name"]
+                        key = (name, finding["sel"], finding["color"], finding["bg"])
                         current = findings.setdefault(
-                            key, {**finding, "mode": mode, "count": 0, "pages": []}
+                            key, {**finding, "mode": name, "count": 0, "pages": []}
                         )
                         current["count"] += 1
                         if len(current["pages"]) < 3 and relative_url not in current["pages"]:
@@ -140,7 +151,7 @@ def main() -> None:
         server.shutdown()
         server.server_close()
     ordered = sorted(findings.values(), key=lambda item: item["ratio"])
-    print(f"\nAudited {len(pages)} pages x 2 themes = {checked} renders")
+    print(f"\nAudited {len(pages)} pages x 3 appearances = {checked} renders")
     print(f"Distinct failing text/background pairs: {len(ordered)}\n")
     if not args.quiet:
         for item in ordered:

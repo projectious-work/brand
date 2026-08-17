@@ -36,10 +36,10 @@ scales:
     note: Accent. Calls to action, active states, and emphasis. Used sparingly.
     light:
       ["#fef9f7","#fef0ea","#fde0d5","#fccebd","#f8baa5","#f0a48c",
-       "#e58a6e","#d86e4e","#E05232","#cc4528","#c04424","#6e2714"]
+       "#e58a6e","#d86e4e","#e05232","#cc4528","#c04424","#6e2714"]
     dark:
       ["#1c110d","#271610","#3d1e13","#522616","#643019","#7a3c20",
-       "#974b28","#b85c32","#E05232","#ea7558","#f09878","#fcddd2"]
+       "#974b28","#b85c32","#e05232","#ea7558","#f09878","#fcddd2"]
   slate:
     name: Slate
     note: Secondary. Supporting text, borders, and neutral surfaces.
@@ -65,7 +65,7 @@ core:
     use: Dark backgrounds, navbar, code blocks
   - name: Accent
     token: --color-accent
-    hex: "#E05232"
+    hex: "#e05232"
     use: CTAs, highlights, active states
   - name: Accent Light
     token: --color-accent-light
@@ -90,37 +90,37 @@ core:
 # solid value does not clear AA. Ratios are measured against `tint`.
 semantic:
   - role: Success
-    lightSolid: "#2f7d65"
+    lightSolid: "#17945f"
     lightTint: "#d1ebe0"
-    lightOnTint: "#276754"
-    lightContrast: "5.28:1"
+    lightOnTint: "#17734c"
+    lightContrast: "5.03:1"
     darkSolid: "#6cc090"
     darkTint: "#16302a"
     darkContrast: "6.43:1"
     use: A completed, evidenced check
   - role: Warning
-    lightSolid: "#8b6508"
-    lightTint: "#f5ecd0"
-    lightOnTint: "#6f5106"
-    lightContrast: "6.23:1"
-    darkSolid: "#e0a92a"
-    darkTint: "#33280d"
+    lightSolid: "#ef8b0b"
+    lightTint: "#fff1e0"
+    lightOnTint: "#b3520c"
+    lightContrast: "5.01:1"
+    darkSolid: "#eda44a"
+    darkTint: "#3a2611"
     darkContrast: "6.81:1"
     use: A condition to assess. Gold, never the accent
   - role: Danger
-    lightSolid: "#a8261c"
+    lightSolid: "#d92d20"
     lightTint: "#fce8e8"
-    lightOnTint: "#a8261c"
-    lightContrast: "6.03:1"
+    lightOnTint: "#b3261e"
+    lightContrast: "5.32:1"
     darkSolid: "#f08b80"
     darkTint: "#3a1c19"
     darkContrast: "6.40:1"
     use: A failure needing a next action
   - role: Info
-    lightSolid: "#3a5a82"
+    lightSolid: "#2563c9"
     lightTint: "#dae2ec"
-    lightOnTint: "#3a5a82"
-    lightContrast: "5.42:1"
+    lightOnTint: "#2f5fa8"
+    lightContrast: "4.73:1"
     darkSolid: "#8aacc8"
     darkTint: "#1a2b3e"
     darkContrast: "6.04:1"
@@ -132,34 +132,46 @@ semantic:
 surfaces:
   - token: --color-bg
     light: "#f8f9fb"
+    navy: "#132440"
+    deep: "#0e1720"
     dark: "#0e1720"
     step: midnight 1
     use: Page canvas
   - token: --color-surface
     light: "#ffffff"
+    navy: "#1a2b3e"
+    deep: "#131e2b"
     dark: "#131e2b"
     step: white / midnight-dark 2
     use: Cards, panels, elevated surfaces
   - token: --color-text-primary
     light: "#142438"
+    navy: "#c5daf0"
+    deep: "#c5daf0"
     dark: "#c5daf0"
     step: midnight 12
     contrast: "14.89:1 / 12.62:1"
     use: Body and heading text
   - token: --color-text-secondary
     light: "#546a82"
+    navy: "#97a8b8"
+    deep: "#97a8b8"
     dark: "#97a8b8"
     step: slate 9 / slate-dark 11
     contrast: "5.30:1 / 7.41:1"
     use: Supporting text
   - token: --color-text-muted
     light: "#5c6f82"
+    navy: "#97a8b8"
+    deep: "#97a8b8"
     dark: "#97a8b8"
     step: slate 11 / slate-dark 11
     contrast: "4.92:1 / 7.41:1"
     use: Captions and low-emphasis text
   - token: --color-border
     light: "#cdd0d5"
+    navy: "#2e4b68"
+    deep: "#263f5a"
     dark: "#263f5a"
     step: slate 5 / midnight-dark 5
     use: Dividers and component borders
@@ -224,6 +236,12 @@ type:
     lh: "1.65"
     family: Source Sans 3
     sample: Augmenting people's strengths through composable Cloud · Agile · Agentic AI infrastructure.
+  - style: Body
+    size: 16
+    weight: 400
+    lh: "1.6"
+    family: Source Sans 3
+    sample: Direct, technical, humanistic, and restrained.
   - style: Caption
     size: 13
     weight: 400
@@ -278,6 +296,17 @@ elevation:
     value: 0 8px 24px rgba(0,0,0,0.12)
     use: Modals
 
+elevationAppearances:
+  light:
+    surfaces: ["#f8f9fb", "#ffffff", "#ffffff", "#ffffff"]
+    rims: [none, none, none, none]
+  navy:
+    surfaces: ["#132440", "#1a2b3e", "#263f5a", "#2e4b68"]
+    rims: [none, "inset 0 1px 0 rgba(255,255,255,0.05)", "inset 0 1px 0 rgba(255,255,255,0.09)", "inset 0 1px 0 rgba(255,255,255,0.14)"]
+  deep:
+    surfaces: ["#0e1720", "#131e2b", "#20354d", "#2e4b68"]
+    rims: [none, "inset 0 1px 0 rgba(255,255,255,0.05)", "inset 0 1px 0 rgba(255,255,255,0.09)", "inset 0 1px 0 rgba(255,255,255,0.14)"]
+
 motion:
   durations:
     - name: micro
@@ -310,35 +339,57 @@ fonts:
     role: Body copy, UI labels, captions
     license: SIL OFL 1.1
   - family: IBM Plex Mono
-    weights: 400 · 500
+    weights: 400 · 500 · 600 · 700, upright and italic
     role: Code, terminal output, data
     license: SIL OFL 1.1
 
 syntax:
-  - token: Identifiers
-    step: midnight-12
+  - token: Plain
+    step: syntax-plain
     hex: "#c5daf0"
     contrast: "11.74:1"
-  - token: Numbers
-    step: orange-11
-    hex: "#f09878"
-    contrast: "7.58:1"
   - token: Keywords
-    step: midnight-11
+    step: terminal bright magenta
+    hex: "#d491b4"
+    contrast: "7.32:1"
+    weight: 700
+  - token: Types and classes
+    step: success-dark
+    hex: "#6cc090"
+    contrast: "8.24:1"
+    weight: 600
+  - token: Functions
+    step: midnight-dark-11
     hex: "#8aacc8"
-    contrast: "7.06:1"
+    contrast: "7.59:1"
+    weight: 500
+  - token: Strings
+    step: accent-light
+    hex: "#ea7558"
+    contrast: "5.76:1"
+  - token: Numbers
+    step: warning-dark
+    hex: "#e0a92a"
+    contrast: "8.50:1"
+  - token: Macros and decorators
+    step: terminal bright cyan
+    hex: "#74c0c9"
+    contrast: "8.71:1"
+    style: italic
   - token: Operators
     step: slate-11
     hex: "#97a8b8"
     contrast: "6.90:1"
-  - token: Strings
-    step: orange-light
-    hex: "#ea7558"
-    contrast: "5.76:1"
   - token: Comments
     step: code-comment
-    hex: "#72889d"
-    contrast: "4.59:1"
+    hex: "#7d90a3"
+    contrast: "5.19:1"
+    style: italic
+  - token: Invalid and deprecated
+    step: terminal red
+    hex: "#e55b5b"
+    contrast: "5.15:1"
+    weight: 600
 
 # Optional light-panel companion. Real code and terminal chrome remain dark by
 # default; a component must opt in to these values and neutralise the base
@@ -347,16 +398,16 @@ syntaxLight:
   surface: "#f4f5f7"
   floor: "4.5:1"
   roles:
-    - {role: Plain, token: --syntax-plain-light, hex: "#142438"}
-    - {role: Comments, token: --syntax-comment-light, hex: "#5c6f82"}
-    - {role: Operators, token: --syntax-operator-light, hex: "#4a5e74"}
-    - {role: Keywords, token: --syntax-keyword-light, hex: "#1d3352"}
-    - {role: Types and classes, token: --syntax-type-light, hex: "#276754"}
-    - {role: Functions, token: --syntax-function-light, hex: "#3a5a82"}
-    - {role: Strings, token: --syntax-string-light, hex: "#a8461f"}
-    - {role: Numbers, token: --syntax-number-light, hex: "#8b6508"}
-    - {role: Decorators and macros, token: --syntax-macro-light, hex: "#1c6b6b"}
-    - {role: Invalid, token: --syntax-invalid-light, hex: "#a8261c"}
+    - {role: Plain, token: --syntax-plain-light, hex: "#0f1c2e"}
+    - {role: Comments, token: --syntax-comment-light, hex: "#5e7082"}
+    - {role: Operators, token: --syntax-operator-light, hex: "#54697f"}
+    - {role: Keywords, token: --syntax-keyword-light, hex: "#c2117f"}
+    - {role: Types and classes, token: --syntax-type-light, hex: "#08804e"}
+    - {role: Functions, token: --syntax-function-light, hex: "#1668d8"}
+    - {role: Strings, token: --syntax-string-light, hex: "#c94208"}
+    - {role: Numbers, token: --syntax-number-light, hex: "#94620a"}
+    - {role: Decorators and macros, token: --syntax-macro-light, hex: "#0d7d82"}
+    - {role: Invalid, token: --syntax-invalid-light, hex: "#d81420"}
 
 # The dark terminal palette is the default and is measured against its own
 # surface. The optional light companion below is a separate complete palette,
@@ -505,16 +556,17 @@ terminalLight:
   chrome:
     background: "#f4f5f7"
     foreground: "#142438"
-    cursor: "#E05232"
+    cursor: "#e05232"
     cursorText: "#f4f5f7"
     selectionBackground: "#dae2ec"
     selectionText: "#142438"
     dimComment: "#5c6f82"
     statusBarSurface: "#e6e8eb"
     statusBarText: "#142438"
-    inactiveTabAndPaneLabel: "#5c6f82"
-    activeTabFill: "#E05232"
-    activePaneBorder: "#E05232"
+    inactiveTabAndPaneLabel: "#4a5e74"
+    activeTabFill: "#e05232"
+    activeTabText: "#0e1720"
+    activePaneBorder: "#e05232"
     inactivePaneBorder: "#adb2ba"
 
 # Syntax scopes.
@@ -539,7 +591,7 @@ terminalLight:
 # Ratios are measured against the code surface, midnight-dark-2 (#131e2b).
 syntaxScopes:
   surface: "#131e2b"
-  floor: "4.59:1"
+  floor: "4.79:1"
   roles:
     - role: Plain and variables
       hex: "#c5daf0"
@@ -598,9 +650,9 @@ syntaxScopes:
       note: Interpolation delimiters take the operator colour, so the
         expression inside stays readable as code.
     - role: Numbers and constants
-      hex: "#f09878"
-      contrast: "7.58:1"
-      step: orange-dark-11
+      hex: "#e0a92a"
+      contrast: "8.50:1"
+      step: warning-dark
       lsp: number · regexp
       textmate: constant.numeric · constant.language · constant.character
       chroma: .m .mb .mf .mh .mi .mo .il .no
@@ -614,8 +666,8 @@ syntaxScopes:
       chroma: .o .ow .p
       note: Present but recessive — structure you read past, not at.
     - role: Comments
-      hex: "#72889d"
-      contrast: "4.59:1"
+      hex: "#7d90a3"
+      contrast: "5.19:1"
       step: code-comment
       lsp: comment
       textmate: comment.line · comment.block · comment.block.documentation

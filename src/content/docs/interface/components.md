@@ -6,14 +6,14 @@ description: The component set as live specimens — buttons, inputs, cards, tab
 ---
 
 Every specimen on this page is live markup styled by the brand tokens, ported
-from the supplied kitchen-sink mockup. They follow your colour mode —
-switch the theme and they change with the documentation.
+from the supplied preview cards. They follow their semantic token context —
+switch appearance and they remain legible with the documentation.
 
 Measurements listed here are normative: a 40px input is 40px.
 
 ## Buttons
 
-Five variants, three sizes. Plus Jakarta Sans 600, 6px radius, 200ms transitions.
+Five variants, three sizes. Plus Jakarta Sans 500, 6px radius, 200ms transitions.
 
 {{< demo label="Variants — medium (40px)" >}}
 <button class="pj-btn pj-btn--primary pj-btn--md">Get started</button>
@@ -42,7 +42,7 @@ Five variants, three sizes. Plus Jakarta Sans 600, 6px radius, 200ms transitions
 | **Accent** | `accent-solid` `#cc4528` | none | white | 4.72:1 | The single most important action |
 | **Outline** | transparent | 1.5px `orange-9` | `orange-11` | 5.13:1 | Secondary action |
 | **Ghost** | transparent | 1px border | `slate-9` | — | Tertiary, toolbars |
-| **Danger** | `#a8261c` | none | white | 7.10:1 | Destructive action |
+| **Danger** | `--color-danger` | none | `--on-solid-danger` | Appearance-specific | Destructive action |
 
 {{% callout title="Accent buttons fill with accent-solid, not step 9" type="warning" %}}
 `orange-9` (`#E05232`) is the identity accent and is unchanged as a mark,
@@ -70,8 +70,8 @@ action.
 
 ## Inputs
 
-Default height 40px (sm 32, lg 48). Source Sans 3 at 13px, `slate-7` border,
-and a 2px focus ring at midnight 15% alpha.
+Default height 40px (sm 32, lg 48). Source Sans 3 at 14px, a 1.5px semantic
+border, and the accent at 12% as the 3px focus halo.
 
 {{< demo label="Text, textarea, select" variant="grid" >}}
 <div class="pj-field">
@@ -92,13 +92,13 @@ and a 2px focus ring at midnight 15% alpha.
 <div class="pj-field">
   <span class="pj-field__label">Default</span>
   <input class="pj-input" type="text" value="agents/auditor" readonly>
-  <span class="pj-field__hint">slate-7 border</span>
+  <span class="pj-field__hint">semantic border</span>
 </div>
 <div class="pj-field">
   <span class="pj-field__label">Focus</span>
   <input class="pj-input" type="text" value="agents/auditor" readonly
-         style="border-color:#1d3352;box-shadow:0 0 0 2px rgba(29,51,82,0.15)">
-  <span class="pj-field__hint">midnight-9 + 2px ring</span>
+         style="border-color:var(--pj-orange-9);box-shadow:0 0 0 3px rgba(224,82,50,.12)">
+  <span class="pj-field__hint">accent border + 3px tint</span>
 </div>
 <div class="pj-field">
   <span class="pj-field__label">Error</span>

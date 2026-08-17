@@ -32,7 +32,7 @@ check "brand manifest — source parity" uv run --script "${ROOT_DIR}/scripts/bu
 check "site builds"                 "${ROOT_DIR}/scripts/build-docs.sh"
 check "AI discovery"                node "${ROOT_DIR}/scripts/check-discovery.mjs"
 check "brand MCP protocol"           uv run --script "${ROOT_DIR}/scripts/test-brand-mcp.py"
-check "contrast — site (both modes)" uv run --script "${ROOT_DIR}/scripts/audit_contrast.py" --quiet
+check "contrast — all 3 appearances" uv run --script "${ROOT_DIR}/scripts/audit_contrast.py" --quiet
 check "internal links"               node "${ROOT_DIR}/scripts/check-links.mjs"
 
 echo

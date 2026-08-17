@@ -27,7 +27,7 @@ Neither is bundled in this repository. Both are cleared for future use:
 
 | Source | Licence | Attribution | Commercial |
 |---|---|---|---|
-| Lucide Icons | ISC | Not required in UI | Allowed |
+| Tabler Icons | MIT | Not required in UI | Allowed |
 | Unsplash | Unsplash License | Not required | Allowed |
 | Pexels | Pexels License | Not required | Allowed |
 

@@ -103,16 +103,19 @@ allowlist behind discovery and reads.
 
 | Tool | Purpose |
 |---|---|
-| `lookup_token(name, version?)` | Return the exact value, semantic role, and mode of a token. |
+| `lookup_token(name, version?)` | Return the exact value, semantic role, and appearance of a token. |
 | `explain_token_role(name, version?)` | Explain where a token belongs without inventing a new value. |
 | `discover_assets(kind?, version?)` | List normative, download, or example resources. |
 | `lookup_provenance(asset_id, version?)` | Locate the provenance authority for a public asset. |
 | `validate_token_reference(reference, version?)` | Check whether a supplied token name exists in the contract. |
 
 For example, ask the client to call `lookup_token` with
-`name: "--color-accent"`, or call `discover_assets` with `kind: "download"`
-before choosing a machine-readable format. A validation request for an unknown
-name returns `valid: false`; it does not search the filesystem or the network.
+`name: "--color-bg-navy"`, or call `discover_assets` with `kind: "download"`
+before choosing a machine-readable format. The manifest covers appearance-
+pinned scales and surfaces, semantic triples, syntax, terminal palettes, type,
+spacing, radius, elevation, motion, and breakpoints. A validation request for
+an unknown name returns `valid: false`; it does not search the filesystem or
+the network.
 
 ### Version behavior
 
