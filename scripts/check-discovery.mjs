@@ -1,4 +1,12 @@
-import { readFileSync } from "node:fs";
+import {
+  copyFileSync,
+  mkdirSync,
+  mkdtempSync,
+  readFileSync,
+  rmSync,
+} from "node:fs";
+import { execFileSync } from "node:child_process";
+import { tmpdir } from "node:os";
 import { join } from "node:path";
 
 const root = new URL("..", import.meta.url).pathname.replace(/\/$/, "");
@@ -27,5 +35,35 @@ if (!llms.includes(version) || !llms.includes("brand-manifest.json")) {
 const full = readFileSync(join(root, "public/llms-full.txt"), "utf8");
 for (const forbidden of ["context/", ".git/", "input/"]) {
   if (full.includes(forbidden)) throw new Error(`llms-full exposes ${forbidden}`);
+}
+
+const menuFixture = mkdtempSync(join(tmpdir(), "brand-release-menu-"));
+try {
+  mkdirSync(join(menuFixture, "v3.0.0"));
+  copyFileSync(join(root, "public/index.html"), join(menuFixture, "index.html"));
+  copyFileSync(
+    join(root, "public/index.html"),
+    join(menuFixture, "v3.0.0/index.html"),
+  );
+  execFileSync(
+    process.execPath,
+    [join(root, "scripts/sync-release-menus.mjs"), menuFixture],
+  );
+  const latestMenu = readFileSync(join(menuFixture, "index.html"), "utf8");
+  const archivedMenu = readFileSync(
+    join(menuFixture, "v3.0.0/index.html"),
+    "utf8",
+  );
+  if (!latestMenu.match(/aria-checked=true[^>]*>v3\.0\.1/)) {
+    throw new Error("latest release menu does not select v3.0.1");
+  }
+  if (!latestMenu.match(/>v3\.0\.1 <span class=badge>latest<\/span>/)) {
+    throw new Error("latest release menu does not mark v3.0.1 latest");
+  }
+  if (!archivedMenu.match(/aria-checked=true[^>]*>v3\.0\.0/)) {
+    throw new Error("archived release menu does not select its version");
+  }
+} finally {
+  rmSync(menuFixture, { recursive: true, force: true });
 }
 console.log(`  discovery outputs verified for ${version}`);
