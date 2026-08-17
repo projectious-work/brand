@@ -196,8 +196,8 @@ uv run scripts/smoke-test-servers.py
 <!-- pk-managed:pk-commands BEGIN -->
 <!-- pk-commands BEGIN -->
 <!--
-build: "npm --prefix docs-site run build"
-test: "uv run scripts/smoke-test-servers.py"
+build: "./scripts/build-docs.sh"
+test: "./scripts/verify.sh"
 lint: ""
 fmt: ""
 typecheck: ""
