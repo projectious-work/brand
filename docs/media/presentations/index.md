@@ -157,7 +157,7 @@ tokens as the product surfaces — no separate "presentation theme".
 | Comparison | | ● | A small table where numbers are the point |
 | Metric | | ● | One number, large; the label in overline style |
 | Quote | ● | ● | A single quotation with the accent rule, attributed |
-| Code showcase | ● | ● | Code on the always-dark surface |
+| Code showcase | ● | ● | Code on the default-dark surface |
 | Diagram | | | Line-based system diagram, accent on the focal node |
 | CTA closer | ● | ● | The one thing you want the audience to do |
 | Contact | | | Thank-you and a single contact route |

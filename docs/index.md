@@ -12,7 +12,8 @@ pages document.
 The current contract is synchronized from design system **v2.1.1**. It applies
 to every brand surface: product UI, marketing, documentation, slides, email,
 terminal output, and portfolio material. The rendered UI mockups supplied with
-the system are the visual reference when prose could be read more than one way.
+the system's preview cards, UI kits, and slides are the visual reference when
+prose could be read more than one way.
 
 ## Brand in one view
 
@@ -52,17 +53,44 @@ gush about.
 Stock lines, in priority order, are **Cloud · Agile · Agentic AI**,
 **Redesigning work**, and **Agent-first consulting, built on what we teach**.
 
+{{< demo label="Stock lines — use in this priority order" variant="stack" >}}
+<div style="display:grid;gap:1rem">
+  <div>
+    <strong style="font-family:var(--font-heading);font-size:1.5rem">
+      Cloud · Agile · Agentic AI
+    </strong>
+    <span class="pj-cap">Primary positioning line</span>
+  </div>
+  <div>
+    <strong style="font-family:var(--font-heading);font-size:1.25rem">
+      Redesigning work
+    </strong>
+    <span class="pj-cap">Alternative campaign line</span>
+  </div>
+  <div>
+    <strong style="font-family:var(--font-heading);font-size:1rem">
+      Agent-first consulting, built on what we teach
+    </strong>
+    <span class="pj-cap">Long-form descriptor</span>
+  </div>
+</div>
+{{< /demo >}}
+
 ## Where to start
 
 | If you want to… | Read |
 |---|---|
-| Use the palette correctly, including dark mode | [Colour](/docs/foundations/color/) |
+| Use the palette correctly across all appearances | [Colour](/docs/foundations/color/) |
 | Set text in the brand's voice | [Typography](/docs/foundations/typography/) |
 | Place the logo without breaking it | [Logo usage](/docs/logo/usage/) |
 | Build an interface | [Interface](/docs/interface/) |
 | Produce a deck, signature, or social card | [Collateral](/docs/collateral/) |
 | Know what you are allowed to reuse | [Governance](/docs/governance/) |
 | Pull the raw values into a project | [Tokens](/docs/tokens/) |
+| See what the system includes | [Features](/docs/features/) |
+| Implement it in a product | [Developer guide](/docs/developer-guide/) |
+| Synchronize or release it | [Maintenance](/docs/maintenance/) |
+| Review shipped dependencies | [SBOM](/docs/sbom/) |
 
 ## How the system is organised
 
@@ -72,7 +100,7 @@ Everything else composes from them.
 **Logo** covers the mark, the four lockups, and the rules that keep them legible.
 
 **Interface** applies the foundations to screens: components, code surfaces,
-dark mode, icons, and forms.
+appearances, icons, and forms.
 
 **Collateral** covers the artefacts that leave the product — decks, cards,
 signatures, social imagery.
@@ -89,13 +117,17 @@ visual acceptance reference. Code and tokens are MIT-licensed. The name,
 wordmark, and logo remain reserved brand marks.
 
 
+- [Features](https://projectious-work.github.io/brand/docs/features/index.md) — What the projectious.work design system provides to writers, designers, developers, and agents.
 - [Foundations](https://projectious-work.github.io/brand/docs/foundations/index.md) — The primitives — colour, typography, spacing, shape, and motion. Everything else composes from these.
 - [Logo](https://projectious-work.github.io/brand/docs/logo/index.md) — The mark, the four lockups, and the rules that keep them legible.
-- [Interface](https://projectious-work.github.io/brand/docs/interface/index.md) — The foundations applied to screens — components, code surfaces, dark mode, icons, and forms.
-- [Themes](https://projectious-work.github.io/brand/docs/themes/index.md) — Configuration of theme frameworks for use with the projectious.work brand system.
+- [Interface](https://projectious-work.github.io/brand/docs/interface/index.md) — The foundations applied to screens — components, code surfaces, appearances, icons, and forms.
 - [Portfolio](https://projectious-work.github.io/brand/docs/portfolio/index.md) — Truthful status, social-preview, diagram, and demo patterns.
 - [Media](https://projectious-work.github.io/brand/docs/media/index.md) — Motion, audio, video, photography, and presentation guidance.
 - [Collateral](https://projectious-work.github.io/brand/docs/collateral/index.md) — Artefacts that leave the product — cards, signatures, and social imagery.
 - [Governance](https://projectious-work.github.io/brand/docs/governance/index.md) — Licensing, trademark, the pre-launch legal assessment, and per-asset provenance.
-- [Tokens](https://projectious-work.github.io/brand/docs/tokens/index.md) — Machine-readable exports of the design values, and how to consume them.
+- [Implementations](https://projectious-work.github.io/brand/docs/themes/index.md) — Reference implementations for product shells, documentation, terminals, and portable brand surfaces.
+- [Tokens](https://projectious-work.github.io/brand/docs/tokens/index.md) — Canonical design values, generated exports, appearance selectors, and consumption rules.
 - [AI consumption](https://projectious-work.github.io/brand/docs/ai/index.md) — A versioned map from brand use cases to their normative documentation and generated machine-readable material.
+- [Developer guide](https://projectious-work.github.io/brand/docs/developer-guide/index.md) — Implement the projectious.work design system with semantic tokens, documented patterns, and reproducible checks.
+- [Maintenance](https://projectious-work.github.io/brand/docs/maintenance/index.md) — Synchronize, audit, release, and recover the projectious.work design system without drift.
+- [SBOM and dependencies](https://projectious-work.github.io/brand/docs/sbom/index.md) — Supply-chain scope, licences, and maintenance obligations for the projectious.work design system.

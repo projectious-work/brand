@@ -1,84 +1,55 @@
-# Icons
+# Iconography
 
-> Lucide as the icon library, and how icons are sized and coloured.
+> Tabler outline icons on a 24 px grid, with one stroke system and semantic colour.
 
 
 ## Library
 
-The system uses **[Lucide](https://lucide.dev)** — an actively maintained fork
-of Feather with over 1,400 icons.
+The system uses **Tabler Icons**, outline set only. Tabler is MIT-licensed and
+drawn on a 24 px grid. Do not mix its filled collection into the brand and do
+not add another library to fill gaps.
 
-| Property | Value |
+{{< icon-specimen >}}
+
+## Geometry
+
+| Property | Rule |
 |---|---|
-| Licence | ISC (functionally equivalent to MIT) |
-| Commercial use | Permitted |
-| Attribution | Not required in product UI; retain the notice in source |
-| Modification | Permitted |
+| Native grid | 24 × 24 px |
+| Stroke | 1.5 px, including icons supplied at 2 px |
+| Caps and joins | Round |
+| Fill | None |
+| Sizes | 16 px inline · 20 px in buttons · 24 px for navigation |
 
-ISC is one of the most permissive open-source licences available, which is why
-it was chosen over icon sets with attribution or share-alike terms. See the
-[legal assessment](/docs/governance/legal-assessment/) for the
-clearance detail.
+A custom icon is permitted only where Tabler has no suitable concept. Draw it
+on the same grid with the same stroke, caps, joins, and single-colour outline.
 
-## Getting the actual icon
+## Colour and state
 
-Every icon in this system is a **verbatim Lucide path**. The specimens on this
-page are `lucide/shield`, copied from the library rather than approximated —
-including the `1 1 0 0 1` arc segments that give Lucide its corner radius, which
-is exactly the character a redrawn path loses.
+- Default icons use the secondary foreground (`slate-11`).
+- Active or selected icons use the primary foreground (`midnight-9` on light).
+- Danger uses the danger token only when danger is the icon's meaning.
+- Colour never decorates an otherwise neutral list of categories.
+- A status icon is always paired with a label, shape, or other non-colour cue.
 
-Take the file, do not trace it:
+## Delivery
 
-```sh
-curl -O https://unpkg.com/lucide-static@0.544.0/icons/shield.svg
-```
+Marketing prototypes may request an individual outline SVG from the Tabler CDN.
+React surfaces inline SVG rather than running a DOM-mutating icon script.
+Distributable themes and offline products may vendor a versioned outline subset;
+ship the MIT licence and record the pinned version in the SBOM.
 
-Pin the version. `lucide-static@latest` resolves to whatever shipped this
-morning, which lets an upstream release silently change a committed document.
-The worked examples pull icons from the Lucide CDN at use time, with the
-upstream ISC notice beside them.
-
-Inline the `<path>` and set `width`, `height`, and `stroke` at the use site;
-keep `viewBox="0 0 24 24"`, `fill="none"`, `stroke-width="1.5"`, and both
-`stroke-linecap` and `stroke-linejoin` at `round`. Changing any of those five is
-what makes an icon stop looking like the rest of the set.
-
-{{< demo label="Sizes on the 4px grid — 16 / 20 / 24 / 32px" >}}
-<div class="pj-demo-item" style="color:var(--pj-text-muted)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span class="pj-cap">16</span></div>
-<div class="pj-demo-item" style="color:var(--pj-text-muted)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span class="pj-cap">20 — default</span></div>
-<div class="pj-demo-item" style="color:var(--pj-text-muted)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span class="pj-cap">24</span></div>
-<div class="pj-demo-item" style="color:var(--pj-text-muted)"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span class="pj-cap">32</span></div>
-<div class="pj-demo-item" style="color:var(--pj-orange-11)"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg><span class="pj-cap">accent — primary action</span></div>
-{{< /demo >}}
-
-{{< demo label="Icon with a label, and an icon button" >}}
-<button class="pj-btn pj-btn--accent pj-btn--md"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg> Deploy</button>
-<button class="pj-btn pj-btn--ghost pj-btn--md" aria-label="Security settings"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/></svg></button>
-<span class="pj-status pj-status--ok"><span class="pj-status__dot"></span>Policy enforced</span>
-{{< /demo >}}
-
-## Usage
-
-- **Stroke width 1.5px**, with round caps and joins. Do not thin or thicken strokes
-  to "match" a layout.
-- **Size on the 4px grid:** 16px inline with text, 20px in buttons, and 24px
-  for navigation and large affordances.
-- **Colour is semantic.** Default icons use `slate-11`; selected icons use
-  `midnight-9`; danger icons use the danger token. Do not colour an icon unless
-  the colour carries meaning.
-  Standalone icons carrying meaning take `--color-secondary`; an icon marking
-  the primary action takes the accent.
-- **Icons are not decoration.** Every icon must carry meaning the label does not
-  already carry, or be marked `aria-hidden="true"`.
+The projectious.work mark is not an icon. It appears only as part of the
+identity and must never stand in for home, AI, an agent, or a generic product.
 
 {{< rules >}}
 {{% do %}}
-Pair icons with text labels wherever the meaning is not universally understood.
-Give standalone icon buttons an accessible name.
+Pair unfamiliar icons with text and give every icon-only control an accessible
+name and a 44 px target.
 {{% /do %}}
 {{% dont %}}
-Mix icon sets, recolour icons to arbitrary hues, or use an icon as the only
-indicator of state.
+Use emoji, Unicode pictograms, filled Tabler variants, arbitrary icon colours,
+or the brand mark as an interface glyph.
 {{% /dont %}}
 {{< /rules >}}
 

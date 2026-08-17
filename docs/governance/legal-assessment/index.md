@@ -19,7 +19,7 @@ a commercial launch.
 | 1 | Company name "projectious" | Low risk |
 | 2 | Logo similarity — stencil peony bud | Low risk |
 | 3 | Font licensing | Low risk |
-| 4 | Icon library — Lucide | Low risk |
+| 4 | Icon library — Tabler | Low risk |
 | 5 | Photography and imagery sources | Low risk |
 | 6 | Other design elements | Low risk |
 
@@ -30,12 +30,11 @@ Fontsource 5.3.0 WOFF2 subsets. OFL permits commercial use, embedding, and
 redistribution; it forbids selling the fonts on their own and requires that any
 derivative font use a different name. The licence texts ship beside the files.
 
-## Icons — Lucide
+## Icons — Tabler
 
-**ISC License**, functionally equivalent to MIT: free commercial use,
-modification, redistribution, sublicensing. No attribution required in product
-UI — only the notice retained in source. Over 1,400 icons, actively maintained,
-a fork of Feather with a broader community.
+**MIT License**: free commercial use, modification, redistribution, and
+sublicensing. The design system uses only Tabler's outline set, overrides the
+native stroke to 1.5 px, and keeps the licence notice with any vendored subset.
 
 ## Photography
 

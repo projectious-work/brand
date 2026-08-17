@@ -53,8 +53,10 @@ There are no inner, glow, or coloured shadows. Most surfaces remain level 0;
 cards do not need a resting shadow when surface and border already establish
 their edge.
 
-In dark mode, elevation is expressed by *lightening the surface* rather than
-deepening the shadow — a shadow on a near-black background is invisible.
+In both dark appearances, elevation is expressed first by *lightening the
+surface*. The ladder climbs midnight steps 1 → 2 → 4 → 6, adds a subtle top rim,
+and deepens the shadow only to seat the panel. Adjacent steps are too close to
+carry the hierarchy; a shadow alone is invisible against a dark page.
 
 ## Motion
 
@@ -85,10 +87,10 @@ Things slide into place. They do not bounce.
 {{< /demo >}}
 
 {{< demo label="Elevation — shadow-0 through shadow-3" >}}
-<div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-surface);border:1px solid var(--pj-border);border-radius:9px;display:block"></span><span class="pj-cap">shadow-0</span></div>
-<div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-surface);border-radius:9px;box-shadow:0 1px 3px rgba(0,0,0,.06);display:block"></span><span class="pj-cap">shadow-1</span></div>
-<div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-surface);border-radius:9px;box-shadow:0 4px 12px rgba(0,0,0,.08);display:block"></span><span class="pj-cap">shadow-2</span></div>
-<div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-surface);border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.12);display:block"></span><span class="pj-cap">shadow-3</span></div>
+<div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-elevated-0);border:1px solid var(--pj-border);border-radius:9px;display:block"></span><span class="pj-cap">level 0 · flat</span></div>
+<div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-elevated-1);border-radius:9px;box-shadow:0 1px 3px rgba(0,0,0,.18),var(--pj-rim-1);display:block"></span><span class="pj-cap">level 1 · card</span></div>
+<div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-elevated-2);border-radius:9px;box-shadow:0 4px 12px rgba(0,0,0,.28),var(--pj-rim-2);display:block"></span><span class="pj-cap">level 2 · popover</span></div>
+<div class="pj-demo-item"><span style="width:72px;height:48px;background:var(--pj-elevated-3);border-radius:9px;box-shadow:0 8px 24px rgba(0,0,0,.38),var(--pj-rim-3);display:block"></span><span class="pj-cap">level 3 · modal</span></div>
 {{< /demo >}}
 
 {{< demo label="Motion — slides into place, never bounces" variant="stack" >}}

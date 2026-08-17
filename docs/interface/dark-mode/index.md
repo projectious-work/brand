@@ -1,77 +1,80 @@
-# Dark mode
+# Appearances
 
-> Both modes are equally supported. The implementation rules that keep them in step.
+> Light, navy dark, and deep dark from one semantic token contract.
 
 
-Dark mode is not a variant of the brand — it is half of it. Both modes are
-designed, tested, and shipped together.
+The system supports three appearances. They are not separate palettes and they
+do not permit component-specific colour forks.
 
-## Implementation rules
+| Appearance | Selector | Page | Raised | Subtle | Border |
+|---|---|---|---|---|---|
+| Light | `data-theme="light"` | `#f8f9fb` | `#ffffff` | `#f0f3f8` | `#cdd0d5` |
+| Navy dark, default dark | `data-theme="dark"` | `#132440` | `#1a2b3e` | `#20354d` | `#2e4b68` |
+| Deep dark | `data-theme="dark" data-surface="deep"` | `#0e1720` | `#131e2b` | `#1a2b3e` | `#263f5a` |
 
-- **Default follows `prefers-color-scheme`**, with a manual override toggle
-  persisted to `localStorage`.
-- **CSS custom properties swap per theme.** Components read tokens; they do not
-  branch on the mode themselves.
-- **Step 9 (solid accent) stays constant across modes.** `#E05232` is `#E05232`
-  everywhere.
-- **No pure `#000` or `#fff` as text.** Use step 12 — `#c5daf0` on dark,
-  `#142438` on light.
-- **Images get a subtle overlay** (black at low alpha) in dark mode, so a bright
-  photograph does not punch a hole in a dark page.
-- **Code blocks are dark by default**, regardless of interface mode. An
-  explicitly selected light code panel uses the complete light companion
-  palette; it never switches automatically. See
-  [Code](/docs/interface/code/).
+With no explicit mode, the interface follows `prefers-color-scheme`. A dark
+preference resolves to navy dark. Deep dark is an explicit choice.
 
-{{< demo label="The same card in both modes" variant="grid" >}}
-<div style="background:#ffffff;border:1px solid #dadce0;border-radius:9px;padding:1rem">
-  <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9375rem;color:#1d3352">Light mode</div>
-  <div style="font-size:.8125rem;color:#5c6f82;margin-top:.25rem">Body text is midnight-12; supporting copy is slate-11.</div>
-  <div style="margin-top:.625rem"><span style="background:#cc4528;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;padding:.3125rem .75rem;border-radius:6px">Deploy</span></div>
-</div>
-<div style="background:#131e2b;border:1px solid rgba(255,255,255,.08);border-radius:9px;padding:1rem">
-  <div style="font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;font-size:.9375rem;color:#c5daf0">Dark mode</div>
-  <div style="font-size:.8125rem;color:#97a8b8;margin-top:.25rem">Never pure white — midnight-12 from the dark scale.</div>
-  <div style="margin-top:.625rem"><span style="background:#cc4528;color:#fff;font-family:'Plus Jakarta Sans',sans-serif;font-size:.75rem;font-weight:600;padding:.3125rem .75rem;border-radius:6px">Deploy</span></div>
-</div>
-{{< /demo >}}
+{{< appearance-specimen >}}
 
-## Surfaces
+The specimen translates the designer's shared three-way preview control into a
+simultaneous comparison: the component recipe stays identical while only its
+semantic token context changes.
 
-Elevation in dark mode is expressed by **lightening the surface**, not by
-deepening the shadow — a shadow against a near-black background is invisible.
+## Why navy is the default dark
 
-| Layer | Light | Dark |
-|---|---|---|
-| App background | `midnight-1` `#f8f9fb` | `midnight-dark-1` `#0e1720` |
-| Raised surface | `#ffffff` | `midnight-dark-2` `#131e2b` |
-| Secondary raised surface | `midnight-2` `#f0f3f8` | `midnight-dark-3` `#1a2b3e` |
+Deep dark begins at the bottom of the midnight ramp. Across a full interface,
+panels have little room to separate from the page and the result reads heavy.
+Navy begins higher. Raised surfaces remain visible, while a code panel can sit
+below the page tone and read as inset rather than as a hole.
 
-## Restating text on dark surfaces
+Navy is a derivative of deep dark. It changes only midnight steps 1–5,
+surfaces, borders, and the neutral tag background. Orange, slate, text, status,
+terminal, and syntax roles remain the same.
 
-The default heading colour is `midnight-9`, chosen so headings read correctly on
-light pages. That same value on a midnight surface is invisible — `#1d3352` on
-`#1d3352` is a contrast ratio of **1.00:1**.
+## Implementation
 
-Any component that paints its own dark background must therefore restate its
-text colours. This applies to covers, dark boxes, footers, and overlays:
-
-```scss
-.surface--dark {
-  --bs-body-color: #c5daf0;    // midnight-dark-12
-  --bs-heading-color: #c5daf0;
-  --bs-secondary-color: #97a8b8; // slate-dark-11, still AA
-}
+```html
+<html data-theme="dark" data-focus="strong">
+<!-- add data-surface="deep" only for the deep-dark appearance -->
 ```
+
+- Components consume semantic tokens; they do not branch on appearance.
+- `orange-9` stays constant as the identity accent, but it is never body text.
+- Light application pages use `midnight-1`, not white. White is raised.
+- Elevation in dark uses an elevated surface step as well as a shadow.
+- Solid status fills use `--on-solid-*`; the dark solids are light tints and
+  cannot carry white text.
+- Code remains on `#131e2b` and terminal output on `#0e1720` in every page
+  appearance.
+
+{{< callout type="info" title="An optional light code panel is not light mode" >}}
+A light code or terminal specimen opts into the complete companion palette,
+including syntax, ANSI slots, chrome, borders, and selection. It never switches
+automatically with the page.
+{{< /callout >}}
+
+## Surface ownership
+
+An element that paints a deliberate dark slab—such as a marketing hero,
+terminal, modal, or footer—also establishes the appropriate foreground,
+secondary text, border, selection, and control tokens. It must not depend on
+the page appearance to make its contents readable.
+
+## Review contract
+
+Review every token-driven preview in light, navy dark, and deep dark. Then apply
+high contrast, strong focus, 200% text, loose spacing, reduced motion, and
+reduced transparency. A card that works in one screenshot has not passed.
 
 {{< rules >}}
 {{% do %}}
-Test every surface in both modes. Restate text colours on any component that
-sets its own dark background.
+Use semantic surface and foreground roles, and pair `--shadow-N` with
+`--elevated-N` on dark.
 {{% /do %}}
 {{% dont %}}
-Ship a component that only works in one mode, or use pure black or white as a
-text colour in either.
+Create a fourth theme, invert colours, use white as the light app background, or
+switch code to a light palette merely because the page is light.
 {{% /dont %}}
 {{< /rules >}}
 

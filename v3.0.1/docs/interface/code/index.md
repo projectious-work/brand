@@ -1,0 +1,644 @@
+# Code
+
+> The default dark code surface, optional light-panel companion, and measured syntax roles.
+
+
+## Code blocks are dark by default
+
+**Code blocks stay dark regardless of appearance.** A code surface that flips
+with the theme forces the syntax palette to be designed twice and makes
+screenshots inconsistent between users. The surface is `midnight-2` from the
+**dark** scale (`#131e2b`) in light, navy, and deep appearances. A deliberately light
+specimen may opt into the companion palette below; colour mode never switches a
+code block to it automatically.
+
+The block you are reading is rendered by that rule:
+
+```js
+// Agent pipeline definition
+const pipeline = createPipeline({
+  name: "validate-deploy",
+  policy: "strict",
+  agents: ["auditor", "deployer"],
+});
+```
+
+## Syntax theme
+
+For the default dark surface, every syntax value is read from the **dark** scale
+and contrast is measured against `#131e2b`. The optional light panel uses the
+separate light syntax set defined below.
+
+### Ten roles, not twenty-two tokens
+
+Editors do not describe code with six token types. The
+[Language Server Protocol](https://microsoft.github.io/language-server-protocol/specifications/lsp/3.17/specification/#textDocument_semanticTokens)
+defines **22 semantic token types** and **10 modifiers**, and
+[TextMate grammars](https://macromates.com/manual/en/language_grammars) — the
+model behind VS Code, Sublime Text, and most highlighters — define **11 root
+scopes** with a deep sub-scope tree under each.
+
+A theme should not answer that with twenty-two colours. Past roughly nine, hue
+stops being a signal: everything is coloured, so nothing is marked. The two
+scope vocabularies are therefore grouped into ten **roles**, and the modifiers
+are carried by weight and slant rather than by more hue.
+
+Every role is an existing brand or terminal value. The expansion introduced no
+new colour — the terminal palette had already added the two hues, cyan and
+magenta, that a syntax theme needs and the three interface scales do not have.
+
+{{< syntax-scopes >}}
+
+### Optional light-panel companion
+
+Use a light code panel only when the surrounding artifact specifically needs a
+light specimen. The surface is `#f4f5f7`; all ten roles are separately measured
+for a 4.5:1 floor. These tokens are companions, not mode-swapped aliases:
+
+| Role | Token | Value |
+|---|---|---|
+| Plain | `--syntax-plain-light` | `#0f1c2e` |
+| Comments | `--syntax-comment-light` | `#5e7082` |
+| Operators | `--syntax-operator-light` | `#54697f` |
+| Keywords | `--syntax-keyword-light` | `#c2117f` |
+| Types and classes | `--syntax-type-light` | `#08804e` |
+| Functions | `--syntax-function-light` | `#1668d8` |
+| Strings | `--syntax-string-light` | `#c94208` |
+| Numbers | `--syntax-number-light` | `#94620a` |
+| Decorators and macros | `--syntax-macro-light` | `#0d7d82` |
+| Invalid | `--syntax-invalid-light` | `#d81420` |
+
+The base stylesheet paints every `<pre>` dark. Styling only a wrapper therefore
+leaves a dark rectangle over the intended light panel. The opt-in must
+neutralise the nested element explicitly:
+
+```css
+.code--light {
+  background: var(--terminal-light-surface);
+  color: var(--syntax-plain-light);
+}
+
+.code--light pre {
+  background: transparent;
+  color: var(--syntax-plain-light);
+  padding: 0;
+}
+```
+
+Do not reuse the dark syntax values on this surface and do not make the light
+set the automatic counterpart of dark mode.
+
+### Modifiers are not colours
+
+LSP modifiers combine with any token type: ten modifiers against ten roles is a
+hundred states. Hue cannot carry that, so it does not try.
+
+{{< syntax-scopes part="modifiers" >}}
+
+{{% callout title="Deprecated must survive greyscale" type="warning" %}}
+`deprecated` is a state, not a category. It is struck through as well as
+recoloured, so a reader who cannot separate the red from the plain text still
+sees that the symbol should not be used.
+{{% /callout %}}
+
+### Why comments have a dedicated token
+
+Comments are the one syntax role with no scale step available to it. Steps 8–10
+are border and solid-surface roles and are not held to text thresholds; step 11
+is already spoken for by operators.
+
+So `code-comment` (`#7d90a3`, **5.19:1**) exists as a dedicated syntax token —
+the dimmest value that clears AA while staying visibly below operators. It is
+not a scale step and should not be treated as one.
+
+{{< rules >}}
+{{% do %}}
+Group scopes into roles, and let a language's grammar map onto them. Keep the
+role count under ten, and check every value against the code surface.
+{{% /do %}}
+{{% dont %}}
+Give each LSP token type its own hue, or use the accent as a syntax colour — it
+marks the primary action, and a code block is not one.
+{{% /dont %}}
+{{< /rules >}}
+
+## Worked examples
+
+Each example below renders the same real, compilable-shaped fragment in the
+default dark palette and the optional light palette. The fragment is chosen to
+exercise as many of the ten roles as its language has. The coverage table after
+them records which roles each language actually reaches — several cannot reach
+all ten, and that is a property of the language, not a gap in the theme.
+
+### C
+
+{{< code-pair language="c" >}}
+/* Ring buffer — fixed capacity, no allocation after init. */
+#include <stdint.h>
+#define RING_CAP 256          // macro: a decorator-role token
+
+typedef enum { RING_OK = 0, RING_FULL = 1 } ring_status_t;
+
+typedef struct {
+    uint8_t  data[RING_CAP];
+    size_t   head, tail;
+    _Bool    wrapped;
+} ring_t;
+
+static inline size_t ring_len(const ring_t *r) {
+    return (r->head - r->tail) & (RING_CAP - 1);
+}
+
+static const char *RING_TAG = "ring\n";   // string literal
+
+ring_status_t ring_push(ring_t *restrict r, uint8_t byte) {
+    // Reject when one slot short of capacity, so head never meets tail.
+    if (ring_len(r) == RING_CAP - 1) return RING_FULL;
+    r->data[r->head++ & (RING_CAP - 1)] = byte;
+    return RING_OK;
+}
+{{< /code-pair >}}
+
+### C++
+
+{{< code-pair language="cpp" >}}
+// Policy-based cache. Types, templates, and a lambda.
+#include <string>
+#include <unordered_map>
+
+namespace projectious::cache {
+
+template <typename Key, typename Value>
+class LruCache final {
+public:
+    explicit LruCache(std::size_t capacity) noexcept : capacity_{capacity} {}
+
+    [[nodiscard]] auto get(const Key& key) const -> const Value* {
+        const auto it = entries_.find(key);
+        return it == entries_.end() ? nullptr : &it->second;
+    }
+
+    void put(Key key, Value value) {
+        static constexpr auto kTag = "lru";  // string literal
+        // Evict before insert so size never exceeds the capacity.
+        if (entries_.size() >= capacity_) evict();
+        entries_.emplace(std::move(key), std::move(value));
+    }
+
+private:
+    void evict() noexcept { /* … */ }
+
+    std::size_t capacity_{0};
+    std::unordered_map<Key, Value> entries_{};
+};
+
+}  // namespace projectious::cache
+{{< /code-pair >}}
+
+### Python
+
+{{< code-pair language="python" >}}
+"""Pipeline stages and their policy gates."""
+
+from __future__ import annotations
+
+import functools
+from dataclasses import dataclass, field
+from typing import Final, Iterable
+
+# Retry budget is a policy decision, not a tuning knob.
+MAX_RETRIES: Final[int] = 3
+DEFAULT_POLICY = "strict"
+
+
+@dataclass(frozen=True, slots=True)
+class Stage:
+    """A single stage. Immutable once constructed."""
+
+    name: str
+    policy: str = DEFAULT_POLICY
+    retries: int = 0
+    tags: list[str] = field(default_factory=list)
+
+    @property
+    def is_strict(self) -> bool:
+        return self.policy == "strict"
+
+    @staticmethod
+    def parse(raw: str) -> "Stage":
+        name, _, policy = raw.partition(":")
+        return Stage(name=name.strip(), policy=policy or DEFAULT_POLICY)
+
+
+@functools.lru_cache(maxsize=None)
+def validate(stages: Iterable[Stage]) -> bool:
+    for stage in stages:
+        if stage.retries > MAX_RETRIES:
+            raise ValueError(f"{stage.name!r} exceeds {MAX_RETRIES} retries")
+    return True
+{{< /code-pair >}}
+
+### Rust
+
+{{< code-pair language="rust" >}}
+//! Policy evaluation for pipeline stages.
+
+use std::collections::HashMap;
+use std::fmt::{self, Display};
+
+const MAX_RETRIES: u32 = 3;
+
+/// How strictly a stage is evaluated.
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+pub enum Policy {
+    Strict,
+    Advisory,
+}
+
+#[derive(Debug, Default)]
+pub struct Stage<'a> {
+    pub name: &'a str,
+    pub policy: Option<Policy>,
+    pub retries: u32,
+}
+
+impl<'a> Stage<'a> {
+    // Strict by default: a gate that is not configured should fail closed.
+    pub fn new(name: &'a str) -> Self {
+        Self { name, policy: Some(Policy::Strict), retries: 0 }
+    }
+
+    pub fn validate(&self) -> Result<(), String> {
+        if self.retries > MAX_RETRIES {
+            return Err(format!("{} exceeds {MAX_RETRIES} retries", self.name));
+        }
+        Ok(())
+    }
+}
+
+impl Display for Policy {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "{}", match self { Policy::Strict => "strict", _ => "advisory" })
+    }
+}
+{{< /code-pair >}}
+
+### Go
+
+{{< code-pair language="go" >}}
+// Package pipeline evaluates stages against their policy gates.
+package pipeline
+
+import (
+	"errors"
+	"fmt"
+)
+
+const MaxRetries = 3
+
+// Policy is how strictly a stage is evaluated.
+type Policy int
+
+const (
+	Strict Policy = iota
+	Advisory
+)
+
+var ErrTooManyRetries = errors.New("stage exceeds retry budget")
+
+type Stage struct {
+	Name    string `json:"name"`
+	Policy  Policy `json:"policy"`
+	Retries int    `json:"retries,omitempty"`
+}
+
+func (s *Stage) Validate() error {
+	if s.Retries > MaxRetries {
+		return fmt.Errorf("%q: %w", s.Name, ErrTooManyRetries)
+	}
+	return nil
+}
+
+func ValidateAll(stages []Stage) (ok bool, err error) {
+	for i := range stages {
+		if err = stages[i].Validate(); err != nil {
+			return false, err
+		}
+	}
+	return true, nil
+}
+{{< /code-pair >}}
+
+### Java
+
+{{< code-pair language="java" >}}
+package work.projectious.pipeline;
+
+import java.util.List;
+import java.util.Objects;
+
+/** A single pipeline stage and its policy gate. */
+public final class Stage implements Comparable<Stage> {
+
+    public static final int MAX_RETRIES = 3;
+    public static final long TIMEOUT_MS = 30_000L;
+    public static final int MASK = 0xFF;
+
+    private final String name;
+    private final Policy policy;
+    private int retries = 0;
+    private double budget = 12.60;
+
+    public Stage(String name, Policy policy) {
+        this.name = Objects.requireNonNull(name, "name");
+        this.policy = policy;
+    }
+
+    @Override
+    public int compareTo(Stage other) {
+        return this.name.compareTo(other.name);
+    }
+
+    @Deprecated(since = "2.0", forRemoval = true)
+    public boolean isStrict() {
+        return policy == Policy.STRICT;
+    }
+
+    public void validate(List<String> errors) throws IllegalStateException {
+        if (retries > MAX_RETRIES) {
+            throw new IllegalStateException("%s exceeds %d retries".formatted(name, MAX_RETRIES));
+        }
+    }
+
+    public enum Policy { STRICT, ADVISORY }
+}
+{{< /code-pair >}}
+
+### Assembly (NASM)
+
+{{< code-pair language="nasm" >}}
+; Sum a byte array. rdi = pointer, rsi = length, returns in rax.
+        section .data
+msg:    db  "sum: ", 0
+LEN     equ 5
+
+        section .text
+        global  sum_bytes
+
+sum_bytes:
+        xor     rax, rax            ; accumulator
+        test    rsi, rsi
+        jz      .done               ; empty input
+
+.loop:
+        movzx   rdx, byte [rdi]
+        add     rax, rdx
+        inc     rdi
+        dec     rsi
+        jnz     .loop
+
+.done:
+        ret
+{{< /code-pair >}}
+
+### Bash
+
+{{< code-pair language="bash" >}}
+#!/usr/bin/env bash
+# Validate a pipeline definition and promote it when the gates pass.
+set -euo pipefail
+
+readonly MAX_RETRIES=3
+readonly POLICY="${PIPELINE_POLICY:-strict}"
+declare -A GATE_STATUS=()
+
+log() { printf '%s  %s\n' "$(date -u +%FT%TZ)" "$*" >&2; }
+
+validate_stage() {
+    local -r name="$1" retries="${2:-0}"
+    if (( retries > MAX_RETRIES )); then
+        log "ERROR ${name} exceeds ${MAX_RETRIES} retries"
+        return 1
+    fi
+    GATE_STATUS["$name"]="ok"
+}
+
+main() {
+    local -a stages=("validate" "deploy")
+    for stage in "${stages[@]}"; do
+        validate_stage "$stage" 0 || exit 1
+    done
+    log "policy=${POLICY} stages=${#stages[@]}"
+}
+
+main "$@"
+{{< /code-pair >}}
+
+### LaTeX
+
+{{< code-pair language="latex" >}}
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+
+% Pipeline notation used throughout the paper.
+\newcommand{\stage}[2]{\ensuremath{#1 \xrightarrow{#2}}}
+
+\title{Policy Gates in Composable Pipelines}
+\author{Jane Doe}
+
+\begin{document}
+\maketitle
+
+\section{Definitions}
+A stage $s_i$ passes when its retry count $r_i \leq 3$:
+\begin{equation}
+    \forall s_i \in S : r_i \leq R_{\max}, \quad R_{\max} = 3
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{Strict} — the gate fails closed.
+    \item \emph{Advisory} — the gate records and continues.
+\end{itemize}
+
+\end{document}
+{{< /code-pair >}}
+
+### Markdown
+
+{{< code-pair language="markdown" >}}
+---
+title: Stage reference
+weight: 10
+---
+
+# Stage reference
+
+A stage passes when its retry count stays at or below **three**. See the
+[policy guide](../policy/) for the full rules.
+
+## Fields
+
+| Field | Type | Default |
+|---|---|---|
+| `name` | string | — |
+| `policy` | enum | `strict` |
+
+> Advisory gates record a failure and continue. Strict gates fail closed.
+
+1. Validate the configuration
+2. Request promotion
+3. Deploy
+
+```sh
+pipeline validate --policy strict
+```
+
+<!-- Deprecated: `--legacy-gate` is removed in 2.0. -->
+{{< /code-pair >}}
+
+### JSON
+
+{{< code-pair language="json" >}}
+{
+  "$schema": "https://projectious.work/schema/pipeline-2.json",
+  "name": "validate-deploy",
+  "policy": "strict",
+  "retries": 3,
+  "enabled": true,
+  "owner": null,
+  "budget": 12.6,
+  "stages": [
+    { "name": "validate", "gate": "strict", "timeoutSeconds": 120 },
+    { "name": "deploy", "gate": "advisory", "timeoutSeconds": 600 }
+  ],
+  "tags": ["platform", "eu-central"]
+}
+{{< /code-pair >}}
+
+### YAML
+
+{{< code-pair language="yaml" >}}
+# Pipeline definition — one policy gate per stage.
+apiVersion: projectious.work/v2
+kind: Pipeline
+metadata:
+  name: validate-deploy
+  labels: { team: platform, region: eu-central }
+
+defaults: &defaults
+  policy: strict
+  retries: 3
+  enabled: true
+
+spec:
+  <<: *defaults
+  budget: 12.60
+  owner: ~
+  stages:
+    - name: validate
+      timeoutSeconds: 120
+    - name: deploy
+      policy: advisory
+      timeoutSeconds: 600
+  owner: "platform@projectious.work"
+  schema: 'https://projectious.work/schema/pipeline-2.json'
+  notes: |
+    Advisory gates record and continue.
+    Strict gates fail closed.
+{{< /code-pair >}}
+
+### TOML
+
+{{< code-pair language="toml" >}}
+# Pipeline definition — one policy gate per stage.
+schema = "https://projectious.work/schema/pipeline-2.json"
+
+[pipeline]
+name    = "validate-deploy"
+policy  = "strict"
+retries = 3
+enabled = true
+budget  = 12.60
+created = 2026-08-02T09:00:00Z
+tags    = ["platform", "eu-central"]
+
+[[pipeline.stage]]
+name           = "validate"
+gate           = "strict"
+timeoutSeconds = 120
+
+[[pipeline.stage]]
+name           = "deploy"
+gate           = "advisory"
+timeoutSeconds = 600
+{{< /code-pair >}}
+
+### What each language reaches
+
+The table is measured from the rendered page, not asserted: every block above is
+parsed and its emitted token classes are mapped back to the roles. `●` means the
+role appears in that example.
+
+| Language | Plain | Keyword | Type | Function | Macro | String | Number | Operator | Comment | Reached |
+|---|---|---|---|---|---|---|---|---|---|---|
+| **C** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
+| **C++** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
+| **Python** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
+| **Rust** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
+| **Go** | ● | ● | ● | ● | · | ● | ● | ● | ● | 8/9 |
+| **Java** | ● | ● | ● | ● | ● | ● | · | ● | ● | 8/9 |
+| **Bash** | ● | ● | · | · | ● | ● | ● | ● | ● | 7/9 |
+| **Assembly (NASM)** | ● | ● | ● | ● | ● | ● | ● | ● | ● | 9/9 |
+| **LaTeX** | ● | ● | · | · | · | ● | ● | · | ● | 5/9 |
+| **Markdown** | · | ● | ● | · | · | ● | ● | ● | ● | 6/9 |
+| **JSON** | · | ● | · | · | · | ● | ● | ● | · | 4/9 |
+| **YAML** | · | ● | · | · | ● | ● | ● | ● | ● | 6/9 |
+| **TOML** | ● | ● | · | · | · | ● | ● | ● | ● | 6/9 |
+
+Nine roles rather than ten, because *invalid* only appears when a grammar
+actually fails to parse — a correct example cannot demonstrate it.
+
+Where a language falls short, the reason is the language or the lexer:
+
+- **Bash** — no type system, and Chroma's shell lexer does not mark function definitions.
+- **Go** — Go has no macro or annotation construct; its struct tags are strings.
+- **Java** — Chroma's Java lexer emits a plain name for every numeric literal, so numbers cannot be separated. A lexer limitation, not a palette one.
+- **LaTeX** — No type, callable or operator concept in the grammar — commands are keywords.
+- **Markdown** — Prose, not code: there is nothing to name, call, or annotate.
+- **JSON** — By design: no comments, no identifiers, no callables. Keys take the keyword role.
+- **YAML** — Anchors and merge keys take the macro role; there are no callables or types.
+- **TOML** — Table headers take the plain role; there are no callables or types.
+
+{{% callout title="Two findings worth carrying into any theme" type="info" %}}
+Chroma files C preprocessor directives and Rust attributes under
+**Comment.Preproc**, which would colour `#define` and `#[derive(…)]` as
+commentary. They are macros — the LSP says so — and are coloured as macros here.
+
+It also files documentation comments under **String.Doc**, which would colour a
+Rust `///` line and a Python docstring as data. Both are documentation, and take
+the comment role.
+{{% /callout %}}
+
+## Inline code
+
+Inline code does **not** take the dark block treatment — it follows the
+surrounding surface. On light surfaces it sits on `midnight-2` (light scale)
+with `orange-11` text; in dark mode both values shift to their dark-scale
+counterparts. It uses IBM Plex Mono at 13px with a 3px radius.
+
+## Terminal output
+
+Terminal blocks use the same dark surface. Prompts take the comment colour,
+output takes the operator colour, so a transcript stays readable without
+becoming a second syntax theme.
+
+```console
+$ hugo --gc --minify
+Start building sites …
+Total in 842 ms
+```
+
+
+---
+Source: https://projectious-work.github.io/brand/v3.0.1/docs/interface/code/index.md

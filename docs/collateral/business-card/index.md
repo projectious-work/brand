@@ -37,7 +37,7 @@ Three things change, and nothing else does:
 
 | | Digital | Paper |
 |---|---|---|
-| Surface | `midnight-dark-1` | White, in both modes — paper has no colour mode |
+| Surface | `midnight-dark-1` | White in every appearance — paper has no colour mode |
 | Accent | A 12% wash bleeding off the corner | A 3px rule down the leading edge |
 | Mark | Light-on-dark colourway | `midnight-9` shell, white cut, `orange-9` bud |
 
@@ -52,7 +52,7 @@ The name, role, and contact rows keep their type sizes and weights exactly. Only
 their colours change, to the light-mode text steps: `midnight-9` for the name,
 `slate-9` for the role at 5.58:1, and `slate-11` for the mono rows at 5.18:1.
 
-{{% callout title="This specimen is white in both modes, deliberately" type="info" %}}
+{{% callout title="This specimen stays white in every appearance" type="info" %}}
 Switch the site's theme and the digital card follows it; this one does not. A
 card printed on white stock is white under every lighting condition there is,
 and a specimen that goes dark when the reader's browser does would be showing

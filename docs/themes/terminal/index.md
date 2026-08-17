@@ -128,15 +128,15 @@ looks like the same file on the documentation site.
 | Operators and punctuation | <span class="pj-color-chip" style="--pj-chip: #97a8b8" aria-hidden="true"></span> `#97a8b8` | 7 · white |
 | Invalid and deprecated | <span class="pj-color-chip" style="--pj-chip: #e55b5b" aria-hidden="true"></span> `#e55b5b` | 1 · red |
 | Strings | <span class="pj-color-chip" style="--pj-chip: #ea7558" aria-hidden="true"></span> `#ea7558` | — brand `orange-dark-10` |
-| Numbers and constants | <span class="pj-color-chip" style="--pj-chip: #f09878" aria-hidden="true"></span> `#f09878` | — brand `orange-dark-11` |
-| Comments | <span class="pj-color-chip" style="--pj-chip: #72889d" aria-hidden="true"></span> `#72889d` | — dedicated token |
+| Numbers and constants | <span class="pj-color-chip" style="--pj-chip: #e0a92a" aria-hidden="true"></span> `#e0a92a` | 11 · bright yellow |
+| Comments | <span class="pj-color-chip" style="--pj-chip: #7d90a3" aria-hidden="true"></span> `#7d90a3` | — dedicated token |
 
-Strings, numbers and comments are the three that do not map. ANSI has no orange
-slot — orange is the brand's accent family — and comments need a value dimmer
-than any slot provides while still clearing 4.5:1. An editor that supports
-truecolour should be given those three literally; one limited to sixteen colours
-should use bright red for strings, red for numbers, and bright black for
-comments, accepting that the last of those falls below the text floor.
+Strings and comments are the two that do not map. ANSI has no orange slot —
+orange is the brand's accent family — and comments need a value dimmer than any
+slot provides while still clearing 4.5:1. An editor that supports truecolour
+should receive those values literally; one limited to sixteen colours should
+use bright red for strings and bright black for comments, accepting that the
+latter falls below the text floor.
 
 {{% callout title="This convergence was not designed for; it fell out" type="info" %}}
 The syntax roles were reassigned to fix a legibility problem — keywords and
