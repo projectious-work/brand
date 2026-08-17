@@ -21,12 +21,12 @@ documentation are not.
 
 Nothing yet.
 
-## [v3.0.1] — 2026-08-17
+## [v3.0.2] — 2026-08-17
 
 ### Added
 
 - An on-site change log with retained release pages for v1.0.0, v2.0.0,
-  v2.0.1, v2.0.2, v2.1.0, v2.1.1, v3.0.0, and v3.0.1.
+  v2.0.1, v2.0.2, v2.1.0, v2.1.1, v3.0.0, and v3.0.2.
 - Revised foundation, interface, theme, governance, machine-contract, and
   legacy-alignment documentation recovered from the design-system branch.
 - Semantic colour specimens and automatic inline chips for literal, scale,
@@ -35,10 +35,14 @@ Nothing yet.
 ### Changed
 
 - The release menu now retains v1.0.0, v2.0.0, v2.1.1, v3.0.0, and every
-  release from v3.0.1 onward.
+  release from v3.0.2 onward.
 - The header links to the complete Getting started, Change log,
   Documentation, Contributing, Downloads, and Legal destinations.
-- The announcement banner and release metadata identify v3.0.1 as latest.
+- The announcement banner and release metadata identify v3.0.2 as latest.
+- The documentation sidebar starts with subsection groups collapsed, and AI
+  consumption is a direct page rather than a one-item section.
+- Upstream design-system intake material is synchronized into its canonical
+  directory structure with the latest previews and implementation kits.
 
 ### Fixed
 
@@ -50,6 +54,9 @@ Nothing yet.
   retaining the v0.3.3 navigation and release chrome.
 - Corrected the repository build and test metadata to invoke Brand's actual
   Hugo build and full verification suite.
+- Release-menu synchronization now derives its supported versions from the
+  freshly built latest site instead of overwriting them with a stale list.
+- Active release-menu backgrounds remain within the dropdown border.
 
 ## [v3.0.0] — 2026-08-17
 
@@ -542,7 +549,7 @@ around, and are encoded in the audits: **logotypes** (the wordmark sets "work"
 in the identity accent) and **inactive user-interface components** (the disabled
 control specification).
 
-[Unreleased]: https://github.com/projectious-work/brand/compare/v3.0.1...HEAD
-[v3.0.1]: https://github.com/projectious-work/brand/compare/v3.0.0...v3.0.1
+[Unreleased]: https://github.com/projectious-work/brand/compare/v3.0.2...HEAD
+[v3.0.2]: https://github.com/projectious-work/brand/compare/v3.0.0...v3.0.2
 [v3.0.0]: https://github.com/projectious-work/brand/compare/v2.1.1...v3.0.0
 [v1.0.0]: https://github.com/projectious-work/brand/releases/tag/v1.0.0
